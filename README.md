@@ -28,14 +28,14 @@ where possible, functions are marked as `const`
 
 ## done
 
-- [8 kyu](<https://www.codewars.com/kata/search/rust?q=&r[]=-8&xids=completed&beta=false&order_by=published_at asc>)
+- [8 kyu](https://www.codewars.com/kata/search/rust?q=&r[]=-8&xids=completed&beta=false&order_by=published_at%20asc)
 
 ## todo
 
-- [7 kyu](<https://www.codewars.com/kata/search/rust?q=&r[]=-7&xids=completed&beta=false&order_by=published_at asc>)
-- [6 kyu](<https://www.codewars.com/kata/search/rust?q=&r[]=-6&xids=completed&beta=false&order_by=published_at asc>)
-- [5 kyu](<https://www.codewars.com/kata/search/rust?q=&r[]=-5&xids=completed&beta=false&order_by=published_at asc>)
-- [4 kyu](<https://www.codewars.com/kata/search/rust?q=&r[]=-4&xids=completed&beta=false&order_by=published_at asc>)
-- [3 kyu](<https://www.codewars.com/kata/search/rust?q=&r[]=-3&xids=completed&beta=false&order_by=published_at asc>)
-- [2 kyu](<https://www.codewars.com/kata/search/rust?q=&r[]=-2&xids=completed&beta=false&order_by=published_at asc>)
-- [1 kyu](<https://www.codewars.com/kata/search/rust?q=&r[]=-1&xids=completed&beta=false&order_by=published_at asc>)
+- [7 kyu](https://www.codewars.com/kata/search/rust?q=&r[]=-7&xids=completed&beta=false&order_by=published_at%20asc)
+- [6 kyu](https://www.codewars.com/kata/search/rust?q=&r[]=-6&xids=completed&beta=false&order_by=published_at%20asc)
+- [5 kyu](https://www.codewars.com/kata/search/rust?q=&r[]=-5&xids=completed&beta=false&order_by=published_at%20asc)
+- [4 kyu](https://www.codewars.com/kata/search/rust?q=&r[]=-4&xids=completed&beta=false&order_by=published_at%20asc)
+- [3 kyu](https://www.codewars.com/kata/search/rust?q=&r[]=-3&xids=completed&beta=false&order_by=published_at%20asc)
+- [2 kyu](https://www.codewars.com/kata/search/rust?q=&r[]=-2&xids=completed&beta=false&order_by=published_at%20asc)
+- [1 kyu](https://www.codewars.com/kata/search/rust?q=&r[]=-1&xids=completed&beta=false&order_by=published_at%20asc)
