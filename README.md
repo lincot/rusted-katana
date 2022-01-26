@@ -18,7 +18,7 @@ they use Rust's standard UTF-8–encoded strings,
 so solutions for string katas are made for Unicode input
 
 - proposed function signatures and argument names are preserved;
-however, needed functions always have `pub` keyword added to them and,
+however, needed items always have `pub` keyword added to them and,
 where possible, functions are marked as `const`
 
 - usage of third-party crates is allowed even if not accepted by Codewars
