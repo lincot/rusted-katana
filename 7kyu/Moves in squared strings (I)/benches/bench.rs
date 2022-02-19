@@ -8,13 +8,11 @@ const S: &str = "лвшпзчпцъл\nбнхчсгбтцч\nшгйрбшёвэ�
 #[bench]
 fn bench_hor_mirror(bencher: &mut Bencher) {
     let s = black_box(S);
-
     bencher.iter(|| solution::hor_mirror(s.into()))
 }
 
 #[bench]
 fn bench_vert_mirror(bencher: &mut Bencher) {
     let s = black_box(S);
-
     bencher.iter(|| solution::vert_mirror(s.into()))
 }

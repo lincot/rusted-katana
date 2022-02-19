@@ -3,13 +3,9 @@
 extern crate test;
 use test::{black_box, Bencher};
 
-const ST: &str = "Тестовая строка";
-const LIMIT: usize = 9;
-
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let st = black_box(ST);
-    let limit = black_box(LIMIT);
-
+    let st = black_box("Тестовая строка");
+    let limit = black_box(9);
     bencher.iter(|| solution::solution(st, limit))
 }

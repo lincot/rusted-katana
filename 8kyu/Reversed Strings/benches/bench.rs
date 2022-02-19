@@ -3,11 +3,8 @@
 extern crate test;
 use test::{black_box, Bencher};
 
-const PHRASE: &str = "рандомизатор";
-
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let phrase = black_box(PHRASE);
-
+    let phrase = black_box("рандомизатор");
     bencher.iter(|| solution::solution(phrase))
 }

@@ -9,7 +9,6 @@ const SALARY: u64 = 10000;
 fn bench_with_bonus(bencher: &mut Bencher) {
     let salary = black_box(SALARY);
     let bonus = black_box(true);
-
     bencher.iter(|| solution::bonus_time(salary, bonus))
 }
 
@@ -17,6 +16,5 @@ fn bench_with_bonus(bencher: &mut Bencher) {
 fn bench_without_bonus(bencher: &mut Bencher) {
     let salary = black_box(SALARY);
     let bonus = black_box(false);
-
     bencher.iter(|| solution::bonus_time(salary, bonus))
 }

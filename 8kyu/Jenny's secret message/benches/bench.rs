@@ -3,19 +3,14 @@
 extern crate test;
 use test::{black_box, Bencher};
 
-const JOHNNY: &str = "Johnny";
-const SUSAN: &str = "Susan";
-
 #[bench]
-fn johnny_bench(bencher: &mut Bencher) {
-    let input = black_box(JOHNNY);
-
+fn bench_johny(bencher: &mut Bencher) {
+    let input = black_box("Johnny");
     bencher.iter(|| solution::greet(input))
 }
 
 #[bench]
-fn susan_bench(bencher: &mut Bencher) {
-    let input = black_box(SUSAN);
-
+fn bench_susan(bencher: &mut Bencher) {
+    let input = black_box("Susan");
     bencher.iter(|| solution::greet(input))
 }

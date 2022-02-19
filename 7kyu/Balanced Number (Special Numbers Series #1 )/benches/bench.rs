@@ -3,11 +3,8 @@
 extern crate test;
 use test::{black_box, Bencher};
 
-const N: u64 = 56239814;
-
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let n = black_box(N);
-
+    let n = black_box(56239814);
     bencher.iter(|| solution::balanced_num(n))
 }
