@@ -12,7 +12,7 @@ pub fn abbrev_name(name: &str) -> String {
     let first = name.chars().next().unwrap();
     let first_len = first.len_utf8();
 
-    let space_pos = name[first_len..].bytes().position(|c| c == b' ').unwrap() + first_len;
+    let space_pos = name[first_len..].bytes().position(|b| b == b' ').unwrap() + first_len;
 
     let last = name[space_pos + 1..].chars().next();
     let last = unsafe { last.unwrap_unchecked() };

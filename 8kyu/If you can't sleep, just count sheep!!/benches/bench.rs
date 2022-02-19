@@ -6,8 +6,8 @@ use test::{black_box, Bencher};
 const N: u32 = 1000;
 
 #[bench]
-fn bench(b: &mut Bencher) {
+fn bench(bencher: &mut Bencher) {
     let n = black_box(N);
 
-    b.iter(|| solution::count_sheep(n))
+    bencher.iter(|| solution::count_sheep(n))
 }

@@ -7,11 +7,11 @@ const BEAST: &str = "медвед";
 const DISH: &str = "мёд";
 
 #[bench]
-fn bench(b: &mut Bencher) {
+fn bench(bencher: &mut Bencher) {
     let beast = black_box(BEAST);
     let dish = black_box(DISH);
 
-    b.iter(|| {
+    bencher.iter(|| {
         for _ in 0..1000 {
             black_box(solution::feast(beast, dish));
         }

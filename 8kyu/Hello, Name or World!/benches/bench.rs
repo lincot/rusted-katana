@@ -6,8 +6,8 @@ use test::{black_box, Bencher};
 const S: &str = "алиСА";
 
 #[bench]
-fn bench(b: &mut Bencher) {
+fn bench(bencher: &mut Bencher) {
     let s = black_box(S);
 
-    b.iter(|| solution::hello(s))
+    bencher.iter(|| solution::hello(s))
 }

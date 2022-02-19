@@ -4,6 +4,6 @@ pub fn greet(input: &str) -> String {
     if input == "Johnny" {
         "Hello, my love!".into()
     } else {
-        format!("Hello, {input}!")
+        format!("Hello, {}!", input)
     }
 }

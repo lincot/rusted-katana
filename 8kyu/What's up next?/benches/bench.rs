@@ -23,7 +23,7 @@ fn get_slice(rng: &mut impl Rng) -> Vec<String> {
 }
 
 #[bench]
-fn bench(b: &mut Bencher) {
+fn bench(bencher: &mut Bencher) {
     let mut rng = Pcg64Mcg::seed_from_u64(222);
 
     let slice = get_slice(&mut rng);
@@ -31,7 +31,7 @@ fn bench(b: &mut Bencher) {
     let slice = black_box(&slice);
     let find = black_box(find);
 
-    b.iter(|| {
+    bencher.iter(|| {
         for _ in 0..1000 {
             black_box(solution::next_item(slice, find.clone()));
         }

@@ -2,8 +2,7 @@
 
 pub fn html_special_chars(html: &str) -> String {
     // arbitrary capacity
-    let len = html.len();
-    let cap = len + len / 3;
+    let cap = html.len() + html.len() / 3;
     let mut res = Vec::with_capacity(cap);
 
     html.bytes().for_each(|b| match b {

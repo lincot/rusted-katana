@@ -5,5 +5,5 @@ pub fn bonus_time(mut salary: u64, bonus: bool) -> String {
         salary *= 10;
     }
 
-    format!("¥{salary}")
+    format!("¥{}", salary)
 }

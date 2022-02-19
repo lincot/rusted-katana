@@ -2,10 +2,10 @@
 
 use std::str::Bytes;
 
-fn are_you_playing_banjo_output(text: &[u8], name: &str, bytes: Bytes, c: u8) -> String {
+fn are_you_playing_banjo_output(text: &[u8], name: &str, bytes: Bytes, b: u8) -> String {
     let mut res = Vec::with_capacity(name.len() + text.len());
 
-    res.push(c);
+    res.push(b);
     res.extend(bytes);
     res.extend(text);
 

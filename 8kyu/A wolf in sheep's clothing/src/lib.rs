@@ -8,6 +8,9 @@ pub fn warn_the_sheep(queue: &[&str]) -> String {
 
     match queue.len() - wolf_pos - 1 {
         0 => String::from("Pls go away and stop eating my sheep"),
-        n => format!("Oi! Sheep number {n}! You are about to be eaten by a wolf!"),
+        n => format!(
+            "Oi! Sheep number {}! You are about to be eaten by a wolf!",
+            n
+        ),
     }
 }

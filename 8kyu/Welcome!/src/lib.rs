@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/577ff15ad648a14b780000e7/train/rust>
 
-pub const fn greet(language: &str) -> &str {
+pub const fn greet<'a, 'b>(language: &'a str) -> &'b str {
     match language.as_bytes() {
         b"czech" => "Vitejte",
         b"danish" => "Velkomst",

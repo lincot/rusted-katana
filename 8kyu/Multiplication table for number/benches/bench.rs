@@ -6,8 +6,8 @@ use test::{black_box, Bencher};
 const N: u64 = 5;
 
 #[bench]
-fn bench(b: &mut Bencher) {
+fn bench(bencher: &mut Bencher) {
     let n = black_box(N);
 
-    b.iter(|| solution::multi_table(n))
+    bencher.iter(|| solution::multi_table(n))
 }

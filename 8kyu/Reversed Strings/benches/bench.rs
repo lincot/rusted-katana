@@ -6,8 +6,8 @@ use test::{black_box, Bencher};
 const PHRASE: &str = "рандомизатор";
 
 #[bench]
-fn bench(b: &mut Bencher) {
+fn bench(bencher: &mut Bencher) {
     let phrase = black_box(PHRASE);
 
-    b.iter(|| solution::solution(phrase))
+    bencher.iter(|| solution::solution(phrase))
 }

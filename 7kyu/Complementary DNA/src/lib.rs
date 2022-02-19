@@ -1,0 +1,16 @@
+//! <https://www.codewars.com/kata/554e4a2f232cdd87d9000038/train/rust>
+
+pub fn dna_strand(dna: &str) -> String {
+    unsafe {
+        String::from_utf8_unchecked(
+            dna.bytes()
+                .map(|b| match b {
+                    b'A' => b'T',
+                    b'T' => b'A',
+                    b'C' => b'G',
+                    _ => b'C',
+                })
+                .collect(),
+        )
+    }
+}

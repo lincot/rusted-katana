@@ -23,15 +23,15 @@ fn get_not_ready_gunners<'a>() -> HashMap<&'a str, &'a str> {
 }
 
 #[bench]
-fn bench_ready(b: &mut Bencher) {
+fn bench_ready(bencher: &mut Bencher) {
     let gunners = black_box(get_ready_gunners());
 
-    b.iter(|| solution::cannons_ready(gunners.clone()))
+    bencher.iter(|| solution::cannons_ready(gunners.clone()))
 }
 
 #[bench]
-fn bench_not_ready(b: &mut Bencher) {
+fn bench_not_ready(bencher: &mut Bencher) {
     let gunners = black_box(get_not_ready_gunners());
 
-    b.iter(|| solution::cannons_ready(gunners.clone()))
+    bencher.iter(|| solution::cannons_ready(gunners.clone()))
 }

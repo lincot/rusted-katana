@@ -26,7 +26,7 @@ pub fn count_sheep(n: u32) -> String {
     let mut murmur = String::with_capacity(cap);
 
     (1..=n).for_each(|sheep| {
-        write!(&mut murmur, "{sheep} sheep...").unwrap();
+        write!(murmur, "{} sheep...", sheep).unwrap();
     });
 
     murmur

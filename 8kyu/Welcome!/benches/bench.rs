@@ -6,8 +6,12 @@ use test::{black_box, Bencher};
 const LANGUAGE: &str = "swedish";
 
 #[bench]
-fn bench(b: &mut Bencher) {
+fn bench(bencher: &mut Bencher) {
     let language = black_box(LANGUAGE);
 
-    b.iter(|| solution::greet(language))
+    bencher.iter(|| {
+        for _ in 0..1000 {
+            black_box(solution::greet(language));
+        }
+    })
 }

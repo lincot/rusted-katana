@@ -3,7 +3,7 @@
 pub fn dna_to_rna(dna: &str) -> String {
     let res = dna
         .bytes()
-        .map(|c| if c == b'T' { b'U' } else { c })
+        .map(|b| if b == b'T' { b'U' } else { b })
         .collect();
 
     unsafe { String::from_utf8_unchecked(res) }

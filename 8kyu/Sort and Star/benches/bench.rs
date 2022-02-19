@@ -14,8 +14,8 @@ const ARR: [&str; 7] = [
 ];
 
 #[bench]
-fn bench(b: &mut Bencher) {
+fn bench(bencher: &mut Bencher) {
     let arr = black_box(&ARR);
 
-    b.iter(|| solution::two_sort(arr))
+    bencher.iter(|| solution::two_sort(arr))
 }

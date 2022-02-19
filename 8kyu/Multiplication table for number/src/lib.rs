@@ -3,14 +3,14 @@
 use std::fmt::Write;
 
 pub fn multi_table(n: u64) -> String {
-    let repeating = format!(" * {n} = ");
+    let repeating = format!(" * {} = ", n);
 
     // worst case capacity, may be 8 less
     let cap = 20 * repeating.len() - 31;
     let mut res = String::with_capacity(cap);
 
     write!(
-        &mut res,
+        res,
         "1{repeating}{}
 2{repeating}{}
 3{repeating}{}
