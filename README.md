@@ -1,6 +1,9 @@
+[![CodeWars badge](https://www.codewars.com/users/lincot/badges/large)](https://www.codewars.com/users/lincot)
+
 # rusted katana
 
-fast solutions to all [Codewars](https://www.codewars.com) katas written in Rust
+fast solutions to all [Codewars](https://www.codewars.com/r/HLmVMg) katas
+written in Rust
 
 ## why?
 
@@ -14,12 +17,12 @@ it's not enough to solve a problem, it needs to be solved well
 
 - solutions are safe, meaning that they will panic or return nonsense
 on nonsense input rather than causing undefined behavior;
-*nevertheless, there are 69 `unsafe` blocks*
+*nevertheless, there are 92 `unsafe` blocks*
 
 - even though most tests on Codewars contain only ASCII input,
 they use Rust's standard UTF-8–encoded strings,
 so solutions for string katas are made for Unicode input;
-*nevertheless, `.bytes()`|`.as_bytes()`|`.as_mut_vec()` are used 60 times*
+*nevertheless, `.bytes()`|`.as_bytes()`|`.as_mut_vec()` are used 75 times*
 
 - proposed function signatures and names are preserved;
 *but are clippy-adjusted*
@@ -39,6 +42,3 @@ so solutions for string katas are made for Unicode input;
 - [3 kyu](https://www.codewars.com/kata/search/rust?q=&r[]=-3&xids=completed&beta=false&order_by=published_at%20asc)
 - [2 kyu](https://www.codewars.com/kata/search/rust?q=&r[]=-2&xids=completed&beta=false&order_by=published_at%20asc)
 - [1 kyu](https://www.codewars.com/kata/search/rust?q=&r[]=-1&xids=completed&beta=false&order_by=published_at%20asc)
-
-## P.S.
-if todo is left not done, it's the war... FML

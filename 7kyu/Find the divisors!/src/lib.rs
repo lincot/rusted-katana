@@ -63,7 +63,7 @@ fn get_divisors(mut n: u32) -> Vec<u32> {
         let mut x_pow = 1;
 
         if x == 0 {
-            unsafe { core::hint::unreachable_unchecked() }
+            unsafe { core::hint::unreachable_unchecked() };
         }
         while n % x == 0 {
             x_pow *= x;
