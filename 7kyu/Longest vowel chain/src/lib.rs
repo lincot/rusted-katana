@@ -5,7 +5,7 @@ pub fn longest_vowel_chain(s: &str) -> usize {
     let mut cur = 0;
 
     for b in s.bytes() {
-        if b"aeiou".contains(&b) {
+        if b"eaiou".contains(&b) {
             cur += 1;
         } else {
             max = max.max(cur);
