@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5613d06cee1e7da6d5000055/train/rust>
 
-/// checks if (!(`x` is divisible by 2 or 3) && `x` is prime) || `x` <= 3
+/// checks if `x` is prime || `x` is divisible by 2 or 3 || `x` <= 1
 fn is_prime_with_condition(x: u64) -> bool {
     let mut divisor = 5;
     let mut step = 2;
@@ -21,13 +21,8 @@ fn is_prime_with_condition(x: u64) -> bool {
 
 fn step_divisible_by_6(g: u64, mut m: u64, n: u64) -> Option<(u64, u64)> {
     let r = m % 6;
-    let mut step = if r <= 1 {
-        m += 1 - r;
-        4
-    } else {
-        m += 5 - r;
-        2
-    };
+    let (next_r, mut step) = if r <= 1 { (1, 4) } else { (5, 2) };
+    m += next_r - r;
 
     while m <= n {
         if is_prime_with_condition(m) && is_prime_with_condition(m + g) {
