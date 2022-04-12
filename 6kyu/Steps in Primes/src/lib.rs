@@ -37,7 +37,7 @@ fn step_divisible_by_6(g: u64, mut m: u64, n: u64) -> Option<(u64, u64)> {
 }
 
 pub fn step(g: i32, mut m: u64, n: u64) -> Option<(u64, u64)> {
-    let g = g.abs() as u64;
+    let g = g.unsigned_abs() as u64;
     let n = n - g;
     let g6 = g % 6;
 
