@@ -3,7 +3,7 @@
 pub fn calc(mut array: Vec<i32>) -> i32 {
     let mut res = 0;
 
-    for x in array.iter_mut() {
+    for x in &mut array {
         if *x > 0 {
             *x *= *x;
         }
