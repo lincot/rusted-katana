@@ -1,31 +1,16 @@
 //! <https://www.codewars.com/kata/53af2b8861023f1d88000832/train/rust>
 
-use std::str::Bytes;
-
-fn are_you_playing_banjo_output(text: &[u8], name: &str, bytes: Bytes, b: u8) -> String {
-    let mut res = Vec::with_capacity(name.len() + text.len());
-
-    res.push(b);
-    res.extend(bytes);
-    res.extend(text);
-
-    unsafe { String::from_utf8_unchecked(res) }
-}
-
 pub fn are_you_playing_banjo(name: &str) -> String {
-    let mut bytes = name.bytes();
+    let output = |text: &str| {
+        let mut res = String::with_capacity(name.len() + text.len());
+        res.push_str(name);
+        res.push_str(text);
+        res
+    };
 
-    match bytes.next() {
-        Some(c) => are_you_playing_banjo_output(
-            if c == b'R' || c == b'r' {
-                b" plays banjo"
-            } else {
-                b" does not play banjo"
-            },
-            name,
-            bytes,
-            c,
-        ),
-        None => panic!(),
+    if [b'R', b'r'].contains(&name.bytes().next().unwrap()) {
+        output(" plays banjo")
+    } else {
+        output(" does not play banjo")
     }
 }
