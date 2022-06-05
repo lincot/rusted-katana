@@ -22,5 +22,5 @@ fn bench(bencher: &mut Bencher) {
         "Kevin -1".into(),
     ];
     let changes = black_box(&changes);
-    bencher.iter(|| solution::leaderboard_sort(leaderbord, changes))
+    bencher.iter(|| solution::leaderboard_sort(leaderbord, changes));
 }

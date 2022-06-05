@@ -38,5 +38,5 @@ fn bench(bencher: &mut Bencher) {
         31, 351, 383, 29, 170, 379, 248, 75, -63, 225, 213, 271, -382, 411, 448, 324, -218, -401,
         84, 50, 351, -323, 461, -90, -80,
     ]);
-    bencher.iter(|| solution::repeats(arr))
+    bencher.iter(|| solution::repeats(arr));
 }

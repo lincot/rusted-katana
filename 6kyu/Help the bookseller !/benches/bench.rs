@@ -15,5 +15,5 @@ fn bench(bencher: &mut Bencher) {
         "RHODODEC 123",
     ]);
     let b = black_box(&["A", "X", "U"]);
-    bencher.iter(|| solution::stock_list(a.to_vec(), b.to_vec()))
+    bencher.iter(|| solution::stock_list(a.to_vec(), b.to_vec()));
 }

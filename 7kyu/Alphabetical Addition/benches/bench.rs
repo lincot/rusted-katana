@@ -13,5 +13,5 @@ fn bench(bencher: &mut Bencher) {
         'i', 'i', 's', 'y', 'm', 'x', 'h', 'l', 'j', 's', 'b', 'f', 'g', 's', 'z', 'p', 't', 'r',
         'y', 's', 'g', 'z', 'n', 'k', 'p', 'h', 'c', 'i',
     ]);
-    bencher.iter(|| solution::add_letters(letters.to_vec()))
+    bencher.iter(|| solution::add_letters(letters.to_vec()));
 }

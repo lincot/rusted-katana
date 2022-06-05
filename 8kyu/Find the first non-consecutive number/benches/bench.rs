@@ -20,5 +20,5 @@ fn bench(bencher: &mut Bencher) {
     let mut rng = Pcg64Mcg::seed_from_u64(222);
     let arr = get_arr(&mut rng);
     let arr = black_box(&arr);
-    bencher.iter(|| solution::first_non_consecutive(arr))
+    bencher.iter(|| solution::first_non_consecutive(arr));
 }

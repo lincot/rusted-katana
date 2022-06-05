@@ -13,5 +13,5 @@ fn bench(bencher: &mut Bencher) {
         vec![-5, 18, 7, -16, -16],
     ];
     let vecs = black_box(&vecs);
-    bencher.iter(|| solution::solve(vecs))
+    bencher.iter(|| solution::solve(vecs));
 }

@@ -15,7 +15,7 @@ pub fn circle(radius: i32) -> String {
     (0..2 * radius - 1).for_each(|row| {
         let dist_to_center = row.max(radius - 1) - row.min(radius - 1);
         let half_width =
-            (((radius.pow(2) - dist_to_center.pow(2)) as f64).sqrt() + 0.999999) as usize;
+            (((radius.pow(2) - dist_to_center.pow(2)) as f64).sqrt() + 0.999_999) as usize;
 
         res.push_str(&" ".repeat(radius - half_width));
         res.push_str(&"█".repeat(2 * half_width - 1));

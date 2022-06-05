@@ -11,5 +11,5 @@ fn bench(bencher: &mut Bencher) {
         -54, 110, -125, -79, 353, 461, -175, -283, -345, 3, 411, 131, 222, -320, 264, -67, -280,
         -349, -401,
     ]);
-    bencher.iter(|| solution::pendulum(xs))
+    bencher.iter(|| solution::pendulum(xs));
 }

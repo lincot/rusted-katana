@@ -9,5 +9,5 @@ fn bench(bencher: &mut Bencher) {
         for i in 1000..=9000 {
             black_box(solution::next_happy_year(i));
         }
-    })
+    });
 }

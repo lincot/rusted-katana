@@ -10,5 +10,5 @@ fn bench(bencher: &mut Bencher) {
         for a0 in 1..=to {
             black_box(solution::square_digits_sequence(a0));
         }
-    })
+    });
 }

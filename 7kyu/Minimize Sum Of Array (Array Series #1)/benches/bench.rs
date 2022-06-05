@@ -12,5 +12,5 @@ fn bench(bencher: &mut Bencher) {
         143, 191, 195, 22, 38, 67, 88, 16, 52, 191, 125, 50, 82, 58, 127, 95, 170, 4, 7, 112, 193,
         85, 143, 156, 125, 154, 0, 98, 117, 10, 179, 21, 60, 61, 2, 120, 162, 52, 24, 71,
     ]);
-    bencher.iter(|| solution::min_sum(xs))
+    bencher.iter(|| solution::min_sum(xs));
 }

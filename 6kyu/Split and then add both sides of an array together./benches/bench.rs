@@ -14,5 +14,5 @@ fn bench(bencher: &mut Bencher) {
         357, 211, 724, 940, 370, 248, 520, 707, 6, 205,
     ]);
     let n = black_box(234);
-    bencher.iter(|| solution::split_and_add(arr, n))
+    bencher.iter(|| solution::split_and_add(arr, n));
 }

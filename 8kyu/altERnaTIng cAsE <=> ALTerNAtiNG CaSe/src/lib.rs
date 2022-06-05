@@ -6,9 +6,9 @@ pub fn to_alternating_case(s: &str) -> String {
 
     for c in s.chars() {
         if c.is_lowercase() {
-            res.extend(c.to_uppercase())
+            res.extend(c.to_uppercase());
         } else {
-            res.extend(c.to_lowercase())
+            res.extend(c.to_lowercase());
         }
     }
 

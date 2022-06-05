@@ -27,5 +27,5 @@ fn bench(bencher: &mut Bencher) {
         for n_largest_elements in 1..lst.len() as _ {
             black_box(solution::max_product(lst.to_vec(), n_largest_elements));
         }
-    })
+    });
 }

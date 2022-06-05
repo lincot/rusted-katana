@@ -6,7 +6,7 @@ pub fn max_gap(xs: &[i32]) -> i32 {
 
     let mut res = 0;
     for i in 1..xs.len() {
-        res = res.max(xs[i] - xs[i - 1])
+        res = res.max(xs[i] - xs[i - 1]);
     }
     res
 }

@@ -28,5 +28,5 @@ fn bench(bencher: &mut Bencher) {
     let mut rng = Pcg64Mcg::seed_from_u64(222);
     let ids = get_ids(&mut rng);
     let ids = black_box(&ids);
-    bencher.iter(|| solution::next_id(ids))
+    bencher.iter(|| solution::next_id(ids));
 }

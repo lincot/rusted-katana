@@ -7,5 +7,5 @@ use test::{black_box, Bencher};
 fn bench(bencher: &mut Bencher) {
     let a = black_box("стххфпцыйжлгчюуньрощдтзкн");
     let b = black_box("еньехаоаъцзубчмфшпащусщям");
-    bencher.iter(|| solution::solve(a, b))
+    bencher.iter(|| solution::solve(a, b));
 }

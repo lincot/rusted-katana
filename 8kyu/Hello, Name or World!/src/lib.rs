@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/57e3f79c9cb119374600046b/train/rust>
 
+const HELLO: &str = "Hello, ";
+
 pub fn hello(name: &str) -> String {
     let mut name_chars = name.chars();
 
@@ -7,8 +9,6 @@ pub fn hello(name: &str) -> String {
         Some(c) => c,
         None => return "Hello, World!".into(),
     };
-
-    const HELLO: &str = "Hello, ";
 
     // will be this length most probably
     let cap = HELLO.len() + name.len() + 1;
@@ -24,9 +24,9 @@ pub fn hello(name: &str) -> String {
 
     for c in name_chars {
         if c.is_uppercase() {
-            res.extend(c.to_lowercase())
+            res.extend(c.to_lowercase());
         } else {
-            res.push(c)
+            res.push(c);
         }
     }
 

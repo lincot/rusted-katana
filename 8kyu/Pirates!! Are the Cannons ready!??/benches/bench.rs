@@ -12,7 +12,7 @@ fn bench_ready(bencher: &mut Bencher) {
         ("Johnson", "aye"),
         ("Peter", "aye"),
     ]));
-    bencher.iter(|| solution::cannons_ready(gunners.clone()))
+    bencher.iter(|| solution::cannons_ready(gunners.clone()));
 }
 
 #[bench]
@@ -23,5 +23,5 @@ fn bench_not_ready(bencher: &mut Bencher) {
         ("Johnson", "aye"),
         ("Peter", "aye"),
     ]));
-    bencher.iter(|| solution::cannons_ready(gunners.clone()))
+    bencher.iter(|| solution::cannons_ready(gunners.clone()));
 }

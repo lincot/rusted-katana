@@ -40,10 +40,10 @@ fn test() {
         }
     }
 
-    if failures_count != 0 {
-        panic!(
-            "\n{}\na total of {} failures",
-            panic_message, failures_count
-        );
-    }
+    assert!(
+        failures_count == 0,
+        "\n{}\na total of {} failures",
+        panic_message,
+        failures_count
+    );
 }

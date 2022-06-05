@@ -187,5 +187,5 @@ fn bench(bencher: &mut Bencher) {
         for lines in inputs {
             black_box(solution::count_squares(lines));
         }
-    })
+    });
 }

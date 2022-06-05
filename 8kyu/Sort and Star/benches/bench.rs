@@ -14,5 +14,5 @@ fn bench(bencher: &mut Bencher) {
         "ориентированного",
         "промежутка",
     ]);
-    bencher.iter(|| solution::two_sort(arr))
+    bencher.iter(|| solution::two_sort(arr));
 }

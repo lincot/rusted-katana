@@ -20,5 +20,5 @@ fn bench(bencher: &mut Bencher) {
         "BmigfJMk6zcy",
         "yBmigfJMk6zc",
     ]);
-    bencher.iter(|| solution::contain_all_rots(strng, arr.to_vec()))
+    bencher.iter(|| solution::contain_all_rots(strng, arr.to_vec()));
 }

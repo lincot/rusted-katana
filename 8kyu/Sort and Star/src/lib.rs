@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/57cfdf34902f6ba3d300001e/train/rust>
 
+const STARS: &str = "***";
+
 pub fn two_sort(arr: &[&str]) -> String {
     let min = arr.iter().min().unwrap();
     let mut min_chars = (*min).chars();
@@ -8,8 +10,6 @@ pub fn two_sort(arr: &[&str]) -> String {
         Some(c) => c,
         None => return String::new(),
     };
-
-    const STARS: &str = "***";
 
     // slower but potentially allocates less
     // let cap = min.len() + STARS.len() * (min.chars().count() - 1);

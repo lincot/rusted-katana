@@ -9,5 +9,5 @@ fn bench(bencher: &mut Bencher) {
         for i in 1..=1_000_000 {
             black_box(solution::doubleton(i));
         }
-    })
+    });
 }

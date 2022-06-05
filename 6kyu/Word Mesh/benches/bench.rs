@@ -13,5 +13,5 @@ fn bench(bencher: &mut Bencher) {
         "цартограпхер",
         "пхеромоне",
     ]);
-    bencher.iter(|| solution::word_mesh(words))
+    bencher.iter(|| solution::word_mesh(words));
 }

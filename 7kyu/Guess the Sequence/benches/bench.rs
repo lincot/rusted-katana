@@ -9,5 +9,5 @@ fn bench(bencher: &mut Bencher) {
         for x in 1..=100 {
             black_box(solution::sequence(x));
         }
-    })
+    });
 }

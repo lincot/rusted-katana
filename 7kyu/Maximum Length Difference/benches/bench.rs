@@ -18,5 +18,5 @@ fn bench(bencher: &mut Bencher) {
         "dvvvwz",
     ]);
     let a2 = black_box(&["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"]);
-    bencher.iter(|| solution::mx_dif_lg(a1.to_vec(), a2.to_vec()))
+    bencher.iter(|| solution::mx_dif_lg(a1.to_vec(), a2.to_vec()));
 }

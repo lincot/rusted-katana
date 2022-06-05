@@ -37,7 +37,7 @@ pub fn max_rot(n: u64) -> u64 {
             Ordering::Less => {
                 break;
             }
-            _ => {}
+            Ordering::Equal => {}
         }
 
         for i in keep + 1..digits.len() {
@@ -49,7 +49,7 @@ pub fn max_rot(n: u64) -> u64 {
                 Ordering::Less => {
                     break;
                 }
-                _ => {}
+                Ordering::Equal => {}
             }
         }
     }

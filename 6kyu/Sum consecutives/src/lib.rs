@@ -16,12 +16,12 @@ pub fn sum_consecutives(numbers: &[i32]) -> Vec<i32> {
     let mut same_count = 1;
 
     for n in numbers {
-        if n != prev_number {
+        if n == prev_number {
+            same_count += 1;
+        } else {
             res.push(same_count * prev_number);
             prev_number = n;
             same_count = 1;
-        } else {
-            same_count += 1;
         }
     }
     res.push(same_count * prev_number);

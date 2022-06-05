@@ -7,5 +7,5 @@ use test::{black_box, Bencher};
 fn bench(bencher: &mut Bencher) {
     let st = black_box("Тестовая строка");
     let limit = black_box(9);
-    bencher.iter(|| solution::solution(st, limit))
+    bencher.iter(|| solution::solution(st, limit));
 }

@@ -18,5 +18,5 @@ fn bench(bencher: &mut Bencher) {
         27, 2, 8, 4, 7, 27, 26, 27, 12, 5, 17, 11, 20, 20, 22, 9, 18, 1, 27, 23, 11, 19, 16, 6, 6,
         24, 28, 19, 17, 14, 24,
     ]);
-    bencher.iter(|| solution::solve(vec))
+    bencher.iter(|| solution::solve(vec));
 }

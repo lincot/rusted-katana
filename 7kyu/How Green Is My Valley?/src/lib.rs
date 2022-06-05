@@ -1,7 +1,6 @@
 //! <https://www.codewars.com/kata/56e3cd1d93c3d940e50006a4/train/rust>
 
-pub fn make_valley(arr: Vec<i32>) -> Vec<i32> {
-    let mut arr = arr.to_vec();
+pub fn make_valley(mut arr: Vec<i32>) -> Vec<i32> {
     arr.sort_unstable_by_key(|&v| std::cmp::Reverse(v));
 
     let len = arr.len();

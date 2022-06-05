@@ -10,5 +10,5 @@ fn bench(bencher: &mut Bencher) {
     let ang = black_box(3);
     let distmult = black_box(1.01);
     let angmult = black_box(1.1);
-    bencher.iter(|| solution::crusoe(n, d, ang, distmult, angmult))
+    bencher.iter(|| solution::crusoe(n, d, ang, distmult, angmult));
 }

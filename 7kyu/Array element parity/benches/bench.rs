@@ -20,5 +20,5 @@ fn bench(bencher: &mut Bencher) {
         -153, 663, -664, 153, -77, -965, -694, -729, -107, 407, -819, -54, 1010, 1010, 1010, 1010,
         1010, 546, -674, -822, 402, -4, -157,
     ]);
-    bencher.iter(|| solution::solve(arr))
+    bencher.iter(|| solution::solve(arr));
 }

@@ -10,7 +10,7 @@ fn bench_martin(bencher: &mut Bencher) {
         for _ in 0..1000 {
             black_box(solution::are_you_playing_banjo(name));
         }
-    })
+    });
 }
 
 #[bench]
@@ -20,5 +20,5 @@ fn bench_rikke(bencher: &mut Bencher) {
         for _ in 0..1000 {
             black_box(solution::are_you_playing_banjo(name));
         }
-    })
+    });
 }

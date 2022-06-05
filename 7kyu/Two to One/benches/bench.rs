@@ -7,5 +7,5 @@ use test::{black_box, Bencher};
 fn bench(bencher: &mut Bencher) {
     let a1 = black_box("aretheyhere");
     let a2 = black_box("yestheyarehere");
-    bencher.iter(|| solution::longest(a1, a2))
+    bencher.iter(|| solution::longest(a1, a2));
 }

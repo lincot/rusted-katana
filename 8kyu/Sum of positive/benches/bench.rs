@@ -16,5 +16,5 @@ fn bench(bencher: &mut Bencher) {
     let mut rng = Pcg64Mcg::seed_from_u64(222);
     let slice = get_slice(&mut rng);
     let slice = black_box(&slice);
-    bencher.iter(|| solution::positive_sum(slice))
+    bencher.iter(|| solution::positive_sum(slice));
 }

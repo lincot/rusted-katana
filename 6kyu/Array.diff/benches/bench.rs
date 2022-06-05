@@ -19,5 +19,5 @@ fn bench(bencher: &mut Bencher) {
         77, 9, 17, 12, 23, 13, 13, 3, 40, 79, 38, 68, 13, 39, 10, 77, 90, 81, 67, 4, 53, 33, 99,
         42, 20, 61, 78, 82, 44, 16,
     ]);
-    bencher.iter(|| solution::array_diff(a.to_vec(), b.to_vec()))
+    bencher.iter(|| solution::array_diff(a.to_vec(), b.to_vec()));
 }

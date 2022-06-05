@@ -10,7 +10,7 @@ fn bench_valid(bencher: &mut Bencher) {
         for _ in 0..1000 {
             black_box(solution::plane_seat(seat_number));
         }
-    })
+    });
 }
 
 #[bench]
@@ -20,5 +20,5 @@ fn bench_invalid(bencher: &mut Bencher) {
         for _ in 0..1000 {
             black_box(solution::plane_seat(seat_number));
         }
-    })
+    });
 }

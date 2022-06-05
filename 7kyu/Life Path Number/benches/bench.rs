@@ -10,7 +10,7 @@ fn bench_einstein(bencher: &mut Bencher) {
         for _ in 0..1000 {
             black_box(solution::life_path_number(s));
         }
-    })
+    });
 }
 
 #[bench]
@@ -20,5 +20,5 @@ fn bench_elon_musk(bencher: &mut Bencher) {
         for _ in 0..1000 {
             black_box(solution::life_path_number(s));
         }
-    })
+    });
 }

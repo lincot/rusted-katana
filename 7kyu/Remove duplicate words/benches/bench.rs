@@ -8,5 +8,5 @@ fn bench(bencher: &mut Bencher) {
     let s = black_box(
         "alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta",
     );
-    bencher.iter(|| solution::remove_duplicate_words(s))
+    bencher.iter(|| solution::remove_duplicate_words(s));
 }

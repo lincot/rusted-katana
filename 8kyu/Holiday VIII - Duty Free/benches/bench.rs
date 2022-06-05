@@ -12,5 +12,5 @@ fn bench(bencher: &mut Bencher) {
         for _ in 0..1_000_000 {
             black_box(solution::duty_free(price, discount, holiday_cost));
         }
-    })
+    });
 }

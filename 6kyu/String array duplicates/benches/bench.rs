@@ -12,5 +12,5 @@ fn bench(bencher: &mut Bencher) {
         "ppellee".into(),
     ];
     let arry = black_box(&arry);
-    bencher.iter(|| solution::dup(arry.to_vec()))
+    bencher.iter(|| solution::dup(arry.to_vec()));
 }

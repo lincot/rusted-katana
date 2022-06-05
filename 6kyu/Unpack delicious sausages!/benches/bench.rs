@@ -11,5 +11,5 @@ fn bench(bencher: &mut Bencher) {
         vec!["[@@@@]", "UwU", "[IlII]"],
     ];
     let truck = black_box(&truck);
-    bencher.iter(|| solution::unpack_sausages(truck.to_vec()))
+    bencher.iter(|| solution::unpack_sausages(truck.to_vec()));
 }

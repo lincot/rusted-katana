@@ -54,13 +54,13 @@ pub fn largest_five_digit_number(num: &str) -> u32 {
                                 d4 = num[i + 4];
                             }
                         }
-                        _ => {}
+                        Ordering::Less => {}
                     },
-                    _ => {}
+                    Ordering::Less => {}
                 },
-                _ => {}
+                Ordering::Less => {}
             },
-            _ => {}
+            Ordering::Less => {}
         }
     }
 

@@ -13,5 +13,5 @@ fn bench(bencher: &mut Bencher) {
         18, 32, 89, 29, 47, 6, 37,
     ]);
     let value = black_box(1000);
-    bencher.iter(|| solution::minimum_steps(nums, value))
+    bencher.iter(|| solution::minimum_steps(nums, value));
 }

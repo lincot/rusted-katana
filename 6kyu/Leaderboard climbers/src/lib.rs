@@ -9,7 +9,7 @@ pub fn leaderboard_sort(leaderboard: &[String], changes: &[String]) -> Vec<Strin
 
         let pos = leaderboard.iter().position(|s| s == name).unwrap();
         let name = leaderboard.remove(pos);
-        leaderboard.insert((pos as isize - change) as _, name)
+        leaderboard.insert((pos as isize - change) as _, name);
     }
 
     leaderboard

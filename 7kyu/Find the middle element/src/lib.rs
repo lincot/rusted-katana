@@ -3,6 +3,7 @@
 pub const fn gimme(input_array: [i32; 3]) -> usize {
     let [a, b, c] = input_array;
 
+    #[allow(clippy::match_same_arms)]
     match (a < b, b < c, c < a) {
         (false, _, false) => 0,
         (true, _, true) => 0,

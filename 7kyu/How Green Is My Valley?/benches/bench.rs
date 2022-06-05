@@ -23,5 +23,5 @@ fn bench(bencher: &mut Bencher) {
         -125, 351, 31, -337, 96, 399, -179, -232, -50, 404, 186, -407, 488, 213, -392, 254, -149,
         -375, -73, 41,
     ]);
-    bencher.iter(|| solution::make_valley(arr.to_vec()))
+    bencher.iter(|| solution::make_valley(arr.to_vec()));
 }

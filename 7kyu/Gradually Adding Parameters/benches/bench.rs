@@ -12,5 +12,5 @@ fn bench(bencher: &mut Bencher) {
         for _ in 0..1000 {
             black_box(solution::add(arr));
         }
-    })
+    });
 }

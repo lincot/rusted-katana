@@ -8,5 +8,5 @@ fn bench(bencher: &mut Bencher) {
     let s = black_box(
         "When you in order to do something by a wrong way, your heart will missed somewhere.",
     );
-    bencher.iter(|| solution::testit(s))
+    bencher.iter(|| solution::testit(s));
 }

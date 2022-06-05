@@ -6,5 +6,5 @@ use test::{black_box, Bencher};
 #[bench]
 fn bench(bencher: &mut Bencher) {
     let s = black_box("Дмитрий Муратов");
-    bencher.iter(|| solution::name_shuffler(s))
+    bencher.iter(|| solution::name_shuffler(s));
 }

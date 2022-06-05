@@ -35,5 +35,5 @@ fn bench(bencher: &mut Bencher) {
     let a1 = black_box(&a1);
     let a2 = ["abc".into(), "cde".into(), "uap".into()];
     let a2 = black_box(&a2);
-    bencher.iter(|| solution::match_counts(a1, a2))
+    bencher.iter(|| solution::match_counts(a1, a2));
 }

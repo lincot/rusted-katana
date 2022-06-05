@@ -13,5 +13,5 @@ fn bench(bencher: &mut Bencher) {
         48, 85, 43, 38, 100, 1, 92, 12,
     ]);
     let index = black_box(50);
-    bencher.iter(|| solution::sjf(jobs, index))
+    bencher.iter(|| solution::sjf(jobs, index));
 }
