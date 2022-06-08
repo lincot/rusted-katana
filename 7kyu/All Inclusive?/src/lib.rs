@@ -4,7 +4,7 @@ use rustc_hash::FxHashSet;
 
 pub fn contain_all_rots(strng: &str, arr: Vec<&str>) -> bool {
     let mut set = FxHashSet::with_capacity_and_hasher(arr.len(), Default::default());
-    set.extend(arr);
+    set.extend(arr.into_iter().filter(|s| s.len() == strng.len()));
 
     let twice = strng.repeat(2);
 

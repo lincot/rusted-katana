@@ -4,7 +4,7 @@ extern crate test;
 use test::{black_box, Bencher};
 
 #[bench]
-fn bench(bencher: &mut Bencher) {
+fn bench_same_length(bencher: &mut Bencher) {
     let strng = black_box("cyBmigfJMk6z");
     let arr = black_box(&[
         "Mk6zcyBmigfJ",
@@ -19,6 +19,20 @@ fn bench(bencher: &mut Bencher) {
         "zcyBmigfJMk6",
         "BmigfJMk6zcy",
         "yBmigfJMk6zc",
+    ]);
+    bencher.iter(|| solution::contain_all_rots(strng, arr.to_vec()));
+}
+
+#[bench]
+fn bench_different_length(bencher: &mut Bencher) {
+    let strng = black_box("bsjq");
+    let arr = black_box(&[
+        "bsjq",
+        "qbsj",
+        "sjqb",
+        "twZNsslC",
+        "jqbs",
+        "sjqbsjqbsjqbsjqbsjqbsjqb",
     ]);
     bencher.iter(|| solution::contain_all_rots(strng, arr.to_vec()));
 }
