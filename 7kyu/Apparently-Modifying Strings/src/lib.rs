@@ -7,7 +7,7 @@ pub fn apparently(string: &str) -> String {
 
     let words = string.split_ascii_whitespace().collect::<Vec<_>>();
 
-    if let Some(x) = words.get(0) {
+    if let Some(x) = words.first() {
         res.push_str(x);
     } else {
         return res;
