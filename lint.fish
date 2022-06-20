@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 for kyu in *kyu
     cd $kyu
