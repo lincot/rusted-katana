@@ -1,0 +1,6 @@
+[package]
+name = "array-leaders-array-series-number-3"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "get-the-mean-of-an-array"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

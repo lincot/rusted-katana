@@ -1,0 +1,6 @@
+[package]
+name = "abbreviate-a-two-word-name"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

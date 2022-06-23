@@ -1,0 +1,6 @@
+[package]
+name = "what-is-the-flag"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

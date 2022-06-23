@@ -1,0 +1,10 @@
+[workspace]
+members = [
+    "8kyu/*",
+    "7kyu/*",
+    "6kyu/*",
+    "check-katas",
+]
+
+[profile.release]
+lto = true

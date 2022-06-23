@@ -1,0 +1,6 @@
+[package]
+name = "beginner-series-number-2-clock"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

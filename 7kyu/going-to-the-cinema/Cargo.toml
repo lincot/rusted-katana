@@ -1,0 +1,6 @@
+[package]
+name = "going-to-the-cinema"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

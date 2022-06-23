@@ -1,0 +1,6 @@
+[package]
+name = "quarter-of-the-year"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

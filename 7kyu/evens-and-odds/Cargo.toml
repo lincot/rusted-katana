@@ -1,0 +1,6 @@
+[package]
+name = "evens-and-odds"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

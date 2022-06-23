@@ -1,0 +1,6 @@
+[package]
+name = "new-cashier-does-not-know-about-space-or-shift"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

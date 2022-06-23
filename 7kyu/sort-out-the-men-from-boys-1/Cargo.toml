@@ -1,0 +1,6 @@
+[package]
+name = "sort-out-the-men-from-boys-1"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

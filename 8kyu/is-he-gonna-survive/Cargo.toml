@@ -1,0 +1,6 @@
+[package]
+name = "is-he-gonna-survive"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

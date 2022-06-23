@@ -1,0 +1,6 @@
+[package]
+name = "is-there-an-odd-bit"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

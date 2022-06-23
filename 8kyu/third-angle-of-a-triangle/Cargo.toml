@@ -1,0 +1,6 @@
+[package]
+name = "third-angle-of-a-triangle"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

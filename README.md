@@ -27,6 +27,8 @@ so solutions for string katas are made for Unicode input;
 - proposed function signatures and names are preserved;
 *but are clippy-adjusted*
 
+- linting is done using `./lint.sh`
+
 - (large) lookup tables aren't generally allowed
 
 ## done

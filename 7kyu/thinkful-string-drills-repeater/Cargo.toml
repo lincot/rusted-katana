@@ -1,0 +1,6 @@
+[package]
+name = "thinkful-string-drills-repeater"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

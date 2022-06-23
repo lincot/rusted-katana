@@ -1,0 +1,6 @@
+[package]
+name = "pirates-are-the-cannons-ready"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

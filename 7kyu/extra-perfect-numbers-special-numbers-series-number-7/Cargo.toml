@@ -1,0 +1,6 @@
+[package]
+name = "extra-perfect-numbers-special-numbers-series-number-7"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

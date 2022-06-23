@@ -1,0 +1,6 @@
+[package]
+name = "substituting-variables-into-strings-padded-numbers"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

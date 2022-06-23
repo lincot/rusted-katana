@@ -1,0 +1,6 @@
+[package]
+name = "return-the-first-m-multiples-of-n"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
