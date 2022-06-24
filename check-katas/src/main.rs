@@ -3,61 +3,61 @@ use std::{fs::File, io::Read};
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut kyu_path = *b"7kyu";
 
-    for kyu in 1..=8 {
-        kyu_path[0] = b'0' + kyu;
+    for k in 1..=8 {
+        kyu_path[0] = b'0' + k;
         let rd = std::fs::read_dir(unsafe { std::str::from_utf8_unchecked(&kyu_path) });
         let rd = if let Ok(rd) = rd {
             rd
         } else {
             continue;
         };
-        println!("checking {} kyu", kyu);
+        println!("checking {} kyu", k);
         for d in rd {
             let d = d?.path().into_os_string();
             let d = d.to_str().unwrap();
-            let mut path = String::with_capacity(d.len() + "/src/lib.rs".len());
-            path += d;
-            path += "/src/lib.rs";
+            let mut path = format!("{}/src/lib.rs", d);
 
             let id = get_id(&path)?;
             let kata = get_kata(id)?;
 
-            let real_kyu = get_kyu(&kata);
-            if kyu != real_kyu {
-                eprintln!("{:?} has obsolete kyu: should be {}", d, real_kyu);
+            let kyu = get_kyu(&kata);
+            if k != kyu {
+                eprintln!("{:?} has obsolete kyu: should be {}", d, kyu);
             }
 
-            let real_slug = get_slug(&kata);
-            if real_slug.as_bytes().contains(&b'\\') {
+            let slug = get_slug(&kata);
+            if slug.as_bytes().contains(&b'\\') {
                 continue;
             }
 
-            let slug = &d[kyu_path.len() + 1..];
-            if slug != real_slug {
+            let directory_name = &d[kyu_path.len() + 1..];
+            if directory_name != slug {
                 eprintln!(
                     "{:?} has obsolete directory name: should be \"{}\"",
-                    d, real_slug
+                    d, slug
                 );
             }
 
-            path.truncate(d.len());
-            path += "/Cargo.toml";
+            unsafe {
+                let slice = path.as_bytes_mut().get_unchecked_mut(d.len()..);
+                if b"/src/lib.rs".len() != slice.len() {
+                    std::hint::unreachable_unchecked();
+                }
+                slice.copy_from_slice(b"/Cargo.toml");
+            }
             let crate_name = get_crate_name(&path)?;
-            if crate_name.as_bytes() != real_slug.as_bytes() {
-                if (b'0'..=b'9').contains(&real_slug.as_bytes()[0]) {
+            if crate_name.as_bytes() != slug.as_bytes() {
+                if (b'0'..=b'9').contains(&slug.as_bytes()[0]) {
                     if !(crate_name.starts_with("solution-")
-                        && &crate_name.as_bytes()["solution-".len()..] == real_slug.as_bytes())
+                        && &crate_name.as_bytes()["solution-".len()..] == slug.as_bytes())
                     {
                         eprintln!(
                             "{:?} has obsolete crate name: should be \"solution-{}\"",
-                            d, real_slug
+                            d, slug
                         );
                     }
                 } else {
-                    eprintln!(
-                        "{:?} has obsolete crate name: should be \"{}\"",
-                        d, real_slug
-                    );
+                    eprintln!("{:?} has obsolete crate name: should be \"{}\"", d, slug);
                 }
             }
         }
