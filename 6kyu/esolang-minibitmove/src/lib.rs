@@ -5,7 +5,7 @@ pub fn interpreter(tape: &str, data: &str) -> String {
     if res.is_empty() {
         return res;
     }
-    let data = unsafe { res.as_mut_vec() };
+    let data = unsafe { res.as_bytes_mut() };
 
     let mut i = 0;
     loop {

@@ -1,0 +1,6 @@
+[package]
+name = "volume-of-a-cuboid"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "i-love-you-a-little-a-lot-passionately-dot-dot-dot-not-at-all"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

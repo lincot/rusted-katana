@@ -1,0 +1,6 @@
+[package]
+name = "count-odd-numbers-below-n"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
