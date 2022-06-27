@@ -9,7 +9,7 @@ pub fn largest_five_digit_number(num: &str) -> u32 {
     let mut d3 = 0;
     let mut d4 = 0;
 
-    let num: Vec<_> = num.bytes().map(|b| b - b'0').collect();
+    let num: Box<_> = num.bytes().map(|b| b - b'0').collect();
 
     for i in 0..num.len() - 4 {
         if i >= num.len()

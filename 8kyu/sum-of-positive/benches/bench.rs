@@ -7,7 +7,7 @@ use std::iter::repeat;
 use sum_of_positive::positive_sum;
 use test::{black_box, Bencher};
 
-fn get_slice(rng: &mut impl Rng) -> Vec<i32> {
+fn get_slice(rng: &mut impl Rng) -> Box<[i32]> {
     const SIZE: usize = 10000;
     repeat(()).map(|()| rng.gen()).take(SIZE).collect()
 }

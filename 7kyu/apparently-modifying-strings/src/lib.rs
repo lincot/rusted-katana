@@ -5,7 +5,7 @@ pub fn apparently(string: &str) -> String {
     let cap = string.len() + string.len() / 3;
     let mut res = String::with_capacity(cap);
 
-    let words = string.split_ascii_whitespace().collect::<Vec<_>>();
+    let words: Vec<_> = string.split_ascii_whitespace().collect();
 
     if let Some(x) = words.first() {
         res.push_str(x);

@@ -7,7 +7,7 @@ use rand_pcg::Pcg64Mcg;
 use std::iter::repeat;
 use test::{black_box, Bencher};
 
-fn get_arr(rng: &mut impl Rng) -> Vec<i32> {
+fn get_arr(rng: &mut impl Rng) -> Box<[i32]> {
     const SIZE: usize = 1000;
     const ANS_INDEX: usize = 300;
     const OFFSET: i32 = 4;

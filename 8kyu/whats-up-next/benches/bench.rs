@@ -7,7 +7,7 @@ use std::iter::repeat;
 use test::{black_box, Bencher};
 use whats_up_next::next_item;
 
-fn get_slice(rng: &mut impl Rng) -> Vec<String> {
+fn get_slice(rng: &mut impl Rng) -> Box<[String]> {
     const SIZE: usize = 10;
     const S_SIZE: usize = 300;
     repeat(())

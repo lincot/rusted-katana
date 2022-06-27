@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5b180e9fedaa564a7000009a/train/rust>
 
 pub fn solve(s: &str) -> String {
-    let chars: Vec<_> = s
+    let chars: Box<_> = s
         .chars()
         .map(|c| (c, c.is_lowercase(), c.is_uppercase()))
         .collect();
@@ -13,7 +13,7 @@ pub fn solve(s: &str) -> String {
     let mut res = String::with_capacity(s.len());
 
     if uppercase_count > lowercase_count {
-        for (c, _, u) in chars {
+        for &(c, _, u) in chars.iter() {
             if u {
                 res.push(c);
             } else {
@@ -21,7 +21,7 @@ pub fn solve(s: &str) -> String {
             }
         }
     } else {
-        for (c, l, _) in chars {
+        for &(c, l, _) in chars.iter() {
             if l {
                 res.push(c);
             } else {

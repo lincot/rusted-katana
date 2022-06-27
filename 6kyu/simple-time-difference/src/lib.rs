@@ -16,7 +16,7 @@ fn format_time(time: u32) -> String {
 pub fn solve(arr: &[&str]) -> String {
     assert!(!arr.is_empty());
 
-    let mut arr: Vec<_> = arr.iter().map(|s| parse_time(s)).collect();
+    let mut arr: Box<_> = arr.iter().map(|s| parse_time(s)).collect();
     arr.sort_unstable();
 
     let max_diff = arr
