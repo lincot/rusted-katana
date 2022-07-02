@@ -23,7 +23,7 @@ on nonsense input rather than causing undefined behavior;
 they use Rust's standard UTF-8–encoded strings,
 so solutions for string katas are made for Unicode input;
 *nevertheless,
-`.bytes()`|`.as_bytes()`|`.as_bytes_mut()`|`.as_mut_vec()` are used 80 times*
+`.bytes()`|`.as_bytes()`|`.as_bytes_mut()`|`.as_mut_vec()` are used 81 times*
 
 - proposed function signatures and names are preserved;
 *but are clippy-adjusted*
