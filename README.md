@@ -17,13 +17,13 @@ it's not enough to solve a problem, it needs to be solved well
 
 - solutions are safe, meaning that they will panic or return nonsense
 on nonsense input rather than causing undefined behavior;
-*nevertheless, there are 104 `unsafe` blocks*
+*nevertheless, there are 106 `unsafe` blocks*
 
 - even though most tests on Codewars contain only ASCII input,
 they use Rust's standard UTF-8–encoded strings,
 so solutions for string katas are made for Unicode input;
 *nevertheless,
-`.bytes()`|`.as_bytes()`|`.as_bytes_mut()`|`.as_mut_vec()` are used 81 times*
+`.bytes()`|`.as_bytes()`|`.as_bytes_mut()`|`.as_mut_vec()` are used 84 times*
 
 - proposed function signatures and names are preserved;
 *but are clippy-adjusted*
