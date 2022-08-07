@@ -1,5 +1,6 @@
 //! <https://www.codewars.com/kata/5412509bd436bd33920011bc/train/rust>
 
+use my_prelude::prelude::*;
 use std::iter::repeat;
 
 pub fn maskify(cc: &str) -> String {
@@ -11,7 +12,9 @@ pub fn maskify(cc: &str) -> String {
     let mut res = Vec::with_capacity(hidden_chars + last_4_chars_len);
 
     res.extend(repeat(b'#').take(hidden_chars));
-    res.extend(unsafe { cc.as_bytes().get_unchecked(cc.len() - last_4_chars_len..) });
+    unsafe {
+        res.extend_from_slice_unchecked(cc.as_bytes().get_unchecked(cc.len() - last_4_chars_len..));
+    }
 
     unsafe { String::from_utf8_unchecked(res) }
 }

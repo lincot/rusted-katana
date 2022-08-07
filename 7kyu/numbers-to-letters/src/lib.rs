@@ -11,7 +11,7 @@ pub fn switcher(numbers: Vec<&str>) -> String {
                     let s = s.as_bytes();
 
                     let n = match s.len() {
-                        2 => (10 * (s[0] - b'0') + (s[1] - b'0')),
+                        2 => 10 * (s[0] - b'0') + (s[1] - b'0'),
                         1 => s[0] - b'0',
                         _ => panic!(),
                     } - 1;

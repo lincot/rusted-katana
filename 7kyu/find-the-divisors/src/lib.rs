@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/544aed4c4a30184e960010f4/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn divisors(integer: u32) -> Result<Vec<u32>, String> {
     let divisors = get_divisors(integer);
 
@@ -50,7 +52,7 @@ fn get_divisors(mut n: u32) -> Vec<u32> {
 
     let pow_of_2 = n.trailing_zeros();
     for pow in 0..pow_of_2 {
-        res.push(2 << pow);
+        unsafe { res.push_unchecked(2 << pow) };
     }
     n >>= pow_of_2;
 
@@ -62,16 +64,13 @@ fn get_divisors(mut n: u32) -> Vec<u32> {
 
         let mut x_pow = 1;
 
-        if x == 0 {
-            unsafe { core::hint::unreachable_unchecked() };
-        }
-        while n % x == 0 {
+        while unsafe { n.checked_rem(x).unwrap_unchecked() } == 0 {
             x_pow *= x;
 
             n /= x;
             n_changed = true;
 
-            push_with_multiples(&mut res, x_pow, len_before);
+            unsafe { push_unchecked_with_multiples(&mut res, x_pow, len_before) };
         }
 
         x += 2;
@@ -83,7 +82,7 @@ fn get_divisors(mut n: u32) -> Vec<u32> {
     let len = res.len();
     if len != 0 {
         if n > 1 {
-            push_with_multiples(&mut res, n, len);
+            unsafe { push_unchecked_with_multiples(&mut res, n, len) };
         }
 
         res.sort_unstable();
@@ -93,9 +92,12 @@ fn get_divisors(mut n: u32) -> Vec<u32> {
     res
 }
 
-fn push_with_multiples(vec: &mut Vec<u32>, x: u32, n_multiples: usize) {
-    vec.push(x);
+unsafe fn push_unchecked_with_multiples(vec: &mut Vec<u32>, x: u32, n_multiples: usize) {
+    vec.push_unchecked(x);
 
+    if n_multiples > vec.capacity().wrapping_sub(vec.len()) {
+        core::hint::unreachable_unchecked();
+    }
     vec.extend_from_within(..n_multiples);
     vec.iter_mut().rev().take(n_multiples).for_each(|n| {
         *n *= x;

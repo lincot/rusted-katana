@@ -1,5 +1,6 @@
 //! <https://www.codewars.com/kata/52eb114b2d55f0e69800078d/train/rust>
 
+use my_prelude::prelude::*;
 use rustc_hash::FxHashMap;
 
 pub struct Cipher {
@@ -23,7 +24,7 @@ impl Cipher {
     pub fn encode(&self, string: &str) -> String {
         let mut res = String::with_capacity(string.len());
         for c in string.chars() {
-            res.push(*self.encoder.get(&c).unwrap_or(&c));
+            unsafe { res.push_unchecked(*self.encoder.get(&c).unwrap_or(&c)) };
         }
         res
     }
@@ -31,7 +32,7 @@ impl Cipher {
     pub fn decode(&self, string: &str) -> String {
         let mut res = String::with_capacity(string.len());
         for c in string.chars() {
-            res.push(*self.decoder.get(&c).unwrap_or(&c));
+            unsafe { res.push_unchecked(*self.decoder.get(&c).unwrap_or(&c)) };
         }
         res
     }

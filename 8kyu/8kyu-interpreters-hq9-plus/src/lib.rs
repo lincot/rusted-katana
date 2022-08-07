@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/591588d49f4056e13f000001/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn hq9(code: &str) -> Option<String> {
     match code.as_bytes() {
         b"H" => Some("Hello World!".into()),
@@ -7,26 +9,34 @@ pub fn hq9(code: &str) -> Option<String> {
         b"9" => {
             let mut bytes = Vec::with_capacity(11785);
 
-            bytes.extend(b"99 bottles of beer on the wall, 99 bottles of beer.\n");
+            unsafe {
+                bytes.extend_from_slice_unchecked(
+                    b"99 bottles of beer on the wall, 99 bottles of beer.\n",
+                );
+            }
 
             for i in (2u8..99u8).rev() {
                 let i = i.to_string();
-                bytes.extend(b"Take one down and pass it around, ");
-                bytes.extend(i.bytes());
-                bytes.extend(b" bottles of beer on the wall.\n");
-                bytes.extend(i.bytes());
-                bytes.extend(b" bottles of beer on the wall, ");
-                bytes.extend(i.bytes());
-                bytes.extend(b" bottles of beer.\n");
+                unsafe {
+                    bytes.extend_from_slice_unchecked(b"Take one down and pass it around, ");
+                    bytes.extend_from_slice_unchecked(i.as_bytes());
+                    bytes.extend_from_slice_unchecked(b" bottles of beer on the wall.\n");
+                    bytes.extend_from_slice_unchecked(i.as_bytes());
+                    bytes.extend_from_slice_unchecked(b" bottles of beer on the wall, ");
+                    bytes.extend_from_slice_unchecked(i.as_bytes());
+                    bytes.extend_from_slice_unchecked(b" bottles of beer.\n");
+                }
             }
 
-            bytes.extend(
-                b"Take one down and pass it around, 1 bottle of beer on the wall.
+            unsafe {
+                bytes.extend_from_slice_unchecked(
+                    b"Take one down and pass it around, 1 bottle of beer on the wall.
 1 bottle of beer on the wall, 1 bottle of beer.
 Take one down and pass it around, no more bottles of beer on the wall.
 No more bottles of beer on the wall, no more bottles of beer.
 Go to the store and buy some more, 99 bottles of beer on the wall.",
-            );
+                );
+            }
 
             Some(unsafe { String::from_utf8_unchecked(bytes) })
         }

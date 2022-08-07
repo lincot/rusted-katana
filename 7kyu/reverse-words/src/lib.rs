@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5259b20d6021e9e14c0010d4/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn reverse_words(str: &str) -> String {
     let mut res = String::with_capacity(str.len());
 
@@ -10,13 +12,12 @@ pub fn reverse_words(str: &str) -> String {
     });
 
     if let Some(w) = reversed_words.next() {
-        res.extend(w);
+        unsafe { res.extend_unchecked(w) };
     }
-
-    reversed_words.for_each(|w| {
-        res.push(' ');
-        res.extend(w);
-    });
+    for w in reversed_words {
+        unsafe { res.push_unchecked(' ') };
+        unsafe { res.extend_unchecked(w) };
+    }
 
     res
 }

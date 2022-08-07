@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/59c3e8c9f5d5e40cab000ca6/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn add_arrays(arr_a: &[i64], arr_b: &[i64]) -> Vec<i64> {
     fn to_digits(n: i64) -> Vec<i64> {
         if n == 0 {
@@ -11,7 +13,7 @@ pub fn add_arrays(arr_a: &[i64], arr_b: &[i64]) -> Vec<i64> {
         let (mut n, negative) = if n < 0 { (-n, true) } else { (n, false) };
 
         while n != 0 {
-            digits.push(n % 10);
+            unsafe { digits.push_unchecked(n % 10) };
             n /= 10;
         }
 

@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/56b8903933dbe5831e000c76/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn spoonerize(words: &str) -> String {
     let first_len = words.chars().next().unwrap().len_utf8();
     let second_pos = words.bytes().position(|b| b == b' ').unwrap() + 1;
@@ -8,10 +10,12 @@ pub fn spoonerize(words: &str) -> String {
 
     let mut res = String::with_capacity(words.len());
 
-    res.push_str(unsafe { words.get_unchecked(second_pos..second_pos + second_len) });
-    res.push_str(unsafe { words.get_unchecked(first_len..second_pos) });
-    res.push_str(unsafe { words.get_unchecked(..first_len) });
-    res.push_str(unsafe { words.get_unchecked(second_pos + second_len..) });
+    unsafe {
+        res.push_str_unchecked(words.get_unchecked(second_pos..second_pos + second_len));
+        res.push_str_unchecked(words.get_unchecked(first_len..second_pos));
+        res.push_str_unchecked(words.get_unchecked(..first_len));
+        res.push_str_unchecked(words.get_unchecked(second_pos + second_len..));
+    }
 
     res
 }

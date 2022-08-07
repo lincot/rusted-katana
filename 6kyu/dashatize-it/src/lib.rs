@@ -1,6 +1,21 @@
 //! <https://www.codewars.com/kata/58223370aef9fc03fd000071/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn dashatize(mut n: i64) -> String {
+    fn to_digits(mut n: i64) -> ([u8; 19], usize) {
+        let (mut digits, mut len) = ([0; 19], 0);
+        while n != 0 {
+            unsafe { *digits.get_unchecked_mut(len) = (n % 10) as u8 + b'0' };
+            n /= 10;
+            len += 1;
+        }
+        if len > digits.len() {
+            unsafe { core::hint::unreachable_unchecked() };
+        }
+        (digits, len)
+    }
+
     if n == 0 {
         return "0".into();
     }
@@ -11,32 +26,26 @@ pub fn dashatize(mut n: i64) -> String {
         n = -n;
     }
 
-    let mut digits = Vec::with_capacity(19);
-
-    while n != 0 {
-        digits.push(b'0' + (n % 10) as u8);
-        n /= 10;
-    }
-    if digits.is_empty() {
+    let (digits, digits_len) = to_digits(n);
+    if digits_len == 0 {
         unsafe { core::hint::unreachable_unchecked() };
     }
 
-    let mut res = Vec::with_capacity(2 * digits.len());
+    let mut res = Vec::with_capacity(2 * digits_len);
 
-    let mut digits = digits.into_iter().rev();
+    let mut digits = digits[..digits_len].iter().rev();
 
-    let first = digits.next().unwrap();
-    res.push(first);
+    let first = *digits.next().unwrap();
+    unsafe { res.push_unchecked(first) };
     let mut was_odd = first % 2 == 1;
 
-    for d in digits {
+    for &d in digits {
         let is_odd = d % 2 == 1;
 
         if was_odd || is_odd {
-            res.push(b'-');
+            unsafe { res.push_unchecked(b'-') };
         }
-
-        res.push(d);
+        unsafe { res.push_unchecked(d) };
 
         was_odd = is_odd;
     }

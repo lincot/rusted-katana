@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5bd776533a7e2720c40000e5/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn pendulum(xs: &[i32]) -> Vec<i32> {
     let mut xs = xs.to_vec();
     xs.sort_unstable();
@@ -10,11 +12,10 @@ pub fn pendulum(xs: &[i32]) -> Vec<i32> {
         .rev()
         .step_by(2)
     {
-        res.push(*unsafe { xs.get_unchecked(i) });
+        unsafe { res.push_unchecked(*xs.get_unchecked(i)) };
     }
-
     for i in (1..xs.len()).step_by(2) {
-        res.push(*unsafe { xs.get_unchecked(i) });
+        unsafe { res.push_unchecked(*xs.get_unchecked(i)) };
     }
 
     res

@@ -1,20 +1,30 @@
 //! <https://www.codewars.com/kata/5b45e4b3f41dd36bf9000090/train/rust>
 
-pub fn sequence(x: u8) -> Vec<u8> {
-    if x < 10 {
-        return (1..=x).collect();
-    }
+use my_prelude::prelude::*;
 
+pub fn sequence(x: u8) -> Vec<u8> {
     let mut res = Vec::with_capacity(x as _);
 
+    if x < 10 {
+        for i in 1..=x {
+            unsafe { res.push_unchecked(i) };
+        }
+        return res;
+    }
+
     for d in 1..=9 {
-        res.push(d);
+        unsafe { res.push_unchecked(d) };
         if x >= 10 * d {
-            res.extend(10 * d..=(10 * d + 9).min(x));
+            for n in 10 * d..=(10 * d + 9).min(x) {
+                unsafe { res.push_unchecked(n) };
+            }
         }
     }
 
     if x == 100 {
+        if res.len() == res.capacity() {
+            unsafe { core::hint::unreachable_unchecked() };
+        }
         res.insert(2, 100);
     }
 

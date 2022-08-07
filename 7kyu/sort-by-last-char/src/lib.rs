@@ -1,11 +1,13 @@
 //! <https://www.codewars.com/kata/57eba158e8ca2c8aba0002a0/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn sort_by_last_char(s: &str) -> Vec<String> {
-    let mut res = Vec::with_capacity(s.len() / 4);
+    let mut res = Vec::with_capacity(s.len() / 2 + 1);
 
     for word in s.as_bytes().split(|&b| b == b' ') {
         if !word.is_empty() {
-            res.push(unsafe { String::from_utf8_unchecked(word.to_vec()) });
+            unsafe { res.push_unchecked(String::from_utf8_unchecked(word.to_vec())) };
         }
     }
 

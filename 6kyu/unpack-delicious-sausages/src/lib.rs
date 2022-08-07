@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5fa6d9e9454977000fb0c1f8/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn unpack_sausages(truck: Vec<Vec<&str>>) -> String {
     // arbitrary
     let cap = 8 * truck.len();
@@ -41,16 +43,16 @@ pub fn unpack_sausages(truck: Vec<Vec<&str>>) -> String {
     let mut sausages = sausages.into_iter();
 
     if let Some(sausage) = sausages.next() {
-        res.push(sausage);
+        unsafe { res.push_unchecked(sausage) };
         for _ in 0..3 {
-            res.push(' ');
-            res.push(sausage);
+            unsafe { res.push_unchecked(' ') };
+            unsafe { res.push_unchecked(sausage) };
         }
     }
     for sausage in sausages {
         for _ in 0..4 {
-            res.push(' ');
-            res.push(sausage);
+            unsafe { res.push_unchecked(' ') };
+            unsafe { res.push_unchecked(sausage) };
         }
     }
 

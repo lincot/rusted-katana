@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/55eeddff3f64c954c2000059/train/rust>
 
+use my_prelude::prelude::*;
+
 pub type Number = i32;
 pub type Numbers = Vec<Number>;
 
@@ -19,12 +21,12 @@ pub fn sum_consecutives(numbers: &[i32]) -> Vec<i32> {
         if n == prev_number {
             same_count += 1;
         } else {
-            res.push(same_count * prev_number);
+            unsafe { res.push_unchecked(same_count * prev_number) };
             prev_number = n;
             same_count = 1;
         }
     }
-    res.push(same_count * prev_number);
+    unsafe { res.push_unchecked(same_count * prev_number) };
 
     res
 }

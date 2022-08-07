@@ -1,12 +1,16 @@
 //! <https://www.codewars.com/kata/5503013e34137eeeaa001648/train/rust>
 
-use std::iter::repeat;
+use my_prelude::prelude::*;
 
 pub fn print(n: i32) -> Option<String> {
-    fn print_line(v: &mut Vec<u8>, width: usize, max_width: usize) {
-        v.extend(repeat(b' ').take((max_width - width) / 2));
-        v.extend(repeat(b'*').take(width));
-        v.push(b'\n');
+    unsafe fn print_line(v: &mut Vec<u8>, width: usize, max_width: usize) {
+        for _ in 0..(max_width - width) / 2 {
+            v.push_unchecked(b' ');
+        }
+        for _ in 0..width {
+            v.push_unchecked(b'*');
+        }
+        v.push_unchecked(b'\n');
     }
 
     if n < 0 || n % 2 == 0 {
@@ -19,14 +23,14 @@ pub fn print(n: i32) -> Option<String> {
 
     let mut width = 1;
     while width <= n {
-        print_line(&mut res, width, n);
+        unsafe { print_line(&mut res, width, n) };
         width += 2;
     }
 
     width = n;
     while width > 1 {
         width -= 2;
-        print_line(&mut res, width, n);
+        unsafe { print_line(&mut res, width, n) };
     }
 
     Some(unsafe { String::from_utf8_unchecked(res) })

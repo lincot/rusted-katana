@@ -19,7 +19,6 @@ const fn dont_give_me_five_unary(mut end: isize) -> isize {
     while end != 0 {
         let mut d = end % 10;
 
-        #[allow(clippy::comparison_chain)]
         if d > 5 {
             d -= 1;
         } else if d == 5 {

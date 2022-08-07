@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/59c804d923dacc6c41000004/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn circle(radius: i32) -> String {
     if radius < 0 {
         return String::new();
@@ -17,10 +19,18 @@ pub fn circle(radius: i32) -> String {
         let half_width =
             (((radius.pow(2) - dist_to_center.pow(2)) as f64).sqrt() + 0.999_999) as usize;
 
-        res.push_str(&" ".repeat(radius - half_width));
-        res.push_str(&"█".repeat(2 * half_width - 1));
-        res.push_str(&" ".repeat(radius - half_width));
-        res.push('\n');
+        unsafe {
+            for _ in 0..radius - half_width {
+                res.push_unchecked(' ');
+            }
+            for _ in 0..2 * half_width - 1 {
+                res.push_unchecked('█');
+            }
+            for _ in 0..radius - half_width {
+                res.push_unchecked(' ');
+            }
+            res.push_unchecked('\n');
+        }
     });
 
     res

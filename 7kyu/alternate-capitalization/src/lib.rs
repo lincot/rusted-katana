@@ -1,23 +1,25 @@
 //! <https://www.codewars.com/kata/59cfc000aeb2844d16000075/train/rust>
 
+use my_prelude::prelude::*;
 use std::mem;
 
 pub fn capitalize(s: &str) -> Vec<String> {
-    // usually same capacity
-    let mut first = String::with_capacity(s.len());
-    let mut second = String::with_capacity(s.len());
+    let cap = 2 * s.len() + s.len() / 3;
+    let mut first = String::with_capacity(cap);
+    let mut second = String::with_capacity(cap);
 
     let mut chars_count = 0usize;
 
     for c in s.chars() {
-        first.extend(c.to_uppercase());
-        second.push(c);
+        unsafe {
+            first.extend_unchecked(c.to_uppercase());
+            second.push_unchecked(c);
+        }
 
         mem::swap(&mut first, &mut second);
 
         chars_count += 1;
     }
-
     if chars_count % 2 == 1 {
         mem::swap(&mut first, &mut second);
     }

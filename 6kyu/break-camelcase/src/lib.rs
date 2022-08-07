@@ -1,15 +1,15 @@
 //! <https://www.codewars.com/kata/5208f99aee097e6552000148/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn solution(s: &str) -> String {
-    // worst case capacity
-    let cap = 2 * s.len();
-    let mut res = String::with_capacity(cap);
+    let mut res = String::with_capacity(2 * s.len());
 
     for c in s.chars() {
         if c.is_uppercase() {
-            res.push(' ');
+            unsafe { res.push_unchecked(' ') };
         }
-        res.push(c);
+        unsafe { res.push_unchecked(c) };
     }
 
     res

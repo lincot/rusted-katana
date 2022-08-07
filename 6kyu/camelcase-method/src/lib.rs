@@ -1,26 +1,28 @@
 //! <https://www.codewars.com/kata/587731fda577b3d1b0001196/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn camel_case(str: &str) -> String {
-    let mut res = String::with_capacity(str.len());
+    let mut res = String::with_capacity(2 * str.len() + str.len() / 3);
 
-    let mut str = str.chars();
+    let mut chars = str.chars();
 
-    for c in str.by_ref() {
+    for c in chars.by_ref() {
         if c != ' ' {
-            res.extend(c.to_uppercase());
+            unsafe { res.extend_unchecked(c.to_uppercase()) };
             break;
         }
     }
-    while let Some(c) = str.next() {
+    while let Some(c) = chars.next() {
         if c == ' ' {
-            for c in str.by_ref() {
+            for c in chars.by_ref() {
                 if c != ' ' {
-                    res.extend(c.to_uppercase());
+                    unsafe { res.extend_unchecked(c.to_uppercase()) };
                     break;
                 }
             }
         } else {
-            res.push(c);
+            unsafe { res.push_unchecked(c) };
         }
     }
 

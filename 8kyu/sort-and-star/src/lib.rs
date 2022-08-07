@@ -1,27 +1,22 @@
 //! <https://www.codewars.com/kata/57cfdf34902f6ba3d300001e/train/rust>
 
-const STARS: &str = "***";
+use my_prelude::prelude::*;
 
 pub fn two_sort(arr: &[&str]) -> String {
+    const STARS: &str = "***";
+
     let min = arr.iter().min().unwrap();
     let mut min_chars = (*min).chars();
 
-    let first = match min_chars.next() {
-        Some(c) => c,
-        None => return String::new(),
-    };
-
-    // slower but potentially allocates less
-    // let cap = min.len() + STARS.len() * (min.chars().count() - 1);
-
-    let cap = (1 + STARS.len()) * min.len() - STARS.len();
+    let cap = (1 + STARS.len()) * min.len();
     let mut res = String::with_capacity(cap);
 
-    res.push(first);
-
+    if let Some(c) = min_chars.next() {
+        unsafe { res.push_unchecked(c) };
+    }
     for c in min_chars {
-        res.push_str(STARS);
-        res.push(c);
+        unsafe { res.push_str_unchecked(STARS) };
+        unsafe { res.push_unchecked(c) };
     }
 
     res

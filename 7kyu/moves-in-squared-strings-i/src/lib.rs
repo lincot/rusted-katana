@@ -1,21 +1,19 @@
 //! <https://www.codewars.com/kata/56dbe0e313c2f63be4000b25/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn hor_mirror(s: String) -> String {
-    let mut rev_lines = s.rsplit('\n');
-
-    let first = if let Some(first) = rev_lines.next() {
-        first
-    } else {
-        return s;
-    };
-
+    let mut lines = s.rsplit('\n');
     let mut res = String::with_capacity(s.len());
 
-    res.push_str(first);
-
-    for line in rev_lines {
-        res.push('\n');
-        res.push_str(line);
+    if let Some(line) = lines.next() {
+        unsafe { res.push_str_unchecked(line) };
+    }
+    for line in lines {
+        unsafe {
+            res.push_unchecked('\n');
+            res.push_str_unchecked(line);
+        }
     }
 
     res
@@ -23,20 +21,16 @@ pub fn hor_mirror(s: String) -> String {
 
 pub fn vert_mirror(s: String) -> String {
     let mut lines = s.split('\n');
-
-    let first = if let Some(first) = lines.next() {
-        first
-    } else {
-        return s;
-    };
-
     let mut res = String::with_capacity(s.len());
 
-    res.extend(first.chars().rev());
-
+    if let Some(line) = lines.next() {
+        unsafe { res.extend_unchecked(line.chars().rev()) };
+    }
     for line in lines {
-        res.push('\n');
-        res.extend(line.chars().rev());
+        unsafe {
+            res.push_unchecked('\n');
+            res.extend_unchecked(line.chars().rev());
+        }
     }
 
     res

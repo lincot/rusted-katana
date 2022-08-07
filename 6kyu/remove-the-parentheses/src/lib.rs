@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5f7c38eb54307c002a2b8cc8/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn remove_parentheses(s: &str) -> String {
     let mut res = Vec::with_capacity(s.len());
 
@@ -20,7 +22,7 @@ pub fn remove_parentheses(s: &str) -> String {
                 }
             }
         } else {
-            res.push(b);
+            unsafe { res.push_unchecked(b) };
         }
     }
 

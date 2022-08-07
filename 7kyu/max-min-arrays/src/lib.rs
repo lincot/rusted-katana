@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5a090c4e697598d0b9000004/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn solve(arr: &[i32]) -> Vec<i32> {
     let mut arr = arr.to_vec();
     arr.sort_unstable();
@@ -8,9 +10,9 @@ pub fn solve(arr: &[i32]) -> Vec<i32> {
     let mut it = arr.into_iter();
 
     while let Some(x) = it.next_back() {
-        res.push(x);
+        unsafe { res.push_unchecked(x) };
         if let Some(x) = it.next() {
-            res.push(x);
+            unsafe { res.push_unchecked(x) };
         }
     }
 

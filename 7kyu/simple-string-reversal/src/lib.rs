@@ -2,9 +2,13 @@
 
 #![feature(slice_swap_unchecked)]
 
+use my_prelude::prelude::*;
+
 pub fn solve(s: &str) -> String {
     let mut chars = Vec::with_capacity(s.len());
-    chars.extend(s.chars());
+    for c in s.chars() {
+        unsafe { chars.push_unchecked(c) };
+    }
 
     let mut i = 0;
     let mut j = chars.len() - 1;

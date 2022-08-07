@@ -1,16 +1,19 @@
 //! <https://www.codewars.com/kata/59a96d71dbe3b06c0200009c/train/rust>
 
-use std::iter::repeat;
+use my_prelude::prelude::*;
 
 pub fn generate_shape(n: i32) -> String {
-    assert!(n > 0);
     let n = n as usize;
-    let mut res = Vec::with_capacity(n * n + n - 1);
+    let mut res = Vec::with_capacity(n * n + n);
 
-    res.extend(repeat(b'+').take(n));
+    for _ in 0..n {
+        unsafe { res.push_unchecked(b'+') };
+    }
     for _ in 1..n {
-        res.push(b'\n');
-        res.extend(repeat(b'+').take(n));
+        unsafe { res.push_unchecked(b'\n') };
+        for _ in 0..n {
+            unsafe { res.push_unchecked(b'+') };
+        }
     }
 
     unsafe { String::from_utf8_unchecked(res) }

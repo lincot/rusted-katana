@@ -1,10 +1,12 @@
 //! <https://www.codewars.com/kata/57eadb7ecd143f4c9c0000a3/train/rust>
 
-fn push_uppercase(s: &mut String, c: char) {
+use my_prelude::prelude::*;
+
+unsafe fn push_unchecked_uppercase(s: &mut String, c: char) {
     if c.is_lowercase() {
-        s.extend(c.to_uppercase());
+        s.extend_unchecked(c.to_uppercase());
     } else {
-        s.push(c);
+        s.push_unchecked(c);
     }
 }
 
@@ -21,9 +23,11 @@ pub fn abbrev_name(name: &str) -> String {
     let cap = 6 + 1 + 6;
     let mut res = String::with_capacity(cap);
 
-    push_uppercase(&mut res, first);
-    res.push('.');
-    push_uppercase(&mut res, last);
+    unsafe {
+        push_unchecked_uppercase(&mut res, first);
+        res.push_unchecked('.');
+        push_unchecked_uppercase(&mut res, last);
+    }
 
     res
 }

@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/56b5afb4ed1f6d5fb0000991/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn revrot(s: &str, c: usize) -> String {
     if c == 0 {
         return String::new();
@@ -14,10 +16,14 @@ pub fn revrot(s: &str, c: usize) -> String {
     while end <= s.len() {
         let chunk = unsafe { s.get_unchecked(end - c..end) };
         if chunk.iter().fold(0, |acc, &x| x.wrapping_add(acc)) % 2 == 0 {
-            res.extend(chunk.iter().rev().copied());
+            for &n in chunk.iter().rev() {
+                unsafe { res.push_unchecked(n) };
+            }
         } else {
-            res.extend(&chunk[1..]);
-            res.push(chunk[0]);
+            unsafe {
+                res.extend_from_slice_unchecked(&chunk[1..]);
+                res.push_unchecked(chunk[0]);
+            }
         }
 
         end += c;

@@ -1,24 +1,31 @@
 //! <https://www.codewars.com/kata/5355a811a93a501adf000ab7/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn fizz_buzz_custom_solver(
     string_one: &str,
     string_two: &str,
     num_one: usize,
     num_two: usize,
 ) -> Vec<String> {
-    (1..=100)
-        .map(|x| match (x % num_one, x % num_two) {
+    let mut res = Vec::with_capacity(100);
+    for x in 0..100 {
+        let s = match (x % num_one, x % num_two) {
             (0, 0) => {
                 let mut res = String::with_capacity(string_one.len() + string_two.len());
-                res.push_str(string_one);
-                res.push_str(string_two);
+                unsafe {
+                    res.push_str_unchecked(string_one);
+                    res.push_str_unchecked(string_two);
+                }
                 res
             }
             (0, _) => string_one.into(),
             (_, 0) => string_two.into(),
             _ => x.to_string(),
-        })
-        .collect()
+        };
+        unsafe { res.push_unchecked(s) };
+    }
+    res
 }
 
 #[macro_export]

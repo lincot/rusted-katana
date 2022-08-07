@@ -1,18 +1,22 @@
 //! <https://www.codewars.com/kata/51c8991dee245d7ddf00000e/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn reverse_words(words: &str) -> String {
+    let words = words.as_bytes();
     let mut res = Vec::with_capacity(words.len());
 
-    let mut words = words.as_bytes().split(|&b| b == b' ').rev();
-
-    if let Some(word) = words.next() {
-        res.extend(word);
+    let mut last_space = words.len();
+    for (i, &b) in words.iter().enumerate().rev() {
+        if b == b' ' {
+            unsafe {
+                res.extend_from_slice_unchecked(words.get_unchecked(i + 1..last_space));
+                res.push_unchecked(b' ');
+            }
+            last_space = i;
+        }
     }
-
-    words.for_each(|word| {
-        res.push(b' ');
-        res.extend(word);
-    });
+    unsafe { res.extend_from_slice_unchecked(words.get_unchecked(..last_space)) };
 
     unsafe { String::from_utf8_unchecked(res) }
 }

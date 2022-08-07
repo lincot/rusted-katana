@@ -5,12 +5,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     for k in 1..=8 {
         kyu_path[0] = b'0' + k;
-        let rd = std::fs::read_dir(unsafe { std::str::from_utf8_unchecked(&kyu_path) });
-        let rd = if let Ok(rd) = rd {
-            rd
-        } else {
-            continue;
-        };
+        let rd = std::fs::read_dir(unsafe { std::str::from_utf8_unchecked(&kyu_path) }).unwrap();
         println!("checking {} kyu", k);
         for d in rd {
             let d = d?.path().into_os_string();

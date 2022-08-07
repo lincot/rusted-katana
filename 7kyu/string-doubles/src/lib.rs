@@ -1,16 +1,17 @@
 //! <https://www.codewars.com/kata/5a145ab08ba9148dd6000094/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn doubles(s: &str) -> String {
-    // worst care capacity
-    let mut res = String::with_capacity(s.len());
+    let mut res = Vec::with_capacity(s.len());
 
     for c in s.chars() {
-        if res.ends_with(c) {
+        if res.last() == Some(&c) {
             res.pop();
         } else {
-            res.push(c);
+            unsafe { res.push_unchecked(c) };
         }
     }
 
-    res
+    res.into_iter().collect()
 }

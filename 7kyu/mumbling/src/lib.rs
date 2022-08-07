@@ -1,36 +1,40 @@
 //! <https://www.codewars.com/kata/5667e8f4e3f572a8f2000039/train/rust>
 
-use std::iter::repeat;
+use my_prelude::prelude::*;
 
 pub fn accum(s: &str) -> String {
     let cap = if s.is_empty() {
         return String::new();
     } else {
-        s.len() * ((s.len() + 1) / 2 + 1) - 1
+        s.len() * (s.len() + 1) / 2 + s.len() - 1
     };
     let mut res = Vec::with_capacity(cap);
 
-    let mut bytes = s.bytes();
+    let mut s = s.bytes();
 
-    match bytes.next().unwrap() {
+    match s.next().unwrap() {
         b @ b'a'..=b'z' => {
-            res.push(b - (b'a' - b'A'));
+            unsafe { res.push_unchecked(b - (b'a' - b'A')) };
         }
         b @ b'A'..=b'Z' => {
-            res.push(b);
+            unsafe { res.push_unchecked(b) };
         }
         _ => panic!(),
     }
-    for (i, b) in (1..).zip(bytes) {
-        res.push(b'-');
+    for (i, b) in (1..).zip(s) {
+        unsafe { res.push_unchecked(b'-') };
         match b {
             b'a'..=b'z' => {
-                res.push(b - (b'a' - b'A'));
-                res.extend(repeat(b).take(i));
+                unsafe { res.push_unchecked(b - (b'a' - b'A')) };
+                for _ in 0..i {
+                    unsafe { res.push_unchecked(b) };
+                }
             }
             b'A'..=b'Z' => {
-                res.push(b);
-                res.extend(repeat(b + (b'a' - b'A')).take(i));
+                unsafe { res.push_unchecked(b) };
+                for _ in 0..i {
+                    unsafe { res.push_unchecked(b + (b'a' - b'A')) };
+                }
             }
             _ => panic!(),
         }

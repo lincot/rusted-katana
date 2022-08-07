@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5d23d89906f92a00267bb83d/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn get_order(input: String) -> String {
     let cap = input.len() + input.len() / 4;
     let mut res = String::with_capacity(cap);
@@ -28,28 +30,28 @@ pub fn get_order(input: String) -> String {
     }
 
     for _ in 0..u {
-        res.push_str("Burger ");
+        unsafe { res.push_str_unchecked("Burger ") };
     }
     for _ in 0..f {
-        res.push_str("Fries ");
+        unsafe { res.push_str_unchecked("Fries ") };
     }
     for _ in 0..n - 3 * (g - u) - w {
-        res.push_str("Chicken ");
+        unsafe { res.push_str_unchecked("Chicken ") };
     }
     for _ in 0..p {
-        res.push_str("Pizza ");
+        unsafe { res.push_str_unchecked("Pizza ") };
     }
     for _ in 0..w {
-        res.push_str("Sandwich ");
+        unsafe { res.push_str_unchecked("Sandwich ") };
     }
     for _ in 0..g - u {
-        res.push_str("Onionrings ");
+        unsafe { res.push_str_unchecked("Onionrings ") };
     }
     for _ in 0..m {
-        res.push_str("Milkshake ");
+        unsafe { res.push_str_unchecked("Milkshake ") };
     }
     for _ in 0..o - 2 * (g - u) {
-        res.push_str("Coke ");
+        unsafe { res.push_str_unchecked("Coke ") };
     }
     res.pop();
 

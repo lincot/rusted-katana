@@ -1,16 +1,36 @@
 //! <https://www.codewars.com/kata/592e830e043b99888600002d/train/rust>
 
-pub fn encode(msg: String, mut n: i32) -> Vec<i32> {
-    let mut digits = Vec::with_capacity(9);
+use my_prelude::prelude::*;
 
-    while n != 0 {
-        digits.push((n % 10) as u8);
-        n /= 10;
+pub fn encode(msg: String, n: i32) -> Vec<i32> {
+    fn to_digits(mut n: i32) -> ([u8; 9], usize) {
+        let (mut digits, mut len) = ([0; 9], 0);
+        if n == 0 {
+            len = 1;
+        }
+        while n != 0 {
+            unsafe {
+                *digits.get_unchecked_mut(len) = (n % 10) as u8;
+            }
+            n /= 10;
+            len += 1;
+        }
+        (digits, len)
     }
 
-    msg.bytes()
-        .map(|b| b - b'a' + 1)
-        .zip(digits.into_iter().rev().cycle())
-        .map(|(b, d)| (b + d) as _)
-        .collect()
+    let (digits, len) = to_digits(n);
+
+    let mut res = Vec::with_capacity(msg.len());
+    let mut i = len - 1;
+
+    for b in msg.as_bytes() {
+        unsafe { res.push_unchecked((b + digits.get_unchecked(i) - b'a' + 1) as _) };
+        if i == 0 {
+            i = len - 1;
+        } else {
+            i -= 1;
+        }
+    }
+
+    res
 }
