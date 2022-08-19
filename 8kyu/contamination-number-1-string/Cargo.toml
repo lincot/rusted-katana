@@ -1,8 +1,7 @@
 [package]
-name = "if-you-cant-sleep-just-count-sheep"
+name = "contamination-number-1-string"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
 my-prelude = { path = "../../my-prelude" }
-lexical-core = "0.8.5"

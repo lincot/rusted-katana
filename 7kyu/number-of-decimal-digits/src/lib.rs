@@ -3,5 +3,5 @@
 #![feature(int_log)]
 
 pub const fn digits(n: u64) -> usize {
-    (n.log10() + 1) as _
+    (n.ilog10() + 1) as _
 }

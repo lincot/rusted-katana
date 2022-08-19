@@ -1,5 +1,4 @@
 //! <https://www.codewars.com/kata/50654ddff44f800200000004/train/rust>
 
-pub const fn multiply(a: i32, b: i32) -> i32 {
-    a * b
-}
+#[allow(non_upper_case_globals)]
+pub const multiply: fn(i32, i32) -> i32 = std::ops::Mul::mul;

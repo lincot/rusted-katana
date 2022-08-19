@@ -2,7 +2,8 @@
 
 #![feature(int_log)]
 
-use std::fmt::Write;
+use lexical_core::write_unchecked;
+use my_prelude::prelude::*;
 
 /// equals to `(1..=n).map(|x| x.to_string().len()).sum::<usize>() as u32`
 fn log10_range_sum(n: u32) -> u32 {
@@ -10,7 +11,7 @@ fn log10_range_sum(n: u32) -> u32 {
         return n;
     }
 
-    let log = n.log10();
+    let log = n.ilog10();
 
     let mut t = 1;
 
@@ -22,12 +23,23 @@ fn log10_range_sum(n: u32) -> u32 {
 }
 
 pub fn count_sheep(n: u32) -> String {
-    let cap = (log10_range_sum(n) + 9 * n) as _;
-    let mut murmur = String::with_capacity(cap);
+    const SHEEP: &str = " sheep...";
 
-    (1..=n).for_each(|sheep| {
-        write!(murmur, "{} sheep...", sheep).unwrap();
-    });
+    let cap = log10_range_sum(n) as usize + SHEEP.len() * n as usize;
+    let mut res = String::with_capacity(cap);
 
-    murmur
+    for sheep in 1..=n {
+        unsafe {
+            let len = res.len();
+            let written_len = write_unchecked(
+                sheep,
+                core::slice::from_raw_parts_mut(res.as_mut_ptr().add(len), res.capacity() - len),
+            )
+            .len();
+            res.as_mut_vec().set_len(len + written_len);
+            res.push_str_unchecked(SHEEP);
+        }
+    }
+
+    res
 }

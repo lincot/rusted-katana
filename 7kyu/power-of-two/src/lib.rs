@@ -1,5 +1,4 @@
 //! <https://www.codewars.com/kata/534d0a229345375d520006a0/train/rust>
 
-pub const fn power_of_two(x: u64) -> bool {
-    x.is_power_of_two()
-}
+#[allow(non_upper_case_globals)]
+pub const power_of_two: fn(u64) -> bool = u64::is_power_of_two;
