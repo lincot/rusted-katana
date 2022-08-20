@@ -1,5 +1,8 @@
 //! <https://www.codewars.com/kata/5efae11e2d12df00331f91a6/train/rust>
 
+use lexical_core::{write_with_options_unchecked, NumberFormatBuilder, WriteIntegerOptions};
+use my_prelude::prelude::*;
+
 fn my_md5_process_block(word0: u32, word1: u32) -> (u32, u32, u32, u32) {
     const A: u32 = 0x6745_2301;
     const B: u32 = 0xefcd_ab89;
@@ -114,36 +117,45 @@ fn my_md5_process_block(word0: u32, word1: u32) -> (u32, u32, u32, u32) {
 }
 
 fn my_md5(word0: u32, word1: u32) -> String {
+    const FORMAT: u128 = NumberFormatBuilder::hexadecimal();
+
+    let mut res = String::with_capacity(32);
+
     let (a, b, c, d) = my_md5_process_block(word0, word1);
 
-    let bytes0: [u8; 4] = a.to_le_bytes();
-    let bytes1: [u8; 4] = b.to_le_bytes();
-    let bytes2: [u8; 4] = c.to_le_bytes();
-    let bytes3: [u8; 4] = d.to_le_bytes();
+    for num in [a, b, c, d] {
+        for b in num.to_le_bytes() {
+            unsafe {
+                if b < 16 {
+                    res.push_unchecked('0');
+                }
+                let len = res.len();
+                let written_len = write_with_options_unchecked::<_, FORMAT>(
+                    b,
+                    core::slice::from_raw_parts_mut(
+                        res.as_mut_ptr().add(len),
+                        res.capacity() - len,
+                    ),
+                    &WriteIntegerOptions::new(),
+                )
+                .len();
+                res.as_mut_vec().set_len(len + written_len);
+            }
+        }
+    }
 
-    format!(
-        "{:02x}{:02x}{:02x}{:02x}{:02x}{:02x}{:02x}{:02x}{:02x}{:02x}{:02x}{:02x}{:02x}{:02x}{:02x}{:02x}",
-        bytes0[0],
-        bytes0[1],
-        bytes0[2],
-        bytes0[3],
-        bytes1[0],
-        bytes1[1],
-        bytes1[2],
-        bytes1[3],
-        bytes2[0],
-        bytes2[1],
-        bytes2[2],
-        bytes2[3],
-        bytes3[0],
-        bytes3[1],
-        bytes3[2],
-        bytes3[3],
-    )
+    res
 }
 
 #[allow(clippy::result_unit_err)]
-pub fn crack(string: String) -> Result<i32, ()> {
+pub fn crack(mut string: String) -> Result<i32, ()> {
+    // converting to upper since could not make lexical to write in lowercase
+    for b in unsafe { string.as_bytes_mut() } {
+        if *b >= b'a' {
+            *b -= b'a' - b'A';
+        }
+    }
+
     let mut word0 = 0x3030_3030;
     for d0 in 0..10 {
         for d1 in 0..10 {

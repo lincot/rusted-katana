@@ -1,3 +1,6 @@
+#[cfg(feature = "lexical-core")]
+use lexical_core::{write_unchecked, ToLexical};
+
 pub trait PushUnchecked<T> {
     /// # Safety
     ///
@@ -73,5 +76,53 @@ impl PushStrUnchecked for String {
     unsafe fn push_str_unchecked(&mut self, string: &str) {
         self.as_mut_vec()
             .extend_from_slice_unchecked(string.as_bytes());
+    }
+}
+
+pub trait WriteNumUnchecked {
+    /// # Safety
+    ///
+    /// `length + n.to_string().len()` needs to be less than or equal to `capacity`
+    #[cfg(feature = "lexical-core")]
+    unsafe fn write_num_unchecked(&mut self, n: impl ToLexical);
+
+    /// # Safety
+    ///
+    /// `length + n.to_string().len()` needs to be less than or equal to `capacity`
+    #[cfg(not(feature = "lexical-core"))]
+    unsafe fn write_num_unchecked(&mut self, n: impl ToString);
+}
+
+impl WriteNumUnchecked for Vec<u8> {
+    #[cfg(feature = "lexical-core")]
+    #[inline]
+    unsafe fn write_num_unchecked(&mut self, n: impl ToLexical) {
+        let len = self.len();
+        let written_len = write_unchecked(
+            n,
+            core::slice::from_raw_parts_mut(self.as_mut_ptr().add(len), self.capacity() - len),
+        )
+        .len();
+        self.set_len(len + written_len);
+    }
+
+    #[cfg(not(feature = "lexical-core"))]
+    #[inline]
+    unsafe fn write_num_unchecked(&mut self, n: impl ToString) {
+        self.extend_from_slice_unchecked(n.to_string().as_bytes());
+    }
+}
+
+impl WriteNumUnchecked for String {
+    #[cfg(feature = "lexical-core")]
+    #[inline]
+    unsafe fn write_num_unchecked(&mut self, n: impl ToLexical) {
+        self.as_mut_vec().write_num_unchecked(n);
+    }
+
+    #[cfg(not(feature = "lexical-core"))]
+    #[inline]
+    unsafe fn write_num_unchecked(&mut self, n: impl ToString) {
+        self.push_str_unchecked(&n.to_string());
     }
 }

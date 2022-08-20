@@ -2,7 +2,6 @@
 
 #![feature(int_log)]
 
-use lexical_core::write_unchecked;
 use my_prelude::prelude::*;
 
 /// equals to `(1..=n).map(|x| x.to_string().len()).sum::<usize>() as u32`
@@ -30,13 +29,7 @@ pub fn count_sheep(n: u32) -> String {
 
     for sheep in 1..=n {
         unsafe {
-            let len = res.len();
-            let written_len = write_unchecked(
-                sheep,
-                core::slice::from_raw_parts_mut(res.as_mut_ptr().add(len), res.capacity() - len),
-            )
-            .len();
-            res.as_mut_vec().set_len(len + written_len);
+            res.write_num_unchecked(sheep);
             res.push_str_unchecked(SHEEP);
         }
     }

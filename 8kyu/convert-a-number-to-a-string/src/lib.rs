@@ -1,5 +1,6 @@
 //! <https://www.codewars.com/kata/5265326f5fda8eb1160004c8/train/rust>
 
-pub fn number_to_string(i: i32) -> String {
-    i.to_string()
-}
+use lexical::to_string;
+
+#[allow(non_upper_case_globals)]
+pub const number_to_string: fn(i32) -> String = to_string;

@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/59e19a747905df23cb000024/train/rust>
 
-use std::io::Write;
+use my_prelude::prelude::*;
 
 pub fn string_letter_count(s: &str) -> String {
     let mut counts = [0usize; 26];
@@ -13,14 +13,16 @@ pub fn string_letter_count(s: &str) -> String {
         }
     }
 
-    let mut res = Vec::with_capacity(9 * 26);
+    let mut res = String::with_capacity((18 + 1) * 26);
 
     for (letter, count) in (b'a'..).zip(counts) {
         if count != 0 {
-            write!(res, "{}", count).unwrap();
-            res.push(letter);
+            unsafe {
+                res.write_num_unchecked(count);
+                res.as_mut_vec().push_unchecked(letter);
+            }
         }
     }
 
-    unsafe { String::from_utf8_unchecked(res) }
+    res
 }

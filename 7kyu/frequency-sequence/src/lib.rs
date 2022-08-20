@@ -1,5 +1,6 @@
 //! <https://www.codewars.com/kata/585a033e3a36cdc50a00011c/train/rust>
 
+use my_prelude::prelude::*;
 use rustc_hash::FxHashMap;
 
 pub fn freq_seq(s: &str, sep: &str) -> String {
@@ -10,17 +11,20 @@ pub fn freq_seq(s: &str, sep: &str) -> String {
         *counts.entry(c).or_insert(0usize) += 1;
     }
 
-    // 2 digits and sep per char
-    let cap = (2 + sep.len()) * counts.len();
+    let cap = (20 + sep.len()) * s.len();
     let mut res = String::with_capacity(cap);
 
     let mut chars = s.chars();
     if let Some(c) = chars.next() {
-        res.push_str(&counts.get(&c).unwrap().to_string());
+        unsafe {
+            res.write_num_unchecked(*counts.get(&c).unwrap());
+        }
     }
     for c in chars {
-        res.push_str(sep);
-        res.push_str(&counts.get(&c).unwrap().to_string());
+        unsafe {
+            res.push_str_unchecked(sep);
+            res.write_num_unchecked(*counts.get(&c).unwrap());
+        }
     }
 
     res

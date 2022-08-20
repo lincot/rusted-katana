@@ -1,3 +1,4 @@
+use my_prelude::prelude::*;
 use std::{fs::File, io::Read};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -10,7 +11,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         for d in rd {
             let d = d?.path().into_os_string();
             let d = d.to_str().unwrap();
-            let mut path = format!("{}/src/lib.rs", d);
+            let mut path = String::with_capacity(d.len() + "/src/lib.rs".len());
+            unsafe {
+                path.push_str_unchecked(d);
+                path.push_str_unchecked("/src/lib.rs");
+            }
 
             let id = get_id(&path)?;
             let kata = get_kata(id)?;

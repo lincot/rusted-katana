@@ -16,14 +16,13 @@ pub fn hq9(code: &str) -> Option<String> {
             }
 
             for i in (2u8..99u8).rev() {
-                let i = i.to_string();
                 unsafe {
                     bytes.extend_from_slice_unchecked(b"Take one down and pass it around, ");
-                    bytes.extend_from_slice_unchecked(i.as_bytes());
+                    bytes.write_num_unchecked(i);
                     bytes.extend_from_slice_unchecked(b" bottles of beer on the wall.\n");
-                    bytes.extend_from_slice_unchecked(i.as_bytes());
+                    bytes.write_num_unchecked(i);
                     bytes.extend_from_slice_unchecked(b" bottles of beer on the wall, ");
-                    bytes.extend_from_slice_unchecked(i.as_bytes());
+                    bytes.write_num_unchecked(i);
                     bytes.extend_from_slice_unchecked(b" bottles of beer.\n");
                 }
             }

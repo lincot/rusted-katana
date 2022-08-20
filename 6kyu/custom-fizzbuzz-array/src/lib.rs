@@ -1,5 +1,6 @@
 //! <https://www.codewars.com/kata/5355a811a93a501adf000ab7/train/rust>
 
+use lexical::to_string;
 use my_prelude::prelude::*;
 
 pub fn fizz_buzz_custom_solver(
@@ -21,7 +22,7 @@ pub fn fizz_buzz_custom_solver(
             }
             (0, _) => string_one.into(),
             (_, 0) => string_two.into(),
-            _ => x.to_string(),
+            _ => to_string(x),
         };
         unsafe { res.push_unchecked(s) };
     }

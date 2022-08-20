@@ -5,4 +5,3 @@ edition = "2021"
 
 [dependencies]
 my-prelude = { path = "../../my-prelude" }
-lexical-core = "0.8.5"

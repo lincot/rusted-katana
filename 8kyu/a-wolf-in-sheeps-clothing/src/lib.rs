@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5c8bfa44b9d1192e1ebd3d15/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn warn_the_sheep(queue: &[&str]) -> String {
     let wolf_pos = queue
         .iter()
@@ -7,10 +9,15 @@ pub fn warn_the_sheep(queue: &[&str]) -> String {
         .unwrap();
 
     match queue.len() - wolf_pos - 1 {
-        0 => String::from("Pls go away and stop eating my sheep"),
-        n => format!(
-            "Oi! Sheep number {}! You are about to be eaten by a wolf!",
-            n
-        ),
+        0 => "Pls go away and stop eating my sheep".into(),
+        n => unsafe {
+            let mut res = String::with_capacity(
+                "Oi! Sheep number ! You are about to be eaten by a wolf!".len() + 20,
+            );
+            res.push_str_unchecked("Oi! Sheep number ");
+            res.write_num_unchecked(n);
+            res.push_str_unchecked("! You are about to be eaten by a wolf!");
+            res
+        },
     }
 }
