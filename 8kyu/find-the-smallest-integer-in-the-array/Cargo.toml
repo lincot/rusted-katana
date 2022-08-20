@@ -2,5 +2,3 @@
 name = "find-the-smallest-integer-in-the-array"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

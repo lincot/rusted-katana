@@ -2,5 +2,3 @@
 name = "strong-number-special-numbers-series-number-2"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

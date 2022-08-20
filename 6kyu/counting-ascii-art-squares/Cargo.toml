@@ -2,5 +2,3 @@
 name = "counting-ascii-art-squares"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

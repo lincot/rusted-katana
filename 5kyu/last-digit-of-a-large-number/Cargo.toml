@@ -2,5 +2,3 @@
 name = "last-digit-of-a-large-number"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

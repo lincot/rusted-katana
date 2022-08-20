@@ -2,5 +2,3 @@
 name = "enumerable-magic-number-20-cascading-subsets"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

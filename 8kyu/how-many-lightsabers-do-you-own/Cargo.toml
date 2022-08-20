@@ -2,5 +2,3 @@
 name = "how-many-lightsabers-do-you-own"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

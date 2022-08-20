@@ -3,5 +3,7 @@ name = "evens-and-odds"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies]
-lexical = { version = "6.1.1", default-features = false, features = ["std", "write-integers", "power-of-two"] }
+[dependencies.lexical]
+version = "6.1.1"
+default-features = false
+features = ["std", "write-integers", "power-of-two"]

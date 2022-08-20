@@ -2,5 +2,3 @@
 name = "is-n-divisible-by-x-and-y"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

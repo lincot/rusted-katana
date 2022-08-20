@@ -2,5 +2,3 @@
 name = "split-and-then-add-both-sides-of-an-array-together"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

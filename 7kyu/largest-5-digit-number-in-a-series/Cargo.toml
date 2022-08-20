@@ -2,5 +2,3 @@
 name = "largest-5-digit-number-in-a-series"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

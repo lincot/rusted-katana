@@ -2,5 +2,3 @@
 name = "convert-a-string-to-a-number"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

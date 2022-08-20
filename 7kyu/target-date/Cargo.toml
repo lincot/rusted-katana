@@ -3,5 +3,7 @@ name = "target-date"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies]
-chrono = { version = "0.4.22", default-features = false, features = ["std"] }
+[dependencies.chrono]
+version = "0.4.22"
+default-features = false
+features = ["std"]

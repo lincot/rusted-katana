@@ -2,5 +2,3 @@
 name = "round-up-to-the-next-multiple-of-5"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

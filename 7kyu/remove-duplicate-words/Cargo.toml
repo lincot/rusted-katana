@@ -3,6 +3,8 @@ name = "remove-duplicate-words"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies]
-my-prelude = { path = "../../my-prelude" }
-rustc-hash = "1.1.0"
+[dependencies.my-prelude]
+path = "../../my-prelude"
+
+[dependencies.rustc-hash]
+version = "1.1.0"

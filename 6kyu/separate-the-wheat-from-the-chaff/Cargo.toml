@@ -2,5 +2,3 @@
 name = "separate-the-wheat-from-the-chaff"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

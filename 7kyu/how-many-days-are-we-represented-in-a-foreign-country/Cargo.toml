@@ -2,5 +2,3 @@
 name = "how-many-days-are-we-represented-in-a-foreign-country"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

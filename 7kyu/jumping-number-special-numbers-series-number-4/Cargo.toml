@@ -2,5 +2,3 @@
 name = "jumping-number-special-numbers-series-number-4"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

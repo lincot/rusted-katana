@@ -2,5 +2,3 @@
 name = "function-2-squaring-an-argument"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

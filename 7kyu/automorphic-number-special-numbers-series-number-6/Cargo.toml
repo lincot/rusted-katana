@@ -2,5 +2,3 @@
 name = "automorphic-number-special-numbers-series-number-6"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

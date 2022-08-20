@@ -2,5 +2,3 @@
 name = "find-maximum-and-minimum-values-of-a-list"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

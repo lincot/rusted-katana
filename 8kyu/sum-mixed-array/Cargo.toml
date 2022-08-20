@@ -3,5 +3,5 @@ name = "sum-mixed-array"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies]
-either = "1.7.0"
+[dependencies.either]
+version = "1.7.0"

@@ -2,5 +2,3 @@
 name = "simple-fun-number-195-guess-hat-color"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

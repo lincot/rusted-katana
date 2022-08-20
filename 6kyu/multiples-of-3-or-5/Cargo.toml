@@ -2,5 +2,3 @@
 name = "multiples-of-3-or-5"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+cargo update
+cargo outdated --exit-code 1 || exit
 cargo fmt
 cargo clippy --release --all-targets --no-deps -- \
     -D clippy::all \
