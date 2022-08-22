@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies.my-prelude]
 path = "../my-prelude"
 
-[dependencies.reqwest]
-version = "0.11.11"
-features = ["blocking"]
+[dependencies.attohttpc]
+version = "0.22.0"
+default-features = false
+features = ["tls"]

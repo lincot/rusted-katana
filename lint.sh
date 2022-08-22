@@ -3,7 +3,7 @@
 cargo update
 cargo outdated --exit-code 1 || exit
 cargo fmt
-cargo clippy --release --all-targets --no-deps -- \
+cargo clippy --all-features --all-targets --no-deps --quiet --release -- \
     -D clippy::all \
     -D clippy::pedantic \
     -D clippy::nursery \

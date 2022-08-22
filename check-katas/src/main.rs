@@ -70,7 +70,7 @@ fn get_id(path: &str) -> std::io::Result<[u8; 24]> {
     let mut f = File::open(path)?;
     let mut buf =
         [0; "//! <https://www.codewars.com/kata/53da3dbb4a5168369a0000fe/train/rust>".len()];
-    f.read_exact(&mut buf)?;
+    f.read(&mut buf)?;
     assert!(
         buf.starts_with(b"//! <https://www.codewars.com/kata/") && buf.ends_with(b"/train/rust>"),
         "{} has invalid url",
@@ -87,7 +87,7 @@ fn get_crate_name(path: &str) -> std::io::Result<Box<str>> {
     let mut buf = [0; 128];
     f.read(&mut buf)?;
 
-    let name_pos = buf.iter().position(|&b| b == b'"').unwrap() + 1;
+    let name_pos = "[package]\nname = \"".len();
     let name_end = name_pos + buf[name_pos..].iter().position(|&b| b == b'"').unwrap();
 
     Ok(Box::from(unsafe {
@@ -95,14 +95,20 @@ fn get_crate_name(path: &str) -> std::io::Result<Box<str>> {
     }))
 }
 
-fn get_kata(id: [u8; 24]) -> reqwest::Result<String> {
+fn get_kata(id: [u8; 24]) -> attohttpc::Result<Box<str>> {
     let mut url =
         [0; "https://www.codewars.com/api/v1/code-challenges/5917f22dd2563a36a200009c".len()];
     url[.."https://www.codewars.com/api/v1/code-challenges/".len()]
         .copy_from_slice(b"https://www.codewars.com/api/v1/code-challenges/");
     url["https://www.codewars.com/api/v1/code-challenges/".len()..].copy_from_slice(&id);
     let url = unsafe { std::str::from_utf8_unchecked(&url) };
-    reqwest::blocking::get(url)?.text()
+    let mut buf = [0; 1024];
+    let mut response = attohttpc::get(url).send()?;
+    let written1 = response.read(&mut buf)?;
+    let written2 = response.read(&mut buf[written1..])?;
+    Ok(Box::from(unsafe {
+        std::str::from_utf8_unchecked(buf.get_unchecked(..written1 + written2))
+    }))
 }
 
 fn get_kyu(kata: &str) -> u8 {
