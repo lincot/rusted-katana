@@ -3,10 +3,10 @@
 use my_prelude::prelude::*;
 
 pub fn hq9(code: &str) -> Option<String> {
-    match code.as_bytes() {
-        b"H" => Some("Hello World!".into()),
-        b"Q" => Some("Q".into()),
-        b"9" => {
+    match code {
+        "H" => Some("Hello World!".into()),
+        "Q" => Some("Q".into()),
+        "9" => {
             let mut bytes = Vec::with_capacity(11785);
 
             unsafe {

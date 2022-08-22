@@ -172,9 +172,9 @@ pub fn crack(mut string: String) -> Result<i32, ()> {
                 }
                 word0 -= 0x09ff_0000;
             }
-            word0 -= 0x9ff00;
+            word0 -= 0x09ff_00;
         }
-        word0 -= 0x9ff;
+        word0 -= 0x09ff;
     }
 
     Err(())

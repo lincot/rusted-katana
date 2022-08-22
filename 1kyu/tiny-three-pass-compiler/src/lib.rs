@@ -269,7 +269,7 @@ fn move_immediate_to_rhs(node: &mut MyAst) {
 
 // Compiler::pass3 but on MyAst
 fn emit_instructions(node: &MyAst) -> Vec<String> {
-    let mut instructions = Vec::new();
+    let mut instructions = vec![];
     emit_instructions_recursive(&mut instructions, node);
     instructions
 }
@@ -407,7 +407,7 @@ impl Compiler {
     }
 
     pub fn pass3(&mut self, ast: &Ast) -> Vec<String> {
-        let mut instructions = Vec::new();
+        let mut instructions = vec![];
         Self::pass3_recursive(&mut instructions, ast);
         instructions
     }
