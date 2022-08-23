@@ -1,21 +1,18 @@
 #![feature(test)]
 
 extern crate test;
-use rand::{Rng, SeedableRng};
-use rand_pcg::Pcg64Mcg;
-use std::iter::repeat;
 use sum_of_positive::positive_sum;
 use test::{black_box, Bencher};
 
-fn get_slice(rng: &mut impl Rng) -> Box<[i32]> {
-    const SIZE: usize = 10000;
-    repeat(()).map(|()| rng.gen()).take(SIZE).collect()
-}
-
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let mut rng = Pcg64Mcg::seed_from_u64(222);
-    let slice = get_slice(&mut rng);
-    let slice = black_box(&slice);
+    let slice = black_box(&[
+        990, 366, 858, -867, 66, -647, 68, -949, 854, 831, 242, 898, -356, -694, 124, -995, -414,
+        488, -197, 996, -584, -353, 71, -640, -752, 935, -3, 797, 173, 714, -659, 947, -439, 711,
+        131, 699, -798, 503, 353, -961, 968, 869, -826, 461, -3, 312, 701, -209, 301, -382, 790,
+        -373, -668, 777, -386, -180, -343, 285, -740, -46, -205, 564, -883, -733, -942, 295, -881,
+        505, 273, 56, -797, -207, 142, -874, 210, -100, 364, 457, 225, -410, -391, -944, -509, 78,
+        876, 607, 194, 396, 951, -323, 287, 700, -636, -934, -106, 237, 431, 98, -591, -574,
+    ]);
     bencher.iter(|| positive_sum(slice));
 }

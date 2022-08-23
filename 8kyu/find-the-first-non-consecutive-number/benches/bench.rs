@@ -2,24 +2,17 @@
 
 extern crate test;
 use find_the_first_non_consecutive_number::first_non_consecutive;
-use rand::{Rng, SeedableRng};
-use rand_pcg::Pcg64Mcg;
-use std::iter::repeat;
 use test::{black_box, Bencher};
-
-fn get_arr(rng: &mut impl Rng) -> Box<[i32]> {
-    const SIZE: usize = 1000;
-    const ANS_INDEX: usize = 300;
-    const OFFSET: i32 = 4;
-    (OFFSET..ANS_INDEX as i32 + OFFSET)
-        .chain(repeat(()).map(|()| rng.gen()).take(SIZE - ANS_INDEX))
-        .collect()
-}
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let mut rng = Pcg64Mcg::seed_from_u64(222);
-    let arr = get_arr(&mut rng);
-    let arr = black_box(&arr);
+    let arr = black_box(&[
+        4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27,
+        28, 29, 30, 31, 32, 33, -533, 108, 193, -572, -172, -460, 177, 797, 30, 924, 882, 765, 339,
+        335, -71, 674, 143, -520, 956, 692, 540, -141, 150, -988, 293, 824, 563, 171, 386, -125,
+        -99, 899, -569, 399, -67, -598, 116, 65, 398, -716, -724, -640, -806, -380, 746, 934, -983,
+        697, -593, -611, -458, -154, 923, -735, 389, 817, 676, -812, -34, 35, -441, 630, 688, -59,
+        -573, 934, 74, -528, -715, 77,
+    ]);
     bencher.iter(|| first_non_consecutive(arr));
 }

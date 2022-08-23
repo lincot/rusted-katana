@@ -2,9 +2,3 @@
 name = "count-of-positives-slash-sum-of-negatives"
 version = "0.1.0"
 edition = "2021"
-
-[dev-dependencies.rand]
-version = "0.8.5"
-
-[dev-dependencies.rand_pcg]
-version = "0.3.1"

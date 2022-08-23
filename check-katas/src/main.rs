@@ -106,8 +106,9 @@ fn get_kata(id: [u8; 24]) -> attohttpc::Result<Box<str>> {
     let mut response = attohttpc::get(url).send()?;
     let written1 = response.read(&mut buf)?;
     let written2 = response.read(&mut buf[written1..])?;
+    let written3 = response.read(&mut buf[written1 + written2..])?;
     Ok(Box::from(unsafe {
-        std::str::from_utf8_unchecked(buf.get_unchecked(..written1 + written2))
+        std::str::from_utf8_unchecked(buf.get_unchecked(..written1 + written2 + written3))
     }))
 }
 
