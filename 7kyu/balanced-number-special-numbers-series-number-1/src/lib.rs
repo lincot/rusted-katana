@@ -1,26 +1,20 @@
 //! <https://www.codewars.com/kata/5a4e3782880385ba68000018/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn balanced_num(n: u64) -> String {
-    fn to_digits(mut n: u64) -> ([u8; 20], usize) {
-        let (mut digits, mut len) = ([0; 20], 0);
-        while n != 0 {
-            unsafe {
-                *digits.get_unchecked_mut(len) = (n % 10) as u8;
-            }
-            n /= 10;
-            len += 1;
-        }
-        (digits, len)
+    #[inline(never)]
+    fn to_digits(n: u64) -> heapless::Vec<u8, 20> {
+        let mut digits = heapless::Vec::new();
+        unsafe { digits.write_num_unchecked(n) };
+        digits
     }
 
-    if n == 0 {
-        return "Balanced".into();
-    }
-    let (digits, len) = to_digits(n);
-    if unsafe { digits.get_unchecked(0..((len - 1) / 2)) }
+    let digits = to_digits(n);
+    if unsafe { digits.get_unchecked(..((digits.len() - 1) / 2)) }
         .iter()
         .sum::<u8>()
-        == unsafe { digits.get_unchecked((len / 2 + 1)..len) }
+        == unsafe { digits.get_unchecked((digits.len() / 2 + 1)..) }
             .iter()
             .sum()
     {

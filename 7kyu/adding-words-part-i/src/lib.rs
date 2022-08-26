@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/592eaf848c91f248ca000012/train/rust>
 
-use std::ops::Add;
+use core::ops::Add;
 
 const fn ston(s: &str) -> u8 {
     let s = s.as_bytes();

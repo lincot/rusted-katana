@@ -2,11 +2,3 @@
 name = "crack-the-pin"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies.my-prelude]
-path = "../../my-prelude"
-
-[dependencies.lexical-core]
-version = "0.8.5"
-default-features = false
-features = ["std", "write-integers", "power-of-two"]

@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/52761ee4cffbc69732000738/train/rust>
 
-use std::cmp::Ordering;
+use core::cmp::Ordering;
 
 pub fn good_vs_evil(good: &str, evil: &str) -> String {
     fn sum_worth(races: &str, worths: &[u32]) -> u32 {

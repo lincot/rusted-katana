@@ -2,3 +2,9 @@
 name = "doubleton-number"
 version = "0.1.0"
 edition = "2021"
+
+[dependencies.my-prelude]
+path = "../../my-prelude"
+
+[dependencies.heapless]
+version = "0.7.16"

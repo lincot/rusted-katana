@@ -1,5 +1,5 @@
+use core::fmt::Write;
 use see_you_next_happy_year::next_happy_year;
-use std::fmt::Write;
 
 const fn is_happy(mut n: u16) -> bool {
     let d4 = n % 10;

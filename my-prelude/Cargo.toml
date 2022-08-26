@@ -3,6 +3,10 @@ name = "my-prelude"
 version = "0.1.0"
 edition = "2021"
 
+[dependencies.heapless]
+version = "0.7.16"
+optional = true
+
 [dependencies.lexical-core]
 version = "0.8.5"
 default-features = false
@@ -10,4 +14,4 @@ features = ["std", "write-integers"]
 optional = true
 
 [features]
-default = ["lexical-core"]
+default = ["heapless", "lexical-core"]

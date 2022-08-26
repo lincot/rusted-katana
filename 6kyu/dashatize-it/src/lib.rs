@@ -3,22 +3,15 @@
 use my_prelude::prelude::*;
 
 pub fn dashatize(mut n: i64) -> String {
-    fn to_digits(mut n: i64) -> ([u8; 19], usize) {
-        let (mut digits, mut len) = ([0; 19], 0);
-        while n != 0 {
-            unsafe { *digits.get_unchecked_mut(len) = (n % 10) as u8 + b'0' };
-            n /= 10;
-            len += 1;
-        }
-        if len > digits.len() {
+    fn to_digits(n: i64) -> heapless::Vec<u8, 19> {
+        let mut digits = heapless::Vec::new();
+        unsafe { digits.write_num_unchecked(n) };
+        if digits.is_empty() {
             unsafe { core::hint::unreachable_unchecked() };
         }
-        (digits, len)
+        digits
     }
 
-    if n == 0 {
-        return "0".into();
-    }
     if n == i64::MIN {
         return "9-22-3-3-7-20-3-68-5-4-7-7-5-808".into();
     }
@@ -26,20 +19,15 @@ pub fn dashatize(mut n: i64) -> String {
         n = -n;
     }
 
-    let (digits, digits_len) = to_digits(n);
-    if digits_len == 0 {
-        unsafe { core::hint::unreachable_unchecked() };
-    }
+    let digits = to_digits(n);
 
-    let mut res = Vec::with_capacity(2 * digits_len);
+    let mut res = Vec::with_capacity(2 * digits.len());
 
-    let mut digits = digits[..digits_len].iter().rev();
-
-    let first = *digits.next().unwrap();
+    let first = digits[0];
     unsafe { res.push_unchecked(first) };
     let mut was_odd = first % 2 == 1;
 
-    for &d in digits {
+    for &d in &digits[1..] {
         let is_odd = d % 2 == 1;
 
         if was_odd || is_odd {

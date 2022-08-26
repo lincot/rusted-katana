@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5412509bd436bd33920011bc/train/rust>
 
+use core::iter::repeat;
 use my_prelude::prelude::*;
-use std::iter::repeat;
 
 pub fn maskify(cc: &str) -> String {
     let chars: Vec<_> = cc.chars().collect();

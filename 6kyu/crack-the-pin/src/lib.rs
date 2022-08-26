@@ -1,9 +1,6 @@
 //! <https://www.codewars.com/kata/5efae11e2d12df00331f91a6/train/rust>
 
-use lexical_core::{write_with_options_unchecked, NumberFormatBuilder, WriteIntegerOptions};
-use my_prelude::prelude::*;
-
-fn my_md5_process_block(word0: u32, word1: u32) -> (u32, u32, u32, u32) {
+fn my_md5_process_block(word0: u32, word1: u32) -> [u32; 4] {
     const A: u32 = 0x6745_2301;
     const B: u32 = 0xefcd_ab89;
     const C: u32 = 0x98ba_dcfe;
@@ -108,39 +105,31 @@ fn my_md5_process_block(word0: u32, word1: u32) -> (u32, u32, u32, u32) {
     c = abcd(i, c, d, a, b, 0, 0x2ad7_d2bb, 15);
     b = abcd(i, b, c, d, a, 0, 0xeb86_d391, 21);
 
-    (
+    [
         a.wrapping_add(A),
         b.wrapping_add(B),
         c.wrapping_add(C),
         d.wrapping_add(D),
-    )
+    ]
 }
 
-fn my_md5(word0: u32, word1: u32) -> String {
-    const FORMAT: u128 = NumberFormatBuilder::hexadecimal();
+const fn to_hex_digit(n: u8) -> u8 {
+    if n < 10 {
+        n + b'0'
+    } else {
+        n + b'a' - 10
+    }
+}
 
-    let mut res = String::with_capacity(32);
+fn my_md5(word0: u32, word1: u32) -> [u8; 32] {
+    let mut res = [0; 32];
+    let mut len = 0;
 
-    let (a, b, c, d) = my_md5_process_block(word0, word1);
-
-    for num in [a, b, c, d] {
+    for num in my_md5_process_block(word0, word1) {
         for b in num.to_le_bytes() {
-            unsafe {
-                if b < 16 {
-                    res.push_unchecked('0');
-                }
-                let len = res.len();
-                let written_len = write_with_options_unchecked::<_, FORMAT>(
-                    b,
-                    core::slice::from_raw_parts_mut(
-                        res.as_mut_ptr().add(len),
-                        res.capacity() - len,
-                    ),
-                    &WriteIntegerOptions::new(),
-                )
-                .len();
-                res.as_mut_vec().set_len(len + written_len);
-            }
+            res[len] = to_hex_digit(b / 16);
+            res[len + 1] = to_hex_digit(b % 16);
+            len += 2;
         }
     }
 
@@ -148,14 +137,7 @@ fn my_md5(word0: u32, word1: u32) -> String {
 }
 
 #[allow(clippy::result_unit_err)]
-pub fn crack(mut string: String) -> Result<i32, ()> {
-    // converting to upper since could not make lexical to write in lowercase
-    for b in unsafe { string.as_bytes_mut() } {
-        if *b >= b'a' {
-            *b -= b'a' - b'A';
-        }
-    }
-
+pub fn crack(string: String) -> Result<i32, ()> {
     let mut word0 = 0x3030_3030;
     for d0 in 0..10 {
         for d1 in 0..10 {
@@ -163,7 +145,7 @@ pub fn crack(mut string: String) -> Result<i32, ()> {
                 for d3 in 0..10 {
                     let mut word1 = 0x8030;
                     for d4 in 0..10 {
-                        if my_md5(word0, word1) == string {
+                        if my_md5(word0, word1) == string.as_bytes() {
                             return Ok(10000 * d0 + 1000 * d1 + 100 * d2 + 10 * d3 + d4);
                         }
                         word1 += 1;

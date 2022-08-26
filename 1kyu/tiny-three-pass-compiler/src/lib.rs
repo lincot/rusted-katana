@@ -2,10 +2,11 @@
 
 // TODO: this solution is WIP
 
-use std::ops::{Add, Div, Mul, Sub};
+use core::mem::swap;
+use core::ops::{Add, Div, Mul, Sub};
 
 mod parse {
-    use std::ops::{Add, Div, Mul, Sub};
+    use core::ops::{Add, Div, Mul, Sub};
 
     #[derive(Debug, PartialEq, Eq, Clone, Copy)]
     pub enum BinOp {
@@ -46,7 +47,7 @@ mod parse {
     }
 
     struct Lexer<'a>(&'a str);
-    type Tokens<'a> = ::std::iter::Peekable<Lexer<'a>>;
+    type Tokens<'a> = core::iter::Peekable<Lexer<'a>>;
 
     impl<'a> Lexer<'a> {
         // Move cursor of lexer `n` bytes ahead
@@ -261,7 +262,7 @@ fn move_immediate_to_rhs(node: &mut MyAst) {
                 }
             };
             if lhs_is_immediate && !rhs_is_immediate {
-                ::std::mem::swap(lhs, rhs);
+                swap(lhs, rhs);
             }
         }
     }

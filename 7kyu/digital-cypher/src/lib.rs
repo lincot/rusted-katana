@@ -3,32 +3,28 @@
 use my_prelude::prelude::*;
 
 pub fn encode(msg: String, n: i32) -> Vec<i32> {
-    fn to_digits(mut n: i32) -> ([u8; 9], usize) {
-        let (mut digits, mut len) = ([0; 9], 0);
-        if n == 0 {
-            len = 1;
-        }
-        while n != 0 {
-            unsafe {
-                *digits.get_unchecked_mut(len) = (n % 10) as u8;
-            }
-            n /= 10;
-            len += 1;
-        }
-        (digits, len)
+    fn to_digits(n: u32) -> heapless::Vec<u8, 10> {
+        let mut digits = heapless::Vec::new();
+        unsafe { digits.write_num_unchecked(n) };
+        digits
     }
 
-    let (digits, len) = to_digits(n);
+    let digits = to_digits(n as u32);
 
     let mut res = Vec::with_capacity(msg.len());
-    let mut i = len - 1;
+    let mut i = 0;
 
     for b in msg.as_bytes() {
-        unsafe { res.push_unchecked((b + digits.get_unchecked(i) - b'a' + 1) as _) };
-        if i == 0 {
-            i = len - 1;
+        unsafe {
+            res.push_unchecked(
+                (b.wrapping_add(*digits.get_unchecked(i))
+                    .wrapping_sub(b'a' + b'0' - 1)) as _,
+            );
+        }
+        if i == digits.len() - 1 {
+            i = 0;
         } else {
-            i -= 1;
+            i += 1;
         }
     }
 

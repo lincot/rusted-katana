@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/59cfc000aeb2844d16000075/train/rust>
 
+use core::mem::swap;
 use my_prelude::prelude::*;
-use std::mem;
 
 pub fn capitalize(s: &str) -> Vec<String> {
     let cap = 2 * s.len() + s.len() / 3;
@@ -16,12 +16,12 @@ pub fn capitalize(s: &str) -> Vec<String> {
             second.push_unchecked(c);
         }
 
-        mem::swap(&mut first, &mut second);
+        swap(&mut first, &mut second);
 
         chars_count += 1;
     }
     if chars_count % 2 == 1 {
-        mem::swap(&mut first, &mut second);
+        swap(&mut first, &mut second);
     }
 
     vec![first, second]

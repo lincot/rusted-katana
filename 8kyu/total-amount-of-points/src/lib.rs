@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5bb904724c47249b10000131/train/rust>
 
-use std::cmp::Ordering;
+use core::cmp::Ordering;
 
 pub fn points(games: &[String]) -> u32 {
     let mut res = 0;

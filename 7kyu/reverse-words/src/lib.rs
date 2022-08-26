@@ -6,7 +6,7 @@ pub fn reverse_words(str: &str) -> String {
     let mut res = String::with_capacity(str.len());
 
     let mut reversed_words = str.as_bytes().split(|&b| b == b' ').map(|bytes| {
-        unsafe { std::str::from_utf8_unchecked(bytes) }
+        unsafe { core::str::from_utf8_unchecked(bytes) }
             .chars()
             .rev()
     });

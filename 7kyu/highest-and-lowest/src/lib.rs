@@ -6,11 +6,11 @@ pub fn high_and_low(numbers: &str) -> String {
     let mut min = i32::MAX;
     let mut max = i32::MIN;
 
-    for n in numbers
-        .as_bytes()
-        .split(|&b| b == b' ')
-        .map(|s| unsafe { std::str::from_utf8_unchecked(s) }.parse().unwrap())
-    {
+    for n in numbers.as_bytes().split(|&b| b == b' ').map(|s| {
+        unsafe { core::str::from_utf8_unchecked(s) }
+            .parse()
+            .unwrap()
+    }) {
         min = min.min(n);
         max = max.max(n);
     }

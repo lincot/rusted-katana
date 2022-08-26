@@ -27,5 +27,6 @@ cargo clippy --all-features --all-targets --no-deps --quiet --release -- \
     -A clippy::new-without-default \
     -A clippy::many-single-char-names \
     -A clippy::unused-io-amount \
-    -A clippy::type-complexity
+    -A clippy::type-complexity \
+    -A clippy::uninit-assumed-init
 cargo run --package check-katas --release

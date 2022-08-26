@@ -1,5 +1,6 @@
 //! <https://www.codewars.com/kata/5af15a37de4c7f223e00012d/train/rust>
 
+use core::cmp::Reverse;
 use my_prelude::prelude::*;
 
 pub fn men_from_boys(xs: &[i16]) -> Vec<i16> {
@@ -17,7 +18,7 @@ pub fn men_from_boys(xs: &[i16]) -> Vec<i16> {
     boys.sort_unstable();
     boys.dedup();
 
-    men.sort_unstable_by_key(|&v| std::cmp::Reverse(v));
+    men.sort_unstable_by_key(|&v| Reverse(v));
     men.dedup();
 
     unsafe { boys.extend_from_slice_unchecked(&men) };

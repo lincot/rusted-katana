@@ -9,6 +9,7 @@ pub fn digitize(mut n: u64) -> Vec<u8> {
 
     let mut digits = Vec::with_capacity(20);
 
+    // TODO: make a better conversion
     while n != 0 {
         unsafe { digits.push_unchecked((n % 10) as _) };
         n /= 10;

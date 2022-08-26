@@ -15,11 +15,5 @@ pub fn peak(arr: &[u32]) -> Option<usize> {
         unsafe { core::hint::unreachable_unchecked() };
     }
 
-    #[allow(clippy::manual_find)]
-    for i in 0..sums.len() {
-        if sums[i] == sum - arr[i] - sums[i] {
-            return Some(i);
-        }
-    }
-    None
+    (0..arr.len()).find(|&i| sums[i] == sum - arr[i] - sums[i])
 }

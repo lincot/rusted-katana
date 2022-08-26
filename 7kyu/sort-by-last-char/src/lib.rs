@@ -13,7 +13,7 @@ pub fn sort_by_last_char(s: &str) -> Vec<String> {
 
     res.sort_by_cached_key(|s| {
         if s.is_empty() {
-            unsafe { std::hint::unreachable_unchecked() };
+            unsafe { core::hint::unreachable_unchecked() };
         }
         s.as_bytes()[s.len() - 1]
     });

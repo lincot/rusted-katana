@@ -7,16 +7,18 @@ pub fn add_arrays(arr_a: &[i64], arr_b: &[i64]) -> Vec<i64> {
         if n == 0 {
             return vec![0];
         }
-
-        let mut digits = Vec::with_capacity(19);
+        if n == i64::MIN {
+            return vec![-9, 2, 2, 3, 3, 7, 2, 0, 3, 6, 8, 5, 4, 7, 7, 5, 8, 0, 8];
+        }
 
         let (mut n, negative) = if n < 0 { (-n, true) } else { (n, false) };
 
+        let mut digits = Vec::with_capacity(19);
+        // TODO: make a better conversion
         while n != 0 {
             unsafe { digits.push_unchecked(n % 10) };
             n /= 10;
         }
-
         digits.reverse();
 
         if negative {

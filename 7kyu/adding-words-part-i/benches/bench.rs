@@ -2,7 +2,7 @@
 
 extern crate test;
 use adding_words_part_i::Arith;
-use std::ops::Add;
+use core::ops::Add;
 use test::{black_box, Bencher};
 
 #[bench]
