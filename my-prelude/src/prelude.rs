@@ -1,5 +1,3 @@
-use core::mem::MaybeUninit;
-
 pub trait PushUnchecked<T> {
     /// # Safety
     ///
@@ -20,15 +18,56 @@ impl<T> PushUnchecked<T> for Vec<T> {
 impl PushUnchecked<char> for String {
     #[inline]
     unsafe fn push_unchecked(&mut self, ch: char) {
-        match ch.len_utf8() {
-            1 => self.as_mut_vec().push_unchecked(ch as u8),
-            _ => {
-                self.as_mut_vec().extend_from_slice_unchecked(
-                    ch.encode_utf8(&mut MaybeUninit::<[u8; 4]>::uninit().assume_init())
-                        .as_bytes(),
+        let len = self.len();
+        let count = ch.len_utf8();
+        match count {
+            1 => {
+                core::ptr::write(self.as_mut_ptr().add(len), ch as u8);
+            }
+            2 => {
+                core::ptr::write(
+                    self.as_mut_ptr().add(len),
+                    (ch as u32 >> 6 & 0x1F) as u8 | 0b1100_0000,
+                );
+                core::ptr::write(
+                    self.as_mut_ptr().add(len + 1),
+                    (ch as u32 & 0x3F) as u8 | 0b1000_0000,
                 );
             }
-        }
+            3 => {
+                core::ptr::write(
+                    self.as_mut_ptr().add(len),
+                    (ch as u32 >> 12 & 0x0F) as u8 | 0b1110_0000,
+                );
+                core::ptr::write(
+                    self.as_mut_ptr().add(len + 1),
+                    (ch as u32 >> 6 & 0x3F) as u8 | 0b1000_0000,
+                );
+                core::ptr::write(
+                    self.as_mut_ptr().add(len + 2),
+                    (ch as u32 & 0x3F) as u8 | 0b1000_0000,
+                );
+            }
+            _ => {
+                core::ptr::write(
+                    self.as_mut_ptr().add(len),
+                    (ch as u32 >> 18 & 0x07) as u8 | 0b1111_0000,
+                );
+                core::ptr::write(
+                    self.as_mut_ptr().add(len + 1),
+                    (ch as u32 >> 12 & 0x3F) as u8 | 0b1000_0000,
+                );
+                core::ptr::write(
+                    self.as_mut_ptr().add(len + 2),
+                    (ch as u32 >> 6 & 0x3F) as u8 | 0b1000_0000,
+                );
+                core::ptr::write(
+                    self.as_mut_ptr().add(len + 3),
+                    (ch as u32 & 0x3F) as u8 | 0b1000_0000,
+                );
+            }
+        };
+        self.as_mut_vec().set_len(len + count);
     }
 }
 
@@ -112,7 +151,7 @@ impl WriteNumUnchecked for Vec<u8> {
         let len = self.len();
         let written_len = lexical_core::write_unchecked(
             n,
-            core::slice::from_raw_parts_mut(self.as_mut_ptr().add(len), self.capacity() - len),
+            core::slice::from_raw_parts_mut(self.as_mut_ptr().add(len), self.capacity()),
         )
         .len();
         self.set_len(len + written_len);
@@ -133,7 +172,7 @@ impl<const N: usize> WriteNumUnchecked for heapless::Vec<u8, N> {
         let len = self.len();
         let written_len = lexical_core::write_unchecked(
             n,
-            core::slice::from_raw_parts_mut(self.as_mut_ptr().add(len), self.capacity() - len),
+            core::slice::from_raw_parts_mut(self.as_mut_ptr().add(len), self.capacity()),
         )
         .len();
         self.set_len(len + written_len);
