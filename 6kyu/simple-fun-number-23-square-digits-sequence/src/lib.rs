@@ -1,13 +1,16 @@
 //! <https://www.codewars.com/kata/5886d65e427c27afeb0000c1/train/rust>
 
-use rustc_hash::FxHashSet;
-
 pub fn square_digits_sequence(a0: u32) -> usize {
+    assert!(a0 <= 650);
+
     let mut an = a0;
-    let mut seen = FxHashSet::with_capacity_and_hasher(19, Default::default());
+    let mut seen = heapless::FnvIndexSet::<_, 32>::new();
 
     loop {
-        seen.insert(an);
+        if seen.len() == seen.capacity() {
+            unsafe { core::hint::unreachable_unchecked() };
+        }
+        unsafe { seen.insert(an).unwrap_unchecked() };
 
         let mut a_next = 0;
         while an != 0 {

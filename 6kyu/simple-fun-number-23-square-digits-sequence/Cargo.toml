@@ -3,5 +3,5 @@ name = "simple-fun-number-23-square-digits-sequence"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.rustc-hash]
-version = "1.1.0"
+[dependencies.heapless]
+version = "0.7.16"

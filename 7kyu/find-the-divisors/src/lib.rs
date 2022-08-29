@@ -18,7 +18,6 @@ pub fn divisors(integer: u32) -> Result<Vec<u32>, String> {
 }
 
 fn get_divisors(mut n: u32) -> Vec<u32> {
-    // worst cases
     let cap = match n.leading_zeros() {
         30 => 1,   // 2
         29 => 3,   // 6

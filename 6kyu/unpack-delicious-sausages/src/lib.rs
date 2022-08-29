@@ -3,9 +3,8 @@
 use my_prelude::prelude::*;
 
 pub fn unpack_sausages(truck: Vec<Vec<&str>>) -> String {
-    // arbitrary
-    let cap = 8 * truck.len();
-    let mut sausages = Vec::with_capacity(cap);
+    let packages_num = truck.iter().map(Vec::len).sum::<usize>();
+    let mut res = String::with_capacity(20 * (packages_num - packages_num / 5));
 
     let mut undamaged = 0;
     for package in &truck {
@@ -31,30 +30,17 @@ pub fn unpack_sausages(truck: Vec<Vec<&str>>) -> String {
 
             undamaged += 1;
             if undamaged % 5 != 0 {
-                sausages.push(sausage);
+                for _ in 0..4 {
+                    unsafe {
+                        res.push_unchecked(sausage);
+                        res.push_unchecked(' ');
+                    }
+                }
             }
         }
     }
 
-    // worst case
-    let cap = 20 * sausages.len();
-    let mut res = String::with_capacity(cap);
-
-    let mut sausages = sausages.into_iter();
-
-    if let Some(sausage) = sausages.next() {
-        unsafe { res.push_unchecked(sausage) };
-        for _ in 0..3 {
-            unsafe { res.push_unchecked(' ') };
-            unsafe { res.push_unchecked(sausage) };
-        }
-    }
-    for sausage in sausages {
-        for _ in 0..4 {
-            unsafe { res.push_unchecked(' ') };
-            unsafe { res.push_unchecked(sausage) };
-        }
-    }
+    res.pop();
 
     res
 }

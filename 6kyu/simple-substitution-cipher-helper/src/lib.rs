@@ -2,6 +2,7 @@
 
 use my_prelude::prelude::*;
 use rustc_hash::FxHashMap;
+use std::collections::hash_map::Entry;
 
 pub struct Cipher {
     encoder: FxHashMap<char, char>,
@@ -14,15 +15,26 @@ impl Cipher {
         let mut decoder = FxHashMap::with_capacity_and_hasher(map1.len(), Default::default());
 
         for (c1, c2) in map1.chars().zip(map2.chars()) {
-            encoder.insert(c1, c2);
-            decoder.insert(c2, c1);
+            if encoder.len() == encoder.capacity() {
+                unsafe { core::hint::unreachable_unchecked() };
+            }
+            if let Entry::Vacant(e) = encoder.entry(c1) {
+                e.insert(c2);
+            }
+
+            if decoder.len() == decoder.capacity() {
+                unsafe { core::hint::unreachable_unchecked() };
+            }
+            if let Entry::Vacant(e) = decoder.entry(c2) {
+                e.insert(c1);
+            }
         }
 
         Self { encoder, decoder }
     }
 
     pub fn encode(&self, string: &str) -> String {
-        let mut res = String::with_capacity(string.len());
+        let mut res = String::with_capacity(4 * string.len());
         for c in string.chars() {
             unsafe { res.push_unchecked(*self.encoder.get(&c).unwrap_or(&c)) };
         }
@@ -30,7 +42,7 @@ impl Cipher {
     }
 
     pub fn decode(&self, string: &str) -> String {
-        let mut res = String::with_capacity(string.len());
+        let mut res = String::with_capacity(4 * string.len());
         for c in string.chars() {
             unsafe { res.push_unchecked(*self.decoder.get(&c).unwrap_or(&c)) };
         }

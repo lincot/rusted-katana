@@ -5,7 +5,6 @@ use my_prelude::prelude::*;
 pub fn solution(st: &str, limit: usize) -> String {
     const DOTS: &str = "...";
 
-    // worst case capacity
     let cap = (4 * limit).min(st.len()) + DOTS.len();
     let mut res = String::with_capacity(cap);
 

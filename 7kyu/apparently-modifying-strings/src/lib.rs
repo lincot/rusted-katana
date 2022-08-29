@@ -1,32 +1,55 @@
 //! <https://www.codewars.com/kata/5b049d57de4c7f6a6c0001d7/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn apparently(string: &str) -> String {
-    // arbitrary capacity
-    let cap = string.len() + string.len() / 3;
-    let mut res = String::with_capacity(cap);
+    let string = string.as_bytes();
 
-    let words: Vec<_> = string.split_ascii_whitespace().collect();
+    let mut res = Vec::with_capacity(4 * string.len() + string.len() * 2 / 3);
 
-    if let Some(x) = words.first() {
-        res.push_str(x);
-    } else {
-        return res;
-    }
-
-    for i in 1..words.len() {
-        if ["and", "but"].contains(unsafe { words.get_unchecked(i - 1) })
-            && *unsafe { words.get_unchecked(i) } != "apparently"
-        {
-            res.push_str(" apparently");
+    if string.starts_with(b"and") || string.starts_with(b"but") {
+        match string.len() {
+            3 => unsafe {
+                res.extend_from_slice_unchecked(string);
+                res.extend_from_slice_unchecked(b" apparently");
+                return String::from_utf8_unchecked(res);
+            },
+            4 => unsafe {
+                res.extend_from_slice_unchecked(string);
+                return String::from_utf8_unchecked(res);
+            },
+            _ => unsafe {
+                if string[3] == b' '
+                    && !(string[4..].starts_with(b"apparently")
+                        && [None, Some(&b' ')].contains(&string.get(4 + b"apparently".len())))
+                {
+                    res.extend_from_slice_unchecked(&string[..4]);
+                    res.extend_from_slice_unchecked(b"apparently ");
+                    res.push_unchecked(string[4]);
+                } else {
+                    res.extend_from_slice_unchecked(&string[..5]);
+                }
+            },
         }
-
-        res.push(' ');
-        res.push_str(unsafe { words.get_unchecked(i) });
+    } else {
+        unsafe { res.extend_from_slice_unchecked(&string[..string.len().min(5)]) };
     }
 
-    if ["and", "but"].contains(unsafe { words.get_unchecked(words.len() - 1) }) {
-        res.push_str(" apparently");
+    for i in 5..string.len() {
+        unsafe {
+            if [b" and ", b" but "].contains(&string[i - 5..i].try_into().unwrap())
+                && !(string[i..].starts_with(b"apparently")
+                    && [None, Some(&b' ')].contains(&string.get(i + b"apparently".len())))
+            {
+                res.extend_from_slice_unchecked(b"apparently ");
+            }
+            res.push_unchecked(string[i]);
+        }
     }
 
-    res
+    if string.ends_with(b" and") || string.ends_with(b" but") {
+        unsafe { res.extend_from_slice_unchecked(b" apparently") };
+    }
+
+    unsafe { String::from_utf8_unchecked(res) }
 }

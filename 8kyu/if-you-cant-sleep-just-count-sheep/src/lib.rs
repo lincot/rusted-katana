@@ -5,7 +5,7 @@
 use my_prelude::prelude::*;
 
 /// equals to `(1..=n).map(|x| x.to_string().len()).sum::<usize>() as u32`
-fn log10_range_sum(n: u32) -> u32 {
+fn integral_log10(n: u32) -> u32 {
     if n < 10 {
         return n;
     }
@@ -24,7 +24,7 @@ fn log10_range_sum(n: u32) -> u32 {
 pub fn count_sheep(n: u32) -> String {
     const SHEEP: &str = " sheep...";
 
-    let cap = log10_range_sum(n) as usize + SHEEP.len() * n as usize;
+    let cap = integral_log10(n) as usize + SHEEP.len() * n as usize;
     let mut res = String::with_capacity(cap);
 
     for sheep in 1..=n {

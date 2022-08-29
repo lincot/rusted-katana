@@ -1,7 +1,8 @@
 #!/bin/sh
 
 cargo update
-cargo outdated --exit-code 1 || exit
+cargo outdated
+cargo +nightly udeps --quiet 2>/dev/null
 cargo fmt
 cargo clippy --all-features --all-targets --no-deps --quiet --release -- \
     -D clippy::all \
@@ -28,5 +29,6 @@ cargo clippy --all-features --all-targets --no-deps --quiet --release -- \
     -A clippy::many-single-char-names \
     -A clippy::unused-io-amount \
     -A clippy::type-complexity \
-    -A clippy::uninit-assumed-init
+    -A clippy::uninit-assumed-init \
+    -A clippy::zero-sized-map-values
 cargo run --package check-katas --release

@@ -2,7 +2,12 @@
 
 pub fn summy(strng: &str) -> i32 {
     strng
-        .split_ascii_whitespace()
-        .map(|s| s.parse::<i32>().unwrap())
+        .as_bytes()
+        .split(|&b| b == b' ')
+        .map(|s| {
+            unsafe { core::str::from_utf8_unchecked(s) }
+                .parse::<i32>()
+                .unwrap()
+        })
         .sum()
 }

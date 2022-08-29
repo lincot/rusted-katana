@@ -1,15 +1,33 @@
 //! <https://www.codewars.com/kata/5a262cfb8f27f217f700000b/train/rust>
 
-use rustc_hash::FxHashSet;
+use my_prelude::prelude::*;
+use rustc_hash::FxHashMap;
+use std::collections::hash_map::Entry;
 
 pub fn solve(a: &str, b: &str) -> String {
-    let mut map_a = FxHashSet::with_capacity_and_hasher(a.len(), Default::default());
-    map_a.extend(a.chars());
-    let mut map_b = FxHashSet::with_capacity_and_hasher(b.len(), Default::default());
-    map_b.extend(b.chars());
+    let mut map_a = FxHashMap::with_capacity_and_hasher(a.len(), Default::default());
+    for c in a.chars() {
+        if map_a.len() == map_a.capacity() {
+            unsafe { core::hint::unreachable_unchecked() };
+        }
+        if let Entry::Vacant(e) = map_a.entry(c) {
+            e.insert(());
+        }
+    }
+    let mut map_b = FxHashMap::with_capacity_and_hasher(b.len(), Default::default());
+    for c in b.chars() {
+        if map_b.len() == map_b.capacity() {
+            unsafe { core::hint::unreachable_unchecked() };
+        }
+        if let Entry::Vacant(e) = map_b.entry(c) {
+            e.insert(());
+        }
+    }
 
     let mut res = String::with_capacity(a.len() + b.len());
-    res.extend(a.chars().filter(|c| !map_b.contains(c)));
-    res.extend(b.chars().filter(|c| !map_a.contains(c)));
+    unsafe {
+        res.extend_unchecked(a.chars().filter(|c| !map_b.contains_key(c)));
+        res.extend_unchecked(b.chars().filter(|c| !map_a.contains_key(c)));
+    }
     res
 }

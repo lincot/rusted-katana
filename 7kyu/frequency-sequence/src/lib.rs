@@ -4,7 +4,6 @@ use my_prelude::prelude::*;
 use rustc_hash::FxHashMap;
 
 pub fn freq_seq(s: &str, sep: &str) -> String {
-    // worst case capacity
     let cap = s.len();
     let mut counts = FxHashMap::with_capacity_and_hasher(cap, Default::default());
     for c in s.chars() {

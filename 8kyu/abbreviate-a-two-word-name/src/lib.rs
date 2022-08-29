@@ -19,7 +19,6 @@ pub fn abbrev_name(name: &str) -> String {
     let last = name[space_pos + 1..].chars().next();
     let last = unsafe { last.unwrap_unchecked() };
 
-    // worst case capacity
     let cap = 6 + 1 + 6;
     let mut res = String::with_capacity(cap);
 

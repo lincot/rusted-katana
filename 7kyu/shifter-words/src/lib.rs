@@ -1,14 +1,28 @@
 //! <https://www.codewars.com/kata/603b2bb1c7646d000f900083/train/rust>
 
-use rustc_hash::FxHashSet;
+use rustc_hash::FxHashMap;
+use std::collections::hash_map::Entry;
 
 pub fn shifter(s: &str) -> usize {
-    // arbitraty capacity
-    let cap = s.len() / 4;
-    let mut set = FxHashSet::with_capacity_and_hasher(cap, Default::default());
-    set.extend(
-        s.split_ascii_whitespace()
-            .filter(|word| word.bytes().all(|b| b"HINOSXZMW".contains(&b))),
-    );
+    if s.is_empty() {
+        return 0;
+    }
+
+    let mut set = FxHashMap::with_capacity_and_hasher(s.len() / 2 + 1, Default::default());
+
+    for word in s
+        .as_bytes()
+        .split(|&b| b == b' ')
+        .map(|bytes| unsafe { core::str::from_utf8_unchecked(bytes) })
+        .filter(|word| word.bytes().all(|b| b"HINOSXZMW".contains(&b)))
+    {
+        if set.len() == set.capacity() {
+            unsafe { core::hint::unreachable_unchecked() };
+        }
+        if let Entry::Vacant(e) = set.entry(word) {
+            e.insert(());
+        }
+    }
+
     set.len()
 }
