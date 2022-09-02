@@ -6,7 +6,7 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let a1 = black_box(&[
+    let a1 = black_box(vec![
         "hoqq",
         "bbllkw",
         "oox",
@@ -18,6 +18,6 @@ fn bench(bencher: &mut Bencher) {
         "qqquuhii",
         "dvvvwz",
     ]);
-    let a2 = black_box(&["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"]);
-    bencher.iter(|| mx_dif_lg(a1.to_vec(), a2.to_vec()));
+    let a2 = black_box(vec!["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"]);
+    bencher.iter(|| mx_dif_lg(a1.clone(), a2.clone()));
 }

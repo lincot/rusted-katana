@@ -6,6 +6,7 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let input = black_box("milkshakepizzachickenfriescokeburgerpizzasandwichmilkshakepizza");
-    bencher.iter(|| get_order(input.into()));
+    let input =
+        black_box("milkshakepizzachickenfriescokeburgerpizzasandwichmilkshakepizza".to_string());
+    bencher.iter(|| get_order(input.clone()));
 }

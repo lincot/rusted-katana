@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5917f22dd2563a36a200009c/train/rust>
 
+use core::mem::{transmute, MaybeUninit};
+
 #[derive(PartialEq, Eq)]
 pub enum Void {}
 
@@ -60,8 +62,30 @@ pub fn iso_tuple<A: 'static, B: 'static, C: 'static, D: 'static>(
 pub fn iso_vec<A: 'static, B: 'static>(i: ISO<A, B>) -> ISO<Vec<A>, Vec<B>> {
     let (a_to_b, b_to_a) = i;
     iso(
-        move |v: Vec<_>| v.into_iter().map(&a_to_b).collect(),
-        move |v: Vec<_>| v.into_iter().map(&b_to_a).collect(),
+        move |v: Vec<_>| {
+            let mut res = Vec::with_capacity(v.len());
+            unsafe { res.set_len(v.len()) };
+            let mut res_ptr = res.as_mut_ptr();
+            for a in v {
+                unsafe {
+                    *res_ptr = MaybeUninit::new(a_to_b(a));
+                    res_ptr = res_ptr.add(1);
+                }
+            }
+            unsafe { transmute(res) }
+        },
+        move |v: Vec<_>| {
+            let mut res = Vec::with_capacity(v.len());
+            unsafe { res.set_len(v.len()) };
+            let mut res_ptr = res.as_mut_ptr();
+            for b in v {
+                unsafe {
+                    *res_ptr = MaybeUninit::new(b_to_a(b));
+                    res_ptr = res_ptr.add(1);
+                }
+            }
+            unsafe { transmute(res) }
+        },
     )
 }
 

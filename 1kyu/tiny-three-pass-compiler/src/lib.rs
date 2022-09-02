@@ -171,9 +171,8 @@ mod parse {
                 }
                 Token::ParenOpen => {
                     let expr = Self::parse_expr(arg_names, tokens, None);
-                    assert_eq!(
-                        tokens.next(),
-                        Some(Token::ParenClose),
+                    assert!(
+                        tokens.next() == Some(Token::ParenClose),
                         "no matching paren for open paren found"
                     );
                     expr

@@ -1,13 +1,15 @@
 //! <https://www.codewars.com/kata/554ca54ffa7d91b236000023/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn delete_nth(lst: &[u8], n: usize) -> Vec<u8> {
     let mut counts = [0; u8::MAX as usize + 1];
-
-    lst.iter()
-        .copied()
-        .filter(|&x| {
-            counts[x as usize] += 1;
-            counts[x as usize] <= n
-        })
-        .collect()
+    let mut res = Vec::with_capacity(lst.len());
+    for &x in lst {
+        counts[x as usize] += 1;
+        if counts[x as usize] <= n {
+            unsafe { res.push_unchecked(x) };
+        }
+    }
+    res
 }

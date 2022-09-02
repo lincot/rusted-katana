@@ -1,7 +1,12 @@
 //! <https://www.codewars.com/kata/5a2c22271f7f709eaa0005d3/train/rust>
 
+use my_prelude::prelude::*;
+
 pub fn solve(s: &str) -> String {
-    let chars: Vec<_> = s.chars().collect();
+    let mut chars = Vec::with_capacity(s.len());
+    for c in s.chars() {
+        unsafe { chars.push_unchecked(c) };
+    }
 
     if chars.len() <= 1 {
         return "OK".into();

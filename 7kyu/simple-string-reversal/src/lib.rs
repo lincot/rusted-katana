@@ -26,5 +26,9 @@ pub fn solve(s: &str) -> String {
         j -= 1;
     }
 
-    chars.iter().collect()
+    let mut res = String::with_capacity(s.len());
+    for c in chars {
+        unsafe { res.push_unchecked(c) };
+    }
+    res
 }

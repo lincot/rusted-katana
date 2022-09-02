@@ -2,5 +2,18 @@
 
 pub fn product_array(arr: &[u64]) -> Vec<u64> {
     let prod: u64 = arr.iter().product();
-    arr.iter().map(|x| prod / x).collect()
+    assert!(prod != 0);
+    let mut res = Vec::with_capacity(arr.len());
+    unsafe { res.set_len(arr.len()) };
+    let mut res_ptr = res.as_mut_ptr();
+    for &x in arr {
+        if x == 0 {
+            unsafe { core::hint::unreachable_unchecked() };
+        }
+        unsafe {
+            *res_ptr = prod / x;
+            res_ptr = res_ptr.add(1);
+        }
+    }
+    res
 }

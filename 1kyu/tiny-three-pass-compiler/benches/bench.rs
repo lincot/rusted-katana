@@ -12,27 +12,21 @@ use tiny_three_pass_compiler::{
 fn bench_compile(bencher: &mut Bencher) {
     let program = black_box("[ x y z ] ( 2*3*x + 5*y - 3*z ) / (1 + 3 + 2*2)");
     let mut compiler = Compiler::new();
-    bencher.iter(|| {
-        black_box(compiler.compile(program));
-    });
+    bencher.iter(|| compiler.compile(program));
 }
 
 #[bench]
 fn bench_tokenize(bencher: &mut Bencher) {
     let program = black_box("[ x y z ] ( 2*3*x + 5*y - 3*z ) / (1 + 3 + 2*2)");
     let compiler = Compiler::new();
-    bencher.iter(|| {
-        black_box(compiler.tokenize(program));
-    });
+    bencher.iter(|| compiler.tokenize(program));
 }
 
 #[bench]
 fn bench_pass1(bencher: &mut Bencher) {
     let program = black_box("[ x y z ] ( 2*3*x + 5*y - 3*z ) / (1 + 3 + 2*2)");
     let mut compiler = Compiler::new();
-    bencher.iter(|| {
-        black_box(compiler.pass1(program));
-    });
+    bencher.iter(|| compiler.pass1(program));
 }
 
 #[bench]
@@ -80,9 +74,7 @@ fn bench_pass2(bencher: &mut Bencher) {
     ));
     let ast = black_box(&ast);
     let mut compiler = Compiler::new();
-    bencher.iter(|| {
-        black_box(compiler.pass2(ast));
-    });
+    bencher.iter(|| compiler.pass2(ast));
 }
 
 #[bench]
@@ -130,7 +122,5 @@ fn bench_pass3(bencher: &mut Bencher) {
     ));
     let ast = black_box(&ast);
     let mut compiler = Compiler::new();
-    bencher.iter(|| {
-        black_box(compiler.pass3(ast));
-    });
+    bencher.iter(|| compiler.pass3(ast));
 }

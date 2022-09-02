@@ -5,7 +5,7 @@ use my_prelude::prelude::*;
 pub fn spoonerize(words: &str) -> String {
     let first_len = words.chars().next().unwrap().len_utf8();
     let second_pos = words.bytes().position(|b| b == b' ').unwrap() + 1;
-    assert_ne!(second_pos, 1);
+    assert!(second_pos != 1);
     let second_len = words[second_pos..].chars().next().unwrap().len_utf8();
 
     let mut res = String::with_capacity(words.len());

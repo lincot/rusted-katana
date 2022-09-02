@@ -2,12 +2,23 @@
 
 use my_prelude::prelude::*;
 use rustc_hash::FxHashMap;
+use std::collections::hash_map::Entry;
 
 pub fn freq_seq(s: &str, sep: &str) -> String {
     let cap = s.len();
     let mut counts = FxHashMap::with_capacity_and_hasher(cap, Default::default());
     for c in s.chars() {
-        *counts.entry(c).or_insert(0usize) += 1;
+        if counts.len() == counts.capacity() {
+            unsafe { core::hint::unreachable_unchecked() };
+        }
+        match counts.entry(c) {
+            Entry::Occupied(mut e) => {
+                *e.get_mut() += 1;
+            }
+            Entry::Vacant(e) => {
+                e.insert(1);
+            }
+        }
     }
 
     let cap = (20 + sep.len()) * s.len();

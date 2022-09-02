@@ -7,7 +7,7 @@ use test::{black_box, Bencher};
 #[bench]
 fn bench_same_length(bencher: &mut Bencher) {
     let strng = black_box("cyBmigfJMk6z");
-    let arr = black_box(&[
+    let arr = black_box(vec![
         "Mk6zcyBmigfJ",
         "fJMk6zcyBmig",
         "JMk6zcyBmigf",
@@ -21,13 +21,13 @@ fn bench_same_length(bencher: &mut Bencher) {
         "BmigfJMk6zcy",
         "yBmigfJMk6zc",
     ]);
-    bencher.iter(|| contain_all_rots(strng, arr.to_vec()));
+    bencher.iter(|| contain_all_rots(strng, arr.clone()));
 }
 
 #[bench]
 fn bench_different_length(bencher: &mut Bencher) {
     let strng = black_box("bsjq");
-    let arr = black_box(&[
+    let arr = black_box(vec![
         "bsjq",
         "qbsj",
         "sjqb",
@@ -35,5 +35,5 @@ fn bench_different_length(bencher: &mut Bencher) {
         "jqbs",
         "sjqbsjqbsjqbsjqbsjqbsjqb",
     ]);
-    bencher.iter(|| contain_all_rots(strng, arr.to_vec()));
+    bencher.iter(|| contain_all_rots(strng, arr.clone()));
 }

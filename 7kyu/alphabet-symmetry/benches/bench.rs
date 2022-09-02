@@ -10,6 +10,10 @@ fn bench(bencher: &mut Bencher) {
         "IAMDEFANDJKL".into(),
         "thedefgh".into(),
         "xyzDEFghijabc".into(),
+        "encode".into(),
+        "abc".into(),
+        "abcdefghsomething".into(),
+        "somethingsomethingsomethingsomethingsomethingsomething".into(),
     ];
     let strings = black_box(&strings);
     bencher.iter(|| {

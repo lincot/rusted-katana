@@ -6,9 +6,6 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let input_sets = black_box(vec![
-        ['B', 'b'].iter().copied().collect(),
-        ['C', 'm', 'f'].iter().copied().collect(),
-    ]);
+    let input_sets = black_box(vec![['B', 'b'].into(), ['C', 'm', 'f'].into()]);
     bencher.iter(|| destroy(input_sets.clone()));
 }

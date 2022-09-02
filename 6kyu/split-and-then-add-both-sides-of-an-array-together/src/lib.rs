@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5946a0a64a2c5b596500019a/train/rust>
 
 pub fn split_and_add(arr: &[u32], n: usize) -> Vec<u32> {
-    assert_ne!(arr.len(), 0);
+    assert!(!arr.is_empty());
     let mut arr = arr.to_vec();
 
     for _ in 0..(n as u32).min(usize::BITS - (arr.len() - 1).leading_zeros()) {

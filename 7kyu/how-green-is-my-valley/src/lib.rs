@@ -7,6 +7,7 @@ pub fn make_valley(mut arr: Vec<i32>) -> Vec<i32> {
 
     let len = arr.len();
     let mut res = Vec::with_capacity(len);
+    unsafe { res.set_len(len) };
 
     for i in 0..len / 2 {
         unsafe {
@@ -20,8 +21,6 @@ pub fn make_valley(mut arr: Vec<i32>) -> Vec<i32> {
             *res.get_unchecked_mut(len / 2) = *arr.get_unchecked(len - 1);
         }
     }
-
-    unsafe { res.set_len(len) };
 
     res
 }

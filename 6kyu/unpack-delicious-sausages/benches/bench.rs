@@ -6,11 +6,10 @@ use unpack_delicious_sausages::unpack_sausages;
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let truck = [
+    let truck = black_box(vec![
         vec!["(----)", "[IIII]", "_HHH_"],
         vec!["IuI", "[))))]", "zz"],
         vec!["[@@@@]", "UwU", "[IlII]"],
-    ];
-    let truck = black_box(&truck);
-    bencher.iter(|| unpack_sausages(truck.to_vec()));
+    ]);
+    bencher.iter(|| unpack_sausages(truck.clone()));
 }

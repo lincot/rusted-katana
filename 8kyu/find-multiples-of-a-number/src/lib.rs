@@ -3,9 +3,7 @@
 use my_prelude::prelude::*;
 
 pub fn find_multiples(n: u32, limit: u32) -> Vec<u32> {
-    let cap = (limit / n) as usize;
-    let mut res = Vec::with_capacity(cap);
-
+    let mut res = Vec::with_capacity((limit / n) as _);
     let mut i = n;
     while i <= limit {
         unsafe {
@@ -13,6 +11,5 @@ pub fn find_multiples(n: u32, limit: u32) -> Vec<u32> {
         }
         i += n;
     }
-
     res
 }

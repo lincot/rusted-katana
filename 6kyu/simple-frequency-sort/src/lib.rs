@@ -3,26 +3,41 @@
 use core::cmp::Reverse;
 use my_prelude::prelude::*;
 use rustc_hash::FxHashMap;
+use std::collections::hash_map::Entry;
 
 pub fn solve(vec: &[i32]) -> Vec<i32> {
     let mut counts = FxHashMap::with_capacity_and_hasher(vec.len(), Default::default());
-
     for &x in vec {
-        *counts.entry(x).or_insert(0usize) += 1;
+        if counts.len() == counts.capacity() {
+            unsafe { core::hint::unreachable_unchecked() };
+        }
+        match counts.entry(x) {
+            Entry::Occupied(mut e) => {
+                *e.get_mut() += 1;
+            }
+            Entry::Vacant(e) => {
+                e.insert(1);
+            }
+        }
     }
 
-    let mut counts: Vec<_> = counts.into_iter().collect();
-
-    counts.sort_unstable_by_key(|&(x, _)| x);
-    counts.sort_by_key(|&(_, c)| Reverse(c));
+    let mut counts_vec = Vec::with_capacity(counts.len());
+    unsafe { counts_vec.set_len(counts.len()) };
+    let mut counts_vec_ptr = counts_vec.as_mut_ptr();
+    for x in counts {
+        unsafe {
+            *counts_vec_ptr = x;
+            counts_vec_ptr = counts_vec_ptr.add(1);
+        }
+    }
+    counts_vec.sort_unstable_by_key(|&(x, _)| x);
+    counts_vec.sort_by_key(|&(_, c)| Reverse(c));
 
     let mut res = Vec::with_capacity(vec.len());
-
-    for (x, c) in counts {
+    for (x, c) in counts_vec {
         for _ in 0..c {
             unsafe { res.push_unchecked(x) };
         }
     }
-
     res
 }

@@ -15,7 +15,5 @@ fn bench(bencher: &mut Bencher) {
         68, 111, 158,
     ]);
     let n = black_box(3);
-    bencher.iter(|| {
-        each_cons(arr, n);
-    });
+    bencher.iter(|| each_cons(arr, n));
 }

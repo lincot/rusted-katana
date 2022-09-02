@@ -3,7 +3,7 @@
 use my_prelude::prelude::*;
 
 pub fn extra_perfect(n: u32) -> Vec<u32> {
-    let mut res = Vec::with_capacity(((n + 1) / 2) as usize);
+    let mut res = Vec::with_capacity(((n + 1) / 2) as _);
     let mut i = 1;
     while i <= n {
         unsafe { res.push_unchecked(i) };

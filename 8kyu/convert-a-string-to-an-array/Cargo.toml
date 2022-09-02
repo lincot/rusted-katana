@@ -2,3 +2,6 @@
 name = "convert-a-string-to-an-array"
 version = "0.1.0"
 edition = "2021"
+
+[dependencies.my-prelude]
+path = "../../my-prelude"

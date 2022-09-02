@@ -3,15 +3,18 @@
 use my_prelude::prelude::*;
 
 pub fn doubles(s: &str) -> String {
-    let mut res = Vec::with_capacity(s.len());
-
+    let mut chars = Vec::with_capacity(s.len());
     for c in s.chars() {
-        if res.last() == Some(&c) {
-            res.pop();
+        if chars.last() == Some(&c) {
+            chars.pop();
         } else {
-            unsafe { res.push_unchecked(c) };
+            unsafe { chars.push_unchecked(c) };
         }
     }
 
-    res.into_iter().collect()
+    let mut res = String::with_capacity(s.len());
+    for c in chars {
+        unsafe { res.push_unchecked(c) };
+    }
+    res
 }
