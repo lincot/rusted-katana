@@ -2,12 +2,8 @@
 
 # rusted katana
 
-fast solutions to all [Codewars](https://www.codewars.com/r/HLmVMg) katas
+fastest solutions to all [Codewars](https://www.codewars.com/r/HLmVMg) katas
 written in Rust
-
-## why?
-
-it's not enough to solve a problem, it needs to be solved well
 
 ## rules
 
@@ -17,7 +13,7 @@ it's not enough to solve a problem, it needs to be solved well
 
 - solutions are safe, meaning that they will panic or return nonsense
 on nonsense input rather than causing undefined behavior;
-*nevertheless, there are 401 `unsafe` blocks*
+*nevertheless, there are 392 `unsafe` blocks*
 
 - even though most tests on Codewars contain only ASCII input,
 they use Rust's standard UTF-8–encoded strings,

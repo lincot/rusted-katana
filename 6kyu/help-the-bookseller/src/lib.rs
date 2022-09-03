@@ -19,7 +19,7 @@ pub fn stock_list(list_art: Vec<&str>, list_cat: Vec<&str>) -> String {
             if art.starts_with(cat) {
                 let space_pos = art.bytes().position(|b| b == b' ').unwrap();
                 sum += unsafe { art.get_unchecked(space_pos + 1..) }
-                    .parse::<usize>()
+                    .parse::<u64>()
                     .unwrap();
             }
         }
@@ -40,7 +40,7 @@ pub fn stock_list(list_art: Vec<&str>, list_cat: Vec<&str>) -> String {
             if art.starts_with(cat) {
                 let space_pos = art.bytes().position(|b| b == b' ').unwrap();
                 sum += unsafe { art.get_unchecked(space_pos + 1..) }
-                    .parse::<usize>()
+                    .parse::<u64>()
                     .unwrap();
             }
         }

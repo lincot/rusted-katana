@@ -32,5 +32,6 @@ cargo clippy --all-features --all-targets --no-deps --quiet --release -- \
     -A clippy::zero-sized-map-values \
     -A clippy::uninit-vec \
     -A clippy::inline-always \
-    -A clippy::transmute-undefined-repr &
+    -A clippy::transmute-undefined-repr \
+    -A clippy::cognitive-complexity &
 cargo run --package check-katas --release
