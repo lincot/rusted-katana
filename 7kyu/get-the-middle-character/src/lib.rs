@@ -4,8 +4,10 @@ use my_prelude::prelude::*;
 
 pub fn get_middle(s: &str) -> &str {
     let mut char_indices = Vec::with_capacity(s.len());
-    for (i, _) in s.char_indices() {
-        unsafe { char_indices.push_unchecked(i) };
+    for i in 0..s.len() {
+        if s.as_bytes()[i] as i8 >= -64 {
+            unsafe { char_indices.push_unchecked(i) };
+        }
     }
 
     if char_indices.len() < 3 {

@@ -6,12 +6,12 @@ pub fn part_list(arr: Vec<&str>) -> String {
     match arr.len() {
         0 => return String::new(),
         1 => {
-            let mut res = Vec::with_capacity(2 + arr[0].len());
+            let mut res = String::with_capacity(2 + arr[0].len());
             unsafe {
-                res.push_unchecked(b'(');
-                res.extend_from_slice_unchecked(arr[0].as_bytes());
-                res.push_unchecked(b')');
-                return String::from_utf8_unchecked(res);
+                res.push_unchecked('(');
+                res.push_str_unchecked(arr[0]);
+                res.push_unchecked(')');
+                return res;
             }
         }
         _ => {}

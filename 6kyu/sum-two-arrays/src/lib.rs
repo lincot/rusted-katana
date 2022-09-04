@@ -13,22 +13,22 @@ pub fn add_arrays(arr_a: &[i64], arr_b: &[i64]) -> Vec<i64> {
 
         let (mut n, negative) = if n < 0 { (-n, true) } else { (n, false) };
 
-        let mut digits = Vec::with_capacity(19);
+        let mut res = Vec::with_capacity(19);
         // TODO: make a better conversion
         while n != 0 {
-            unsafe { digits.push_unchecked(n % 10) };
+            unsafe { res.push_unchecked(n % 10) };
             n /= 10;
         }
-        digits.reverse();
+        res.reverse();
 
         if negative {
-            if digits.is_empty() {
+            if res.is_empty() {
                 unsafe { core::hint::unreachable_unchecked() };
             }
-            digits[0] = -digits[0];
+            res[0] = -res[0];
         }
 
-        digits
+        res
     }
 
     fn from_digits(digits: &[i64]) -> i64 {

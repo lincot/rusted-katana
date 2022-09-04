@@ -4,7 +4,6 @@ use my_prelude::prelude::*;
 
 pub fn remove_duplicate_words(s: &str) -> String {
     let mut words = Vec::with_capacity(s.len() / 2 + 1);
-
     for word in s
         .as_bytes()
         .split(|&b| b == b' ')
@@ -16,7 +15,6 @@ pub fn remove_duplicate_words(s: &str) -> String {
     }
 
     let mut res = String::with_capacity(s.len());
-
     if let Some(first) = words.first() {
         unsafe { res.push_str_unchecked(first) };
     }
@@ -26,6 +24,5 @@ pub fn remove_duplicate_words(s: &str) -> String {
             res.push_str_unchecked(word);
         }
     }
-
     res
 }

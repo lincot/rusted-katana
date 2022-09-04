@@ -127,6 +127,9 @@ fn get_kata(id: [u8; 24]) -> attohttpc::Result<([u8; 1024], usize)> {
     if written < buf.len() {
         written += response.read(&mut buf[written..])?;
     }
+    if written < buf.len() {
+        written += response.read(&mut buf[written..])?;
+    }
 
     Ok((buf, written))
 }

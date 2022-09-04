@@ -1,5 +1,6 @@
 //! <https://www.codewars.com/kata/5b180e9fedaa564a7000009a/train/rust>
 
+use core::mem::{forget, size_of};
 use my_prelude::prelude::*;
 
 pub fn solve(s: &str) -> String {
@@ -11,8 +12,13 @@ pub fn solve(s: &str) -> String {
     let lowercase_count = chars.iter().filter(|&&(_, l, _)| l).count();
     let uppercase_count = chars.iter().filter(|&&(_, _, u)| u).count();
 
-    let cap = 2 * s.len() + s.len() / 3;
-    let mut res = String::with_capacity(cap);
+    let mut res = unsafe {
+        String::from_raw_parts(
+            chars.as_mut_ptr().cast(),
+            0,
+            size_of::<(char, bool, bool)>() * chars.capacity(),
+        )
+    };
 
     if uppercase_count > lowercase_count {
         for &(c, _, u) in &chars {
@@ -31,6 +37,8 @@ pub fn solve(s: &str) -> String {
             }
         }
     }
+
+    forget(chars);
 
     res
 }
