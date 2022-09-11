@@ -4,10 +4,8 @@ use my_prelude::prelude::*;
 
 pub fn remove_parentheses(s: &str) -> String {
     let mut res = Vec::with_capacity(s.len());
-
-    let mut bytes = s.bytes();
-
-    while let Some(b) = bytes.next() {
+    let mut bytes = s.as_bytes().iter();
+    while let Some(&b) = bytes.next() {
         if b == b'(' {
             let mut unclosed = 1usize;
             for b in bytes.by_ref() {
@@ -25,6 +23,5 @@ pub fn remove_parentheses(s: &str) -> String {
             unsafe { res.push_unchecked(b) };
         }
     }
-
     unsafe { String::from_utf8_unchecked(res) }
 }

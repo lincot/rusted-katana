@@ -337,20 +337,12 @@ impl Compiler {
     }
 
     pub fn tokenize(&self, program: &str) -> Vec<String> {
-        let program = program.as_bytes();
-
         let mut res = Vec::with_capacity(program.len() * 2 / 3);
-
         let mut last_space_or_symbol = 0;
-
-        for (i, &c) in program.iter().enumerate() {
+        for (i, &c) in program.as_bytes().iter().enumerate() {
             if c < b'0' || [b']', b'['].contains(&c) {
                 if last_space_or_symbol + 1 < i {
-                    res.push(unsafe {
-                        String::from_utf8_unchecked(
-                            program.get_unchecked(last_space_or_symbol + 1..i).to_vec(),
-                        )
-                    });
+                    res.push(unsafe { program.get_unchecked(last_space_or_symbol + 1..i) }.into());
                 }
 
                 if c != b' ' {
@@ -360,7 +352,6 @@ impl Compiler {
                 last_space_or_symbol = i;
             }
         }
-
         res
     }
 

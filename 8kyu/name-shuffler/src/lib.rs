@@ -3,22 +3,15 @@
 use my_prelude::prelude::*;
 
 pub fn name_shuffler(s: &str) -> String {
-    let s = s.as_bytes();
-    let mut res = Vec::with_capacity(s.len());
+    let mut res = String::with_capacity(s.len());
 
-    let mut first_len = 0;
-    for &b in s {
-        if b == b' ' {
-            break;
-        }
-        first_len += 1;
-    }
+    let first_len = s.as_bytes().iter().position(|&b| b == b' ').unwrap();
 
     unsafe {
-        res.extend_from_slice_unchecked(s.get_unchecked(first_len + 1..));
-        res.push_unchecked(b' ');
-        res.extend_from_slice_unchecked(s.get_unchecked(..first_len));
+        res.push_str_unchecked(s.get_unchecked(first_len + 1..));
+        res.as_mut_vec().push_unchecked(b' ');
+        res.push_str_unchecked(s.get_unchecked(..first_len));
     }
 
-    unsafe { String::from_utf8_unchecked(res) }
+    res
 }

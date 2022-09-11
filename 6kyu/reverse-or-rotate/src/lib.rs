@@ -11,7 +11,6 @@ pub fn revrot(s: &str, c: usize) -> String {
     assert!(s.iter().all(|b| (b'0'..=b'9').contains(b)));
 
     let mut res = Vec::with_capacity(s.len());
-
     let mut end = c;
     while end <= s.len() {
         let chunk = unsafe { s.get_unchecked(end - c..end) };
@@ -28,6 +27,5 @@ pub fn revrot(s: &str, c: usize) -> String {
 
         end += c;
     }
-
     unsafe { String::from_utf8_unchecked(res) }
 }

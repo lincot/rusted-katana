@@ -8,37 +8,37 @@ pub fn accum(s: &str) -> String {
     } else {
         s.len() * (s.len() + 1) / 2 + s.len() - 1
     };
-    let mut res = Vec::with_capacity(cap);
+    let mut res = String::with_capacity(cap);
 
     let mut s = s.bytes();
 
     match s.next().unwrap() {
         b @ b'a'..=b'z' => {
-            unsafe { res.push_unchecked(b - (b'a' - b'A')) };
+            unsafe { res.as_mut_vec().push_unchecked(b - (b'a' - b'A')) };
         }
         b @ b'A'..=b'Z' => {
-            unsafe { res.push_unchecked(b) };
+            unsafe { res.as_mut_vec().push_unchecked(b) };
         }
         _ => panic!(),
     }
     for (i, b) in (1..).zip(s) {
-        unsafe { res.push_unchecked(b'-') };
+        unsafe { res.push_unchecked('-') };
         match b {
             b'a'..=b'z' => {
-                unsafe { res.push_unchecked(b - (b'a' - b'A')) };
+                unsafe { res.as_mut_vec().push_unchecked(b - (b'a' - b'A')) };
                 for _ in 0..i {
-                    unsafe { res.push_unchecked(b) };
+                    unsafe { res.as_mut_vec().push_unchecked(b) };
                 }
             }
             b'A'..=b'Z' => {
-                unsafe { res.push_unchecked(b) };
+                unsafe { res.as_mut_vec().push_unchecked(b) };
                 for _ in 0..i {
-                    unsafe { res.push_unchecked(b + (b'a' - b'A')) };
+                    unsafe { res.as_mut_vec().push_unchecked(b + (b'a' - b'A')) };
                 }
             }
             _ => panic!(),
         }
     }
 
-    unsafe { String::from_utf8_unchecked(res) }
+    res
 }

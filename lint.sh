@@ -1,8 +1,9 @@
 #!/bin/sh
 
-(cargo update && cargo outdated) &
-cargo +nightly udeps --quiet 2>/dev/null &
-cargo fmt &
+cargo update
+cargo outdated
+cargo +nightly udeps --quiet 2>/dev/null
+cargo fmt
 cargo clippy --all-features --all-targets --no-deps --quiet --release -- \
     -D clippy::all \
     -D clippy::pedantic \
@@ -28,10 +29,9 @@ cargo clippy --all-features --all-targets --no-deps --quiet --release -- \
     -A clippy::many-single-char-names \
     -A clippy::unused-io-amount \
     -A clippy::type-complexity \
-    -A clippy::uninit-assumed-init \
     -A clippy::zero-sized-map-values \
     -A clippy::uninit-vec \
     -A clippy::inline-always \
     -A clippy::transmute-undefined-repr \
-    -A clippy::cognitive-complexity &
-cargo run --package check-katas --release
+    -A clippy::cognitive-complexity
+RUSTFLAGS="$RUSTFLAGS -A invalid_value" cargo run --package check-katas --release

@@ -98,11 +98,7 @@ fn get_divisors(mut n: u32) -> Vec<u32> {
 
 unsafe fn push_unchecked_with_multiples(vec: &mut Vec<u32>, x: u32, n_multiples: usize) {
     vec.push_unchecked(x);
-
-    if n_multiples > vec.capacity().wrapping_sub(vec.len()) {
-        core::hint::unreachable_unchecked();
-    }
-    vec.extend_from_within(..n_multiples);
+    vec.extend_from_within_unchecked(0..n_multiples);
     vec.iter_mut().rev().take(n_multiples).for_each(|n| {
         *n *= x;
     });

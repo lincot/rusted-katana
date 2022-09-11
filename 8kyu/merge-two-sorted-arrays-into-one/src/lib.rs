@@ -66,10 +66,10 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
             }
             return res;
         }
+        let mut e1 = *arr1.get_unchecked(i1);
+        let mut e2 = *arr2.get_unchecked(i2);
         match (desc1, desc2) {
             (false, false) => {
-                let e1 = *arr1.get_unchecked(i1);
-                let e2 = *arr2.get_unchecked(i2);
                 if e1 <= e2 {
                     res.push_unchecked(e1);
                     if i1 == arr1.len() - 1 {
@@ -79,6 +79,7 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
                         return res;
                     }
                     i1 += 1;
+                    e1 = *arr1.get_unchecked(i1);
                 } else {
                     res.push_unchecked(e2);
                     if i2 == arr2.len() - 1 {
@@ -88,10 +89,9 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
                         return res;
                     }
                     i2 += 1;
+                    e2 = *arr2.get_unchecked(i2);
                 }
                 loop {
-                    let e1 = *arr1.get_unchecked(i1);
-                    let e2 = *arr2.get_unchecked(i2);
                     if e1 <= e2 {
                         push_unchecked_if_not_last_unchecked(&mut res, e1);
                         if i1 == arr1.len() - 1 {
@@ -101,6 +101,7 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
                             return res;
                         }
                         i1 += 1;
+                        e1 = *arr1.get_unchecked(i1);
                     } else {
                         push_unchecked_if_not_last_unchecked(&mut res, e2);
                         if i2 == arr2.len() - 1 {
@@ -110,12 +111,11 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
                             return res;
                         }
                         i2 += 1;
+                        e2 = *arr2.get_unchecked(i2);
                     }
                 }
             }
             (false, true) => {
-                let e1 = *arr1.get_unchecked(i1);
-                let e2 = *arr2.get_unchecked(i2);
                 if e1 <= e2 {
                     res.push_unchecked(e1);
                     if i1 == arr1.len() - 1 {
@@ -125,6 +125,7 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
                         return res;
                     }
                     i1 += 1;
+                    e1 = *arr1.get_unchecked(i1);
                 } else {
                     res.push_unchecked(e2);
                     if i2 == 0 {
@@ -134,10 +135,9 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
                         return res;
                     }
                     i2 -= 1;
+                    e2 = *arr2.get_unchecked(i2);
                 }
                 loop {
-                    let e1 = *arr1.get_unchecked(i1);
-                    let e2 = *arr2.get_unchecked(i2);
                     if e1 <= e2 {
                         push_unchecked_if_not_last_unchecked(&mut res, e1);
                         if i1 == arr1.len() - 1 {
@@ -147,6 +147,7 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
                             return res;
                         }
                         i1 += 1;
+                        e1 = *arr1.get_unchecked(i1);
                     } else {
                         push_unchecked_if_not_last_unchecked(&mut res, e2);
                         if i2 == 0 {
@@ -156,12 +157,11 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
                             return res;
                         }
                         i2 -= 1;
+                        e2 = *arr2.get_unchecked(i2);
                     }
                 }
             }
             (true, false) => {
-                let e1 = *arr1.get_unchecked(i1);
-                let e2 = *arr2.get_unchecked(i2);
                 if e1 <= e2 {
                     res.push_unchecked(e1);
                     if i1 == 0 {
@@ -171,6 +171,7 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
                         return res;
                     }
                     i1 -= 1;
+                    e1 = *arr1.get_unchecked(i1);
                 } else {
                     res.push_unchecked(e2);
                     if i2 == arr2.len() - 1 {
@@ -180,10 +181,9 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
                         return res;
                     }
                     i2 += 1;
+                    e2 = *arr2.get_unchecked(i2);
                 }
                 loop {
-                    let e1 = *arr1.get_unchecked(i1);
-                    let e2 = *arr2.get_unchecked(i2);
                     if e1 <= e2 {
                         push_unchecked_if_not_last_unchecked(&mut res, e1);
                         if i1 == 0 {
@@ -193,6 +193,7 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
                             return res;
                         }
                         i1 -= 1;
+                        e1 = *arr1.get_unchecked(i1);
                     } else {
                         push_unchecked_if_not_last_unchecked(&mut res, e2);
                         if i2 == arr2.len() - 1 {
@@ -202,12 +203,11 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
                             return res;
                         }
                         i2 += 1;
+                        e2 = *arr2.get_unchecked(i2);
                     }
                 }
             }
             (true, true) => {
-                let e1 = *arr1.get_unchecked(i1);
-                let e2 = *arr2.get_unchecked(i2);
                 if e1 <= e2 {
                     res.push_unchecked(e1);
                     if i1 == 0 {
@@ -217,6 +217,7 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
                         return res;
                     }
                     i1 -= 1;
+                    e1 = *arr1.get_unchecked(i1);
                 } else {
                     res.push_unchecked(e2);
                     if i2 == 0 {
@@ -226,10 +227,9 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
                         return res;
                     }
                     i2 -= 1;
+                    e2 = *arr2.get_unchecked(i2);
                 }
                 loop {
-                    let e1 = *arr1.get_unchecked(i1);
-                    let e2 = *arr2.get_unchecked(i2);
                     if e1 <= e2 {
                         push_unchecked_if_not_last_unchecked(&mut res, e1);
                         if i1 == 0 {
@@ -239,6 +239,7 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
                             return res;
                         }
                         i1 -= 1;
+                        e1 = *arr1.get_unchecked(i1);
                     } else {
                         push_unchecked_if_not_last_unchecked(&mut res, e2);
                         if i2 == 0 {
@@ -248,6 +249,7 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
                             return res;
                         }
                         i2 -= 1;
+                        e2 = *arr2.get_unchecked(i2);
                     }
                 }
             }

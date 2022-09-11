@@ -17,31 +17,27 @@ pub fn part_list(arr: Vec<&str>) -> String {
         _ => {}
     }
 
-    let cap = arr.iter().map(|s| s.len()).sum::<usize>() + arr.len() - 1;
-    let mut joined = Vec::with_capacity(cap);
+    let mut joined =
+        String::with_capacity(arr.iter().map(|s| s.len()).sum::<usize>() + arr.len() - 1);
     let mut comma_poses = Vec::with_capacity(arr.len() - 1);
-
     for s in arr[..arr.len() - 1].iter() {
         unsafe {
-            joined.extend_from_slice_unchecked(s.as_bytes());
+            joined.push_str_unchecked(s);
             comma_poses.push_unchecked(joined.len());
-            joined.push_unchecked(b' ');
+            joined.push_unchecked(' ');
         }
     }
+    unsafe { joined.push_str_unchecked(arr[arr.len() - 1]) };
 
-    unsafe { joined.extend_from_slice_unchecked(arr[arr.len() - 1].as_bytes()) };
-
-    let mut res = Vec::with_capacity(comma_poses.len() * (joined.len() + 3));
-
+    let mut res = String::with_capacity(comma_poses.len() * (joined.len() + 3));
     for comma_pos in comma_poses {
         unsafe {
-            res.push_unchecked(b'(');
-            res.extend_from_slice_unchecked(joined.get_unchecked(..comma_pos));
-            res.push_unchecked(b',');
-            res.extend_from_slice_unchecked(joined.get_unchecked(comma_pos..));
-            res.push_unchecked(b')');
+            res.push_unchecked('(');
+            res.push_str_unchecked(joined.get_unchecked(..comma_pos));
+            res.push_unchecked(',');
+            res.push_str_unchecked(joined.get_unchecked(comma_pos..));
+            res.push_unchecked(')');
         }
     }
-
-    unsafe { String::from_utf8_unchecked(res) }
+    res
 }

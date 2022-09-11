@@ -3,11 +3,11 @@
 use my_prelude::prelude::*;
 
 pub fn disemvowel(s: &str) -> String {
-    let mut res = Vec::with_capacity(s.len());
+    let mut res = String::with_capacity(s.len());
     for b in s.bytes() {
         if !b"eaiouEAIOU".contains(&b) {
-            unsafe { res.push_unchecked(b) };
+            unsafe { res.as_mut_vec().push_unchecked(b) };
         }
     }
-    unsafe { String::from_utf8_unchecked(res) }
+    res
 }

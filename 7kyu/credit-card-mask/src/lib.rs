@@ -15,12 +15,12 @@ pub fn maskify(cc: &str) -> String {
         }
     }
 
-    let mut res = Vec::with_capacity(hidden_chars_count + shown_chars_len);
+    let mut res = String::with_capacity(hidden_chars_count + shown_chars_len);
     unsafe {
         for _ in 0..hidden_chars_count {
-            res.push_unchecked(b'#');
+            res.push_unchecked('#');
         }
-        res.extend_from_slice_unchecked(cc.as_bytes().get_unchecked(cc.len() - shown_chars_len..));
+        res.push_str_unchecked(cc.get_unchecked(cc.len() - shown_chars_len..));
     }
-    unsafe { String::from_utf8_unchecked(res) }
+    res
 }

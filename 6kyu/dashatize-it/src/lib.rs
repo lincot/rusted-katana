@@ -21,22 +21,22 @@ pub fn dashatize(mut n: i64) -> String {
 
     let digits = to_digits(n);
 
-    let mut res = Vec::with_capacity(2 * digits.len());
+    let mut res = String::with_capacity(2 * digits.len());
 
     let first = digits[0];
-    unsafe { res.push_unchecked(first) };
+    unsafe { res.as_mut_vec().push_unchecked(first) };
     let mut was_odd = first % 2 == 1;
 
     for &d in &digits[1..] {
         let is_odd = d % 2 == 1;
 
         if was_odd || is_odd {
-            unsafe { res.push_unchecked(b'-') };
+            unsafe { res.push_unchecked('-') };
         }
-        unsafe { res.push_unchecked(d) };
+        unsafe { res.as_mut_vec().push_unchecked(d) };
 
         was_odd = is_odd;
     }
 
-    unsafe { String::from_utf8_unchecked(res) }
+    res
 }

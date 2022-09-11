@@ -3,14 +3,14 @@
 use my_prelude::prelude::*;
 
 pub fn print(n: i32) -> Option<String> {
-    unsafe fn print_line(v: &mut Vec<u8>, width: usize, max_width: usize) {
+    unsafe fn print_line(v: &mut String, width: usize, max_width: usize) {
         for _ in 0..(max_width - width) / 2 {
-            v.push_unchecked(b' ');
+            v.push_unchecked(' ');
         }
         for _ in 0..width {
-            v.push_unchecked(b'*');
+            v.push_unchecked('*');
         }
-        v.push_unchecked(b'\n');
+        v.push_unchecked('\n');
     }
 
     if n < 0 || n % 2 == 0 {
@@ -19,7 +19,7 @@ pub fn print(n: i32) -> Option<String> {
     let n = n as usize;
 
     let cap = n.pow(2) + 1;
-    let mut res = Vec::with_capacity(cap);
+    let mut res = String::with_capacity(cap);
 
     let mut width = 1;
     while width <= n {
@@ -33,5 +33,5 @@ pub fn print(n: i32) -> Option<String> {
         unsafe { print_line(&mut res, width, n) };
     }
 
-    Some(unsafe { String::from_utf8_unchecked(res) })
+    Some(res)
 }

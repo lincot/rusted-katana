@@ -1,13 +1,16 @@
+use core::ops::Range;
+
 pub trait PushUnchecked<T> {
     /// # Safety
     ///
-    /// `length` needs to be equal to `capacity`
+    /// `self.len()` must be `< self.capacity()`
     unsafe fn push_unchecked(&mut self, value: T);
 }
 
 impl<T> PushUnchecked<T> for Vec<T> {
     #[inline]
     unsafe fn push_unchecked(&mut self, value: T) {
+        debug_assert!(self.len() < self.capacity());
         if self.len() == self.capacity() {
             core::hint::unreachable_unchecked();
         }
@@ -16,10 +19,14 @@ impl<T> PushUnchecked<T> for Vec<T> {
 }
 
 impl PushUnchecked<char> for String {
+    /// # Safety
+    ///
+    /// `self.len() + ch.len_utf8()` must be `<= self.capacity()`
     #[inline]
     unsafe fn push_unchecked(&mut self, ch: char) {
         let len = self.len();
         let count = ch.len_utf8();
+        debug_assert!(len + count <= self.capacity());
         match count {
             1 => {
                 core::ptr::write(self.as_mut_ptr().add(len), ch as u8);
@@ -74,7 +81,7 @@ impl PushUnchecked<char> for String {
 pub trait ExtendUnchecked<T, I> {
     /// # Safety
     ///
-    /// `length + iter.length` needs to be less than or equal to `capacity`
+    /// `self.len() + iter.count()` must be `<= self.capacity()`
     unsafe fn extend_unchecked(&mut self, iter: I);
 }
 
@@ -90,15 +97,16 @@ impl<I: IntoIterator<Item = char>> ExtendUnchecked<char, I> for String {
 pub trait ExtendFromSliceUnchecked<T> {
     /// # Safety
     ///
-    /// `length + other.length` needs to be less than or equal to `capacity`
+    /// `self.len() + other.len()` must be `<= self.capacity()`
     unsafe fn extend_from_slice_unchecked(&mut self, other: &[T]);
 }
 
 impl<T: Copy> ExtendFromSliceUnchecked<T> for Vec<T> {
     #[inline]
     unsafe fn extend_from_slice_unchecked(&mut self, other: &[T]) {
-        let count = other.len();
         let len = self.len();
+        let count = other.len();
+        debug_assert!(len + count <= self.capacity());
         core::ptr::copy_nonoverlapping(other.as_ptr(), self.as_mut_ptr().add(len), count);
         self.set_len(len + count);
     }
@@ -108,17 +116,37 @@ impl<T: Copy> ExtendFromSliceUnchecked<T> for Vec<T> {
 impl<T: Copy, const N: usize> ExtendFromSliceUnchecked<T> for heapless::Vec<T, N> {
     #[inline]
     unsafe fn extend_from_slice_unchecked(&mut self, other: &[T]) {
-        let count = other.len();
         let len = self.len();
+        let count = other.len();
+        debug_assert!(len + count <= self.capacity());
         core::ptr::copy_nonoverlapping(other.as_ptr(), self.as_mut_ptr().add(len), count);
         self.set_len(len + count);
+    }
+}
+
+pub trait ExtendFromWithinUnchecked {
+    /// # Safety
+    ///
+    /// - `src` needs to be valid index
+    /// - `self.capacity() - self.len()` must be `>= src.len()`
+    unsafe fn extend_from_within_unchecked(&mut self, src: Range<usize>);
+}
+
+impl<T: Copy> ExtendFromWithinUnchecked for Vec<T> {
+    unsafe fn extend_from_within_unchecked(&mut self, src: Range<usize>) {
+        let count = src.len();
+        debug_assert!(src.start <= src.end || src.end <= self.len());
+        debug_assert!(self.capacity() - self.len() >= count);
+        let source = unsafe { self.get_unchecked(src) };
+        core::ptr::copy_nonoverlapping(source.as_ptr(), self.as_mut_ptr().add(self.len()), count);
+        self.set_len(self.len() + count);
     }
 }
 
 pub trait PushStrUnchecked {
     /// # Safety
     ///
-    /// `length + string.length` needs to be less than or equal to `capacity`
+    /// `self.len() + string.len()` must be `<= self.capacity()`
     unsafe fn push_str_unchecked(&mut self, string: &str);
 }
 
@@ -133,13 +161,13 @@ impl PushStrUnchecked for String {
 pub trait WriteNumUnchecked {
     /// # Safety
     ///
-    /// `length + n.to_string().len()` needs to be less than or equal to `capacity`
+    /// `self.len() + n.to_string().len()` must be `<= self.capacity()`
     #[cfg(feature = "lexical-core")]
     unsafe fn write_num_unchecked(&mut self, n: impl lexical_core::ToLexical);
 
     /// # Safety
     ///
-    /// `length + n.to_string().len()` needs to be less than or equal to `capacity`
+    /// `self.len() + n.to_string().len()` must be `<= self.capacity()`
     #[cfg(not(feature = "lexical-core"))]
     unsafe fn write_num_unchecked(&mut self, n: impl ToString);
 }
@@ -149,6 +177,7 @@ impl WriteNumUnchecked for Vec<u8> {
     #[inline]
     unsafe fn write_num_unchecked(&mut self, n: impl lexical_core::ToLexical) {
         let len = self.len();
+        debug_assert!(len + n.to_string().len() <= self.capacity());
         let written_len = lexical_core::write_unchecked(
             n,
             core::slice::from_raw_parts_mut(self.as_mut_ptr().add(len), self.capacity()),
@@ -170,6 +199,7 @@ impl<const N: usize> WriteNumUnchecked for heapless::Vec<u8, N> {
     #[inline]
     unsafe fn write_num_unchecked(&mut self, n: impl lexical_core::ToLexical) {
         let len = self.len();
+        debug_assert!(len + n.to_string().len() <= self.capacity());
         let written_len = lexical_core::write_unchecked(
             n,
             core::slice::from_raw_parts_mut(self.as_mut_ptr().add(len), self.capacity()),
