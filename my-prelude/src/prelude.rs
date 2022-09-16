@@ -137,7 +137,7 @@ impl<T: Copy> ExtendFromWithinUnchecked for Vec<T> {
         let count = src.len();
         debug_assert!(src.start <= src.end || src.end <= self.len());
         debug_assert!(self.capacity() - self.len() >= count);
-        let source = unsafe { self.get_unchecked(src) };
+        let source = self.get_unchecked(src);
         core::ptr::copy_nonoverlapping(source.as_ptr(), self.as_mut_ptr().add(self.len()), count);
         self.set_len(self.len() + count);
     }
