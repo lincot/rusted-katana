@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/57cebe1dc6fdc20c57000ac9/train/rust>
 
+#![no_std]
+
 pub fn find_short(s: &str) -> u32 {
     s.as_bytes()
         .split(|&b| b == b' ')

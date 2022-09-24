@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5e2596a9ad937f002e510435/train/rust>
 
+#![no_std]
+
 pub fn infected(s: &str) -> f64 {
     let mut total_population = 0usize;
     let mut total_infected = 0usize;

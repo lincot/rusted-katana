@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/544aed4c4a30184e960010f4/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
+use libm::sqrt;
 use my_prelude::prelude::*;
 
 pub fn divisors(integer: u32) -> Result<Vec<u32>, String> {
@@ -61,7 +66,7 @@ fn get_divisors(mut n: u32) -> Vec<u32> {
     n >>= pow_of_2;
 
     let mut x = 3;
-    let mut n_sqrt = (n as f64).sqrt() as u32;
+    let mut n_sqrt = sqrt(n as f64) as u32;
     while x <= n_sqrt {
         let len_before = res.len();
         let mut n_changed = false;
@@ -79,7 +84,7 @@ fn get_divisors(mut n: u32) -> Vec<u32> {
 
         x += 2;
         if n_changed {
-            n_sqrt = (n as f64).sqrt() as u32;
+            n_sqrt = sqrt(n as f64) as u32;
         }
     }
 

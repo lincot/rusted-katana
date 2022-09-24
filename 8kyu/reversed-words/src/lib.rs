@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/51c8991dee245d7ddf00000e/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use my_prelude::prelude::*;
 
 pub fn reverse_words(words: &str) -> String {

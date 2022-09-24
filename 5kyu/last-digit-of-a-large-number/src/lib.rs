@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5511b2f550906349a70004e1/train/rust>
 
+#![no_std]
+
 const TABLE: [[u8; 4]; 10] = [
     [0, 0, 0, 0],
     [1, 1, 1, 1],

@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/55225023e1be1ec8bc000390/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn greet(input: &str) -> String {

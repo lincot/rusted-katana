@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/515e188a311df01cba000003/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
+
 pub fn get_planet_name(id: u32) -> String {
     match id {
         1 => "Mercury",

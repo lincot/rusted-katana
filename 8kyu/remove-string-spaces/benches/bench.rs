@@ -1,6 +1,9 @@
+#![no_std]
 #![feature(test)]
 
+extern crate alloc;
 extern crate test;
+use alloc::string::ToString;
 use remove_string_spaces::no_space;
 use test::{black_box, Bencher};
 

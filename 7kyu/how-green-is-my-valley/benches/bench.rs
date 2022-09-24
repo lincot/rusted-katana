@@ -1,6 +1,9 @@
+#![no_std]
 #![feature(test)]
 
+extern crate alloc;
 extern crate test;
+use alloc::vec;
 use how_green_is_my_valley::make_valley;
 use test::{black_box, Bencher};
 

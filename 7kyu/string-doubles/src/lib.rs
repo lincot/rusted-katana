@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5a145ab08ba9148dd6000094/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use my_prelude::prelude::*;
 
 pub fn doubles(s: &str) -> String {

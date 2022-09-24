@@ -5,3 +5,6 @@ edition = "2021"
 
 [dependencies.my-prelude]
 path = "../../my-prelude"
+
+[dependencies.libm]
+version = "0.2.5"

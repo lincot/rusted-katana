@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/599c20626bd8795ce900001d/train/rust>
 
+#![no_std]
+
 pub fn summy(strng: &str) -> i32 {
     strng
         .as_bytes()

@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5f5802bf4c2cc4001a6f859e/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use my_prelude::prelude::*;
 
 pub fn grid_index(grid: &[Vec<char>], indices: &[usize]) -> String {

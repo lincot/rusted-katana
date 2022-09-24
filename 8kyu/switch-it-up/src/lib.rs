@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5808dcb8f0ed42ae34000031/train/rust>
 
+#![no_std]
+
 pub const fn switch_it_up(n: usize) -> &'static str {
     match n {
         0 => "Zero",

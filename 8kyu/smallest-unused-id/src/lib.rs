@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/55eea63119278d571d00006a/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+
 fn my_binary_search(arr: &[usize]) -> usize {
     let mut size = arr.len();
     let mut left = 0;

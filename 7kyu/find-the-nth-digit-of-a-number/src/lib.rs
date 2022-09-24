@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/577b9960df78c19bca00007e/train/rust>
 
+#![no_std]
+
 pub const fn find_digit(num: i32, nth: i32) -> i32 {
     if nth <= 0 {
         -1

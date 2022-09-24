@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5a2fd38b55519ed98f0000ce/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn multi_table(n: u64) -> String {

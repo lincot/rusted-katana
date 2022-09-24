@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5963c18ecb97be020b0000a2/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn derive(coefficient: u32, exponent: u32) -> String {

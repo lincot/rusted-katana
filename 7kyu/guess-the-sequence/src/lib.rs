@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5b45e4b3f41dd36bf9000090/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
 use my_prelude::prelude::*;
 
 pub fn sequence(x: u8) -> Vec<u8> {

@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/57e3f79c9cb119374600046b/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 unsafe fn push_unchecked_uppercase(s: &mut String, c: char) {

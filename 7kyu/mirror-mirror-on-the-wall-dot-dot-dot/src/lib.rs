@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5f55ecd770692e001484af7d/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
 use my_prelude::prelude::*;
 
 pub fn mirror(list: &[i32]) -> Vec<i32> {

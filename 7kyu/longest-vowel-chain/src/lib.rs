@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/59c5f4e9d751df43cf000035/train/rust>
 
+#![no_std]
+
 pub fn longest_vowel_chain(s: &str) -> usize {
     let mut max = 0;
     let mut cur = 0;

@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5886d65e427c27afeb0000c1/train/rust>
 
+#![no_std]
+
 pub fn square_digits_sequence(a0: u32) -> usize {
     assert!(a0 <= 650);
 

@@ -1,6 +1,11 @@
 //! <https://www.codewars.com/kata/59f6a855bee845d3cd000046/train/rust>
 
+#![no_std]
+
 mod preloaded;
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use preloaded::{Coffee, Milk, Sugar};
 
 pub struct CoffeeBuilder(Coffee);

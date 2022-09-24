@@ -1,9 +1,15 @@
 //! <https://www.codewars.com/kata/5a8d2bf60025e9163c0000bc/train/rust>
 
-use core::cmp::Reverse;
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
+use core::{cmp::Reverse, hash::BuildHasherDefault};
+use hashbrown::{hash_map::Entry, HashMap};
 use my_prelude::prelude::*;
-use rustc_hash::FxHashMap;
-use std::collections::hash_map::Entry;
+use rustc_hash::FxHasher;
+
+type FxHashMap<K, V> = HashMap<K, V, BuildHasherDefault<FxHasher>>;
 
 pub fn solve(vec: &[i32]) -> Vec<i32> {
     let mut counts = FxHashMap::with_capacity_and_hasher(vec.len(), Default::default());

@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/57873ab5e55533a2890000c7/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn time_correct(time_str: &str) -> Option<String> {

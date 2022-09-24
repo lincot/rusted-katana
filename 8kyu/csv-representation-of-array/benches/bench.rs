@@ -1,6 +1,9 @@
+#![no_std]
 #![feature(test)]
 
+extern crate alloc;
 extern crate test;
+use alloc::vec;
 use csv_representation_of_array::to_csv_text;
 use test::{black_box, Bencher};
 

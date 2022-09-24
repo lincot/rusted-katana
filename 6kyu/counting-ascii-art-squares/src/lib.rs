@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5bf71b94e50d1b00590000fe/train/rust>
 
+#![no_std]
+
 pub fn count_squares(lines: &[&str]) -> usize {
     let mut res = 0;
     for i in 0..lines.len() {

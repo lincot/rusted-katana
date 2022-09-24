@@ -1,6 +1,9 @@
+#![no_std]
 #![feature(test)]
 
+extern crate alloc;
 extern crate test;
+use alloc::vec;
 use beginner_lost_without_a_map::maps;
 use test::{black_box, Bencher};
 

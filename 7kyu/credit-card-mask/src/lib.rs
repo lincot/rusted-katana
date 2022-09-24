@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5412509bd436bd33920011bc/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn maskify(cc: &str) -> String {

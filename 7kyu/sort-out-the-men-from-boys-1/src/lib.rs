@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5af15a37de4c7f223e00012d/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
 use core::cmp::Reverse;
 use my_prelude::prelude::*;
 

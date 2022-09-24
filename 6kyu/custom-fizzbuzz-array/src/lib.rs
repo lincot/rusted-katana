@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5355a811a93a501adf000ab7/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use lexical::to_string;
 use my_prelude::prelude::*;
 

@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5aa736a455f906981800360d/train/rust>
 
+#![no_std]
+
 pub fn feast(beast: &str, dish: &str) -> bool {
     let mut beast = beast.chars();
     let mut dish = dish.chars();

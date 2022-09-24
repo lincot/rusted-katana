@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/591588d49f4056e13f000001/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn hq9(code: &str) -> Option<String> {

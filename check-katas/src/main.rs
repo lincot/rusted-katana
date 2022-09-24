@@ -1,57 +1,59 @@
+#![allow(invalid_value)]
+
 use core::mem::MaybeUninit;
 use my_prelude::prelude::*;
 use std::{
-    fs::File,
+    fs::{read_dir, File},
     io::{self, Read, Write},
 };
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+fn main() {
     let mut stdout = io::stdout().lock();
 
     let mut kyu_path = *b"7kyu";
 
     for k in b'1'..=b'8' {
         kyu_path[0] = k;
-        let rd = std::fs::read_dir(unsafe { core::str::from_utf8_unchecked(&kyu_path) })?;
-        stdout.write(b"checking ")?;
-        stdout.write(&[k])?;
-        stdout.write(b" kyu\n")?;
-        stdout.flush()?;
+        let rd = read_dir(unsafe { core::str::from_utf8_unchecked(&kyu_path) }).unwrap();
+        stdout.write(b"checking ").unwrap();
+        stdout.write(&[k]).unwrap();
+        stdout.write(b" kyu\n").unwrap();
+        stdout.flush().unwrap();
         for d in rd {
-            let d = d?.path().into_os_string();
+            let d = d.unwrap().path().into_os_string();
             let d = d.to_str().unwrap();
-            let mut path = String::with_capacity(d.len() + "/src/lib.rs".len());
+            let mut path = String::with_capacity(d.len() + "/benches/bench.rs".len());
             unsafe {
                 path.push_str_unchecked(d);
                 path.push_str_unchecked("/src/lib.rs");
             }
 
-            let mut f = File::open(&path)?;
+            let mut f = File::open(&path).unwrap();
             let mut buf = [0;
-                "//! <https://www.codewars.com/kata/53da3dbb4a5168369a0000fe/train/rust>".len()];
-            f.read(&mut buf)?;
+                "//! <https://www.codewars.com/kata/53da3dbb4a5168369a0000fe/train/rust>\n\n#![no_std]".len()];
+            f.read(&mut buf).unwrap();
             if !(buf.starts_with(b"//! <https://www.codewars.com/kata/")
-                && buf.ends_with(b"/train/rust>"))
+                && buf.ends_with(b"/train/rust>\n\n#![no_std]"))
             {
-                stdout.write(path.as_bytes())?;
-                stdout.write(b" has invalid url")?;
-                stdout.write(b"\n")?;
-                stdout.flush()?;
+                stdout.write(path.as_bytes()).unwrap();
+                stdout.write(b" has invalid url or std").unwrap();
+                stdout.write(b"\n").unwrap();
+                stdout.flush().unwrap();
             }
             let id = &buf["//! <https://www.codewars.com/kata/".len()
                 .."//! <https://www.codewars.com/kata/53da3dbb4a5168369a0000fe".len()];
             let id = id.try_into().unwrap();
 
-            let (kata, kata_len) = get_kata(id)?;
+            let (kata, kata_len) = get_kata(id).unwrap();
             let kata = unsafe { core::str::from_utf8_unchecked(kata.get_unchecked(..kata_len)) };
 
             let kyu = get_kyu(kata);
             if k != kyu {
-                stdout.write(d.as_bytes())?;
-                stdout.write(b" has obsolete kyu: should be ")?;
-                stdout.write(&[kyu])?;
-                stdout.write(b"\n")?;
-                stdout.flush()?;
+                stdout.write(d.as_bytes()).unwrap();
+                stdout.write(b" has obsolete kyu: should be ").unwrap();
+                stdout.write(&[kyu]).unwrap();
+                stdout.write(b"\n").unwrap();
+                stdout.flush().unwrap();
             }
 
             let slug = get_slug(kata);
@@ -61,21 +63,36 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
             let directory_name = &d[kyu_path.len() + 1..];
             if directory_name != slug {
-                stdout.write(d.as_bytes())?;
-                stdout.write(b" has obsolete directory name: should be ")?;
-                stdout.write(slug.as_bytes())?;
-                stdout.write(b"\n")?;
-                stdout.flush()?;
+                stdout.write(d.as_bytes()).unwrap();
+                stdout
+                    .write(b" has obsolete directory name: should be ")
+                    .unwrap();
+                stdout.write(slug.as_bytes()).unwrap();
+                stdout.write(b"\n").unwrap();
+                stdout.flush().unwrap();
             }
 
-            unsafe {
-                let slice = path.as_bytes_mut().get_unchecked_mut(d.len()..);
-                if b"/src/lib.rs".len() != slice.len() {
-                    core::hint::unreachable_unchecked();
+            for string in ["/benches/bench.rs", "/tests/test.rs"] {
+                path.truncate(d.len());
+                unsafe { path.push_str_unchecked(string) };
+                let mut f = match File::open(&path) {
+                    Ok(f) => f,
+                    Err(e) if e.kind() == io::ErrorKind::NotFound => continue,
+                    e => e.unwrap(),
+                };
+                let mut buf = [0; "#![no_std]".len()];
+                f.read(&mut buf).unwrap();
+                if !buf.starts_with(b"#![no_std]") {
+                    stdout.write(path.as_bytes()).unwrap();
+                    stdout.write(b" has std").unwrap();
+                    stdout.write(b"\n").unwrap();
+                    stdout.flush().unwrap();
                 }
-                slice.copy_from_slice(b"/Cargo.toml");
             }
-            let (buf, name_pos, name_end) = get_crate_name(&path)?;
+
+            path.truncate(d.len());
+            unsafe { path.push_str_unchecked("/Cargo.toml") };
+            let (buf, name_pos, name_end) = get_crate_name(&path).unwrap();
             let crate_name =
                 unsafe { core::str::from_utf8_unchecked(buf.get_unchecked(name_pos..name_end)) };
             if crate_name.as_bytes() != slug.as_bytes() {
@@ -83,27 +100,29 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     if !(crate_name.starts_with("solution-")
                         && &crate_name.as_bytes()["solution-".len()..] == slug.as_bytes())
                     {
-                        stdout.write(d.as_bytes())?;
-                        stdout.write(b" has obsolete crate name: should be \"solution-")?;
-                        stdout.write(slug.as_bytes())?;
-                        stdout.write(b"\"\n")?;
-                        stdout.flush()?;
+                        stdout.write(d.as_bytes()).unwrap();
+                        stdout
+                            .write(b" has obsolete crate name: should be \"solution-")
+                            .unwrap();
+                        stdout.write(slug.as_bytes()).unwrap();
+                        stdout.write(b"\"\n").unwrap();
+                        stdout.flush().unwrap();
                     }
                 } else {
-                    stdout.write(d.as_bytes())?;
-                    stdout.write(b" has obsolete crate name: should be \"")?;
-                    stdout.write(slug.as_bytes())?;
-                    stdout.write(b"\"\n")?;
-                    stdout.flush()?;
+                    stdout.write(d.as_bytes()).unwrap();
+                    stdout
+                        .write(b" has obsolete crate name: should be \"")
+                        .unwrap();
+                    stdout.write(slug.as_bytes()).unwrap();
+                    stdout.write(b"\"\n").unwrap();
+                    stdout.flush().unwrap();
                 }
             }
         }
     }
-
-    Ok(())
 }
 
-fn get_crate_name(path: &str) -> std::io::Result<([u8; 128], usize, usize)> {
+fn get_crate_name(path: &str) -> io::Result<([u8; 128], usize, usize)> {
     let mut f = File::open(path)?;
     let mut buf = unsafe { MaybeUninit::<[u8; 128]>::uninit().assume_init() };
     f.read(&mut buf)?;

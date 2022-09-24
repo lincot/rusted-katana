@@ -1,6 +1,9 @@
+#![no_std]
 #![feature(test)]
 
+extern crate alloc;
 extern crate test;
+use alloc::string::ToString;
 use moves_in_squared_strings_i::{hor_mirror, vert_mirror};
 use test::{black_box, Bencher};
 

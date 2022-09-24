@@ -1,6 +1,9 @@
+#![no_std]
 #![feature(test)]
 
+extern crate alloc;
 extern crate test;
+use alloc::vec;
 use operations_with_sequence::calc;
 use test::{black_box, Bencher};
 

@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/5a25ac6ac5e284cfbe000111/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
+
 pub fn triangle(row_str: &str) -> String {
     assert!(!row_str.is_empty());
 

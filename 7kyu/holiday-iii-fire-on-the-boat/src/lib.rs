@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/57e8fba2f11c647abc000944/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn fire_fight(s: &str) -> String {

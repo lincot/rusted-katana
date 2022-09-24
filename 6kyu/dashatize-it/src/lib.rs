@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/58223370aef9fc03fd000071/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn dashatize(mut n: i64) -> String {

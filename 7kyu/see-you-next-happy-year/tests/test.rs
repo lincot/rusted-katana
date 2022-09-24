@@ -1,3 +1,7 @@
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use core::fmt::Write;
 use see_you_next_happy_year::next_happy_year;
 

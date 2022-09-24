@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5917f22dd2563a36a200009c/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{boxed::Box, vec, vec::Vec};
 use core::mem::{transmute, MaybeUninit};
 
 #[derive(PartialEq, Eq)]

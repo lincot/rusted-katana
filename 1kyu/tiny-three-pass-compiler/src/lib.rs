@@ -1,11 +1,18 @@
 //! <https://www.codewars.com/kata/5265b0885fda8eac5900093b/train/rust>
 
+#![no_std]
+
 // TODO: this solution is WIP
 
-use core::mem::swap;
-use core::ops::{Add, Div, Mul, Sub};
+extern crate alloc;
+use alloc::{boxed::Box, format, string::String, vec, vec::Vec};
+use core::{
+    mem::swap,
+    ops::{Add, Div, Mul, Sub},
+};
 
 mod parse {
+    use alloc::{boxed::Box, string::String, vec::Vec};
     use core::ops::{Add, Div, Mul, Sub};
 
     #[derive(Debug, PartialEq, Eq, Clone, Copy)]
@@ -366,6 +373,7 @@ impl Compiler {
         to_dumb_ast(MyAst::parse(program))
     }
 
+    #[allow(clippy::only_used_in_recursion)]
     pub fn pass2(&mut self, ast: &Ast) -> Ast {
         match *ast {
             Ast::UnOp(..) => ast.clone(),

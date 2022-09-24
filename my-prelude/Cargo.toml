@@ -10,7 +10,7 @@ optional = true
 [dependencies.lexical-core]
 version = "0.8.5"
 default-features = false
-features = ["std", "write-integers"]
+features = ["write-integers"]
 optional = true
 
 [features]

@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/56e3cd1d93c3d940e50006a4/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
 use core::cmp::Reverse;
 
 pub fn make_valley(mut arr: Vec<i32>) -> Vec<i32> {

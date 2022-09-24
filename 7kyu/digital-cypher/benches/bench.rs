@@ -1,6 +1,9 @@
+#![no_std]
 #![feature(test)]
 
+extern crate alloc;
 extern crate test;
+use alloc::string::ToString;
 use digital_cypher::encode;
 use test::{black_box, Bencher};
 

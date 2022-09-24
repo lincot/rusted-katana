@@ -1,7 +1,12 @@
 //! <https://www.codewars.com/kata/603b2bb1c7646d000f900083/train/rust>
 
-use rustc_hash::FxHashMap;
-use std::collections::hash_map::Entry;
+#![no_std]
+
+use core::hash::BuildHasherDefault;
+use hashbrown::{hash_map::Entry, HashMap};
+use rustc_hash::FxHasher;
+
+type FxHashMap<K, V> = HashMap<K, V, BuildHasherDefault<FxHasher>>;
 
 pub fn shifter(s: &str) -> usize {
     if s.is_empty() {

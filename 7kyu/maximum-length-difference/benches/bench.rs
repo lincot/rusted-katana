@@ -1,6 +1,9 @@
+#![no_std]
 #![feature(test)]
 
+extern crate alloc;
 extern crate test;
+use alloc::vec;
 use maximum_length_difference::mx_dif_lg;
 use test::{black_box, Bencher};
 

@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/57ebaa8f7b45ef590c00000c/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
+
 pub fn switcher(numbers: Vec<&str>) -> String {
     let mut res = String::with_capacity(numbers.len());
     unsafe { res.as_mut_vec().set_len(numbers.len()) };

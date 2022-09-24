@@ -1,6 +1,9 @@
+#![no_std]
 #![feature(test)]
 
+extern crate alloc;
 extern crate test;
+use alloc::vec;
 use numbers_to_letters::switcher;
 use test::{black_box, Bencher};
 

@@ -1,6 +1,9 @@
 //! <https://www.codewars.com/kata/53e895e28f9e66a56900011a/train/rust>
 
-use std::collections::BTreeMap;
+#![no_std]
+
+extern crate alloc;
+use alloc::collections::BTreeMap;
 
 pub fn letter_frequency(input: &str) -> BTreeMap<char, i32> {
     let mut res = BTreeMap::new();

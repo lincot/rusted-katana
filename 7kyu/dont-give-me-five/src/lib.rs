@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5813d19765d81c592200001a/train/rust>
 
+#![no_std]
+
 pub const fn dont_give_me_five(start: isize, end: isize) -> isize {
     if start * end >= 0 {
         if start >= 0 {

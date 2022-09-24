@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5bbd279c8f8bbd5ee500000f/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn find_screen_height(width: u64, ratio: &str) -> String {

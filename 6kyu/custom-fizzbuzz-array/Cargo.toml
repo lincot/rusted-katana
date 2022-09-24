@@ -9,4 +9,4 @@ path = "../../my-prelude"
 [dependencies.lexical]
 version = "6.1.1"
 default-features = false
-features = ["std", "write-integers"]
+features = ["write-integers"]

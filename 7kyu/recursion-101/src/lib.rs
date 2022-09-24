@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5b752a42b11814b09c00005d/train/rust>
 
+#![no_std]
+
 pub fn solve(a: usize, b: usize) -> (usize, usize) {
     if a == 0 || b == 0 {
         (a, b)

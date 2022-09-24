@@ -1,6 +1,9 @@
+#![no_std]
 #![feature(test)]
 
+extern crate alloc;
 extern crate test;
+use alloc::vec;
 use array_dot_diff::array_diff;
 use test::{black_box, Bencher};
 

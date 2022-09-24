@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/55eeddff3f64c954c2000059/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
 use my_prelude::prelude::*;
 
 pub type Number = i32;

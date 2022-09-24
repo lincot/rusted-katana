@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/57d06663eca260fe630001cc/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
+
 pub fn olympic_ring(s: &str) -> String {
     let rings: usize = s
         .bytes()

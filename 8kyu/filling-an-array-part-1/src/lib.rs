@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/571d42206414b103dc0006a1/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
+
 pub fn arr(n: usize) -> Vec<u32> {
     let mut res = Vec::with_capacity(n as u32 as _);
     unsafe { res.set_len(n as u32 as _) };

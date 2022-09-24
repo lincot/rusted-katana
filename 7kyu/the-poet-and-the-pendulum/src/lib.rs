@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5bd776533a7e2720c40000e5/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
 use my_prelude::prelude::*;
 
 pub fn pendulum(xs: &[i32]) -> Vec<i32> {

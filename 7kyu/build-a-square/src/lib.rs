@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/59a96d71dbe3b06c0200009c/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use my_prelude::prelude::*;
 
 pub fn generate_shape(n: i32) -> String {

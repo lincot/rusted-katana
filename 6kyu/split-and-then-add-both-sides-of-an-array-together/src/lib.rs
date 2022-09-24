@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/5946a0a64a2c5b596500019a/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
+
 pub fn split_and_add(arr: &[u32], n: usize) -> Vec<u32> {
     assert!(!arr.is_empty());
     let mut arr = arr.to_vec();

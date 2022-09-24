@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5c1ae703ba76f438530000a2/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn word_mesh(words: &[&str]) -> Option<String> {

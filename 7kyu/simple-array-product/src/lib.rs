@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/5d0365accfd09600130a00c9/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
+
 pub fn solve(vecs: &[Vec<i32>]) -> i32 {
     vecs.iter()
         .map(|vec| min_max(vec))

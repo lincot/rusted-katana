@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/554ca54ffa7d91b236000023/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
 use my_prelude::prelude::*;
 
 pub fn delete_nth(lst: &[u8], n: usize) -> Vec<u8> {

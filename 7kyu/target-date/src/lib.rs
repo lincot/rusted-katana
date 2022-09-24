@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/569218bc919ccba77000000b/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::{String, ToString};
 use chrono::{naive::NaiveDate, Duration};
 
 pub fn date_nb_days(a0: i32, a: i32, p: i32) -> String {

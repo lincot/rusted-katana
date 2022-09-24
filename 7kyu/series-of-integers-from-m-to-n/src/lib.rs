@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/5841f680c5c9b092950001ae/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
+
 pub fn integer_series(m: u32, n: u32) -> Vec<u32> {
     let len = if n >= m { (n - m) as usize + 1 } else { 0 };
     let mut res = Vec::with_capacity(len);

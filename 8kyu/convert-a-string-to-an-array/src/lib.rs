@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/57e76bc428d6fbc2d500036d/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use my_prelude::prelude::*;
 
 pub fn string_to_array(s: &str) -> Vec<String> {

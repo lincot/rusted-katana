@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5b180e9fedaa564a7000009a/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use core::mem::{forget, size_of};
 use my_prelude::prelude::*;
 

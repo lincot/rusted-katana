@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5e0b72d2d772160011133654/train/rust>
 
+#![no_std]
+
 pub fn solve(arr: &[u32; 3]) -> u32 {
     let [a, b, c] = arr;
 

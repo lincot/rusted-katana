@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5977618080ef220766000022/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn usdcny(usd: u16) -> String {

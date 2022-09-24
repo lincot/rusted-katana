@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5a4ea304b3bfa89a9900008e/train/rust>
 
+#![no_std]
+
 use my_prelude::prelude::*;
 
 pub fn max_number(n: u32) -> u32 {

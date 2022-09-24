@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5bb904724c47249b10000131/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use core::cmp::Ordering;
 
 pub fn points(games: &[String]) -> u32 {

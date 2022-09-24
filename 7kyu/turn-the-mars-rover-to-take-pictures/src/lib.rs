@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/588e68aed4cff457d300002e/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
+
 pub fn turn(current: char, target: char) -> String {
     match (current, target) {
         ('N', 'W') | ('W', 'S') | ('S', 'E') | ('E', 'N') => "left",

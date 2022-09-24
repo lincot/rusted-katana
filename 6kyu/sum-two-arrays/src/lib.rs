@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/59c3e8c9f5d5e40cab000ca6/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{vec, vec::Vec};
 use my_prelude::prelude::*;
 
 pub fn add_arrays(arr_a: &[i64], arr_b: &[i64]) -> Vec<i64> {

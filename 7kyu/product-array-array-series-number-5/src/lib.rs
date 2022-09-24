@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/5a905c2157c562994900009d/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
+
 pub fn product_array(arr: &[u64]) -> Vec<u64> {
     let prod: u64 = arr.iter().product();
     assert!(prod != 0);

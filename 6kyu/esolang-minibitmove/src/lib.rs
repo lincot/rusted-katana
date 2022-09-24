@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/587c0138110b20624e000253/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::{String, ToString};
+
 pub fn interpreter(tape: &str, data: &str) -> String {
     let mut res = data.to_string();
     if res.is_empty() {

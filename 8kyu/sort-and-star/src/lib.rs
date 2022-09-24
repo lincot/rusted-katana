@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/57cfdf34902f6ba3d300001e/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn two_sort(arr: &[&str]) -> String {

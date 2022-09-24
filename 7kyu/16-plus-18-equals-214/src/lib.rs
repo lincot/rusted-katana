@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5effa412233ac3002a9e471d/train/rust>
 
+#![no_std]
+
 pub const fn add(mut num1: u32, mut num2: u32) -> u64 {
     let mut res = 0;
     let mut m = 1;

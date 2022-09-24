@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/523a86aa4230ebb5420001e1/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use my_prelude::prelude::*;
 
 pub fn anagrams(word: &str, words: &[String]) -> Vec<String> {

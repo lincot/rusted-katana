@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5d23d89906f92a00267bb83d/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn get_order(input: String) -> String {

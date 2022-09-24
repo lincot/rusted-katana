@@ -1,6 +1,9 @@
+#![no_std]
 #![feature(test)]
 
+extern crate alloc;
 extern crate test;
+use alloc::string::ToString;
 use crack_the_pin::crack;
 use test::{black_box, Bencher};
 

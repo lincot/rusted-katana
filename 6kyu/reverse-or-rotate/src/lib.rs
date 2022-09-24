@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/56b5afb4ed1f6d5fb0000991/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use my_prelude::prelude::*;
 
 pub fn revrot(s: &str, c: usize) -> String {

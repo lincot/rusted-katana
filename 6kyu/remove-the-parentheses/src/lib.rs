@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5f7c38eb54307c002a2b8cc8/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use my_prelude::prelude::*;
 
 pub fn remove_parentheses(s: &str) -> String {

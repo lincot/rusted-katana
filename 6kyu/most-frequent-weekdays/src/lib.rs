@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/56eb16655250549e4b0013f4/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec, vec::Vec};
+
 pub fn most_frequent_days(year: i32) -> Vec<String> {
     const fn format_weekday(day: u8) -> &'static str {
         match day {

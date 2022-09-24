@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/57ae18c6e298a7a6d5000c7a/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
 use core::mem::{transmute, MaybeUninit};
 
 pub fn replace_all<T: PartialEq + Copy>(xs: &[T], find: T, replace: T) -> Vec<T> {

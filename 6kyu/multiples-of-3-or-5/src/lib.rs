@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/514b92a657cdc65150000006/train/rust>
 
+#![no_std]
+
 pub const fn solution(num: i32) -> i32 {
     if num <= 3 {
         return 0;

@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/578aa45ee9fd15ff4600090d/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
 use my_prelude::prelude::*;
 
 pub fn sort_array(arr: &[i32]) -> Vec<i32> {

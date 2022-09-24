@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/5a58d889880385c2f40000aa/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
+
 const AUTOMORPHIC_NUMBERS: [u64; 28] = [
     0,
     1,

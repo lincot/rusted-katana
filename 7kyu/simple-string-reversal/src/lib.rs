@@ -1,7 +1,10 @@
 //! <https://www.codewars.com/kata/5a71939d373c2e634200008e/train/rust>
 
+#![no_std]
 #![feature(slice_swap_unchecked)]
 
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use my_prelude::prelude::*;
 
 pub fn solve(s: &str) -> String {

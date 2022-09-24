@@ -1,6 +1,9 @@
+#![no_std]
 #![feature(test)]
 
+extern crate alloc;
 extern crate test;
+use alloc::vec;
 use count_of_positives_slash_sum_of_negatives::count_positives_sum_negatives;
 use test::{black_box, Bencher};
 

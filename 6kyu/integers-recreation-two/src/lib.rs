@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/55e86e212fce2aae75000060/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{vec, vec::Vec};
+
 pub fn prod2sum(a: i64, b: i64, c: i64, d: i64) -> Vec<(i64, i64)> {
     let e0 = (a * c + b * d).abs();
     let f0 = (a * d - b * c).abs();

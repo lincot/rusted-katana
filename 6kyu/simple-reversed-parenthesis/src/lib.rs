@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5a3f2925b6cfd78fb0000040/train/rust>
 
+#![no_std]
+
 pub fn solve(s: &str) -> Option<usize> {
     if s.len() % 2 == 1 {
         return None;

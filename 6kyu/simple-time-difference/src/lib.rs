@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use my_prelude::prelude::*;
 
 fn parse_time(time: &str) -> u32 {

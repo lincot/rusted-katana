@@ -1,3 +1,6 @@
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
+
 #[derive(Debug)]
 pub struct Coffee {
     pub sort: String,

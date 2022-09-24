@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5fa6d9e9454977000fb0c1f8/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use my_prelude::prelude::*;
 
 pub fn unpack_sausages(truck: Vec<Vec<&str>>) -> String {

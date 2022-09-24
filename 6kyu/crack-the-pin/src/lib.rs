@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/5efae11e2d12df00331f91a6/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
+
 fn my_md5_process_block(word0: u32, word1: u32) -> [u32; 4] {
     const A: u32 = 0x6745_2301;
     const B: u32 = 0xefcd_ab89;

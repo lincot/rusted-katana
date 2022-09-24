@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5cd12646cf44af0020c727dd/train/rust>
 
+#![no_std]
+
 pub const fn square_pi(digits: i32) -> i32 {
     [
         0, 3, 4, 6, 6, 8, 12, 12, 14, 15, 15, 16, 18, 20, 21, 23, 23, 23, 24, 25, 25, 26, 26, 27,

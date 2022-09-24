@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/56484848ba95170a8000004d/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
+
 pub fn gps(s: i32, x: Vec<f64>) -> i32 {
     (3600.
         * x.windows(2)

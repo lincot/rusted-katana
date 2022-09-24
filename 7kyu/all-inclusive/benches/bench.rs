@@ -1,7 +1,10 @@
+#![no_std]
 #![feature(test)]
 
+extern crate alloc;
 extern crate test;
 use all_inclusive::contain_all_rots;
+use alloc::vec;
 use test::{black_box, Bencher};
 
 #[bench]

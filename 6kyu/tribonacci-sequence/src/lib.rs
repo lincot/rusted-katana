@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/556deca17c58da83c00002db/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
 use my_prelude::prelude::*;
 
 pub fn tribonacci(signature: &[f64; 3], n: usize) -> Vec<f64> {

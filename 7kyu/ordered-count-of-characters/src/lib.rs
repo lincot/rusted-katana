@@ -1,7 +1,14 @@
 //! <https://www.codewars.com/kata/57a6633153ba33189e000074/train/rust>
 
-use rustc_hash::FxHashMap;
-use std::collections::hash_map::Entry;
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
+use core::hash::BuildHasherDefault;
+use hashbrown::{hash_map::Entry, HashMap};
+use rustc_hash::FxHasher;
+
+type FxHashMap<K, V> = HashMap<K, V, BuildHasherDefault<FxHasher>>;
 
 pub fn ordered_count(sip: &str) -> Vec<(char, i32)> {
     let mut counts = FxHashMap::with_capacity_and_hasher(sip.len(), Default::default());

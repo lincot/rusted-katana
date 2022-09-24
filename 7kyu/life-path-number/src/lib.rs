@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5a1a76c8a7ad6aa26a0007a0/train/rust>
 
+#![no_std]
+
 pub fn life_path_number(s: &str) -> u32 {
     const fn sum_digits(n: u8) -> u8 {
         if n > 9 {

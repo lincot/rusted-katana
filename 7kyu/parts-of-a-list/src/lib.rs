@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/56f3a1e899b386da78000732/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use my_prelude::prelude::*;
 
 pub fn part_list(arr: Vec<&str>) -> String {

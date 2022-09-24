@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/5436f26c4e3d6c40e5000282/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
+
 pub fn sum_of_n(n: i32) -> Vec<i32> {
     let len = if n > 0 {
         n as usize + 1

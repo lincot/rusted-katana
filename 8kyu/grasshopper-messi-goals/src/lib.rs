@@ -1,5 +1,6 @@
 //! <https://www.codewars.com/kata/55ca77fa094a2af31f00002a/train/rust>
 
+#![no_std]
 #![allow(non_upper_case_globals)]
 
 pub static la_liga_goals: u32 = 43;

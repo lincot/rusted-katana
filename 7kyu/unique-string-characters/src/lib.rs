@@ -1,8 +1,15 @@
 //! <https://www.codewars.com/kata/5a262cfb8f27f217f700000b/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
+use core::hash::BuildHasherDefault;
+use hashbrown::{hash_map::Entry, HashMap};
 use my_prelude::prelude::*;
-use rustc_hash::FxHashMap;
-use std::collections::hash_map::Entry;
+use rustc_hash::FxHasher;
+
+type FxHashMap<K, V> = HashMap<K, V, BuildHasherDefault<FxHasher>>;
 
 pub fn solve(a: &str, b: &str) -> String {
     let mut map_a = FxHashMap::with_capacity_and_hasher(a.len(), Default::default());

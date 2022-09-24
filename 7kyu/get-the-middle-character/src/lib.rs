@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/56747fd5cb988479af000028/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
 use my_prelude::prelude::*;
 
 pub fn get_middle(s: &str) -> &str {

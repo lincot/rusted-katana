@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/59e19a747905df23cb000024/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn string_letter_count(s: &str) -> String {

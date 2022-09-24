@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5656b6906de340bd1b0000ac/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use my_prelude::prelude::*;
 
 pub fn longest(a1: &str, a2: &str) -> String {

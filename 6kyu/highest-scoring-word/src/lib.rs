@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/57eb8fcdf670e99d9b000272/train/rust>
 
+#![no_std]
+
 pub fn high(input: &str) -> &str {
     let input_bytes = input.as_bytes();
 

@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5b728f801db5cec7320000c7/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use core::mem::{forget, size_of};
 
 pub fn solve(s: &str, k: usize) -> String {

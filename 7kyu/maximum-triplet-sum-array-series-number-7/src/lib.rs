@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5aa1bcda373c2eb596000112/train/rust>
 
+#![no_std]
+
 pub fn max_tri_sum(xs: &[i32]) -> i32 {
     let mut a = i32::MIN;
     let mut b = i32::MIN;

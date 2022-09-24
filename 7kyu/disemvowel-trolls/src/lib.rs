@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/52fba66badcd10859f00097e/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn disemvowel(s: &str) -> String {

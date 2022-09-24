@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5a34af40e1ce0eb1f5000036/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use my_prelude::prelude::*;
 
 pub fn to_csv_text(array: &[Vec<i8>]) -> String {

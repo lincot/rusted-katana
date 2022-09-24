@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/5a61a846cadebf9738000076/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::vec::Vec;
+
 pub fn peak(arr: &[u32]) -> Option<usize> {
     let mut sums = Vec::with_capacity(arr.len());
     unsafe { sums.set_len(arr.len()) };

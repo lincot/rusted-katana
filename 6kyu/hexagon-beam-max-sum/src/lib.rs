@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5ecc1d68c6029000017d8aaf/train/rust>
 
+#![no_std]
+
 pub fn max_hexagon_beam(n: u8, seq: &[i32]) -> i32 {
     if seq.is_empty() || n == 0 {
         return 0;

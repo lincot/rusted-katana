@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5f70e4cce10f9e0001c8995a/train/rust>
 
+#![no_std]
+
 pub fn stones_to_remove(stones: &str) -> usize {
     stones
         .as_bytes()

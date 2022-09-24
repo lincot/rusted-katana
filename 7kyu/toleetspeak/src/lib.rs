@@ -1,5 +1,10 @@
 //! <https://www.codewars.com/kata/57c1ab3949324c321600013f/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
+
 pub fn to_leet_speak(s: &str) -> String {
     let mut res = String::with_capacity(s.len());
     unsafe { res.as_mut_vec().set_len(s.len()) };

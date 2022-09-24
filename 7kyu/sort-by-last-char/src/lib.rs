@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/57eba158e8ca2c8aba0002a0/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use my_prelude::prelude::*;
 
 pub fn sort_by_last_char(s: &str) -> Vec<String> {

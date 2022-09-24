@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5c8bfa44b9d1192e1ebd3d15/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn warn_the_sheep(queue: &[&str]) -> String {

@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/5865cff66b5699883f0001aa/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn to_time(seconds: u32) -> String {

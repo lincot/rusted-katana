@@ -1,5 +1,7 @@
 //! <https://www.codewars.com/kata/5ae7e3f068e6445bc8000046/train/rust>
 
+#![no_std]
+
 const fn from_4_digits(d0: u16, d1: u16, d2: u16, d3: u16) -> u16 {
     1000 * d0 + 100 * d1 + 10 * d2 + d3
 }

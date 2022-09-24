@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/56ed20a2c4e5d69155000301/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn scale(s: &str, k: u32, n: u32) -> String {
@@ -22,14 +26,14 @@ pub fn scale(s: &str, k: u32, n: u32) -> String {
     let mut res = String::with_capacity((s.len() + DELIM.len_utf8()) * k as usize * n as usize);
     let mut chunk_len = 0;
     for c in s.chars() {
-        if c != DELIM {
+        if c == DELIM {
+            unsafe { vertical_scale(&mut res, chunk_len, n) };
+            chunk_len = 0;
+        } else {
             chunk_len += c.len_utf8() * k as usize;
             for _ in 0..k {
                 unsafe { res.push_unchecked(c) };
             }
-        } else {
-            unsafe { vertical_scale(&mut res, chunk_len, n) };
-            chunk_len = 0;
         }
     }
     unsafe { vertical_scale(&mut res, chunk_len, n) };

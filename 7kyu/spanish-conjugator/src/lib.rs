@@ -1,7 +1,11 @@
 //! <https://www.codewars.com/kata/5a81b78d4a6b344638000183/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::{string::String, vec, vec::Vec};
+use hashbrown::HashMap;
 use my_prelude::prelude::*;
-use std::collections::HashMap;
 
 pub fn conjugate(verb: &str) -> HashMap<String, Vec<String>> {
     assert!(verb.len() >= 2);

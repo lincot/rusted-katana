@@ -1,6 +1,9 @@
+#![no_std]
 #![feature(test)]
 
+extern crate alloc;
 extern crate test;
+use alloc::vec;
 use merging_vectors_without_reallocation::merge;
 use test::{black_box, Bencher};
 

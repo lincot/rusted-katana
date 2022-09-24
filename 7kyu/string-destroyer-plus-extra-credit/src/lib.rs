@@ -1,6 +1,13 @@
 //! <https://www.codewars.com/kata/5872637c2eefcb1216000081/train/rust>
 
-use std::collections::HashSet;
+#![no_std]
+
+extern crate alloc;
+use alloc::{
+    string::{String, ToString},
+    vec::Vec,
+};
+use hashbrown::HashSet;
 
 pub fn destroy(input_sets: Vec<HashSet<char>>) -> String {
     let mut res = "a b c d e f g h i j k l m n o p q r s t u v w x y z".to_string();

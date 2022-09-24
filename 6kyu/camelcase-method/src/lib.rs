@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/587731fda577b3d1b0001196/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn camel_case(str: &str) -> String {

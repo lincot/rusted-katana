@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/57fd696e26b06857eb0011e7/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn dative(word: &str) -> String {

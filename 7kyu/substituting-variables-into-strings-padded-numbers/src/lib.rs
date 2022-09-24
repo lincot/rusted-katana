@@ -1,5 +1,9 @@
 //! <https://www.codewars.com/kata/51c89385ee245d7ddf000001/train/rust>
 
+#![no_std]
+
+extern crate alloc;
+use alloc::string::String;
 use my_prelude::prelude::*;
 
 pub fn solution(n: u32) -> String {

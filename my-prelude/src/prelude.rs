@@ -1,3 +1,5 @@
+extern crate alloc;
+use alloc::{string::String, vec::Vec};
 use core::ops::Range;
 
 pub trait PushUnchecked<T> {
@@ -169,7 +171,7 @@ pub trait WriteNumUnchecked {
     ///
     /// `self.len() + n.to_string().len()` must be `<= self.capacity()`
     #[cfg(not(feature = "lexical-core"))]
-    unsafe fn write_num_unchecked(&mut self, n: impl ToString);
+    unsafe fn write_num_unchecked(&mut self, n: impl alloc::string::ToString);
 }
 
 impl WriteNumUnchecked for Vec<u8> {
@@ -177,7 +179,10 @@ impl WriteNumUnchecked for Vec<u8> {
     #[inline]
     unsafe fn write_num_unchecked(&mut self, n: impl lexical_core::ToLexical) {
         let len = self.len();
-        debug_assert!(len + n.to_string().len() <= self.capacity());
+        debug_assert!(
+            len + lexical_core::write_unchecked(n, &mut [0; lexical_core::BUFFER_SIZE]).len()
+                <= self.capacity()
+        );
         let written_len = lexical_core::write_unchecked(
             n,
             core::slice::from_raw_parts_mut(self.as_mut_ptr().add(len), self.capacity()),
@@ -188,7 +193,7 @@ impl WriteNumUnchecked for Vec<u8> {
 
     #[cfg(not(feature = "lexical-core"))]
     #[inline]
-    unsafe fn write_num_unchecked(&mut self, n: impl ToString) {
+    unsafe fn write_num_unchecked(&mut self, n: impl alloc::string::ToString) {
         self.extend_from_slice_unchecked(n.to_string().as_bytes());
     }
 }
@@ -199,7 +204,10 @@ impl<const N: usize> WriteNumUnchecked for heapless::Vec<u8, N> {
     #[inline]
     unsafe fn write_num_unchecked(&mut self, n: impl lexical_core::ToLexical) {
         let len = self.len();
-        debug_assert!(len + n.to_string().len() <= self.capacity());
+        debug_assert!(
+            len + lexical_core::write_unchecked(n, &mut [0; lexical_core::BUFFER_SIZE]).len()
+                <= self.capacity()
+        );
         let written_len = lexical_core::write_unchecked(
             n,
             core::slice::from_raw_parts_mut(self.as_mut_ptr().add(len), self.capacity()),
@@ -210,7 +218,7 @@ impl<const N: usize> WriteNumUnchecked for heapless::Vec<u8, N> {
 
     #[cfg(not(feature = "lexical-core"))]
     #[inline]
-    unsafe fn write_num_unchecked(&mut self, n: impl ToString) {
+    unsafe fn write_num_unchecked(&mut self, n: impl alloc::string::ToString) {
         self.extend_from_slice_unchecked(n.to_string().as_bytes());
     }
 }
@@ -224,7 +232,7 @@ impl WriteNumUnchecked for String {
 
     #[cfg(not(feature = "lexical-core"))]
     #[inline]
-    unsafe fn write_num_unchecked(&mut self, n: impl ToString) {
+    unsafe fn write_num_unchecked(&mut self, n: impl alloc::string::ToString) {
         self.push_str_unchecked(&n.to_string());
     }
 }
