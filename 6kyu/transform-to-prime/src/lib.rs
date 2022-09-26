@@ -1,14 +1,15 @@
 //! <https://www.codewars.com/kata/5a946d9fba1bb5135100007c/train/rust>
 
 #![no_std]
+#![feature(core_intrinsics)]
 
-use libm::sqrt;
+use core::intrinsics::sqrtf64;
 
 /// checks if `x` is prime || `x` is divisible by 2 or 3 || `x` <= 1
 fn is_prime_with_condition(x: u32) -> bool {
     let mut divisor = 5;
     let mut step = 2;
-    while divisor <= sqrt(x as f64) as u32 {
+    while divisor <= unsafe { sqrtf64(x as f64) } as u32 {
         if divisor == 0 {
             unsafe { core::hint::unreachable_unchecked() };
         }

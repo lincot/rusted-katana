@@ -82,7 +82,7 @@ fn main() {
                 };
                 let mut buf = [0; "#![no_std]".len()];
                 f.read(&mut buf).unwrap();
-                if !buf.starts_with(b"#![no_std]") {
+                if buf != *b"#![no_std]" {
                     stdout.write(path.as_bytes()).unwrap();
                     stdout.write(b" has std").unwrap();
                     stdout.write(b"\n").unwrap();

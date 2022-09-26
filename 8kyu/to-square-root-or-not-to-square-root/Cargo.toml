@@ -1,0 +1,4 @@
+[package]
+name = "to-square-root-or-not-to-square-root"
+version = "0.1.0"
+edition = "2021"

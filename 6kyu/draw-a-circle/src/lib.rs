@@ -1,10 +1,11 @@
 //! <https://www.codewars.com/kata/59c804d923dacc6c41000004/train/rust>
 
 #![no_std]
+#![feature(core_intrinsics)]
 
 extern crate alloc;
 use alloc::string::String;
-use libm::sqrt;
+use core::intrinsics::sqrtf64;
 use my_prelude::prelude::*;
 
 pub fn circle(radius: i32) -> String {
@@ -21,8 +22,8 @@ pub fn circle(radius: i32) -> String {
 
     (0..2 * radius - 1).for_each(|row| {
         let dist_to_center = row.max(radius - 1) - row.min(radius - 1);
-        let half_width =
-            (sqrt((radius.pow(2) - dist_to_center.pow(2)) as f64) + 0.999_999) as usize;
+        let half_width = (unsafe { sqrtf64((radius.pow(2) - dist_to_center.pow(2)) as f64) }
+            + 0.999_999) as usize;
 
         unsafe {
             for _ in 0..radius - half_width {
