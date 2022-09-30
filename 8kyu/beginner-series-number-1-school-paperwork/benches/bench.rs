@@ -6,7 +6,7 @@ use beginner_series_number_1_school_paperwork::paperwork;
 use test::{black_box, Bencher};
 
 #[bench]
-fn bench_estonian(bencher: &mut Bencher) {
+fn bench(bencher: &mut Bencher) {
     let n = black_box(30);
     let m = black_box(10);
     bencher.iter(|| {

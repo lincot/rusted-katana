@@ -2,4 +2,5 @@
 
 #![no_std]
 
-pub use num::integer::gcd;
+#[allow(non_upper_case_globals)]
+pub const gcd: fn(u32, u32) -> u32 = num_integer::gcd;

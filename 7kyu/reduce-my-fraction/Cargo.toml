@@ -1,5 +1,5 @@
 [package]
-name = "greatest-common-divisor"
+name = "reduce-my-fraction"
 version = "0.1.0"
 edition = "2021"
 

@@ -37,4 +37,4 @@ cargo clippy --all-features --all-targets --no-deps --quiet --release -- \
     -A clippy::transmute-undefined-repr \
     -A clippy::cognitive-complexity \
     -A clippy::debug-assert-with-mut-call
-cargo run --package check-katas --release
+cargo run --package check-katas --quiet --release
