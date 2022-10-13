@@ -9,7 +9,7 @@ use core::intrinsics::sqrtf64;
 fn is_prime_with_condition(x: u32) -> bool {
     let mut divisor = 5;
     let mut step = 2;
-    while divisor <= unsafe { sqrtf64(x as f64) } as u32 {
+    while divisor <= unsafe { sqrtf64(x as _) } as _ {
         if divisor == 0 {
             unsafe { core::hint::unreachable_unchecked() };
         }

@@ -7,6 +7,7 @@ pub const fn pofi(n: u32) -> &'static str {
         0 => "1",
         1 => "i",
         2 => "-1",
-        _ => "-i",
+        3 => "-i",
+        _ => unreachable!(),
     }
 }

@@ -10,15 +10,14 @@ pub fn find_next_square(sq: u64) -> Option<u64> {
 }
 
 fn perfect_sqrt(n: u64) -> Option<u64> {
-    match n & 0xf {
-        0 | 1 | 4 | 9 => {
-            let s = unsafe { sqrtf64(n as f64) } as _;
-            if s * s == n {
-                Some(s)
-            } else {
-                None
-            }
+    if [0, 1, 4, 9].contains(&(n & 0xf)) {
+        let s = unsafe { sqrtf64(n as _) } as _;
+        if s * s == n {
+            Some(s)
+        } else {
+            None
         }
-        _ => None,
+    } else {
+        None
     }
 }

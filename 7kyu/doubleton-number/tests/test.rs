@@ -35,20 +35,18 @@ fn test() {
     let mut panic_message = String::new();
     let mut failures_count = 0;
 
-    for n in 1..=1_000_000 {
-        let should = doubleton_iterative(n);
-        let got = doubleton(n);
+    for num in 1..=1_000_000 {
+        let expected = doubleton_iterative(num);
+        let got = doubleton(num);
 
-        if should != got {
-            writeln!(panic_message, "{} should be {}, got {}", n, should, got).unwrap();
+        if expected != got {
+            writeln!(panic_message, "{num}: expected {expected}, got {got}").unwrap();
             failures_count += 1;
         }
     }
 
     assert!(
         failures_count == 0,
-        "\n{}\na total of {} failures",
-        panic_message,
-        failures_count
+        "\n{panic_message}\na total of {failures_count} failures",
     );
 }

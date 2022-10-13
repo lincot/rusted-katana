@@ -19,10 +19,11 @@ pub fn remove_duplicate_words(s: &str) -> String {
     }
 
     let mut res = String::with_capacity(s.len());
-    if let Some(first) = words.first() {
-        unsafe { res.push_str_unchecked(first) };
+    let mut words = words.into_iter();
+    if let Some(word) = words.next() {
+        unsafe { res.push_str_unchecked(word) };
     }
-    for word in &words[1..] {
+    for word in words {
         unsafe {
             res.push_unchecked(' ');
             res.push_str_unchecked(word);

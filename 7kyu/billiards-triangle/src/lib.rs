@@ -6,5 +6,5 @@
 use core::intrinsics::{fmaf64, sqrtf64};
 
 pub fn pyramid(balls: u16) -> u16 {
-    ((unsafe { sqrtf64(fmaf64(8.0f64, balls as f64, 1.)) } - 1.) / 2.) as _
+    ((unsafe { sqrtf64(fmaf64(8.0f64, balls as _, 1.)) } - 1.) / 2.) as _
 }

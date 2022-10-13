@@ -67,25 +67,22 @@ fn get_divisors(mut n: u32) -> Vec<u32> {
     n >>= pow_of_2;
 
     let mut x = 3;
-    let mut n_sqrt = unsafe { sqrtf64(n as f64) } as u32;
+    let mut n_sqrt = unsafe { sqrtf64(n as _) } as _;
     while x <= n_sqrt {
         let len_before = res.len();
         let mut n_changed = false;
-
         let mut x_pow = 1;
 
         while unsafe { n.checked_rem(x).unwrap_unchecked() } == 0 {
             x_pow *= x;
-
             n /= x;
             n_changed = true;
-
             unsafe { push_unchecked_with_multiples(&mut res, x_pow, len_before) };
         }
 
         x += 2;
         if n_changed {
-            n_sqrt = unsafe { sqrtf64(n as f64) } as u32;
+            n_sqrt = unsafe { sqrtf64(n as _) } as u32;
         }
     }
 

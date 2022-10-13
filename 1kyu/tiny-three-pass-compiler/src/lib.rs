@@ -287,8 +287,8 @@ fn emit_instructions_recursive(instructions: &mut Vec<String>, node: &MyAst) {
     match *node {
         // NB: we write the values to R0 without taking care about previous value
         // and we don't push values to stack
-        MyAst::Literal(x) => instructions.push(format!("IM {}", x)),
-        MyAst::ArgRef(n) => instructions.push(format!("AR {}", n)),
+        MyAst::Literal(x) => instructions.push(format!("IM {x}")),
+        MyAst::ArgRef(n) => instructions.push(format!("AR {n}")),
         MyAst::BinOp(op, ref lhs, ref rhs) => {
             use parse::BinOp;
 
@@ -297,8 +297,8 @@ fn emit_instructions_recursive(instructions: &mut Vec<String>, node: &MyAst) {
             // If rhs is an immediate value (either constant or reference to arg),
             // then we can avoid offloading it to stack.
             let load_code = match **rhs {
-                MyAst::Literal(x) => Some(format!("IM {}", x)),
-                MyAst::ArgRef(n) => Some(format!("AR {}", n)),
+                MyAst::Literal(x) => Some(format!("IM {x}")),
+                MyAst::ArgRef(n) => Some(format!("AR {n}")),
                 MyAst::BinOp(..) => None,
             };
             let (op_code, commutative) = match op {
@@ -415,8 +415,8 @@ impl Compiler {
         match *ast {
             Ast::UnOp(ref op, arg) => {
                 let introduction = match op.as_str() {
-                    "imm" => format!("IM {}", arg),
-                    "arg" => format!("AR {}", arg),
+                    "imm" => format!("IM {arg}"),
+                    "arg" => format!("AR {arg}"),
                     _ => panic!(),
                 };
                 instructions.push(introduction);

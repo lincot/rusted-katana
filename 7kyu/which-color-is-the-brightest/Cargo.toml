@@ -1,0 +1,4 @@
+[package]
+name = "which-color-is-the-brightest"
+version = "0.1.0"
+edition = "2021"

@@ -1,0 +1,8 @@
+[package]
+name = "the-fusc-function-part-2"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies.num-bigint]
+version = "0.4.3"
+default-features = false
