@@ -7,11 +7,9 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let body = black_box("Badger");
-    let tail = black_box('s');
     bencher.iter(|| {
         for _ in 0..1000 {
-            black_box(correct_tail(body, tail));
+            black_box(correct_tail(black_box("Badger"), black_box('s')));
         }
     });
 }

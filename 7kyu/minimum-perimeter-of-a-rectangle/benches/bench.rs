@@ -7,10 +7,9 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let area = black_box(27720);
     bencher.iter(|| {
         for _ in 0..1000 {
-            black_box(minimum_perimeter(area));
+            black_box(minimum_perimeter(black_box(27720)));
         }
     });
 }

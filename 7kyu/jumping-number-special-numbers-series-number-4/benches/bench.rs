@@ -7,10 +7,9 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let n = black_box(98_789_876);
     bencher.iter(|| {
         for _ in 0..1000 {
-            black_box(jumping_number(n));
+            black_box(jumping_number(black_box(98_789_876)));
         }
     });
 }

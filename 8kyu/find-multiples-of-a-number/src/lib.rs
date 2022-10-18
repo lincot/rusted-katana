@@ -7,9 +7,10 @@ use alloc::vec::Vec;
 use my_prelude::prelude::*;
 
 pub fn find_multiples(n: u32, limit: u32) -> Vec<u32> {
-    let mut res = Vec::with_capacity((limit / n) as _);
+    let cap = (limit / n) as _;
+    let mut res = Vec::with_capacity(cap);
     let mut i = n;
-    while i <= limit {
+    for _ in 0..cap {
         unsafe {
             res.push_unchecked(i);
         }

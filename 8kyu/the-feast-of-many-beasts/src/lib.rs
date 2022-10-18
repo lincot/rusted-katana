@@ -3,8 +3,6 @@
 #![no_std]
 
 pub fn feast(beast: &str, dish: &str) -> bool {
-    let mut beast = beast.chars();
-    let mut dish = dish.chars();
-
-    beast.next() == dish.next() && beast.last() == dish.last()
+    beast.chars().next().unwrap() == dish.chars().next().unwrap()
+        && beast.chars().last().unwrap() == dish.chars().last().unwrap()
 }

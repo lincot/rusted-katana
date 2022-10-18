@@ -7,11 +7,9 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let n = black_box(7);
-    let m = black_box(4);
     bencher.iter(|| {
         for _ in 0..1000 {
-            black_box(break_chocolate(n, m));
+            black_box(break_chocolate(black_box(7), black_box(4)));
         }
     });
 }

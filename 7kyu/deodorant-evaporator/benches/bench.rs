@@ -7,8 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let content = black_box(10.);
-    let evap_per_day = black_box(10);
-    let threshold = black_box(10);
-    bencher.iter(|| evaporator(content, evap_per_day, threshold));
+    bencher.iter(|| evaporator(black_box(10.), black_box(10), black_box(10)));
 }

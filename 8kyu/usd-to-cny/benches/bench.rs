@@ -7,6 +7,5 @@ use usd_to_cny::usdcny;
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let usd = black_box(465);
-    bencher.iter(|| usdcny(usd));
+    bencher.iter(|| usdcny(black_box(465)));
 }

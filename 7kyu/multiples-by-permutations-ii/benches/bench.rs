@@ -9,7 +9,7 @@ use test::{black_box, Bencher};
 fn bench(bencher: &mut Bencher) {
     bencher.iter(|| {
         for k in 1..10_000 {
-            black_box(find_lowest_int(k));
+            black_box(find_lowest_int(black_box(k)));
         }
     });
 }

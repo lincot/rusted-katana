@@ -7,7 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let m = black_box(2);
-    let n = black_box(100);
-    bencher.iter(|| generate_pairs(m, n));
+    bencher.iter(|| generate_pairs(black_box(2), black_box(100)));
 }

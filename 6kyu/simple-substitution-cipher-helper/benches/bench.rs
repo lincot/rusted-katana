@@ -10,14 +10,10 @@ const MAP2: &str = "etaoinshrdlucmfwypvbgkjqxz";
 
 #[bench]
 fn bench_new(bencher: &mut Bencher) {
-    let map1 = black_box(MAP1);
-    let map2 = black_box(MAP2);
-    bencher.iter(|| Cipher::new(map1, map2));
+    bencher.iter(|| Cipher::new(black_box(MAP1), black_box(MAP2)));
 }
 
 #[bench]
 fn bench_encode(bencher: &mut Bencher) {
-    let cipher = Cipher::new(MAP1, MAP2);
-    let string = black_box("cnqjsdsfanappcxecxkchbapamofevesrecusvapgddwewhsnlpptvcqkxoluozgmmwlviwppbmbefpoyfobmhiivazdpfqdasal");
-    bencher.iter(|| cipher.decode(string));
+    bencher.iter(|| Cipher::new(MAP1, MAP2).decode(black_box("cnqjsdsfanappcxecxkchbapamofevesrecusvapgddwewhsnlpptvcqkxoluozgmmwlviwppbmbefpoyfobmhiivazdpfqdasal")));
 }

@@ -7,20 +7,17 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench1(bencher: &mut Bencher) {
-    let p1 = black_box("rock");
-    let p2 = black_box("paper");
-    let p3 = black_box("scissors");
     bencher.iter(|| {
         for _ in 0..1000 {
-            black_box(rps(p1, p1));
-            black_box(rps(p1, p2));
-            black_box(rps(p1, p3));
-            black_box(rps(p2, p1));
-            black_box(rps(p2, p2));
-            black_box(rps(p2, p3));
-            black_box(rps(p3, p1));
-            black_box(rps(p3, p2));
-            black_box(rps(p3, p3));
+            black_box(rps(black_box("rock"), black_box("rock")));
+            black_box(rps(black_box("rock"), black_box("paper")));
+            black_box(rps(black_box("rock"), black_box("scissors")));
+            black_box(rps(black_box("paper"), black_box("rock")));
+            black_box(rps(black_box("paper"), black_box("paper")));
+            black_box(rps(black_box("paper"), black_box("scissors")));
+            black_box(rps(black_box("scissors"), black_box("rock")));
+            black_box(rps(black_box("scissors"), black_box("paper")));
+            black_box(rps(black_box("scissors"), black_box("scissors")));
         }
     });
 }

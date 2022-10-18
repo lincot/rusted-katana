@@ -7,6 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let sea = black_box("_~~~~~~~_~__~______~~__~~_~~");
-    bencher.iter(|| sea_sick(sea));
+    bencher.iter(|| sea_sick(black_box("_~~~~~~~_~__~______~~__~~_~~")));
 }

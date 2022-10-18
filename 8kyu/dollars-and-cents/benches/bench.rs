@@ -7,6 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let amount = black_box(314.16);
-    bencher.iter(|| format_money(amount));
+    bencher.iter(|| format_money(black_box(314.16)));
 }

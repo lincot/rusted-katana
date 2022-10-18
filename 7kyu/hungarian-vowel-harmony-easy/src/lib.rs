@@ -9,7 +9,6 @@ use my_prelude::prelude::*;
 pub fn dative(word: &str) -> String {
     let mut res = String::with_capacity(word.len() + 3);
     unsafe { res.push_str_unchecked(word) };
-
     for b in word.bytes().rev() {
         match b {
             b'e' | 0xa9 | b'i' | 0xad | 0xb6 | 0x91 | 0xbc | 0xb1 => {
@@ -23,6 +22,5 @@ pub fn dative(word: &str) -> String {
             _ => {}
         }
     }
-
     res
 }

@@ -2,14 +2,15 @@
 
 #![no_std]
 
-pub fn solve(a: usize, b: usize) -> (usize, usize) {
-    if a == 0 || b == 0 {
-        (a, b)
-    } else if a >= 2 * b {
-        solve(a - 2 * b, b)
-    } else if b >= 2 * a {
-        solve(a, b - 2 * a)
-    } else {
-        (a, b)
+pub const fn solve(mut a: usize, mut b: usize) -> (usize, usize) {
+    while a > 0 && b > 0 {
+        if a >= 2 * b {
+            a %= 2 * b;
+        } else if b >= 2 * a {
+            b %= 2 * a;
+        } else {
+            break;
+        }
     }
+    (a, b)
 }

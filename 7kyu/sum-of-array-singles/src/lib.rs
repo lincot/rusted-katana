@@ -3,9 +3,10 @@
 #![no_std]
 
 extern crate alloc;
+use alloc::boxed::Box;
 
 pub fn repeats(arr: &[i32]) -> i32 {
-    let mut arr = arr.to_vec();
+    let mut arr: Box<[_]> = arr.into();
 
     arr.sort_unstable();
 

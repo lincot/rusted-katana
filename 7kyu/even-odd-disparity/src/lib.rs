@@ -7,7 +7,6 @@ use alloc::string::String;
 
 pub fn solve(v: &[String]) -> i32 {
     let mut balance = 0;
-
     for x in v {
         if let Some(b) = x.bytes().last() {
             if b"02468".contains(&b) {
@@ -17,6 +16,5 @@ pub fn solve(v: &[String]) -> i32 {
             }
         }
     }
-
     balance
 }

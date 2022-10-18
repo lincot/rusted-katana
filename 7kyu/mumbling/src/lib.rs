@@ -14,19 +14,10 @@ pub fn accum(s: &str) -> String {
     };
     let mut res = String::with_capacity(cap);
 
-    let mut s = s.bytes();
-
-    match s.next().unwrap() {
-        b @ b'a'..=b'z' => {
-            unsafe { res.as_mut_vec().push_unchecked(b - (b'a' - b'A')) };
+    for (i, &b) in s.as_bytes().iter().enumerate() {
+        if i != 0 {
+            unsafe { res.push_unchecked('-') };
         }
-        b @ b'A'..=b'Z' => {
-            unsafe { res.as_mut_vec().push_unchecked(b) };
-        }
-        _ => panic!(),
-    }
-    for (i, b) in (1..).zip(s) {
-        unsafe { res.push_unchecked('-') };
         match b {
             b'a'..=b'z' => {
                 unsafe { res.as_mut_vec().push_unchecked(b - (b'a' - b'A')) };

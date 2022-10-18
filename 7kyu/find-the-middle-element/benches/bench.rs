@@ -7,10 +7,11 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let input_array = black_box([1, 2, 3]);
     bencher.iter(|| {
         for _ in 0..1000 {
-            black_box(gimme(input_array));
+            black_box(gimme(black_box([1, 2, 3])));
+            black_box(gimme(black_box([2, 3, 1])));
+            black_box(gimme(black_box([3, 1, 2])));
         }
     });
 }

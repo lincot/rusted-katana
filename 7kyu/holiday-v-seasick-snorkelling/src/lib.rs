@@ -8,7 +8,7 @@ pub fn sea_sick(sea: &str) -> &'static str {
     let sea = sea.as_bytes();
 
     for i in 1..sea.len() {
-        if unsafe { sea.get_unchecked(i - 1) != sea.get_unchecked(i) } {
+        if sea[i - 1] != sea[i] {
             changes += 1;
         }
     }

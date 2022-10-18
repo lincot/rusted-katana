@@ -7,11 +7,12 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let left = black_box(88_072_175_798_639);
-    let right = black_box(112_156_148_935_024);
     bencher.iter(|| {
         for _ in 0..1000 {
-            black_box(count_ones(left, right));
+            black_box(count_ones(
+                black_box(88_072_175_798_639),
+                black_box(112_156_148_935_024),
+            ));
         }
     });
 }

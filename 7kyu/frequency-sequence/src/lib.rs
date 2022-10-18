@@ -31,15 +31,11 @@ pub fn freq_seq(s: &str, sep: &str) -> String {
     let cap = (20 + sep.len()) * s.len();
     let mut res = String::with_capacity(cap);
 
-    let mut chars = s.chars();
-    if let Some(c) = chars.next() {
+    for (i, c) in s.chars().enumerate() {
         unsafe {
-            res.write_num_unchecked(*counts.get(&c).unwrap());
-        }
-    }
-    for c in chars {
-        unsafe {
-            res.push_str_unchecked(sep);
+            if i != 0 {
+                res.push_str_unchecked(sep);
+            }
             res.write_num_unchecked(*counts.get(&c).unwrap());
         }
     }

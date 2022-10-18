@@ -4,10 +4,10 @@
 
 pub const fn spinning_rings(inner_max: u8, outer_max: u8) -> u8 {
     let (i, o) = (inner_max + 1, outer_max + 1);
-    if i == 0 || o == 0 || i % 2 == 0 && i < 2 * o {
+    if i % 2 == 0 && i < 2 * o {
         i / 2
     } else if i <= o {
-        let t = (((o - 1) / i + 1) * i) as u16 + o as u16;
+        let t = (2 * o - (o - 1) % i - 1) as u16 + i as u16;
         if t % 2 == 0 {
             (t / 2) as _
         } else {
@@ -20,11 +20,11 @@ pub const fn spinning_rings(inner_max: u8, outer_max: u8) -> u8 {
             ((2 * i) / o - 1) * (o / 2) + i
         }
     } else {
-        let t = ((i + 1) / o - 1) * o + i;
+        let t = 2 * i - o - (i + 1) % o + 1;
         if t % 2 == 0 {
             t / 2
         } else if o % 2 == 1 {
-            (t + o) / 2
+            t / 2 + o / 2 + 1
         } else {
             ((2 * i) / o - 1) * (o / 2) + i
         }

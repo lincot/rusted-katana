@@ -4,12 +4,17 @@
 
 pub fn get_the_vowels(word: &str) -> u32 {
     let mut res = 0;
-    let mut vowels_cycle = b"aeiou".iter().cycle();
-    let mut needed_vowel = vowels_cycle.next().unwrap();
-    for b in word.as_bytes() {
+    let mut vowel_i = 0;
+    let mut needed_vowel = b'a';
+    for &b in word.as_bytes() {
         if b == needed_vowel {
             res += 1;
-            needed_vowel = unsafe { vowels_cycle.next().unwrap_unchecked() };
+            if vowel_i == b"aeiou".len() - 1 {
+                vowel_i = 0;
+            } else {
+                vowel_i += 1;
+            }
+            needed_vowel = *unsafe { b"aeiou".get_unchecked(vowel_i) };
         }
     }
     res

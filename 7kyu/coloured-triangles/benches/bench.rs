@@ -7,6 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let row_str = black_box("RBRGBRBGGRRRBGBBBGG");
-    bencher.iter(|| triangle(row_str));
+    bencher.iter(|| triangle(black_box("RBRGBRBGGRRRBGBBBGG")));
 }

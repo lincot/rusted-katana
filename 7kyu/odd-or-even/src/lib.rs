@@ -7,9 +7,8 @@ use alloc::{string::String, vec::Vec};
 
 pub fn odd_or_even(numbers: Vec<i32>) -> String {
     if numbers.into_iter().sum::<i32>() % 2 == 0 {
-        "even"
+        "even".into()
     } else {
-        "odd"
+        "odd".into()
     }
-    .into()
 }

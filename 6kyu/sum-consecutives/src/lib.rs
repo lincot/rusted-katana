@@ -11,26 +11,22 @@ pub type Numbers = Vec<Number>;
 
 pub fn sum_consecutives(numbers: &[i32]) -> Vec<i32> {
     let mut res = Vec::with_capacity(numbers.len());
-
     let mut numbers = numbers.iter();
-
-    let mut prev_number = if let Some(first) = numbers.next() {
+    let mut prev_number = if let Some(&first) = numbers.next() {
         first
     } else {
         return res;
     };
-    let mut same_count = 1;
-
-    for n in numbers {
+    let mut sum = prev_number;
+    for &n in numbers {
         if n == prev_number {
-            same_count += 1;
+            sum += prev_number;
         } else {
-            unsafe { res.push_unchecked(same_count * prev_number) };
+            unsafe { res.push_unchecked(sum) };
             prev_number = n;
-            same_count = 1;
+            sum = prev_number;
         }
     }
-    unsafe { res.push_unchecked(same_count * prev_number) };
-
+    unsafe { res.push_unchecked(sum) };
     res
 }

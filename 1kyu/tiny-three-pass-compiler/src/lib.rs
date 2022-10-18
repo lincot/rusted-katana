@@ -12,7 +12,7 @@ use core::{
 };
 
 mod parse {
-    use alloc::{boxed::Box, string::String, vec::Vec};
+    use alloc::{boxed::Box, vec::Vec};
     use core::ops::{Add, Div, Mul, Sub};
 
     #[derive(Debug, PartialEq, Eq, Clone, Copy)]
@@ -24,14 +24,13 @@ mod parse {
     }
 
     impl BinOp {
-        pub fn as_string(self) -> String {
+        pub const fn as_string(self) -> &'static str {
             match self {
                 Self::Plus => "+",
                 Self::Minus => "-",
                 Self::Mult => "*",
                 Self::Div => "/",
             }
-            .into()
         }
 
         pub fn as_fn(self) -> fn(u64, u64) -> u64 {
@@ -224,7 +223,7 @@ fn to_dumb_ast(ast: MyAst) -> Ast {
         MyAst::Literal(n) => Ast::UnOp("imm".into(), n),
         MyAst::ArgRef(n) => Ast::UnOp("arg".into(), n as _),
         MyAst::BinOp(op, lhs, rhs) => Ast::BinOp(
-            op.as_string(),
+            op.as_string().into(),
             Box::new(to_dumb_ast(*lhs)),
             Box::new(to_dumb_ast(*rhs)),
         ),
@@ -347,7 +346,7 @@ impl Compiler {
         let mut res = Vec::with_capacity(program.len() * 2 / 3);
         let mut last_space_or_symbol = 0;
         for (i, &c) in program.as_bytes().iter().enumerate() {
-            if c < b'0' || [b']', b'['].contains(&c) {
+            if c < b'0' || b"][".contains(&c) {
                 if last_space_or_symbol + 1 < i {
                     res.push(unsafe { program.get_unchecked(last_space_or_symbol + 1..i) }.into());
                 }

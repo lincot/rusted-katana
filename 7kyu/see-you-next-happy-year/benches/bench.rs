@@ -9,7 +9,7 @@ use test::{black_box, Bencher};
 fn bench(bencher: &mut Bencher) {
     bencher.iter(|| {
         for year in 1000..=9000 {
-            black_box(next_happy_year(year));
+            black_box(next_happy_year(black_box(year)));
         }
     });
 }

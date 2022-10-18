@@ -8,13 +8,11 @@ use my_prelude::prelude::*;
 
 pub fn solution(s: &str) -> String {
     let mut res = String::with_capacity(2 * s.len());
-
     for c in s.chars() {
         if c.is_uppercase() {
             unsafe { res.push_unchecked(' ') };
         }
         unsafe { res.push_unchecked(c) };
     }
-
     res
 }

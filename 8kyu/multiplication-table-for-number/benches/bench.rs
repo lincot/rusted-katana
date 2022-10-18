@@ -7,6 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let n = black_box(5);
-    bencher.iter(|| multi_table(n));
+    bencher.iter(|| multi_table(black_box(5)));
 }

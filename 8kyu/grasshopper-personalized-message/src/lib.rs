@@ -5,6 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 
+#[allow(clippy::missing_const_for_fn)]
 pub fn greet(name: &str, owner: &str) -> String {
     if name == owner {
         "Hello boss".into()

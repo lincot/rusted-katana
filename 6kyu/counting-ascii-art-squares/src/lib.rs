@@ -19,9 +19,7 @@ pub fn count_squares(lines: &[&str]) -> usize {
                                 }
                                 if slice[0] == b'+'
                                     && slice[slice.len() - 1] == b'+'
-                                    && slice[1..slice.len() - 1]
-                                        .iter()
-                                        .all(|b| ![b' ', b'|'].contains(b))
+                                    && slice[1..slice.len() - 1].iter().all(|b| !b" |".contains(b))
                                     && (i + 1..i + j_ - j).all(|ind| {
                                         let between_line =
                                             unsafe { lines.get_unchecked(ind) }.as_bytes();

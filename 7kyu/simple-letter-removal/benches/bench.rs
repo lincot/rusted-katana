@@ -7,7 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let s = black_box("abracadabra");
-    let k = black_box(6);
-    bencher.iter(|| solve(s, k));
+    bencher.iter(|| solve(black_box("abracadabra"), black_box(6)));
 }

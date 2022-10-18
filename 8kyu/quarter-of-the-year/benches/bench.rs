@@ -7,10 +7,9 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let month = black_box(3);
     bencher.iter(|| {
-        for _ in 0..1_000_000 {
-            black_box(quarter_of(month));
+        for _ in 0..1000 {
+            black_box(quarter_of(black_box(3)));
         }
     });
 }

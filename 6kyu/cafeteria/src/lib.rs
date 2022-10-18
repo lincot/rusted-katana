@@ -19,6 +19,7 @@ impl CoffeeBuilder {
         })
     }
 
+    #[allow(clippy::missing_const_for_fn)]
     pub fn set_black_coffee(mut self) -> Self {
         self.0.sort = "Black".into();
         self

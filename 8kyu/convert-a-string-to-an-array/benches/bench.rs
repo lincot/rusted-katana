@@ -7,6 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let s = black_box("I love arrays they are my favorite");
-    bencher.iter(|| string_to_array(s));
+    bencher.iter(|| string_to_array(black_box("I love arrays they are my favorite")));
 }

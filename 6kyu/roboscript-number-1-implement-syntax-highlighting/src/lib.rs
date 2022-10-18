@@ -18,9 +18,8 @@ pub fn highlight(code: &str) -> String {
     }
 
     unsafe fn push_unchecked_end(s: &mut String, token: u8) {
-        match token {
-            b'(' | b')' => {}
-            _ => s.push_str_unchecked("</span>"),
+        if !b"()".contains(&token) {
+            s.push_str_unchecked("</span>");
         }
     }
 

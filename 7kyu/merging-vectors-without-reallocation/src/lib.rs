@@ -5,7 +5,6 @@
 extern crate alloc;
 use alloc::vec::Vec;
 
-#[allow(clippy::ptr_arg)]
 pub fn merge<'a>(xs: &'a Vec<usize>, ys: &'a Vec<usize>) -> Vec<&'a usize> {
     let mut res = Vec::with_capacity(xs.len() + ys.len());
     unsafe { res.set_len(xs.len() + ys.len()) };

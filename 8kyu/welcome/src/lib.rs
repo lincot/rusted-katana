@@ -2,6 +2,7 @@
 
 #![no_std]
 
+#[allow(clippy::missing_const_for_fn)]
 pub fn greet(language: &str) -> &'static str {
     match language {
         "czech" => "Vitejte",

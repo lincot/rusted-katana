@@ -7,10 +7,9 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let to = black_box(650);
     bencher.iter(|| {
-        for a0 in 1..=to {
-            black_box(square_digits_sequence(a0));
+        for a0 in 1..=650 {
+            black_box(square_digits_sequence(black_box(a0)));
         }
     });
 }

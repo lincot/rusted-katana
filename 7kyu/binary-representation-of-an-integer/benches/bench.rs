@@ -7,10 +7,9 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let n = black_box(-12336);
     bencher.iter(|| {
         for _ in 0..1000 {
-            black_box(show_bits(n));
+            black_box(show_bits(black_box(-12336)));
         }
     });
 }

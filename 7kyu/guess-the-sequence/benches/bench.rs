@@ -9,7 +9,7 @@ use test::{black_box, Bencher};
 fn bench(bencher: &mut Bencher) {
     bencher.iter(|| {
         for x in 1..=100 {
-            black_box(sequence(x));
+            black_box(sequence(black_box(x)));
         }
     });
 }

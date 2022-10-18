@@ -3,7 +3,6 @@
 #![no_std]
 
 pub fn max_rot(n: u64) -> u64 {
-    #[inline(never)]
     fn to_digits(mut n: u64) -> heapless::Vec<u8, 20> {
         let mut digits = heapless::Vec::new();
         // TODO: make a better conversion

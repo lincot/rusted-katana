@@ -2,9 +2,11 @@
 
 #![no_std]
 
-pub const fn how_many_lightsabers_do_you_own(name: &str) -> u8 {
-    match name.as_bytes() {
-        b"Zach" => 18,
-        _ => 0,
+#[allow(clippy::missing_const_for_fn)]
+pub fn how_many_lightsabers_do_you_own(name: &str) -> u8 {
+    if name == "Zach" {
+        18
+    } else {
+        0
     }
 }

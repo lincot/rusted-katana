@@ -9,7 +9,6 @@ use my_prelude::prelude::*;
 pub fn html_special_chars(html: &str) -> String {
     let cap = "&quot;".len() * html.len();
     let mut res = String::with_capacity(cap);
-
     for b in html.bytes() {
         unsafe {
             match b {
@@ -21,6 +20,5 @@ pub fn html_special_chars(html: &str) -> String {
             }
         }
     }
-
     res
 }

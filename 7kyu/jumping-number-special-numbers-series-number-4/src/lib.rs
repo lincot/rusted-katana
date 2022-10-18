@@ -5,6 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 
+#[allow(clippy::missing_const_for_fn)]
 pub fn jumping_number(mut n: u64) -> String {
     let mut prev = (n % 10) as u8;
     n /= 10;

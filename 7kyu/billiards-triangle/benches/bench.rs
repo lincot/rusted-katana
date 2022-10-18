@@ -7,10 +7,9 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let balls = black_box(9999);
     bencher.iter(|| {
         for _ in 0..1000 {
-            black_box(pyramid(balls));
+            black_box(pyramid(black_box(9999)));
         }
     });
 }

@@ -2,7 +2,6 @@
 
 #![no_std]
 
-#[inline(always)]
 fn digits_hash(mut n: u64) -> u64 {
     let mut res = 0;
     while n != 0 {

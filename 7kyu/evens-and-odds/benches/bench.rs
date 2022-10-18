@@ -7,12 +7,10 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench_15800(bencher: &mut Bencher) {
-    let n = black_box(15800);
-    bencher.iter(|| evens_and_odds(n));
+    bencher.iter(|| evens_and_odds(black_box(15800)));
 }
 
 #[bench]
 fn bench_15801(bencher: &mut Bencher) {
-    let n = black_box(15801);
-    bencher.iter(|| evens_and_odds(n));
+    bencher.iter(|| evens_and_odds(black_box(15801)));
 }

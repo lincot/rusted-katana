@@ -17,7 +17,7 @@ pub fn good_vs_evil(good: &str, evil: &str) -> String {
                     .unwrap()
             })
             .zip(worths)
-            .map(|(count, worth)| worth * count)
+            .map(|(count, worth)| count * worth)
             .sum()
     }
 

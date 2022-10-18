@@ -9,18 +9,16 @@ use my_prelude::prelude::*;
 pub fn pendulum(xs: &[i32]) -> Vec<i32> {
     let mut xs = xs.to_vec();
     xs.sort_unstable();
-
     let mut res = Vec::with_capacity(xs.len());
-
-    for i in (0..xs.len() - (xs.len() % 2 == 0) as usize)
-        .rev()
-        .step_by(2)
-    {
+    let mut i = (xs.len() - (xs.len() % 2 == 0) as usize).wrapping_sub(1);
+    for _ in 0..(i + 2) / 2 {
         unsafe { res.push_unchecked(*xs.get_unchecked(i)) };
+        i = i.wrapping_sub(2);
     }
-    for i in (1..xs.len()).step_by(2) {
+    let mut i = 1;
+    for _ in 0..xs.len() / 2 {
         unsafe { res.push_unchecked(*xs.get_unchecked(i)) };
+        i += 2;
     }
-
     res
 }

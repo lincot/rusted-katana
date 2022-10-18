@@ -7,7 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let m = black_box(100);
-    let n = black_box(3.15);
-    bencher.iter(|| multiples(m, n));
+    bencher.iter(|| multiples(black_box(100), black_box(3.15)));
 }

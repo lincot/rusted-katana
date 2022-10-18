@@ -3,15 +3,15 @@
 #![no_std]
 
 pub const fn solution(num: i32) -> i32 {
-    if num <= 3 {
-        return 0;
+    #[inline]
+    const fn s(step: i32, stop: i32) -> i32 {
+        let n = (stop - 1) / step;
+        step * n * (n + 1)
     }
-    let num = num - 1;
-    sum_of_sequence(3, num) + sum_of_sequence(5, num) - sum_of_sequence(15, num)
-}
 
-const fn sum_of_sequence(step: i32, stop_inclusive: i32) -> i32 {
-    let n = stop_inclusive / step;
-    let s = (n * (n + 1)) / 2;
-    step * s
+    if num <= 3 {
+        0
+    } else {
+        (s(3, num) + s(5, num) - s(15, num)) / 2
+    }
 }

@@ -3,20 +3,16 @@
 #![no_std]
 
 extern crate alloc;
+use alloc::boxed::Box;
 
 pub fn barista(coffees: &[u8]) -> u16 {
-    let mut coffees = coffees.to_vec();
+    let mut coffees: Box<[_]> = coffees.into();
     coffees.sort_unstable();
-    let mut coffees = coffees.into_iter();
-    let mut prev = if let Some(first) = coffees.next() {
-        first as u16
-    } else {
-        return 0;
-    };
-    let mut res = prev;
-    for coffee in coffees {
-        prev += (coffee + 2) as u16;
-        res += prev;
+    let mut sum_of_prev = 0;
+    let mut res = coffees.len() as u16 * coffees.len() as u16 - coffees.len() as u16;
+    for &coffee in coffees.iter() {
+        sum_of_prev += coffee as u16;
+        res += sum_of_prev;
     }
     res
 }

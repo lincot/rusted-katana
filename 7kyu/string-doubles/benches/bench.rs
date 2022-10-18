@@ -7,6 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let s = black_box("ххбннннныааааамвидхвыдуслььььиддхпй");
-    bencher.iter(|| doubles(s));
+    bencher.iter(|| doubles(black_box("ххбннннныааааамвидхвыдуслььььиддхпй")));
 }

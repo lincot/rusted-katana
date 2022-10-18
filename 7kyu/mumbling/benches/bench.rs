@@ -7,6 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let s = black_box("ZpglnRxqenU");
-    bencher.iter(|| accum(s));
+    bencher.iter(|| accum(black_box("ZpglnRxqenU")));
 }

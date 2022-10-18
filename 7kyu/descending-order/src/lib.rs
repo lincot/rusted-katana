@@ -30,9 +30,7 @@ pub fn descending_order(mut x: u64) -> u64 {
     let mut digits = [0u8; 10];
 
     while x != 0 {
-        unsafe {
-            *digits.get_unchecked_mut((x % 10) as usize) += 1;
-        }
+        digits[(x % 10) as usize] += 1;
         x /= 10;
     }
 

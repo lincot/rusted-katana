@@ -7,12 +7,9 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let operator = black_box('-');
-    let value1 = black_box(256);
-    let value2 = black_box(32);
     bencher.iter(|| {
         for _ in 0..1000 {
-            black_box(basic_op(operator, value1, value2));
+            black_box(basic_op(black_box('-'), black_box(256), black_box(32)));
         }
     });
 }

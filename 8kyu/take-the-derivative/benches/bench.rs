@@ -7,7 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let coefficient = black_box(20);
-    let exponent = black_box(30);
-    bencher.iter(|| derive(coefficient, exponent));
+    bencher.iter(|| derive(black_box(20), black_box(30)));
 }

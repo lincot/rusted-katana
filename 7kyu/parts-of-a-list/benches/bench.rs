@@ -9,6 +9,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let arr = black_box(vec!["I", "wish", "I", "hadn't", "come"]);
-    bencher.iter(|| part_list(arr.clone()));
+    bencher.iter(|| part_list(black_box(vec!["I", "wish", "I", "hadn't", "come"])));
 }

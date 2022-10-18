@@ -7,7 +7,5 @@ use what_is_between::between;
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let a = black_box(-30000);
-    let b = black_box(30000);
-    bencher.iter(|| between(a, b));
+    bencher.iter(|| between(black_box(-30000), black_box(30000)));
 }

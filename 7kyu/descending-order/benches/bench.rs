@@ -7,6 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let n = black_box(1_254_859_723);
-    bencher.iter(|| descending_order(n));
+    bencher.iter(|| descending_order(black_box(1_254_859_723)));
 }

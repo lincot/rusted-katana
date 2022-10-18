@@ -35,9 +35,8 @@ pub fn triangle(row_str: &str) -> String {
     }
 
     match colors[0] {
-        0 => "R",
-        1 => "G",
-        _ => "B",
+        0 => "R".into(),
+        1 => "G".into(),
+        _ => "B".into(),
     }
-    .into()
 }

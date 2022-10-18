@@ -7,6 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let input = black_box("what time are we climbing up the volcano");
-    bencher.iter(|| high(input));
+    bencher.iter(|| high(black_box("what time are we climbing up the volcano")));
 }

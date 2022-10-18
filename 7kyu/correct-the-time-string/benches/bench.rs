@@ -7,6 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let time_str = black_box("20:40:39");
-    bencher.iter(|| time_correct(time_str));
+    bencher.iter(|| time_correct(black_box("20:40:39")));
 }

@@ -7,7 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let val = black_box(33_610_383);
-    let pow_ = black_box(5);
-    bencher.iter(|| find_next_power(val, pow_));
+    bencher.iter(|| find_next_power(black_box(33_610_383), black_box(5)));
 }

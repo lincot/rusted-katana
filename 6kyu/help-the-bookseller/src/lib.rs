@@ -14,8 +14,7 @@ pub fn stock_list(list_art: Vec<&str>, list_cat: Vec<&str>) -> String {
     let cap = (4 + 20 + "( : ) - ".len()) * list_cat.len();
     let mut res = String::with_capacity(cap);
 
-    let mut list_cat = list_cat.into_iter();
-    if let Some(cat) = list_cat.next() {
+    for (i, cat) in list_cat.into_iter().enumerate() {
         let cat = cat.chars().next().unwrap();
 
         let mut sum = 0;
@@ -29,28 +28,10 @@ pub fn stock_list(list_art: Vec<&str>, list_cat: Vec<&str>) -> String {
         }
 
         unsafe {
+            if i != 0 {
+                res.push_str_unchecked(" - ");
+            }
             res.push_unchecked('(');
-            res.push_unchecked(cat);
-            res.push_str_unchecked(" : ");
-            res.write_num_unchecked(sum);
-            res.push_unchecked(')');
-        }
-    }
-    for cat in list_cat {
-        let cat = cat.chars().next().unwrap();
-
-        let mut sum = 0;
-        for &art in &list_art {
-            if art.starts_with(cat) {
-                let space_pos = art.bytes().position(|b| b == b' ').unwrap();
-                sum += unsafe { art.get_unchecked(space_pos + 1..) }
-                    .parse::<u64>()
-                    .unwrap();
-            }
-        }
-
-        unsafe {
-            res.push_str_unchecked(" - (");
             res.push_unchecked(cat);
             res.push_str_unchecked(" : ");
             res.write_num_unchecked(sum);

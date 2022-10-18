@@ -9,17 +9,19 @@ use my_prelude::prelude::*;
 pub fn reverse_words(str: &str) -> String {
     let mut res = String::with_capacity(str.len());
 
-    let mut reversed_words = str.as_bytes().split(|&b| b == b' ').map(|bytes| {
-        unsafe { core::str::from_utf8_unchecked(bytes) }
-            .chars()
-            .rev()
-    });
-
-    if let Some(w) = reversed_words.next() {
-        unsafe { res.extend_unchecked(w) };
-    }
-    for w in reversed_words {
-        unsafe { res.push_unchecked(' ') };
+    for (i, w) in str
+        .as_bytes()
+        .split(|&b| b == b' ')
+        .map(|bytes| {
+            unsafe { core::str::from_utf8_unchecked(bytes) }
+                .chars()
+                .rev()
+        })
+        .enumerate()
+    {
+        if i != 0 {
+            unsafe { res.push_unchecked(' ') };
+        }
         unsafe { res.extend_unchecked(w) };
     }
 

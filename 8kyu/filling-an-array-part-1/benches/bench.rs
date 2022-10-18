@@ -7,6 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let n = black_box(100_000);
-    bencher.iter(|| arr(n));
+    bencher.iter(|| arr(black_box(100_000)));
 }

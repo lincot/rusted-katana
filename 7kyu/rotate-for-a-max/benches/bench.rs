@@ -7,6 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let num = black_box(195_881_031);
-    bencher.iter(|| max_rot(num));
+    bencher.iter(|| max_rot(black_box(195_881_031)));
 }

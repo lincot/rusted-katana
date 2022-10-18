@@ -7,8 +7,9 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let s = black_box(
+    bencher.iter(|| {
+        remove_duplicate_words(black_box(
         "альфа бета бета гамма гамма гамма дельта гамма гамма дельта объект причина причина мнение",
-    );
-    bencher.iter(|| remove_duplicate_words(s));
+    ))
+    });
 }

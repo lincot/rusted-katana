@@ -7,6 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let word = black_box("akfheujfkgiaaaofmmfkdfuaiiie");
-    bencher.iter(|| get_the_vowels(word));
+    bencher.iter(|| get_the_vowels(black_box("akfheujfkgiaaaofmmfkdfuaiiie")));
 }

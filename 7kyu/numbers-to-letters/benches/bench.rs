@@ -9,8 +9,9 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let numbers = black_box(vec![
-        "25", "7", "8", "4", "14", "23", "8", "25", "23", "29", "16", "16", "4",
-    ]);
-    bencher.iter(|| switcher(numbers.clone()));
+    bencher.iter(|| {
+        switcher(black_box(vec![
+            "25", "7", "8", "4", "14", "23", "8", "25", "23", "29", "16", "16", "4",
+        ]))
+    });
 }

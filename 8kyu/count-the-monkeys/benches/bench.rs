@@ -7,6 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let n = black_box(30000);
-    bencher.iter(|| monkey_count(n));
+    bencher.iter(|| monkey_count(black_box(30000)));
 }

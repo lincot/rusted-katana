@@ -7,7 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let m = black_box(700);
-    let n = black_box(10000);
-    bencher.iter(|| integer_series(m, n));
+    bencher.iter(|| integer_series(black_box(700), black_box(10000)));
 }

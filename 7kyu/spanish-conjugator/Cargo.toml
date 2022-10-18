@@ -8,5 +8,4 @@ path = "../../my-prelude"
 
 [dependencies.hashbrown]
 version = "0.12.3"
-default-features = false
-features = ["nightly", "inline-more"]
+features = ["nightly"]

@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/57cfdf34902f6ba3d300001e/train/rust>
 
 #![no_std]
+#![feature(core_intrinsics)]
 
 extern crate alloc;
 use alloc::string::String;

@@ -7,6 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let n = black_box("Hippopotomonstrosesquippedaliophobia");
-    bencher.iter(|| word_pattern(n));
+    bencher.iter(|| word_pattern(black_box("Hippopotomonstrosesquippedaliophobia")));
 }

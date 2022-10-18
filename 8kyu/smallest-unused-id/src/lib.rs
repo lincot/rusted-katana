@@ -28,6 +28,5 @@ pub fn next_id(ids: &[usize]) -> usize {
     let mut ids = ids.to_vec();
     ids.sort_unstable();
     ids.dedup();
-
     my_binary_search(&ids)
 }

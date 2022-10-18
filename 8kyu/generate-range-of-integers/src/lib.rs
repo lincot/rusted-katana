@@ -13,11 +13,9 @@ pub fn generate_range(mut min: usize, max: usize, step: usize) -> Vec<usize> {
         0
     };
     let mut res = Vec::with_capacity(cap);
-
-    while min <= max {
+    for _ in 0..cap {
         unsafe { res.push_unchecked(min) };
         min += step;
     }
-
     res
 }

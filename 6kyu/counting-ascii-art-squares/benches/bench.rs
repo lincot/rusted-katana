@@ -1,34 +1,36 @@
 #![no_std]
 #![feature(test)]
 
-extern crate alloc;
 extern crate test;
-use alloc::vec;
 use counting_ascii_art_squares::count_squares;
 use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let inputs = [
-        vec![
+    bencher.iter(|| {
+        black_box(count_squares(black_box(&[
             "+--+  +----+",
             "|  |  |    |    +-+",
             "|  |  +----+    | |",
             "+--+            +-+",
-        ],
-        vec!["+-----+", "|     |", "+-----+"],
-        vec!["+-+-+", "| | |", "+-+-+", "| | |", "+-+-+"],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&["+-----+", "|     |", "+-----+"])));
+        black_box(count_squares(black_box(&[
+            "+-+-+", "| | |", "+-+-+", "| | |", "+-+-+",
+        ])));
+        black_box(count_squares(black_box(&[
             "+---+", "|   |", "|   |", "|   |", "|   |", "|   |", "|   |", "|   |", "+---+",
-        ],
-        vec!["+---+", "|   |", "|   |", "|   |", "+---+"],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&[
+            "+---+", "|   |", "|   |", "|   |", "+---+",
+        ])));
+        black_box(count_squares(black_box(&[
             "+---+", "|   |", "|  ++--+", "|  ||  |", "+--++  |", "   |   |", "   +---+",
-        ],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&[
             "   +---+", "   |   |", "+--++  |", "|  ||  |", "|  ++--+", "|   |", "+---+",
-        ],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&[
             "+---+",
             "|   |",
             "|   |  +---+",
@@ -36,8 +38,8 @@ fn bench(bencher: &mut Bencher) {
             "+---+  |   |",
             "       |   |",
             "       +---+",
-        ],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&[
             "+---+---+",
             "|   |   |",
             "|   |   |",
@@ -47,8 +49,8 @@ fn bench(bencher: &mut Bencher) {
             "|   |   |",
             "|   |   |",
             "+---+---+",
-        ],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&[
             "+----+--+",
             "|    |  |",
             "|    |  |",
@@ -58,8 +60,8 @@ fn bench(bencher: &mut Bencher) {
             "|    |  |",
             "|    |  |",
             "+----+--+",
-        ],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&[
             "+---+---+",
             "|   |   |",
             "|   |   |",
@@ -69,8 +71,8 @@ fn bench(bencher: &mut Bencher) {
             "|   |   |",
             "|   |   |",
             "+---+---+",
-        ],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&[
             "+---+---+",
             "|   |   |",
             "| +-+-+ |",
@@ -80,16 +82,16 @@ fn bench(bencher: &mut Bencher) {
             "| +-+-+ |",
             "|   |   |",
             "+---+---+",
-        ],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&[
             "  +---+",
             "  |   |",
             "  |   |  +--+",
             "+-+-+ |  |  |",
             "| +-+-+  |  |",
             "+---+    +--+",
-        ],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&[
             "+---+",
             "|   |",
             "|   |",
@@ -99,8 +101,8 @@ fn bench(bencher: &mut Bencher) {
             "   | |",
             "   | |",
             "   +-+",
-        ],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&[
             "+---------+--+",
             "|  +---+  |  |",
             "|  |   |  |  |",
@@ -116,10 +118,10 @@ fn bench(bencher: &mut Bencher) {
             "|    |   |   |",
             "+----+---+---+",
             "     +---+",
-        ],
-        vec!["++", "++"],
-        vec!["+"],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&["++", "++"])));
+        black_box(count_squares(black_box(&["+"])));
+        black_box(count_squares(black_box(&[
             "   +--+",
             "   |  |",
             "   |  |",
@@ -130,8 +132,8 @@ fn bench(bencher: &mut Bencher) {
             "   |  |",
             "   |  |",
             "   +--+",
-        ],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&[
             "+--+  +--+",
             "|  |  |  |",
             "|  |  |  |",
@@ -142,8 +144,8 @@ fn bench(bencher: &mut Bencher) {
             "|  |  |  |",
             "|  |  |  |",
             "+--+  +--+",
-        ],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&[
             "   +--+  +--+",
             "   |  |  |  |",
             "   |  |  |  |",
@@ -157,18 +159,18 @@ fn bench(bencher: &mut Bencher) {
             "|  |  |  |",
             "|  |  |  |",
             "+--+  +--+",
-        ],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&[
             "+-+ +-+", "| | | |", "+-+ +-+", "", "+-+ +-+", "| | | |", "+-+ +-+",
-        ],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&[
             "+-+---+", "| |   |", "| |   |", "+-+-+-+", "| | | |", "| | | |", "+-+ +-+",
-        ],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&[
             "++++++++", "++++++++", "++++++++", "++++++++", "++++++++", "++++++++", "++++++++",
             "++++++++",
-        ],
-        vec![
+        ])));
+        black_box(count_squares(black_box(&[
             "",
             "    +--+",
             " +--++ |   +-+",
@@ -184,12 +186,6 @@ fn bench(bencher: &mut Bencher) {
             "|   |",
             "|   |",
             "+---+",
-        ],
-    ];
-    let inputs = black_box(&inputs);
-    bencher.iter(|| {
-        for lines in inputs {
-            black_box(count_squares(lines));
-        }
+        ])));
     });
 }

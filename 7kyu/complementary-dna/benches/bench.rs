@@ -7,6 +7,9 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let dna = black_box("GCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCAT");
-    bencher.iter(|| dna_strand(dna));
+    bencher.iter(|| {
+        dna_strand(black_box(
+            "GCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCAT",
+        ))
+    });
 }

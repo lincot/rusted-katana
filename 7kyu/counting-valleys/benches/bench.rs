@@ -7,6 +7,9 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let s = black_box("UFFDDFDUDFUFUUFFDDFDUDFUFUUFFDDFDUDFUFUUFFDDFDUDFUFU");
-    bencher.iter(|| counting_valleys(s));
+    bencher.iter(|| {
+        counting_valleys(black_box(
+            "UFFDDFDUDFUFUUFFDDFDUDFUFUUFFDDFDUDFUFUUFFDDFDUDFUFU",
+        ))
+    });
 }

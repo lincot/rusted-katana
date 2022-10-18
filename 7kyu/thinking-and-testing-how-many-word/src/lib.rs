@@ -10,22 +10,22 @@ pub fn testit(s: &str) -> usize {
     let mut d_ = 0;
     while let Some(w) = unsafe { s.get_unchecked(d_..) }
         .iter()
-        .position(|b| [b'w', b'W'].contains(b))
+        .position(|b| b"wW".contains(b))
         .map(|pos| pos + d_)
     {
         if let Some(o) = unsafe { s.get_unchecked(w + 1..) }
             .iter()
-            .position(|b| [b'o', b'O'].contains(b))
+            .position(|b| b"oO".contains(b))
             .map(|pos| pos + w + 1)
         {
             if let Some(r) = unsafe { s.get_unchecked(o + 1..) }
                 .iter()
-                .position(|b| [b'r', b'R'].contains(b))
+                .position(|b| b"rR".contains(b))
                 .map(|pos| pos + o + 1)
             {
                 if let Some(d) = unsafe { s.get_unchecked(r + 1..) }
                     .iter()
-                    .position(|b| [b'd', b'D'].contains(b))
+                    .position(|b| b"dD".contains(b))
                     .map(|pos| pos + r + 1)
                 {
                     res += 1;

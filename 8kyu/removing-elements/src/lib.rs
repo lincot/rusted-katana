@@ -16,7 +16,6 @@ pub fn remove_every_other(arr: &[u8]) -> Vec<u8> {
             *res_ptr = *arr.get_unchecked(i);
             res_ptr = res_ptr.add(1);
         }
-
         i += 2;
     }
     res

@@ -5,5 +5,4 @@ edition = "2021"
 
 [dependencies.hashbrown]
 version = "0.12.3"
-default-features = false
-features = ["nightly", "inline-more"]
+features = ["nightly"]

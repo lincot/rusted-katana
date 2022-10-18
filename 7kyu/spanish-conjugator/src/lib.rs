@@ -79,5 +79,5 @@ pub fn conjugate(verb: &str) -> HashMap<String, Vec<String>> {
         _ => panic!(),
     };
 
-    HashMap::from([(verb.into(), forms)])
+    [(verb.into(), forms)].into()
 }
