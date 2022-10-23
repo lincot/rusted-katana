@@ -78,7 +78,8 @@ pub fn sort_by_area(seq: &[Either<(f64, f64), f64>]) -> Vec<Either<(f64, f64), f
         Vec::from_raw_parts(
             seq_with_areas.as_mut_ptr().cast(),
             seq_with_areas.len(),
-            seq_with_areas.capacity() + seq_with_areas.capacity() / N,
+            seq_with_areas.capacity() * size_of::<(Either<(f64, f64), f64>, f64)>()
+                / size_of::<Either<(f64, f64), f64>>(),
         )
     };
     forget(seq_with_areas);

@@ -15,9 +15,7 @@ pub fn evens_and_odds(n: u64) -> String {
         const FORMAT: u128 = NumberFormatBuilder::hexadecimal();
         let mut res = to_string_with_options::<_, FORMAT>(n, &WriteIntegerOptions::new());
         for b in unsafe { res.as_mut_vec() } {
-            if (b'A'..=b'Z').contains(b) {
-                *b += b'a' - b'A';
-            }
+            *b = (*b).to_ascii_lowercase();
         }
         res
     }

@@ -13,27 +13,23 @@ pub fn accum(s: &str) -> String {
         s.len() * (s.len() + 1) / 2 + s.len() - 1
     };
     let mut res = String::with_capacity(cap);
-
     for (i, &b) in s.as_bytes().iter().enumerate() {
         if i != 0 {
             unsafe { res.push_unchecked('-') };
         }
-        match b {
-            b'a'..=b'z' => {
-                unsafe { res.as_mut_vec().push_unchecked(b - (b'a' - b'A')) };
-                for _ in 0..i {
-                    unsafe { res.as_mut_vec().push_unchecked(b) };
-                }
-            }
-            b'A'..=b'Z' => {
+        if b.is_ascii_lowercase() {
+            unsafe { res.as_mut_vec().push_unchecked(b.to_ascii_uppercase()) };
+            for _ in 0..i {
                 unsafe { res.as_mut_vec().push_unchecked(b) };
-                for _ in 0..i {
-                    unsafe { res.as_mut_vec().push_unchecked(b + (b'a' - b'A')) };
-                }
             }
-            _ => panic!(),
+        } else if b.is_ascii_uppercase() {
+            unsafe { res.as_mut_vec().push_unchecked(b) };
+            for _ in 0..i {
+                unsafe { res.as_mut_vec().push_unchecked(b.to_ascii_lowercase()) };
+            }
+        } else {
+            panic!();
         }
     }
-
     res
 }

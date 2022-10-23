@@ -1,0 +1,4 @@
+[package]
+name = "beginner-series-number-4-cockroach"
+version = "0.1.0"
+edition = "2021"

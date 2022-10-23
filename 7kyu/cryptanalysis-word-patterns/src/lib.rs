@@ -12,7 +12,7 @@ pub fn word_pattern(word: &str) -> String {
     let mut word = word.as_bytes().iter();
     if let Some(&b) = word.next() {
         let b = if b < b'a' { b + b'a' - b'A' } else { b };
-        assert!((b'a'..=b'z').contains(&b));
+        assert!(b.is_ascii_lowercase());
         unsafe {
             encountered.push_unchecked(b);
             res.as_mut_vec().push_unchecked(b'0');
@@ -20,7 +20,7 @@ pub fn word_pattern(word: &str) -> String {
     }
     for &b in word {
         let b = if b < b'a' { b + b'a' - b'A' } else { b };
-        assert!((b'a'..=b'z').contains(&b));
+        assert!(b.is_ascii_lowercase());
         let pos = encountered
             .iter()
             .position(|&b_| b_ == b)

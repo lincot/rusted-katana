@@ -1,0 +1,8 @@
+[package]
+name = "oh-so-you-like-programming-name-all-of-the-keywords"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies.hashbrown]
+version = "0.12.3"
+features = ["nightly"]

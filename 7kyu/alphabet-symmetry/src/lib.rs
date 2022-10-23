@@ -10,11 +10,12 @@ pub fn solve(strings: &[String]) -> Vec<usize> {
     unsafe { res.set_len(strings.len()) };
     let mut res_ptr = res.as_mut_ptr();
     for string in strings {
+        #[allow(clippy::range_plus_one)]
         unsafe {
-            *res_ptr = b"abcdefghijklmnopqrstuvwxyz"
-                .iter()
+            *res_ptr = (b'a'..b'z' + 1)
+                .zip(b'A'..b'Z' + 1)
                 .zip(string.as_bytes())
-                .filter(|&(&i, &b)| i == b || i - b'a' + b'A' == b)
+                .filter(|&((l, u), b)| [l, u].contains(b))
                 .count();
             res_ptr = res_ptr.add(1);
         }

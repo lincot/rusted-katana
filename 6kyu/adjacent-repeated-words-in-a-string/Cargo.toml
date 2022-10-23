@@ -1,0 +1,4 @@
+[package]
+name = "adjacent-repeated-words-in-a-string"
+version = "0.1.0"
+edition = "2021"

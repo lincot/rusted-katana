@@ -3,5 +3,5 @@
 #![no_std]
 
 pub fn words_to_marks(s: &str) -> u32 {
-    s.bytes().map(|b| (b - (b'a' - 1)) as u32).sum()
+    s.as_bytes().iter().map(|&b| b as u32).sum::<u32>() - (b'a' - 1) as u32 * s.len() as u32
 }

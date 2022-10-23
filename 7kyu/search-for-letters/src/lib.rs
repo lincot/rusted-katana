@@ -9,9 +9,9 @@ pub fn change(string: &str) -> String {
     let mut res = "00000000000000000000000000".to_string();
     for b in string.bytes() {
         unsafe {
-            if (b'a'..=b'z').contains(&b) {
+            if b.is_ascii_lowercase() {
                 res.as_mut_vec()[(b - b'a') as usize] = b'1';
-            } else if (b'A'..=b'Z').contains(&b) {
+            } else if b.is_ascii_uppercase() {
                 res.as_mut_vec()[(b - b'A') as usize] = b'1';
             }
         }

@@ -10,8 +10,8 @@ pub fn longest(a1: &str, a2: &str) -> String {
     let mut letters = [false; 26];
     for a in [a1, a2] {
         for b in a.bytes() {
-            if let Some(elem) = letters.get_mut((b - b'a') as usize) {
-                *elem = true;
+            if b.is_ascii_lowercase() {
+                letters[(b - b'a') as usize] = true;
             }
         }
     }

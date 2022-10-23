@@ -14,7 +14,7 @@ pub fn word_value(words: &[&str]) -> Vec<i32> {
         unsafe {
             *res_ptr = 0;
             for b in word.bytes() {
-                *res_ptr += if (b'a'..=b'z').contains(&b) {
+                *res_ptr += if b.is_ascii_lowercase() {
                     (b - b'a' + 1) as _
                 } else {
                     0
