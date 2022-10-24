@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn anagrams(word: &str, words: &[String]) -> Vec<String> {
     let mut word_sorted = Vec::with_capacity(word.len());

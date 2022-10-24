@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{vec, vec::Vec};
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn digitize(mut n: u64) -> Vec<u8> {
     if n == 0 {

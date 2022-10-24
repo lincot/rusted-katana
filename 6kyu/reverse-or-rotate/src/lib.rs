@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn revrot(s: &str, c: usize) -> String {
     if c == 0 {

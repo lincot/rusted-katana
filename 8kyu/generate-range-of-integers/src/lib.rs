@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn generate_range(mut min: usize, max: usize, step: usize) -> Vec<usize> {
     let cap = if min <= max {

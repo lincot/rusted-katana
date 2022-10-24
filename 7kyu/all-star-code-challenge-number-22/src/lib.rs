@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn to_time(seconds: u32) -> String {
     let mut minutes = seconds / 60;

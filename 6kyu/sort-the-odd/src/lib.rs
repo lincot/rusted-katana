@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn sort_array(arr: &[i32]) -> Vec<i32> {
     let mut odds = Vec::with_capacity(arr.len());

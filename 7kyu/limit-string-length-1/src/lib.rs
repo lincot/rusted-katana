@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn solution(st: &str, limit: usize) -> String {
     const DOTS: &str = "...";

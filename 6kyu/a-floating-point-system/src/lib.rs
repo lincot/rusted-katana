@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
     let digits_before_dot = a_number.as_bytes().iter().position(|&b| b == b'.').unwrap();

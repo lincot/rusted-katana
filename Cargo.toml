@@ -1,13 +1,14 @@
 [workspace]
 members = [
-    "8kyu/*",
-    "7kyu/*",
-    "6kyu/*",
-    "5kyu/*",
-    "4kyu/*",
-    "3kyu/*",
-    "2kyu/*",
+    "prelude",
     "1kyu/*",
+    "2kyu/*",
+    "3kyu/*",
+    "4kyu/*",
+    "5kyu/*",
+    "6kyu/*",
+    "7kyu/*",
+    "8kyu/*",
     "check-katas",
 ]
 

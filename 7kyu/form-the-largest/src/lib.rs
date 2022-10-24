@@ -2,7 +2,7 @@
 
 #![no_std]
 
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn max_number(n: u32) -> u32 {
     fn to_digits(n: u32) -> heapless::Vec<u8, 10> {

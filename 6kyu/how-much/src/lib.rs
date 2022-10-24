@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
 use core::mem::{swap, transmute, MaybeUninit};
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn how_much(mut m: i32, mut n: i32) -> Vec<(String, String, String)> {
     if m > n {

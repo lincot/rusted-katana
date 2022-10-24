@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn string_to_array(s: &str) -> Vec<String> {
     let mut res = Vec::with_capacity(s.len() / 2 + 1);

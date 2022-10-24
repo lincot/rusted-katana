@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn usdcny(usd: u16) -> String {
     let mut res = String::with_capacity("442361.25 Chinese Yuan".len());

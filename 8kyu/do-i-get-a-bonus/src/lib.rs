@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn bonus_time(mut salary: u64, bonus: bool) -> String {
     if bonus {

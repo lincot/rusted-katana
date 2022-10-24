@@ -1,7 +1,7 @@
 #![allow(invalid_value)]
 
 use core::mem::MaybeUninit;
-use my_prelude::prelude::*;
+use prelude::*;
 use std::{
     fs::{read_dir, File},
     io::{self, Read, Write},

@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn printer_error(s: &str) -> String {
     let malformed = s.bytes().filter(|&b| b > b'm').count();

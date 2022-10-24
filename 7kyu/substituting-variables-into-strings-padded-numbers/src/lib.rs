@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn solution(n: u32) -> String {
     let mut res = String::with_capacity("Value is ".len() + 10);

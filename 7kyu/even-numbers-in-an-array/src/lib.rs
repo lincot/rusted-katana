@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn even_numbers(array: &[i32], number: usize) -> Vec<i32> {
     let mut res = Vec::with_capacity(number);

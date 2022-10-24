@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn camel_case(str: &str) -> String {
     let mut res = String::with_capacity(2 * str.len() + str.len() / 3);

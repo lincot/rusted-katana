@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn tribonacci(signature: &[f64; 3], n: usize) -> Vec<f64> {
     let mut res = Vec::with_capacity(n);

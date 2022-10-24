@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn pendulum(xs: &[i32]) -> Vec<i32> {
     let mut xs = xs.to_vec();

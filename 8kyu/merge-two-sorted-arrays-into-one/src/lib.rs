@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use my_prelude::prelude::*;
+use prelude::*;
 
 unsafe fn push_unchecked_if_not_last_unchecked(res: &mut Vec<i32>, x: i32) {
     if *res.get_unchecked(res.len() - 1) != x {

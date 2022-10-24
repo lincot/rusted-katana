@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn scale(s: &str, k: u32, n: u32) -> String {
     const DELIM: char = '\n';

@@ -6,7 +6,7 @@ extern crate alloc;
 use alloc::vec::Vec;
 use core::{cmp::Reverse, hash::BuildHasherDefault};
 use hashbrown::{hash_map::Entry, HashMap};
-use my_prelude::prelude::*;
+use prelude::*;
 use rustc_hash::FxHasher;
 
 type FxHashMap<K, V> = HashMap<K, V, BuildHasherDefault<FxHasher>>;

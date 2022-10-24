@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn print(n: i32) -> Option<String> {
     unsafe fn print_line(v: &mut String, width: usize, max_width: usize) {

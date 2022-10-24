@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn get_middle(s: &str) -> &str {
     let mut char_indices = Vec::with_capacity(s.len());

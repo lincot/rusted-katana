@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::vec::Vec;
 use core::cmp::Reverse;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn men_from_boys(xs: &[i16]) -> Vec<i16> {
     let mut boys = Vec::with_capacity(xs.len());

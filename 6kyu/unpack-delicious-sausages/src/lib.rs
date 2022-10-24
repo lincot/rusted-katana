@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn unpack_sausages(truck: Vec<Vec<&str>>) -> String {
     let packages_num = truck.iter().map(Vec::len).sum::<usize>();

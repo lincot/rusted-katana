@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn to_alternating_case(s: &str) -> String {
     let mut res = String::with_capacity(3 * s.len());

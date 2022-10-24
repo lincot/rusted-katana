@@ -6,7 +6,7 @@
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
 use core::intrinsics::sqrtf64;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn divisors(integer: u32) -> Result<Vec<u32>, String> {
     let divisors = get_divisors(integer);

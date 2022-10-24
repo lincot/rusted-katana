@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn time_correct(time_str: &str) -> Option<String> {
     let (hours, rest) = time_str.split_once(':')?;

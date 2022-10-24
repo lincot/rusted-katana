@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn warn_the_sheep(queue: &[&str]) -> String {
     let wolf_pos = queue

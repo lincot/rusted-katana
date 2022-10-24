@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn mirror(list: &[i32]) -> Vec<i32> {
     if list.len() <= 1 {

@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn longest(a1: &str, a2: &str) -> String {
     let mut letters = [false; 26];

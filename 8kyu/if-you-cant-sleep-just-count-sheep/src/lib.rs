@@ -5,7 +5,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 /// equals to `(1..=n).map(|x| x.to_string().len()).sum::<usize>() as u32`
 fn integral_log10(n: u32) -> u32 {

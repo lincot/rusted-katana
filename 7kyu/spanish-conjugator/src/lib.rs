@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::{string::String, vec, vec::Vec};
 use hashbrown::HashMap;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn conjugate(verb: &str) -> HashMap<String, Vec<String>> {
     assert!(verb.len() >= 2);

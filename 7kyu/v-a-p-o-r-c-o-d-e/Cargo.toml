@@ -3,5 +3,5 @@ name = "v-a-p-o-r-c-o-d-e"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.my-prelude]
-path = "../../my-prelude"
+[dependencies.prelude]
+path = "../../prelude"

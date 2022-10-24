@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::{string::String, vec, vec::Vec};
 use core::mem::swap;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn capitalize(s: &str) -> Vec<String> {
     let cap = 2 * s.len() + s.len() / 3;

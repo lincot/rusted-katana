@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{vec, vec::Vec};
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn add_arrays(arr_a: &[i64], arr_b: &[i64]) -> Vec<i64> {
     fn to_digits(n: i64) -> Vec<i64> {

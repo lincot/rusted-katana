@@ -5,7 +5,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn two_sort(arr: &[&str]) -> String {
     const STARS: &str = "***";

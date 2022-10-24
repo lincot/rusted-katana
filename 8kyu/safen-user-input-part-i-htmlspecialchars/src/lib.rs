@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn html_special_chars(html: &str) -> String {
     let cap = "&quot;".len() * html.len();

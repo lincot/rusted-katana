@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
 use core::mem::{transmute, MaybeUninit};
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn number(lines: &[&str]) -> Vec<String> {
     let mut res = Vec::with_capacity(lines.len());

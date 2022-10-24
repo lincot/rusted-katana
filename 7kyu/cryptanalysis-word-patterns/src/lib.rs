@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn word_pattern(word: &str) -> String {
     let mut encountered = heapless::Vec::<_, 52>::new();

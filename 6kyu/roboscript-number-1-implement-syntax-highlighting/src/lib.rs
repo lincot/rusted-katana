@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn highlight(code: &str) -> String {
     unsafe fn push_unchecked_beginning(s: &mut String, token: u8) {

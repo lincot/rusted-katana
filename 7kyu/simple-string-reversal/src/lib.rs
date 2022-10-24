@@ -5,7 +5,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn solve(s: &str) -> String {
     let mut chars = Vec::with_capacity(s.len());

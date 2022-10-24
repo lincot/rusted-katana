@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn high_and_low(numbers: &str) -> String {
     let mut min = i32::MAX;

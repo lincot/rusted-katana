@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn dup(mut arry: Vec<String>) -> Vec<String> {
     for s in &mut arry {

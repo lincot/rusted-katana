@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn plane_seat(seat_number: &str) -> String {
     const NO_SEAT: &str = "No Seat!!";

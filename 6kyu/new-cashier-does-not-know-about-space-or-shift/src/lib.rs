@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn get_order(input: String) -> String {
     let cap = input.len() + input.len() / 4;

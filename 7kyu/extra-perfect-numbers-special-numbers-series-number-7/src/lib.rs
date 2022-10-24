@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn extra_perfect(n: u32) -> Vec<u32> {
     let cap = (n + 1) / 2;

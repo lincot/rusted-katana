@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn word_mesh(words: &[&str]) -> Option<String> {
     let mut res = String::with_capacity(if words.is_empty() {

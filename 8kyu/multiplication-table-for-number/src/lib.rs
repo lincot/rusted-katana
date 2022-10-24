@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn multi_table(n: u64) -> String {
     const REPEATING_CAPACITY: usize = " *  = ".len() + 20;

@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn derive(coefficient: u32, exponent: u32) -> String {
     let mut res = String::with_capacity(10 + 2 + 10);

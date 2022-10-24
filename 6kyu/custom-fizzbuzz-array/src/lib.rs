@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
 use lexical::to_string;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn fizz_buzz_custom_solver(
     string_one: &str,

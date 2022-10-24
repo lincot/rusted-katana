@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn to_csv_text(array: &[Vec<i8>]) -> String {
     fn push_row(row: &[i8], res: &mut String) {

@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use my_prelude::prelude::*;
+use prelude::*;
 
 pub fn fire_fight(s: &str) -> String {
     const FIRE: &str = "Fire";
