@@ -4,5 +4,5 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies.hashbrown]
-version = "0.12.3"
+version = "0.13.1"
 features = ["nightly"]

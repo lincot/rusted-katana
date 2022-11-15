@@ -7,7 +7,7 @@ edition = "2021"
 path = "../../prelude"
 
 [dependencies.hashbrown]
-version = "0.12.3"
+version = "0.13.1"
 default-features = false
 features = ["nightly", "inline-more"]
 

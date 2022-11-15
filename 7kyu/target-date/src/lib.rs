@@ -15,5 +15,6 @@ fn log(a: f64, b: f64) -> f64 {
 pub fn date_nb_days(a0: i32, a: i32, p: i32) -> String {
     let p = unsafe { fmaf64(p as f64, 1. / 100. / 360., 1.) };
     let days = log(a as f64 / a0 as f64, p) as i64;
-    (NaiveDate::from_ymd(2016, 1, 2) + Duration::days(days)).to_string()
+    (unsafe { NaiveDate::from_ymd_opt(2016, 1, 2).unwrap_unchecked() } + Duration::days(days))
+        .to_string()
 }
