@@ -29,55 +29,29 @@ impl PushUnchecked<char> for String {
     #[inline]
     unsafe fn push_unchecked(&mut self, ch: char) {
         let len = self.len();
+        let ptr = self.as_mut_ptr().add(len);
         let count = ch.len_utf8();
         debug_assert!(len + count <= self.capacity());
         match count {
             1 => {
-                core::ptr::write(self.as_mut_ptr().add(len), ch as u8);
+                core::ptr::write(ptr, ch as u8);
             }
             2 => {
-                core::ptr::write(
-                    self.as_mut_ptr().add(len),
-                    (ch as u32 >> 6 & 0x1F) as u8 | 0b1100_0000,
-                );
-                core::ptr::write(
-                    self.as_mut_ptr().add(len + 1),
-                    (ch as u32 & 0x3F) as u8 | 0b1000_0000,
-                );
+                core::ptr::write(ptr, (ch as u32 >> 6 & 0x1F) as u8 | 0b1100_0000);
+                core::ptr::write(ptr.add(1), (ch as u32 & 0x3F) as u8 | 0b1000_0000);
             }
             3 => {
-                core::ptr::write(
-                    self.as_mut_ptr().add(len),
-                    (ch as u32 >> 12 & 0x0F) as u8 | 0b1110_0000,
-                );
-                core::ptr::write(
-                    self.as_mut_ptr().add(len + 1),
-                    (ch as u32 >> 6 & 0x3F) as u8 | 0b1000_0000,
-                );
-                core::ptr::write(
-                    self.as_mut_ptr().add(len + 2),
-                    (ch as u32 & 0x3F) as u8 | 0b1000_0000,
-                );
+                core::ptr::write(ptr, (ch as u32 >> 12 & 0x0F) as u8 | 0b1110_0000);
+                core::ptr::write(ptr.add(1), (ch as u32 >> 6 & 0x3F) as u8 | 0b1000_0000);
+                core::ptr::write(ptr.add(2), (ch as u32 & 0x3F) as u8 | 0b1000_0000);
             }
             _ => {
-                core::ptr::write(
-                    self.as_mut_ptr().add(len),
-                    (ch as u32 >> 18 & 0x07) as u8 | 0b1111_0000,
-                );
-                core::ptr::write(
-                    self.as_mut_ptr().add(len + 1),
-                    (ch as u32 >> 12 & 0x3F) as u8 | 0b1000_0000,
-                );
-                core::ptr::write(
-                    self.as_mut_ptr().add(len + 2),
-                    (ch as u32 >> 6 & 0x3F) as u8 | 0b1000_0000,
-                );
-                core::ptr::write(
-                    self.as_mut_ptr().add(len + 3),
-                    (ch as u32 & 0x3F) as u8 | 0b1000_0000,
-                );
+                core::ptr::write(ptr, (ch as u32 >> 18 & 0x07) as u8 | 0b1111_0000);
+                core::ptr::write(ptr.add(1), (ch as u32 >> 12 & 0x3F) as u8 | 0b1000_0000);
+                core::ptr::write(ptr.add(2), (ch as u32 >> 6 & 0x3F) as u8 | 0b1000_0000);
+                core::ptr::write(ptr.add(3), (ch as u32 & 0x3F) as u8 | 0b1000_0000);
             }
-        };
+        }
         self.as_mut_vec().set_len(len + count);
     }
 }
