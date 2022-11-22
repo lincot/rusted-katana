@@ -1,6 +1,3 @@
-#![allow(invalid_value)]
-
-use core::mem::MaybeUninit;
 use prelude::*;
 use rayon::prelude::*;
 use std::{
@@ -122,7 +119,7 @@ fn check_kata(reqwest_client: &reqwest::blocking::Client, kyu: u8, kata_dir: &st
 
 fn get_crate_name(path: &str) -> io::Result<([u8; 128], usize, usize)> {
     let mut f = File::open(path)?;
-    let mut buf = unsafe { MaybeUninit::<[u8; 128]>::uninit().assume_init() };
+    let mut buf = [0; 128];
     f.read(&mut buf)?;
 
     let name_pos = "[package]\nname = \"".len();
