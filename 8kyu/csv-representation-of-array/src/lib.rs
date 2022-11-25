@@ -7,12 +7,12 @@ use alloc::{string::String, vec::Vec};
 use prelude::*;
 
 pub fn to_csv_text(array: &[Vec<i8>]) -> String {
-    fn push_row(row: &[i8], res: &mut String) {
+    unsafe fn push_row(res: &mut String, row: &[i8]) {
         for (i, &x) in row.iter().enumerate() {
             if i != 0 {
-                unsafe { res.push_unchecked(',') };
+                res.push_unchecked(',');
             }
-            unsafe { res.write_num_unchecked(x) };
+            res.write_num_unchecked(x);
         }
     }
 
@@ -21,7 +21,7 @@ pub fn to_csv_text(array: &[Vec<i8>]) -> String {
         if i != 0 {
             unsafe { res.push_unchecked('\n') };
         }
-        push_row(row, &mut res);
+        unsafe { push_row(&mut res, row) };
     }
     res
 }
