@@ -6,18 +6,12 @@ extern crate alloc;
 use alloc::vec::Vec;
 
 pub fn mx_dif_lg(a1: Vec<&str>, a2: Vec<&str>) -> i32 {
-    let (a1_min, a1_max) = if let Some(x) = min_max(a1.into_iter().map(str::len)) {
-        x
-    } else {
-        return -1;
+    let Some((a1_min, a1_max)) = min_max(a1.into_iter().map(str::len)) else {
+         return -1;
     };
-
-    let (a2_min, a2_max) = if let Some(x) = min_max(a2.into_iter().map(str::len)) {
-        x
-    } else {
-        return -1;
+    let Some((a2_min, a2_max)) = min_max(a2.into_iter().map(str::len)) else {
+         return -1;
     };
-
     (a1_max - a2_min).max(a2_max - a1_min) as _
 }
 

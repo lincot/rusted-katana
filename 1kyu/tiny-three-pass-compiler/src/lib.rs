@@ -85,11 +85,7 @@ mod parse {
         fn next(&mut self) -> Option<Self::Item> {
             self.eat_whitespace();
             let line = self.0;
-            //let first = line.chars().next()?; // requires a newer version of Rust
-            let first = match line.chars().next() {
-                Some(ch) => ch,
-                None => return None,
-            };
+            let first = line.chars().next()?;
             let (eaten, token) = match first {
                 '0'..='9' => {
                     //let prefix = self.token_while(char::is_ascii_digit);

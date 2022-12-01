@@ -10,10 +10,8 @@ pub fn dup(mut arry: Vec<String>) -> Vec<String> {
     for s in &mut arry {
         let mut res = String::with_capacity(s.len());
 
-        let mut prev = if let Some(c) = s.chars().next() {
-            c
-        } else {
-            continue;
+        let Some(mut prev) = s.chars().next() else {
+             continue;
         };
         unsafe { res.push_unchecked(prev) };
         for c in s.chars() {
