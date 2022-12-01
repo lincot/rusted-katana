@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/5c1ae703ba76f438530000a2/train/rust>
 
 #![no_std]
+#![feature(array_windows)]
 
 extern crate alloc;
 use alloc::string::String;
@@ -13,10 +14,7 @@ pub fn word_mesh(words: &[&str]) -> Option<String> {
         words[..words.len() - 1].iter().map(|s| s.len()).sum()
     });
 
-    'pairs: for pair in words.windows(2) {
-        let left = pair[0];
-        let right = pair[1];
-
+    'pairs: for &[left, right] in words.array_windows() {
         for i in left.len().saturating_sub(right.len())..left.len() {
             if let Some(suffix) = left.get(i..) {
                 if right.starts_with(suffix) {

@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2/train/rust>
 
 #![no_std]
+#![feature(array_windows)]
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
@@ -32,8 +33,8 @@ pub fn solve(arr: &[&str]) -> String {
     parsed_arr.sort_unstable();
 
     let max_diff = parsed_arr
-        .windows(2)
-        .map(|pair| pair[1] - pair[0])
+        .array_windows()
+        .map(|[a, b]| b - a)
         .max()
         .unwrap_or_default()
         .max(24 * 60 + parsed_arr[0] - parsed_arr[parsed_arr.len() - 1]);
