@@ -1,9 +1,5 @@
 #!/bin/sh
 
-cargo update
-cargo outdated
-cargo +nightly udeps --quiet 2>/dev/null
-cargo fmt
 cargo check --all-features --all-targets --quiet --release
 cargo clippy --all-features --all-targets --no-deps --quiet --release -- \
     -D clippy::all \
@@ -37,4 +33,8 @@ cargo clippy --all-features --all-targets --no-deps --quiet --release -- \
     -A clippy::cognitive-complexity \
     -A clippy::debug-assert-with-mut-call \
     -A clippy::module-name-repetitions
+cargo update
+cargo outdated
+cargo +nightly udeps --quiet 2>/dev/null
+cargo fmt
 cargo run --package check-katas --quiet --release
