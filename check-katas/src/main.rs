@@ -93,7 +93,7 @@ fn check_kata(reqwest_client: &reqwest::blocking::Client, kyu: u8, kata_dir: &st
     let crate_name =
         unsafe { core::str::from_utf8_unchecked(buf.get_unchecked(name_pos..name_end)) };
     if crate_name.as_bytes() != slug.as_bytes() {
-        if (b'0'..=b'9').contains(&slug.as_bytes()[0]) {
+        if slug.as_bytes()[0].is_ascii_digit() {
             if !(crate_name.starts_with("solution-")
                 && &crate_name.as_bytes()["solution-".len()..] == slug.as_bytes())
             {

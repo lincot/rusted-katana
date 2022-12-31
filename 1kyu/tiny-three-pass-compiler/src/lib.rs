@@ -89,7 +89,7 @@ mod parse {
             let (eaten, token) = match first {
                 '0'..='9' => {
                     //let prefix = self.token_while(char::is_ascii_digit);
-                    let prefix = self.token_while(|ch| ('0'..='9').contains(&ch));
+                    let prefix = self.token_while(|ch| ch.is_ascii_digit());
                     (
                         prefix.len(),
                         Token::Value(prefix.parse().expect("parse error")),

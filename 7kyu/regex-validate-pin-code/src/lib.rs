@@ -3,5 +3,5 @@
 #![no_std]
 
 pub fn validate_pin(pin: &str) -> bool {
-    ([4, 6].contains(&pin.len())) && pin.bytes().all(|b| (b'0'..=b'9').contains(&b))
+    ([4, 6].contains(&pin.len())) && pin.as_bytes().iter().all(u8::is_ascii_digit)
 }

@@ -7,7 +7,7 @@ pub fn solve(s: &str) -> u32 {
     let mut cur = 0;
 
     for b in s.bytes() {
-        if (b'0'..=b'9').contains(&b) {
+        if b.is_ascii_digit() {
             cur *= 10;
             cur += (b - b'0') as u32;
         } else {

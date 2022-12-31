@@ -12,7 +12,7 @@ pub fn revrot(s: &str, c: usize) -> String {
     }
 
     let s = s.as_bytes();
-    assert!(s.iter().all(|b| (b'0'..=b'9').contains(b)));
+    assert!(s.iter().all(u8::is_ascii_digit));
 
     let mut res = Vec::with_capacity(s.len());
     let mut end = c;

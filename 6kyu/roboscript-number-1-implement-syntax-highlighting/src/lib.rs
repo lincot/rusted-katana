@@ -12,7 +12,9 @@ pub fn highlight(code: &str) -> String {
             b'F' => s.push_str_unchecked(r#"<span style="color: pink">"#),
             b'L' => s.push_str_unchecked(r#"<span style="color: red">"#),
             b'R' => s.push_str_unchecked(r#"<span style="color: green">"#),
-            b'0'..=b'9' => s.push_str_unchecked(r#"<span style="color: orange">"#),
+            token if token.is_ascii_digit() => {
+                s.push_str_unchecked(r#"<span style="color: orange">"#);
+            }
             _ => {}
         }
     }
@@ -36,7 +38,7 @@ pub fn highlight(code: &str) -> String {
     for b in code {
         unsafe { res.as_mut_vec().push_unchecked(prev_token) };
 
-        if !(b == prev_token || (b'0'..=b'9').contains(&b) && (b'0'..=b'9').contains(&prev_token)) {
+        if !(b == prev_token || b.is_ascii_digit() && prev_token.is_ascii_digit()) {
             unsafe {
                 push_unchecked_end(&mut res, prev_token);
                 push_unchecked_beginning(&mut res, b);
