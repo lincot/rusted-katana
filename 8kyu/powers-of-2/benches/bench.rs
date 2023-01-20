@@ -7,5 +7,9 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| powers_of_two(black_box(100)));
+    bencher.iter(|| {
+        for n in 0..128 {
+            black_box(powers_of_two(black_box(n)));
+        }
+    });
 }

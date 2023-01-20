@@ -6,5 +6,17 @@ extern crate alloc;
 use alloc::vec::Vec;
 
 pub fn powers_of_two(n: u8) -> Vec<u128> {
-    (0..=n).map(|i| 1 << i).collect()
+    let n = n as usize + 1;
+    let mut res = Vec::with_capacity(n);
+    unsafe { res.set_len(n) };
+    let mut res_ptr = res.as_mut_ptr();
+    let mut x = 1;
+    for _ in 0..n {
+        unsafe {
+            *res_ptr = x;
+            res_ptr = res_ptr.add(1);
+        }
+        x <<= 1;
+    }
+    res
 }
