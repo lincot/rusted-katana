@@ -8,7 +8,7 @@ use prelude::*;
 
 pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
     let digits_before_dot = a_number.as_bytes().iter().position(|&b| b == b'.').unwrap();
-    let mut res = String::with_capacity(digits_number as usize + 1 + 1 + 20);
+    let mut res = String::with_capacity(digits_number as usize + 1 + 1 + USIZE_MAX_LEN);
     if digits_before_dot >= digits_number as usize {
         unsafe {
             res.push_str_unchecked(a_number.get_unchecked(..digits_number as usize));

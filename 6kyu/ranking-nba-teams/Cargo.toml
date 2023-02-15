@@ -1,0 +1,7 @@
+[package]
+name = "ranking-nba-teams"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies.prelude]
+path = "../../prelude"

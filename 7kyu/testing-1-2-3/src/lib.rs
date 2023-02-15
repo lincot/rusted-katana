@@ -13,7 +13,7 @@ pub fn number(lines: &[&str]) -> Vec<String> {
     let mut res_ptr = res.as_mut_ptr();
     for (line_number, line) in (1usize..).zip(lines) {
         unsafe {
-            let mut numbered_line = String::with_capacity(line.len() + 22);
+            let mut numbered_line = String::with_capacity(USIZE_MAX_LEN + 2 + line.len());
             numbered_line.write_num_unchecked(line_number);
             numbered_line.push_str_unchecked(": ");
             numbered_line.push_str_unchecked(line);

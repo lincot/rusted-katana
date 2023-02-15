@@ -16,7 +16,7 @@ pub fn warn_the_sheep(queue: &[&str]) -> String {
         0 => "Pls go away and stop eating my sheep".into(),
         n => unsafe {
             let mut res = String::with_capacity(
-                "Oi! Sheep number ! You are about to be eaten by a wolf!".len() + 20,
+                "Oi! Sheep number ! You are about to be eaten by a wolf!".len() + USIZE_MAX_LEN,
             );
             res.push_str_unchecked("Oi! Sheep number ");
             res.write_num_unchecked(n);

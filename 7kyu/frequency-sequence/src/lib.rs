@@ -20,7 +20,7 @@ pub fn freq_seq(s: &str, sep: &str) -> String {
         }
         match counts.entry(c) {
             Entry::Occupied(mut e) => {
-                *e.get_mut() += 1;
+                *e.get_mut() += 1usize;
             }
             Entry::Vacant(e) => {
                 e.insert(1);
@@ -28,7 +28,7 @@ pub fn freq_seq(s: &str, sep: &str) -> String {
         }
     }
 
-    let cap = (20 + sep.len()) * s.len();
+    let cap = (USIZE_MAX_LEN + sep.len()) * s.len();
     let mut res = String::with_capacity(cap);
 
     for (i, c) in s.chars().enumerate() {

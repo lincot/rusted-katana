@@ -5,7 +5,6 @@
 extern crate alloc;
 use alloc::string::String;
 
-#[allow(clippy::missing_const_for_fn)]
 pub fn boolean_to_string(b: bool) -> String {
     if b {
         "true".into()

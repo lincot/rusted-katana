@@ -1,0 +1,4 @@
+[package]
+name = "basics-08-find-next-higher-number-with-same-bits-1-s"
+version = "0.1.0"
+edition = "2021"

@@ -5,7 +5,6 @@
 extern crate alloc;
 use alloc::string::String;
 
-#[allow(clippy::missing_const_for_fn)]
 pub fn special_number(mut n: u64) -> String {
     while n != 0 {
         if n % 10 > 5 {

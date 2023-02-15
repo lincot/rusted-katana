@@ -10,7 +10,7 @@ pub fn printer_error(s: &str) -> String {
     let malformed = s.bytes().filter(|&b| b > b'm').count();
     let all = s.len();
 
-    let mut res = String::with_capacity(20 + 1 + 20);
+    let mut res = String::with_capacity(USIZE_MAX_LEN + 1 + USIZE_MAX_LEN);
     unsafe {
         res.write_num_unchecked(malformed);
         res.push_unchecked('/');

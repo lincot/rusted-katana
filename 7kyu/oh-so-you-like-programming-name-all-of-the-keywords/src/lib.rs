@@ -4,7 +4,6 @@
 
 use hashbrown::HashSet;
 
-#[allow(clippy::missing_const_for_fn)]
 pub fn keywords() -> HashSet<&'static str> {
     [
         "as", "async", "await", "break", "const", "continue", "crate", "dyn", "else", "enum",

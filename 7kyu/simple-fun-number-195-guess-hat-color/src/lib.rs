@@ -6,7 +6,6 @@ mod preloaded;
 
 use preloaded::Color;
 
-#[allow(clippy::missing_const_for_fn)]
 pub fn guess_hat_color(_a: Color, b: Color, c: Color, _d: Color) -> usize {
     if b == c {
         1

@@ -212,3 +212,13 @@ impl WriteNumUnchecked for String {
         self.push_str_unchecked(&n.to_string());
     }
 }
+
+pub const USIZE_MAX_LEN: usize = {
+    let mut n = usize::MAX;
+    let mut res = 0;
+    while n != 0 {
+        res += 1;
+        n /= 10;
+    }
+    res
+};

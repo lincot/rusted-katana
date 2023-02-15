@@ -2,7 +2,6 @@
 
 #![no_std]
 
-#[allow(clippy::missing_const_for_fn)]
 pub fn how_many_lightsabers_do_you_own(name: &str) -> u8 {
     if name == "Zach" {
         18

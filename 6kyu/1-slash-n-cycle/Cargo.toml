@@ -1,0 +1,4 @@
+[package]
+name = "solution-1-slash-n-cycle"
+version = "0.1.0"
+edition = "2021"

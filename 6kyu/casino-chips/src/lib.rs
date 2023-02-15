@@ -2,7 +2,6 @@
 
 #![no_std]
 
-#[allow(clippy::missing_const_for_fn)]
 pub fn solve(arr: &[u32; 3]) -> u32 {
     let [a, b, c] = arr;
 
