@@ -6,7 +6,7 @@
 use core::intrinsics::sqrtf64;
 
 pub fn nearest_sq(n: u32) -> u32 {
-    let root = unsafe { sqrtf64(n as _) } as u32;
+    let root: u32 = unsafe { sqrtf64(n as _).to_int_unchecked() };
     let square_below = root.pow(2);
     let square_above = (root + 1).pow(2);
 

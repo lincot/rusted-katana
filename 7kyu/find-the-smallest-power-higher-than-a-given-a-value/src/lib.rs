@@ -6,6 +6,6 @@
 use core::intrinsics::powf64;
 
 pub fn find_next_power(val: u64, pow_: u32) -> u64 {
-    let base = unsafe { powf64(val as _, 1. / pow_ as f64) + 0.000_001 } as u64 + 1;
+    let base: u64 = unsafe { (powf64(val as _, 1. / pow_ as f64) + 1.000_001).to_int_unchecked() };
     base.pow(pow_)
 }

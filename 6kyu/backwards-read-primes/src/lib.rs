@@ -12,7 +12,7 @@ use prelude::*;
 fn is_prime_with_condition(x: u64) -> bool {
     let mut divisor = 5;
     let mut step = 2;
-    while divisor <= unsafe { sqrtf64(x as _) } as _ {
+    while divisor <= unsafe { sqrtf64(x as _).to_int_unchecked() } {
         if divisor == 0 {
             unsafe { core::hint::unreachable_unchecked() };
         }

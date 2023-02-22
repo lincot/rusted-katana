@@ -22,8 +22,9 @@ pub fn circle(radius: i32) -> String {
 
     (0..2 * radius - 1).for_each(|row| {
         let dist_to_center = row.max(radius - 1) - row.min(radius - 1);
-        let half_width =
-            (unsafe { sqrtf64((radius.pow(2) - dist_to_center.pow(2)) as _) } + 0.999_999) as usize;
+        let half_width: usize = unsafe {
+            (sqrtf64((radius.pow(2) - dist_to_center.pow(2)) as _) + 0.999_999).to_int_unchecked()
+        };
 
         unsafe {
             for _ in 0..radius - half_width {

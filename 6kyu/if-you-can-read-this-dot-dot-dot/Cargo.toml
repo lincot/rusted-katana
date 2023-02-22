@@ -1,0 +1,7 @@
+[package]
+name = "if-you-can-read-this-dot-dot-dot"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies.prelude]
+path = "../../prelude"

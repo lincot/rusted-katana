@@ -3,5 +3,7 @@
 #![no_std]
 
 pub fn duty_free(price: i32, discount: i32, holiday_cost: i32) -> i32 {
-    ((holiday_cost as f64 * 100.) / (discount as f64 * price as f64)) as _
+    let x = discount * price;
+    assert!(x > 0);
+    100 * holiday_cost / x
 }

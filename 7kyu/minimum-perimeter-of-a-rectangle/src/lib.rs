@@ -6,7 +6,7 @@
 use core::intrinsics::sqrtf64;
 
 pub fn minimum_perimeter(area: u64) -> u64 {
-    (1..=unsafe { sqrtf64(area as _) } as _)
+    (1..=unsafe { sqrtf64(area as _).to_int_unchecked() })
         .rev()
         .find(|width| area % width == 0)
         .map_or(0, |width| 2 * (area / width + width))

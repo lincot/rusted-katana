@@ -11,7 +11,7 @@ pub fn is_triangle_number(n: u64) -> bool {
 
 fn is_square(n: u64) -> bool {
     [0, 1, 4, 9].contains(&(n & 0xf)) && {
-        let s = unsafe { sqrtf64(n as _) } as u64;
+        let s: u64 = unsafe { sqrtf64(n as _).to_int_unchecked() };
         s * s == n
     }
 }

@@ -11,7 +11,7 @@ pub fn find_next_square(sq: u64) -> Option<u64> {
 
 fn perfect_sqrt(n: u64) -> Option<u64> {
     if [0, 1, 4, 9].contains(&(n & 0xf)) {
-        let s = unsafe { sqrtf64(n as _) } as _;
+        let s = unsafe { sqrtf64(n as _).to_int_unchecked() };
         if s * s == n {
             Some(s)
         } else {

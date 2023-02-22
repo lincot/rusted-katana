@@ -8,12 +8,13 @@ use prelude::*;
 
 pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
     let digits_before_dot = a_number.as_bytes().iter().position(|&b| b == b'.').unwrap();
-    let mut res = String::with_capacity(digits_number as usize + 1 + 1 + USIZE_MAX_LEN);
-    if digits_before_dot >= digits_number as usize {
+    let digits_number = digits_number as usize;
+    let mut res = String::with_capacity(digits_number + 1 + 1 + USIZE_MAX_LEN);
+    if digits_before_dot >= digits_number {
         unsafe {
-            res.push_str_unchecked(a_number.get_unchecked(..digits_number as usize));
+            res.push_str_unchecked(a_number.get_unchecked(..digits_number));
             res.push_unchecked('P');
-            res.write_num_unchecked(digits_before_dot - digits_number as usize);
+            res.write_num_unchecked(digits_before_dot - digits_number);
         }
     } else if digits_before_dot == 1 && *unsafe { a_number.as_bytes().get_unchecked(0) } == b'0' {
         let zeros_after_dot = unsafe { a_number.as_bytes().get_unchecked(digits_before_dot + 1..) }
@@ -22,18 +23,16 @@ pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
             .unwrap();
         let nonzero_digit_pos = digits_before_dot + 1 + zeros_after_dot;
         let nonzero_digits = a_number.len() - nonzero_digit_pos;
-        if nonzero_digits >= digits_number as usize {
+        if nonzero_digits >= digits_number {
             unsafe {
                 res.push_str_unchecked(
-                    a_number.get_unchecked(
-                        nonzero_digit_pos..nonzero_digit_pos + digits_number as usize,
-                    ),
+                    a_number.get_unchecked(nonzero_digit_pos..nonzero_digit_pos + digits_number),
                 );
             }
         } else {
             unsafe {
                 res.push_str_unchecked(a_number.get_unchecked(nonzero_digit_pos..));
-                for _ in 0..digits_number as usize - nonzero_digits {
+                for _ in 0..digits_number - nonzero_digits {
                     res.push_unchecked('0');
                 }
             }
@@ -41,24 +40,24 @@ pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
         unsafe {
             res.push_unchecked('P');
             res.push_unchecked('-');
-            res.write_num_unchecked(digits_number as usize + zeros_after_dot);
+            res.write_num_unchecked(digits_number + zeros_after_dot);
         }
     } else {
         unsafe {
             res.push_str_unchecked(a_number.get_unchecked(..digits_before_dot));
-            if digits_number as usize > a_number.len() - 1 {
+            if digits_number > a_number.len() - 1 {
                 res.push_str_unchecked(a_number.get_unchecked(digits_before_dot + 1..));
-                for _ in 0..digits_number as usize - (a_number.len() - 1) {
+                for _ in 0..digits_number - (a_number.len() - 1) {
                     res.push_unchecked('0');
                 }
             } else {
                 res.push_str_unchecked(
-                    a_number.get_unchecked(digits_before_dot + 1..=digits_number as usize),
+                    a_number.get_unchecked(digits_before_dot + 1..=digits_number),
                 );
             }
             res.push_unchecked('P');
             res.push_unchecked('-');
-            res.write_num_unchecked(digits_number as usize - digits_before_dot);
+            res.write_num_unchecked(digits_number - digits_before_dot);
         }
     }
     res

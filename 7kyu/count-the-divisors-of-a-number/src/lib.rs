@@ -13,7 +13,7 @@ pub fn divisors(mut n: u32) -> u32 {
     n >>= pow_of_2;
 
     let mut x = 3;
-    let mut n_sqrt = unsafe { sqrtf64(n as _) } as _;
+    let mut n_sqrt = unsafe { sqrtf64(n as _).to_int_unchecked() };
     while x <= n_sqrt {
         let mut n_changed = false;
         let mut p = 1;
@@ -30,7 +30,7 @@ pub fn divisors(mut n: u32) -> u32 {
 
         x += 2;
         if n_changed {
-            n_sqrt = unsafe { sqrtf64(n as _) } as u32;
+            n_sqrt = unsafe { sqrtf64(n as _).to_int_unchecked() };
         }
     }
 

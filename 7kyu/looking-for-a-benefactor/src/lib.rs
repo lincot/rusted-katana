@@ -7,7 +7,7 @@ use core::intrinsics::fmaf64;
 
 pub fn new_avg(arr: &[f64], newavg: f64) -> Option<i32> {
     match unsafe { fmaf64(newavg, (arr.len() + 1) as _, -arr.iter().sum::<f64>()) } {
-        n if n > 0. => Some((n + 0.99999) as i32),
+        n if n > 0. => Some((n + 0.99999) as _),
         _ => None,
     }
 }

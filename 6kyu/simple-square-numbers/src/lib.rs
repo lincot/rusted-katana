@@ -12,7 +12,7 @@ pub fn solve(n: u64) -> Option<u64> {
         None
     } else if n % 4 == 0 {
         let m = n / 4;
-        (1..(unsafe { sqrtf64(m as f64) } + 1.5) as u64)
+        (1u64..unsafe { (sqrtf64(m as _) + 1.5).to_int_unchecked() })
             .rev()
             .skip_while(|b| m <= b.pow(2))
             .find(|b| m % b == 0)
@@ -22,7 +22,7 @@ pub fn solve(n: u64) -> Option<u64> {
                 x.pow(2)
             })
     } else {
-        (1..((unsafe { sqrtf64(n as f64) } + 2.5) as u64) / 2)
+        (1..unsafe { (sqrtf64(n as _) + 2.5).to_int_unchecked::<u64>() } / 2)
             .rev()
             .map(|i| 2 * i - 1)
             .skip_while(|b| n <= b.pow(2))
