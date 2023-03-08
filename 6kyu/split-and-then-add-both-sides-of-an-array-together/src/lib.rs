@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
+use core::hint::unreachable_unchecked;
 
 pub fn split_and_add(arr: &[u32], n: usize) -> Vec<u32> {
     assert!(!arr.is_empty());
@@ -11,7 +12,7 @@ pub fn split_and_add(arr: &[u32], n: usize) -> Vec<u32> {
 
     for _ in 0..(n as u32).min(usize::BITS - (arr.len() - 1).leading_zeros()) {
         if arr.len() < 2 {
-            unsafe { core::hint::unreachable_unchecked() };
+            unsafe { unreachable_unchecked() };
         }
 
         let d2 = arr.len() / 2;
@@ -20,7 +21,7 @@ pub fn split_and_add(arr: &[u32], n: usize) -> Vec<u32> {
         if r2 == 0 {
             for i in 0..d2 {
                 if i >= arr.len() {
-                    unsafe { core::hint::unreachable_unchecked() };
+                    unsafe { unreachable_unchecked() };
                 }
                 arr[i] += *unsafe { arr.get_unchecked(i + d2) };
             }
@@ -28,7 +29,7 @@ pub fn split_and_add(arr: &[u32], n: usize) -> Vec<u32> {
             let mid = arr[d2];
             for i in (1..=d2).rev() {
                 if i >= arr.len() {
-                    unsafe { core::hint::unreachable_unchecked() };
+                    unsafe { unreachable_unchecked() };
                 }
                 arr[i] = unsafe { arr.get_unchecked(i - 1) + arr.get_unchecked(i + d2) };
             }

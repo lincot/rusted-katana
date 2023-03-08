@@ -5,7 +5,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use core::intrinsics::sqrtf64;
+use core::{hint::unreachable_unchecked, intrinsics::sqrtf64};
 use prelude::*;
 
 /// checks if `x` is prime || `x` is divisible by 2 or 3 || `x` <= 1
@@ -14,7 +14,7 @@ fn is_prime_with_condition(x: u64) -> bool {
     let mut step = 2;
     while divisor <= unsafe { sqrtf64(x as _).to_int_unchecked() } {
         if divisor == 0 {
-            unsafe { core::hint::unreachable_unchecked() };
+            unsafe { unreachable_unchecked() };
         }
         if x % divisor == 0 {
             return false;

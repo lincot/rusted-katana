@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use core::hash::BuildHasherDefault;
+use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
 use hashbrown::{hash_map::Entry, HashMap};
 use prelude::*;
 use rustc_hash::FxHasher;
@@ -15,7 +15,7 @@ pub fn solve(a: &str, b: &str) -> String {
     let mut map_a = FxHashMap::with_capacity_and_hasher(a.len(), Default::default());
     for c in a.chars() {
         if map_a.len() == map_a.capacity() {
-            unsafe { core::hint::unreachable_unchecked() };
+            unsafe { unreachable_unchecked() };
         }
         if let Entry::Vacant(e) = map_a.entry(c) {
             e.insert(());
@@ -24,7 +24,7 @@ pub fn solve(a: &str, b: &str) -> String {
     let mut map_b = FxHashMap::with_capacity_and_hasher(b.len(), Default::default());
     for c in b.chars() {
         if map_b.len() == map_b.capacity() {
-            unsafe { core::hint::unreachable_unchecked() };
+            unsafe { unreachable_unchecked() };
         }
         if let Entry::Vacant(e) = map_b.entry(c) {
             e.insert(());

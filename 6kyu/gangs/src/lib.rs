@@ -2,23 +2,43 @@
 
 #![no_std]
 
-use core::hash::{BuildHasherDefault, Hash, Hasher};
+use core::{
+    hash::{BuildHasherDefault, Hasher},
+    hint::unreachable_unchecked,
+};
 use hashbrown::{hash_map::Entry, HashMap};
 use rustc_hash::FxHasher;
 
-type FxHashMap<K, V> = HashMap<K, V, BuildHasherDefault<FxHasher>>;
+#[derive(Default)]
+struct IdHasher(u64);
+
+impl Hasher for IdHasher {
+    fn write(&mut self, _: &[u8]) {
+        unreachable!();
+    }
+
+    fn write_u64(&mut self, i: u64) {
+        self.0 = i;
+    }
+
+    fn finish(&self) -> u64 {
+        self.0
+    }
+}
+
+type IdHashMap<K, V> = HashMap<K, V, BuildHasherDefault<IdHasher>>;
 
 pub fn gangs(divisors: &[u32], k: u32) -> u32 {
-    let mut map = FxHashMap::with_capacity_and_hasher(k as _, Default::default());
+    let mut map = IdHashMap::with_capacity_and_hasher(k as _, Default::default());
     for n in 1..=k {
         let mut h = FxHasher::default();
-        for divisor in divisors {
+        for &divisor in divisors {
             if n % divisor == 0 {
-                divisor.hash(&mut h);
+                h.write_u32(divisor);
             }
         }
         if map.len() == map.capacity() {
-            unsafe { core::hint::unreachable_unchecked() };
+            unsafe { unreachable_unchecked() };
         }
         if let Entry::Vacant(e) = map.entry(h.finish()) {
             e.insert(());

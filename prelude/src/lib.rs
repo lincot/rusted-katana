@@ -2,7 +2,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use core::ops::Range;
+use core::{hint::unreachable_unchecked, ops::Range};
 
 pub trait PushUnchecked<T> {
     /// # Safety
@@ -16,7 +16,7 @@ impl<T> PushUnchecked<T> for Vec<T> {
     unsafe fn push_unchecked(&mut self, value: T) {
         debug_assert!(self.len() < self.capacity());
         if self.len() == self.capacity() {
-            core::hint::unreachable_unchecked();
+            unreachable_unchecked();
         }
         self.push(value);
     }

@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::string::{String, ToString};
+use core::hint::unreachable_unchecked;
 
 pub fn interpreter(tape: &str, data: &str) -> String {
     let mut res = data.to_string();
@@ -24,7 +25,7 @@ pub fn interpreter(tape: &str, data: &str) -> String {
                 }
                 b'1' => {
                     if i >= data.len() {
-                        unsafe { core::hint::unreachable_unchecked() };
+                        unsafe { unreachable_unchecked() };
                     }
                     data[i] = match data[i] {
                         b'0' => b'1',

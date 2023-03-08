@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::{vec, vec::Vec};
+use core::hint::unreachable_unchecked;
 use prelude::*;
 
 pub fn add_arrays(arr_a: &[i64], arr_b: &[i64]) -> Vec<i64> {
@@ -27,7 +28,7 @@ pub fn add_arrays(arr_a: &[i64], arr_b: &[i64]) -> Vec<i64> {
 
         if negative {
             if res.is_empty() {
-                unsafe { core::hint::unreachable_unchecked() };
+                unsafe { unreachable_unchecked() };
             }
             res[0] = -res[0];
         }

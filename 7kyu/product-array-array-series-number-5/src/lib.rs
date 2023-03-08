@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
+use core::hint::unreachable_unchecked;
 
 pub fn product_array(arr: &[u64]) -> Vec<u64> {
     let prod: u64 = arr.iter().product();
@@ -13,7 +14,7 @@ pub fn product_array(arr: &[u64]) -> Vec<u64> {
     let mut res_ptr = res.as_mut_ptr();
     for &x in arr {
         if x == 0 {
-            unsafe { core::hint::unreachable_unchecked() };
+            unsafe { unreachable_unchecked() };
         }
         unsafe {
             *res_ptr = prod / x;

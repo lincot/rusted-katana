@@ -2,7 +2,7 @@
 
 #![no_std]
 
-use core::hash::BuildHasherDefault;
+use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
 use hashbrown::{hash_map::Entry, HashMap};
 use rustc_hash::FxHasher;
 
@@ -22,7 +22,7 @@ pub fn shifter(s: &str) -> usize {
         .filter(|word| word.bytes().all(|b| b"HINOSXZMW".contains(&b)))
     {
         if set.len() == set.capacity() {
-            unsafe { core::hint::unreachable_unchecked() };
+            unsafe { unreachable_unchecked() };
         }
         if let Entry::Vacant(e) = set.entry(word) {
             e.insert(());

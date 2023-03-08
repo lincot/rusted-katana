@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
+use core::hint::unreachable_unchecked;
 use prelude::*;
 
 pub fn dashatize(mut n: i64) -> String {
@@ -11,7 +12,7 @@ pub fn dashatize(mut n: i64) -> String {
         let mut digits = heapless::Vec::new();
         unsafe { digits.write_num_unchecked(n) };
         if digits.is_empty() {
-            unsafe { core::hint::unreachable_unchecked() };
+            unsafe { unreachable_unchecked() };
         }
         digits
     }

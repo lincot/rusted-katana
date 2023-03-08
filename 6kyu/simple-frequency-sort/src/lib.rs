@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use core::{cmp::Reverse, hash::BuildHasherDefault};
+use core::{cmp::Reverse, hash::BuildHasherDefault, hint::unreachable_unchecked};
 use hashbrown::{hash_map::Entry, HashMap};
 use prelude::*;
 use rustc_hash::FxHasher;
@@ -15,7 +15,7 @@ pub fn solve(vec: &[i32]) -> Vec<i32> {
     let mut counts = FxHashMap::with_capacity_and_hasher(vec.len(), Default::default());
     for &x in vec {
         if counts.len() == counts.capacity() {
-            unsafe { core::hint::unreachable_unchecked() };
+            unsafe { unreachable_unchecked() };
         }
         match counts.entry(x) {
             Entry::Occupied(mut e) => {

@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
+use core::hint::unreachable_unchecked;
 use prelude::*;
 
 pub fn sort_by_last_char(s: &str) -> Vec<String> {
@@ -17,7 +18,7 @@ pub fn sort_by_last_char(s: &str) -> Vec<String> {
 
     res.sort_by_cached_key(|s| {
         if s.is_empty() {
-            unsafe { core::hint::unreachable_unchecked() };
+            unsafe { unreachable_unchecked() };
         }
         s.as_bytes()[s.len() - 1]
     });

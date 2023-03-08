@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
+use core::hint::unreachable_unchecked;
 
 pub fn triangle(row_str: &str) -> String {
     assert!(!row_str.is_empty());
@@ -26,7 +27,7 @@ pub fn triangle(row_str: &str) -> String {
     for row in 0..colors.len() {
         for i in 0..colors.len() - row - 1 {
             if i + 1 >= colors.len() {
-                unsafe { core::hint::unreachable_unchecked() }
+                unsafe { unreachable_unchecked() }
             }
             if colors[i] != colors[i + 1] {
                 colors[i] = 3 - (colors[i] + colors[i + 1]);

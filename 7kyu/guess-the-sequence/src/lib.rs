@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
+use core::hint::unreachable_unchecked;
 use prelude::*;
 
 pub fn sequence(x: u8) -> Vec<u8> {
@@ -27,7 +28,7 @@ pub fn sequence(x: u8) -> Vec<u8> {
 
     if x == 100 {
         if res.len() == res.capacity() {
-            unsafe { core::hint::unreachable_unchecked() };
+            unsafe { unreachable_unchecked() };
         }
         res.insert(2, 100);
     }

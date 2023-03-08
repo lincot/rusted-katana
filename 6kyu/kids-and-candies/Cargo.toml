@@ -1,0 +1,8 @@
+[package]
+name = "kids-and-candies"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies.num-bigint]
+version = "0.4.3"
+default-features = false

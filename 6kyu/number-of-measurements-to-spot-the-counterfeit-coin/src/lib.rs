@@ -3,7 +3,7 @@
 #![no_std]
 
 pub fn how_many_measurements(n: u64) -> u32 {
-    const TABLE: [u64; 41] = {
+    const POWERS_OF_3: [u64; 41] = {
         let mut res = [1; 41];
         let mut i = 1;
         while i < res.len() {
@@ -12,5 +12,5 @@ pub fn how_many_measurements(n: u64) -> u32 {
         }
         res
     };
-    TABLE.binary_search(&n).unwrap_or_else(|x| x) as _
+    POWERS_OF_3.binary_search(&n).unwrap_or_else(|x| x) as _
 }

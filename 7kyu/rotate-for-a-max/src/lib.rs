@@ -2,6 +2,8 @@
 
 #![no_std]
 
+use core::hint::unreachable_unchecked;
+
 pub fn max_rot(n: u64) -> u64 {
     fn to_digits(mut n: u64) -> heapless::Vec<u8, 20> {
         let mut digits = heapless::Vec::new();
@@ -22,7 +24,7 @@ pub fn max_rot(n: u64) -> u64 {
 
     for end in (1..digits.len()).rev() {
         if end >= digits.len() {
-            unsafe { core::hint::unreachable_unchecked() };
+            unsafe { unreachable_unchecked() };
         }
 
         digits[..=end].rotate_right(1);

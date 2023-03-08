@@ -2,6 +2,8 @@
 
 #![no_std]
 
+use core::hint::unreachable_unchecked;
+
 pub fn square_digits_sequence(a0: u32) -> usize {
     assert!(a0 <= 650);
 
@@ -10,7 +12,7 @@ pub fn square_digits_sequence(a0: u32) -> usize {
 
     loop {
         if seen.len() == seen.capacity() {
-            unsafe { core::hint::unreachable_unchecked() };
+            unsafe { unreachable_unchecked() };
         }
         unsafe { seen.insert(an).unwrap_unchecked() };
 

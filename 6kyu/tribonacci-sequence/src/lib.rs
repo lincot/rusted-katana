@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
+use core::hint::unreachable_unchecked;
 use prelude::*;
 
 pub fn tribonacci(signature: &[f64; 3], n: usize) -> Vec<f64> {
@@ -11,7 +12,7 @@ pub fn tribonacci(signature: &[f64; 3], n: usize) -> Vec<f64> {
     unsafe { res.extend_from_slice_unchecked(&signature[..n.min(3)]) };
     for i in 3..n {
         if i != res.len() || res.len() < 3 {
-            unsafe { core::hint::unreachable_unchecked() };
+            unsafe { unreachable_unchecked() };
         }
         unsafe { res.push_unchecked(res[i - 3..].iter().sum()) };
     }

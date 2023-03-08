@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use core::hash::BuildHasherDefault;
+use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
 use hashbrown::{hash_map::Entry, HashMap};
 use prelude::*;
 use rustc_hash::FxHasher;
@@ -23,14 +23,14 @@ impl Cipher {
 
         for (c1, c2) in map1.chars().zip(map2.chars()) {
             if encoder.len() == encoder.capacity() {
-                unsafe { core::hint::unreachable_unchecked() };
+                unsafe { unreachable_unchecked() };
             }
             if let Entry::Vacant(e) = encoder.entry(c1) {
                 e.insert(c2);
             }
 
             if decoder.len() == decoder.capacity() {
-                unsafe { core::hint::unreachable_unchecked() };
+                unsafe { unreachable_unchecked() };
             }
             if let Entry::Vacant(e) = decoder.entry(c2) {
                 e.insert(c1);

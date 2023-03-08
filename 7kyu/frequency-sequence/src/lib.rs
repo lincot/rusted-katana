@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use core::hash::BuildHasherDefault;
+use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
 use hashbrown::{hash_map::Entry, HashMap};
 use prelude::*;
 use rustc_hash::FxHasher;
@@ -16,7 +16,7 @@ pub fn freq_seq(s: &str, sep: &str) -> String {
     let mut counts = FxHashMap::with_capacity_and_hasher(cap, Default::default());
     for c in s.chars() {
         if counts.len() == counts.capacity() {
-            unsafe { core::hint::unreachable_unchecked() };
+            unsafe { unreachable_unchecked() };
         }
         match counts.entry(c) {
             Entry::Occupied(mut e) => {

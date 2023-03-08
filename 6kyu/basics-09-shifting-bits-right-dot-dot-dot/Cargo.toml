@@ -1,0 +1,4 @@
+[package]
+name = "basics-09-shifting-bits-right-dot-dot-dot"
+version = "0.1.0"
+edition = "2021"

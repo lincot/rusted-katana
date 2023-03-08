@@ -2,6 +2,8 @@
 
 #![no_std]
 
+use core::hint::unreachable_unchecked;
+
 pub fn count_squares(lines: &[&str]) -> usize {
     let mut res = 0;
     for i in 0..lines.len() {
@@ -15,7 +17,7 @@ pub fn count_squares(lines: &[&str]) -> usize {
                             let down_line = unsafe { lines.get_unchecked(i + j_ - j) }.as_bytes();
                             if let Some(slice) = down_line.get(j..=j_) {
                                 if slice.len() < 2 {
-                                    unsafe { core::hint::unreachable_unchecked() };
+                                    unsafe { unreachable_unchecked() };
                                 }
                                 if slice[0] == b'+'
                                     && slice[slice.len() - 1] == b'+'

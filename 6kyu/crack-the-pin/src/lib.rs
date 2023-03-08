@@ -159,7 +159,7 @@ pub fn crack(string: String) -> Result<i32, ()> {
                 }
                 word0 -= 0x09ff_0000;
             }
-            word0 -= 0x09ff_00;
+            word0 -= 0x09_ff00;
         }
         word0 -= 0x09ff;
     }

@@ -2,55 +2,30 @@
 
 #![no_std]
 
-extern crate alloc;
-use alloc::boxed::Box;
-use core::{
-    iter::empty,
-    mem::{replace, MaybeUninit},
-    ops::Sub,
-};
+use core::{mem::replace, ops::Sub};
 
-pub fn delta<'a, I: IntoIterator<Item = T> + 'a, T: Sub<Output = T> + Copy + 'a>(
+pub fn delta<I: IntoIterator<Item = T>, T: Sub<Output = T> + Copy>(
     values: I,
     level: usize,
-) -> Box<dyn Iterator<Item = T> + 'a> {
-    fn res<'a, I: Iterator<Item = T> + 'a, T: Sub<Output = T> + Copy + 'a, const LEVEL: usize>(
-        mut values: I,
-    ) -> Box<dyn Iterator<Item = T> + 'a> {
-        let mut deltas = unsafe { MaybeUninit::<[_; LEVEL]>::uninit().assume_init() };
-        for i in 0..LEVEL {
-            let Some(next) = values.next() else {
-                return Box::new(empty());
-            };
-            deltas[i] = deltas[..i].iter_mut().fold(next, |a, x| a - replace(x, a));
-        }
-        Box::new(DeltaIterator { values, deltas })
+) -> DeltaIterator<I::IntoIter, T> {
+    assert!((1..=50).contains(&level));
+    let mut values = values.into_iter();
+    let mut deltas = heapless::Vec::new();
+    for _ in 0..level {
+        let e = deltas
+            .iter_mut()
+            .fold(values.next().unwrap(), |a, x| a - replace(x, a));
+        unsafe { deltas.push_unchecked(e) };
     }
-
-    let values = values.into_iter();
-    match level {
-        1 => res::<_, _, 1>(values),
-        2 => res::<_, _, 2>(values),
-        3 => res::<_, _, 3>(values),
-        4 => res::<_, _, 4>(values),
-        5 => res::<_, _, 5>(values),
-        6 => res::<_, _, 6>(values),
-        7 => res::<_, _, 7>(values),
-        8 => res::<_, _, 8>(values),
-        9 => res::<_, _, 9>(values),
-        10 => res::<_, _, 10>(values),
-        _ => panic!(),
-    }
+    DeltaIterator { values, deltas }
 }
 
-pub struct DeltaIterator<I, T, const LEVEL: usize> {
+pub struct DeltaIterator<I, T> {
     values: I,
-    deltas: [T; LEVEL],
+    deltas: heapless::Vec<T, 50>,
 }
 
-impl<I: Iterator<Item = T>, T: Sub<Output = T> + Copy, const LEVEL: usize> Iterator
-    for DeltaIterator<I, T, LEVEL>
-{
+impl<I: Iterator<Item = T>, T: Sub<Output = T> + Copy> Iterator for DeltaIterator<I, T> {
     type Item = T;
     fn next(&mut self) -> Option<T> {
         self.values

@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use core::hash::BuildHasherDefault;
+use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
 use hashbrown::{hash_map::Entry, HashMap};
 use rustc_hash::FxHasher;
 
@@ -16,7 +16,7 @@ pub fn ordered_count(sip: &str) -> Vec<(char, i32)> {
 
     for c in sip.chars() {
         if counts.len() == counts.capacity() {
-            unsafe { core::hint::unreachable_unchecked() };
+            unsafe { unreachable_unchecked() };
         }
         match counts.entry(c) {
             Entry::Occupied(mut e) => {

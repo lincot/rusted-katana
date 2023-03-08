@@ -7,6 +7,7 @@ use alloc::vec::Vec;
 use core::{
     cmp::Ordering,
     f64::consts::PI,
+    hint::unreachable_unchecked,
     mem::{forget, size_of},
 };
 use either::Either;
@@ -56,7 +57,7 @@ pub fn sort_by_area(seq: &[Either<(f64, f64), f64>]) -> Vec<Either<(f64, f64), f
     }
     seq_with_areas.sort_unstable_by(|a, b| {
         if a.1.is_nan() || b.1.is_nan() {
-            unsafe { core::hint::unreachable_unchecked() }
+            unsafe { unreachable_unchecked() }
         } else if a.1 > b.1 {
             Ordering::Greater
         } else if a.1 < b.1 {

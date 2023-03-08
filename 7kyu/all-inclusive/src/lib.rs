@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use core::hash::BuildHasherDefault;
+use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
 use hashbrown::{hash_map::Entry, HashMap};
 use rustc_hash::FxHasher;
 
@@ -14,7 +14,7 @@ pub fn contain_all_rots(strng: &str, arr: Vec<&str>) -> bool {
     let mut set = FxHashMap::with_capacity_and_hasher(arr.len(), Default::default());
     for s in arr.into_iter().filter(|s| s.len() == strng.len()) {
         if set.len() == set.capacity() {
-            unsafe { core::hint::unreachable_unchecked() };
+            unsafe { unreachable_unchecked() };
         }
         if let Entry::Vacant(e) = set.entry(s) {
             e.insert(());

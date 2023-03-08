@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
+use core::hint::unreachable_unchecked;
 use prelude::*;
 
 unsafe fn push_unchecked_if_not_last_unchecked(res: &mut Vec<i32>, x: i32) {
@@ -38,7 +39,7 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
     unsafe {
         if arr1.is_empty() {
             if arr2.is_empty() {
-                core::hint::unreachable_unchecked();
+                unreachable_unchecked();
             }
             if desc2 {
                 res.push_unchecked(arr2[arr2.len() - 1]);
@@ -55,7 +56,7 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
         }
         if arr2.is_empty() {
             if arr1.is_empty() {
-                core::hint::unreachable_unchecked();
+                unreachable_unchecked();
             }
             if desc1 {
                 res.push_unchecked(arr1[arr1.len() - 1]);

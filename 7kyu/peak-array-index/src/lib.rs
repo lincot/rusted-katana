@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
+use core::hint::unreachable_unchecked;
 
 pub fn peak(arr: &[u32]) -> Option<usize> {
     let mut sums = Vec::with_capacity(arr.len());
@@ -21,7 +22,7 @@ pub fn peak(arr: &[u32]) -> Option<usize> {
     }
 
     if sums.len() != arr.len() {
-        unsafe { core::hint::unreachable_unchecked() };
+        unsafe { unreachable_unchecked() };
     }
 
     (0..arr.len()).find(|&i| sums[i] == sum - arr[i] - sums[i])
