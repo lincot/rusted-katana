@@ -2,6 +2,5 @@
 
 #![no_std]
 
-pub const fn count_bits(n: i64) -> u32 {
-    n.count_ones()
-}
+#[allow(non_upper_case_globals)]
+pub const count_bits: fn(i64) -> u32 = i64::count_ones;

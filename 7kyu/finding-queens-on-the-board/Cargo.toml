@@ -1,0 +1,4 @@
+[package]
+name = "finding-queens-on-the-board"
+version = "0.1.0"
+edition = "2021"

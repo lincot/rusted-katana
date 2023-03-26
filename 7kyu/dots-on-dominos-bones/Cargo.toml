@@ -1,0 +1,4 @@
+[package]
+name = "dots-on-dominos-bones"
+version = "0.1.0"
+edition = "2021"
