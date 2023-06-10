@@ -7,10 +7,11 @@ use core::{hint::unreachable_unchecked, intrinsics::sqrtf32};
 use num_bigint::BigUint;
 
 /// checks if `x` is prime || `x` is divisible by 2 or 3 || `x` <= 1
-fn is_prime_with_condition(x: u16) -> bool {
+/// given that `sqrt` is the square root of `x`
+const fn is_prime_with_condition(x: u16, sqrt: u16) -> bool {
     let mut divisor = 5;
     let mut step = 2;
-    while divisor <= unsafe { sqrtf32(x as _).to_int_unchecked() } {
+    while divisor <= sqrt {
         if divisor == 0 {
             unsafe { unreachable_unchecked() };
         }
@@ -60,8 +61,16 @@ pub fn candies_to_buy(amount_of_kids_invited: u16) -> BigUint {
     let mut n = 5;
     let mut step = 2;
 
+    let mut sqrt: u16 = unsafe { sqrtf32(n as _).to_int_unchecked() };
+    let mut next_perfect_square = (sqrt + 1).pow(2);
+
     while n <= amount_of_kids_invited {
-        if is_prime_with_condition(n) {
+        if n >= next_perfect_square {
+            sqrt += 1;
+            next_perfect_square += 2 * sqrt + 1;
+        }
+
+        if is_prime_with_condition(n, sqrt) {
             let mut r = n as u32;
             res *= loop {
                 let next = r * n as u32;

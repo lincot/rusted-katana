@@ -1,0 +1,4 @@
+[package]
+name = "max-sum-between-two-negatives"
+version = "0.1.0"
+edition = "2021"

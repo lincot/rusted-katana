@@ -2,10 +2,10 @@
 #![feature(test)]
 
 extern crate test;
-use simple_nearest_prime::solve;
+use for_whom_the_bell_tolls::bell;
 use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| solve(black_box(35_000_000)));
+    bencher.iter(|| bell(black_box(1000)));
 }

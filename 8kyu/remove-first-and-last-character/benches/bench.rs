@@ -7,5 +7,9 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| remove_char(black_box("Путин")));
+    bencher.iter(|| {
+        for _ in 0..1000 {
+            black_box(remove_char(black_box("Путин")));
+        }
+    });
 }

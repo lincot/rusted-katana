@@ -11,6 +11,7 @@ members = [
     "8kyu/*",
     "check-katas",
 ]
+resolver = "2"
 
 [profile.release]
 lto = true

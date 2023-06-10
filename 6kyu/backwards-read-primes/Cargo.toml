@@ -5,3 +5,6 @@ edition = "2021"
 
 [dependencies.prelude]
 path = "../../prelude"
+
+[dependencies.num-integer]
+version = "0.1.45"

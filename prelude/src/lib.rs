@@ -1,4 +1,5 @@
 #![no_std]
+#![allow(invalid_value)]
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
@@ -151,14 +152,21 @@ pub trait WriteNumUnchecked {
 }
 
 impl WriteNumUnchecked for Vec<u8> {
-    #[cfg(feature = "lexical-core")]
+    #[cfg(all(feature = "lexical-core", debug_assertions))]
+    #[inline]
+    unsafe fn write_num_unchecked(&mut self, n: impl lexical_core::ToLexical) {
+        // TODO use T::FORMATTED_SIZE when it stabilizes
+        let mut slice = unsafe {
+            core::mem::MaybeUninit::<[_; lexical_core::BUFFER_SIZE]>::uninit().assume_init()
+        };
+        let written_len = lexical_core::write_unchecked(n, &mut slice).len();
+        self.extend_from_slice(&slice[..written_len]);
+    }
+
+    #[cfg(all(feature = "lexical-core", not(debug_assertions)))]
     #[inline]
     unsafe fn write_num_unchecked(&mut self, n: impl lexical_core::ToLexical) {
         let len = self.len();
-        debug_assert!(
-            len + lexical_core::write_unchecked(n, &mut [0; lexical_core::BUFFER_SIZE]).len()
-                <= self.capacity()
-        );
         let written_len = lexical_core::write_unchecked(
             n,
             core::slice::from_raw_parts_mut(self.as_mut_ptr().add(len), self.capacity()),
@@ -176,14 +184,21 @@ impl WriteNumUnchecked for Vec<u8> {
 
 #[cfg(feature = "heapless")]
 impl<const N: usize> WriteNumUnchecked for heapless::Vec<u8, N> {
-    #[cfg(feature = "lexical-core")]
+    #[cfg(all(feature = "lexical-core", debug_assertions))]
+    #[inline]
+    unsafe fn write_num_unchecked(&mut self, n: impl lexical_core::ToLexical) {
+        // TODO use T::FORMATTED_SIZE when it stabilizes
+        let mut slice = unsafe {
+            core::mem::MaybeUninit::<[_; lexical_core::BUFFER_SIZE]>::uninit().assume_init()
+        };
+        let written_len = lexical_core::write_unchecked(n, &mut slice).len();
+        self.extend_from_slice(&slice[..written_len]).unwrap();
+    }
+
+    #[cfg(all(feature = "lexical-core", not(debug_assertions)))]
     #[inline]
     unsafe fn write_num_unchecked(&mut self, n: impl lexical_core::ToLexical) {
         let len = self.len();
-        debug_assert!(
-            len + lexical_core::write_unchecked(n, &mut [0; lexical_core::BUFFER_SIZE]).len()
-                <= self.capacity()
-        );
         let written_len = lexical_core::write_unchecked(
             n,
             core::slice::from_raw_parts_mut(self.as_mut_ptr().add(len), self.capacity()),

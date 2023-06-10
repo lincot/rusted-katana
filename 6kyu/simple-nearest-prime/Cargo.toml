@@ -2,3 +2,6 @@
 name = "simple-nearest-prime"
 version = "0.1.0"
 edition = "2021"
+
+[dependencies.num-integer]
+version = "0.1.45"
