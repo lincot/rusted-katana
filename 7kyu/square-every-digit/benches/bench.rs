@@ -2,7 +2,7 @@
 #![feature(test)]
 
 extern crate test;
-use digit_star_digit::square_digits;
+use square_every_digit::square_digits;
 use test::{black_box, Bencher};
 
 #[bench]

@@ -3,7 +3,6 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use core::{hint::unreachable_unchecked, ops::Range};
 
 pub trait PushUnchecked<T> {
     /// # Safety
@@ -17,7 +16,7 @@ impl<T> PushUnchecked<T> for Vec<T> {
     unsafe fn push_unchecked(&mut self, value: T) {
         debug_assert!(self.len() < self.capacity());
         if self.len() == self.capacity() {
-            unreachable_unchecked();
+            core::hint::unreachable_unchecked();
         }
         self.push(value);
     }
@@ -46,12 +45,13 @@ impl PushUnchecked<char> for String {
                 core::ptr::write(ptr.add(1), (ch as u32 >> 6 & 0x3F) as u8 | 0b1000_0000);
                 core::ptr::write(ptr.add(2), (ch as u32 & 0x3F) as u8 | 0b1000_0000);
             }
-            _ => {
+            4 => {
                 core::ptr::write(ptr, (ch as u32 >> 18 & 0x07) as u8 | 0b1111_0000);
                 core::ptr::write(ptr.add(1), (ch as u32 >> 12 & 0x3F) as u8 | 0b1000_0000);
                 core::ptr::write(ptr.add(2), (ch as u32 >> 6 & 0x3F) as u8 | 0b1000_0000);
                 core::ptr::write(ptr.add(3), (ch as u32 & 0x3F) as u8 | 0b1000_0000);
             }
+            _ => core::hint::unreachable_unchecked(),
         }
         self.as_mut_vec().set_len(len + count);
     }
@@ -108,11 +108,11 @@ pub trait ExtendFromWithinUnchecked {
     ///
     /// - `src` needs to be valid index
     /// - `self.capacity() - self.len()` must be `>= src.len()`
-    unsafe fn extend_from_within_unchecked(&mut self, src: Range<usize>);
+    unsafe fn extend_from_within_unchecked(&mut self, src: core::ops::Range<usize>);
 }
 
 impl<T: Copy> ExtendFromWithinUnchecked for Vec<T> {
-    unsafe fn extend_from_within_unchecked(&mut self, src: Range<usize>) {
+    unsafe fn extend_from_within_unchecked(&mut self, src: core::ops::Range<usize>) {
         let count = src.len();
         debug_assert!(src.start <= src.end || src.end <= self.len());
         debug_assert!(self.capacity() - self.len() >= count);

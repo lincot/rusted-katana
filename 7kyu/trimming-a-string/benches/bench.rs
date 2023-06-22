@@ -7,5 +7,5 @@ use trimming_a_string::trim;
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| trim(black_box("Creating kata is fun"), black_box(14)));
+    bencher.iter(|| trim(black_box("Создавать каты прикольно"), black_box(14)));
 }
