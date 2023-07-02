@@ -11,7 +11,7 @@ pub fn dup(mut arry: Vec<String>) -> Vec<String> {
         let mut res = String::with_capacity(s.len());
 
         let Some(mut prev) = s.chars().next() else {
-             continue;
+            continue;
         };
         unsafe { res.push_unchecked(prev) };
         for c in s.chars() {

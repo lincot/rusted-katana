@@ -6,7 +6,7 @@ pub fn max_diff(numbers: &[i32]) -> i32 {
     let mut it = numbers.iter();
 
     let Some(&first) = it.next() else {
-       return 0;
+        return 0;
     };
 
     let (min, max) = it.fold((first, first), |(min, max), &new| {

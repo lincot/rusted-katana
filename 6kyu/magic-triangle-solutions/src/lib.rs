@@ -28,12 +28,12 @@ const SETS: [[u8; 9]; 18] = [
 ];
 
 const POSITIONS: [[u8; 6]; 6] = [
-    [0, 1, 3, 4, 6, 7],
-    [0, 7, 6, 4, 3, 1],
-    [3, 1, 0, 7, 6, 4],
-    [3, 4, 6, 7, 0, 1],
-    [6, 7, 0, 1, 3, 4],
-    [6, 4, 3, 1, 0, 7],
+    [0, 3, 6, 1, 4, 7],
+    [0, 6, 3, 7, 4, 1],
+    [3, 0, 6, 1, 7, 4],
+    [3, 6, 0, 4, 7, 1],
+    [6, 0, 3, 7, 1, 4],
+    [6, 3, 0, 4, 1, 7],
 ];
 
 pub fn magic_triangle_solutions(puzzle: &[u8; 9]) -> Vec<[u8; 9]> {
@@ -42,19 +42,19 @@ pub fn magic_triangle_solutions(puzzle: &[u8; 9]) -> Vec<[u8; 9]> {
         for set in SETS {
             for positions in POSITIONS {
                 if [0, *set.get_unchecked(positions[0] as usize)].contains(&puzzle[0])
-                    && [0, *set.get_unchecked(positions[2] as usize)].contains(&puzzle[3])
-                    && [0, *set.get_unchecked(positions[4] as usize)].contains(&puzzle[6])
+                    && [0, *set.get_unchecked(positions[1] as usize)].contains(&puzzle[3])
+                    && [0, *set.get_unchecked(positions[2] as usize)].contains(&puzzle[6])
                 {
                     for (pos_1, pos_2) in [
-                        (positions[1], positions[1] + 1),
-                        (positions[1] + 1, positions[1]),
+                        (positions[3], positions[3] + 1),
+                        (positions[3] + 1, positions[3]),
                     ] {
                         if [0, *set.get_unchecked(pos_1 as usize)].contains(&puzzle[1])
                             && [0, *set.get_unchecked(pos_2 as usize)].contains(&puzzle[2])
                         {
                             for (pos_4, pos_5) in [
-                                (positions[3], positions[3] + 1),
-                                (positions[3] + 1, positions[3]),
+                                (positions[4], positions[4] + 1),
+                                (positions[4] + 1, positions[4]),
                             ] {
                                 if [0, *set.get_unchecked(pos_4 as usize)].contains(&puzzle[4])
                                     && [0, *set.get_unchecked(pos_5 as usize)].contains(&puzzle[5])
@@ -72,10 +72,10 @@ pub fn magic_triangle_solutions(puzzle: &[u8; 9]) -> Vec<[u8; 9]> {
                                                 *set.get_unchecked(positions[0] as usize),
                                                 *set.get_unchecked(pos_1 as usize),
                                                 *set.get_unchecked(pos_2 as usize),
-                                                *set.get_unchecked(positions[2] as usize),
+                                                *set.get_unchecked(positions[1] as usize),
                                                 *set.get_unchecked(pos_4 as usize),
                                                 *set.get_unchecked(pos_5 as usize),
-                                                *set.get_unchecked(positions[4] as usize),
+                                                *set.get_unchecked(positions[2] as usize),
                                                 *set.get_unchecked(pos_7 as usize),
                                                 *set.get_unchecked(pos_8 as usize),
                                             ]);

@@ -26,7 +26,9 @@ pub fn hello(name: &str) -> String {
     const HELLO: &str = "Hello, ";
     let mut name_chars = name.chars();
 
-    let Some(first) = name_chars.next() else { return "Hello, World!".into() };
+    let Some(first) = name_chars.next() else {
+        return "Hello, World!".into();
+    };
 
     let cap = HELLO.len() + '!'.len_utf8()
         // reserve for worst case "ΐ" -> "Ϊ́"

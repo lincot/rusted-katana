@@ -1,0 +1,4 @@
+[package]
+name = "game-hit-the-target-2nd-part"
+version = "0.1.0"
+edition = "2021"

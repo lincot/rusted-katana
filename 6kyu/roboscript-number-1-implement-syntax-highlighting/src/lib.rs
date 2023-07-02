@@ -31,7 +31,7 @@ pub fn highlight(code: &str) -> String {
     let mut code = code.bytes();
 
     let Some(mut prev_token) = code.next() else {
-         return res;
+        return res;
     };
 
     unsafe { push_unchecked_beginning(&mut res, prev_token) };

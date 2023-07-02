@@ -20,7 +20,7 @@ pub fn unpack_sausages(truck: Vec<Vec<&str>>) -> String {
             }
 
             let Some(sausage) = chars.next() else {
-                 continue;
+                continue;
             };
             if (0..3).any(|_| chars.next() != Some(sausage)) {
                 continue;

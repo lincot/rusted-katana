@@ -29,9 +29,11 @@ where
     used[first] = true;
     let mut prev = &routes[first][1];
     loop {
-        let Some((i, [_, b])) = routes.iter().enumerate().find(|&(i, [a, _])| {
-            !*unsafe { used.get_unchecked(i) } && a.as_ref() == prev.as_ref()
-        }) else {
+        let Some((i, [_, b])) = routes
+            .iter()
+            .enumerate()
+            .find(|&(i, [a, _])| !*unsafe { used.get_unchecked(i) } && a.as_ref() == prev.as_ref())
+        else {
             break;
         };
         unsafe {

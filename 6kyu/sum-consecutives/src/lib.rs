@@ -13,7 +13,7 @@ pub fn sum_consecutives(numbers: &[i32]) -> Vec<i32> {
     let mut res = Vec::with_capacity(numbers.len());
     let mut numbers = numbers.iter();
     let Some(&(mut prev_number)) = numbers.next() else {
-         return res;
+        return res;
     };
     let mut sum = prev_number;
     for &n in numbers {
