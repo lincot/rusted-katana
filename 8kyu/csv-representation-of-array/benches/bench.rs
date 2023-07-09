@@ -1,26 +1,19 @@
 #![no_std]
 #![feature(test)]
 
-extern crate alloc;
 extern crate test;
-use alloc::vec;
+use core::array;
 use csv_representation_of_array::to_csv_text;
+use rand::Rng;
+use rand_pcg::Pcg64;
 use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        to_csv_text(black_box(&[
-            vec![0, 1, 2, 3, 45, 0, 1, 2, 3, 45],
-            vec![10, 11, 12, 13, 14, 10, 11, 12, 13, 14],
-            vec![20, 21, 22, 23, 24, 20, 21, 22, 23, 24],
-            vec![30, 31, 32, 33, 34, 30, 31, 32, 33, 34],
-            vec![30, 31, 32, 33, 34, 30, 31, 32, 33, 34],
-            vec![30, 31, 32, 33, 34, 30, 31, 32, 33, 34],
-            vec![30, 31, 32, 33, 34, 30, 31, 32, 33, 34],
-            vec![30, 31, 32, 33, 34, 30, 31, 32, 33, 34],
-            vec![30, 31, 32, 33, 34, 30, 31, 32, 33, 34],
-            vec![30, 31, 32, 33, 34, 30, 31, 32, 33, 34],
-        ]))
-    });
+    let mut rng = Pcg64::new(
+        0xcafe_f00d_d15e_a5e5,
+        0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
+    );
+    let array: [_; 30] = array::from_fn(|_| array::from_fn::<_, 30, _>(|_| rng.gen()).into());
+    bencher.iter(|| to_csv_text(black_box(&array)));
 }

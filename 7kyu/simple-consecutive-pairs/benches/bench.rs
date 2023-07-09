@@ -2,19 +2,18 @@
 #![feature(test)]
 
 extern crate test;
+use core::array;
+use rand::Rng;
+use rand_pcg::Pcg64;
 use simple_consecutive_pairs::pairs;
 use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        pairs(black_box(&[
-            -32, 99, 100, 62, -17, -16, 66, -100, -99, -93, -7, -8, 51, 50, -92, -91, -79, -84,
-            -52, -53, -89, -88, 69, 68, -83, 72, 73, -43, -42, -56, 82, 81, -2, 98, -14, -15, 80,
-            79, 57, -96, 24, -54, -53, 14, 85, 86, 77, 35, 34, 72, 71, -30, -71, -70, -73, 88, -65,
-            -64, -89, 92, 91, -31, -32, 54, 68, -34, -35, 20, 21, -60, -59, -31, -30, 48, 47, 7, 2,
-            1, -17, -74, -73, 99, -69, -70, 89, 88, -37, -36, 8, 9, 72, 71, 88, -62, 47, 46, -79,
-            30, -95, 61,
-        ]))
-    });
+    let mut rng = Pcg64::new(
+        0xcafe_f00d_d15e_a5e5,
+        0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
+    );
+    let arr: [_; 1024] = array::from_fn(|_| rng.gen_range(-10..10));
+    bencher.iter(|| pairs(black_box(&arr)));
 }

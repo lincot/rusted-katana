@@ -2,19 +2,18 @@
 #![feature(test)]
 
 extern crate test;
+use core::array;
+use rand::Rng;
+use rand_pcg::Pcg64;
 use sum_of_differences_in_array::sum_of_differences;
 use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        sum_of_differences(black_box(&[
-            -36, -54, 27, -90, -73, 11, -73, 9, 104, 2, -46, -45, -5, -98, 83, 50, -33, 7, 51, 25,
-            54, 14, 26, 87, -66, 31, -90, -114, -52, 13, -126, 121, 48, 119, -108, 9, -26, -41,
-            -125, 14, 11, -89, -7, 12, 24, 107, -19, 13, -98, 77, -81, -128, 22, -24, -43, -53,
-            -20, 109, -125, 59, 42, -112, -67, -103, 41, 13, -104, 67, 83, -103, 77, 35, 36, 106,
-            98, -61, 74, 29, -84, 87, 84, -102, -78, -33, -94, -44, -22, -42, 81, 20, -60, -12,
-            -15, -90, -125, 27, -116, -110, -76, -64,
-        ]))
-    });
+    let mut rng = Pcg64::new(
+        0xcafe_f00d_d15e_a5e5,
+        0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
+    );
+    let arr: [_; 100] = array::from_fn(|_| rng.gen());
+    bencher.iter(|| sum_of_differences(black_box(&arr)));
 }

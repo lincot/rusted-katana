@@ -1,28 +1,37 @@
 #![no_std]
 #![feature(test)]
 
+extern crate alloc;
 extern crate test;
+use alloc::string::String;
+use core::array;
+use lexical_core::{write_with_options_unchecked, NumberFormatBuilder, WriteIntegerOptions};
+use rand::Rng;
+use rand_pcg::Pcg64;
 use test::{black_box, Bencher};
 use which_color_is_the_brightest::brightest;
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        brightest(black_box(&[
-            "#408E52".into(),
-            "#16BE69".into(),
-            "#E720DB".into(),
-            "#663280".into(),
-            "#BF6255".into(),
-            "#582F29".into(),
-            "#95BB13".into(),
-            "#5F816E".into(),
-            "#4A0BEE".into(),
-            "#97E20F".into(),
-            "#B70E2F".into(),
-            "#C68B6A".into(),
-            "#FFE716".into(),
-            "#43DD35".into(),
-        ]))
+    const FORMAT: u128 = NumberFormatBuilder::hexadecimal();
+    let mut rng = Pcg64::new(
+        0xcafe_f00d_d15e_a5e5,
+        0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
+    );
+    let colors: [_; 100] = array::from_fn(|_| {
+        let mut s = [b'0'; 7];
+        s[0] = b'#';
+        let mut buf = [0; 6];
+        unsafe {
+            let written_len = write_with_options_unchecked::<_, FORMAT>(
+                rng.gen_range(0..1u32 << 24),
+                &mut buf,
+                &WriteIntegerOptions::new(),
+            )
+            .len();
+            s[7 - written_len..].copy_from_slice(&buf[..written_len]);
+            String::from_utf8_unchecked(s.into())
+        }
     });
+    bencher.iter(|| brightest(black_box(&colors)));
 }

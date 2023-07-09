@@ -9,15 +9,19 @@ pub fn flatten_and_sort(arr: &[Vec<i32>]) -> Vec<i32> {
     let len = arr.iter().map(Vec::len).sum();
     let mut res = Vec::with_capacity(len);
     unsafe { res.set_len(len) };
-    let mut res_ptr = res.as_mut_ptr();
-    for x in arr {
-        for &x in x {
+    let mut ptr = res.as_mut_ptr();
+    for a in arr {
+        for &x in a {
             unsafe {
-                *res_ptr = x;
-                res_ptr = res_ptr.add(1);
+                *ptr = x;
+                ptr = ptr.add(1);
             }
         }
     }
-    res.sort_unstable();
+    if res.len() < 160 {
+        res.sort_unstable();
+    } else {
+        radsort::sort(&mut res);
+    }
     res
 }

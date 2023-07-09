@@ -7,7 +7,6 @@ use alloc::{string::String, vec::Vec};
 use prelude::*;
 
 pub fn to_nato(words: &str) -> String {
-    const ALFA: &[u8] = b"Alfa ";
     let mut res = Vec::with_capacity("November ".len() * words.len());
     unsafe {
         for &b in words.as_bytes() {
@@ -18,7 +17,7 @@ pub fn to_nato(words: &str) -> String {
             if b.is_ascii_lowercase() {
                 res.extend_from_slice_unchecked(
                     [
-                        ALFA,
+                        b"Alfa " as &[u8],
                         b"Bravo ",
                         b"Charlie ",
                         b"Delta ",

@@ -17,7 +17,6 @@ pub fn mx_dif_lg(a1: Vec<&str>, a2: Vec<&str>) -> i32 {
 
 fn min_max<It: Iterator<Item = Item>, Item: Ord + Copy>(mut it: It) -> Option<(Item, Item)> {
     let first = it.next()?;
-
     Some(it.fold((first, first), |(min, max), new| {
         (min.min(new), max.max(new))
     }))

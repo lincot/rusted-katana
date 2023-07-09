@@ -5,8 +5,8 @@
 
 use core::intrinsics::fmaf32;
 
-type Point = (f32, f32);
-type Line = (Point, Point);
+pub type Point = (f32, f32);
+pub type Line = (Point, Point);
 
 fn intersects(l1: Line, l2: Line) -> bool {
     let p = |a: Point, b: Point, c: Point| unsafe {

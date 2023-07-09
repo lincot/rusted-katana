@@ -20,9 +20,17 @@ pub fn solve(s: &str, k: usize) -> String {
             bytes_ptr = bytes_ptr.add(1);
         }
     }
-    bytes.sort_by_key(|&(_, b)| b);
+    if bytes.len() <= 20 {
+        bytes.sort_by_key(|&(_, b)| b);
+    } else {
+        radsort::sort_by_key(&mut bytes, |&(_, b)| b);
+    }
     let taken_bytes = unsafe { bytes.get_unchecked_mut(k..) };
-    taken_bytes.sort_unstable_by_key(|&(i, _)| i);
+    if taken_bytes.len() < 256 {
+        taken_bytes.sort_unstable_by_key(|&(i, _)| i);
+    } else {
+        radsort::sort_by_key(taken_bytes, |&(i, _)| i);
+    }
 
     let mut taken_bytes_ptr = taken_bytes.as_mut_ptr();
     let mut bytes_u8_ptr = bytes.as_mut_ptr().cast();

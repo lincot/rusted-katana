@@ -5,5 +5,5 @@
 pub fn the_game(frank: &[u8; 4], sam: &[u8; 4], tom: &[u8; 4]) -> bool {
     [sam, tom]
         .into_iter()
-        .all(|p| frank.iter().skip(2).zip(p).all(|(f, p)| f > p))
+        .all(|p| frank[2..].iter().zip(p).all(|(f, p)| f > p))
 }

@@ -7,6 +7,10 @@ use alloc::vec::Vec;
 
 pub fn sort_numbers(arr: &[i32]) -> Vec<i32> {
     let mut arr = arr.to_vec();
-    arr.sort_unstable();
+    if arr.len() < 160 {
+        arr.sort_unstable();
+    } else {
+        radsort::sort(&mut arr);
+    }
     arr
 }

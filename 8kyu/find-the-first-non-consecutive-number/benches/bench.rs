@@ -2,19 +2,18 @@
 #![feature(test)]
 
 extern crate test;
+use core::array;
 use find_the_first_non_consecutive_number::first_non_consecutive;
 use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        first_non_consecutive(black_box(&[
-            4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
-            27, 28, 29, 30, 31, 32, 33, -533, 108, 193, -572, -172, -460, 177, 797, 30, 924, 882,
-            765, 339, 335, -71, 674, 143, -520, 956, 692, 540, -141, 150, -988, 293, 824, 563, 171,
-            386, -125, -99, 899, -569, 399, -67, -598, 116, 65, 398, -716, -724, -640, -806, -380,
-            746, 934, -983, 697, -593, -611, -458, -154, 923, -735, 389, 817, 676, -812, -34, 35,
-            -441, 630, 688, -59, -573, 934, 74, -528, -715, 77,
-        ]))
+    let arr: [_; 1024] = array::from_fn(|i| {
+        if i < 512 {
+            1337 + i as i32
+        } else {
+            1337 * i as i32
+        }
     });
+    bencher.iter(|| first_non_consecutive(black_box(&arr)));
 }

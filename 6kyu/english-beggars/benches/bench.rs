@@ -2,22 +2,18 @@
 #![feature(test)]
 
 extern crate test;
+use core::array;
 use english_beggars::beggars;
+use rand::Rng;
+use rand_pcg::Pcg64;
 use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        beggars(
-            black_box(&[
-                896, 4, 626, 572, 720, 329, 509, 499, 235, 639, 795, 863, 284, 299, 645, 475, 503,
-                402, 368, 438, 646, 680, 435, 620, 568, 598, 930, 195, 177, 118, 621, 369, 271,
-                890, 162, 392, 610, 298, 229, 244, 992, 70, 745, 959, 3, 529, 73, 861, 68, 342,
-                258, 789, 568, 174, 875, 890, 435, 720, 770, 264, 276, 894, 372, 85, 628, 550, 995,
-                208, 312, 874, 687, 204, 481, 576, 605, 830, 22, 926, 474, 497, 904, 356, 150, 268,
-                101, 437, 778, 174, 64, 159, 268, 947, 481, 43, 947, 139, 763, 181, 832, 336,
-            ]),
-            black_box(7),
-        )
-    });
+    let mut rng = Pcg64::new(
+        0xcafe_f00d_d15e_a5e5,
+        0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
+    );
+    let values: [_; 100] = array::from_fn(|_| rng.gen_range(0..1000));
+    bencher.iter(|| beggars(black_box(&values), black_box(7)));
 }

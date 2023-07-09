@@ -15,7 +15,7 @@ pub fn solve(strings: &[String]) -> Vec<usize> {
             *res_ptr = (b'a'..b'z' + 1)
                 .zip(b'A'..b'Z' + 1)
                 .zip(string.as_bytes())
-                .filter(|&((l, u), b)| [l, u].contains(b))
+                .filter(|&(lu, b)| <[_; 2]>::from(lu).contains(b))
                 .count();
             res_ptr = res_ptr.add(1);
         }

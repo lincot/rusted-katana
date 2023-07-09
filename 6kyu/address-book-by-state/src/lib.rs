@@ -4,30 +4,12 @@
 
 extern crate alloc;
 use alloc::{string::String, vec, vec::Vec};
+use core::array;
 use prelude::*;
 
 pub fn by_state(str: &str) -> String {
-    const ARIZONA: &[u8] = b"Arizona";
-
-    let (
-        mut arizona,
-        mut california,
-        mut idaho,
-        mut indiana,
-        mut massachusetts,
-        mut oklahoma,
-        mut pennsylvania,
-        mut virginia,
-    ) = (
-        vec![],
-        vec![],
-        vec![],
-        vec![],
-        vec![],
-        vec![],
-        vec![],
-        vec![],
-    );
+    let [mut arizona, mut california, mut idaho, mut indiana, mut massachusetts, mut oklahoma, mut pennsylvania, mut virginia] =
+        array::from_fn(|_| vec![]);
     for line in str.split_terminator('\n') {
         let line = line.as_bytes();
         if line.len() < 2 {
@@ -64,7 +46,7 @@ pub fn by_state(str: &str) -> String {
     let mut res = Vec::with_capacity(cap);
 
     for (state, mut friends) in [
-        (ARIZONA, arizona),
+        (b"Arizona" as &[u8], arizona),
         (b"California", california),
         (b"Idaho", idaho),
         (b"Indiana", indiana),

@@ -6,7 +6,11 @@ extern crate alloc;
 
 pub fn min_sum(xs: &[u64]) -> u64 {
     let mut xs = xs.to_vec();
-    xs.sort_unstable();
+    if xs.len() < 1000 {
+        xs.sort_unstable();
+    } else {
+        radsort::sort(&mut xs);
+    }
 
     let mut res = 0;
     for i in 0..xs.len() / 2 {

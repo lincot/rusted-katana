@@ -8,15 +8,18 @@ use core::cmp::Ordering;
 
 pub fn sum_or_product(list: &[i64], n: usize) -> String {
     let mut list = list.to_vec();
-    list.sort_unstable();
+    if list.len() < 512 {
+        list.sort_unstable();
+    } else {
+        radsort::sort(&mut list);
+    }
 
     let sum = list.iter().rev().take(n).sum::<i64>();
     let product = list.iter().take(n).product();
 
     match sum.cmp(&product) {
-        Ordering::Greater => "sum",
-        Ordering::Less => "product",
-        Ordering::Equal => "same",
+        Ordering::Greater => "sum".into(),
+        Ordering::Less => "product".into(),
+        Ordering::Equal => "same".into(),
     }
-    .into()
 }

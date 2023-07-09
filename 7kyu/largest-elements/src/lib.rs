@@ -13,6 +13,10 @@ pub fn largest(n: usize, xs: &[i32]) -> Vec<i32> {
         xs.select_nth_unstable_by_key(n - 1, |&x| Reverse(x));
     }
     xs.truncate(n);
-    xs.sort_unstable();
+    if n < 150 {
+        xs.sort_unstable();
+    } else {
+        radsort::sort(&mut xs);
+    }
     xs
 }

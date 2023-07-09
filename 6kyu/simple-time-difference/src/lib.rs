@@ -30,7 +30,11 @@ pub fn solve(arr: &[&str]) -> String {
             parsed_arr_ptr = parsed_arr_ptr.add(1);
         }
     }
-    parsed_arr.sort_unstable();
+    if parsed_arr.len() < 160 {
+        parsed_arr.sort_unstable();
+    } else {
+        radsort::sort(&mut parsed_arr);
+    }
 
     let max_diff = parsed_arr
         .array_windows()

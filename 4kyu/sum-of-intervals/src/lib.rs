@@ -6,7 +6,11 @@ extern crate alloc;
 
 pub fn sum_intervals(intervals: &[(i32, i32)]) -> i32 {
     let mut intervals = intervals.to_vec();
-    intervals.sort_unstable_by_key(|&(a, _)| a);
+    if intervals.len() < 256 {
+        intervals.sort_unstable_by_key(|&(a, _)| a);
+    } else {
+        radsort::sort_by_key(&mut intervals, |&(a, _)| a);
+    }
 
     let mut res = 0;
     let mut end = i32::MIN;

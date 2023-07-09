@@ -1,23 +1,23 @@
 #![no_std]
 #![feature(test)]
 
-extern crate alloc;
 extern crate test;
-use alloc::vec;
+use core::array;
+use rand::Rng;
+use rand_pcg::Pcg64;
 use row_weights::row_weights;
 use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
+    let mut rng = Pcg64::new(
+        0xcafe_f00d_d15e_a5e5,
+        0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
+    );
+    let array: [_; 35] = array::from_fn(|_| rng.gen_range(0..1000));
     bencher.iter(|| {
         for _ in 0..1000 {
-            black_box(row_weights(black_box(vec![
-                95, 66, 98, 80, 87, 95, 73, 100, 84, 52, 76, 96, 98, 87, 76, 93, 89, 84, 95, 58,
-                98, 99, 61, 54, 64, 100, 54, 64, 90, 63, 100, 59, 55, 84, 60, 74, 61, 95, 65, 80,
-                56, 83, 53, 89, 87, 75, 98, 59, 90, 73, 63, 83, 94, 59, 79, 76, 66, 90, 79, 53, 70,
-                59, 92, 59, 79, 60, 52, 63, 52, 85, 57, 62, 92, 61, 99, 98, 53, 61, 91, 63, 71, 50,
-                81, 83, 62, 56, 76, 70, 52, 69, 51, 81, 72, 84, 71, 67, 75, 56, 97, 70,
-            ])));
+            black_box(row_weights(black_box(array.into())));
         }
     });
 }

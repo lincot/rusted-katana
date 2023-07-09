@@ -6,7 +6,11 @@ extern crate alloc;
 use alloc::vec::Vec;
 
 pub fn min_value(mut digits: Vec<i32>) -> i32 {
-    digits.sort_unstable();
+    if digits.len() < 160 {
+        digits.sort_unstable();
+    } else {
+        radsort::sort(&mut digits);
+    }
     digits.dedup();
 
     digits.into_iter().fold(0, |acc, d| 10 * acc + d)

@@ -2,3 +2,10 @@
 name = "split-and-then-add-both-sides-of-an-array-together"
 version = "0.1.0"
 edition = "2021"
+
+[dev-dependencies.rand]
+version = "0.8.5"
+default-features = false
+
+[dev-dependencies.rand_pcg]
+version = "0.3.1"

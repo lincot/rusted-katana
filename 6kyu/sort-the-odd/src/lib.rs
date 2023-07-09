@@ -13,18 +13,24 @@ pub fn sort_array(arr: &[i32]) -> Vec<i32> {
             unsafe { odds.push_unchecked(x) };
         }
     }
-    odds.sort_unstable();
+    if odds.len() < 160 {
+        odds.sort_unstable();
+    } else {
+        radsort::sort(&mut odds);
+    }
 
     let mut res = Vec::with_capacity(arr.len());
     unsafe { res.set_len(arr.len()) };
+    let mut res_ptr = res.as_mut_ptr();
     let mut odd_i = 0;
-    for (i, &x) in arr.iter().enumerate() {
+    for &x in arr {
         if x % 2 == 1 {
-            unsafe { *res.get_unchecked_mut(i) = *odds.get_unchecked(odd_i) };
+            unsafe { *res_ptr = *odds.get_unchecked(odd_i) };
             odd_i += 1;
         } else {
-            unsafe { *res.get_unchecked_mut(i) = x };
+            unsafe { *res_ptr = x };
         }
+        res_ptr = unsafe { res_ptr.add(1) };
     }
     res
 }

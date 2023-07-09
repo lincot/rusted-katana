@@ -2,21 +2,19 @@
 #![feature(test)]
 
 extern crate test;
+use core::array;
 use minimum_steps_array_series_number_6::minimum_steps;
+use rand::Rng;
+use rand_pcg::Pcg64;
 use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        minimum_steps(
-            black_box(&[
-                56, 21, 34, 96, 62, 47, 38, 35, 14, 97, 85, 97, 70, 59, 51, 42, 37, 34, 45, 22, 87,
-                91, 58, 82, 78, 33, 44, 91, 27, 65, 14, 18, 22, 32, 65, 64, 45, 74, 23, 62, 6, 15,
-                57, 46, 67, 61, 99, 33, 44, 4, 50, 64, 27, 7, 57, 85, 1, 83, 10, 6, 99, 72, 1, 60,
-                8, 26, 50, 70, 13, 79, 34, 15, 57, 59, 45, 96, 32, 63, 14, 38, 49, 41, 57, 33, 44,
-                70, 16, 59, 56, 20, 70, 36, 72, 18, 32, 89, 29, 47, 6, 37,
-            ]),
-            black_box(1000),
-        )
-    });
+    let mut rng = Pcg64::new(
+        0xcafe_f00d_d15e_a5e5,
+        0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
+    );
+    let nums: [_; 300] = array::from_fn(|_| rng.gen_range(0..1000));
+    let value = nums.iter().sum::<i32>() / 2;
+    bencher.iter(|| minimum_steps(black_box(&nums), black_box(value)));
 }

@@ -92,7 +92,11 @@ fn get_divisors(mut n: u32) -> Vec<u32> {
             unsafe { push_unchecked_with_multiples(&mut res, n, len) };
         }
 
-        res.sort_unstable();
+        if res.len() < 160 {
+            res.sort_unstable();
+        } else {
+            radsort::sort(&mut res);
+        }
         res.pop();
     }
 

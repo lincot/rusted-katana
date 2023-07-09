@@ -2,16 +2,18 @@
 #![feature(test)]
 
 extern crate test;
+use core::array;
 use incrementer::incrementer;
+use rand::Rng;
+use rand_pcg::Pcg64;
 use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        for _ in 0..1000 {
-            black_box(incrementer(black_box(&[
-                1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9, 9, 9, 8,
-            ])));
-        }
-    });
+    let mut rng = Pcg64::new(
+        0xcafe_f00d_d15e_a5e5,
+        0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
+    );
+    let nums: [_; 1024] = array::from_fn(|_| rng.gen_range(1..1000));
+    bencher.iter(|| black_box(incrementer(black_box(&nums))));
 }

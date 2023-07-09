@@ -8,8 +8,11 @@ use prelude::*;
 
 pub fn solve(arr: &[i32]) -> Vec<i32> {
     let mut arr = arr.to_vec();
-    arr.sort_unstable();
-
+    if arr.len() < 160 {
+        arr.sort_unstable();
+    } else {
+        radsort::sort(&mut arr);
+    }
     let mut res = Vec::with_capacity(arr.len());
     let mut it = arr.into_iter();
 

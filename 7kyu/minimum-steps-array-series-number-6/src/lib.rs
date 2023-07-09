@@ -6,7 +6,11 @@ extern crate alloc;
 
 pub fn minimum_steps(nums: &[i32], value: i32) -> usize {
     let mut nums = nums.to_vec();
-    nums.sort_unstable();
+    if nums.len() < 160 {
+        nums.sort_unstable();
+    } else {
+        radsort::sort(&mut nums);
+    }
 
     let mut res = 0;
     let mut sum = 0;

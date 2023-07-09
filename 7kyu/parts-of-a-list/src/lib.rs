@@ -24,7 +24,7 @@ pub fn part_list(arr: Vec<&str>) -> String {
     let mut joined =
         String::with_capacity(arr.iter().map(|s| s.len()).sum::<usize>() + arr.len() - 1);
     let mut comma_poses = Vec::with_capacity(arr.len() - 1);
-    for s in arr[..arr.len() - 1].iter() {
+    for s in &arr[..arr.len() - 1] {
         unsafe {
             joined.push_str_unchecked(s);
             comma_poses.push_unchecked(joined.len());

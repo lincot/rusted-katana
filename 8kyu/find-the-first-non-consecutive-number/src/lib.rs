@@ -13,7 +13,7 @@ pub fn first_non_consecutive(arr: &[i32]) -> Option<i32> {
     while left < right {
         let mid = left + size / 2;
 
-        if *(unsafe { arr.get_unchecked(mid) }) == mid as i32 + first {
+        if *unsafe { arr.get_unchecked(mid) } == mid as i32 + first {
             left = mid + 1;
         } else {
             right = mid;

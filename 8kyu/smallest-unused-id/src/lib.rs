@@ -3,30 +3,21 @@
 #![no_std]
 
 extern crate alloc;
-
-fn my_binary_search(arr: &[usize]) -> usize {
-    let mut size = arr.len();
-    let mut left = 0;
-    let mut right = size;
-
-    while left < right {
-        let mid = left + size / 2;
-
-        if *(unsafe { arr.get_unchecked(mid) }) == mid {
-            left = mid + 1;
-        } else {
-            right = mid;
-        }
-
-        size = right - left;
-    }
-
-    left
-}
+use alloc::boxed::Box;
 
 pub fn next_id(ids: &[usize]) -> usize {
-    let mut ids = ids.to_vec();
-    ids.sort_unstable();
-    ids.dedup();
-    my_binary_search(&ids)
+    let mut ids: Box<[_]> = ids.into();
+    if ids.len() < 10000 {
+        ids.sort_unstable();
+    } else {
+        radsort::sort(&mut ids);
+    }
+    let mut res = 0;
+    for &i in &*ids {
+        if i > res {
+            return res;
+        }
+        res = i + 1;
+    }
+    res
 }

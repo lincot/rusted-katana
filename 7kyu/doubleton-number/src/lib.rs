@@ -9,7 +9,7 @@ pub fn doubleton(mut num: u32) -> u32 {
         let mut digits = heapless::Vec::new();
         // TODO: convert to digits directly
         digits.write_num_unchecked(n);
-        for b in digits.iter_mut() {
+        for b in &mut digits {
             *b -= b'0';
         }
         digits

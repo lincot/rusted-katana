@@ -9,9 +9,15 @@ use core::cmp::Reverse;
 pub fn flip(dir: char, cubes: &[u32]) -> Vec<u32> {
     let mut cubes = cubes.to_vec();
     if dir == 'R' {
-        cubes.sort_unstable();
+        if cubes.len() < 64 {
+            cubes.sort_unstable();
+        } else {
+            radsort::sort(&mut cubes);
+        }
+    } else if cubes.len() < 64 {
+        cubes.sort_unstable_by_key(|&x| Reverse(x));
     } else {
-        cubes.sort_unstable_by_key(|&v| Reverse(v));
+        radsort::sort_by_key(&mut cubes, |x| u32::MAX - x);
     }
     cubes
 }

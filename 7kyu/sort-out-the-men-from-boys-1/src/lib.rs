@@ -5,27 +5,26 @@
 extern crate alloc;
 use alloc::vec::Vec;
 use core::cmp::Reverse;
-use prelude::*;
 
 pub fn men_from_boys(xs: &[i16]) -> Vec<i16> {
-    let mut boys = Vec::with_capacity(xs.len());
-    let mut men = Vec::with_capacity(xs.len());
+    let mut res = xs.to_vec();
+    res.sort_unstable_by_key(|x| x % 2 != 0);
+    let even_count = res.partition_point(|x| x % 2 == 0);
 
-    for &x in xs {
-        if x % 2 == 0 {
-            unsafe { boys.push_unchecked(x) };
-        } else {
-            unsafe { men.push_unchecked(x) };
-        }
+    let boys = &mut res[..even_count];
+    if boys.len() < 80 {
+        boys.sort_unstable();
+    } else {
+        radsort::sort(boys);
     }
 
-    boys.sort_unstable();
-    boys.dedup();
+    let men = &mut res[even_count..];
+    if men.len() < 80 {
+        men.sort_unstable_by_key(|&v| Reverse(v));
+    } else {
+        radsort::sort_by_key(men, |x| i16::MAX - x);
+    }
 
-    men.sort_unstable_by_key(|&v| Reverse(v));
-    men.dedup();
-
-    unsafe { boys.extend_from_slice_unchecked(&men) };
-
-    boys
+    res.dedup();
+    res
 }

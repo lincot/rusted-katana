@@ -3,18 +3,17 @@
 
 extern crate test;
 use bubblesort_once::bubblesort_once;
+use core::array;
+use rand::Rng;
+use rand_pcg::Pcg64;
 use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        bubblesort_once(black_box(&[
-            97, 843, 575, 461, 585, 257, 785, 940, 577, 190, 993, 202, 863, 560, 935, 711, 918,
-            943, 616, 159, 645, 166, 193, 727, 544, 514, 191, 425, 230, 62, 785, 18, 335, 540, 246,
-            496, 65, 283, 340, 31, 376, 985, 651, 890, 577, 671, 308, 458, 120, 260, 306, 465, 628,
-            680, 730, 150, 368, 454, 567, 439, 752, 228, 137, 435, 497, 823, 188, 270, 766, 670,
-            580, 676, 248, 70, 92, 33, 176, 950, 403, 519, 572, 724, 184, 309, 786, 260, 697, 87,
-            507, 963, 806, 770, 958, 816, 918, 346, 986, 8, 997, 634,
-        ]))
-    });
+    let mut rng = Pcg64::new(
+        0xcafe_f00d_d15e_a5e5,
+        0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
+    );
+    let lst: [_; 1024] = array::from_fn(|_| rng.gen_range(1..1000));
+    bencher.iter(|| bubblesort_once(black_box(&lst)));
 }

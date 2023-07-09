@@ -155,7 +155,7 @@ impl WriteNumUnchecked for Vec<u8> {
     #[cfg(all(feature = "lexical-core", debug_assertions))]
     #[inline]
     unsafe fn write_num_unchecked(&mut self, n: impl lexical_core::ToLexical) {
-        // TODO use T::FORMATTED_SIZE when it stabilizes
+        // TODO: use T::FORMATTED_SIZE when it stabilizes
         let mut slice = unsafe {
             core::mem::MaybeUninit::<[_; lexical_core::BUFFER_SIZE]>::uninit().assume_init()
         };
@@ -187,7 +187,7 @@ impl<const N: usize> WriteNumUnchecked for heapless::Vec<u8, N> {
     #[cfg(all(feature = "lexical-core", debug_assertions))]
     #[inline]
     unsafe fn write_num_unchecked(&mut self, n: impl lexical_core::ToLexical) {
-        // TODO use T::FORMATTED_SIZE when it stabilizes
+        // TODO: use T::FORMATTED_SIZE when it stabilizes
         let mut slice = unsafe {
             core::mem::MaybeUninit::<[_; lexical_core::BUFFER_SIZE]>::uninit().assume_init()
         };

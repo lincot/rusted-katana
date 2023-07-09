@@ -2,19 +2,28 @@
 #![feature(test)]
 
 extern crate test;
+use core::array;
+use rand::{seq::SliceRandom, Rng};
+use rand_pcg::Pcg64;
 use smallest_unused_id::next_id;
 use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        next_id(black_box(&[
-            10, 641, 13, 28, 20, 14, 642, 771, 951, 11, 24, 871, 16, 26, 835, 219, 123, 9, 303, 24,
-            8, 256, 7063, 594, 6, 22, 19, 637, 4, 26, 501, 18, 7, 203, 1, 244, 241, 12, 21, 259,
-            373, 801, 16, 253, 631, 3, 14, 10, 25, 5, 12, 6017, 27, 192, 648, 896, 681, 949, 23,
-            608, 20479, 516, 893, 22, 308, 573, 519, 0, 669, 4, 15, 390, 6, 341, 20, 2, 22, 8, 547,
-            529, 0, 28, 784, 6031, 328, 694, 3007, 694, 599, 17, 2038, 7013, 317, 2, 732, 29, 560,
-            906, 18, 915,
-        ]))
+    const LEN: usize = 20_000;
+    let mut rng = Pcg64::new(
+        0xcafe_f00d_d15e_a5e5,
+        0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
+    );
+    let mut ids: [_; LEN] = array::from_fn(|i| {
+        if i < LEN / 2 {
+            i
+        } else if i < LEN / 2 + LEN / 4 {
+            2 * (i - LEN / 2)
+        } else {
+            rng.gen()
+        }
     });
+    ids.shuffle(&mut rng);
+    bencher.iter(|| next_id(black_box(&ids)));
 }

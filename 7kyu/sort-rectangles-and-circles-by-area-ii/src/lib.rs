@@ -55,17 +55,21 @@ pub fn sort_by_area(seq: &[Either<(f64, f64), f64>]) -> Vec<Either<(f64, f64), f
             ptr = ptr.add(1);
         }
     }
-    seq_with_areas.sort_unstable_by(|a, b| {
-        if a.1.is_nan() || b.1.is_nan() {
-            unsafe { unreachable_unchecked() }
-        } else if a.1 > b.1 {
-            Ordering::Greater
-        } else if a.1 < b.1 {
-            Ordering::Less
-        } else {
-            Ordering::Equal
-        }
-    });
+    if seq_with_areas.len() < 10000 {
+        seq_with_areas.sort_unstable_by(|a, b| {
+            if a.1.is_nan() || b.1.is_nan() {
+                unsafe { unreachable_unchecked() }
+            } else if a.1 > b.1 {
+                Ordering::Greater
+            } else if a.1 < b.1 {
+                Ordering::Less
+            } else {
+                Ordering::Equal
+            }
+        });
+    } else {
+        radsort::sort_by_key(&mut seq_with_areas, |x| x.1);
+    }
     let mut res_ptr = seq_with_areas.as_mut_ptr().cast();
     let mut ptr = seq_with_areas.as_mut_ptr();
     for _ in 0..seq.len() {

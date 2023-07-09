@@ -6,19 +6,14 @@ pub fn max_tri_sum(xs: &[i32]) -> i32 {
     let mut a = i32::MIN;
     let mut b = i32::MIN;
     let mut c = i32::MIN;
-
     for &x in xs {
         if x > a {
-            c = b;
-            b = a;
-            a = x;
+            (a, b, c) = (x, a, b);
         } else if x > b && x != a {
-            c = b;
-            b = x;
+            (b, c) = (x, b);
         } else if x > c && x != a && x != b {
             c = x;
         }
     }
-
     a + b + c
 }

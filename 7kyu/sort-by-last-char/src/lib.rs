@@ -16,12 +16,17 @@ pub fn sort_by_last_char(s: &str) -> Vec<String> {
         }
     }
 
-    res.sort_by_cached_key(|s| {
+    let key_fn = |s: &String| {
         if s.is_empty() {
             unsafe { unreachable_unchecked() };
         }
         s.as_bytes()[s.len() - 1]
-    });
+    };
+    if res.len() <= 20 {
+        res.sort_by_key(key_fn);
+    } else {
+        radsort::sort_by_key(&mut res, key_fn);
+    }
 
     res
 }

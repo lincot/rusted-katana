@@ -12,7 +12,8 @@ pub fn inverse_slice<T: Clone>(input: &[T], a: usize, b: usize) -> Vec<T> {
         return input.to_vec();
     }
 
-    let mut res = Vec::with_capacity(input.len() - (b - a));
+    let mut res = Vec::with_capacity(a + input.len() - b);
+    // TODO: unchecked
     res.extend_from_slice(&input[..a]);
     res.extend_from_slice(&input[b..]);
     res

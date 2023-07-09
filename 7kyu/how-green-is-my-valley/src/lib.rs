@@ -7,7 +7,11 @@ use alloc::vec::Vec;
 use core::cmp::Reverse;
 
 pub fn make_valley(mut arr: Vec<i32>) -> Vec<i32> {
-    arr.sort_unstable_by_key(|&v| Reverse(v));
+    if arr.len() < 160 {
+        arr.sort_unstable_by_key(|&v| Reverse(v));
+    } else {
+        radsort::sort_by_key(&mut arr, |x| -x);
+    }
 
     let len = arr.len();
     let mut res = Vec::with_capacity(len);

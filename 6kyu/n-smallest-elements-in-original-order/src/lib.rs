@@ -46,7 +46,14 @@ pub fn first_n_smallest(arr: &[i32], n: usize) -> Vec<i32> {
         }
     }
     arr_enumerated.select_nth_unstable(n.saturating_sub(1));
-    unsafe { arr_enumerated.get_unchecked_mut(..n) }.sort_by_key(|&(_, i)| i);
+    if n < 64 {
+        unsafe { arr_enumerated.get_unchecked_mut(..n) }.sort_by_key(|&(_, i)| i);
+    } else {
+        radsort::sort_by_key(
+            unsafe { arr_enumerated.get_unchecked_mut(..n) },
+            |&(_, i)| i,
+        );
+    }
     let mut res_ptr = arr_enumerated.as_mut_ptr().cast();
     let mut ptr = arr_enumerated.as_mut_ptr();
     for _ in 0..n {

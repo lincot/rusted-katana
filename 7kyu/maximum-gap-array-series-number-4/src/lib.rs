@@ -6,7 +6,11 @@ extern crate alloc;
 
 pub fn max_gap(xs: &[i32]) -> i32 {
     let mut xs = xs.to_vec();
-    xs.sort_unstable();
+    if xs.len() < 160 {
+        xs.sort_unstable();
+    } else {
+        radsort::sort(&mut xs);
+    }
 
     let mut res = 0;
     for i in 1..xs.len() {

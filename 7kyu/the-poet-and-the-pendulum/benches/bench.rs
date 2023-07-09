@@ -2,17 +2,18 @@
 #![feature(test)]
 
 extern crate test;
+use core::array;
+use rand::Rng;
+use rand_pcg::Pcg64;
 use test::{black_box, Bencher};
 use the_poet_and_the_pendulum::pendulum;
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        pendulum(black_box(&[
-            455, -75, -387, -101, 278, 143, -418, 64, -478, -323, -62, 302, -172, 470, -440, -340,
-            341, -218, 115, 353, 7, 38, 159, -281, -221, -421, -424, 483, 248, -219, -194, -23,
-            -201, 77, -54, 110, -125, -79, 353, 461, -175, -283, -345, 3, 411, 131, 222, -320, 264,
-            -67, -280, -349, -401,
-        ]))
-    });
+    let mut rng = Pcg64::new(
+        0xcafe_f00d_d15e_a5e5,
+        0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
+    );
+    let xs: [_; 1000] = array::from_fn(|_| rng.gen_range(-1000..1000));
+    bencher.iter(|| pendulum(black_box(&xs)));
 }

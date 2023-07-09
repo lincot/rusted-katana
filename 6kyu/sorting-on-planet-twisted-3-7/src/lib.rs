@@ -15,18 +15,12 @@ const TWISTED: [u8; 129] = [
 ];
 
 pub fn sort_twisted_37(list: &[i8]) -> Vec<i8> {
-    let mut res = Vec::with_capacity(list.len());
-    unsafe { res.set_len(list.len()) };
-    let mut ptr = res.as_mut_ptr();
-    for &x in list {
-        unsafe {
-            *ptr = TWISTED[x.unsigned_abs() as usize] as i8 * x.signum();
-            ptr = ptr.add(1);
-        }
-    }
-    res.sort_unstable();
-    for x in &mut res {
-        *x = TWISTED[x.unsigned_abs() as usize] as i8 * x.signum();
+    let mut res = list.to_vec();
+    let key_fn = |x: &i8| TWISTED[x.unsigned_abs() as usize] as i8 * x.signum();
+    if res.len() <= 20 {
+        res.sort_unstable_by_key(key_fn);
+    } else {
+        radsort::sort_by_key(&mut res, key_fn);
     }
     res
 }

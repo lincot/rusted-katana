@@ -2,19 +2,18 @@
 #![feature(test)]
 
 extern crate test;
+use core::array;
 use how_many_consecutive_numbers_are_needed::consecutive;
+use rand::Rng;
+use rand_pcg::Pcg64;
 use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        consecutive(black_box(&[
-            575, 495, 625, 895, 621, 425, 723, 462, 36, 951, 657, 961, 419, 283, 139, 491, 255,
-            750, 829, 608, 899, 541, 533, 963, -20, 120, 61, 506, 941, 746, 122, 458, 396, 373,
-            973, -27, 662, 749, 570, 100, 641, 268, 623, 393, 413, 823, 366, 34, 471, -8, 860, 567,
-            20, 787, 230, 862, 582, 223, 754, 372, 704, 783, 321, 334, -18, 296, 718, 779, 690,
-            -15, 212, 647, 870, 331, 43, 849, 731, 980, 580, 505, 50, 671, 737, 560, 332, 878, 901,
-            715, 665, 923, 225, 8, 319, 329, 508, -36, 246, 666, 681, 728,
-        ]))
-    });
+    let mut rng = Pcg64::new(
+        0xcafe_f00d_d15e_a5e5,
+        0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
+    );
+    let xs: [_; 1024] = array::from_fn(|_| rng.gen_range(-1000..1000));
+    bencher.iter(|| consecutive(black_box(&xs)));
 }

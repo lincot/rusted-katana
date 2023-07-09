@@ -8,7 +8,11 @@ use prelude::*;
 
 pub fn pendulum(xs: &[i32]) -> Vec<i32> {
     let mut xs = xs.to_vec();
-    xs.sort_unstable();
+    if xs.len() < 256 {
+        xs.sort_unstable();
+    } else {
+        radsort::sort(&mut xs);
+    }
     let mut res = Vec::with_capacity(xs.len());
     let mut i = (xs.len() - (xs.len() % 2 == 0) as usize).wrapping_sub(1);
     for _ in 0..(i + 2) / 2 {

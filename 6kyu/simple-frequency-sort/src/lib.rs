@@ -22,7 +22,7 @@ pub fn solve(vec: &[i32]) -> Vec<i32> {
                 *e.get_mut() += 1;
             }
             Entry::Vacant(e) => {
-                e.insert(1);
+                e.insert(1usize);
             }
         }
     }
@@ -37,11 +37,19 @@ pub fn solve(vec: &[i32]) -> Vec<i32> {
             counts_vec_ptr = counts_vec_ptr.add(1);
         }
     }
-    counts_arr.sort_unstable_by_key(|&(x, _)| x);
-    counts_arr.sort_by_key(|&(_, c)| Reverse(c));
+    if counts_arr.len() < 200 {
+        counts_arr.sort_unstable_by_key(|&(x, _)| x);
+    } else {
+        radsort::sort_by_key(&mut counts_arr, |&(x, _)| x);
+    }
+    if counts_arr.len() < 64 {
+        counts_arr.sort_by_key(|&(_, c)| Reverse(c));
+    } else {
+        radsort::sort_by_key(&mut counts_arr, |&(_, c)| usize::MAX - c);
+    }
 
     let mut res = Vec::with_capacity(vec.len());
-    for &(x, c) in counts_arr.iter() {
+    for &(x, c) in &*counts_arr {
         for _ in 0..c {
             unsafe { res.push_unchecked(x) };
         }
