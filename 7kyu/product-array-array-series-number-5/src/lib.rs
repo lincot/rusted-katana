@@ -11,15 +11,11 @@ pub fn product_array(arr: &[u64]) -> Vec<u64> {
     assert!(prod != 0);
     let mut res = Vec::with_capacity(arr.len());
     unsafe { res.set_len(arr.len()) };
-    let mut res_ptr = res.as_mut_ptr();
-    for &x in arr {
+    for (r, &x) in res.iter_mut().zip(arr) {
         if x == 0 {
             unsafe { unreachable_unchecked() };
         }
-        unsafe {
-            *res_ptr = prod / x;
-            res_ptr = res_ptr.add(1);
-        }
+        *r = prod / x;
     }
     res
 }

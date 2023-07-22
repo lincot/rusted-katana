@@ -20,12 +20,8 @@ fn bench(bencher: &mut Bencher) {
         let len = rng.gen_range(1..100);
         let mut res = String::with_capacity(len);
         unsafe { res.as_mut_vec().set_len(len) };
-        let mut ptr = res.as_mut_ptr();
-        for _ in 0..len {
-            unsafe {
-                *ptr = if rng.gen() { b'a' - b'A' } else { 0 } + rng.gen_range(b'A'..=b'Z');
-                ptr = ptr.add(1);
-            }
+        for r in &mut *unsafe { res.as_mut_vec() } {
+            *r = if rng.gen() { b'a' - b'A' } else { 0 } + rng.gen_range(b'A'..=b'Z');
         }
         res
     });

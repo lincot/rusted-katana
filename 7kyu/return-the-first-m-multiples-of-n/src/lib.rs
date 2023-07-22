@@ -9,14 +9,8 @@ pub fn multiples(m: i32, n: f64) -> Vec<f64> {
     let m = m.max(0);
     let mut res = Vec::with_capacity(m as _);
     unsafe { res.set_len(m as _) };
-    let mut res_ptr = res.as_mut_ptr();
-    let mut i = 0;
-    while i < m {
-        i += 1;
-        unsafe {
-            *res_ptr = i as f64 * n;
-            res_ptr = res_ptr.add(1);
-        }
+    for (i, r) in (1..).zip(res.iter_mut()) {
+        *r = i as f64 * n;
     }
     res
 }

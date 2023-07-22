@@ -13,22 +13,13 @@ pub fn sum_of_n(n: i32) -> Vec<i32> {
     };
     let mut res = Vec::with_capacity(len);
     unsafe { res.set_len(len) };
-    let mut res_ptr = res.as_mut_ptr();
     if n > 0 {
-        for x in 0..len {
-            let x = x as i32;
-            unsafe {
-                *res_ptr = (x * x + x) / 2;
-                res_ptr = res_ptr.add(1);
-            }
+        for (i, r) in (0..).zip(res.iter_mut()) {
+            *r = (i * i + i) / 2;
         }
     } else {
-        for x in 0..len {
-            let x = x as i32;
-            unsafe {
-                *res_ptr = -x * (x + 1) / 2;
-                res_ptr = res_ptr.add(1);
-            }
+        for (i, r) in (0..).zip(res.iter_mut()) {
+            *r = -i * (i + 1) / 2;
         }
     }
     res

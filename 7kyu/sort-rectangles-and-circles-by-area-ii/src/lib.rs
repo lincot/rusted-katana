@@ -46,14 +46,10 @@ pub fn sort_by_area(seq: &[Either<(f64, f64), f64>]) -> Vec<Either<(f64, f64), f
             },
     );
     unsafe { seq_with_areas.set_len(seq.len()) };
-    let mut ptr = seq_with_areas.as_mut_ptr();
-    for &rectangle_or_circle in seq {
-        unsafe {
-            let area = rectangle_or_circle.either(|(a, b)| a * b, |r| PI * r * r);
-            assert!(!area.is_nan());
-            *ptr = (rectangle_or_circle, area);
-            ptr = ptr.add(1);
-        }
+    for (a, &rectangle_or_circle) in seq_with_areas.iter_mut().zip(seq) {
+        let area = rectangle_or_circle.either(|(a, b)| a * b, |r| PI * r * r);
+        assert!(!area.is_nan());
+        *a = (rectangle_or_circle, area);
     }
     if seq_with_areas.len() < 10000 {
         seq_with_areas.sort_unstable_by(|a, b| {
@@ -71,12 +67,10 @@ pub fn sort_by_area(seq: &[Either<(f64, f64), f64>]) -> Vec<Either<(f64, f64), f
         radsort::sort_by_key(&mut seq_with_areas, |x| x.1);
     }
     let mut res_ptr = seq_with_areas.as_mut_ptr().cast();
-    let mut ptr = seq_with_areas.as_mut_ptr();
-    for _ in 0..seq.len() {
+    for a in &seq_with_areas {
         unsafe {
-            *res_ptr = (*ptr).0;
+            *res_ptr = a.0;
             res_ptr = res_ptr.add(1);
-            ptr = ptr.add(1);
         }
     }
     let res = unsafe {

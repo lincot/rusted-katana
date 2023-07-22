@@ -21,16 +21,14 @@ pub fn sort_array(arr: &[i32]) -> Vec<i32> {
 
     let mut res = Vec::with_capacity(arr.len());
     unsafe { res.set_len(arr.len()) };
-    let mut res_ptr = res.as_mut_ptr();
     let mut odd_i = 0;
-    for &x in arr {
+    for (r, &x) in res.iter_mut().zip(arr) {
         if x % 2 == 1 {
-            unsafe { *res_ptr = *odds.get_unchecked(odd_i) };
+            *r = unsafe { *odds.get_unchecked(odd_i) };
             odd_i += 1;
         } else {
-            unsafe { *res_ptr = x };
+            *r = x;
         }
-        res_ptr = unsafe { res_ptr.add(1) };
     }
     res
 }

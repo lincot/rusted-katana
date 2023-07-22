@@ -8,12 +8,8 @@ use alloc::vec::Vec;
 pub fn bell(n: u32) -> Vec<u32> {
     let mut res = Vec::with_capacity(n as _);
     unsafe { res.set_len(n as _) };
-    let mut ptr = res.as_mut_ptr();
-    for i in 0..n {
-        unsafe {
-            *ptr = (n - i) * (i + 1);
-            ptr = ptr.add(1);
-        }
+    for (i, r) in (0..).zip(res.iter_mut()) {
+        *r = (n - i) * (i + 1);
     }
     res
 }

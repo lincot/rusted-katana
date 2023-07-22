@@ -45,56 +45,47 @@ pub fn symm<A: 'static, B: 'static>(i: ISO<A, B>) -> ISO<B, A> {
     (i.1, i.0)
 }
 
-pub fn trans<A: 'static, B: 'static, C: 'static>(ab: ISO<A, B>, bc: ISO<B, C>) -> ISO<A, C> {
-    let (a_to_b, b_to_a) = ab;
-    let (b_to_c, c_to_b) = bc;
+pub fn trans<A: 'static, B: 'static, C: 'static>(
+    (a_to_b, b_to_a): ISO<A, B>,
+    (b_to_c, c_to_b): ISO<B, C>,
+) -> ISO<A, C> {
     iso(move |a| b_to_c(a_to_b(a)), move |c| b_to_a(c_to_b(c)))
 }
 
 pub fn iso_tuple<A: 'static, B: 'static, C: 'static, D: 'static>(
-    ab: ISO<A, B>,
-    cd: ISO<C, D>,
+    (a_to_b, b_to_a): ISO<A, B>,
+    (c_to_d, d_to_c): ISO<C, D>,
 ) -> ISO<(A, C), (B, D)> {
-    let (a_to_b, b_to_a) = ab;
-    let (c_to_d, d_to_c) = cd;
     iso(
         move |(a, c)| (a_to_b(a), c_to_d(c)),
         move |(b, d)| (b_to_a(b), d_to_c(d)),
     )
 }
 
-pub fn iso_vec<A: 'static, B: 'static>(i: ISO<A, B>) -> ISO<Vec<A>, Vec<B>> {
-    let (a_to_b, b_to_a) = i;
+pub fn iso_vec<A: 'static, B: 'static>((a_to_b, b_to_a): ISO<A, B>) -> ISO<Vec<A>, Vec<B>> {
     iso(
         move |v: Vec<_>| {
             let mut res = Vec::with_capacity(v.len());
             unsafe { res.set_len(v.len()) };
-            let mut res_ptr = res.as_mut_ptr();
-            for a in v {
-                unsafe {
-                    *res_ptr = MaybeUninit::new(a_to_b(a));
-                    res_ptr = res_ptr.add(1);
-                }
+            for (r, a) in res.iter_mut().zip(v) {
+                *r = MaybeUninit::new(a_to_b(a));
             }
             unsafe { transmute(res) }
         },
         move |v: Vec<_>| {
             let mut res = Vec::with_capacity(v.len());
             unsafe { res.set_len(v.len()) };
-            let mut res_ptr = res.as_mut_ptr();
-            for b in v {
-                unsafe {
-                    *res_ptr = MaybeUninit::new(b_to_a(b));
-                    res_ptr = res_ptr.add(1);
-                }
+            for (r, b) in res.iter_mut().zip(v) {
+                *r = MaybeUninit::new(b_to_a(b));
             }
             unsafe { transmute(res) }
         },
     )
 }
 
-pub fn iso_option<A: 'static, B: 'static>(i: ISO<A, B>) -> ISO<Option<A>, Option<B>> {
-    let (a_to_b, b_to_a) = i;
+pub fn iso_option<A: 'static, B: 'static>(
+    (a_to_b, b_to_a): ISO<A, B>,
+) -> ISO<Option<A>, Option<B>> {
     iso(
         move |maybe_a: Option<_>| maybe_a.map(&a_to_b),
         move |maybe_b: Option<_>| maybe_b.map(&b_to_a),
@@ -102,19 +93,18 @@ pub fn iso_option<A: 'static, B: 'static>(i: ISO<A, B>) -> ISO<Option<A>, Option
 }
 
 pub fn iso_result<A: 'static, B: 'static, C: 'static, D: 'static>(
-    ab: ISO<A, B>,
-    cd: ISO<C, D>,
+    (a_to_b, b_to_a): ISO<A, B>,
+    (c_to_d, d_to_c): ISO<C, D>,
 ) -> ISO<Result<A, C>, Result<B, D>> {
-    let (a_to_b, b_to_a) = ab;
-    let (c_to_d, d_to_c) = cd;
     iso(
         move |a_or_c: Result<_, _>| a_or_c.map(&a_to_b).map_err(&c_to_d),
         move |b_or_d: Result<_, _>| b_or_d.map(&b_to_a).map_err(&d_to_c),
     )
 }
 
-pub fn iso_un_option<A: 'static, B: 'static>(i: ISO<Option<A>, Option<B>>) -> ISO<A, B> {
-    let (maybe_a_to_maybe_b, maybe_b_to_maybe_a) = i;
+pub fn iso_un_option<A: 'static, B: 'static>(
+    (maybe_a_to_maybe_b, maybe_b_to_maybe_a): ISO<Option<A>, Option<B>>,
+) -> ISO<A, B> {
     iso(
         move |a| maybe_a_to_maybe_b(Some(a)).unwrap_or_else(|| maybe_a_to_maybe_b(None).unwrap()),
         move |b| maybe_b_to_maybe_a(Some(b)).unwrap_or_else(|| maybe_b_to_maybe_a(None).unwrap()),
@@ -176,11 +166,9 @@ where
 }
 
 pub fn iso_func<A: 'static, B: 'static, C: 'static, D: 'static>(
-    ab: ISO<A, B>,
-    cd: ISO<C, D>,
+    (a_to_b, b_to_a): ISO<A, B>,
+    (c_to_d, d_to_c): ISO<C, D>,
 ) -> IsoF<A, B, C, D> {
-    let (a_to_b, b_to_a) = ab;
-    let (c_to_d, d_to_c) = cd;
     iso_f(
         move |a_to_c| Box::new(move |b| c_to_d(a_to_c(b_to_a(b)))),
         move |b_to_d| Box::new(move |a| d_to_c(b_to_d(a_to_b(a)))),
@@ -295,10 +283,7 @@ pub fn plus_s<A: 'static, B: 'static>() -> ISO<Result<Option<A>, B>, Option<Resu
 }
 
 pub fn plus_so<B: 'static>() -> ISO<Result<(), B>, Option<B>> {
-    iso(
-        |or_b| if let Err(b) = or_b { Some(b) } else { None },
-        |maybe_b| maybe_b.map_or(Ok(()), |b| Err(b)),
-    )
+    iso(Result::err, |maybe_b| maybe_b.map_or(Ok(()), |b| Err(b)))
 }
 
 pub fn mult_o<A: 'static>() -> ISO<(Void, A), Void> {

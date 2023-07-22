@@ -15,10 +15,9 @@ pub fn how_much(mut m: i32, mut n: i32) -> Vec<(String, String, String)> {
     let end = (n + 26) / 63;
     let len = (end - start) as _;
     let mut res = Vec::with_capacity(len);
-    unsafe { res.set_len(len) };
-    let mut res_ptr = res.as_mut_ptr();
-    for k in start..end {
-        unsafe {
+    unsafe {
+        res.set_len(len);
+        for (r, k) in res.iter_mut().zip(start..) {
             let mut res1 = String::with_capacity(3 + 11);
             res1.push_str_unchecked("M: ");
             res1.write_num_unchecked(k * 63 + 37);
@@ -28,10 +27,8 @@ pub fn how_much(mut m: i32, mut n: i32) -> Vec<(String, String, String)> {
             let mut res3 = String::with_capacity(3 + 11);
             res3.push_str_unchecked("C: ");
             res3.write_num_unchecked(k * 7 + 4);
-
-            *res_ptr = MaybeUninit::new((res1, res2, res3));
-            res_ptr = res_ptr.add(1);
+            *r = MaybeUninit::new((res1, res2, res3));
         }
+        transmute(res)
     }
-    unsafe { transmute(res) }
 }

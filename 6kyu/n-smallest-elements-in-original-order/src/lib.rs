@@ -38,11 +38,11 @@ pub fn first_n_smallest(arr: &[i32], n: usize) -> Vec<i32> {
             },
     );
     unsafe { arr_enumerated.set_len(arr.len()) };
-    let mut ptr = arr_enumerated.as_mut_ptr();
+    let mut e_ptr = arr_enumerated.as_mut_ptr();
     for (i, &x) in arr.iter().enumerate() {
         unsafe {
-            *ptr = (x, i);
-            ptr = ptr.add(1);
+            *e_ptr = (x, i);
+            e_ptr = e_ptr.add(1);
         }
     }
     arr_enumerated.select_nth_unstable(n.saturating_sub(1));
@@ -55,12 +55,12 @@ pub fn first_n_smallest(arr: &[i32], n: usize) -> Vec<i32> {
         );
     }
     let mut res_ptr = arr_enumerated.as_mut_ptr().cast();
-    let mut ptr = arr_enumerated.as_mut_ptr();
+    let mut e_ptr = arr_enumerated.as_mut_ptr();
     for _ in 0..n {
         unsafe {
-            *res_ptr = (*ptr).0;
+            *res_ptr = (*e_ptr).0;
             res_ptr = res_ptr.add(1);
-            ptr = ptr.add(1);
+            e_ptr = e_ptr.add(1);
         }
     }
     let res = unsafe {

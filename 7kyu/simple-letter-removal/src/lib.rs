@@ -12,13 +12,9 @@ pub fn solve(s: &str, k: usize) -> String {
     }
     let mut bytes = Vec::with_capacity(s.len());
     unsafe { bytes.set_len(s.len()) };
-    let mut bytes_ptr = bytes.as_mut_ptr();
-    for p in s.bytes().enumerate() {
-        unsafe {
-            assert!(p.1.is_ascii());
-            *bytes_ptr = p;
-            bytes_ptr = bytes_ptr.add(1);
-        }
+    for (b, p) in bytes.iter_mut().zip(s.bytes().enumerate()) {
+        assert!(p.1.is_ascii());
+        *b = p;
     }
     if bytes.len() <= 20 {
         bytes.sort_by_key(|&(_, b)| b);

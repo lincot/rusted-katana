@@ -23,12 +23,8 @@ pub fn solve(arr: &[&str]) -> String {
     let mut parsed_arr = Vec::with_capacity(arr.len());
     unsafe { parsed_arr.set_len(arr.len()) };
     let mut parsed_arr = parsed_arr.into_boxed_slice();
-    let mut parsed_arr_ptr = parsed_arr.as_mut_ptr();
-    for s in arr {
-        unsafe {
-            *parsed_arr_ptr = parse_time(s);
-            parsed_arr_ptr = parsed_arr_ptr.add(1);
-        }
+    for (p, s) in parsed_arr.iter_mut().zip(arr) {
+        *p = parse_time(s);
     }
     if parsed_arr.len() < 160 {
         parsed_arr.sort_unstable();

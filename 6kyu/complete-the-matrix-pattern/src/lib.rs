@@ -22,49 +22,49 @@ pub fn make_matrix(m: u32, n: u32) -> String {
     ];
     let cap = 2 * n as usize * n as usize;
     let mut res = Vec::with_capacity(cap);
-    let mut ptr = res.as_mut_ptr();
+    let mut res_ptr = res.as_mut_ptr();
     unsafe {
         res.set_len(cap - 1);
         for _ in 0..res.len() {
-            *ptr = b' ';
-            ptr = ptr.add(1);
+            *res_ptr = b' ';
+            res_ptr = res_ptr.add(1);
         }
-        let mut ptr = res.as_mut_ptr();
+        let mut res_ptr = res.as_mut_ptr();
         for i in 0..n / 2 {
             for _ in 0..i {
-                push_digit(&mut ptr, digits[3]);
+                push_digit(&mut res_ptr, digits[3]);
             }
-            push_digit(&mut ptr, digits[0]);
+            push_digit(&mut res_ptr, digits[0]);
             for _ in 0..n - 2 * i - 2 {
-                push_digit(&mut ptr, digits[1]);
+                push_digit(&mut res_ptr, digits[1]);
             }
-            push_digit(&mut ptr, digits[0]);
+            push_digit(&mut res_ptr, digits[0]);
             for _ in 0..i {
-                push_digit(&mut ptr, digits[4]);
+                push_digit(&mut res_ptr, digits[4]);
             }
-            *ptr.sub(1) = b'\n';
+            *res_ptr.sub(1) = b'\n';
         }
         for _ in 0..n / 2 {
-            push_digit(&mut ptr, digits[3]);
+            push_digit(&mut res_ptr, digits[3]);
         }
-        push_digit(&mut ptr, digits[0]);
+        push_digit(&mut res_ptr, digits[0]);
         for _ in 0..n / 2 {
-            push_digit(&mut ptr, digits[4]);
+            push_digit(&mut res_ptr, digits[4]);
         }
-        *ptr.sub(1) = b'\n';
+        *res_ptr.sub(1) = b'\n';
         for i in (0..n / 2).rev() {
             for _ in 0..i {
-                push_digit(&mut ptr, digits[3]);
+                push_digit(&mut res_ptr, digits[3]);
             }
-            push_digit(&mut ptr, digits[0]);
+            push_digit(&mut res_ptr, digits[0]);
             for _ in 0..n - 2 * i - 2 {
-                push_digit(&mut ptr, digits[2]);
+                push_digit(&mut res_ptr, digits[2]);
             }
-            push_digit(&mut ptr, digits[0]);
+            push_digit(&mut res_ptr, digits[0]);
             for _ in 0..i {
-                push_digit(&mut ptr, digits[4]);
+                push_digit(&mut res_ptr, digits[4]);
             }
-            *ptr.sub(1) = b'\n';
+            *res_ptr.sub(1) = b'\n';
         }
         String::from_utf8_unchecked(res)
     }

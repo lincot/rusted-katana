@@ -6,27 +6,20 @@ extern crate alloc;
 use alloc::vec::Vec;
 
 pub fn bubblesort_once(lst: &[u32]) -> Vec<u32> {
-    let mut vec = Vec::with_capacity(lst.len());
-    unsafe { vec.set_len(lst.len()) };
+    let mut res = Vec::with_capacity(lst.len());
+    unsafe { res.set_len(lst.len()) };
     if lst.is_empty() {
-        return vec;
+        return res;
     }
-    let mut vec_ptr = vec.as_mut_ptr();
     let mut max = lst[0];
-    for &x in &lst[1..] {
+    for (r, &x) in res.iter_mut().zip(&lst[1..]) {
         if x > max {
-            unsafe {
-                *vec_ptr = max;
-                vec_ptr = vec_ptr.add(1);
-            }
+            *r = max;
             max = x;
         } else {
-            unsafe {
-                *vec_ptr = x;
-                vec_ptr = vec_ptr.add(1);
-            }
+            *r = x;
         }
     }
-    unsafe { *vec_ptr = max };
-    vec
+    *res.last_mut().unwrap() = max;
+    res
 }

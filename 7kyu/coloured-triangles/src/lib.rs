@@ -12,16 +12,12 @@ pub fn triangle(row_str: &str) -> String {
     let mut colors = Vec::with_capacity(row_str.len());
     unsafe { colors.set_len(row_str.len()) };
     let mut colors = colors.into_boxed_slice();
-    let mut colors_ptr = colors.as_mut_ptr();
-    for x in row_str.as_bytes() {
-        unsafe {
-            *colors_ptr = match x {
-                b'R' => 0u8,
-                b'G' => 1,
-                _ => 2,
-            };
-            colors_ptr = colors_ptr.add(1);
-        }
+    for (c, x) in colors.iter_mut().zip(row_str.as_bytes()) {
+        *c = match x {
+            b'R' => 0u8,
+            b'G' => 1,
+            _ => 2,
+        };
     }
 
     for row in 0..colors.len() {

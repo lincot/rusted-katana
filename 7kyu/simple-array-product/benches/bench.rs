@@ -20,12 +20,8 @@ fn bench(bencher: &mut Bencher) {
         let len = rng.gen_range(0..1024);
         let mut res = Vec::with_capacity(len);
         unsafe { res.set_len(len) };
-        let mut ptr = res.as_mut_ptr();
-        for _ in 0..len {
-            unsafe {
-                *ptr = rng.gen_range(-20..20);
-                ptr = ptr.add(1);
-            }
+        for r in &mut res {
+            *r = rng.gen_range(-20..20);
         }
         res
     });
