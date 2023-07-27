@@ -6,6 +6,7 @@
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
 use prelude::*;
+use vqsort::VqSort;
 
 fn parse_time(time: &str) -> u32 {
     let time = time.as_bytes();
@@ -26,11 +27,7 @@ pub fn solve(arr: &[&str]) -> String {
     for (p, s) in parsed_arr.iter_mut().zip(arr) {
         *p = parse_time(s);
     }
-    if parsed_arr.len() < 160 {
-        parsed_arr.sort_unstable();
-    } else {
-        radsort::sort(&mut parsed_arr);
-    }
+    VqSort::sort_ascending(&mut parsed_arr);
 
     let max_diff = parsed_arr
         .array_windows()

@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
+use vqsort::VqSort;
 
 pub fn flatten_and_sort(arr: &[Vec<i32>]) -> Vec<i32> {
     let len = arr.iter().map(Vec::len).sum();
@@ -18,10 +19,6 @@ pub fn flatten_and_sort(arr: &[Vec<i32>]) -> Vec<i32> {
             }
         }
     }
-    if res.len() < 160 {
-        res.sort_unstable();
-    } else {
-        radsort::sort(&mut res);
-    }
+    VqSort::sort_ascending(&mut res);
     res
 }

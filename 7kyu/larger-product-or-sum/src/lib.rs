@@ -5,14 +5,11 @@
 extern crate alloc;
 use alloc::string::String;
 use core::cmp::Ordering;
+use vqsort::VqSort;
 
 pub fn sum_or_product(list: &[i64], n: usize) -> String {
     let mut list = list.to_vec();
-    if list.len() < 512 {
-        list.sort_unstable();
-    } else {
-        radsort::sort(&mut list);
-    }
+    VqSort::sort_ascending(&mut list);
 
     let sum = list.iter().rev().take(n).sum::<i64>();
     let product = list.iter().take(n).product();

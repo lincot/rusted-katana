@@ -7,6 +7,7 @@ extern crate alloc;
 use alloc::{string::String, vec::Vec};
 use core::intrinsics::sqrtf64;
 use prelude::*;
+use vqsort::VqSort;
 
 pub fn divisors(integer: u32) -> Result<Vec<u32>, String> {
     let divisors = get_divisors(integer);
@@ -92,11 +93,7 @@ fn get_divisors(mut n: u32) -> Vec<u32> {
             unsafe { push_unchecked_with_multiples(&mut res, n, len) };
         }
 
-        if res.len() < 160 {
-            res.sort_unstable();
-        } else {
-            radsort::sort(&mut res);
-        }
+        VqSort::sort_ascending(&mut res);
         res.pop();
     }
 

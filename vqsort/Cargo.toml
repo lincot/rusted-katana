@@ -1,0 +1,10 @@
+[package]
+name = "vqsort"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies.paste]
+version = "1.0.14"
+
+[build-dependencies.cc]
+version = "1.0.79"

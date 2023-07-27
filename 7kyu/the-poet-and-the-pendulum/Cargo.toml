@@ -6,12 +6,12 @@ edition = "2021"
 [dependencies.prelude]
 path = "../../prelude"
 
-[dependencies.radsort]
-version = "0.1.0"
-default-features = false
+[dependencies.vqsort]
+path = "../../vqsort"
 
 [dev-dependencies.rand]
 version = "0.8.5"
+default-features = false
 
 [dev-dependencies.rand_pcg]
 version = "0.3.1"

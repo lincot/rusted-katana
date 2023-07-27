@@ -4,14 +4,11 @@
 
 extern crate alloc;
 use alloc::boxed::Box;
+use vqsort::VqSort;
 
 pub fn next_id(ids: &[usize]) -> usize {
     let mut ids: Box<[_]> = ids.into();
-    if ids.len() < 10000 {
-        ids.sort_unstable();
-    } else {
-        radsort::sort(&mut ids);
-    }
+    VqSort::sort_ascending(&mut ids);
     let mut res = 0;
     for &i in &*ids {
         if i > res {

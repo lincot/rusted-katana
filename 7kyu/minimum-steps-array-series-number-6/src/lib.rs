@@ -3,14 +3,11 @@
 #![no_std]
 
 extern crate alloc;
+use vqsort::VqSort;
 
 pub fn minimum_steps(nums: &[i32], value: i32) -> usize {
     let mut nums = nums.to_vec();
-    if nums.len() < 160 {
-        nums.sort_unstable();
-    } else {
-        radsort::sort(&mut nums);
-    }
+    VqSort::sort_ascending(&mut nums);
 
     let mut res = 0;
     let mut sum = 0;

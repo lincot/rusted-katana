@@ -5,6 +5,7 @@
 extern crate alloc;
 use alloc::vec::Vec;
 use prelude::*;
+use vqsort::VqSort;
 
 pub fn sort_array(arr: &[i32]) -> Vec<i32> {
     let mut odds = Vec::with_capacity(arr.len());
@@ -13,11 +14,7 @@ pub fn sort_array(arr: &[i32]) -> Vec<i32> {
             unsafe { odds.push_unchecked(x) };
         }
     }
-    if odds.len() < 160 {
-        odds.sort_unstable();
-    } else {
-        radsort::sort(&mut odds);
-    }
+    VqSort::sort_ascending(&mut odds);
 
     let mut res = Vec::with_capacity(arr.len());
     unsafe { res.set_len(arr.len()) };

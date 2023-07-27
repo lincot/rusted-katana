@@ -6,8 +6,8 @@ edition = "2021"
 [dependencies.prelude]
 path = "../../prelude"
 
-[dependencies.radsort]
-version = "0.1.0"
+[dependencies.vqsort]
+path = "../../vqsort"
 
 [dev-dependencies.rand]
 version = "0.8.5"

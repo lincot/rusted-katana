@@ -3,8 +3,8 @@ name = "smallest-unused-id"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.radsort]
-version = "0.1.0"
+[dependencies.vqsort]
+path = "../../vqsort"
 
 [dev-dependencies.rand]
 version = "0.8.5"

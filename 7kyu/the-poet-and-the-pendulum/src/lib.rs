@@ -5,14 +5,11 @@
 extern crate alloc;
 use alloc::vec::Vec;
 use prelude::*;
+use vqsort::VqSort;
 
 pub fn pendulum(xs: &[i32]) -> Vec<i32> {
     let mut xs = xs.to_vec();
-    if xs.len() < 256 {
-        xs.sort_unstable();
-    } else {
-        radsort::sort(&mut xs);
-    }
+    VqSort::sort_ascending(&mut xs);
     let mut res = Vec::with_capacity(xs.len());
     let mut i = (xs.len() - (xs.len() % 2 == 0) as usize).wrapping_sub(1);
     for _ in 0..(i + 2) / 2 {

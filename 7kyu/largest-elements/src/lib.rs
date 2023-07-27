@@ -5,6 +5,7 @@
 extern crate alloc;
 use alloc::vec::Vec;
 use core::cmp::Reverse;
+use vqsort::VqSort;
 
 pub fn largest(n: usize, xs: &[i32]) -> Vec<i32> {
     assert!(xs.len() >= n);
@@ -13,10 +14,6 @@ pub fn largest(n: usize, xs: &[i32]) -> Vec<i32> {
         xs.select_nth_unstable_by_key(n - 1, |&x| Reverse(x));
     }
     xs.truncate(n);
-    if n < 150 {
-        xs.sort_unstable();
-    } else {
-        radsort::sort(&mut xs);
-    }
+    VqSort::sort_ascending(&mut xs);
     xs
 }

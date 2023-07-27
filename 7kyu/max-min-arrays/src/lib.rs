@@ -5,14 +5,11 @@
 extern crate alloc;
 use alloc::vec::Vec;
 use prelude::*;
+use vqsort::VqSort;
 
 pub fn solve(arr: &[i32]) -> Vec<i32> {
     let mut arr = arr.to_vec();
-    if arr.len() < 160 {
-        arr.sort_unstable();
-    } else {
-        radsort::sort(&mut arr);
-    }
+    VqSort::sort_ascending(&mut arr);
     let mut res = Vec::with_capacity(arr.len());
     let mut it = arr.into_iter();
 
