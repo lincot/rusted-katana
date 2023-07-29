@@ -3,5 +3,5 @@ name = "do-i-get-a-bonus"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.prelude]
-path = "../../prelude"
+[dependencies]
+prelude = { path = "../../prelude" }

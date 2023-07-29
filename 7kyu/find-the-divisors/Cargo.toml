@@ -3,8 +3,6 @@ name = "find-the-divisors"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.prelude]
-path = "../../prelude"
-
-[dependencies.vqsort]
-path = "../../vqsort"
+[dependencies]
+prelude = { path = "../../prelude" }
+vqsort = { path = "../../vqsort" }

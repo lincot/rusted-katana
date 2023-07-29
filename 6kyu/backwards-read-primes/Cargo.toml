@@ -3,8 +3,6 @@ name = "backwards-read-primes"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.prelude]
-path = "../../prelude"
-
-[dependencies.num-integer]
-version = "0.1.45"
+[dependencies]
+prelude = { path = "../../prelude" }
+num-integer = "0.1.45"

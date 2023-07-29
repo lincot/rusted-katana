@@ -3,8 +3,6 @@ name = "write-number-in-expanded-form"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.prelude]
-path = "../../prelude"
-
-[dependencies.heapless]
-version = "0.7.16"
+[dependencies]
+prelude = { path = "../../prelude" }
+heapless = "0.7.16"

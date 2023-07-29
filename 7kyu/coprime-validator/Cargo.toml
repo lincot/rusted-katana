@@ -3,6 +3,5 @@ name = "coprime-validator"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.num-integer]
-version = "0.1.45"
-default-features = false
+[dependencies]
+num-integer = { version = "0.1.45", default-features = false }

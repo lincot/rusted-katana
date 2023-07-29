@@ -3,6 +3,5 @@ name = "jumps-in-a-cycle-number-1"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.num-integer]
-version = "0.1.45"
-default-features = false
+[dependencies]
+num-integer = { version = "0.1.45", default-features = false }

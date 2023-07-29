@@ -3,9 +3,6 @@ name = "spanish-conjugator"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.prelude]
-path = "../../prelude"
-
-[dependencies.hashbrown]
-version = "0.14.0"
-features = ["nightly"]
+[dependencies]
+prelude = { path = "../../prelude" }
+hashbrown = { version = "0.14.0", features = ["nightly"] }

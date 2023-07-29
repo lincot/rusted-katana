@@ -3,8 +3,6 @@ name = "sort-by-last-char"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.prelude]
-path = "../../prelude"
-
-[dependencies.radsort]
-version = "0.1.0"
+[dependencies]
+prelude = { path = "../../prelude" }
+radsort = "0.1.0"

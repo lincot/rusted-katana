@@ -3,12 +3,7 @@ name = "check-katas"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.prelude]
-path = "../prelude"
-
-[dependencies.rayon]
-version = "1.6.0"
-
-[dependencies.reqwest]
-version = "0.11.13"
-features = ["blocking"]
+[dependencies]
+prelude = { path = "../prelude" }
+rayon = "1.6.0"
+reqwest = { version = "0.11.13", features = ["blocking"] }

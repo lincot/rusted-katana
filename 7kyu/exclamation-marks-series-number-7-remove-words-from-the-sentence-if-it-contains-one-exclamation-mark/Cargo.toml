@@ -3,5 +3,5 @@ name = "exclamation-marks-series-number-7-remove-words-from-the-sentence-if-it-c
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.prelude]
-path = "../../prelude"
+[dependencies]
+prelude = { path = "../../prelude" }

@@ -3,14 +3,7 @@ name = "simple-substitution-cipher-helper"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.prelude]
-path = "../../prelude"
-
-[dependencies.hashbrown]
-version = "0.14.0"
-default-features = false
-features = ["nightly", "inline-more"]
-
-[dependencies.rustc-hash]
-version = "1.1.0"
-default-features = false
+[dependencies]
+prelude = { path = "../../prelude" }
+hashbrown = { version = "0.14.0", default-features = false, features = ["nightly", "inline-more"] }
+rustc-hash = { version = "1.1.0", default-features = false }

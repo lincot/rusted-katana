@@ -3,12 +3,7 @@ name = "how-many-nines"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.prelude]
-path = "../../prelude"
-
-[dependencies.heapless]
-version = "0.7.16"
-
-[dependencies.num-bigint]
-version = "0.4.3"
-default-features = false
+[dependencies]
+prelude = { path = "../../prelude" }
+heapless = "0.7.16"
+num-bigint = { version = "0.4.3", default-features = false }

@@ -3,9 +3,6 @@ name = "row-weights"
 version = "0.1.0"
 edition = "2021"
 
-[dev-dependencies.rand]
-version = "0.8.5"
-default-features = false
-
-[dev-dependencies.rand_pcg]
-version = "0.3.1"
+[dev-dependencies]
+rand = { version = "0.8.5", default-features = false }
+rand_pcg = "0.3.1"

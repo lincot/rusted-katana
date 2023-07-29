@@ -3,5 +3,5 @@ name = "convert-a-string-to-an-array"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.prelude]
-path = "../../prelude"
+[dependencies]
+prelude = { path = "../../prelude" }
