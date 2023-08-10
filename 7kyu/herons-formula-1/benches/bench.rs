@@ -11,7 +11,7 @@ fn bench(bencher: &mut Bencher) {
     let b = 4.;
     let c = 5.;
     bencher.iter(|| {
-        for _ in 0..100_000 {
+        for _ in 0..if cfg!(miri) { 1 } else { 100_000 } {
             black_box(heron(a, b, c));
         }
     });

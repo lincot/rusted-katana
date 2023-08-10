@@ -9,10 +9,15 @@ use vqsort::VqSort;
 
 pub fn sum_or_product(list: &[i64], n: usize) -> String {
     let mut list = list.to_vec();
-    VqSort::sort_ascending(&mut list);
 
-    let sum = list.iter().rev().take(n).sum::<i64>();
+    list.select_nth_unstable(n.saturating_sub(1));
+    VqSort::sort_ascending(unsafe { list.get_unchecked_mut(..n) });
     let product = list.iter().take(n).product();
+
+    let len = list.len();
+    list.select_nth_unstable(len - n);
+    VqSort::sort_ascending(unsafe { list.get_unchecked_mut(len - n..) });
+    let sum = list.iter().rev().take(n).sum::<i64>();
 
     match sum.cmp(&product) {
         Ordering::Greater => "sum".into(),

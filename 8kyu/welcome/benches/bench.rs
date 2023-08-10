@@ -8,7 +8,7 @@ use welcome::greet;
 #[bench]
 fn bench_estonian(bencher: &mut Bencher) {
     bencher.iter(|| {
-        for _ in 0..1000 {
+        for _ in 0..if cfg!(miri) { 1 } else { 1000 } {
             black_box(greet(black_box("estonian")));
         }
     });
@@ -17,7 +17,7 @@ fn bench_estonian(bencher: &mut Bencher) {
 #[bench]
 fn bench_swedish(bencher: &mut Bencher) {
     bencher.iter(|| {
-        for _ in 0..1000 {
+        for _ in 0..if cfg!(miri) { 1 } else { 1000 } {
             black_box(greet(black_box("swedish")));
         }
     });

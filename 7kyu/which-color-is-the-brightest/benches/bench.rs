@@ -5,7 +5,9 @@ extern crate alloc;
 extern crate test;
 use alloc::string::String;
 use core::array;
-use lexical_core::{write_with_options_unchecked, NumberFormatBuilder, WriteIntegerOptions};
+use lexical_core::{
+    write_with_options_unchecked, FormattedSize, NumberFormatBuilder, WriteIntegerOptions,
+};
 use rand::Rng;
 use rand_pcg::Pcg64;
 use test::{black_box, Bencher};
@@ -21,7 +23,7 @@ fn bench(bencher: &mut Bencher) {
     let colors: [_; 100] = array::from_fn(|_| {
         let mut s = [b'0'; 7];
         s[0] = b'#';
-        let mut buf = [0; 6];
+        let mut buf = [0; u32::FORMATTED_SIZE];
         unsafe {
             let written_len = write_with_options_unchecked::<_, FORMAT>(
                 rng.gen_range(0..1u32 << 24),

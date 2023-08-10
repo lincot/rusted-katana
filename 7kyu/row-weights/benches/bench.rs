@@ -16,7 +16,7 @@ fn bench(bencher: &mut Bencher) {
     );
     let array: [_; 35] = array::from_fn(|_| rng.gen_range(0..1000));
     bencher.iter(|| {
-        for _ in 0..1000 {
+        for _ in 0..if cfg!(miri) { 1 } else { 1000 } {
             black_box(row_weights(black_box(array.into())));
         }
     });

@@ -15,7 +15,7 @@ impl<T> PushUnchecked<T> for Vec<T> {
     #[inline]
     unsafe fn push_unchecked(&mut self, value: T) {
         debug_assert!(self.len() < self.capacity());
-        if self.len() == self.capacity() {
+        if self.len() >= self.capacity() {
             core::hint::unreachable_unchecked();
         }
         self.push(value);
@@ -29,7 +29,7 @@ impl PushUnchecked<char> for String {
     #[inline]
     unsafe fn push_unchecked(&mut self, ch: char) {
         let len = self.len();
-        let ptr = self.as_mut_ptr().add(len);
+        let ptr = self.as_mut_vec().as_mut_ptr().add(len);
         let count = ch.len_utf8();
         debug_assert!(len + count <= self.capacity());
         match count {
@@ -155,11 +155,11 @@ impl WriteNumUnchecked for Vec<u8> {
     #[cfg(all(feature = "lexical-core", debug_assertions))]
     #[inline]
     unsafe fn write_num_unchecked(&mut self, n: impl lexical_core::ToLexical) {
-        // TODO: use T::FORMATTED_SIZE when it stabilizes
-        let mut slice = unsafe {
-            core::mem::MaybeUninit::<[_; lexical_core::BUFFER_SIZE]>::uninit().assume_init()
-        };
-        let written_len = lexical_core::write_unchecked(n, &mut slice).len();
+        // TODO: use T::FORMATTED_SIZE_DECIMAL when generic_const_exprs stabilizes
+        let mut slice = [core::mem::MaybeUninit::<u8>::uninit(); lexical_core::BUFFER_SIZE];
+        let slice =
+            core::slice::from_raw_parts_mut(slice.as_mut_ptr().cast(), lexical_core::BUFFER_SIZE);
+        let written_len = lexical_core::write_unchecked(n, slice).len();
         self.extend_from_slice(&slice[..written_len]);
     }
 
@@ -169,7 +169,7 @@ impl WriteNumUnchecked for Vec<u8> {
         let len = self.len();
         let written_len = lexical_core::write_unchecked(
             n,
-            core::slice::from_raw_parts_mut(self.as_mut_ptr().add(len), self.capacity()),
+            core::slice::from_raw_parts_mut(self.as_mut_ptr().add(len), self.capacity() - len),
         )
         .len();
         self.set_len(len + written_len);
@@ -187,11 +187,11 @@ impl<const N: usize> WriteNumUnchecked for heapless::Vec<u8, N> {
     #[cfg(all(feature = "lexical-core", debug_assertions))]
     #[inline]
     unsafe fn write_num_unchecked(&mut self, n: impl lexical_core::ToLexical) {
-        // TODO: use T::FORMATTED_SIZE when it stabilizes
-        let mut slice = unsafe {
-            core::mem::MaybeUninit::<[_; lexical_core::BUFFER_SIZE]>::uninit().assume_init()
-        };
-        let written_len = lexical_core::write_unchecked(n, &mut slice).len();
+        // TODO: use T::FORMATTED_SIZE_DECIMAL when generic_const_exprs stabilizes
+        let mut slice = [core::mem::MaybeUninit::<u8>::uninit(); lexical_core::BUFFER_SIZE];
+        let slice =
+            core::slice::from_raw_parts_mut(slice.as_mut_ptr().cast(), lexical_core::BUFFER_SIZE);
+        let written_len = lexical_core::write_unchecked(n, slice).len();
         self.extend_from_slice(&slice[..written_len]).unwrap();
     }
 
@@ -201,7 +201,7 @@ impl<const N: usize> WriteNumUnchecked for heapless::Vec<u8, N> {
         let len = self.len();
         let written_len = lexical_core::write_unchecked(
             n,
-            core::slice::from_raw_parts_mut(self.as_mut_ptr().add(len), self.capacity()),
+            core::slice::from_raw_parts_mut(self.as_mut_ptr().add(len), self.capacity() - len),
         )
         .len();
         self.set_len(len + written_len);

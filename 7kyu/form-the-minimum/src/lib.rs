@@ -4,10 +4,20 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use vqsort::VqSort;
 
-pub fn min_value(mut digits: Vec<i32>) -> i32 {
-    VqSort::sort_ascending(&mut digits);
-    digits.dedup();
-    digits.into_iter().fold(0, |acc, d| 10 * acc + d)
+pub fn min_value(digits: Vec<i32>) -> i32 {
+    let mut ds = [false; 10];
+    for d in digits {
+        if (1..=9).contains(&d) {
+            ds[d as usize] = true;
+        }
+    }
+    let mut res = 0;
+    for (i, &d) in (0..).zip(&ds) {
+        if d {
+            res *= 10;
+            res += i;
+        }
+    }
+    res
 }

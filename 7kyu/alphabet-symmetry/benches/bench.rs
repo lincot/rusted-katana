@@ -16,7 +16,7 @@ fn bench(bencher: &mut Bencher) {
         0xcafe_f00d_d15e_a5e5,
         0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
     );
-    let strings: [_; 1024] = array::from_fn(|_| {
+    let strings: [_; if cfg!(miri) { 10 } else { 1024 }] = array::from_fn(|_| {
         let len = rng.gen_range(1..100);
         let mut res = String::with_capacity(len);
         unsafe { res.as_mut_vec().set_len(len) };

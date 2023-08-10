@@ -8,7 +8,7 @@ use test::{black_box, Bencher};
 #[bench]
 fn bench_martin(bencher: &mut Bencher) {
     bencher.iter(|| {
-        for _ in 0..1000 {
+        for _ in 0..if cfg!(miri) { 1 } else { 1000 } {
             black_box(are_you_playing_banjo(black_box("Martin")));
         }
     });
@@ -17,7 +17,7 @@ fn bench_martin(bencher: &mut Bencher) {
 #[bench]
 fn bench_rikke(bencher: &mut Bencher) {
     bencher.iter(|| {
-        for _ in 0..1000 {
+        for _ in 0..if cfg!(miri) { 1 } else { 1000 } {
             black_box(are_you_playing_banjo(black_box("Rikke")));
         }
     });

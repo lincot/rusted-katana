@@ -5,4 +5,4 @@ edition = "2021"
 
 [dependencies]
 prelude = { path = "../../prelude" }
-radsort = "0.1.0"
+radsort = { git = "https://github.com/JakubValtar/radsort" }

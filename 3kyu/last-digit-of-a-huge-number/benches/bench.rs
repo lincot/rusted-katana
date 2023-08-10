@@ -8,7 +8,7 @@ use test::{black_box, Bencher};
 #[bench]
 fn bench(bencher: &mut Bencher) {
     bencher.iter(|| {
-        for _ in 0..1000 {
+        for _ in 0..if cfg!(miri) { 1 } else { 1000 } {
             black_box(last_digit(black_box(&[0, 1, 1, 1, 0, 0, 1, 1, 1, 1])));
             black_box(last_digit(black_box(&[2, 1, 1, 1, 0, 2, 0, 2, 2, 1])));
             black_box(last_digit(black_box(&[

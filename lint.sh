@@ -38,3 +38,4 @@ cargo outdated
 cargo udeps --quiet 2>/dev/null
 cargo fmt
 cargo run --package check-katas --quiet --release
+cargo miri nextest run --all-targets --no-fail-fast

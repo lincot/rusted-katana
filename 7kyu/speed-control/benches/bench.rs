@@ -16,7 +16,7 @@ fn bench(bencher: &mut Bencher) {
     );
     let x: [_; 50] = array::from_fn(|_| rng.gen_range(0f64..16.));
     bencher.iter(|| {
-        for _ in 0..1000 {
+        for _ in 0..if cfg!(miri) { 1 } else { 1000 } {
             black_box(gps(black_box(12), black_box(x.into())));
         }
     });

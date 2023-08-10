@@ -26,7 +26,7 @@ fn test() {
     let mut panic_message = String::new();
     let mut failures_count = 0;
 
-    for year in 1000..=9000 {
+    for year in 1000..=if cfg!(miri) { 1100 } else { 9000 } {
         let expected = next_happy_year_iterative(year);
         let got = next_happy_year(year);
 

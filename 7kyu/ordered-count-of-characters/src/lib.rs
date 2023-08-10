@@ -25,8 +25,8 @@ pub fn ordered_count(sip: &str) -> Vec<(char, i32)> {
             Entry::Vacant(e) => {
                 unsafe {
                     let len = res.len();
-                    res.get_unchecked_mut(len).0 = c;
                     res.set_len(len + 1);
+                    res.get_unchecked_mut(len).0 = c;
                 }
                 e.insert(1);
             }

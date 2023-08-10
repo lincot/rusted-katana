@@ -16,7 +16,7 @@ fn bench(bencher: &mut Bencher) {
     );
     let input: [usize; 1024] = array::from_fn(|_| rng.gen());
     bencher.iter(|| {
-        for _ in 0..1000 {
+        for _ in 0..if cfg!(miri) { 1 } else { 1000 } {
             black_box(inverse_slice(
                 black_box(&input),
                 black_box(50),

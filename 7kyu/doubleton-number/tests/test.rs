@@ -35,7 +35,7 @@ fn test() {
     let mut panic_message = String::new();
     let mut failures_count = 0;
 
-    for num in 1..=1_000_000 {
+    for num in 1..=if cfg!(miri) { 100 } else { 1_000_000 } {
         let expected = doubleton_iterative(num);
         let got = doubleton(num);
 

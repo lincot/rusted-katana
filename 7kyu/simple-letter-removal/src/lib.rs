@@ -4,16 +4,15 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use core::mem::{forget, size_of};
 
 pub fn solve(s: &str, k: usize) -> String {
     if s.len() <= k {
         return String::new();
     }
+    assert!(s.is_ascii());
     let mut bytes = Vec::with_capacity(s.len());
     unsafe { bytes.set_len(s.len()) };
     for (b, p) in bytes.iter_mut().zip(s.bytes().enumerate()) {
-        assert!(p.1.is_ascii());
         *b = p;
     }
     if bytes.len() <= 20 {
@@ -28,23 +27,14 @@ pub fn solve(s: &str, k: usize) -> String {
         radsort::sort_by_key(taken_bytes, |&(i, _)| i);
     }
 
-    let mut taken_bytes_ptr = taken_bytes.as_mut_ptr();
-    let mut bytes_u8_ptr = bytes.as_mut_ptr().cast();
-    for _ in 0..bytes.len() - k {
+    let mut res = Vec::with_capacity(s.len() - k);
+    unsafe { res.set_len(s.len() - k) };
+    let mut res_ptr = res.as_mut_ptr();
+    for (_, x) in taken_bytes {
         unsafe {
-            *bytes_u8_ptr = (*taken_bytes_ptr).1;
-            bytes_u8_ptr = bytes_u8_ptr.add(1);
-            taken_bytes_ptr = taken_bytes_ptr.add(1);
+            *res_ptr = *x;
+            res_ptr = res_ptr.add(1);
         }
     }
-
-    let res = unsafe {
-        String::from_raw_parts(
-            bytes.as_mut_ptr().cast(),
-            bytes.len() - k,
-            size_of::<(usize, u8)>() * bytes.capacity(),
-        )
-    };
-    forget(bytes);
-    res
+    unsafe { String::from_utf8_unchecked(res) }
 }

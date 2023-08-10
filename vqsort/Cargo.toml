@@ -7,4 +7,4 @@ edition = "2021"
 paste = "1.0.14"
 
 [build-dependencies]
-cc = "1.0.79"
+cc = "1.0.81"

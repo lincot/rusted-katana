@@ -8,7 +8,7 @@ use test::{black_box, Bencher};
 #[bench]
 fn bench(bencher: &mut Bencher) {
     bencher.iter(|| {
-        for n in 1..1_000_000 {
+        for n in 1..if cfg!(miri) { 100 } else { 1_000_000 } {
             black_box(how_many_measurements(black_box(n)));
         }
     });
