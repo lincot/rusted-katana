@@ -17,7 +17,7 @@ pub fn add_length(s: &str) -> Vec<String> {
         unsafe {
             word_with_length.push_str_unchecked(word);
             word_with_length.push_unchecked(' ');
-            word_with_length.write_num_unchecked(word.len());
+            word_with_length.write_num_unchecked(word.len(), false, false);
             res.push_unchecked(word_with_length);
         }
     }

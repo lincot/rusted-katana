@@ -13,8 +13,7 @@ pub fn nines(n: BigInt) -> BigInt {
 fn nines_u128(n: u128) -> u128 {
     fn to_digits(n: u128) -> heapless::Vec<u8, 39> {
         let mut digits = heapless::Vec::new();
-        // TODO: convert to digits directly
-        unsafe { digits.write_num_unchecked(n) };
+        unsafe { digits.write_num_unchecked(n, false, true) };
         digits
     }
 
@@ -22,11 +21,11 @@ fn nines_u128(n: u128) -> u128 {
     let mut res = 0;
     let mut i = digits.len();
     for d in digits {
-        if d == b'9' {
+        if d == 9 {
             res += unsafe { POWERS_OF_9.get_unchecked(i) } - 1;
             break;
         }
-        res += unsafe { POWERS_OF_9.get_unchecked(i - 1) } * (d - b'0') as u128;
+        res += unsafe { POWERS_OF_9.get_unchecked(i - 1) } * d as u128;
         i -= 1;
     }
     n - res

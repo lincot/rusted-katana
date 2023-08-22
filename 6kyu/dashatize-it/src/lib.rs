@@ -7,24 +7,17 @@ use alloc::string::String;
 use core::hint::unreachable_unchecked;
 use prelude::*;
 
-pub fn dashatize(mut n: i64) -> String {
-    fn to_digits(n: i64) -> heapless::Vec<u8, 19> {
+pub fn dashatize(n: i64) -> String {
+    fn to_digits(n: u64) -> heapless::Vec<u8, 19> {
         let mut digits = heapless::Vec::new();
-        unsafe { digits.write_num_unchecked(n) };
+        unsafe { digits.write_num_unchecked(n, false, false) };
         if digits.is_empty() {
             unsafe { unreachable_unchecked() };
         }
         digits
     }
 
-    if n == i64::MIN {
-        return "9-22-3-3-7-20-3-68-5-4-7-7-5-808".into();
-    }
-    if n < 0 {
-        n = -n;
-    }
-
-    let digits = to_digits(n);
+    let digits = to_digits(n.unsigned_abs());
 
     let mut res = String::with_capacity(2 * digits.len());
 

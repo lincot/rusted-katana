@@ -20,13 +20,13 @@ pub fn how_much(mut m: i32, mut n: i32) -> Vec<(String, String, String)> {
         for (r, k) in res.iter_mut().zip(start..) {
             let mut res1 = String::with_capacity(3 + 11);
             res1.push_str_unchecked("M: ");
-            res1.write_num_unchecked(k * 63 + 37);
+            res1.write_num_unchecked(k * 63 + 37, false, false);
             let mut res2 = String::with_capacity(3 + 11);
             res2.push_str_unchecked("B: ");
-            res2.write_num_unchecked(k * 9 + 5);
+            res2.write_num_unchecked(k * 9 + 5, false, false);
             let mut res3 = String::with_capacity(3 + 11);
             res3.push_str_unchecked("C: ");
-            res3.write_num_unchecked(k * 7 + 4);
+            res3.write_num_unchecked(k * 7 + 4, false, false);
             *r = MaybeUninit::new((res1, res2, res3));
         }
         transmute(res)

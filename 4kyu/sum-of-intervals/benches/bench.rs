@@ -14,7 +14,7 @@ fn bench(bencher: &mut Bencher) {
         0xcafe_f00d_d15e_a5e5,
         0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
     );
-    let intervals: [_; 1000] = array::from_fn(|_| {
+    let intervals: [_; if cfg!(miri) { 100 } else { 1000 }] = array::from_fn(|_| {
         let start = rng.gen_range(-1_000_000_000..1_000_000_000 - 10_000_000);
         let width = rng.gen_range(1_000_000..10_000_000);
         (start, start + width)

@@ -34,7 +34,7 @@ pub fn stock_list(list_art: Vec<&str>, list_cat: Vec<&str>) -> String {
             res.push_unchecked('(');
             res.push_unchecked(cat);
             res.push_str_unchecked(" : ");
-            res.write_num_unchecked(sum);
+            res.write_num_unchecked(sum, false, false);
             res.push_unchecked(')');
         }
     }

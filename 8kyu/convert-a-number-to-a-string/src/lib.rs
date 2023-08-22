@@ -4,7 +4,10 @@
 
 extern crate alloc;
 use alloc::string::String;
-use lexical::to_string;
+use prelude::*;
 
-#[allow(non_upper_case_globals)]
-pub const number_to_string: fn(i32) -> String = to_string;
+pub fn number_to_string(i: i32) -> String {
+    let mut res = String::with_capacity(11);
+    unsafe { res.write_num_unchecked(i, false, false) };
+    res
+}

@@ -14,7 +14,7 @@ pub fn bonus_time(mut salary: u64, bonus: bool) -> String {
     let mut res = String::with_capacity("¥".len() + 20);
     unsafe {
         res.push_str_unchecked("¥");
-        res.write_num_unchecked(salary);
+        res.write_num_unchecked(salary, false, false);
     }
     res
 }

@@ -12,7 +12,7 @@ pub fn to_csv_text(array: &[Vec<i8>]) -> String {
             if i != 0 {
                 res.push_unchecked(',');
             }
-            res.write_num_unchecked(x);
+            res.write_num_unchecked(x, false, false);
         }
     }
 

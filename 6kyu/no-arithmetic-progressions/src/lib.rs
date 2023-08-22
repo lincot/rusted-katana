@@ -13,7 +13,7 @@ pub fn sequence(n: usize) -> i64 {
         res
     };
     let mut res = 0;
-    for (i, power) in POWERS_OF_3.iter().enumerate() {
+    for (i, power) in POWERS_OF_3.into_iter().enumerate() {
         if n & (1 << i) != 0 {
             res += power;
         }

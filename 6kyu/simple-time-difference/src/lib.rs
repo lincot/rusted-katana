@@ -43,12 +43,12 @@ pub fn solve(arr: &[&str]) -> String {
         if hours < 10 {
             res.push_unchecked('0');
         }
-        res.write_num_unchecked(hours);
+        res.write_num_unchecked(hours, false, false);
         res.push_unchecked(':');
         if minutes < 10 {
             res.push_unchecked('0');
         }
-        res.write_num_unchecked(minutes);
+        res.write_num_unchecked(minutes, false, false);
     }
     res
 }

@@ -12,9 +12,9 @@ pub fn printer_error(s: &str) -> String {
 
     let mut res = String::with_capacity(USIZE_MAX_LEN + 1 + USIZE_MAX_LEN);
     unsafe {
-        res.write_num_unchecked(malformed);
+        res.write_num_unchecked(malformed, false, false);
         res.push_unchecked('/');
-        res.write_num_unchecked(all);
+        res.write_num_unchecked(all, false, false);
     }
     res
 }

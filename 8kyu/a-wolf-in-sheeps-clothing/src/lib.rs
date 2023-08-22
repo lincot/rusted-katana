@@ -19,7 +19,7 @@ pub fn warn_the_sheep(queue: &[&str]) -> String {
                 "Oi! Sheep number ! You are about to be eaten by a wolf!".len() + USIZE_MAX_LEN,
             );
             res.push_str_unchecked("Oi! Sheep number ");
-            res.write_num_unchecked(n);
+            res.write_num_unchecked(n, false, false);
             res.push_str_unchecked("! You are about to be eaten by a wolf!");
             res
         },

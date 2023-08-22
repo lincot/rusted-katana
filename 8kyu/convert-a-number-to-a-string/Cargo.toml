@@ -3,7 +3,5 @@ name = "convert-a-number-to-a-string"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.lexical]
-version = "6.1.1"
-default-features = false
-features = ["write-integers"]
+[dependencies]
+prelude = { path = "../../prelude" }

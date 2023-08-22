@@ -3,6 +3,9 @@ name = "thinkful-list-and-loop-drills-inverse-slicer"
 version = "0.1.0"
 edition = "2021"
 
+[dependencies]
+prelude = { path = "../../prelude" }
+
 [dev-dependencies]
 rand = { version = "0.8.5", default-features = false }
 rand_pcg = "0.3.1"

@@ -2,6 +2,5 @@
 
 #![no_std]
 
-pub const fn digits(n: u64) -> usize {
-    (n.ilog10() + 1) as _
-}
+#[allow(non_upper_case_globals)]
+pub const digits: fn(u64) -> usize = prelude::CountDigits::count_digits;

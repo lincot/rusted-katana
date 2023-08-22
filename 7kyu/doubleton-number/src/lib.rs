@@ -7,11 +7,7 @@ use prelude::*;
 pub fn doubleton(mut num: u32) -> u32 {
     unsafe fn to_digits(n: u32) -> heapless::Vec<u8, 7> {
         let mut digits = heapless::Vec::new();
-        // TODO: convert to digits directly
-        digits.write_num_unchecked(n);
-        for b in &mut digits {
-            *b -= b'0';
-        }
+        digits.write_num_unchecked(n, false, true);
         digits
     }
 

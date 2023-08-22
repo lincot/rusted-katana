@@ -15,7 +15,7 @@ pub fn divisors(integer: u32) -> Result<Vec<u32>, String> {
     if divisors.is_empty() {
         let mut res = String::with_capacity(10 + " is prime".len());
         unsafe {
-            res.write_num_unchecked(integer);
+            res.write_num_unchecked(integer, false, false);
             res.push_str_unchecked(" is prime");
         }
         Err(res)

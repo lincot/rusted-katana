@@ -8,7 +8,15 @@ use prelude::*;
 
 pub fn expanded_form(num: f64) -> String {
     let mut digits = heapless::Vec::<u8, 256>::new();
-    unsafe { digits.write_num_unchecked(num) };
+    let len = digits.len();
+    unsafe {
+        let written_len = lexical_core::write_unchecked(
+            num,
+            core::slice::from_raw_parts_mut(digits.as_mut_ptr().add(len), digits.capacity() - len),
+        )
+        .len();
+        digits.set_len(len + written_len);
+    }
     let mut res = Vec::with_capacity(((digits.len() - 1) * (digits.len() + 10) / 2 - 3) as _);
     let dot_pos = digits
         .iter()

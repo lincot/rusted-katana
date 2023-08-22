@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
+use prelude::*;
 
 pub fn inverse_slice<T: Clone>(input: &[T], a: usize, b: usize) -> Vec<T> {
     let a = a.min(input.len());
@@ -13,8 +14,9 @@ pub fn inverse_slice<T: Clone>(input: &[T], a: usize, b: usize) -> Vec<T> {
     }
 
     let mut res = Vec::with_capacity(a + input.len() - b);
-    // TODO: unchecked
-    res.extend_from_slice(&input[..a]);
-    res.extend_from_slice(&input[b..]);
+    unsafe {
+        res.extend_from_slice_unchecked(&input[..a]);
+        res.extend_from_slice_unchecked(&input[b..]);
+    }
     res
 }

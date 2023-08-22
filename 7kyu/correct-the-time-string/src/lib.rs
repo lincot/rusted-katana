@@ -25,17 +25,17 @@ pub fn time_correct(time_str: &str) -> Option<String> {
         if hours < 10 {
             res.push_unchecked('0');
         }
-        res.write_num_unchecked(hours);
+        res.write_num_unchecked(hours, false, false);
         res.push_unchecked(':');
         if minutes < 10 {
             res.push_unchecked('0');
         }
-        res.write_num_unchecked(minutes);
+        res.write_num_unchecked(minutes, false, false);
         res.push_unchecked(':');
         if seconds < 10 {
             res.push_unchecked('0');
         }
-        res.write_num_unchecked(seconds);
+        res.write_num_unchecked(seconds, false, false);
     }
     Some(res)
 }

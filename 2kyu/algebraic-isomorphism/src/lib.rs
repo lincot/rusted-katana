@@ -307,7 +307,7 @@ pub fn mult_s<A: 'static, B: 'static>() -> ISO<(Option<A>, B), Result<B, (A, B)>
 }
 
 pub fn mult_so<B: 'static>() -> ISO<((), B), B> {
-    iso(|(_, b)| b, |b| ((), b))
+    iso(|((), b)| b, |b| ((), b))
 }
 
 pub type IsoPL<A> = RetFunc<Func<Void, A>, ()>;
@@ -323,7 +323,7 @@ where
 }
 
 pub fn pow_o<A: 'static>() -> IsoP<A> {
-    iso_p(|_| (), |_| Box::new(|_| unreachable!()))
+    iso_p(|_| (), |()| Box::new(|_| unreachable!()))
 }
 
 pub type IsoPsL<A, B> = RetFunc<Func<Option<B>, A>, (A, RetFunc<B, A>)>;

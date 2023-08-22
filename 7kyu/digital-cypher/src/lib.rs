@@ -9,7 +9,7 @@ use prelude::*;
 pub fn encode(msg: String, n: i32) -> Vec<i32> {
     fn to_digits(n: u32) -> heapless::Vec<u8, 10> {
         let mut digits = heapless::Vec::new();
-        unsafe { digits.write_num_unchecked(n) };
+        unsafe { digits.write_num_unchecked(n, false, false) };
         digits
     }
 

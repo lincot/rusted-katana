@@ -5,8 +5,3 @@ edition = "2021"
 
 [dependencies]
 prelude = { path = "../../prelude" }
-
-[dependencies.lexical]
-version = "6.1.1"
-default-features = false
-features = ["write-integers"]

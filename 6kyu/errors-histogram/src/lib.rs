@@ -25,7 +25,7 @@ pub fn hist(s: &str) -> String {
         unsafe {
             res.push_unchecked(symbol);
             res.extend_from_slice_unchecked(b"  ");
-            res.write_num_unchecked(amount);
+            res.write_num_unchecked(amount, false, false);
             res.extend_from_slice_unchecked(b"     ");
             for _ in 0..amount {
                 res.push_unchecked(b'*');

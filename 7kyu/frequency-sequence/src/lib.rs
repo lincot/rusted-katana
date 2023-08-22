@@ -36,7 +36,7 @@ pub fn freq_seq(s: &str, sep: &str) -> String {
             if i != 0 {
                 res.push_str_unchecked(sep);
             }
-            res.write_num_unchecked(*counts.get(&c).unwrap());
+            res.write_num_unchecked(*counts.get(&c).unwrap(), false, false);
         }
     }
 

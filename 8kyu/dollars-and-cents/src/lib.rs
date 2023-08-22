@@ -11,7 +11,7 @@ pub fn format_money(amount: f64) -> String {
     let amount = (100.000_000_1 * amount) as u64;
     unsafe {
         res.push_unchecked('$');
-        res.write_num_unchecked(amount);
+        res.write_num_unchecked(amount, false, false);
         for _ in 0..3usize.saturating_sub(res.len() - 1) {
             res.push_unchecked('0');
         }

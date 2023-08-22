@@ -115,17 +115,17 @@ pub fn nba_cup(ro: &str, to_find: &str) -> String {
             return res;
         }
         res.push_str_unchecked(":W=");
-        res.write_num_unchecked(wins);
+        res.write_num_unchecked(wins, false, false);
         res.push_str_unchecked(";D=");
-        res.write_num_unchecked(draws);
+        res.write_num_unchecked(draws, false, false);
         res.push_str_unchecked(";L=");
-        res.write_num_unchecked(loses);
+        res.write_num_unchecked(loses, false, false);
         res.push_str_unchecked(";Scored=");
-        res.write_num_unchecked(scored);
+        res.write_num_unchecked(scored, false, false);
         res.push_str_unchecked(";Conceded=");
-        res.write_num_unchecked(conceded);
+        res.write_num_unchecked(conceded, false, false);
         res.push_str_unchecked(";Points=");
-        res.write_num_unchecked(3 * wins + draws);
+        res.write_num_unchecked(3 * wins + draws, false, false);
     }
     res
 }

@@ -3,15 +3,12 @@
 #![no_std]
 
 use core::hint::unreachable_unchecked;
+use prelude::*;
 
 pub fn max_rot(n: u64) -> u64 {
-    fn to_digits(mut n: u64) -> heapless::Vec<u8, 20> {
+    fn to_digits(n: u64) -> heapless::Vec<u8, 20> {
         let mut digits = heapless::Vec::new();
-        // TODO: make a better conversion
-        while n != 0 {
-            unsafe { digits.push_unchecked((n % 10) as _) };
-            n /= 10;
-        }
+        unsafe { digits.write_num_unchecked(n, true, true) };
         digits
     }
 

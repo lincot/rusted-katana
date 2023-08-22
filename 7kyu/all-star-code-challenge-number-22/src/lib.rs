@@ -13,9 +13,9 @@ pub fn to_time(seconds: u32) -> String {
 
     let mut res = String::with_capacity(" hour(s) and  minute(s)".len() + 7 + 2);
     unsafe {
-        res.write_num_unchecked(hours);
+        res.write_num_unchecked(hours, false, false);
         res.push_str_unchecked(" hour(s) and ");
-        res.write_num_unchecked(minutes);
+        res.write_num_unchecked(minutes, false, false);
         res.push_str_unchecked(" minute(s)");
     }
     res

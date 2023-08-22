@@ -21,9 +21,9 @@ pub fn high_and_low(numbers: &str) -> String {
 
     let mut res = String::with_capacity(11 + 1 + 11);
     unsafe {
-        res.write_num_unchecked(max);
+        res.write_num_unchecked(max, false, false);
         res.push_unchecked(' ');
-        res.write_num_unchecked(min);
+        res.write_num_unchecked(min, false, false);
     }
     res
 }

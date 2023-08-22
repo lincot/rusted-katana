@@ -1,0 +1,4 @@
+[package]
+name = "casting-binary-float-to-integer"
+version = "0.1.0"
+edition = "2021"

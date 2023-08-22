@@ -20,11 +20,11 @@ pub fn hq9(code: &str) -> Option<String> {
             for i in (2u8..99u8).rev() {
                 unsafe {
                     res.push_str_unchecked("Take one down and pass it around, ");
-                    res.write_num_unchecked(i);
+                    res.write_num_unchecked(i, false, false);
                     res.push_str_unchecked(" bottles of beer on the wall.\n");
-                    res.write_num_unchecked(i);
+                    res.write_num_unchecked(i, false, false);
                     res.push_str_unchecked(" bottles of beer on the wall, ");
-                    res.write_num_unchecked(i);
+                    res.write_num_unchecked(i, false, false);
                     res.push_str_unchecked(" bottles of beer.\n");
                 }
             }

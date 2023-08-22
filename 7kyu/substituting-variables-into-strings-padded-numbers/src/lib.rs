@@ -19,7 +19,7 @@ pub fn solution(n: u32) -> String {
         } else if n < 10000 {
             res.push_unchecked('0');
         }
-        res.write_num_unchecked(n);
+        res.write_num_unchecked(n, false, false);
     }
     res
 }

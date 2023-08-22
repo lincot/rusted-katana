@@ -12,7 +12,7 @@ use core::{
 };
 use either::Either;
 
-const fn gcd(mut m: usize, mut n: usize) -> usize {
+const fn const_gcd(mut m: usize, mut n: usize) -> usize {
     if m == 0 || n == 0 {
         return m | n;
     }
@@ -33,7 +33,7 @@ const fn gcd(mut m: usize, mut n: usize) -> usize {
 
 pub fn sort_by_area(seq: &[Either<(f64, f64), f64>]) -> Vec<Either<(f64, f64), f64>> {
     const N: usize = size_of::<Either<(f64, f64), f64>>()
-        / gcd(
+        / const_gcd(
             size_of::<Either<(f64, f64), f64>>(),
             size_of::<(Either<(f64, f64), f64>, f64)>(),
         ); // 3 for 64 bit
