@@ -4,16 +4,12 @@
 
 extern crate alloc;
 use alloc::string::String;
-use digital::WriteNumUnchecked;
+use digital::NumToString;
 
 pub fn evens_and_odds(n: u64) -> String {
     if n % 2 == 0 {
-        let mut res = String::with_capacity(64);
-        unsafe { res.write_num_unchecked(n, 2, false, false) };
-        res
+        n.to_string_base2(false, false)
     } else {
-        let mut res = String::with_capacity(64 / 4);
-        unsafe { res.write_num_unchecked(n, 16, false, false) };
-        res
+        n.to_string_base16(false, false)
     }
 }

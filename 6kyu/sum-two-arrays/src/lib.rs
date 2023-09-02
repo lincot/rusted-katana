@@ -12,10 +12,11 @@ pub fn add_arrays(arr_a: &[i64], arr_b: &[i64]) -> Vec<i64> {
         let mut res = Vec::<i64>::with_capacity(19);
         unsafe { res.write_num_unchecked(n.unsigned_abs(), 10, false, true) };
 
+        if res.is_empty() {
+            unsafe { unreachable_unchecked() };
+        }
+
         if n < 0 {
-            if res.is_empty() {
-                unsafe { unreachable_unchecked() };
-            }
             res[0] = -res[0];
         }
 

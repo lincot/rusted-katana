@@ -1,4 +1,4 @@
-//! fast integer to string/array of digits writing
+//! fast integer to string/array of digits
 //! based on [rust-lexical](https://github.com/Alexhuszagh/rust-lexical)
 #![no_std]
 
@@ -707,3 +707,130 @@ where
             .write_num_unchecked(n, radix, reversed, from_0);
     }
 }
+
+#[cfg(feature = "heapless")]
+impl<T, const N: usize> WriteNumUnchecked<T> for heapless::String<N>
+where
+    heapless::Vec<u8, N>: WriteNumUnchecked<T>,
+{
+    #[inline]
+    unsafe fn write_num_unchecked(&mut self, n: T, radix: u8, reversed: bool, from_0: bool) {
+        self.as_mut_vec()
+            .write_num_unchecked(n, radix, reversed, from_0);
+    }
+}
+
+pub trait NumToString<const N10: usize, const N2: usize, const N16: usize>: Sized {
+    fn to_heapless_string(self, reversed: bool, from_0: bool) -> heapless::String<N10>;
+    fn to_heapless_string_base2(self, reversed: bool, from_0: bool) -> heapless::String<N2>;
+    fn to_heapless_string_base16(self, reversed: bool, from_0: bool) -> heapless::String<N16>;
+    fn to_string(self, reversed: bool, from_0: bool) -> String;
+    fn to_string_base2(self, reversed: bool, from_0: bool) -> String;
+    fn to_string_base16(self, reversed: bool, from_0: bool) -> String;
+}
+
+macro_rules! impl_num_to_string {
+    ($($t:ty => $n10:literal,)*) => ($(
+        impl NumToString<$n10, { Self::BITS as _ }, { (Self::BITS / 4) as _ }> for $t {
+            #[inline]
+            fn to_heapless_string(self, reversed: bool, from_0: bool) -> heapless::String<$n10> {
+                let mut res = heapless::String::new();
+                unsafe {
+                    res.write_num_unchecked(self, 10, reversed, from_0);
+                    if res.is_empty() {
+                        core::hint::unreachable_unchecked();
+                    }
+                }
+                res
+            }
+
+            #[inline]
+            fn to_string(self, reversed: bool, from_0: bool) -> String {
+                let mut res = String::with_capacity($n10);
+                unsafe {
+                    res.write_num_unchecked(self, 10, reversed, from_0);
+                    if res.is_empty() {
+                        core::hint::unreachable_unchecked();
+                    }
+                }
+                res
+            }
+
+            #[inline]
+            fn to_heapless_string_base2(
+                self,
+                reversed: bool,
+                from_0: bool,
+            ) -> heapless::String<{ Self::BITS as _ }> {
+                let mut res = heapless::String::new();
+                unsafe {
+                    res.write_num_unchecked(self, 2, reversed, from_0);
+                    if res.is_empty() {
+                        core::hint::unreachable_unchecked();
+                    }
+                }
+                res
+            }
+
+            #[inline]
+            fn to_string_base2(self, reversed: bool, from_0: bool) -> String {
+                let mut res = String::with_capacity(Self::BITS as _);
+                unsafe {
+                    res.write_num_unchecked(self, 2, reversed, from_0);
+                    if res.is_empty() {
+                        core::hint::unreachable_unchecked();
+                    }
+                }
+                res
+            }
+
+            #[inline]
+            fn to_heapless_string_base16(
+                self,
+                reversed: bool,
+                from_0: bool,
+            ) -> heapless::String<{ (Self::BITS / 4) as _ }> {
+                let mut res = heapless::String::new();
+                unsafe {
+                    res.write_num_unchecked(self, 16, reversed, from_0);
+                    if res.is_empty() {
+                        core::hint::unreachable_unchecked();
+                    }
+                }
+                res
+            }
+
+            #[inline]
+            fn to_string_base16(self, reversed: bool, from_0: bool) -> String {
+                let mut res = String::with_capacity((Self::BITS / 4) as _);
+                unsafe {
+                    res.write_num_unchecked(self, 16, reversed, from_0);
+                    if res.is_empty() {
+                        core::hint::unreachable_unchecked();
+                    }
+                }
+                res
+            }
+        }
+    )*)
+}
+
+impl_num_to_string! {
+    u8 => 3,
+    u16 => 5,
+    u32 => 10,
+    u64 => 20,
+    u128 => 39,
+    i8 => 4,
+    i16 => 6,
+    i32 => 11,
+    i64 => 20,
+    i128 => 40,
+}
+
+#[cfg(target_pointer_width = "16")]
+impl_num_to_string! { usize => 5, isize => 6, }
+#[cfg(target_pointer_width = "32")]
+impl_num_to_string! { usize => 10, isize => 11, }
+#[cfg(target_pointer_width = "64")]
+impl_num_to_string! { usize => 20, isize => 20, }

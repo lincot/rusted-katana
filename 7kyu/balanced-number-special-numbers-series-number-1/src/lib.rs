@@ -4,16 +4,10 @@
 
 extern crate alloc;
 use alloc::string::String;
-use digital::WriteNumUnchecked;
+use digital::NumToString;
 
 pub fn balanced_num(n: u64) -> String {
-    fn to_digits(n: u64) -> heapless::Vec<u8, 20> {
-        let mut digits = heapless::Vec::new();
-        unsafe { digits.write_num_unchecked(n, 10, false, false) };
-        digits
-    }
-
-    let digits = to_digits(n);
+    let digits = n.to_heapless_string(false, false).into_bytes();
     if unsafe { digits.get_unchecked(..((digits.len() - 1) / 2)) }
         .iter()
         .sum::<u8>()

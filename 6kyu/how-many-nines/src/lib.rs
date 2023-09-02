@@ -2,7 +2,7 @@
 
 #![no_std]
 
-use digital::WriteNumUnchecked;
+use digital::NumToString;
 use num_bigint::BigInt;
 
 pub fn nines(n: BigInt) -> BigInt {
@@ -11,13 +11,7 @@ pub fn nines(n: BigInt) -> BigInt {
 }
 
 fn nines_u128(n: u128) -> u128 {
-    fn to_digits(n: u128) -> heapless::Vec<u8, 39> {
-        let mut digits = heapless::Vec::new();
-        unsafe { digits.write_num_unchecked(n, 10, false, true) };
-        digits
-    }
-
-    let digits = to_digits(n);
+    let digits = n.to_heapless_string(false, true).into_bytes();
     let mut res = 0;
     let mut i = digits.len();
     for d in digits {

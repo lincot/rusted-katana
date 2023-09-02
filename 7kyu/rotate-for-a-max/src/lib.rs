@@ -3,20 +3,14 @@
 #![no_std]
 
 use core::hint::unreachable_unchecked;
-use digital::WriteNumUnchecked;
+use digital::NumToString;
 
 pub fn max_rot(n: u64) -> u64 {
-    fn to_digits(n: u64) -> heapless::Vec<u8, 20> {
-        let mut digits = heapless::Vec::new();
-        unsafe { digits.write_num_unchecked(n, 10, true, true) };
-        digits
-    }
-
     fn from_digits(digits: &[u8]) -> u64 {
         digits.iter().rev().fold(0, |acc, &d| 10 * acc + d as u64)
     }
 
-    let mut digits = to_digits(n);
+    let mut digits = n.to_heapless_string(true, true).into_bytes();
     let mut max_digits = digits.clone();
 
     for end in (1..digits.len()).rev() {

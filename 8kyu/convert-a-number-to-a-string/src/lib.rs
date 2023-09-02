@@ -4,10 +4,8 @@
 
 extern crate alloc;
 use alloc::string::String;
-use digital::WriteNumUnchecked;
+use digital::NumToString;
 
 pub fn number_to_string(i: i32) -> String {
-    let mut res = String::with_capacity(11);
-    unsafe { res.write_num_unchecked(i, 10, false, false) };
-    res
+    i.to_string(false, false)
 }

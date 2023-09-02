@@ -4,17 +4,11 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use digital::WriteNumUnchecked;
+use digital::NumToString;
 use prelude::*;
 
 pub fn encode(msg: String, n: i32) -> Vec<i32> {
-    fn to_digits(n: u32) -> heapless::Vec<u8, 10> {
-        let mut digits = heapless::Vec::new();
-        unsafe { digits.write_num_unchecked(n, 10, false, false) };
-        digits
-    }
-
-    let digits = to_digits(n as u32);
+    let digits = (n as u32).to_heapless_string(false, false).into_bytes();
 
     let mut res = Vec::with_capacity(msg.len());
     let mut i = 0;

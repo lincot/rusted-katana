@@ -14,13 +14,13 @@ written in Rust
 - `#![no_std]` everywhere because we don't need `std`
 
 - solutions are safe, meaning that they don't produce undefined behavior (checked with miri);
-*nevertheless, there are 492 `unsafe` blocks*
+*nevertheless, there are 490 `unsafe` blocks*
 
 - even though most tests on Codewars contain only ASCII input,
 they use Rust's standard UTF-8–encoded strings,
 so solutions for string katas are made for Unicode input;
 *nevertheless,
-`.bytes()`|`.as_bytes()`|`.as_bytes_mut()`|`.as_mut_vec()` are used 170 times*
+`.bytes()`|`.as_bytes()`|`.as_bytes_mut()`|`.as_mut_vec()` are used 171 times*
 
 - proposed function signatures and names are preserved;
 *but are adjusted with clippy*

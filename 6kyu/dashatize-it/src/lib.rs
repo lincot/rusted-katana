@@ -4,22 +4,14 @@
 
 extern crate alloc;
 use alloc::string::String;
-use core::hint::unreachable_unchecked;
-use digital::WriteNumUnchecked;
+use digital::NumToString;
 use prelude::*;
 
 pub fn dashatize(n: i64) -> String {
-    fn to_digits(n: u64) -> heapless::Vec<u8, 19> {
-        let mut digits = heapless::Vec::new();
-        unsafe { digits.write_num_unchecked(n, 10, false, false) };
-        if digits.is_empty() {
-            unsafe { unreachable_unchecked() };
-        }
-        digits
-    }
-
-    let digits = to_digits(n.unsigned_abs());
-
+    let digits = n
+        .unsigned_abs()
+        .to_heapless_string(false, false)
+        .into_bytes();
     let mut res = String::with_capacity(2 * digits.len());
 
     let first = digits[0];

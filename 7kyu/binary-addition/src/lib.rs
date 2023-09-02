@@ -4,10 +4,8 @@
 
 extern crate alloc;
 use alloc::string::String;
-use digital::WriteNumUnchecked;
+use digital::NumToString;
 
 pub fn add_binary(a: u64, b: u64) -> String {
-    let mut res = String::with_capacity(64);
-    unsafe { res.write_num_unchecked(a + b, 2, false, false) };
-    res
+    (a + b).to_string_base2(false, false)
 }

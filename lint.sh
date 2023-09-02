@@ -3,7 +3,7 @@
 RED="\033[0;31m"
 RESET="\033[0m"
 
-unsafe=$(rg -IcU "unsafe[\s]*\{" -g '!check-katas/' -g lib.rs | paste -sd+ | bc) &
+unsafe=$(rg -IcU "unsafe[\s]*\{" -g '!check-katas/' -g lib.rs | paste -sd+ | bc)
 if ! rg -q "$unsafe \`unsafe\`" README.md; then
   echo -e "${RED}wrong unsafe count, should be $unsafe${RESET}"
 fi

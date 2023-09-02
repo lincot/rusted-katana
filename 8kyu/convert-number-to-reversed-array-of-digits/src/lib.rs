@@ -4,10 +4,8 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use digital::WriteNumUnchecked;
+use digital::NumToString;
 
 pub fn digitize(n: u64) -> Vec<u8> {
-    let mut res = Vec::with_capacity(20);
-    unsafe { res.write_num_unchecked(n, 10, true, true) };
-    res
+    n.to_string(true, true).into_bytes()
 }
