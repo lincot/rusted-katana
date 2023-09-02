@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
+use digital::WriteNumUnchecked;
 use prelude::*;
 
 pub fn to_time(seconds: u32) -> String {
@@ -13,9 +14,9 @@ pub fn to_time(seconds: u32) -> String {
 
     let mut res = String::with_capacity(" hour(s) and  minute(s)".len() + 7 + 2);
     unsafe {
-        res.write_num_unchecked(hours, false, false);
+        res.write_num_unchecked(hours, 10, false, false);
         res.push_str_unchecked(" hour(s) and ");
-        res.write_num_unchecked(minutes, false, false);
+        res.write_num_unchecked(minutes, 10, false, false);
         res.push_str_unchecked(" minute(s)");
     }
     res

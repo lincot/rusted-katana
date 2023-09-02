@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
+use digital::WriteNumUnchecked;
 use prelude::*;
 
 pub fn expanded_form(n: u64) -> String {
@@ -11,7 +12,7 @@ pub fn expanded_form(n: u64) -> String {
         return "0".into();
     }
     let mut digits = heapless::Vec::<u8, 20>::new();
-    unsafe { digits.write_num_unchecked(n, false, false) };
+    unsafe { digits.write_num_unchecked(n, 10, false, false) };
     let mut res = Vec::with_capacity((digits.len() * (digits.len() + 7) / 2 - 3) as _);
     unsafe {
         res.push_unchecked(*digits.get_unchecked(0));

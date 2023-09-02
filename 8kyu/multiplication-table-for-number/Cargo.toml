@@ -5,4 +5,5 @@ edition = "2021"
 
 [dependencies]
 prelude = { path = "../../prelude" }
+digital = { path = "../../digital" }
 heapless = "0.7.16"

@@ -3,4 +3,4 @@
 #![no_std]
 
 #[allow(non_upper_case_globals)]
-pub const digits: fn(u64) -> usize = prelude::CountDigits::count_digits;
+pub const digits: fn(u64) -> usize = digital::CountDigitsBase10::count_digits_base10;

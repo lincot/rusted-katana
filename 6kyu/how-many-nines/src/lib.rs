@@ -2,8 +2,8 @@
 
 #![no_std]
 
+use digital::WriteNumUnchecked;
 use num_bigint::BigInt;
-use prelude::*;
 
 pub fn nines(n: BigInt) -> BigInt {
     let n = n.try_into().unwrap();
@@ -13,7 +13,7 @@ pub fn nines(n: BigInt) -> BigInt {
 fn nines_u128(n: u128) -> u128 {
     fn to_digits(n: u128) -> heapless::Vec<u8, 39> {
         let mut digits = heapless::Vec::new();
-        unsafe { digits.write_num_unchecked(n, false, true) };
+        unsafe { digits.write_num_unchecked(n, 10, false, true) };
         digits
     }
 

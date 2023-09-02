@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
+use digital::WriteNumUnchecked;
 use prelude::*;
 
 /// equals to `(1..=n).map(|x| x.to_string().len()).sum::<usize>() as u32`
@@ -24,7 +25,7 @@ pub fn count_sheep(n: u32) -> String {
     let mut res = String::with_capacity(integral_log10(n) as usize + SHEEP.len() * n as usize);
     for sheep in 1..=n {
         unsafe {
-            res.write_num_unchecked(sheep, false, false);
+            res.write_num_unchecked(sheep, 10, false, false);
             res.push_str_unchecked(SHEEP);
         }
     }

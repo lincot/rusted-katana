@@ -5,6 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
+use digital::WriteNumUnchecked;
 use hashbrown::{hash_map::Entry, HashMap};
 use prelude::*;
 use rustc_hash::FxHasher;
@@ -36,7 +37,7 @@ pub fn freq_seq(s: &str, sep: &str) -> String {
             if i != 0 {
                 res.push_str_unchecked(sep);
             }
-            res.write_num_unchecked(*counts.get(&c).unwrap(), false, false);
+            res.write_num_unchecked(*counts.get(&c).unwrap(), 10, false, false);
         }
     }
 

@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
+use digital::WriteNumUnchecked;
 use prelude::*;
 
 pub fn hist(s: &str) -> String {
@@ -25,7 +26,7 @@ pub fn hist(s: &str) -> String {
         unsafe {
             res.push_unchecked(symbol);
             res.extend_from_slice_unchecked(b"  ");
-            res.write_num_unchecked(amount, false, false);
+            res.write_num_unchecked(amount, 10, false, false);
             res.extend_from_slice_unchecked(b"     ");
             for _ in 0..amount {
                 res.push_unchecked(b'*');

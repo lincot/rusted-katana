@@ -1,6 +1,7 @@
 [workspace]
 members = [
     "prelude",
+    "digital",
     "vqsort",
     "1kyu/*",
     "2kyu/*",

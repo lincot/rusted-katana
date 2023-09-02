@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
+use digital::WriteNumUnchecked;
 use prelude::*;
 
 pub fn solution(n: u32) -> String {
@@ -19,7 +20,7 @@ pub fn solution(n: u32) -> String {
         } else if n < 10000 {
             res.push_unchecked('0');
         }
-        res.write_num_unchecked(n, false, false);
+        res.write_num_unchecked(n, 10, false, false);
     }
     res
 }

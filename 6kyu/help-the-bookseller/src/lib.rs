@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
+use digital::WriteNumUnchecked;
 use prelude::*;
 
 pub fn stock_list(list_art: Vec<&str>, list_cat: Vec<&str>) -> String {
@@ -34,7 +35,7 @@ pub fn stock_list(list_art: Vec<&str>, list_cat: Vec<&str>) -> String {
             res.push_unchecked('(');
             res.push_unchecked(cat);
             res.push_str_unchecked(" : ");
-            res.write_num_unchecked(sum, false, false);
+            res.write_num_unchecked(sum, 10, false, false);
             res.push_unchecked(')');
         }
     }

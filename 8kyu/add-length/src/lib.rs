@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
+use digital::WriteNumUnchecked;
 use prelude::*;
 
 pub fn add_length(s: &str) -> Vec<String> {
@@ -17,7 +18,7 @@ pub fn add_length(s: &str) -> Vec<String> {
         unsafe {
             word_with_length.push_str_unchecked(word);
             word_with_length.push_unchecked(' ');
-            word_with_length.write_num_unchecked(word.len(), false, false);
+            word_with_length.write_num_unchecked(word.len(), 10, false, false);
             res.push_unchecked(word_with_length);
         }
     }

@@ -4,9 +4,10 @@
 
 extern crate alloc;
 use alloc::string::String;
-use lexical::{to_string_with_options, NumberFormatBuilder, WriteIntegerOptions};
+use digital::WriteNumUnchecked;
 
 pub fn add_binary(a: u64, b: u64) -> String {
-    const FORMAT: u128 = NumberFormatBuilder::binary();
-    to_string_with_options::<_, FORMAT>(a + b, &WriteIntegerOptions::new())
+    let mut res = String::with_capacity(64);
+    unsafe { res.write_num_unchecked(a + b, 2, false, false) };
+    res
 }

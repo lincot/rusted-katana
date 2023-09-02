@@ -7,16 +7,8 @@ use alloc::{string::String, vec::Vec};
 use prelude::*;
 
 pub fn expanded_form(num: f64) -> String {
-    let mut digits = heapless::Vec::<u8, 256>::new();
-    let len = digits.len();
-    unsafe {
-        let written_len = lexical_core::write_unchecked(
-            num,
-            core::slice::from_raw_parts_mut(digits.as_mut_ptr().add(len), digits.capacity() - len),
-        )
-        .len();
-        digits.set_len(len + written_len);
-    }
+    let mut digits = ryu::Buffer::new();
+    let digits = digits.format_finite(num).as_bytes();
     let mut res = Vec::with_capacity(((digits.len() - 1) * (digits.len() + 10) / 2 - 3) as _);
     let dot_pos = digits
         .iter()
@@ -24,7 +16,7 @@ pub fn expanded_form(num: f64) -> String {
         .unwrap_or(digits.len());
     let mut first = true;
     unsafe {
-        for (i, &d) in (0..dot_pos).rev().zip(&digits).filter(|(_, &b)| b != b'0') {
+        for (i, &d) in (0..dot_pos).rev().zip(digits).filter(|(_, &b)| b != b'0') {
             if !first {
                 res.extend_from_slice_unchecked(b" + ");
             }

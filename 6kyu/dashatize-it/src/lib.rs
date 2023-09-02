@@ -5,12 +5,13 @@
 extern crate alloc;
 use alloc::string::String;
 use core::hint::unreachable_unchecked;
+use digital::WriteNumUnchecked;
 use prelude::*;
 
 pub fn dashatize(n: i64) -> String {
     fn to_digits(n: u64) -> heapless::Vec<u8, 19> {
         let mut digits = heapless::Vec::new();
-        unsafe { digits.write_num_unchecked(n, false, false) };
+        unsafe { digits.write_num_unchecked(n, 10, false, false) };
         if digits.is_empty() {
             unsafe { unreachable_unchecked() };
         }

@@ -4,19 +4,16 @@
 
 extern crate alloc;
 use alloc::string::String;
-use lexical::{to_string_with_options, NumberFormatBuilder, WriteIntegerOptions};
+use digital::WriteNumUnchecked;
 
 pub fn evens_and_odds(n: u64) -> String {
     if n % 2 == 0 {
-        const FORMAT: u128 = NumberFormatBuilder::binary();
-        to_string_with_options::<_, FORMAT>(n, &WriteIntegerOptions::new())
+        let mut res = String::with_capacity(64);
+        unsafe { res.write_num_unchecked(n, 2, false, false) };
+        res
     } else {
-        // TODO: format with lowercase numbers
-        const FORMAT: u128 = NumberFormatBuilder::hexadecimal();
-        let mut res = to_string_with_options::<_, FORMAT>(n, &WriteIntegerOptions::new());
-        for b in unsafe { res.as_mut_vec() } {
-            *b = (*b).to_ascii_lowercase();
-        }
+        let mut res = String::with_capacity(64 / 4);
+        unsafe { res.write_num_unchecked(n, 16, false, false) };
         res
     }
 }

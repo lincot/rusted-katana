@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
+use digital::WriteNumUnchecked;
 use prelude::*;
 
 pub fn hq9(code: &str) -> Option<String> {
@@ -17,14 +18,14 @@ pub fn hq9(code: &str) -> Option<String> {
                 res.push_str_unchecked("99 bottles of beer on the wall, 99 bottles of beer.\n");
             }
 
-            for i in (2u8..99u8).rev() {
+            for i in (2u8..99).rev() {
                 unsafe {
                     res.push_str_unchecked("Take one down and pass it around, ");
-                    res.write_num_unchecked(i, false, false);
+                    res.write_num_unchecked(i, 10, false, false);
                     res.push_str_unchecked(" bottles of beer on the wall.\n");
-                    res.write_num_unchecked(i, false, false);
+                    res.write_num_unchecked(i, 10, false, false);
                     res.push_str_unchecked(" bottles of beer on the wall, ");
-                    res.write_num_unchecked(i, false, false);
+                    res.write_num_unchecked(i, 10, false, false);
                     res.push_str_unchecked(" bottles of beer.\n");
                 }
             }

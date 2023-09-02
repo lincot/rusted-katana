@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
+use digital::WriteNumUnchecked;
 use prelude::*;
 
 pub fn fizz_buzz_custom_solver(
@@ -27,7 +28,7 @@ pub fn fizz_buzz_custom_solver(
             (_, 0) => string_two.into(),
             _ => {
                 let mut res = String::with_capacity(USIZE_MAX_LEN);
-                unsafe { res.write_num_unchecked(x, false, false) };
+                unsafe { res.write_num_unchecked(x, 10, false, false) };
                 res
             }
         };

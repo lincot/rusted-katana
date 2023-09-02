@@ -5,6 +5,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
+use digital::WriteNumUnchecked;
 use prelude::*;
 use vqsort::VqSort;
 
@@ -43,12 +44,12 @@ pub fn solve(arr: &[&str]) -> String {
         if hours < 10 {
             res.push_unchecked('0');
         }
-        res.write_num_unchecked(hours, false, false);
+        res.write_num_unchecked(hours, 10, false, false);
         res.push_unchecked(':');
         if minutes < 10 {
             res.push_unchecked('0');
         }
-        res.write_num_unchecked(minutes, false, false);
+        res.write_num_unchecked(minutes, 10, false, false);
     }
     res
 }

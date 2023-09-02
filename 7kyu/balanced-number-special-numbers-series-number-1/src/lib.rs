@@ -4,13 +4,12 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use digital::WriteNumUnchecked;
 
 pub fn balanced_num(n: u64) -> String {
-    #[inline(never)]
     fn to_digits(n: u64) -> heapless::Vec<u8, 20> {
         let mut digits = heapless::Vec::new();
-        unsafe { digits.write_num_unchecked(n, false, false) };
+        unsafe { digits.write_num_unchecked(n, 10, false, false) };
         digits
     }
 

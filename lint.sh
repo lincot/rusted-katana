@@ -3,18 +3,16 @@
 RED="\033[0;31m"
 RESET="\033[0m"
 
-check_count() {
-  unsafe=$(rg -IcU "unsafe[\s]*\{" -g '!check-katas/' -g lib.rs | paste -sd+ | bc) &
-  if ! rg -q "$unsafe \`unsafe\`" README.md; then
-    echo -e "${RED}wrong unsafe count, should be $unsafe${RESET}"
-  fi
+unsafe=$(rg -IcU "unsafe[\s]*\{" -g '!check-katas/' -g lib.rs | paste -sd+ | bc) &
+if ! rg -q "$unsafe \`unsafe\`" README.md; then
+  echo -e "${RED}wrong unsafe count, should be $unsafe${RESET}"
+fi
 
-  bytes=$(rg -Ic "\.bytes\(\)|\.as_bytes\(\)|\.as_bytes_mut\(\)|\.as_mut_vec\(\)" \
-    -g '!check-katas/' -g lib.rs | paste -sd+ | bc)
-  if ! rg -q "$bytes times" README.md; then
-    echo -e "${RED}wrong bytes count, should be $bytes${RESET}"
-  fi
-}
+bytes=$(rg -Ic "\.bytes\(\)|\.as_bytes\(\)|\.as_bytes_mut\(\)|\.as_mut_vec\(\)" \
+  -g '!check-katas/' -g lib.rs | paste -sd+ | bc)
+if ! rg -q "$bytes times" README.md; then
+  echo -e "${RED}wrong bytes count, should be $bytes${RESET}"
+fi
 
 cargo check --all-features --all-targets --quiet --release
 cargo clippy --all-features --all-targets --no-deps --quiet --release -- \
@@ -53,6 +51,5 @@ cargo update
 cargo outdated
 cargo udeps --quiet 2>/dev/null
 cargo fmt
-check_count
 cargo run --package check-katas --quiet --release
 cargo miri nextest run --all-targets --no-fail-fast --status-level fail

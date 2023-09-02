@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
+use digital::WriteNumUnchecked;
 use prelude::*;
 
 pub fn to_csv_text(array: &[Vec<i8>]) -> String {
@@ -12,7 +13,7 @@ pub fn to_csv_text(array: &[Vec<i8>]) -> String {
             if i != 0 {
                 res.push_unchecked(',');
             }
-            res.write_num_unchecked(x, false, false);
+            res.write_num_unchecked(x, 10, false, false);
         }
     }
 

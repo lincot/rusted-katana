@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
+use digital::WriteNumUnchecked;
 use prelude::*;
 
 pub fn printer_error(s: &str) -> String {
@@ -12,9 +13,9 @@ pub fn printer_error(s: &str) -> String {
 
     let mut res = String::with_capacity(USIZE_MAX_LEN + 1 + USIZE_MAX_LEN);
     unsafe {
-        res.write_num_unchecked(malformed, false, false);
+        res.write_num_unchecked(malformed, 10, false, false);
         res.push_unchecked('/');
-        res.write_num_unchecked(all, false, false);
+        res.write_num_unchecked(all, 10, false, false);
     }
     res
 }

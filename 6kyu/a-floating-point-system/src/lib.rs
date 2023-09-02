@@ -4,6 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
+use digital::WriteNumUnchecked;
 use prelude::*;
 
 pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
@@ -14,7 +15,7 @@ pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
         unsafe {
             res.push_str_unchecked(a_number.get_unchecked(..digits_number));
             res.push_unchecked('P');
-            res.write_num_unchecked(digits_before_dot - digits_number, false, false);
+            res.write_num_unchecked(digits_before_dot - digits_number, 10, false, false);
         }
     } else if digits_before_dot == 1 && *unsafe { a_number.as_bytes().get_unchecked(0) } == b'0' {
         let zeros_after_dot = unsafe { a_number.as_bytes().get_unchecked(digits_before_dot + 1..) }
@@ -40,7 +41,7 @@ pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
         unsafe {
             res.push_unchecked('P');
             res.push_unchecked('-');
-            res.write_num_unchecked(digits_number + zeros_after_dot, false, false);
+            res.write_num_unchecked(digits_number + zeros_after_dot, 10, false, false);
         }
     } else {
         unsafe {
@@ -57,7 +58,7 @@ pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
             }
             res.push_unchecked('P');
             res.push_unchecked('-');
-            res.write_num_unchecked(digits_number - digits_before_dot, false, false);
+            res.write_num_unchecked(digits_number - digits_before_dot, 10, false, false);
         }
     }
     res
