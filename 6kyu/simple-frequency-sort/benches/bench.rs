@@ -16,7 +16,7 @@ fn bench(bencher: &mut Bencher) {
         0xcafe_f00d_d15e_a5e5,
         0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
     );
-    let len = 500;
+    let len = if cfg!(miri) { 50 } else { 500 };
     let mut vec = Vec::with_capacity(3 * len);
     for _ in 0..len {
         unsafe { vec.push_unchecked(rng.gen()) };
