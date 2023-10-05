@@ -43,7 +43,6 @@ cargo clippy --all-features --all-targets --no-deps --quiet --release -- \
   -A clippy::uninit-assumed-init \
   -A clippy::zero-sized-map-values \
   -A clippy::uninit-vec \
-  -A clippy::transmute-undefined-repr \
   -A clippy::cognitive-complexity \
   -A clippy::debug-assert-with-mut-call \
   -A clippy::module-name-repetitions

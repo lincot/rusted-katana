@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{boxed::Box, vec, vec::Vec};
-use core::mem::{transmute, MaybeUninit};
+use prelude::*;
 
 #[derive(PartialEq, Eq)]
 pub enum Void {}
@@ -66,19 +66,17 @@ pub fn iso_vec<A: 'static, B: 'static>((a_to_b, b_to_a): ISO<A, B>) -> ISO<Vec<A
     iso(
         move |v: Vec<_>| {
             let mut res = Vec::with_capacity(v.len());
-            unsafe { res.set_len(v.len()) };
-            for (r, a) in res.iter_mut().zip(v) {
-                *r = MaybeUninit::new(a_to_b(a));
+            for a in v {
+                unsafe { res.push_unchecked(a_to_b(a)) };
             }
-            unsafe { transmute(res) }
+            res
         },
         move |v: Vec<_>| {
             let mut res = Vec::with_capacity(v.len());
-            unsafe { res.set_len(v.len()) };
-            for (r, b) in res.iter_mut().zip(v) {
-                *r = MaybeUninit::new(b_to_a(b));
+            for b in v {
+                unsafe { res.push_unchecked(b_to_a(b)) };
             }
-            unsafe { transmute(res) }
+            res
         },
     )
 }

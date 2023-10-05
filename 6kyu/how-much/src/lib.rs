@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use core::mem::{swap, transmute, MaybeUninit};
+use core::mem::swap;
 use digital::WriteNumUnchecked;
 use prelude::*;
 
@@ -17,8 +17,7 @@ pub fn how_much(mut m: i32, mut n: i32) -> Vec<(String, String, String)> {
     let len = (end - start) as _;
     let mut res = Vec::with_capacity(len);
     unsafe {
-        res.set_len(len);
-        for (r, k) in res.iter_mut().zip(start..) {
+        for k in start..end {
             let mut res1 = String::with_capacity(3 + 11);
             res1.push_str_unchecked("M: ");
             res1.write_num_unchecked(k * 63 + 37, 10, false, false);
@@ -28,8 +27,8 @@ pub fn how_much(mut m: i32, mut n: i32) -> Vec<(String, String, String)> {
             let mut res3 = String::with_capacity(3 + 11);
             res3.push_str_unchecked("C: ");
             res3.write_num_unchecked(k * 7 + 4, 10, false, false);
-            *r = MaybeUninit::new((res1, res2, res3));
+            res.push_unchecked((res1, res2, res3));
         }
-        transmute(res)
+        res
     }
 }

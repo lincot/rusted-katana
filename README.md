@@ -14,7 +14,7 @@ written in Rust
 - `#![no_std]` everywhere because we don't need `std`
 
 - solutions are safe, meaning that they don't produce undefined behavior (checked with miri);
-*nevertheless, there are 490 `unsafe` blocks*
+*nevertheless, there are 481 `unsafe` blocks*
 
 - even though most tests on Codewars contain only ASCII input,
 they use Rust's standard UTF-8–encoded strings,
