@@ -721,8 +721,11 @@ where
 }
 
 pub trait NumToString<const N10: usize, const N2: usize, const N16: usize>: Sized {
+    #[cfg(feature = "heapless")]
     fn to_heapless_string(self, reversed: bool, from_0: bool) -> heapless::String<N10>;
+    #[cfg(feature = "heapless")]
     fn to_heapless_string_base2(self, reversed: bool, from_0: bool) -> heapless::String<N2>;
+    #[cfg(feature = "heapless")]
     fn to_heapless_string_base16(self, reversed: bool, from_0: bool) -> heapless::String<N16>;
     fn to_string(self, reversed: bool, from_0: bool) -> String;
     fn to_string_base2(self, reversed: bool, from_0: bool) -> String;
@@ -732,6 +735,7 @@ pub trait NumToString<const N10: usize, const N2: usize, const N16: usize>: Size
 macro_rules! impl_num_to_string {
     ($($t:ty => $n10:literal,)*) => ($(
         impl NumToString<$n10, { Self::BITS as _ }, { (Self::BITS / 4) as _ }> for $t {
+            #[cfg(feature = "heapless")]
             #[inline]
             fn to_heapless_string(self, reversed: bool, from_0: bool) -> heapless::String<$n10> {
                 let mut res = heapless::String::new();
@@ -756,6 +760,7 @@ macro_rules! impl_num_to_string {
                 res
             }
 
+            #[cfg(feature = "heapless")]
             #[inline]
             fn to_heapless_string_base2(
                 self,
@@ -784,6 +789,7 @@ macro_rules! impl_num_to_string {
                 res
             }
 
+            #[cfg(feature = "heapless")]
             #[inline]
             fn to_heapless_string_base16(
                 self,
