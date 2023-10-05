@@ -184,9 +184,10 @@ mod parse {
 
             while tokens.peek().and_then(Token::precedence) > prec {
                 let token = tokens.next().unwrap();
-                expr = match token {
-                    Token::BinOp(op) => Self::parse_infix(arg_names, expr, tokens, op),
-                    _ => panic!(),
+                expr = if let Token::BinOp(op) = token {
+                    Self::parse_infix(arg_names, expr, tokens, op)
+                } else {
+                    panic!()
                 };
             }
 
