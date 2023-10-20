@@ -17,13 +17,10 @@ fn bench(bencher: &mut Bencher) {
         0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
     );
     let words: [_; 100] = array::from_fn(|_| {
-        let len = rng.gen_range(0..100);
-        let mut s = String::with_capacity(len);
-        unsafe { s.as_mut_vec().set_len(len) };
-        for p in &mut *unsafe { s.as_mut_vec() } {
-            *p = rng.gen_range(b'a'..=b'z');
-        }
-        s
+        let res = (0..rng.gen_range(0..100))
+            .map(|_| rng.gen_range(b'a'..=b'z'))
+            .collect();
+        unsafe { String::from_utf8_unchecked(res) }
     });
     let words: [_; 100] = array::from_fn(|i| words[i].as_str());
     bencher.iter(|| word_value(black_box(&words)));

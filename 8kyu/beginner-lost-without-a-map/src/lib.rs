@@ -11,6 +11,8 @@ pub fn maps(values: &Vec<i32>) -> Vec<i32> {
     for &x in values {
         unsafe { res.push_unchecked(x) };
     }
-    unsafe { res.set_len(values.len()) };
+    if res.len() != values.len() {
+        unsafe { core::hint::unreachable_unchecked() };
+    }
     res
 }

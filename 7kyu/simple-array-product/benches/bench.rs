@@ -1,9 +1,7 @@
 #![no_std]
 #![feature(test)]
 
-extern crate alloc;
 extern crate test;
-use alloc::vec::Vec;
 use core::array;
 use rand::Rng;
 use rand_pcg::Pcg64;
@@ -17,13 +15,9 @@ fn bench(bencher: &mut Bencher) {
         0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
     );
     let vecs: [_; 5] = array::from_fn(|_| {
-        let len = rng.gen_range(0..1024);
-        let mut res = Vec::with_capacity(len);
-        unsafe { res.set_len(len) };
-        for r in &mut res {
-            *r = rng.gen_range(-20..20);
-        }
-        res
+        (0..rng.gen_range(0..1024))
+            .map(|_| rng.gen_range(-20..20))
+            .collect()
     });
     bencher.iter(|| solve(black_box(&vecs)));
 }
