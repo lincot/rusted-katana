@@ -15,14 +15,7 @@ pub fn solution(n: u8, b: u32) -> Vec<u32> {
     let right_mask = b.wrapping_sub(1);
     let left_mask = !right_mask;
 
-    let mut res = Vec::with_capacity(len as _);
-    unsafe { res.set_len(len as _) };
-    let mut res_ptr = res.as_mut_ptr();
-    for i in 0..len {
-        unsafe {
-            *res_ptr = ((i & left_mask) << 1) | b | (i & right_mask);
-            res_ptr = res_ptr.add(1);
-        }
-    }
-    res
+    (0..len)
+        .map(|i| ((i & left_mask) << 1) | b | (i & right_mask))
+        .collect()
 }

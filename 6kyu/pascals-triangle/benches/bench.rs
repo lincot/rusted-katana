@@ -7,5 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| pascals_triangle(black_box(40)));
+    bencher.iter(|| pascals_triangle(black_box(30)));
 }

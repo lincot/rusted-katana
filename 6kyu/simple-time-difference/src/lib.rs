@@ -4,7 +4,7 @@
 #![feature(array_windows)]
 
 extern crate alloc;
-use alloc::{string::String, vec::Vec};
+use alloc::{boxed::Box, string::String};
 use digital::WriteNumUnchecked;
 use prelude::*;
 use vqsort::VqSort;
@@ -22,12 +22,7 @@ fn parse_time(time: &str) -> u32 {
 pub fn solve(arr: &[&str]) -> String {
     assert!(!arr.is_empty());
 
-    let mut parsed_arr = Vec::with_capacity(arr.len());
-    unsafe { parsed_arr.set_len(arr.len()) };
-    let mut parsed_arr = parsed_arr.into_boxed_slice();
-    for (p, s) in parsed_arr.iter_mut().zip(arr) {
-        *p = parse_time(s);
-    }
+    let mut parsed_arr: Box<[_]> = arr.iter().map(|s| parse_time(s)).collect();
     VqSort::sort_ascending(&mut parsed_arr);
 
     let max_diff = parsed_arr

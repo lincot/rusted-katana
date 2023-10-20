@@ -10,11 +10,7 @@ pub fn solve(s: &str, k: usize) -> String {
         return String::new();
     }
     assert!(s.is_ascii());
-    let mut bytes = Vec::with_capacity(s.len());
-    unsafe { bytes.set_len(s.len()) };
-    for (b, p) in bytes.iter_mut().zip(s.bytes().enumerate()) {
-        *b = p;
-    }
+    let mut bytes: Vec<_> = s.bytes().enumerate().collect();
     if bytes.len() <= 20 {
         bytes.sort_by_key(|&(_, b)| b);
     } else {
@@ -26,15 +22,6 @@ pub fn solve(s: &str, k: usize) -> String {
     } else {
         radsort::sort_by_key(taken_bytes, |&(i, _)| i);
     }
-
-    let mut res = Vec::with_capacity(s.len() - k);
-    unsafe { res.set_len(s.len() - k) };
-    let mut res_ptr = res.as_mut_ptr();
-    for (_, x) in taken_bytes {
-        unsafe {
-            *res_ptr = *x;
-            res_ptr = res_ptr.add(1);
-        }
-    }
+    let res = taken_bytes.iter().map(|&(_, b)| b).collect();
     unsafe { String::from_utf8_unchecked(res) }
 }

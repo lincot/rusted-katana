@@ -27,9 +27,9 @@ pub fn solve(vec: &[i32]) -> Vec<i32> {
         }
     }
 
-    let mut counts_array = Vec::with_capacity(counts.len());
-    unsafe { counts_array.set_len(counts.len()) };
-    let mut counts_arr = counts_array.into_boxed_slice();
+    let mut counts_arr = Vec::with_capacity(counts.len());
+    unsafe { counts_arr.set_len(counts.len()) };
+    let mut counts_arr = counts_arr.into_boxed_slice();
     for (c, x) in counts_arr.iter_mut().zip(counts) {
         *c = x;
     }

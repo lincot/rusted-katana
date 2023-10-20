@@ -6,16 +6,5 @@ extern crate alloc;
 use alloc::vec::Vec;
 
 pub fn reverse_seq(n: u32) -> Vec<u32> {
-    let mut res = Vec::with_capacity(n as _);
-    unsafe { res.set_len(n as _) };
-    let mut res_ptr = res.as_mut_ptr();
-    let mut i = n;
-    while i != 0 {
-        unsafe {
-            *res_ptr = i;
-            res_ptr = res_ptr.add(1);
-        }
-        i -= 1;
-    }
-    res
+    (1..=n).rev().collect()
 }

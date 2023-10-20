@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+prelude = { path = "../../prelude" }
 vqsort = { path = "../../vqsort" }
 
 [dev-dependencies]

@@ -3,22 +3,20 @@
 #![no_std]
 
 extern crate alloc;
-use alloc::{string::String, vec::Vec};
+use alloc::{boxed::Box, string::String};
 use core::hint::unreachable_unchecked;
 
 pub fn triangle(row_str: &str) -> String {
     assert!(!row_str.is_empty());
 
-    let mut colors = Vec::with_capacity(row_str.len());
-    unsafe { colors.set_len(row_str.len()) };
-    let mut colors = colors.into_boxed_slice();
-    for (c, x) in colors.iter_mut().zip(row_str.as_bytes()) {
-        *c = match x {
+    let mut colors: Box<[_]> = row_str
+        .bytes()
+        .map(|b| match b {
             b'R' => 0u8,
             b'G' => 1,
             _ => 2,
-        };
-    }
+        })
+        .collect();
 
     for row in 0..colors.len() {
         for i in 0..colors.len() - row - 1 {

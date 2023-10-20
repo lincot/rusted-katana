@@ -6,10 +6,5 @@ extern crate alloc;
 use alloc::vec::Vec;
 
 pub fn bell(n: u32) -> Vec<u32> {
-    let mut res = Vec::with_capacity(n as _);
-    unsafe { res.set_len(n as _) };
-    for (i, r) in (0..).zip(res.iter_mut()) {
-        *r = (n - i) * (i + 1);
-    }
-    res
+    (0..n).map(|i| (n - i) * (i + 1)).collect()
 }

@@ -4,12 +4,8 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
+use core::ops::Neg;
 
 pub fn invert(values: &[i32]) -> Vec<i32> {
-    let mut res = Vec::with_capacity(values.len());
-    unsafe { res.set_len(values.len()) };
-    for (r, &x) in res.iter_mut().zip(values) {
-        *r = -x;
-    }
-    res
+    values.iter().map(Neg::neg).collect()
 }

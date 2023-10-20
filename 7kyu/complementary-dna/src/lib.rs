@@ -6,15 +6,14 @@ extern crate alloc;
 use alloc::string::String;
 
 pub fn dna_strand(dna: &str) -> String {
-    let mut res = String::with_capacity(dna.len());
-    unsafe { res.as_mut_vec().set_len(dna.len()) };
-    for (r, b) in unsafe { res.as_mut_vec() }.iter_mut().zip(dna.as_bytes()) {
-        *r = match b {
+    let res = dna
+        .bytes()
+        .map(|b| match b {
             b'A' => b'T',
             b'T' => b'A',
             b'C' => b'G',
             _ => b'C',
-        };
-    }
-    res
+        })
+        .collect();
+    unsafe { String::from_utf8_unchecked(res) }
 }

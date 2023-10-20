@@ -8,15 +8,14 @@ use digital::WriteNumUnchecked;
 use prelude::*;
 
 pub fn number(lines: &[&str]) -> Vec<String> {
-    let mut res = Vec::with_capacity(lines.len());
-    for (line_number, line) in (1usize..).zip(lines) {
-        unsafe {
+    (1usize..)
+        .zip(lines)
+        .map(|(line_number, line)| unsafe {
             let mut numbered_line = String::with_capacity(USIZE_MAX_LEN + 2 + line.len());
             numbered_line.write_num_unchecked(line_number, 10, false, false);
             numbered_line.push_str_unchecked(": ");
             numbered_line.push_str_unchecked(line);
-            res.push_unchecked(numbered_line);
-        }
-    }
-    res
+            numbered_line
+        })
+        .collect()
 }

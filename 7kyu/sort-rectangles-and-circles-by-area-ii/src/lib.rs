@@ -4,83 +4,42 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use core::{
-    cmp::Ordering,
-    f64::consts::PI,
-    hint::unreachable_unchecked,
-    mem::{forget, size_of},
-};
+use core::{cmp::Ordering, f64::consts::PI};
 use either::Either;
 
-const fn const_gcd(mut m: usize, mut n: usize) -> usize {
-    if m == 0 || n == 0 {
-        return m | n;
+#[derive(PartialEq)]
+struct OrdF64(f64);
+
+impl Eq for OrdF64 {}
+
+impl PartialOrd for OrdF64 {
+    #[inline]
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        Some(self.cmp(other))
     }
-    let shift = (m | n).trailing_zeros();
-    m >>= m.trailing_zeros();
-    n >>= n.trailing_zeros();
-    while m != n {
-        if m > n {
-            m -= n;
-            m >>= m.trailing_zeros();
+}
+
+impl Ord for OrdF64 {
+    #[inline]
+    fn cmp(&self, other: &Self) -> Ordering {
+        if self.0 < other.0 {
+            Ordering::Less
         } else {
-            n -= m;
-            n >>= n.trailing_zeros();
+            Ordering::Greater
         }
     }
-    m << shift
+}
+
+fn calc_area(rectangle_or_circle: &Either<(f64, f64), f64>) -> f64 {
+    rectangle_or_circle.either(|(a, b)| a * b, |r| PI * r * r)
 }
 
 pub fn sort_by_area(seq: &[Either<(f64, f64), f64>]) -> Vec<Either<(f64, f64), f64>> {
-    const N: usize = size_of::<Either<(f64, f64), f64>>()
-        / const_gcd(
-            size_of::<Either<(f64, f64), f64>>(),
-            size_of::<(Either<(f64, f64), f64>, f64)>(),
-        ); // 3 for 64 bit
-    let mut seq_with_areas = Vec::with_capacity(
-        seq.len()
-            + if seq.len() % N == 0 {
-                0
-            } else {
-                N - seq.len() % N
-            },
-    );
-    unsafe { seq_with_areas.set_len(seq.len()) };
-    for (a, &rectangle_or_circle) in seq_with_areas.iter_mut().zip(seq) {
-        let area = rectangle_or_circle.either(|(a, b)| a * b, |r| PI * r * r);
-        assert!(!area.is_nan());
-        *a = (rectangle_or_circle, area);
-    }
-    if seq_with_areas.len() < 10000 {
-        seq_with_areas.sort_unstable_by(|a, b| {
-            if a.1.is_nan() || b.1.is_nan() {
-                unsafe { unreachable_unchecked() }
-            } else if a.1 > b.1 {
-                Ordering::Greater
-            } else if a.1 < b.1 {
-                Ordering::Less
-            } else {
-                Ordering::Equal
-            }
-        });
+    let mut res = seq.to_vec();
+    if res.len() < 6666 {
+        res.sort_by_cached_key(|x| OrdF64(calc_area(x)));
     } else {
-        radsort::sort_by_key(&mut seq_with_areas, |x| x.1);
+        radsort::sort_by_cached_key(&mut res, calc_area);
     }
-    let mut res_ptr = seq_with_areas.as_mut_ptr().cast();
-    for a in &seq_with_areas {
-        unsafe {
-            *res_ptr = a.0;
-            res_ptr = res_ptr.add(1);
-        }
-    }
-    let res = unsafe {
-        Vec::from_raw_parts(
-            seq_with_areas.as_mut_ptr().cast(),
-            seq_with_areas.len(),
-            seq_with_areas.capacity() * size_of::<(Either<(f64, f64), f64>, f64)>()
-                / size_of::<Either<(f64, f64), f64>>(),
-        )
-    };
-    forget(seq_with_areas);
     res
 }

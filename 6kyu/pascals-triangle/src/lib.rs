@@ -4,24 +4,18 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
+use prelude::*;
 
 pub fn pascals_triangle(n: usize) -> Vec<usize> {
-    let cap = n * (n + 1) / 2;
-    let mut res = Vec::with_capacity(cap);
-    let mut res_ptr = res.as_mut_ptr();
+    let mut res = Vec::with_capacity(n * (n + 1) / 2);
     unsafe {
-        res.set_len(cap);
-        *res_ptr = 1;
-        res_ptr = res_ptr.add(1);
+        res.push_unchecked(1);
         for i in 1..n {
-            *res_ptr = 1;
-            res_ptr = res_ptr.add(1);
-            for _ in 1..i {
-                *res_ptr = *res_ptr.sub(i + 1) + *res_ptr.sub(i);
-                res_ptr = res_ptr.add(1);
+            res.push_unchecked(1);
+            for j in res.len() - i..res.len() - 1 {
+                res.push_unchecked(res.get_unchecked(j - 1) + res.get_unchecked(j));
             }
-            *res_ptr = 1;
-            res_ptr = res_ptr.add(1);
+            res.push_unchecked(1);
         }
     }
     res

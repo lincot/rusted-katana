@@ -6,20 +6,17 @@ extern crate alloc;
 use alloc::string::String;
 
 pub fn switcheroo(s: &str) -> String {
-    let mut res = String::with_capacity(s.len());
-    unsafe { res.as_mut_vec().set_len(s.len()) };
-    let mut res_ptr = res.as_mut_ptr();
-    for &b in s.as_bytes() {
-        unsafe {
-            *res_ptr = if b == b'a' {
+    let res = s
+        .bytes()
+        .map(|b| {
+            if b == b'a' {
                 b'b'
             } else if b == b'b' {
                 b'a'
             } else {
                 b
-            };
-            res_ptr = res_ptr.add(1);
-        }
-    }
-    res
+            }
+        })
+        .collect();
+    unsafe { String::from_utf8_unchecked(res) }
 }

@@ -6,10 +6,5 @@ extern crate alloc;
 use alloc::vec::Vec;
 
 pub fn incrementer(nums: &[u32]) -> Vec<u32> {
-    let mut res = Vec::with_capacity(nums.len());
-    unsafe { res.set_len(nums.len()) };
-    for (r, (i, num)) in res.iter_mut().zip(nums.iter().enumerate()) {
-        *r = (i as u32 + 1 + num) % 10;
-    }
-    res
+    (1..).zip(nums).map(|(i, num)| (i + num) % 10).collect()
 }

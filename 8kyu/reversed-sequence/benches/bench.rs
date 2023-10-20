@@ -7,5 +7,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| reverse_seq(black_box(300_000)));
+    bencher.iter(|| reverse_seq(black_box(30_000)));
 }

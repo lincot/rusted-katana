@@ -6,10 +6,9 @@ extern crate alloc;
 use alloc::string::String;
 
 pub fn to_leet_speak(s: &str) -> String {
-    let mut res = String::with_capacity(s.len());
-    unsafe { res.as_mut_vec().set_len(s.len()) };
-    for (r, b) in unsafe { res.as_mut_vec() }.iter_mut().zip(s.bytes()) {
-        *r = match b {
+    let res = s
+        .bytes()
+        .map(|b| match b {
             b'A' => b'@',
             b'B' => b'8',
             b'C' => b'(',
@@ -23,7 +22,7 @@ pub fn to_leet_speak(s: &str) -> String {
             b'T' => b'7',
             b'Z' => b'2',
             b => b,
-        };
-    }
-    res
+        })
+        .collect();
+    unsafe { String::from_utf8_unchecked(res) }
 }

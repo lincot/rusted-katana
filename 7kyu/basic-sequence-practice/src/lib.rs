@@ -6,21 +6,20 @@ extern crate alloc;
 use alloc::vec::Vec;
 
 pub fn sum_of_n(n: i32) -> Vec<i32> {
-    let len = if n > 0 {
-        n as usize + 1
-    } else {
-        (-(n as isize)) as usize + 1
-    };
-    let mut res = Vec::with_capacity(len);
-    unsafe { res.set_len(len) };
+    let len = if n > 0 { n + 1 } else { 1 - n };
     if n > 0 {
-        for (i, r) in (0..).zip(res.iter_mut()) {
-            *r = (i * i + i) / 2;
-        }
+        (0..len as usize)
+            .map(|i| {
+                let i = i as i32;
+                (i * i + i) / 2
+            })
+            .collect()
     } else {
-        for (i, r) in (0..).zip(res.iter_mut()) {
-            *r = -i * (i + 1) / 2;
-        }
+        (0..len as usize)
+            .map(|i| {
+                let i = i as i32;
+                -i * (i + 1) / 2
+            })
+            .collect()
     }
-    res
 }

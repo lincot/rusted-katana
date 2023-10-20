@@ -15,17 +15,15 @@ pub fn sort_array(arr: &[i32]) -> Vec<i32> {
         }
     }
     VqSort::sort_ascending(&mut odds);
-
-    let mut res = Vec::with_capacity(arr.len());
-    unsafe { res.set_len(arr.len()) };
     let mut odd_i = 0;
-    for (r, &x) in res.iter_mut().zip(arr) {
-        if x % 2 == 1 {
-            *r = unsafe { *odds.get_unchecked(odd_i) };
-            odd_i += 1;
-        } else {
-            *r = x;
-        }
-    }
-    res
+    arr.iter()
+        .map(|&x| {
+            if x % 2 == 1 {
+                odd_i += 1;
+                unsafe { *odds.get_unchecked(odd_i - 1) }
+            } else {
+                x
+            }
+        })
+        .collect()
 }

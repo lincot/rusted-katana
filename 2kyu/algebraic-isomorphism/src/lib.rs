@@ -4,7 +4,6 @@
 
 extern crate alloc;
 use alloc::{boxed::Box, vec, vec::Vec};
-use prelude::*;
 
 #[derive(PartialEq, Eq)]
 pub enum Void {}
@@ -64,20 +63,8 @@ pub fn iso_tuple<A: 'static, B: 'static, C: 'static, D: 'static>(
 
 pub fn iso_vec<A: 'static, B: 'static>((a_to_b, b_to_a): ISO<A, B>) -> ISO<Vec<A>, Vec<B>> {
     iso(
-        move |v: Vec<_>| {
-            let mut res = Vec::with_capacity(v.len());
-            for a in v {
-                unsafe { res.push_unchecked(a_to_b(a)) };
-            }
-            res
-        },
-        move |v: Vec<_>| {
-            let mut res = Vec::with_capacity(v.len());
-            for b in v {
-                unsafe { res.push_unchecked(b_to_a(b)) };
-            }
-            res
-        },
+        move |v: Vec<_>| v.into_iter().map(&a_to_b).collect(),
+        move |v: Vec<_>| v.into_iter().map(&b_to_a).collect(),
     )
 }
 

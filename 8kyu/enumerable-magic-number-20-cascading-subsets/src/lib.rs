@@ -4,7 +4,6 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use prelude::*;
 
 pub fn each_cons(arr: &[u8], n: usize) -> Vec<Vec<u8>> {
     let len = if n == 0 || arr.len() < n {
@@ -12,11 +11,7 @@ pub fn each_cons(arr: &[u8], n: usize) -> Vec<Vec<u8>> {
     } else {
         arr.len() - n + 1
     };
-    let mut res = Vec::with_capacity(len);
-    for i in 0..len {
-        unsafe {
-            res.push_unchecked(arr.get_unchecked(i..i + n).to_vec());
-        }
-    }
-    res
+    (0..len)
+        .map(|i| unsafe { arr.get_unchecked(i..i + n).to_vec() })
+        .collect()
 }

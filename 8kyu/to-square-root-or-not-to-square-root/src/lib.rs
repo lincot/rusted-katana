@@ -8,16 +8,9 @@ use alloc::vec::Vec;
 use core::intrinsics::sqrtf64;
 
 pub fn square_or_square_root(arr: &[u32]) -> Vec<u32> {
-    let mut res = Vec::with_capacity(arr.len());
-    unsafe { res.set_len(arr.len()) };
-    let mut res_ptr = res.as_mut_ptr();
-    for &x in arr {
-        unsafe {
-            *res_ptr = perfect_sqrt(x).unwrap_or_else(|| x.wrapping_mul(x));
-            res_ptr = res_ptr.add(1);
-        }
-    }
-    res
+    arr.iter()
+        .map(|&x| perfect_sqrt(x).unwrap_or_else(|| x.wrapping_mul(x)))
+        .collect()
 }
 
 fn perfect_sqrt(n: u32) -> Option<u32> {
