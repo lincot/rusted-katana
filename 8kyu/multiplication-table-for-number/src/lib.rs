@@ -4,11 +4,11 @@
 
 extern crate alloc;
 use alloc::string::String;
-use digital::WriteNumUnchecked;
+use digital::{MaxLenBase10, WriteNumUnchecked};
 use prelude::*;
 
 pub fn multi_table(n: u64) -> String {
-    let mut repeating = heapless::Vec::<_, { " *  = ".len() + 20 }>::new();
+    let mut repeating = heapless::Vec::<_, { " *  = ".len() + u64::MAX_LEN_BASE10 }>::new();
     let repeating = unsafe {
         repeating.extend_from_slice_unchecked(b" * ");
         repeating.write_num_unchecked(n, 10, false, false);

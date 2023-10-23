@@ -6,7 +6,7 @@
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
 use core::intrinsics::sqrtf64;
-use digital::WriteNumUnchecked;
+use digital::{MaxLenBase10, WriteNumUnchecked};
 use prelude::*;
 use vqsort::VqSort;
 
@@ -14,7 +14,7 @@ pub fn divisors(integer: u32) -> Result<Vec<u32>, String> {
     let divisors = get_divisors(integer);
 
     if divisors.is_empty() {
-        let mut res = String::with_capacity(10 + " is prime".len());
+        let mut res = String::with_capacity(u32::MAX_LEN_BASE10 + " is prime".len());
         unsafe {
             res.write_num_unchecked(integer, 10, false, false);
             res.push_str_unchecked(" is prime");

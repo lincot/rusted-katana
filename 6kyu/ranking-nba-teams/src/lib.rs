@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 use core::cmp::Ordering;
-use digital::WriteNumUnchecked;
+use digital::{MaxLenBase10, WriteNumUnchecked};
 use prelude::*;
 
 pub fn nba_cup(ro: &str, to_find: &str) -> String {
@@ -107,7 +107,7 @@ pub fn nba_cup(ro: &str, to_find: &str) -> String {
         conceded += opponent_score as usize;
     }
     let mut res = String::with_capacity(
-        to_find.len() + ":W=;D=;L=;Scored=;Conceded=;Points=".len() + 6 * USIZE_MAX_LEN,
+        to_find.len() + ":W=;D=;L=;Scored=;Conceded=;Points=".len() + 6 * usize::MAX_LEN_BASE10,
     );
     unsafe {
         res.push_str_unchecked(to_find);

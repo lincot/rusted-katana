@@ -6,7 +6,7 @@
 extern crate alloc;
 use alloc::string::String;
 use core::intrinsics::fmaf64;
-use digital::WriteNumUnchecked;
+use digital::{MaxLenBase10, WriteNumUnchecked};
 use prelude::*;
 
 pub fn string_to_industrial(time: &str) -> f64 {
@@ -21,7 +21,7 @@ pub fn to_industrial(time: u32) -> f64 {
 }
 
 pub fn to_normal(time: f64) -> String {
-    let mut res = String::with_capacity(10 + 1 + 2);
+    let mut res = String::with_capacity(u32::MAX_LEN_BASE10 + 1 + 2);
     unsafe {
         res.write_num_unchecked(time as u32, 10, false, false);
         res.push_unchecked(':');

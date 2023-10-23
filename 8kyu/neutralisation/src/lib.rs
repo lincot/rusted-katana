@@ -1,4 +1,4 @@
-//! <https://www.codewars.com/kata/57f781872e3d8ca2a000007e/train/rust>
+//! <https://www.codewars.com/kata/65128732b5aff40032a3d8f0/train/rust>
 
 #![no_std]
 

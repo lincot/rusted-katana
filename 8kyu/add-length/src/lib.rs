@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use digital::WriteNumUnchecked;
+use digital::{MaxLenBase10, WriteNumUnchecked};
 use prelude::*;
 
 pub fn add_length(s: &str) -> Vec<String> {
@@ -14,7 +14,7 @@ pub fn add_length(s: &str) -> Vec<String> {
         .split(|&b| b == b' ')
         .map(|word| unsafe { core::str::from_utf8_unchecked(word) })
     {
-        let mut word_with_length = String::with_capacity(word.len() + 1 + USIZE_MAX_LEN);
+        let mut word_with_length = String::with_capacity(word.len() + 1 + usize::MAX_LEN_BASE10);
         unsafe {
             word_with_length.push_str_unchecked(word);
             word_with_length.push_unchecked(' ');

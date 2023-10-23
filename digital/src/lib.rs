@@ -720,24 +720,30 @@ where
     }
 }
 
-pub trait NumToString<const N10: usize, const N2: usize, const N16: usize>: Sized {
+pub trait NumToString<const CAP10: usize, const CAP2: usize, const CAP16: usize>: Sized {
     #[cfg(feature = "heapless")]
-    fn to_heapless_string(self, reversed: bool, from_0: bool) -> heapless::String<N10>;
+    fn to_heapless_string(self, reversed: bool, from_0: bool) -> heapless::String<CAP10>;
     #[cfg(feature = "heapless")]
-    fn to_heapless_string_base2(self, reversed: bool, from_0: bool) -> heapless::String<N2>;
+    fn to_heapless_string_base2(self, reversed: bool, from_0: bool) -> heapless::String<CAP2>;
     #[cfg(feature = "heapless")]
-    fn to_heapless_string_base16(self, reversed: bool, from_0: bool) -> heapless::String<N16>;
+    fn to_heapless_string_base16(self, reversed: bool, from_0: bool) -> heapless::String<CAP16>;
     fn to_string(self, reversed: bool, from_0: bool) -> String;
     fn to_string_base2(self, reversed: bool, from_0: bool) -> String;
     fn to_string_base16(self, reversed: bool, from_0: bool) -> String;
 }
 
 macro_rules! impl_num_to_string {
-    ($($t:ty => $n10:literal,)*) => ($(
-        impl NumToString<$n10, { Self::BITS as _ }, { (Self::BITS / 4) as _ }> for $t {
+    ($($t:ty,)*) => ($(
+        impl NumToString<{ Self::MAX_LEN_BASE10 }, { Self::BITS as _ }, { (Self::BITS / 4) as _ }>
+            for $t
+        {
             #[cfg(feature = "heapless")]
             #[inline]
-            fn to_heapless_string(self, reversed: bool, from_0: bool) -> heapless::String<$n10> {
+            fn to_heapless_string(
+                self,
+                reversed: bool,
+                from_0: bool,
+            ) -> heapless::String<{ Self::MAX_LEN_BASE10 }> {
                 let mut res = heapless::String::new();
                 unsafe {
                     res.write_num_unchecked(self, 10, reversed, from_0);
@@ -750,7 +756,7 @@ macro_rules! impl_num_to_string {
 
             #[inline]
             fn to_string(self, reversed: bool, from_0: bool) -> String {
-                let mut res = String::with_capacity($n10);
+                let mut res = String::with_capacity(Self::MAX_LEN_BASE10);
                 unsafe {
                     res.write_num_unchecked(self, 10, reversed, from_0);
                     if res.is_empty() {
@@ -821,22 +827,83 @@ macro_rules! impl_num_to_string {
     )*)
 }
 
-impl_num_to_string! {
-    u8 => 3,
-    u16 => 5,
-    u32 => 10,
-    u64 => 20,
-    u128 => 39,
-    i8 => 4,
-    i16 => 6,
-    i32 => 11,
-    i64 => 20,
-    i128 => 40,
+impl_num_to_string! { u8, u16, u32, u64, u128, usize, i8, i16, i32, i64, i128, isize, }
+
+pub trait MaxLenBase10 {
+    const MAX_LEN_BASE10: usize;
 }
 
-#[cfg(target_pointer_width = "16")]
-impl_num_to_string! { usize => 5, isize => 6, }
-#[cfg(target_pointer_width = "32")]
-impl_num_to_string! { usize => 10, isize => 11, }
-#[cfg(target_pointer_width = "64")]
-impl_num_to_string! { usize => 20, isize => 20, }
+impl MaxLenBase10 for u8 {
+    const MAX_LEN_BASE10: usize = "255".len();
+}
+
+impl MaxLenBase10 for i8 {
+    const MAX_LEN_BASE10: usize = "-128".len();
+}
+
+impl MaxLenBase10 for u16 {
+    const MAX_LEN_BASE10: usize = "65535".len();
+}
+
+impl MaxLenBase10 for i16 {
+    const MAX_LEN_BASE10: usize = "-32768".len();
+}
+
+impl MaxLenBase10 for u32 {
+    const MAX_LEN_BASE10: usize = "4294967295".len();
+}
+
+impl MaxLenBase10 for i32 {
+    const MAX_LEN_BASE10: usize = "-2147483648".len();
+}
+
+impl MaxLenBase10 for u64 {
+    const MAX_LEN_BASE10: usize = "18446744073709551615".len();
+}
+
+impl MaxLenBase10 for i64 {
+    const MAX_LEN_BASE10: usize = "-9223372036854775808".len();
+}
+
+impl MaxLenBase10 for u128 {
+    const MAX_LEN_BASE10: usize = "340282366920938463463374607431768211455".len();
+}
+
+impl MaxLenBase10 for i128 {
+    const MAX_LEN_BASE10: usize = "-170141183460469231731687303715884105728".len();
+}
+
+#[allow(clippy::use_self)]
+impl MaxLenBase10 for usize {
+    const MAX_LEN_BASE10: usize = {
+        #[cfg(target_pointer_width = "16")]
+        {
+            u16::MAX_LEN_BASE10
+        }
+        #[cfg(target_pointer_width = "32")]
+        {
+            u32::MAX_LEN_BASE10
+        }
+        #[cfg(target_pointer_width = "64")]
+        {
+            u64::MAX_LEN_BASE10
+        }
+    };
+}
+
+impl MaxLenBase10 for isize {
+    const MAX_LEN_BASE10: usize = {
+        #[cfg(target_pointer_width = "16")]
+        {
+            i16::MAX_LEN_BASE10
+        }
+        #[cfg(target_pointer_width = "32")]
+        {
+            i32::MAX_LEN_BASE10
+        }
+        #[cfg(target_pointer_width = "64")]
+        {
+            i64::MAX_LEN_BASE10
+        }
+    };
+}

@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use digital::WriteNumUnchecked;
+use digital::{MaxLenBase10, WriteNumUnchecked};
 use prelude::*;
 
 pub fn hist(s: &str) -> String {
@@ -18,7 +18,7 @@ pub fn hist(s: &str) -> String {
             _ => {}
         }
     }
-    let mut res = Vec::with_capacity(u + w + x + z + 4 * (1 + 2 + USIZE_MAX_LEN + 5 + 1));
+    let mut res = Vec::with_capacity(u + w + x + z + 4 * (1 + 2 + usize::MAX_LEN_BASE10 + 5 + 1));
     for (symbol, amount) in [(b'u', u), (b'w', w), (b'x', x), (b'z', z)] {
         if amount == 0 {
             continue;

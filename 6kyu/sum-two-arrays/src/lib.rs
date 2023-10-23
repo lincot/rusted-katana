@@ -9,7 +9,7 @@ use digital::WriteNumUnchecked;
 
 pub fn add_arrays(arr_a: &[i64], arr_b: &[i64]) -> Vec<i64> {
     fn to_digits(n: i64) -> Vec<i64> {
-        let mut res = Vec::<i64>::with_capacity(19);
+        let mut res = Vec::<i64>::with_capacity("9223372036854775807".len());
         unsafe { res.write_num_unchecked(n.unsigned_abs(), 10, false, true) };
 
         if res.is_empty() {

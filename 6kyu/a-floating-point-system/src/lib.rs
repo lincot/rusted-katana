@@ -4,13 +4,13 @@
 
 extern crate alloc;
 use alloc::string::String;
-use digital::WriteNumUnchecked;
+use digital::{MaxLenBase10, WriteNumUnchecked};
 use prelude::*;
 
 pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
     let digits_before_dot = a_number.as_bytes().iter().position(|&b| b == b'.').unwrap();
     let digits_number = digits_number as usize;
-    let mut res = String::with_capacity(digits_number + 1 + 1 + USIZE_MAX_LEN);
+    let mut res = String::with_capacity(digits_number + 1 + 1 + usize::MAX_LEN_BASE10);
     if digits_before_dot >= digits_number {
         unsafe {
             res.push_str_unchecked(a_number.get_unchecked(..digits_number));

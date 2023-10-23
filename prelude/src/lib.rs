@@ -137,13 +137,3 @@ impl PushStrUnchecked for String {
             .extend_from_slice_unchecked(string.as_bytes());
     }
 }
-
-pub const USIZE_MAX_LEN: usize = {
-    let mut n = usize::MAX;
-    let mut res = 0;
-    while n != 0 {
-        res += 1;
-        n /= 10;
-    }
-    res
-};

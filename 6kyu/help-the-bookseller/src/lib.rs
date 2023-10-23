@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use digital::WriteNumUnchecked;
+use digital::{MaxLenBase10, WriteNumUnchecked};
 use prelude::*;
 
 pub fn stock_list(list_art: Vec<&str>, list_cat: Vec<&str>) -> String {
@@ -12,7 +12,7 @@ pub fn stock_list(list_art: Vec<&str>, list_cat: Vec<&str>) -> String {
         return String::new();
     }
 
-    let cap = (4 + 20 + "( : ) - ".len()) * list_cat.len();
+    let cap = (4 + u64::MAX_LEN_BASE10 + "( : ) - ".len()) * list_cat.len();
     let mut res = String::with_capacity(cap);
 
     for (i, cat) in list_cat.into_iter().enumerate() {

@@ -4,11 +4,11 @@
 
 extern crate alloc;
 use alloc::string::String;
-use digital::WriteNumUnchecked;
+use digital::{MaxLenBase10, WriteNumUnchecked};
 use prelude::*;
 
 pub fn solution(n: u32) -> String {
-    let mut res = String::with_capacity("Value is ".len() + 10);
+    let mut res = String::with_capacity("Value is ".len() + u32::MAX_LEN_BASE10);
     unsafe {
         res.push_str_unchecked("Value is ");
         if n < 10 {

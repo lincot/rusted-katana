@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use digital::WriteNumUnchecked;
+use digital::{MaxLenBase10, WriteNumUnchecked};
 use prelude::*;
 
 pub fn high_and_low(numbers: &str) -> String {
@@ -20,7 +20,7 @@ pub fn high_and_low(numbers: &str) -> String {
         max = max.max(n);
     }
 
-    let mut res = String::with_capacity(11 + 1 + 11);
+    let mut res = String::with_capacity(2 * i32::MAX_LEN_BASE10 + 1);
     unsafe {
         res.write_num_unchecked(max, 10, false, false);
         res.push_unchecked(' ');

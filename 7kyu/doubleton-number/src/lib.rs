@@ -5,7 +5,7 @@
 use digital::WriteNumUnchecked;
 
 pub fn doubleton(mut num: u32) -> u32 {
-    unsafe fn to_digits(n: u32) -> heapless::Vec<u8, 7> {
+    unsafe fn to_digits(n: u32) -> heapless::Vec<u8, { "1000000".len() }> {
         let mut digits = heapless::Vec::new();
         digits.write_num_unchecked(n, 10, false, true);
         digits

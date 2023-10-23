@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
-use digital::WriteNumUnchecked;
+use digital::{MaxLenBase10, WriteNumUnchecked};
 use hashbrown::{hash_map::Entry, HashMap};
 use prelude::*;
 use rustc_hash::FxHasher;
@@ -29,7 +29,7 @@ pub fn freq_seq(s: &str, sep: &str) -> String {
         }
     }
 
-    let cap = (USIZE_MAX_LEN + sep.len()) * s.len();
+    let cap = (usize::MAX_LEN_BASE10 + sep.len()) * s.len();
     let mut res = String::with_capacity(cap);
 
     for (i, c) in s.chars().enumerate() {
