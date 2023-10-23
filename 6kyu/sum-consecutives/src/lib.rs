@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub type Number = i32;
 pub type Numbers = Vec<Number>;

@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn run_length_encoding(s: &str) -> Vec<(usize, char)> {
     let mut res = Vec::with_capacity(s.len());

@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::{ExtendUnchecked, PushUnchecked};
 
 pub fn reverse_words(str: &str) -> String {
     let mut res = String::with_capacity(str.len());

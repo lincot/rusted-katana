@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::{PushStrUnchecked, PushUnchecked};
 
 const B0: &str = "10";
 const B1: &str = "11";

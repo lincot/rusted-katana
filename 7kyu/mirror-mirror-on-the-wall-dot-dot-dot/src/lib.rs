@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use prelude::*;
+use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
 use vqsort::VqSort;
 
 pub fn mirror(list: &[i32]) -> Vec<i32> {

@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::PushStrUnchecked;
 
 pub fn dative(word: &str) -> String {
     let mut res = String::with_capacity(word.len() + 3);

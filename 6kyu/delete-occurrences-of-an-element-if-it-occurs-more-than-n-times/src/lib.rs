@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn delete_nth(lst: &[u8], n: usize) -> Vec<u8> {
     let mut counts = [0; u8::MAX as usize + 1];

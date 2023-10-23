@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{vec, vec::Vec};
-use prelude::*;
+use unchecked::ExtendFromSliceUnchecked;
 
 pub fn remove_smallest(numbers: &[u32]) -> Vec<u32> {
     if numbers.len() < 2 {

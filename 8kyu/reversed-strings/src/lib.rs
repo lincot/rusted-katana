@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn solution(phrase: &str) -> String {
     let mut res = String::with_capacity(phrase.len());

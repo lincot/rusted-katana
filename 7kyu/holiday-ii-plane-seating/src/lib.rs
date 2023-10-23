@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::PushStrUnchecked;
 
 pub fn plane_seat(seat_number: &str) -> String {
     const NO_SEAT: &str = "No Seat!!";

@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
 use digital::NumToString;
-use prelude::*;
+use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn expanded_form(n: u64) -> String {
     if n == 0 {

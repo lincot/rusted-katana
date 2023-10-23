@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use prelude::*;
+use unchecked::{ExtendFromSliceUnchecked, PushStrUnchecked, PushUnchecked};
 
 pub fn multi_table(n: u64) -> String {
     let mut repeating = heapless::Vec::<_, { " *  = ".len() + u64::MAX_LEN_BASE10 }>::new();

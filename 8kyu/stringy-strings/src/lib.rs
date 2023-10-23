@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use prelude::*;
+use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn stringy(size: usize) -> String {
     let mut res = Vec::with_capacity(size);

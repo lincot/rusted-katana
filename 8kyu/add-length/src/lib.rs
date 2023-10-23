@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use prelude::*;
+use unchecked::{PushStrUnchecked, PushUnchecked};
 
 pub fn add_length(s: &str) -> Vec<String> {
     let mut res = Vec::with_capacity(s.len() / 2 + 1);

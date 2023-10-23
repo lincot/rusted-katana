@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::{string::String, vec, vec::Vec};
 use core::array;
-use prelude::*;
+use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn by_state(str: &str) -> String {
     let [mut arizona, mut california, mut idaho, mut indiana, mut massachusetts, mut oklahoma, mut pennsylvania, mut virginia] =

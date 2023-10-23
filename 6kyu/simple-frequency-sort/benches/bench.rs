@@ -4,11 +4,11 @@
 extern crate alloc;
 extern crate test;
 use alloc::vec::Vec;
-use prelude::*;
 use rand::{seq::SliceRandom, Rng};
 use rand_pcg::Pcg64;
 use simple_frequency_sort::solve;
 use test::{black_box, Bencher};
+use unchecked::*;
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

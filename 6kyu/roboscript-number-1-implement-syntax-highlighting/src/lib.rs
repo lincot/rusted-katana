@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::{PushStrUnchecked, PushUnchecked};
 
 pub fn highlight(code: &str) -> String {
     unsafe fn push_unchecked_beginning(s: &mut String, token: u8) {

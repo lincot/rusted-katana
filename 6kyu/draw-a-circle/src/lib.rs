@@ -6,7 +6,7 @@
 extern crate alloc;
 use alloc::string::String;
 use core::intrinsics::sqrtf64;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn circle(radius: i32) -> String {
     if radius < 0 {

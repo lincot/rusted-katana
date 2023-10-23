@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn high_and_low(numbers: &str) -> String {
     let mut min = i32::MAX;

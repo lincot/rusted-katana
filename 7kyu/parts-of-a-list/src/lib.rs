@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use prelude::*;
+use unchecked::{PushStrUnchecked, PushUnchecked};
 
 pub fn part_list(arr: Vec<&str>) -> String {
     match arr.len() {

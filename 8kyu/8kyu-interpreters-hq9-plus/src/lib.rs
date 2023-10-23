@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 use digital::WriteNumUnchecked;
-use prelude::*;
+use unchecked::PushStrUnchecked;
 
 pub fn hq9(code: &str) -> Option<String> {
     match code {

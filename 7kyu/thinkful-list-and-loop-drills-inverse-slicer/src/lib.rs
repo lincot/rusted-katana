@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use prelude::*;
+use unchecked::ExtendFromSliceUnchecked;
 
 pub fn inverse_slice<T: Clone>(input: &[T], a: usize, b: usize) -> Vec<T> {
     let a = a.min(input.len());

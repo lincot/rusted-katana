@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn cut_cancer_cells(organism: &str) -> String {
     let mut res = String::with_capacity(organism.len());

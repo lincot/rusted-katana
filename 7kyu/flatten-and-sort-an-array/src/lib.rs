@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use prelude::*;
+use unchecked::ExtendFromSliceUnchecked;
 use vqsort::VqSort;
 
 pub fn flatten_and_sort(arr: &[Vec<i32>]) -> Vec<i32> {

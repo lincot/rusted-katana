@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::{ExtendUnchecked, PushUnchecked};
 
 unsafe fn push_unchecked_uppercase(s: &mut String, c: char) {
     if c.is_lowercase() {

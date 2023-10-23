@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn all_non_consecutive(arr: &[i32]) -> Vec<(usize, i32)> {
     let mut res = Vec::with_capacity(arr.len());

@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use prelude::*;
+use unchecked::{PushStrUnchecked, PushUnchecked};
 
 pub fn stock_list(list_art: Vec<&str>, list_cat: Vec<&str>) -> String {
     if list_art.is_empty() || list_cat.is_empty() {

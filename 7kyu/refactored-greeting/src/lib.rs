@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::PushStrUnchecked;
 
 pub struct Person<'a> {
     pub name: &'a str,

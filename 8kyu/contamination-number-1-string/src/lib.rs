@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::PushStrUnchecked;
 
 pub fn contamination(text: &str, character: &str) -> String {
     if character.is_empty() {

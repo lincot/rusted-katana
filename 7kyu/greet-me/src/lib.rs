@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::{ExtendUnchecked, PushStrUnchecked, PushUnchecked};
 
 pub fn greet(name: &str) -> String {
     let mut res = String::with_capacity("Hello !".len() + 4 + name.len() + name.len() / 2);

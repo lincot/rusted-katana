@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn find_screen_height(width: u64, ratio: &str) -> String {
     let (vertical, horizontal) = ratio.split_once(':').unwrap();

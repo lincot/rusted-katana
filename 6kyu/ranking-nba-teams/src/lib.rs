@@ -6,7 +6,7 @@ extern crate alloc;
 use alloc::string::String;
 use core::cmp::Ordering;
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use prelude::*;
+use unchecked::PushStrUnchecked;
 
 pub fn nba_cup(ro: &str, to_find: &str) -> String {
     const ERROR_FLOAT: &str = "Error(float number):";

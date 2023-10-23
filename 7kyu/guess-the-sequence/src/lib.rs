@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::vec::Vec;
 use core::hint::unreachable_unchecked;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn sequence(x: u8) -> Vec<u8> {
     let mut res = Vec::with_capacity(x as _);

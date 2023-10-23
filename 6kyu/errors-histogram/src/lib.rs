@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use prelude::*;
+use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn hist(s: &str) -> String {
     let (mut u, mut w, mut x, mut z) = (0, 0, 0, 0);

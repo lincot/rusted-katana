@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::PushStrUnchecked;
 
 pub fn rake_garden(garden: &str) -> String {
     let mut res = String::with_capacity("gravel".len() * garden.len());

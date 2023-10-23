@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn pascals_triangle(n: usize) -> Vec<usize> {
     let mut res = Vec::with_capacity(n * (n + 1) / 2);

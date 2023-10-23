@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::{PushStrUnchecked, PushUnchecked};
 
 pub fn greet(input: &str) -> String {
     if input == "Johnny" {

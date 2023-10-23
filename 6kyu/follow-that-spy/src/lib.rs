@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::{string::String, vec};
 use core::fmt::{Debug, Display};
-use prelude::*;
+use unchecked::PushStrUnchecked;
 
 pub fn find_routes<S>(routes: &[[S; 2]]) -> String
 where

@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use prelude::*;
+use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn apparently(string: &str) -> String {
     let string = string.as_bytes();

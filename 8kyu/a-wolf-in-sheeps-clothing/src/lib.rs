@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use prelude::*;
+use unchecked::PushStrUnchecked;
 
 pub fn warn_the_sheep(queue: &[&str]) -> String {
     let wolf_pos = queue

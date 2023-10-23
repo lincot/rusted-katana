@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn f32_to_ieee_754(n: f32) -> String {
     let n = n.to_bits();

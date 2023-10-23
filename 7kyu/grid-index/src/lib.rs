@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn grid_index(grid: &[Vec<char>], indices: &[usize]) -> String {
     let mut res = String::with_capacity(4 * indices.len());

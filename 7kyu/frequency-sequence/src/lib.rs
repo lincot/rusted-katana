@@ -7,8 +7,8 @@ use alloc::string::String;
 use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
 use digital::{MaxLenBase10, WriteNumUnchecked};
 use hashbrown::{hash_map::Entry, HashMap};
-use prelude::*;
 use rustc_hash::FxHasher;
+use unchecked::PushStrUnchecked;
 
 type FxHashMap<K, V> = HashMap<K, V, BuildHasherDefault<FxHasher>>;
 

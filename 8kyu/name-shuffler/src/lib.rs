@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::{PushStrUnchecked, PushUnchecked};
 
 pub fn name_shuffler(s: &str) -> String {
     let mut res = String::with_capacity(s.len());

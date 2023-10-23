@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn accum(s: &str) -> String {
     let cap = if s.is_empty() {

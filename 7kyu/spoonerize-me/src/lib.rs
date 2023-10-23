@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::PushStrUnchecked;
 
 pub fn spoonerize(words: &str) -> String {
     let first_len = words.chars().next().unwrap().len_utf8();

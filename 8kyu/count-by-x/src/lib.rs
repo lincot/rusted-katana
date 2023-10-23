@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn count_by(x: u32, n: u32) -> Vec<u32> {
     let mut cur = x;

@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 const SETS: [[u8; 9]; 18] = [
     [1, 5, 9, 2, 4, 8, 3, 6, 7],

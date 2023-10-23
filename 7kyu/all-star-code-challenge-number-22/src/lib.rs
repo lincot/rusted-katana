@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 use digital::WriteNumUnchecked;
-use prelude::*;
+use unchecked::PushStrUnchecked;
 
 pub fn to_time(seconds: u32) -> String {
     let mut minutes = seconds / 60;

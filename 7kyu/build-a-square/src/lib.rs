@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn generate_shape(n: i32) -> String {
     let n = n as usize;

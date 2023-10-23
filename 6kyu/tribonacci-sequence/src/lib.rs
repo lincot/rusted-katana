@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::vec::Vec;
 use core::hint::unreachable_unchecked;
-use prelude::*;
+use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn tribonacci(signature: &[f64; 3], n: usize) -> Vec<f64> {
     let mut res = Vec::with_capacity(n);

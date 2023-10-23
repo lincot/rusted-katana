@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn generate_pairs(m: i16, n: i16) -> Vec<(i16, i16)> {
     let t = if n >= m {

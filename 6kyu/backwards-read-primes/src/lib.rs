@@ -6,7 +6,7 @@ extern crate alloc;
 use alloc::vec::Vec;
 use core::hint::unreachable_unchecked;
 use num_integer::Roots;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 /// checks if `x` is prime || `x` is divisible by 2 or 3 || `x` <= 1
 /// given that `sqrt` is the square root of `x`

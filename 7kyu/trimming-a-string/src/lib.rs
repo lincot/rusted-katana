@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::PushStrUnchecked;
 
 pub fn trim(phrase: &str, length: usize) -> String {
     if phrase.len() <= length {

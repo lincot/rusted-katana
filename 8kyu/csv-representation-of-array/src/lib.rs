@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn to_csv_text(array: &[Vec<i8>]) -> String {
     unsafe fn push_row(res: &mut String, row: &[i8]) {

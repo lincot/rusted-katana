@@ -6,7 +6,7 @@
 extern crate alloc;
 use alloc::{boxed::Box, string::String};
 use digital::WriteNumUnchecked;
-use prelude::*;
+use unchecked::PushUnchecked;
 use vqsort::VqSort;
 
 fn parse_time(time: &str) -> u32 {

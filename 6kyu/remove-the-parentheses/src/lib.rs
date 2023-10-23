@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn remove_parentheses(s: &str) -> String {
     let mut res = Vec::with_capacity(s.len());

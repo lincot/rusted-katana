@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::{vec, vec::Vec};
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn between(a: i16, b: i16) -> Vec<i16> {
     if a >= b {

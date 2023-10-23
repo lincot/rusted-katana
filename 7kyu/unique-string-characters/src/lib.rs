@@ -6,8 +6,8 @@ extern crate alloc;
 use alloc::string::String;
 use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
 use hashbrown::{hash_map::Entry, HashMap};
-use prelude::*;
 use rustc_hash::FxHasher;
+use unchecked::ExtendUnchecked;
 
 type FxHashMap<K, V> = HashMap<K, V, BuildHasherDefault<FxHasher>>;
 

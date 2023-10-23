@@ -6,7 +6,7 @@ extern crate alloc;
 use alloc::{string::String, vec::Vec};
 use core::mem::swap;
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use prelude::*;
+use unchecked::PushStrUnchecked;
 
 pub fn how_much(mut m: i32, mut n: i32) -> Vec<(String, String, String)> {
     if m > n {

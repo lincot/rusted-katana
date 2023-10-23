@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn printer_error(s: &str) -> String {
     let malformed = s.bytes().filter(|&b| b > b'm').count();

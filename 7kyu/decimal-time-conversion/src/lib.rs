@@ -7,7 +7,7 @@ extern crate alloc;
 use alloc::string::String;
 use core::intrinsics::fmaf64;
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn string_to_industrial(time: &str) -> f64 {
     let colon = time.as_bytes().iter().position(|&b| b == b':').unwrap();

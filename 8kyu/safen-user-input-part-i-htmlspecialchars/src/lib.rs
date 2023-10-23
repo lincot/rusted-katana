@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::{PushStrUnchecked, PushUnchecked};
 
 pub fn html_special_chars(html: &str) -> String {
     let cap = "&quot;".len() * html.len();

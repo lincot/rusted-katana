@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn double_char(s: &str) -> String {
     let mut res = String::with_capacity(2 * s.len());

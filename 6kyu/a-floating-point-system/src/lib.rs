@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use prelude::*;
+use unchecked::{PushStrUnchecked, PushUnchecked};
 
 pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
     let digits_before_dot = a_number.as_bytes().iter().position(|&b| b == b'.').unwrap();

@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 use digital::WriteNumUnchecked;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn format_money(amount: f64) -> String {
     let mut res = String::with_capacity("$184467440737095516.15".len());

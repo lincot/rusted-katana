@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::string::String;
-use prelude::*;
+use unchecked::PushStrUnchecked;
 
 pub fn are_you_playing_banjo(name: &str) -> String {
     let text = if b"Rr".contains(&name.bytes().next().unwrap()) {

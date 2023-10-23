@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn performant_smallest(arr: &[u32], n: usize) -> Vec<u32> {
     let mut counts = [0; 51];

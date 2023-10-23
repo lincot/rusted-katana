@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use prelude::*;
+use unchecked::{PushStrUnchecked, PushUnchecked};
 
 pub fn solution(n: u32) -> String {
     let mut res = String::with_capacity("Value is ".len() + u32::MAX_LEN_BASE10);

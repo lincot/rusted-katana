@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn solve(arr: &[u32]) -> Vec<u32> {
     let mut res = Vec::with_capacity(arr.len());

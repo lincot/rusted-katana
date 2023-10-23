@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn find_multiples(n: u32, limit: u32) -> Vec<u32> {
     let cap = (limit / n) as _;

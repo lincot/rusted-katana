@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use prelude::*;
+use unchecked::PushStrUnchecked;
 
 pub fn derive(coefficient: u32, exponent: u32) -> String {
     let mut res = String::with_capacity(2 * u32::MAX_LEN_BASE10 + 2);

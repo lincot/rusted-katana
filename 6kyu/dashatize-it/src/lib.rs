@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 use digital::NumToString;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn dashatize(n: i64) -> String {
     let digits = n

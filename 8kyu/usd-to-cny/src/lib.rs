@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::string::String;
 use digital::WriteNumUnchecked;
-use prelude::*;
+use unchecked::{PushStrUnchecked, PushUnchecked};
 
 pub fn usdcny(usd: u16) -> String {
     let mut res = String::with_capacity("442361.25 Chinese Yuan".len());

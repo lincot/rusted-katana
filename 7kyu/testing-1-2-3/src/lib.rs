@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use prelude::*;
+use unchecked::PushStrUnchecked;
 
 pub fn number(lines: &[&str]) -> Vec<String> {
     (1usize..)

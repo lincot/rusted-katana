@@ -5,7 +5,7 @@
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
 use core::hint::unreachable_unchecked;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn sort_by_last_char(s: &str) -> Vec<String> {
     let mut res = Vec::with_capacity(s.len() / 2 + 1);

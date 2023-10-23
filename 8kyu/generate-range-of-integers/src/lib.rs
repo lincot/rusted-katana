@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use prelude::*;
+use unchecked::PushUnchecked;
 
 pub fn generate_range(mut min: usize, max: usize, step: usize) -> Vec<usize> {
     let cap = if min <= max {

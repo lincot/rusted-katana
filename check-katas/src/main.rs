@@ -1,9 +1,9 @@
-use prelude::*;
 use rayon::prelude::*;
 use std::{
     fs::{read_dir, File},
     io::{self, Read, Write},
 };
+use unchecked::PushStrUnchecked;
 
 fn main() {
     let reqwest_client = reqwest::blocking::Client::new();

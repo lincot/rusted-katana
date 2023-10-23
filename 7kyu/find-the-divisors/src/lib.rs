@@ -7,7 +7,7 @@ extern crate alloc;
 use alloc::{string::String, vec::Vec};
 use core::intrinsics::sqrtf64;
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use prelude::*;
+use unchecked::{ExtendFromWithinUnchecked, PushStrUnchecked, PushUnchecked};
 use vqsort::VqSort;
 
 pub fn divisors(integer: u32) -> Result<Vec<u32>, String> {

@@ -4,7 +4,7 @@
 
 extern crate alloc;
 use alloc::vec::Vec;
-use prelude::*;
+use unchecked::PushUnchecked;
 use vqsort::VqSort;
 
 pub fn solve(arr: &[i32]) -> Vec<i32> {
