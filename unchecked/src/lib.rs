@@ -33,22 +33,22 @@ impl PushUnchecked<char> for String {
         debug_assert!(len + count <= self.capacity());
         match count {
             1 => {
-                core::ptr::write(ptr, ch as u8);
+                *ptr = ch as u8;
             }
             2 => {
-                core::ptr::write(ptr, (ch as u32 >> 6 & 0x1F) as u8 | 0b1100_0000);
-                core::ptr::write(ptr.add(1), (ch as u32 & 0x3F) as u8 | 0b1000_0000);
+                *ptr = (ch as u32 >> 6 & 0x1F) as u8 | 0b1100_0000;
+                *ptr.add(1) = (ch as u32 & 0x3F) as u8 | 0b1000_0000;
             }
             3 => {
-                core::ptr::write(ptr, (ch as u32 >> 12 & 0x0F) as u8 | 0b1110_0000);
-                core::ptr::write(ptr.add(1), (ch as u32 >> 6 & 0x3F) as u8 | 0b1000_0000);
-                core::ptr::write(ptr.add(2), (ch as u32 & 0x3F) as u8 | 0b1000_0000);
+                *ptr = (ch as u32 >> 12 & 0x0F) as u8 | 0b1110_0000;
+                *ptr.add(1) = (ch as u32 >> 6 & 0x3F) as u8 | 0b1000_0000;
+                *ptr.add(2) = (ch as u32 & 0x3F) as u8 | 0b1000_0000;
             }
             4 => {
-                core::ptr::write(ptr, (ch as u32 >> 18 & 0x07) as u8 | 0b1111_0000);
-                core::ptr::write(ptr.add(1), (ch as u32 >> 12 & 0x3F) as u8 | 0b1000_0000);
-                core::ptr::write(ptr.add(2), (ch as u32 >> 6 & 0x3F) as u8 | 0b1000_0000);
-                core::ptr::write(ptr.add(3), (ch as u32 & 0x3F) as u8 | 0b1000_0000);
+                *ptr = (ch as u32 >> 18 & 0x07) as u8 | 0b1111_0000;
+                *ptr.add(1) = (ch as u32 >> 12 & 0x3F) as u8 | 0b1000_0000;
+                *ptr.add(2) = (ch as u32 >> 6 & 0x3F) as u8 | 0b1000_0000;
+                *ptr.add(3) = (ch as u32 & 0x3F) as u8 | 0b1000_0000;
             }
             _ => core::hint::unreachable_unchecked(),
         }
