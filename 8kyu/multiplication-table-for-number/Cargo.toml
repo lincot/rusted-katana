@@ -6,4 +6,4 @@ edition = "2021"
 [dependencies]
 unchecked = { path = "../../unchecked" }
 digital = { path = "../../digital" }
-heapless = "0.7.16"
+heapless = "0.8.0"

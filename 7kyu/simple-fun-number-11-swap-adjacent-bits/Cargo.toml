@@ -1,0 +1,4 @@
+[package]
+name = "simple-fun-number-11-swap-adjacent-bits"
+version = "0.1.0"
+edition = "2021"

@@ -45,7 +45,8 @@ cargo clippy --all-features --all-targets --no-deps --quiet --release -- \
   -A clippy::uninit-vec \
   -A clippy::cognitive-complexity \
   -A clippy::debug-assert-with-mut-call \
-  -A clippy::module-name-repetitions
+  -A clippy::module-name-repetitions \
+  -A clippy::suspicious-operation-groupings
 cargo update
 cargo outdated
 cargo udeps --quiet 2>/dev/null

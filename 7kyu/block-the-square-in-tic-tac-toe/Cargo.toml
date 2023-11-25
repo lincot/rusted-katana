@@ -1,0 +1,4 @@
+[package]
+name = "block-the-square-in-tic-tac-toe"
+version = "0.1.0"
+edition = "2021"

@@ -1,0 +1,4 @@
+[package]
+name = "from-a-to-z"
+version = "0.1.0"
+edition = "2021"
