@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/56dbe0e313c2f63be4000b25/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::{ExtendUnchecked, PushStrUnchecked, PushUnchecked};
 
 pub fn hor_mirror(s: String) -> String {

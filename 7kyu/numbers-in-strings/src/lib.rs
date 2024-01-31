@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/59dd2c38f703c4ae5e000014/train/rust>
 
-#![no_std]
-
 pub fn solve(s: &str) -> u32 {
     let mut max = 0;
     let mut cur = 0;

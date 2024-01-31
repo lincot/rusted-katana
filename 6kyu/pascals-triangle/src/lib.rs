@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5226eb40316b56c8d500030f/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use unchecked::PushUnchecked;
 
 pub fn pascals_triangle(n: usize) -> Vec<usize> {

@@ -1,18 +1,11 @@
 //! <https://www.codewars.com/kata/567501aec64b81e252000003/train/rust>
 
-#![no_std]
-#![feature(core_intrinsics)]
-
-extern crate alloc;
-use alloc::string::String;
-use core::intrinsics::fmaf64;
-
 pub fn wall_paper(l: f64, w: f64, h: f64) -> String {
     if [l, w, h].contains(&0.) {
         return "zero".into();
     }
 
-    match unsafe { fmaf64(1.15f64 * 2. / (0.52 * 10.), h * (l + w), 0.99999) } as u8 {
+    match (1.15f64 * 2. / (0.52 * 10.)).mul_add(h * (l + w), 0.99999) as u8 {
         0 => "zero",
         1 => "one",
         2 => "two",

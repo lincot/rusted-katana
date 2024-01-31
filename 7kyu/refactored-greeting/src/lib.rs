@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5121303128ef4b495f000001/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::PushStrUnchecked;
 
 pub struct Person<'a> {

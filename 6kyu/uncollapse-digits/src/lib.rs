@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5a626fc7fd56cb63c300008c/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec::Vec};
 use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn uncollapse(digits: &str) -> String {

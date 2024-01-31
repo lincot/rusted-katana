@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/592eaf848c91f248ca000012/train/rust>
 
-#![no_std]
-
 use core::ops::Add;
 
 const fn ston(s: &str) -> u8 {

@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/57040e445a726387a1001cf7/train/rust>
 
-#![no_std]
-
 use num_bigint::BigUint;
 
 pub fn fusc(n: BigUint) -> BigUint {

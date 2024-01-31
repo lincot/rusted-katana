@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/59971e64bfccc70748000068/train/rust>
 
-#![no_std]
-
 const fn product_of_digits(mut n: u32) -> u32 {
     let mut res = 1;
     while n != 0 {

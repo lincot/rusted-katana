@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/56b97b776ffcea598a0006f2/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
-
 pub fn bubblesort_once(lst: &[u32]) -> Vec<u32> {
     let Some(mut max) = lst.first().copied() else {
         return Vec::new();

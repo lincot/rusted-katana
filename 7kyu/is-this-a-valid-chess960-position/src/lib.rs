@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/61488fde47472d000827a51d/train/rust>
 
-#![no_std]
-
 pub fn is_valid(positions: &str) -> bool {
     let positions = positions.as_bytes();
     if positions.len() != 8 {

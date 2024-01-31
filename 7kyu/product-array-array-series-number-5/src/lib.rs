@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5a905c2157c562994900009d/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use core::hint::unreachable_unchecked;
 
 pub fn product_array(arr: &[u64]) -> Vec<u64> {

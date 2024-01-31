@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5a946d9fba1bb5135100007c/train/rust>
 
-#![no_std]
-
 use core::hint::unreachable_unchecked;
 use num_integer::Roots;
 

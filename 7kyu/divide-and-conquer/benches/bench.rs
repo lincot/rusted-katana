@@ -1,9 +1,6 @@
-#![no_std]
 #![feature(test)]
 
-extern crate alloc;
 extern crate test;
-use alloc::{string::String, vec};
 use core::array;
 use divide_and_conquer::div_con;
 use either::Either;

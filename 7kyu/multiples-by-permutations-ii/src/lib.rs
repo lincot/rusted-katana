@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5ba178be875de960a6000187/train/rust>
 
-#![no_std]
-
 fn digits_hash(mut n: u64) -> u64 {
     let mut res = 0;
     while n != 0 {

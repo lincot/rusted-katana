@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/57e921d8b36340f1fd000059/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
-
 pub fn shark(
     pontoon_distance: f64,
     shark_distance: f64,

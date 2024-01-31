@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/57ea70aa5500adfe8a000110/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
-
 pub fn fold_array(arr: &[i32], runs: usize) -> Vec<i32> {
     let mut res = arr.to_vec();
     let mut len = arr.len();

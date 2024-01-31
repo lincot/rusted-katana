@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/58845748bd5733f1b300001f/train/rust>
 
-#![no_std]
-
 pub fn range_bit_count(a: u32, b: u32) -> u32 {
     range_bit_count_to(b) - if a == 0 { 0 } else { range_bit_count_to(a - 1) }
 }

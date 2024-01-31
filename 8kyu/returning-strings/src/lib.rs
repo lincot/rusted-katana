@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/55a70521798b14d4750000a4/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::PushStrUnchecked;
 
 pub fn greet(name: &str) -> String {

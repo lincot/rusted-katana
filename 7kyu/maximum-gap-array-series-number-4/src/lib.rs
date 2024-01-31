@@ -1,8 +1,5 @@
 //! <https://www.codewars.com/kata/5a7893ef0025e9eb50000013/train/rust>
 
-#![no_std]
-
-extern crate alloc;
 use vqsort::VqSort;
 
 pub fn max_gap(xs: &[i32]) -> i32 {

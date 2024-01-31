@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/57d5e850bfcdc545870000b7/train/rust>
 
-#![no_std]
-
 pub fn dead_ant_count(ants: &str) -> u32 {
     let ants = ants.as_bytes();
     let (mut a, mut n, mut t, mut ant) = (0, 0, 0, 0);

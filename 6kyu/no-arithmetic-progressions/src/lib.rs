@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5e0607115654a900140b3ce3/train/rust>
 
-#![no_std]
-
 pub fn sequence(n: usize) -> i64 {
     const POWERS_OF_3: [i64; 38] = {
         let mut res = [1; 38];

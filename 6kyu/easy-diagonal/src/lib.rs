@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/559b8e46fa060b2c6a0000bf/train/rust>
 
-#![no_std]
-
 pub fn diagonal(n: u32, p: u32) -> u64 {
     // binom
     let (mut a, mut b) = (1., 1.);

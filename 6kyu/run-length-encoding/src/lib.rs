@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/546dba39fa8da224e8000467/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use unchecked::PushUnchecked;
 
 pub fn run_length_encoding(s: &str) -> Vec<(usize, char)> {

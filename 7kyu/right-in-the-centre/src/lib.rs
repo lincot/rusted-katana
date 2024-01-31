@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5f5da7a415fbdc0001ae3c69/train/rust>
 
-#![no_std]
-
 pub fn is_in_middle(seq: &str) -> bool {
     if seq.len() < 3 {
         return false;

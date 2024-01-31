@@ -1,7 +1,5 @@
-#![no_std]
 #![feature(test)]
 
-extern crate alloc;
 extern crate test;
 use double_char::double_char;
 use test::{black_box, Bencher};

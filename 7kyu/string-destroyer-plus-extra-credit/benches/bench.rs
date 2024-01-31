@@ -1,9 +1,6 @@
-#![no_std]
 #![feature(test)]
 
-extern crate alloc;
 extern crate test;
-use alloc::vec;
 use string_destroyer_plus_extra_credit::destroy;
 use test::{black_box, Bencher};
 

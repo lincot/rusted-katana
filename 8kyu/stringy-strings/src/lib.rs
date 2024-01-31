@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/563b74ddd19a3ad462000054/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec::Vec};
 use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn stringy(size: usize) -> String {

@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/542c0f198e077084c0000c2e/train/rust>
 
-#![no_std]
-#![feature(core_intrinsics)]
-
-use core::intrinsics::sqrtf64;
-
 pub fn divisors(mut n: u32) -> u32 {
     // 2 * 3 * 5 * 7 * 11 * 13 * 17 * 19 * 23 * 29 > u32::MAX
     let mut prime_pows_incremented = heapless::Vec::<u8, 8>::new();
@@ -13,7 +8,7 @@ pub fn divisors(mut n: u32) -> u32 {
     n >>= pow_of_2;
 
     let mut x = 3;
-    let mut n_sqrt = unsafe { sqrtf64(n as _).to_int_unchecked() };
+    let mut n_sqrt = unsafe { (n as f64).sqrt().to_int_unchecked() };
     while x <= n_sqrt {
         let mut n_changed = false;
         let mut p = 1;
@@ -30,7 +25,7 @@ pub fn divisors(mut n: u32) -> u32 {
 
         x += 2;
         if n_changed {
-            n_sqrt = unsafe { sqrtf64(n as _).to_int_unchecked() };
+            n_sqrt = unsafe { (n as f64).sqrt().to_int_unchecked() };
         }
     }
 

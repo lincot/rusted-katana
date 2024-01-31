@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5a25ac6ac5e284cfbe000111/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{boxed::Box, string::String};
 use core::hint::unreachable_unchecked;
 
 pub fn triangle(row_str: &str) -> String {

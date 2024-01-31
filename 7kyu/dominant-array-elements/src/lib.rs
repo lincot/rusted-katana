@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5a04133e32b8b998dc000089/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use unchecked::PushUnchecked;
 
 pub fn solve(arr: &[u32]) -> Vec<u32> {

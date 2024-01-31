@@ -1,13 +1,5 @@
 //! <https://www.codewars.com/kata/5502c9e7b3216ec63c0001aa/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{
-    string::{String, ToString},
-    vec::Vec,
-};
-
 pub fn open_or_senior(data: Vec<(i32, i32)>) -> Vec<String> {
     data.iter()
         .map(|&(age, handicap)| {

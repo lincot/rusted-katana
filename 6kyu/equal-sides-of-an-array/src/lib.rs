@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5679aa472b8f57fb8c000047/train/rust>
 
-#![no_std]
-
 pub fn find_even_index(arr: &[i32]) -> Option<usize> {
     let (mut l, mut r) = (0, arr.iter().sum::<i32>());
     #[allow(clippy::needless_range_loop)]

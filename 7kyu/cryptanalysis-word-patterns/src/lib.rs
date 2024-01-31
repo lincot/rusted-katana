@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5f3142b3a28d9b002ef58f5e/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::PushUnchecked;
 
 pub fn word_pattern(word: &str) -> String {

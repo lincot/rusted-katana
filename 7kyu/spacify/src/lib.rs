@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/57f8ee485cae443c4d000127/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::PushUnchecked;
 
 pub fn spacify(s: &str) -> String {

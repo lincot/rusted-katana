@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5412509bd436bd33920011bc/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::{PushStrUnchecked, PushUnchecked};
 
 pub fn maskify(cc: &str) -> String {

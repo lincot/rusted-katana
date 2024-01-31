@@ -1,9 +1,6 @@
-#![no_std]
 #![feature(test)]
 
-extern crate alloc;
 extern crate test;
-use alloc::vec;
 use test::{black_box, Bencher};
 use unpack_delicious_sausages::unpack_sausages;
 

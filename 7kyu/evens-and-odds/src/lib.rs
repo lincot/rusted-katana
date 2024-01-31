@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/583ade15666df5a64e000058/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use digital::NumToString;
 
 pub fn evens_and_odds(n: u64) -> String {

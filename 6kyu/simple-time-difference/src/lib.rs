@@ -1,10 +1,7 @@
 //! <https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2/train/rust>
 
-#![no_std]
 #![feature(array_windows)]
 
-extern crate alloc;
-use alloc::{boxed::Box, string::String};
 use digital::WriteNumUnchecked;
 use unchecked::PushUnchecked;
 use vqsort::VqSort;

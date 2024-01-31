@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/57ebaa8f7b45ef590c00000c/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec::Vec};
-
 pub fn switcher(numbers: Vec<&str>) -> String {
     let res = numbers
         .iter()

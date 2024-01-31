@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5b180e9fedaa564a7000009a/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec::Vec};
 use unchecked::{ExtendUnchecked, PushUnchecked};
 
 pub fn solve(s: &str) -> String {

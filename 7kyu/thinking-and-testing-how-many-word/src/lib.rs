@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/56eff1e64794404a720002d2/train/rust>
 
-#![no_std]
-
 pub fn testit(s: &str) -> usize {
     let s = s.as_bytes();
 

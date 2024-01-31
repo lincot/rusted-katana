@@ -1,6 +1,5 @@
 //! <https://www.codewars.com/kata/6507e3170b7009117e0c7865/train/rust>
 
-#![no_std]
 #![feature(array_windows)]
 
 pub fn freed_prisoners(prison: &[bool]) -> u32 {

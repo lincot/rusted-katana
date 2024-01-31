@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/58e93b4706db4d24ee000096/train/rust>
 
-#![no_std]
-
 pub fn days_represented(trips: &[(u32, u32)]) -> u32 {
     let mut days = [false; 365];
 

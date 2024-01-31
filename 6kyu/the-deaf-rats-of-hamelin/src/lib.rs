@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/598106cb34e205e074000031/train/rust>
 
-#![no_std]
-
 pub const fn count_deaf_rats(town: &str) -> u8 {
     let town = town.as_bytes();
     let mut i = 0;

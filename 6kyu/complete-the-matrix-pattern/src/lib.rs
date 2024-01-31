@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/582c01ad3fd1cc5736000348/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec};
-
 pub fn make_matrix(m: u32, n: u32) -> String {
     unsafe fn push_digit(res: &mut [u8], i: &mut usize, digit: u8) {
         *res.get_unchecked_mut(*i) = digit;

@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5bdcd20478d24e664d00002c/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use core::hint::unreachable_unchecked;
 
 pub fn wheat_from_chaff(xs: &[i32]) -> Vec<i32> {

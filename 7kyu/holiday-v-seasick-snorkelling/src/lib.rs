@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/57e90bcc97a0592126000064/train/rust>
 
-#![no_std]
-
 pub fn sea_sick(sea: &str) -> &'static str {
     let mut changes = 0;
 

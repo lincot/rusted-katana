@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/571c1e847beb0a8f8900153d/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::PushStrUnchecked;
 
 pub fn rake_garden(garden: &str) -> String {

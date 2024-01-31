@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5a2fd38b55519ed98f0000ce/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use digital::{MaxLenBase10, WriteNumUnchecked};
 use unchecked::{ExtendFromSliceUnchecked, PushStrUnchecked, PushUnchecked};
 

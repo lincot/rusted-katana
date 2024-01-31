@@ -1,7 +1,5 @@
-#![no_std]
 #![feature(test)]
 
-extern crate alloc;
 extern crate test;
 use beginner_lost_without_a_map::maps;
 use core::array;

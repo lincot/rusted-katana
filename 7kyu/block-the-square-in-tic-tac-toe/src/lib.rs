@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/64b7c3e6e0abed000f6cad6c/train/rust>
 
-#![no_std]
-
 pub const fn block_player(a: u8, b: u8) -> u8 {
     match if a < b { [a, b] } else { [b, a] } {
         [0, 1] | [4, 6] | [5, 8] => 2,

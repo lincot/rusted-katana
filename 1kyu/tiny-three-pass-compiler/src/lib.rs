@@ -1,18 +1,13 @@
 //! <https://www.codewars.com/kata/5265b0885fda8eac5900093b/train/rust>
 
-#![no_std]
-
 // TODO: this solution is WIP
 
-extern crate alloc;
-use alloc::{boxed::Box, format, string::String, vec, vec::Vec};
 use core::{
     mem::swap,
     ops::{Add, Div, Mul, Sub},
 };
 
 mod parse {
-    use alloc::{boxed::Box, vec::Vec};
     use core::ops::{Add, Div, Mul, Sub};
 
     #[derive(Debug, PartialEq, Eq, Clone, Copy)]

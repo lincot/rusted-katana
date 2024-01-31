@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/64087fd72daf09000f60dc26/train/rust>
 
-#![no_std]
-
 pub fn cute_pattern(tiles: &str) -> bool {
     let tiles = tiles.as_bytes();
     if tiles.len() < 5 * 4 - 1 {

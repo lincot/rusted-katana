@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/65126d52a5de2b11c94096d2/train/rust>
 
-#![no_std]
-
 pub const fn closing_in_sum(mut n: u64) -> u32 {
     let mut ones = 0;
     let mut decimal = 1;

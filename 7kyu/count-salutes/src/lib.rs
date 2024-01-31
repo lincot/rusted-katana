@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/605ae9e1d2be8a0023b494ed/train/rust>
 
-#![no_std]
-
 pub fn count_salutes(hallway: &str) -> usize {
     let mut moving_right = 0;
     let mut salutes = 0;

@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/60d5b5cd507957000d08e673/train/rust>
 
-#![no_std]
-
 use num_bigint::BigUint;
 
 pub fn s(m: u8, n: BigUint) -> BigUint {

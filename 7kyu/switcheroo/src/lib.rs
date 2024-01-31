@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/57f759bb664021a30300007d/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
-
 pub fn switcheroo(s: &str) -> String {
     let res = s
         .bytes()

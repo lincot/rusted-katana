@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/59b139d69c56e8939700009d/train/rust>
 
-#![no_std]
-
 pub const fn get_exponent(n: i32, p: u32) -> Option<u32> {
     if p <= 1 {
         return None;

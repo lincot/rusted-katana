@@ -1,9 +1,6 @@
-#![no_std]
 #![feature(test)]
 
-extern crate alloc;
 extern crate test;
-use alloc::vec::Vec;
 use core::array;
 use delta_generators::delta;
 use rand::Rng;

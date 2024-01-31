@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/62b2072d62c66500159693ff/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use unchecked::PushUnchecked;
 
 const SETS: [[u8; 9]; 18] = [

@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/55e1990978c60e5052000011/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
-
 pub fn merge(line: &[u8]) -> Vec<u8> {
     let mut res = Vec::with_capacity(line.len());
     unsafe { res.set_len(line.len()) };

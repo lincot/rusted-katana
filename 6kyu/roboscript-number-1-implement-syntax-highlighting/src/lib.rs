@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/58708934a44cfccca60000c4/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::{PushStrUnchecked, PushUnchecked};
 
 pub fn highlight(code: &str) -> String {

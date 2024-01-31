@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5894318275f2c75695000146/train/rust>
 
-#![no_std]
-
 pub fn delete_digit(n: u32) -> u32 {
     const POWERS_OF_10: [u64; 12] = {
         let mut res = [1; 12];

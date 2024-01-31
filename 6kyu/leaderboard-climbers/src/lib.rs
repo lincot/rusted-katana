@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/5f6d120d40b1c900327b7e22/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec::Vec};
-
 pub fn leaderboard_sort(leaderboard: &[String], changes: &[String]) -> Vec<String> {
     let mut leaderboard = leaderboard.to_vec();
     for change in changes {

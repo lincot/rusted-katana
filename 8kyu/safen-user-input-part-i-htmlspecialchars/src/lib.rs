@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/56bcaedfcf6b7f2125001118/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::{PushStrUnchecked, PushUnchecked};
 
 pub fn html_special_chars(html: &str) -> String {

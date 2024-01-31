@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/634ac4e77611b9f57dff456d/train/rust>
 
-#![no_std]
-
 use hashbrown::HashSet;
 
 pub fn keywords() -> HashSet<&'static str> {

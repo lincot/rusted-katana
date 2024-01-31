@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/6135e4f40cffda0007ce356b/train/rust>
 
-#![no_std]
-
 pub fn bishop(start_pos: &str, end_pos: &str, num_moves: u8) -> bool {
     assert!(start_pos.len() >= 2 && end_pos.len() >= 2);
     let (start, end) = (start_pos.as_bytes(), end_pos.as_bytes());

@@ -1,6 +1,5 @@
 //! <https://www.codewars.com/kata/5a8059b1fd577709860000f6/train/rust>
 
-#![no_std]
 #![feature(is_sorted)]
 
 pub fn alphabetic(s: &str) -> bool {

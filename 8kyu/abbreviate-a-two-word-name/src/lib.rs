@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/57eadb7ecd143f4c9c0000a3/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::{ExtendUnchecked, PushUnchecked};
 
 unsafe fn push_unchecked_uppercase(s: &mut String, c: char) {

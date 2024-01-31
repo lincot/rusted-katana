@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/58cda88814e65627c5000045/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec::Vec};
 use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn expanded_form(num: f64) -> String {

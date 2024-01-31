@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5899aa695401a83a5c0000c4/train/rust>
 
-#![no_std]
-
 use core::f64::consts::FRAC_PI_4;
 
 pub fn square_area_to_circle(size: f64) -> f64 {

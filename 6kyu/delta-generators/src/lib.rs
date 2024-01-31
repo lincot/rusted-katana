@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/6040b781e50db7000ab35125/train/rust>
 
-#![no_std]
-
 use core::{mem::replace, ops::Sub};
 
 pub fn delta<I: IntoIterator<Item = T>, T: Sub<Output = T> + Copy>(

@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/58f8b35fda19c0c79400020f/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use unchecked::PushUnchecked;
 
 pub fn all_non_consecutive(arr: &[i32]) -> Vec<(usize, i32)> {

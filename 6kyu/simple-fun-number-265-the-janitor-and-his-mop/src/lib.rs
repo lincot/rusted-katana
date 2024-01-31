@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/59128363e5bc24091a00006f/train/rust>
 
-#![no_std]
-
 pub fn the_janitor(word: &str) -> [usize; 26] {
     let mut first = [0; 26];
     let mut last = [0; 26];

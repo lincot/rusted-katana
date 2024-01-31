@@ -1,8 +1,5 @@
 //! <https://www.codewars.com/kata/5a523566b3bfa84c2e00010b/train/rust>
 
-#![no_std]
-
-extern crate alloc;
 use vqsort::VqSort;
 
 pub fn min_sum(xs: &[u64]) -> u64 {

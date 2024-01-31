@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5e18743cd3346f003228b604/train/rust>
 
-#![no_std]
-
 use digital::NumToString;
 use num_bigint::BigInt;
 

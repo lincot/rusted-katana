@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/59d0ee709f0cbcf65400003b/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec, vec::Vec};
 use core::array;
 use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
 

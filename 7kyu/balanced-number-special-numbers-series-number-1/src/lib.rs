@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5a4e3782880385ba68000018/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use digital::NumToString;
 
 pub fn balanced_num(n: u64) -> String {

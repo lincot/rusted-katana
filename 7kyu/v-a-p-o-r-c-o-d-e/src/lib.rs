@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5966eeb31b229e44eb00007a/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::{ExtendUnchecked, PushStrUnchecked, PushUnchecked};
 
 pub fn vaporcode(s: &str) -> String {

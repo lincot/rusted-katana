@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/64c7bbad0a2a00198657013d/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
-
 pub fn rev_sub(xs: &[i32]) -> Vec<i32> {
     let mut res = xs.to_vec();
     let mut i = 0;

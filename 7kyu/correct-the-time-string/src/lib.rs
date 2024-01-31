@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/57873ab5e55533a2890000c7/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec::Vec};
 use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
 
 const TABLE: [[u8; 2]; 60] = [

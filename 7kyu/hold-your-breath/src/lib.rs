@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/64fbfa3518692c2ed0ebbaa2/train/rust>
 
-#![no_std]
-
 pub fn diving_minigame(lst: &[i8]) -> bool {
     let mut breath = 10;
     for &x in lst {

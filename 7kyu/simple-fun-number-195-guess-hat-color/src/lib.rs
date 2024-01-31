@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/58c21c4ff130b7cab400009e/train/rust>
 
-#![no_std]
-
 mod preloaded;
 
 use preloaded::Color;

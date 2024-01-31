@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/634d0723075de3f97a9eb604/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec::Vec};
 use unchecked::PushUnchecked;
 
 pub fn encode(s: String) -> String {

@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/568dc69683322417eb00002c/train/rust>
 
-#![no_std]
-
 pub fn triple_x(s: &str) -> bool {
     let mut bytes = s.bytes();
 

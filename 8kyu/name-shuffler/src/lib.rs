@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/559ac78160f0be07c200005a/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::{PushStrUnchecked, PushUnchecked};
 
 pub fn name_shuffler(s: &str) -> String {

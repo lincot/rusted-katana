@@ -1,9 +1,6 @@
-#![no_std]
 #![feature(test)]
 
-extern crate alloc;
 extern crate test;
-use alloc::vec::Vec;
 use rand::{seq::SliceRandom, Rng};
 use rand_pcg::Pcg64;
 use simple_frequency_sort::solve;

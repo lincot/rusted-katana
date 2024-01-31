@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/57fafb6d2b5314c839000195/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec::Vec};
 use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn remove(s: &str) -> String {

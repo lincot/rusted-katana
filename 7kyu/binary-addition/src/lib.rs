@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/551f37452ff852b7bd000139/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use digital::NumToString;
 
 pub fn add_binary(a: u64, b: u64) -> String {

@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/570b69d96731d4cf9c001597/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{vec, vec::Vec};
-
 pub fn magic_square(n: u32) -> Vec<Vec<u32>> {
     let n = n as usize;
     if n == 0 {

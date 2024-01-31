@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/5663f5305102699bad000056/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
-
 pub fn mx_dif_lg(a1: Vec<&str>, a2: Vec<&str>) -> i32 {
     let Some((a1_min, a1_max)) = min_max(a1.into_iter().map(str::len)) else {
         return -1;

@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/650a86e8404241005fc744ca/train/rust>
 
-#![no_std]
-
 pub const fn same_length(txt: &str) -> bool {
     let (mut balance, mut prev_is_one, mut i) = (0isize, -1isize, 0);
     while i < txt.len() {

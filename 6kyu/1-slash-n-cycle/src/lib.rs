@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5a057ec846d843c81a0000ad/train/rust>
 
-#![no_std]
-
 pub const fn cycle(n: i64) -> i64 {
     if n % 2 == 0 || n % 5 == 0 {
         return -1;

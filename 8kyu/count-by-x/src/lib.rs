@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5513795bd3fafb56c200049e/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use unchecked::PushUnchecked;
 
 pub fn count_by(x: u32, n: u32) -> Vec<u32> {

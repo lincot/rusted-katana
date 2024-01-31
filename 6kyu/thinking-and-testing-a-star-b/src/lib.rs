@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5a90c9ecb171012b47000077/train/rust>
 
-#![no_std]
-
 pub const fn test_it(a: u64, b: u64) -> u64 {
     sum_digits(a) * sum_digits(b)
 }

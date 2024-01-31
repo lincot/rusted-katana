@@ -26,17 +26,14 @@ fn check_kata(reqwest_client: &reqwest::blocking::Client, kyu: u8, kata_dir: &st
     }
 
     let mut f = File::open(&path).unwrap();
-    let mut buf = [0;
-        "//! <https://www.codewars.com/kata/53da3dbb4a5168369a0000fe/train/rust>\n\n#![no_std]"
-            .len()];
+    let mut buf =
+        [0; "//! <https://www.codewars.com/kata/53da3dbb4a5168369a0000fe/train/rust>".len()];
     f.read(&mut buf).unwrap();
-    if !(buf.starts_with(b"//! <https://www.codewars.com/kata/")
-        && buf.ends_with(b"/train/rust>\n\n#![no_std]"))
+    if !(buf.starts_with(b"//! <https://www.codewars.com/kata/") && buf.ends_with(b"/train/rust>"))
     {
         let mut stdout = io::stdout().lock();
         stdout.write(path.as_bytes()).unwrap();
-        stdout.write(b" has invalid url or std").unwrap();
-        stdout.write(b"\n").unwrap();
+        stdout.write(b" has invalid url\n").unwrap();
     }
     let id = &buf["//! <https://www.codewars.com/kata/".len()
         .."//! <https://www.codewars.com/kata/53da3dbb4a5168369a0000fe".len()];
@@ -67,24 +64,6 @@ fn check_kata(reqwest_client: &reqwest::blocking::Client, kyu: u8, kata_dir: &st
             .unwrap();
         stdout.write(slug.as_bytes()).unwrap();
         stdout.write(b"\n").unwrap();
-    }
-
-    for string in ["/benches/bench.rs", "/tests/test.rs"] {
-        path.truncate(kata_dir.len());
-        unsafe { path.push_str_unchecked(string) };
-        let mut f = match File::open(&path) {
-            Ok(f) => f,
-            Err(e) if e.kind() == io::ErrorKind::NotFound => continue,
-            e => e.unwrap(),
-        };
-        let mut buf = [0; "#![no_std]".len()];
-        f.read(&mut buf).unwrap();
-        if buf != *b"#![no_std]" {
-            let mut stdout = io::stdout().lock();
-            stdout.write(path.as_bytes()).unwrap();
-            stdout.write(b" has std").unwrap();
-            stdout.write(b"\n").unwrap();
-        }
     }
 
     path.truncate(kata_dir.len());

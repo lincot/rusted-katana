@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5467e4d82edf8bbf40000155/train/rust>
 
-#![no_std]
-
 const TABLE: [(u64, u64); 21] = [
     (1, 0),
     (10, 1),

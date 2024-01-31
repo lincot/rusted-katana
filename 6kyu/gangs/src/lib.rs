@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/60490a215465720017ab58fa/train/rust>
 
-#![no_std]
-
 use core::{
     hash::{BuildHasherDefault, Hasher},
     hint::unreachable_unchecked,

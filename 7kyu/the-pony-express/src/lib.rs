@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5b18e9e06aefb52e1d0001e9/train/rust>
 
-#![no_std]
-
 pub fn riders(stations: &[u32]) -> u32 {
     stations
         .iter()

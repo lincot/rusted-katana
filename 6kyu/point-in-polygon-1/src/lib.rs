@@ -1,17 +1,11 @@
 //! <https://www.codewars.com/kata/530265044b7e23379d00076a/train/rust>
 
-#![no_std]
-#![feature(core_intrinsics)]
-
-use core::intrinsics::fmaf32;
-
 pub type Point = (f32, f32);
 pub type Line = (Point, Point);
 
 fn intersects(l1: Line, l2: Line) -> bool {
-    let p = |a: Point, b: Point, c: Point| unsafe {
-        fmaf32(b.1 - a.1, c.0 - b.0, -(b.0 - a.0) * (c.1 - b.1))
-    };
+    let p =
+        |a: Point, b: Point, c: Point| (b.1 - a.1).mul_add(c.0 - b.0, -(b.0 - a.0) * (c.1 - b.1));
     p(l1.0, l1.1, l2.0) * p(l1.0, l1.1, l2.1) < 0. && p(l2.0, l2.1, l1.0) * p(l2.0, l2.1, l1.1) < 0.
 }
 

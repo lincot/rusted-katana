@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/62cecd4e5487c10028996e04/train/rust>
 
-#![no_std]
-
 pub const fn race_podium(blocks: u32) -> (u32, u32, u32) {
     let q = blocks / 3;
     let r = blocks % 3;

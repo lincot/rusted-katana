@@ -1,11 +1,5 @@
 //! <https://www.codewars.com/kata/5af96cea3e9715ec670001dd/train/rust>
 
-#![no_std]
-#![feature(core_intrinsics)]
-
-extern crate alloc;
-use alloc::string::String;
-use core::intrinsics::{roundf64, sqrtf64};
 use digital::{MaxLenBase10, WriteNumUnchecked};
 use libm::{cos, sin};
 use unchecked::{PushStrUnchecked, PushUnchecked};
@@ -17,8 +11,8 @@ pub struct Projectile {
 }
 
 unsafe fn write_with_up_to_three_fractional_digits(res: &mut String, n: f64) {
-    let n = roundf64(n * 1000.) as u64;
-    res.write_num_unchecked(n as u64 / 1000, 10, false, false);
+    let n = (n * 1000.).round() as u64;
+    res.write_num_unchecked(n / 1000, 10, false, false);
     let d0 = b'0' + (n % 1000 / 100) as u8;
     let d1 = b'0' + (n % 100 / 10) as u8;
     let d2 = b'0' + (n % 10) as u8;
@@ -33,7 +27,7 @@ unsafe fn write_with_up_to_three_fractional_digits(res: &mut String, n: f64) {
 }
 
 fn round_to_three_fractional_digits(n: f64) -> f64 {
-    unsafe { roundf64(n * 1000.) / 1000. }
+    (n * 1000.).round() / 1000.
 }
 
 impl Projectile {
@@ -79,7 +73,7 @@ impl Projectile {
 
     pub fn height(&self, t: f64) -> f64 {
         round_to_three_fractional_digits(
-            -16. * t * t + self.vertical_velocity * t + self.height as f64,
+            (-16. * t).mul_add(t, self.vertical_velocity * t) + self.height as f64,
         )
     }
 
@@ -88,9 +82,13 @@ impl Projectile {
     }
 
     pub fn landing(&self) -> [f64; 3] {
-        let secs = (unsafe {
-            sqrtf64(64. * self.height as f64 + self.vertical_velocity * self.vertical_velocity)
-        } + self.vertical_velocity)
+        let secs = (64f64
+            .mul_add(
+                self.height as f64,
+                self.vertical_velocity * self.vertical_velocity,
+            )
+            .sqrt()
+            + self.vertical_velocity)
             / 32.;
         [
             round_to_three_fractional_digits(self.horiz(secs)),

@@ -1,11 +1,7 @@
 //! <https://www.codewars.com/kata/5853213063adbd1b9b0000be/train/rust>
 
-#![no_std]
-
 mod preloaded;
 
-extern crate alloc;
-use alloc::{string::String, vec::Vec};
 pub use preloaded::Direction;
 use unchecked::PushUnchecked;
 

@@ -1,7 +1,3 @@
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use core::fmt::Write;
 use doubleton_number::doubleton;
 

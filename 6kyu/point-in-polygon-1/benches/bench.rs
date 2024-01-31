@@ -1,4 +1,3 @@
-#![no_std]
 #![feature(test)]
 
 extern crate test;
@@ -17,8 +16,8 @@ fn bench(bencher: &mut Bencher) {
     let mut min = (f32::INFINITY, 0.);
     let mut max = (0., 0.);
     let poly: [_; 20] = array::from_fn(|i| {
-        let r = 3. + rng.gen::<f32>() * 2.;
-        let t = i as f32 / 20. + rng.gen::<f32>() * 0.04;
+        let r = rng.gen::<f32>().mul_add(2., 3.);
+        let t = rng.gen::<f32>().mul_add(0.04, i as f32 / 20.);
         if r < min.0 {
             min = (r, t);
         }

@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/546e2562b03326a88e000020/train/rust>
 
-#![no_std]
-
 pub const fn square_digits(mut num: u64) -> u64 {
     let mut res = 0;
     let mut mul = 1;

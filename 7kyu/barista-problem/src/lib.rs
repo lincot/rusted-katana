@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/6167e70fc9bd9b00565ffa4e/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::boxed::Box;
-
 pub fn barista(coffees: &[u8]) -> u16 {
     let mut coffees: Box<[_]> = coffees.into();
     if coffees.len() < 32 {

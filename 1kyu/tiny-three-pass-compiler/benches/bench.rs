@@ -1,9 +1,6 @@
-#![no_std]
 #![feature(test)]
 
-extern crate alloc;
 extern crate test;
-use alloc::boxed::Box;
 use test::{black_box, Bencher};
 use tiny_three_pass_compiler::{
     self,

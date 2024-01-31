@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/57e8ff073d1cb559280005de/train/rust>
 
-#![no_std]
-
 pub fn leg_room(a: u32, b: &str) -> &'static str {
     if b.contains('0') {
         return "Jackpot!";

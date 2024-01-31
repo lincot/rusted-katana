@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/604287495a72ae00131685c7/train/rust>
 
-#![no_std]
-
 use digital::WriteNumUnchecked;
 
 pub fn doubleton(mut num: u32) -> u32 {

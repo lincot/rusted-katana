@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5a99a03e4a6b34bb3c000124/train/rust>
 
-#![no_std]
-
 pub const fn num_primorial(n: usize) -> u64 {
     [
         1,

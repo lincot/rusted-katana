@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5aeed69804a92621a7000077/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use unchecked::PushUnchecked;
 
 pub fn performant_smallest(arr: &[u32], n: usize) -> Vec<u32> {

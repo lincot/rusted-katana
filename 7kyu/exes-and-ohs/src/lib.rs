@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/55908aad6620c066bc00002a/train/rust>
 
-#![no_std]
-
 pub fn xo(string: &'static str) -> bool {
     let mut balance = 0isize;
 

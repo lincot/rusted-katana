@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5a87449ab1710171300000fd/train/rust>
 
-#![no_std]
-
 pub const fn tidy_number(mut n: u64) -> bool {
     let mut prev = 9;
 

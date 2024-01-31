@@ -1,9 +1,6 @@
-#![no_std]
 #![feature(test)]
 
-extern crate alloc;
 extern crate test;
-use alloc::string::String;
 use core::array;
 use rand::seq::SliceRandom;
 use rand_pcg::Pcg64;

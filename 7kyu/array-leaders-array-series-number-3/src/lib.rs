@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5a651865fd56cb55760000e0/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use unchecked::PushUnchecked;
 
 pub fn array_leaders(arr: &[i32]) -> Vec<i32> {

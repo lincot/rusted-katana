@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/563cf89eb4747c5fb100001b/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{vec, vec::Vec};
 use unchecked::ExtendFromSliceUnchecked;
 
 pub fn remove_smallest(numbers: &[u32]) -> Vec<u32> {

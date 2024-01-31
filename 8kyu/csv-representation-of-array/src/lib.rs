@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5a34af40e1ce0eb1f5000036/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec::Vec};
 use digital::{MaxLenBase10, WriteNumUnchecked};
 use unchecked::PushUnchecked;
 

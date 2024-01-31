@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/52fba66badcd10859f00097e/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::PushUnchecked;
 
 pub fn disemvowel(s: &str) -> String {

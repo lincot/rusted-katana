@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/62eb800ba29959001c07dfee/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
-
 pub fn brightest(colors: &[String]) -> String {
     colors
         .iter()

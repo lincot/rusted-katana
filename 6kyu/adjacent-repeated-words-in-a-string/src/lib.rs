@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5245a9138ca049e9a10007b8/train/rust>
 
-#![no_std]
-
 pub fn count_adjacent_pairs(search_string: &str) -> usize {
     let mut res = 0;
     let mut prev_word: &[u8] = &[];

@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5b7176768adeae9bc9000056/train/rust>
 
-#![no_std]
-
 pub fn index_equals_value(arr: &[i32]) -> i32 {
     let mut left = 0;
     let mut right = arr.len();

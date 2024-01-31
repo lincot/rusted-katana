@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/563fb342f47611dae800003c/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::PushStrUnchecked;
 
 pub fn trim(phrase: &str, length: usize) -> String {

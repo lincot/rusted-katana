@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5b049d57de4c7f6a6c0001d7/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec::Vec};
 use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn apparently(string: &str) -> String {

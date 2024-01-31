@@ -1,7 +1,5 @@
-#![no_std]
 #![feature(test)]
 
-extern crate alloc;
 extern crate test;
 use core::array;
 use operations_with_sequence::calc;

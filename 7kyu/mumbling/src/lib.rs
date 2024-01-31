@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5667e8f4e3f572a8f2000039/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::PushUnchecked;
 
 pub fn accum(s: &str) -> String {

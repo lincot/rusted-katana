@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/585a033e3a36cdc50a00011c/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
 use digital::{MaxLenBase10, WriteNumUnchecked};
 use hashbrown::{hash_map::Entry, HashMap};

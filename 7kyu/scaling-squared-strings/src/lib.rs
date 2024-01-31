@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/56ed20a2c4e5d69155000301/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::{ExtendFromWithinUnchecked, PushUnchecked};
 
 pub fn scale(s: &str, k: u32, n: u32) -> String {

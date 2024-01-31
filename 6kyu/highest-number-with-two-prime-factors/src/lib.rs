@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/55f347cfb44b879e1e00000d/train/rust>
 
-#![no_std]
-
 use num_bigint::BigUint;
 
 pub fn highest_bi_prime_factor(pp1: u32, pp2: u32, n: BigUint) -> (BigUint, u32, u32) {

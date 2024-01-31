@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/56ff1667cc08cacf4b00171b/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec::Vec};
 use core::cmp::Reverse;
 
 pub fn count_vegetables(s: &str) -> Vec<(u32, String)> {

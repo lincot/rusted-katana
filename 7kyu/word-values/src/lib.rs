@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/598d91785d4ce3ec4f000018/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
-
 pub fn word_value(words: &[&str]) -> Vec<i32> {
     (1..)
         .zip(words)

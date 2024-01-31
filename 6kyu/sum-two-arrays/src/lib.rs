@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/59c3e8c9f5d5e40cab000ca6/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use core::hint::unreachable_unchecked;
 use digital::WriteNumUnchecked;
 

@@ -1,9 +1,6 @@
-#![no_std]
 #![feature(test)]
 
-extern crate alloc;
 extern crate test;
-use alloc::string::String;
 use core::array;
 use even_odd_disparity::solve;
 use rand::Rng;

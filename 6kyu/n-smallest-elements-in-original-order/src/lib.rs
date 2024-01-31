@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/5aec1ed7de4c7f3517000079/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
-
 pub fn first_n_smallest(arr: &[i32], n: usize) -> Vec<i32> {
     let mut arr_enumerated: Vec<_> = arr.iter().copied().zip(0..).collect();
     arr_enumerated.select_nth_unstable(n.saturating_sub(1));

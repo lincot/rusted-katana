@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5ce6728c939bf80029988b57/train/rust>
 
-#![no_std]
-
 pub fn solve(s: &str) -> bool {
     if s.len() > (b'z' - b'a' + 1) as usize {
         return false;

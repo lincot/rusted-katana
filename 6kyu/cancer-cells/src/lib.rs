@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5931614bb2f657c18c0001c3/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::PushUnchecked;
 
 pub fn cut_cancer_cells(organism: &str) -> String {

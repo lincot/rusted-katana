@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/57e8fba2f11c647abc000944/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::{PushStrUnchecked, PushUnchecked};
 
 pub fn fire_fight(s: &str) -> String {

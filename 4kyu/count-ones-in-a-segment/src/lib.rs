@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/596d34df24a04ee1e3000a25/train/rust>
 
-#![no_std]
-
 pub fn count_ones(left: u64, right: u64) -> u64 {
     count_ones_from_zero_to(right) - count_ones_from_zero_to(left - 1)
 }

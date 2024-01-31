@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5da9973d06119a000e604cb6/train/rust>
 
-#![no_std]
-
 pub fn counting_valleys(s: &str) -> u32 {
     let mut level = 0i64;
     let mut res = 0;

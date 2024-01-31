@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5efcaedf95d7110017896ced/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec::Vec};
 use unchecked::PushUnchecked;
 
 pub fn f32_to_ieee_754(n: f32) -> String {

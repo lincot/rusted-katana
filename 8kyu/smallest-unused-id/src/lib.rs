@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/55eea63119278d571d00006a/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::boxed::Box;
 use vqsort::VqSort;
 
 pub fn next_id(ids: &[usize]) -> usize {

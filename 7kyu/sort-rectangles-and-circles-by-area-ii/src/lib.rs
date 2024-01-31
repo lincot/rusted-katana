@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5a1ebc2480171f29cf0000e5/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use core::{cmp::Ordering, f64::consts::PI};
 use either::Either;
 

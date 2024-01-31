@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/57ee99a16c8df7b02d00045f/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use unchecked::ExtendFromSliceUnchecked;
 use vqsort::VqSort;
 

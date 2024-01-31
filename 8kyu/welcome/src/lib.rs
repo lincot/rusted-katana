@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/577ff15ad648a14b780000e7/train/rust>
 
-#![no_std]
-
 pub fn greet(language: &str) -> &'static str {
     match language {
         "czech" => "Vitejte",

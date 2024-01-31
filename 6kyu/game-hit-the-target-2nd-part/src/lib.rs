@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/6177b4119b69a40034305f14/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
-
 pub fn solution(mtrx: &[Vec<char>]) -> bool {
     let mut x_pos = None;
     for (i, row) in mtrx.iter().enumerate() {

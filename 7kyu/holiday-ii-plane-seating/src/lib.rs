@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/57e8f757085f7c7d6300009a/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::PushStrUnchecked;
 
 pub fn plane_seat(seat_number: &str) -> String {

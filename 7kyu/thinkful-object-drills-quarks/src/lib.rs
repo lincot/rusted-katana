@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5882b052bdeafec15e0000e6/train/rust>
 
-#![no_std]
-
 pub struct Quark<'a, 'b> {
     color: &'a str,
     flavor: &'b str,

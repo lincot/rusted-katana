@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/586538146b56991861000293/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec::Vec};
 use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn to_nato(words: &str) -> String {

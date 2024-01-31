@@ -1,9 +1,6 @@
 //! <https://www.codewars.com/kata/56cca888a9d0f25985000036/train/rust>
 
-#![no_std]
-#![feature(core_intrinsics)]
-
-use core::{hint::unreachable_unchecked, intrinsics::sqrtf32};
+use core::hint::unreachable_unchecked;
 use num_bigint::BigUint;
 
 /// checks if `x` is prime || `x` is divisible by 2 or 3 || `x` <= 1
@@ -61,7 +58,7 @@ pub fn candies_to_buy(amount_of_kids_invited: u16) -> BigUint {
     let mut n = 5;
     let mut step = 2;
 
-    let mut sqrt: u16 = unsafe { sqrtf32(n as _).to_int_unchecked() };
+    let mut sqrt: u16 = unsafe { (n as f32).sqrt().to_int_unchecked() };
     let mut next_perfect_square = (sqrt + 1).pow(2);
 
     while n <= amount_of_kids_invited {

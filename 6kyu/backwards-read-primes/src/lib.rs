@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5539fecef69c483c5a000015/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use core::hint::unreachable_unchecked;
 use num_integer::Roots;
 use unchecked::PushUnchecked;

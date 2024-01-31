@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/65128732b5aff40032a3d8f0/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
-
 pub fn neutralise(s1: &str, s2: &str) -> String {
     assert!(s1.is_ascii() && s1.len() == s2.len());
     let res = s1

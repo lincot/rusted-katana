@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/65006177f534f65b2594df05/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{boxed::Box, vec::Vec};
-
 pub fn rank<T: Copy + Ord>(lst: &[T]) -> Vec<f64> {
     let mut lst_indexed: Box<[_]> = lst.iter().copied().enumerate().collect();
     if lst.len() != lst_indexed.len() {

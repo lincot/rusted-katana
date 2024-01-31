@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/58b3c2bd917a5caec0000017/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-
 pub fn sum_groups(arr: &[u32]) -> usize {
     let mut arr = arr.to_vec();
 

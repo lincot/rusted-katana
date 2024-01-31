@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/545f05676b42a0a195000d95/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use core::cmp::Reverse;
 
 pub fn ranks(a: &[i32]) -> Vec<usize> {

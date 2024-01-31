@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/588e2a1ad1140d31cb00008c/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use unchecked::PushUnchecked;
 
 pub fn generate_pairs(m: i16, n: i16) -> Vec<(i16, i16)> {

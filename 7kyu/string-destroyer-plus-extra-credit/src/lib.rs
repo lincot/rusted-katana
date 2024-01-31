@@ -1,12 +1,5 @@
 //! <https://www.codewars.com/kata/5872637c2eefcb1216000081/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{
-    string::{String, ToString},
-    vec::Vec,
-};
 use hashbrown::HashSet;
 
 pub fn destroy(input_sets: Vec<HashSet<char>>) -> String {

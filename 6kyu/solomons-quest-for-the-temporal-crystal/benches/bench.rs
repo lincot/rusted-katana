@@ -1,9 +1,6 @@
-#![no_std]
 #![feature(test)]
 
-extern crate alloc;
 extern crate test;
-use alloc::vec;
 use solomons_quest_for_the_temporal_crystal::quest::solomons_quest;
 use test::{black_box, Bencher};
 

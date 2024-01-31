@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/596fba44963025c878000039/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::PushStrUnchecked;
 
 pub fn contamination(text: &str, character: &str) -> String {

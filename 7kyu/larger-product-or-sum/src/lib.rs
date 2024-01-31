@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5c4cb8fc3cf185147a5bdd02/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use core::cmp::Ordering;
 use vqsort::VqSort;
 

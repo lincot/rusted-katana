@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/6066ae080168ff0032c4107a/train/rust>
 
-#![no_std]
-
 pub fn max_sum_between_two_negatives(nums: &[i32]) -> Option<i32> {
     let mut sum = 0;
     let mut res = -1;

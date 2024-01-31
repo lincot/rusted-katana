@@ -12,10 +12,8 @@ fastest solutions to [Codewars](https://www.codewars.com/r/HLmVMg) katas
 
 - third-party libraries are allowed, even if they aren't accepted by Codewars
 
-- `#![no_std]` everywhere, because we don't need `std`
-
 - solutions are safe, i.e. they don't produce undefined behavior
-(checked with miri); *nevertheless, there are 457 `unsafe` blocks*
+(checked with miri); *nevertheless, there are 437 `unsafe` blocks*
 
 - even though most of the tests on Codewars have only ASCII input,
 they use Rust's standard UTF-8–encoded strings,

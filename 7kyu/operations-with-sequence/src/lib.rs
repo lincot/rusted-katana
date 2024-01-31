@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/596ddaccdd42c1cf0e00005c/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
-
 pub fn calc(mut array: Vec<i32>) -> i32 {
     let mut res = 0;
 

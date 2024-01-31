@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/55ecd718f46fba02e5000029/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{vec, vec::Vec};
 use unchecked::PushUnchecked;
 
 pub fn between(a: i16, b: i16) -> Vec<i16> {

@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/5a55f04be6be383a50000187/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
-
 pub fn special_number(mut n: u64) -> String {
     while n != 0 {
         if n % 10 > 5 {

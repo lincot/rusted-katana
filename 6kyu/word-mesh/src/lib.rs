@@ -1,10 +1,7 @@
 //! <https://www.codewars.com/kata/5c1ae703ba76f438530000a2/train/rust>
 
-#![no_std]
 #![feature(array_windows)]
 
-extern crate alloc;
-use alloc::string::String;
 use unchecked::PushStrUnchecked;
 
 pub fn word_mesh(words: &[&str]) -> Option<String> {

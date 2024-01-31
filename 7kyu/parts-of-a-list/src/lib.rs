@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/56f3a1e899b386da78000732/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec::Vec};
 use unchecked::{PushStrUnchecked, PushUnchecked};
 
 pub fn part_list(arr: Vec<&str>) -> String {

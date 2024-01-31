@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/59b0b7cd2a00d219ab0000c5/train/rust>
 
-#![no_std]
-
 pub const fn spinning_rings(inner_max: u64, outer_max: u64) -> u64 {
     let (i, o) = (inner_max + 1, outer_max + 1);
     if i % 2 == 0 && i < 2 * o {

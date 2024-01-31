@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5259b20d6021e9e14c0010d4/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::{ExtendUnchecked, PushUnchecked};
 
 pub fn reverse_words(str: &str) -> String {

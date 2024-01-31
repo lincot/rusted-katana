@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/511f11d355fe575d2c000001/train/rust>
 
-#![no_std]
-
 pub fn two_oldest_ages(ages: &[u8]) -> [u8; 2] {
     let mut max0 = 0;
     let mut max1 = 0;

@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5899dc03bc95b1bf1b0000ad/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use core::ops::Neg;
 
 pub fn invert(values: &[i32]) -> Vec<i32> {

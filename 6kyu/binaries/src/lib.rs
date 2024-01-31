@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5d98b6b38b0f6c001a461198/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
 use unchecked::{PushStrUnchecked, PushUnchecked};
 
 const B0: &str = "10";

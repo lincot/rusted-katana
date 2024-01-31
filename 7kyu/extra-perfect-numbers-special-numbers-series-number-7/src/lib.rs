@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/5a662a02e626c54e87000123/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use unchecked::PushUnchecked;
 
 pub fn extra_perfect(n: u32) -> Vec<u32> {

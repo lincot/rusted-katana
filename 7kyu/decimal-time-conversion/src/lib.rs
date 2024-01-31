@@ -1,11 +1,5 @@
 //! <https://www.codewars.com/kata/6397b0d461067e0030d1315e/train/rust>
 
-#![no_std]
-#![feature(core_intrinsics)]
-
-extern crate alloc;
-use alloc::string::String;
-use core::intrinsics::fmaf64;
 use digital::{MaxLenBase10, WriteNumUnchecked};
 use unchecked::PushUnchecked;
 
@@ -25,7 +19,7 @@ pub fn to_normal(time: f64) -> String {
     unsafe {
         res.write_num_unchecked(time as u32, 10, false, false);
         res.push_unchecked(':');
-        let minutes = fmaf64(time - time as u32 as f64, 60., 0.5) as u8;
+        let minutes = (time - time as u32 as f64).mul_add(60., 0.5) as u8;
         res.as_mut_vec().push_unchecked(minutes / 10 + b'0');
         res.as_mut_vec().push_unchecked(minutes % 10 + b'0');
     }

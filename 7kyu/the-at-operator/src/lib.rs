@@ -1,10 +1,5 @@
 //! <https://www.codewars.com/kata/631f0c3a0b9cb0de6ded0529/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::string::String;
-
 fn at(a: i64, b: i64) -> Option<i64> {
     Some(a * (b + 2) + a.checked_div(b)?)
 }

@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/59f08f89a5e129c543000069/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::{string::String, vec::Vec};
 use unchecked::PushUnchecked;
 
 pub fn dup(mut arry: Vec<String>) -> Vec<String> {

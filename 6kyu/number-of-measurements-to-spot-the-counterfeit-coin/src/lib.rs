@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/59530d2401d6039f8600001f/train/rust>
 
-#![no_std]
-
 pub fn how_many_measurements(n: u64) -> u32 {
     const POWERS_OF_3: [u64; 41] = {
         let mut res = [1; 41];

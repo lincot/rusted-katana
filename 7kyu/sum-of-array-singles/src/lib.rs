@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/59f11118a5e129e591000134/train/rust>
 
-#![no_std]
-
 use core::ops::BitXor;
 
 pub fn repeats(arr: &[i32]) -> i32 {

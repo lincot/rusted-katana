@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5bb148b840196d1be50000b1/train/rust>
 
-#![no_std]
+#![allow(internal_features)]
 #![feature(unicode_internals)]
 
 use core::unicode::conversions::to_lower;

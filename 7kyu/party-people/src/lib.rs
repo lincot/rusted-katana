@@ -1,8 +1,5 @@
 //! <https://www.codewars.com/kata/65013fc50038a68939098dcf/train/rust>
 
-#![no_std]
-
-extern crate alloc;
 use vqsort::VqSort;
 
 pub fn party_people(lst: &[u32]) -> u32 {

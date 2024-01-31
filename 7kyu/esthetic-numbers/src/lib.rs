@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/6523a71df7666800170a1954/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use unchecked::PushUnchecked;
 
 pub fn esthetic(num: u32) -> Vec<u8> {

@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/586ec0b8d098206cce001141/train/rust>
 
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use unchecked::ExtendFromSliceUnchecked;
 
 pub fn inverse_slice<T: Clone>(input: &[T], a: usize, b: usize) -> Vec<T> {

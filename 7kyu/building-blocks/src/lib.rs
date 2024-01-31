@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/55b75fcf67e558d3750000a3/train/rust>
 
-#![no_std]
-
 pub struct Block {
     width: u32,
     length: u32,

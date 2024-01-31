@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/628e6f112324192c65cd8c97/train/rust>
 
-#![no_std]
-
 pub fn prescribe(d: u16, a: u16, b: u16) -> u16 {
     let mut res = d % a;
     let mut r = res;

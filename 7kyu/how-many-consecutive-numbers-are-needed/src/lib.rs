@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/559cc2d2b802a5c94700000c/train/rust>
 
-#![no_std]
-
 pub fn consecutive(xs: &[i16]) -> i16 {
     let mut it = xs.iter();
 
