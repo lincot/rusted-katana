@@ -1,0 +1,11 @@
+[package]
+name = "rank-vector"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+radsort = { git = "https://github.com/JakubValtar/radsort" }
+
+[dev-dependencies]
+rand = { version = "0.8.5", default-features = false }
+rand_pcg = "0.3.1"

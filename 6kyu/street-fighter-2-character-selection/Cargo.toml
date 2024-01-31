@@ -1,0 +1,11 @@
+[package]
+name = "street-fighter-2-character-selection"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+unchecked = { path = "../../unchecked" }
+
+[dev-dependencies]
+rand = { version = "0.8.5", default-features = false }
+rand_pcg = "0.3.1"
