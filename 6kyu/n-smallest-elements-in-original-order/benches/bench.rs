@@ -14,5 +14,5 @@ fn bench(bencher: &mut Bencher) {
         0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
     );
     let arr: [_; 1000] = array::from_fn(|_| rng.gen());
-    bencher.iter(|| first_n_smallest(black_box(&arr), black_box(300)));
+    bencher.iter(|| first_n_smallest(black_box(&arr), black_box(30)));
 }
