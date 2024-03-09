@@ -55,7 +55,7 @@ macro_rules! vqsort_u {
             #[inline]
             fn sort_descending(data: &mut [Self]) {
                 if cfg!(miri) {
-                    data.sort_unstable();
+                    data.sort_unstable_by_key(|&x| core::cmp::Reverse(x));
                 } else {
                     unsafe { [<vqsort_u $t _descending>](data.as_mut_ptr().cast(), data.len()) };
                 }
