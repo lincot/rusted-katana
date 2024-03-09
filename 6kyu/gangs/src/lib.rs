@@ -12,7 +12,7 @@ struct IdHasher(u64);
 
 impl Hasher for IdHasher {
     fn write(&mut self, _: &[u8]) {
-        unreachable!();
+        unimplemented!();
     }
 
     fn write_u64(&mut self, i: u64) {
