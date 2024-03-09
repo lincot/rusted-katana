@@ -10,9 +10,9 @@ pub fn leg_room(a: u32, b: &str) -> &'static str {
         .filter(|b| !b"aeiou".contains(b))
         .count() as u32;
     let leg_length = a * 55 / 100;
-    if room > leg_length * 25 / 100 {
+    if room > leg_length / 4 {
         "super comfy"
-    } else if room > leg_length * 15 / 100 {
+    } else if room > leg_length * 3 / 20 {
         "comfortable"
     } else {
         "ouch"
