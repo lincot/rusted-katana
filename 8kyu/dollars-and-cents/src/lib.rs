@@ -5,7 +5,7 @@ use unchecked::PushUnchecked;
 
 pub fn format_money(amount: f64) -> String {
     let mut res = String::with_capacity("$184467440737095516.15".len());
-    let amount = (100.000_000_1 * amount) as u64;
+    let amount = ((100. + 1e-7) * amount) as u64;
     unsafe {
         res.push_unchecked('$');
         res.write_num_unchecked(amount, 10, false, false);
