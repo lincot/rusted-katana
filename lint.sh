@@ -14,7 +14,9 @@ if ! rg -q "$bytes times" README.md; then
   echo -e "${RED}wrong bytes count, should be $bytes${RESET}"
 fi
 
+echo check
 cargo check --all-features --all-targets --quiet --release
+echo clippy
 cargo clippy --all-features --all-targets --no-deps --quiet --release -- \
   -D clippy::all \
   -D clippy::pedantic \
@@ -47,9 +49,15 @@ cargo clippy --all-features --all-targets --no-deps --quiet --release -- \
   -A clippy::debug-assert-with-mut-call \
   -A clippy::module-name-repetitions \
   -A clippy::suspicious-operation-groupings
-cargo update
-cargo outdated
+echo update
+cargo update --quiet
+echo outdated
+cargo outdated 2>/dev/null
+echo udeps
 cargo udeps --quiet 2>/dev/null
+echo fmt
 cargo fmt
+echo run check-katas
 cargo run --package check-katas --quiet --release
+echo miri
 cargo miri nextest run --all-targets --no-fail-fast --status-level fail
