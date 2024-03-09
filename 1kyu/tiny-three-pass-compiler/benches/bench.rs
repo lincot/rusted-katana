@@ -3,7 +3,6 @@
 extern crate test;
 use test::{black_box, Bencher};
 use tiny_three_pass_compiler::{
-    self,
     Ast::{BinOp, UnOp},
     Compiler,
 };
