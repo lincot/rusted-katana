@@ -1,0 +1,11 @@
+[package]
+name = "gravity-flip-3d-version"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+vqsort = { path = "../../vqsort" }
+
+[dev-dependencies]
+rand = { version = "0.8.5", default-features = false, features = ["std"] }
+rand_pcg = "0.3.1"

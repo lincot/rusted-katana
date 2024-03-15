@@ -1,0 +1,8 @@
+[package]
+name = "highest-perfect-square-with-same-digits"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+digital = { path = "../../digital" }
+heapless = "0.8.0"
