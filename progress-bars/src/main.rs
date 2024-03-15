@@ -29,12 +29,23 @@ struct ProgressBars<'a> {
 
 impl<'a> ProgressBars<'a> {
     fn new(font: &'a Font, width: u32, bar_height: u32, vertical_padding: u32) -> Self {
+        let mut image = RgbImage::new(
+            width,
+            (bar_height + vertical_padding) * 8 - vertical_padding,
+        );
         let font_width = bar_height * 2 / 5;
+
+        for i in 1..8 {
+            let y = ((bar_height + vertical_padding) * i - vertical_padding) as _;
+            draw_filled_rect_mut(
+                &mut image,
+                Rect::at(0, y).of_size(width, vertical_padding),
+                Rgb([34, 34, 34]),
+            );
+        }
+
         Self {
-            image: RgbImage::new(
-                width,
-                (bar_height + vertical_padding) * 8 - vertical_padding,
-            ),
+            image,
             font,
             bar_height,
             vertical_padding,
@@ -72,7 +83,7 @@ impl<'a> ProgressBars<'a> {
                 Ordering::Equal => {}
             }
 
-            let mut kyu_text = *b"0 kyu:";
+            let mut kyu_text = *b"0 kyu";
             kyu_text[0] = i + b'1';
             let kyu_text = unsafe { core::str::from_utf8_unchecked(&kyu_text) };
             draw_text_mut(
@@ -149,7 +160,7 @@ fn main() {
 
     let font =
         Font::try_from_bytes(include_bytes!("/usr/share/fonts/TTF/FiraCode-Bold.ttf")).unwrap();
-    let progress_bars = ProgressBars::new(&font, 600, 50, 10);
+    let progress_bars = ProgressBars::new(&font, 360, 30, 5);
 
     for task in network_tasks {
         task.join().unwrap();
