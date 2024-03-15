@@ -12,6 +12,7 @@ members = [
     "7kyu/*",
     "8kyu/*",
     "check-katas",
+    "progress-bars",
 ]
 resolver = "2"
 

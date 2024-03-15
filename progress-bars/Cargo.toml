@@ -1,0 +1,12 @@
+[package]
+name = "rusted-katana-progress-bars"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+digital = { path = "../digital" }
+image = "0.24.9"
+imageproc = "0.23.0"
+reqwest = { version = "0.11.26", features = ["blocking"] }
+rusttype = "0.9.2"
+heapless = "0.8.0"

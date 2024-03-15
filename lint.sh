@@ -57,6 +57,8 @@ echo udeps
 cargo udeps --quiet 2>/dev/null
 echo fmt
 cargo fmt
+echo run progress-bars
+cargo run --package rusted-katana-progress-bars --quiet --release
 echo run check-katas
 cargo run --package check-katas --quiet --release
 echo miri

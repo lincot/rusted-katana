@@ -4,6 +4,10 @@
 
 fastest solutions to [Codewars](https://www.codewars.com/r/HLmVMg) katas
 
+current progress:
+
+![image showing how many katas have been solved](progress-bars.png)
+
 ## rules
 
 - written in Rust, but importing code written in other languages is allowed
