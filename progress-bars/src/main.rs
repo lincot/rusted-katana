@@ -10,12 +10,26 @@ use imageproc::{
 };
 use rusttype::{Font, Scale};
 use std::{
-    cell::SyncUnsafeCell,
     fs,
     io::{self, Write},
-    sync::Arc,
     thread,
 };
+
+struct SendPtr<T>(*const T);
+impl<T> SendPtr<T> {
+    const unsafe fn deref_ptr(&self) -> &T {
+        &*self.0
+    }
+}
+unsafe impl<T> Send for SendPtr<T> {}
+
+struct SendMutPtr<T>(*mut T);
+impl<T> SendMutPtr<T> {
+    unsafe fn assign(self, val: T) {
+        *self.0 = val;
+    }
+}
+unsafe impl<T> Send for SendMutPtr<T> {}
 
 struct ProgressBars<'a> {
     image: RgbImage,
@@ -55,10 +69,10 @@ impl<'a> ProgressBars<'a> {
         }
     }
 
-    fn write_progress(mut self, progresses: &[(u32, u32); 8]) -> RgbImage {
+    fn write_progress(mut self, progresses: &[u32; 8], limits: &[u32; 8]) -> RgbImage {
         let width = self.image.width();
 
-        for (i, &(progress, limit)) in (0..).zip(progresses) {
+        for (i, (&progress, &limit)) in (0..).zip(progresses.iter().zip(limits)) {
             let y = ((self.bar_height + self.vertical_padding) * i as u32) as _;
 
             let progress_width = progress * width / limit;
@@ -136,26 +150,23 @@ fn get_kata_amount(reqwest_client: &reqwest::blocking::Client, kyu: u8) -> reqwe
 }
 
 fn main() {
-    let reqwest_client = Arc::new(reqwest::blocking::Client::new());
+    let reqwest_client = Box::leak(Box::new(reqwest::blocking::Client::new()));
 
-    let progresses =
-        Arc::new(unsafe { MaybeUninit::<SyncUnsafeCell<[(u32, u32); 8]>>::uninit().assume_init() });
+    let limits = Box::leak(Box::new(unsafe {
+        MaybeUninit::<[u32; 8]>::uninit().assume_init()
+    }));
     let network_tasks = [1, 2, 3, 4, 5, 6, 7, 8].map(|kyu| {
-        let reqwest_client = reqwest_client.clone();
-        let progresses = progresses.clone();
-        thread::spawn(move || unsafe {
-            (*progresses.get())[(kyu - 1) as usize].1 =
-                get_kata_amount(&reqwest_client, kyu).unwrap();
-        })
+        let p = SendMutPtr(core::ptr::from_mut(&mut limits[(kyu - 1) as usize]));
+        let r = SendPtr(core::ptr::from_ref(&reqwest_client));
+        thread::spawn(move || unsafe { p.assign(get_kata_amount(r.deref_ptr(), kyu).unwrap()) })
     });
 
+    let mut progresses = unsafe { MaybeUninit::<[u32; 8]>::uninit().assume_init() };
     for kyu in 1..=8 {
         let mut folder = *b"8kyu";
         folder[0] = b'0' + kyu;
         let folder = unsafe { core::str::from_utf8_unchecked(&folder) };
-        unsafe {
-            (*progresses.get())[(kyu - 1) as usize].0 = fs::read_dir(folder).unwrap().count() as _;
-        }
+        progresses[(kyu - 1) as usize] = fs::read_dir(folder).unwrap().count() as _;
     }
 
     let font =
@@ -167,7 +178,7 @@ fn main() {
     }
 
     progress_bars
-        .write_progress(&unsafe { *progresses.get() })
+        .write_progress(&progresses, limits)
         .save("progress-bars.png")
         .unwrap();
 }
