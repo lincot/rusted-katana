@@ -1,7 +1,6 @@
 #![allow(invalid_value)]
-#![feature(sync_unsafe_cell)]
 
-use core::{cmp::Ordering, mem::MaybeUninit};
+use core::{cmp::Ordering, mem::MaybeUninit, ptr};
 use digital::{MaxLenBase10, WriteNumUnchecked};
 use image::{Rgb, RgbImage};
 use imageproc::{
@@ -14,22 +13,6 @@ use std::{
     io::{self, Write},
     thread,
 };
-
-struct SendPtr<T>(*const T);
-impl<T> SendPtr<T> {
-    const unsafe fn deref_ptr(&self) -> &T {
-        &*self.0
-    }
-}
-unsafe impl<T> Send for SendPtr<T> {}
-
-struct SendMutPtr<T>(*mut T);
-impl<T> SendMutPtr<T> {
-    unsafe fn assign(self, val: T) {
-        *self.0 = val;
-    }
-}
-unsafe impl<T> Send for SendMutPtr<T> {}
 
 struct ProgressBars<'a> {
     image: RgbImage,
@@ -149,16 +132,22 @@ fn get_kata_amount(reqwest_client: &reqwest::blocking::Client, kyu: u8) -> reqwe
         .unwrap())
 }
 
-fn main() {
-    let reqwest_client = Box::leak(Box::new(reqwest::blocking::Client::new()));
+static mut REQWEST_CLIENT: MaybeUninit<reqwest::blocking::Client> = MaybeUninit::uninit();
+static mut LIMITS: MaybeUninit<[u32; 8]> = MaybeUninit::uninit();
 
-    let limits = Box::leak(Box::new(unsafe {
-        MaybeUninit::<[u32; 8]>::uninit().assume_init()
-    }));
+fn main() {
+    unsafe {
+        ptr::write(
+            REQWEST_CLIENT.as_mut_ptr(),
+            reqwest::blocking::Client::new(),
+        );
+    }
+
     let network_tasks = [1, 2, 3, 4, 5, 6, 7, 8].map(|kyu| {
-        let p = SendMutPtr(core::ptr::from_mut(&mut limits[(kyu - 1) as usize]));
-        let r = SendPtr(core::ptr::from_ref(&reqwest_client));
-        thread::spawn(move || unsafe { p.assign(get_kata_amount(r.deref_ptr(), kyu).unwrap()) })
+        thread::spawn(move || unsafe {
+            LIMITS.assume_init_mut()[(kyu - 1) as usize] =
+                get_kata_amount(REQWEST_CLIENT.assume_init_ref(), kyu).unwrap();
+        })
     });
 
     let mut progresses = unsafe { MaybeUninit::<[u32; 8]>::uninit().assume_init() };
@@ -178,7 +167,7 @@ fn main() {
     }
 
     progress_bars
-        .write_progress(&progresses, limits)
+        .write_progress(&progresses, unsafe { LIMITS.assume_init_ref() })
         .save("progress-bars.png")
         .unwrap();
 }
