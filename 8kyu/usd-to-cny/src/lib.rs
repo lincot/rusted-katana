@@ -12,9 +12,9 @@ pub fn usdcny(usd: u16) -> String {
         }
         let len_before = res.len();
         let last = *res.as_bytes().get_unchecked(len_before - 1);
-        let pen = *res.as_bytes().get_unchecked(len_before - 2);
+        let penult = *res.as_bytes().get_unchecked(len_before - 2);
         res.as_mut_vec().push_unchecked(last);
-        *res.as_mut_vec().get_unchecked_mut(len_before - 1) = pen;
+        *res.as_mut_vec().get_unchecked_mut(len_before - 1) = penult;
         *res.as_mut_vec().get_unchecked_mut(len_before - 2) = b'.';
         res.push_str_unchecked(" Chinese Yuan");
     }
