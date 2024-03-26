@@ -5,5 +5,5 @@ edition = "2021"
 
 [dependencies]
 unchecked = { path = "../unchecked" }
-rayon = "1.6.0"
-reqwest = { version = "0.11.13", features = ["blocking"] }
+tokio = { version = "1.36.0", features = ["full"] }
+reqwest = "0.11.13"
