@@ -137,3 +137,19 @@ impl PushStrUnchecked for String {
             .extend_from_slice_unchecked(string.as_bytes());
     }
 }
+
+pub trait CopyFromSliceUnchecked<T> {
+    /// # Safety
+    ///
+    /// `self.len()` must be `== src.len()`
+    unsafe fn copy_from_slice_unchecked(&mut self, src: &[T]);
+}
+
+impl<T: Copy> CopyFromSliceUnchecked<T> for [T] {
+    unsafe fn copy_from_slice_unchecked(&mut self, src: &[T]) {
+        debug_assert!(self.len() == src.len());
+        unsafe {
+            core::ptr::copy_nonoverlapping(src.as_ptr(), self.as_mut_ptr(), self.len());
+        }
+    }
+}
