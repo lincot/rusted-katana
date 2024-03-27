@@ -4,6 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-unchecked = { path = "../../unchecked" }
+unchecked-core = { path = "../../unchecked-core" }
 digital = { path = "../../digital" }
 libm = { version = "0.2.5", features = ["unstable"] }

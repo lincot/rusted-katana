@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5931614bb2f657c18c0001c3/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn cut_cancer_cells(organism: &str) -> String {
     let mut res = String::with_capacity(organism.len());

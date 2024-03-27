@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/559d2284b5bb6799e9000047/train/rust>
 
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked::{PushStrUnchecked, PushUnchecked};
+use unchecked_core::{PushStrUnchecked, PushUnchecked};
 
 pub fn add_length(s: &str) -> Vec<String> {
     let mut res = Vec::with_capacity(s.len() / 2 + 1);

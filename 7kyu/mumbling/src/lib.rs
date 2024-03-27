@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5667e8f4e3f572a8f2000039/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn accum(s: &str) -> String {
     let cap = if s.is_empty() {

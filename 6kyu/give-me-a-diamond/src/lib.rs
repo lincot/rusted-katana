@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5503013e34137eeeaa001648/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn print(n: i32) -> Option<String> {
     unsafe fn print_line(v: &mut String, width: usize, max_width: usize) {

@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/56747fd5cb988479af000028/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn get_middle(s: &str) -> &str {
     let mut char_indices = Vec::with_capacity(s.len());

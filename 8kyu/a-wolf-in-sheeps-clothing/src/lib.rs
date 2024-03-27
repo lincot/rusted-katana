@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5c8bfa44b9d1192e1ebd3d15/train/rust>
 
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked::PushStrUnchecked;
+use unchecked_core::PushStrUnchecked;
 
 pub fn warn_the_sheep(queue: &[&str]) -> String {
     let wolf_pos = queue

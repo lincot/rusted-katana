@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/56dbe0e313c2f63be4000b25/train/rust>
 
-use unchecked::{ExtendUnchecked, PushStrUnchecked, PushUnchecked};
+use unchecked_core::{ExtendUnchecked, PushStrUnchecked, PushUnchecked};
 
 pub fn hor_mirror(s: String) -> String {
     let mut res = String::with_capacity(s.len());

@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/578aa45ee9fd15ff4600090d/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 use vqsort::VqSort;
 
 pub fn sort_array(arr: &[i32]) -> Vec<i32> {

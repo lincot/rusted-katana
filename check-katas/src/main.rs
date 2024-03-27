@@ -9,7 +9,7 @@ use std::{
     io::{self, Read, Write},
 };
 use tokio::task::JoinSet;
-use unchecked::PushStrUnchecked;
+use unchecked_core::PushStrUnchecked;
 
 static mut REQWEST_CLIENT: MaybeUninit<reqwest::Client> = MaybeUninit::uninit();
 static mut BLOCKED: AtomicBool = AtomicBool::new(false);

@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/59c804d923dacc6c41000004/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn circle(radius: i32) -> String {
     if radius < 0 {

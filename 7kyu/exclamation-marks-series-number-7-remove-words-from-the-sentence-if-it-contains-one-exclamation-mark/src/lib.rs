@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/57fafb6d2b5314c839000195/train/rust>
 
-use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
+use unchecked_core::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn remove(s: &str) -> String {
     let s = s.as_bytes();

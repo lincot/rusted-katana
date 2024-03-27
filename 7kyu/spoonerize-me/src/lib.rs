@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/56b8903933dbe5831e000c76/train/rust>
 
-use unchecked::PushStrUnchecked;
+use unchecked_core::PushStrUnchecked;
 
 pub fn spoonerize(words: &str) -> String {
     let first_len = words.chars().next().unwrap().len_utf8();

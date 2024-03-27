@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/58539230879867a8cd00011c/train/rust>
 
 use core::hint::unreachable_unchecked;
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn find_children(dancing_brigade: &str) -> String {
     let mut res = String::with_capacity(dancing_brigade.len());

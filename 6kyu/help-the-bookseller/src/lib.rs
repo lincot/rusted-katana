@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/54dc6f5a224c26032800005c/train/rust>
 
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked::{PushStrUnchecked, PushUnchecked};
+use unchecked_core::{PushStrUnchecked, PushUnchecked};
 
 pub fn stock_list(list_art: Vec<&str>, list_cat: Vec<&str>) -> String {
     if list_art.is_empty() || list_cat.is_empty() {

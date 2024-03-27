@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/588e2a1ad1140d31cb00008c/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn generate_pairs(m: i16, n: i16) -> Vec<(i16, i16)> {
     let t = if n >= m {

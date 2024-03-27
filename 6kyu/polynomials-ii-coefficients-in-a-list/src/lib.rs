@@ -2,7 +2,7 @@
 
 use core::cmp::Ordering;
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked::{PushStrUnchecked, PushUnchecked};
+use unchecked_core::{PushStrUnchecked, PushUnchecked};
 
 pub fn calc_poly(pol_list: &[i32], x: i32) -> String {
     let mut res = String::with_capacity(

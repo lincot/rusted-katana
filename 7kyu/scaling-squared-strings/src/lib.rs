@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/56ed20a2c4e5d69155000301/train/rust>
 
-use unchecked::{ExtendFromWithinUnchecked, PushUnchecked};
+use unchecked_core::{ExtendFromWithinUnchecked, PushUnchecked};
 
 pub fn scale(s: &str, k: u32, n: u32) -> String {
     const DELIM: char = '\n';

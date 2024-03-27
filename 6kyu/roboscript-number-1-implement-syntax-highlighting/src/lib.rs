@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/58708934a44cfccca60000c4/train/rust>
 
-use unchecked::{PushStrUnchecked, PushUnchecked};
+use unchecked_core::{PushStrUnchecked, PushUnchecked};
 
 pub fn highlight(code: &str) -> String {
     unsafe fn push_unchecked_beginning(s: &mut String, token: u8) {

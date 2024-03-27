@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5fa6d9e9454977000fb0c1f8/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn unpack_sausages(truck: Vec<Vec<&str>>) -> String {
     let packages_num = truck.iter().map(Vec::len).sum::<usize>();

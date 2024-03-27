@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/55902c5eaa8069a5b4000083/train/rust>
 
 use digital::WriteNumUnchecked;
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn format_money(amount: f64) -> String {
     let mut res = String::with_capacity("$184467440737095516.15".len());

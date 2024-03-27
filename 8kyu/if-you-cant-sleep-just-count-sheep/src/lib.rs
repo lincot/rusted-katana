@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5b077ebdaf15be5c7f000077/train/rust>
 
 use digital::WriteNumUnchecked;
-use unchecked::PushStrUnchecked;
+use unchecked_core::PushStrUnchecked;
 
 /// equals to `(1..=n).map(|x| x.to_string().len()).sum::<usize>() as u32`
 fn integral_log10(n: u32) -> u32 {

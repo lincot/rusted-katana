@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5121303128ef4b495f000001/train/rust>
 
-use unchecked::PushStrUnchecked;
+use unchecked_core::PushStrUnchecked;
 
 pub struct Person<'a> {
     pub name: &'a str,

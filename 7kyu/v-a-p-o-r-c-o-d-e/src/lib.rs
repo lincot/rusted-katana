@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5966eeb31b229e44eb00007a/train/rust>
 
-use unchecked::{ExtendUnchecked, PushStrUnchecked, PushUnchecked};
+use unchecked_core::{ExtendUnchecked, PushStrUnchecked, PushUnchecked};
 
 pub fn vaporcode(s: &str) -> String {
     let mut res = String::with_capacity(3 * s.len());

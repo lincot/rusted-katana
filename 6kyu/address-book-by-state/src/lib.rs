@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/59d0ee709f0cbcf65400003b/train/rust>
 
 use core::array;
-use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
+use unchecked_core::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn by_state(str: &str) -> String {
     let [mut arizona, mut california, mut idaho, mut indiana, mut massachusetts, mut oklahoma, mut pennsylvania, mut virginia] =

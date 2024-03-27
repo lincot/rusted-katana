@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5865cff66b5699883f0001aa/train/rust>
 
 use digital::WriteNumUnchecked;
-use unchecked::PushStrUnchecked;
+use unchecked_core::PushStrUnchecked;
 
 pub fn to_time(seconds: u32) -> String {
     let mut minutes = seconds / 60;

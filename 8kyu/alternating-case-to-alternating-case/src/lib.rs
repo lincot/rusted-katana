@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/56efc695740d30f963000557/train/rust>
 
-use unchecked::ExtendUnchecked;
+use unchecked_core::ExtendUnchecked;
 
 pub fn to_alternating_case(s: &str) -> String {
     let mut res = String::with_capacity(3 * s.len());

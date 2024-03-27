@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/59f44c7bd4b36946fd000052/train/rust>
 
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
+use unchecked_core::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn hist(s: &str) -> String {
     let (mut u, mut w, mut x, mut z) = (0, 0, 0, 0);

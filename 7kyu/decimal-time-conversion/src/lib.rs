@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/6397b0d461067e0030d1315e/train/rust>
 
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn string_to_industrial(time: &str) -> f64 {
     let colon = time.as_bytes().iter().position(|&b| b == b':').unwrap();

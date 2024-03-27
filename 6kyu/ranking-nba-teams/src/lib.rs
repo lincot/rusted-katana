@@ -2,7 +2,7 @@
 
 use core::cmp::Ordering;
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked::PushStrUnchecked;
+use unchecked_core::PushStrUnchecked;
 
 pub fn nba_cup(ro: &str, to_find: &str) -> String {
     const ERROR_FLOAT: &str = "Error(float number):";

@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/57cfdf34902f6ba3d300001e/train/rust>
 
-use unchecked::{PushStrUnchecked, PushUnchecked};
+use unchecked_core::{PushStrUnchecked, PushUnchecked};
 
 pub fn two_sort(arr: &[&str]) -> String {
     const STARS: &str = "***";

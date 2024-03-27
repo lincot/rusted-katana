@@ -2,7 +2,7 @@
 
 use digital::{MaxLenBase10, WriteNumUnchecked};
 use libm::{cos, sin};
-use unchecked::{PushStrUnchecked, PushUnchecked};
+use unchecked_core::{PushStrUnchecked, PushUnchecked};
 
 pub struct Projectile {
     height: u64,

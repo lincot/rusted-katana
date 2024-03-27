@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/57f781872e3d8ca2a000007e/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn maps(values: &Vec<i32>) -> Vec<i32> {
     let mut res = Vec::with_capacity(values.len());

@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/57eadb7ecd143f4c9c0000a3/train/rust>
 
-use unchecked::{ExtendUnchecked, PushUnchecked};
+use unchecked_core::{ExtendUnchecked, PushUnchecked};
 
 unsafe fn push_unchecked_uppercase(s: &mut String, c: char) {
     if c.is_lowercase() {

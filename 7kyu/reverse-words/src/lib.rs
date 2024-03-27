@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5259b20d6021e9e14c0010d4/train/rust>
 
-use unchecked::{ExtendUnchecked, PushUnchecked};
+use unchecked_core::{ExtendUnchecked, PushUnchecked};
 
 pub fn reverse_words(str: &str) -> String {
     let mut res = String::with_capacity(str.len());

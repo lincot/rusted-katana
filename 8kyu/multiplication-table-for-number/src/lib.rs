@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5a2fd38b55519ed98f0000ce/train/rust>
 
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked::{ExtendFromSliceUnchecked, PushStrUnchecked, PushUnchecked};
+use unchecked_core::{ExtendFromSliceUnchecked, PushStrUnchecked, PushUnchecked};
 
 pub fn multi_table(n: u64) -> String {
     let mut repeating = heapless::Vec::<_, { " *  = ".len() + u64::MAX_LEN_BASE10 }>::new();

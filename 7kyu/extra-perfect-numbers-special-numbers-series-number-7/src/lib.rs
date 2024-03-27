@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5a662a02e626c54e87000123/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn extra_perfect(n: u32) -> Vec<u32> {
     let cap = (n + 1) / 2;

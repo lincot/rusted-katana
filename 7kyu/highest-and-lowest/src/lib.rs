@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/554b4ac871d6813a03000035/train/rust>
 
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn high_and_low(numbers: &str) -> String {
     let mut min = i32::MAX;

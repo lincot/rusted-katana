@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5412509bd436bd33920011bc/train/rust>
 
-use unchecked::{PushStrUnchecked, PushUnchecked};
+use unchecked_core::{PushStrUnchecked, PushUnchecked};
 
 pub fn maskify(cc: &str) -> String {
     let mut shown_chars_count = 0;

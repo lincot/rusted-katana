@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/52fba66badcd10859f00097e/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn disemvowel(s: &str) -> String {
     let mut res = String::with_capacity(s.len());

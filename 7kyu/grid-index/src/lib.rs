@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5f5802bf4c2cc4001a6f859e/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn grid_index(grid: &[Vec<char>], indices: &[usize]) -> String {
     let mut res = String::with_capacity(4 * indices.len());

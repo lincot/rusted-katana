@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/563cf89eb4747c5fb100001b/train/rust>
 
-use unchecked::ExtendFromSliceUnchecked;
+use unchecked_core::ExtendFromSliceUnchecked;
 
 pub fn remove_smallest(numbers: &[u32]) -> Vec<u32> {
     if numbers.len() < 2 {

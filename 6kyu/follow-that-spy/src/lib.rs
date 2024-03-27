@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5899a4b1a6648906fe000113/train/rust>
 
 use core::fmt::{Debug, Display};
-use unchecked::PushStrUnchecked;
+use unchecked_core::PushStrUnchecked;
 
 pub fn find_routes<S>(routes: &[[S; 2]]) -> String
 where

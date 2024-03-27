@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5efcaedf95d7110017896ced/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn f32_to_ieee_754(n: f32) -> String {
     let n = n.to_bits();

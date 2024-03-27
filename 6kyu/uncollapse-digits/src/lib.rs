@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5a626fc7fd56cb63c300008c/train/rust>
 
-use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
+use unchecked_core::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn uncollapse(digits: &str) -> String {
     if digits.len() < "oneone".len() {

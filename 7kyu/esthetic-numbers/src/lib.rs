@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/6523a71df7666800170a1954/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn esthetic(num: u32) -> Vec<u8> {
     let mut res = Vec::with_capacity(9);

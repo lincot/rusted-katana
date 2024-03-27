@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/56b5afb4ed1f6d5fb0000991/train/rust>
 
-use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
+use unchecked_core::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn revrot(s: &str, c: usize) -> String {
     if c == 0 {

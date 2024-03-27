@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/58cda88814e65627c5000045/train/rust>
 
-use unchecked::{ExtendFromSliceUnchecked, PushUnchecked};
+use unchecked_core::{ExtendFromSliceUnchecked, PushUnchecked};
 
 pub fn expanded_form(num: f64) -> String {
     let mut digits = ryu::Buffer::new();

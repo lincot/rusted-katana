@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5a431c0de1ce0ec33a00000c/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn even_numbers(array: &[i32], number: usize) -> Vec<i32> {
     let mut res = Vec::with_capacity(number);

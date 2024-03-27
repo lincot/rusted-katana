@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/62f39741ec164f2b28c257c5/train/rust>
 
-use unchecked::{PushStrUnchecked, PushUnchecked};
+use unchecked_core::{PushStrUnchecked, PushUnchecked};
 
 pub fn remove_parentheses(s: &str) -> String {
     let mut res = String::with_capacity(s.len());

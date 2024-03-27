@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/56f3a1e899b386da78000732/train/rust>
 
-use unchecked::{PushStrUnchecked, PushUnchecked};
+use unchecked_core::{PushStrUnchecked, PushUnchecked};
 
 pub fn part_list(arr: Vec<&str>) -> String {
     match arr.len() {

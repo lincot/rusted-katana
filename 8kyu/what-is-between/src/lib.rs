@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/55ecd718f46fba02e5000029/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn between(a: i16, b: i16) -> Vec<i16> {
     if a >= b {

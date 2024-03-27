@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/58223370aef9fc03fd000071/train/rust>
 
 use digital::NumToString;
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn dashatize(n: i64) -> String {
     let digits = n

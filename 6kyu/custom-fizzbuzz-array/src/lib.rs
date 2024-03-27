@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5355a811a93a501adf000ab7/train/rust>
 
 use digital::NumToString;
-use unchecked::{PushStrUnchecked, PushUnchecked};
+use unchecked_core::{PushStrUnchecked, PushUnchecked};
 
 pub fn fizz_buzz_custom_solver(
     string_one: &str,

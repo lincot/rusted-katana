@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/546dba39fa8da224e8000467/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn run_length_encoding(s: &str) -> Vec<(usize, char)> {
     let mut res = Vec::with_capacity(s.len());

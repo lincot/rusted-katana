@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/634d0723075de3f97a9eb604/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn encode(s: String) -> String {
     let mut res = String::with_capacity(s.len());

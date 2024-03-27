@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/58ca658cc0d6401f2700045f/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn find_multiples(n: u32, limit: u32) -> Vec<u32> {
     let cap = (limit / n) as _;

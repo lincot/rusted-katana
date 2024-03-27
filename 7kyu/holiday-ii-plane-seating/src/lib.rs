@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/57e8f757085f7c7d6300009a/train/rust>
 
-use unchecked::PushStrUnchecked;
+use unchecked_core::PushStrUnchecked;
 
 pub fn plane_seat(seat_number: &str) -> String {
     const NO_SEAT: &str = "No Seat!!";

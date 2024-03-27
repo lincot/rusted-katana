@@ -1,6 +1,6 @@
 [workspace]
 members = [
-    "unchecked",
+    "unchecked-core",
     "digital",
     "vqsort",
     "1kyu/*",

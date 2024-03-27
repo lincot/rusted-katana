@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/59a96d71dbe3b06c0200009c/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn generate_shape(n: i32) -> String {
     let n = n as usize;

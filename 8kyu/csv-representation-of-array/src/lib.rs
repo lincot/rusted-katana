@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5a34af40e1ce0eb1f5000036/train/rust>
 
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn to_csv_text(array: &[Vec<i8>]) -> String {
     unsafe fn push_row(res: &mut String, row: &[i8]) {

@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5727bb0fe81185ae62000ae3/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn clean_string(s: &str) -> String {
     let mut res = String::with_capacity(s.len());

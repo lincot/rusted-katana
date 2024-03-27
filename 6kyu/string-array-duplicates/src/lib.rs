@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/59f08f89a5e129c543000069/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 
 pub fn dup(mut arry: Vec<String>) -> Vec<String> {
     for s in &mut arry {

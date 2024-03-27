@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/563fb342f47611dae800003c/train/rust>
 
-use unchecked::PushStrUnchecked;
+use unchecked_core::PushStrUnchecked;
 
 pub fn trim(phrase: &str, length: usize) -> String {
     if phrase.len() <= length {

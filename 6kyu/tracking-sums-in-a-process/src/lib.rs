@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/56dbb6603e5dd6543c00098d/train/rust>
 
-use unchecked::PushUnchecked;
+use unchecked_core::PushUnchecked;
 use vqsort::VqSort;
 
 pub fn track_sum(arr: &[i32]) -> (Vec<i32>, Vec<i32>) {
