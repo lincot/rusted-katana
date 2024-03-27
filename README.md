@@ -2,19 +2,19 @@
 
 # rusted katana
 
-fastest solutions to [Codewars](https://www.codewars.com/r/HLmVMg) katas
+fastest solutions to [Codewars](https://www.codewars.com/r/HLmVMg) challenges,
+written in Rust
 
 current progress:
 
-![image showing how many katas have been solved](progress-bars.png)
+![progress bars showing how many katas have been solved](progress-bars.png)
 
 ## rules
 
-- written in Rust, but importing code written in other languages is allowed
-
 - nontrivial katas have benchmarks to easily compare solutions
 
-- third-party libraries are allowed, even if they aren't accepted by Codewars
+- third-party libraries and libraries written in languages other than Rust
+are allowed, even if they are not accepted by Codewars
 
 - solutions are safe, i.e. they don't produce undefined behavior
 (checked with miri); *nevertheless, there are 477 `unsafe` blocks*
