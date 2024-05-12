@@ -1,0 +1,9 @@
+[package]
+name = "find-amount-of-certain-combinations-than-its-sum-of-elements-are-within-a-given-range"
+version = "0.1.0"
+edition = "2021"
+
+[dev-dependencies]
+heapless = "0.8.0"
+rand = { version = "0.8.5", default-features = false, features = ["std"] }
+rand_pcg = "0.3.1"
