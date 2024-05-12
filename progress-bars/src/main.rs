@@ -1,5 +1,6 @@
 #![allow(invalid_value)]
 
+use ab_glyph::{FontRef, PxScale};
 use core::{cmp::Ordering, mem::MaybeUninit, ptr};
 use digital::{MaxLenBase10, WriteNumUnchecked};
 use image::{Rgb, RgbImage};
@@ -7,7 +8,6 @@ use imageproc::{
     drawing::{draw_filled_rect_mut, draw_text_mut},
     rect::Rect,
 };
-use rusttype::{Font, Scale};
 use std::{
     fs,
     io::{self, Write},
@@ -16,16 +16,16 @@ use std::{
 
 struct ProgressBars<'a> {
     image: RgbImage,
-    font: &'a Font<'a>,
+    font: FontRef<'a>,
     bar_height: u32,
     vertical_padding: u32,
     font_width: u32,
     font_height: u32,
-    scale: Scale,
+    scale: PxScale,
 }
 
 impl<'a> ProgressBars<'a> {
-    fn new(font: &'a Font, width: u32, bar_height: u32, vertical_padding: u32) -> Self {
+    fn new(font: FontRef<'a>, width: u32, bar_height: u32, vertical_padding: u32) -> Self {
         let mut image = RgbImage::new(
             width,
             (bar_height + vertical_padding) * 8 - vertical_padding,
@@ -48,7 +48,7 @@ impl<'a> ProgressBars<'a> {
             vertical_padding,
             font_width,
             font_height: font_width * 2,
-            scale: Scale::uniform((font_width * 2) as _),
+            scale: PxScale::from((font_width * 2) as f32),
         }
     }
 
@@ -89,7 +89,7 @@ impl<'a> ProgressBars<'a> {
                 (self.font_width / 2) as _,
                 y + ((self.bar_height - self.font_height) / 2) as i32,
                 self.scale,
-                self.font,
+                &self.font,
                 kyu_text,
             );
 
@@ -105,7 +105,7 @@ impl<'a> ProgressBars<'a> {
                 ((width - progress_text.len() as u32 * self.font_width) / 2) as _,
                 y + ((self.bar_height - self.font_height) / 2) as i32,
                 self.scale,
-                self.font,
+                &self.font,
                 &progress_text,
             );
         }
@@ -159,8 +159,8 @@ fn main() {
     }
 
     let font =
-        Font::try_from_bytes(include_bytes!("/usr/share/fonts/TTF/FiraCode-Bold.ttf")).unwrap();
-    let progress_bars = ProgressBars::new(&font, 360, 30, 5);
+        FontRef::try_from_slice(include_bytes!("/usr/share/fonts/TTF/FiraCode-Bold.ttf")).unwrap();
+    let progress_bars = ProgressBars::new(font, 360, 30, 5);
 
     for task in network_tasks {
         task.join().unwrap();
