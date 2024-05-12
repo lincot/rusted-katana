@@ -5,7 +5,7 @@ use num_integer::Roots;
 
 /// checks if `x` is prime || `x` is divisible by 2 or 3 || `x` <= 1
 /// given that `sqrt` is the square root of `x`
-const fn is_prime_with_condition(x: u32, sqrt: u32) -> bool {
+const fn is_prime_with_condition(x: u16, sqrt: u16) -> bool {
     let mut divisor = 5;
     let mut step = 2;
     while divisor <= sqrt {
@@ -58,7 +58,7 @@ pub fn solve(mut a: u32, b: u32) -> usize {
             next_perfect_square += 2 * sqrt + 1;
         }
 
-        if is_prime_with_condition(a, sqrt) && reduces_to_one(a) {
+        if reduces_to_one(a) && is_prime_with_condition(a as _, sqrt as _) {
             res += 1;
         }
 

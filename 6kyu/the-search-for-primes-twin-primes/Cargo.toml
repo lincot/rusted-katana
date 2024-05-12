@@ -2,3 +2,6 @@
 name = "the-search-for-primes-twin-primes"
 version = "0.1.0"
 edition = "2021"
+
+[dependencies]
+num-prime = "0.4.4"

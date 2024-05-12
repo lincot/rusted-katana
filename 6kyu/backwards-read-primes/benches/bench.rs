@@ -6,5 +6,10 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| backwards_prime(black_box(1), black_box(10_000)));
+    bencher.iter(|| {
+        backwards_prime(
+            black_box(if cfg!(miri) { 1 } else { 100_000 }),
+            black_box(if cfg!(miri) { 1000 } else { 110_000 }),
+        )
+    });
 }

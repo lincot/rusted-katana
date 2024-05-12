@@ -1,43 +1,14 @@
 //! <https://www.codewars.com/kata/5613d06cee1e7da6d5000055/train/rust>
 
-use core::hint::unreachable_unchecked;
-use num_integer::Roots;
-
-/// checks if `x` is prime || `x` is divisible by 2 or 3 || `x` <= 1
-/// given that `sqrt` is the square root of `x`
-const fn is_prime_with_condition(x: u64, sqrt: u64) -> bool {
-    let mut divisor = 5;
-    let mut step = 2;
-    while divisor <= sqrt {
-        if divisor == 0 {
-            unsafe { unreachable_unchecked() };
-        }
-        if x % divisor == 0 {
-            return false;
-        }
-
-        divisor += step;
-        step ^= 6;
-    }
-
-    true
-}
+use num_prime::nt_funcs::is_prime64;
 
 fn step_divisible_by_6(g: u64, mut m: u64, n: u64) -> Option<(u64, u64)> {
     let r = m % 6;
     let (next_r, mut step) = if r <= 1 { (1, 4) } else { (5, 2) };
     m += next_r - r;
 
-    let mut sqrt = n.sqrt();
-    let mut next_perfect_square = (sqrt + 1).pow(2);
-
     while m <= n {
-        if n >= next_perfect_square {
-            sqrt += 1;
-            next_perfect_square += 2 * sqrt + 1;
-        }
-
-        if is_prime_with_condition(m, sqrt) && is_prime_with_condition(m + g, (m + g).sqrt()) {
+        if is_prime64(m) && is_prime64(m + g) {
             return Some((m, m + g));
         }
 
@@ -54,14 +25,14 @@ pub fn step(g: i32, mut m: u64, n: u64) -> Option<(u64, u64)> {
     let g6 = g % 6;
 
     if m <= 2 && n <= 2 {
-        if g <= 1 || [5, 3].contains(&g6) && is_prime_with_condition(2 + g, (2 + g).sqrt()) {
+        if g <= 1 || [5, 3].contains(&g6) && is_prime64(2 + g) {
             return Some((2, 2 + g));
         }
         m = 3;
     }
 
     if m <= 3 && n <= 3 {
-        if g == 0 || [4, 2].contains(&g6) && is_prime_with_condition(3 + g, (3 + g).sqrt()) {
+        if g == 0 || [4, 2].contains(&g6) && is_prime64(3 + g) {
             return Some((3, 3 + g));
         }
         m = 5;
@@ -77,16 +48,8 @@ pub fn step(g: i32, mut m: u64, n: u64) -> Option<(u64, u64)> {
         _ => return None,
     }
 
-    let mut sqrt = n.sqrt();
-    let mut next_perfect_square = (sqrt + 1).pow(2);
-
     while m <= n {
-        if n >= next_perfect_square {
-            sqrt += 1;
-            next_perfect_square += 2 * sqrt + 1;
-        }
-
-        if is_prime_with_condition(m, sqrt) && is_prime_with_condition(m + g, (m + g).sqrt()) {
+        if is_prime64(m) && is_prime64(m + g) {
             return Some((m, m + g));
         }
 

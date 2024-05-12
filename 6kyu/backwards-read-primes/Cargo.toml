@@ -5,4 +5,4 @@ edition = "2021"
 
 [dependencies]
 unchecked-core = { path = "../../unchecked-core" }
-num-integer = "0.1.45"
+num-prime = "0.4.4"
