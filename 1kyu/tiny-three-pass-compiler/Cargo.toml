@@ -2,3 +2,7 @@
 name = "tiny-three-pass-compiler"
 version = "0.1.0"
 edition = "2021"
+
+[dependencies]
+unchecked-core = { path = "../../unchecked-core" }
+digital = { path = "../../digital" }
