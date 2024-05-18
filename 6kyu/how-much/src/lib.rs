@@ -2,7 +2,7 @@
 
 use core::mem::swap;
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked_core::PushStrUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn how_much(mut m: i32, mut n: i32) -> Vec<(String, String, String)> {
     if m > n {

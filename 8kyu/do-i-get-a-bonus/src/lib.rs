@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/56f6ad906b88de513f000d96/train/rust>
 
 use digital::WriteNumUnchecked;
-use unchecked_core::PushStrUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn bonus_time(mut salary: u64, bonus: bool) -> String {
     if bonus {

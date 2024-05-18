@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/57eba158e8ca2c8aba0002a0/train/rust>
 
 use core::hint::unreachable_unchecked;
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn sort_by_last_char(s: &str) -> Vec<String> {
     let mut res = Vec::with_capacity(s.len() / 2 + 1);

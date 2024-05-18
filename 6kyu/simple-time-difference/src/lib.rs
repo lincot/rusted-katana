@@ -3,7 +3,7 @@
 #![feature(array_windows)]
 
 use digital::WriteNumUnchecked;
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 use vqsort::VqSort;
 
 fn parse_time(time: &str) -> u32 {

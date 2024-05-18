@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5899642f6e1b25935d000161/train/rust>
 
 use core::hint::unreachable_unchecked;
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 unsafe fn push_unchecked_if_not_last_unchecked(res: &mut Vec<i32>, x: i32) {
     if *res.get_unchecked(res.len() - 1) != x {

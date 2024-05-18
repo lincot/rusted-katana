@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/51c89385ee245d7ddf000001/train/rust>
 
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked_core::{PushStrUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn solution(n: u32) -> String {
     let mut res = String::with_capacity("Value is ".len() + u32::MAX_LEN_BASE10);

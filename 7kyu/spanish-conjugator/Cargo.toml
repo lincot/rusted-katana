@@ -4,5 +4,5 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-unchecked-core = { path = "../../unchecked-core" }
+unchecked-std = "0.1.0"
 hashbrown = { version = "0.14.3", features = ["nightly"] }

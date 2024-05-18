@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/57e8fba2f11c647abc000944/train/rust>
 
-use unchecked_core::{PushStrUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn fire_fight(s: &str) -> String {
     const FIRE: &str = "Fire";

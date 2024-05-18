@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5b39e3772ae7545f650000fc/train/rust>
 
-use unchecked_core::{PushStrUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn remove_duplicate_words(s: &str) -> String {
     let mut words = Vec::with_capacity(s.len() / 2 + 1);

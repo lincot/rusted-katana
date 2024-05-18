@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/57a0885cbb9944e24c00008e/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn remove_exclamation_marks(input: &str) -> String {
     let mut res = Vec::with_capacity(input.len());

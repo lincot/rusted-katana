@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5f55ecd770692e001484af7d/train/rust>
 
-use unchecked_core::{ExtendFromSliceUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 use vqsort::VqSort;
 
 pub fn mirror(list: &[i32]) -> Vec<i32> {

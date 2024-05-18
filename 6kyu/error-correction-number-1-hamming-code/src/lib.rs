@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5ef9ca8b76be6d001d5e1c3e/train/rust>
 
-use unchecked_core::CopyFromSliceUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn encode(text: &str) -> String {
     assert!(text.is_ascii());

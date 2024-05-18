@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/62b2072d62c66500159693ff/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 const SETS: [[u8; 9]; 18] = [
     [1, 5, 9, 2, 4, 8, 3, 6, 7],

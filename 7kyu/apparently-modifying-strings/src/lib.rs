@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5b049d57de4c7f6a6c0001d7/train/rust>
 
-use unchecked_core::{ExtendFromSliceUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn apparently(string: &str) -> String {
     let string = string.as_bytes();

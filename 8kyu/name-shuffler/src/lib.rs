@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/559ac78160f0be07c200005a/train/rust>
 
-use unchecked_core::{PushStrUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn name_shuffler(s: &str) -> String {
     let mut res = String::with_capacity(s.len());

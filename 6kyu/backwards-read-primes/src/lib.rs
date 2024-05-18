@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5539fecef69c483c5a000015/train/rust>
 
 use num_prime::nt_funcs::is_prime64;
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 const POWERS_OF_10: [u64; 20] = {
     let mut res = [1; 20];

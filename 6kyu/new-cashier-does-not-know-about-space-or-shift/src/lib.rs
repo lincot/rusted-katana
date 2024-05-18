@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5d23d89906f92a00267bb83d/train/rust>
 
-use unchecked_core::PushStrUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn get_order(input: String) -> String {
     let cap = input.len() + input.len() / 4;

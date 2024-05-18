@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5656b6906de340bd1b0000ac/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn longest(a1: &str, a2: &str) -> String {
     let mut letters = [false; 26];

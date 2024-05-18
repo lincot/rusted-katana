@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/56bcaedfcf6b7f2125001118/train/rust>
 
-use unchecked_core::{PushStrUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn html_special_chars(html: &str) -> String {
     let cap = "&quot;".len() * html.len();

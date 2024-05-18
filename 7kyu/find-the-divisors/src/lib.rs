@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/544aed4c4a30184e960010f4/train/rust>
 
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked_core::{ExtendFromWithinUnchecked, PushStrUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 use vqsort::VqSort;
 
 pub fn divisors(integer: u32) -> Result<Vec<u32>, String> {

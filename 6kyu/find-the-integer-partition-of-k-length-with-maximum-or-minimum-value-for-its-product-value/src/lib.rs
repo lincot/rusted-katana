@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/57161cb0b436cf0911000819/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn find_spec_partition(n: u32, k: u32, com: &str) -> Vec<u32> {
     if com.as_bytes()[1] == b'a' {

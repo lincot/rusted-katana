@@ -5,7 +5,7 @@ use rand::{seq::SliceRandom, Rng};
 use rand_pcg::Pcg64;
 use simple_frequency_sort::solve;
 use test::{black_box, Bencher};
-use unchecked_core::*;
+use unchecked_std::prelude::*;
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

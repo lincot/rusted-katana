@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-unchecked-core = { path = "../../unchecked-core" }
+unchecked-std = "0.1.0"
 vqsort = { path = "../../vqsort" }
 
 [dev-dependencies]

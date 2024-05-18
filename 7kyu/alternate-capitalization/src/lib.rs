@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/59cfc000aeb2844d16000075/train/rust>
 
 use core::mem::swap;
-use unchecked_core::{ExtendUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn capitalize(s: &str) -> Vec<String> {
     let cap = 2 * s.len() + s.len() / 3;

@@ -4,6 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-unchecked-core = { path = "../unchecked-core" }
+unchecked-std = "0.1.0"
 tokio = { version = "1.37.0", features = ["full"] }
 reqwest = "0.12.4"

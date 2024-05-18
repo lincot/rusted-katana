@@ -3,7 +3,7 @@
 use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
 use hashbrown::{hash_map::Entry, HashMap};
 use rustc_hash::FxHasher;
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 type FxHashMap<K, V> = HashMap<K, V, BuildHasherDefault<FxHasher>>;
 

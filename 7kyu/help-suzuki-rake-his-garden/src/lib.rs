@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/571c1e847beb0a8f8900153d/train/rust>
 
-use unchecked_core::PushStrUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn rake_garden(garden: &str) -> String {
     let mut res = String::with_capacity("gravel".len() * garden.len());

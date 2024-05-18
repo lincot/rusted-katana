@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5aeed69804a92621a7000077/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn performant_smallest(arr: &[u32], n: usize) -> Vec<u32> {
     let mut counts = [0; 51];

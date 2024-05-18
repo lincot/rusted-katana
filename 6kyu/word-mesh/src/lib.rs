@@ -2,7 +2,7 @@
 
 #![feature(array_windows)]
 
-use unchecked_core::PushStrUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn word_mesh(words: &[&str]) -> Option<String> {
     let mut res = String::with_capacity(if words.is_empty() {

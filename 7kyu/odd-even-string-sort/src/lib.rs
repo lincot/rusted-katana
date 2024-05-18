@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/580755730b5a77650500010c/train/rust>
 
-use unchecked_core::{PushStrUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn sort_my_string(s: &str) -> String {
     let mut res = String::with_capacity(s.len() + 1);

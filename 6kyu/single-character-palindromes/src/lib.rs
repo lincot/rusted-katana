@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5a2c22271f7f709eaa0005d3/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn solve(s: &str) -> String {
     let mut chars = Vec::with_capacity(s.len());

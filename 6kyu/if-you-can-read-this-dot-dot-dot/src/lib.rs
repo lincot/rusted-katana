@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/586538146b56991861000293/train/rust>
 
-use unchecked_core::{ExtendFromSliceUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn to_nato(words: &str) -> String {
     let mut res = Vec::with_capacity("November ".len() * words.len());

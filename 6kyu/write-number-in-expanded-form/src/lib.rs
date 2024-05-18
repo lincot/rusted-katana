@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5842df8ccbd22792a4000245/train/rust>
 
 use digital::NumToString;
-use unchecked_core::{ExtendFromSliceUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn expanded_form(n: u64) -> String {
     if n == 0 {

@@ -3,7 +3,7 @@
 mod preloaded;
 
 pub use preloaded::Direction;
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 const FIGHTERS: [&str; 12] = [
     "Ryu", "E.Honda", "Blanka", "Guile", "Balrog", "Vega", "Ken", "Chun Li", "Zangief", "Dhalsim",

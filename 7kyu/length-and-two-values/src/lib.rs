@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/62a611067274990047f431a8/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn alternate<'a>(n: usize, first_value: &'a str, second_value: &'a str) -> Vec<&'a str> {
     let mut res = Vec::with_capacity(n);

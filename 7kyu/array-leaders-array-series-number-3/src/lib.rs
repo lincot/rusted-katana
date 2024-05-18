@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5a651865fd56cb55760000e0/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn array_leaders(arr: &[i32]) -> Vec<i32> {
     let mut res = Vec::with_capacity(arr.len());

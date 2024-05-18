@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5bbd279c8f8bbd5ee500000f/train/rust>
 
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn find_screen_height(width: u64, ratio: &str) -> String {
     let (vertical, horizontal) = ratio.split_once(':').unwrap();

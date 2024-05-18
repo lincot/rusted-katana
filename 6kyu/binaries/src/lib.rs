@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5d98b6b38b0f6c001a461198/train/rust>
 
-use unchecked_core::{PushStrUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 const B0: &str = "10";
 const B1: &str = "11";

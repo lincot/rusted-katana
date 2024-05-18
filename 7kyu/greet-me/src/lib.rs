@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/535474308bb336c9980006f2/train/rust>
 
-use unchecked_core::{ExtendUnchecked, PushStrUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn greet(name: &str) -> String {
     let mut res = String::with_capacity("Hello !".len() + 4 + name.len() + name.len() / 2);

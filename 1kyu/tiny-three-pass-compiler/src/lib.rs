@@ -2,7 +2,7 @@
 
 use core::ops::{Add, Div, Mul, Sub};
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked_core::{PushStrUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 #[derive(Debug, PartialEq, Eq, Clone, Copy)]
 pub enum BinOp {

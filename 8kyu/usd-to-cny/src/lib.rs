@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5977618080ef220766000022/train/rust>
 
 use digital::WriteNumUnchecked;
-use unchecked_core::{PushStrUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn usdcny(usd: u16) -> String {
     let mut res = String::with_capacity("442361.25 Chinese Yuan".len());

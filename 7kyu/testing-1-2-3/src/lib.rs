@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/54bf85e3d5b56c7a05000cf9/train/rust>
 
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked_core::PushStrUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn number(lines: &[&str]) -> Vec<String> {
     (1usize..)

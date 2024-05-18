@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/563b74ddd19a3ad462000054/train/rust>
 
-use unchecked_core::{ExtendFromSliceUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn stringy(size: usize) -> String {
     let mut res = Vec::with_capacity(size);

@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/57e76bc428d6fbc2d500036d/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn string_to_array(s: &str) -> Vec<String> {
     let mut res = Vec::with_capacity(s.len() / 2 + 1);

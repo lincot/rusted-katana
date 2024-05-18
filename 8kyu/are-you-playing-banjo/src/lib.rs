@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/53af2b8861023f1d88000832/train/rust>
 
-use unchecked_core::PushStrUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn are_you_playing_banjo(name: &str) -> String {
     let text = if b"Rr".contains(&name.bytes().next().unwrap()) {

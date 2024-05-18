@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/592e830e043b99888600002d/train/rust>
 
 use digital::NumToString;
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn encode(msg: String, n: i32) -> Vec<i32> {
     let digits = (n as u32).to_heapless_string(false, false).into_bytes();

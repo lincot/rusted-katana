@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/62b3e38df90eac002c7a983f/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn solve(s: &str) -> String {
     const BACKSPACE: &[u8] = b"[backspace]";

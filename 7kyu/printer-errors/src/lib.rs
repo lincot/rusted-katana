@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/56541980fa08ab47a0000040/train/rust>
 
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn printer_error(s: &str) -> String {
     let malformed = s.bytes().filter(|&b| b > b'm').count();

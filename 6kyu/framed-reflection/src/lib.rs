@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/581331293788bc1702001fa6/train/rust>
 
-use unchecked_core::{PushStrUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn mirror(text: &str) -> String {
     let mut len_sum = 0;

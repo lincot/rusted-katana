@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/55eeddff3f64c954c2000059/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub type Number = i32;
 pub type Numbers = Vec<Number>;

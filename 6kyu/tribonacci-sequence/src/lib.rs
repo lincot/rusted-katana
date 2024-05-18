@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/556deca17c58da83c00002db/train/rust>
 
 use core::hint::unreachable_unchecked;
-use unchecked_core::{ExtendFromSliceUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn tribonacci(signature: &[f64; 3], n: usize) -> Vec<f64> {
     let mut res = Vec::with_capacity(n);

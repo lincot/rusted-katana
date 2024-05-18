@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5f3142b3a28d9b002ef58f5e/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn word_pattern(word: &str) -> String {
     let mut encountered = heapless::Vec::<_, 52>::new();

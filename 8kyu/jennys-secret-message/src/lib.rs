@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/55225023e1be1ec8bc000390/train/rust>
 
-use unchecked_core::{PushStrUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn greet(input: &str) -> String {
     if input == "Johnny" {

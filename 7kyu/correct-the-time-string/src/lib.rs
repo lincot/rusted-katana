@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/57873ab5e55533a2890000c7/train/rust>
 
-use unchecked_core::{ExtendFromSliceUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 const TABLE: [[u8; 2]; 60] = [
     *b"00", *b"01", *b"02", *b"03", *b"04", *b"05", *b"06", *b"07", *b"08", *b"09", *b"10", *b"11",

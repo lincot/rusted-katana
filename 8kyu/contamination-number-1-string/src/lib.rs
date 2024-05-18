@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/596fba44963025c878000039/train/rust>
 
-use unchecked_core::PushStrUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn contamination(text: &str, character: &str) -> String {
     if character.is_empty() {

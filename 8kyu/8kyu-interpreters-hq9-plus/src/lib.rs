@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/591588d49f4056e13f000001/train/rust>
 
 use digital::WriteNumUnchecked;
-use unchecked_core::PushStrUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn hq9(code: &str) -> Option<String> {
     match code {

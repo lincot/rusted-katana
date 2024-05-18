@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5a81b78d4a6b344638000183/train/rust>
 
 use hashbrown::HashMap;
-use unchecked_core::{PushStrUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn conjugate(verb: &str) -> HashMap<String, Vec<String>> {
     assert!(verb.len() >= 2);

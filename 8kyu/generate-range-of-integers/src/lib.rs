@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/55eca815d0d20962e1000106/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn generate_range(mut min: usize, max: usize, step: usize) -> Vec<usize> {
     let cap = if min <= max {

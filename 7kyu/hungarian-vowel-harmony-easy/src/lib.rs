@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/57fd696e26b06857eb0011e7/train/rust>
 
-use unchecked_core::PushStrUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn dative(word: &str) -> String {
     let mut res = String::with_capacity(word.len() + 3);

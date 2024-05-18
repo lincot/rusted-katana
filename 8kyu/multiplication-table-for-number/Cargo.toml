@@ -4,6 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-unchecked-core = { path = "../../unchecked-core" }
+unchecked-std = { version = "0.1.0", features = ["heapless"] }
 digital = { path = "../../digital" }
 heapless = "0.8.0"

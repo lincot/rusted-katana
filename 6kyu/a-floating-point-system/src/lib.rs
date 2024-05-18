@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5df754981f177f0032259090/train/rust>
 
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use unchecked_core::{PushStrUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
     let digits_before_dot = a_number.as_bytes().iter().position(|&b| b == b'.').unwrap();

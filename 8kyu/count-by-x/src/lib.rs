@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5513795bd3fafb56c200049e/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn count_by(x: u32, n: u32) -> Vec<u32> {
     let mut cur = x;

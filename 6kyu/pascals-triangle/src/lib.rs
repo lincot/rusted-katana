@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5226eb40316b56c8d500030f/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn pascals_triangle(n: usize) -> Vec<usize> {
     let mut res = Vec::with_capacity(n * (n + 1) / 2);

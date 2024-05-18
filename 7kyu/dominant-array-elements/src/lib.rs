@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5a04133e32b8b998dc000089/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn solve(arr: &[u32]) -> Vec<u32> {
     let mut res = Vec::with_capacity(arr.len());

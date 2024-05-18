@@ -4,5 +4,5 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-unchecked-core = { path = "../../unchecked-core" }
+unchecked-std = "0.1.0"
 heapless = "0.8.0"

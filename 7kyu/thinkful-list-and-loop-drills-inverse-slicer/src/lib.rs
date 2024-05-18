@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/586ec0b8d098206cce001141/train/rust>
 
-use unchecked_core::ExtendFromSliceUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn inverse_slice<T: Clone>(input: &[T], a: usize, b: usize) -> Vec<T> {
     let a = a.min(input.len());

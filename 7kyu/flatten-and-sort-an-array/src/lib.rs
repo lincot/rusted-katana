@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/57ee99a16c8df7b02d00045f/train/rust>
 
-use unchecked_core::ExtendFromSliceUnchecked;
+use unchecked_std::prelude::*;
 use vqsort::VqSort;
 
 pub fn flatten_and_sort(arr: &[Vec<i32>]) -> Vec<i32> {

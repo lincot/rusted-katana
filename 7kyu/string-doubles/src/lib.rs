@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5a145ab08ba9148dd6000094/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn doubles(s: &str) -> String {
     let mut chars = Vec::with_capacity(s.len());

@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/51c8991dee245d7ddf00000e/train/rust>
 
-use unchecked_core::{ExtendFromSliceUnchecked, PushUnchecked};
+use unchecked_std::prelude::*;
 
 pub fn reverse_words(words: &str) -> String {
     let words = words.as_bytes();

@@ -2,7 +2,7 @@
 
 #![feature(slice_swap_unchecked)]
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn solve(s: &str) -> String {
     let mut chars = Vec::with_capacity(s.len());

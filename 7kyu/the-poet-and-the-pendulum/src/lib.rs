@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5bd776533a7e2720c40000e5/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 use vqsort::VqSort;
 
 pub fn pendulum(xs: &[i32]) -> Vec<i32> {

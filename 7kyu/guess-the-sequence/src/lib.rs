@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5b45e4b3f41dd36bf9000090/train/rust>
 
 use core::hint::unreachable_unchecked;
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn sequence(x: u8) -> Vec<u8> {
     let mut res = Vec::with_capacity(x as _);

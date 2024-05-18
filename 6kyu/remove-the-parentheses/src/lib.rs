@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5f7c38eb54307c002a2b8cc8/train/rust>
 
-use unchecked_core::PushUnchecked;
+use unchecked_std::prelude::*;
 
 pub fn remove_parentheses(s: &str) -> String {
     let mut res = Vec::with_capacity(s.len());
