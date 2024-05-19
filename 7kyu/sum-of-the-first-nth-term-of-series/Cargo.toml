@@ -1,0 +1,4 @@
+[package]
+name = "sum-of-the-first-nth-term-of-series"
+version = "0.1.0"
+edition = "2021"
