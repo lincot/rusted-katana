@@ -44,7 +44,6 @@ impl CoffeeBuilder {
         self
     }
 
-    #[allow(clippy::missing_const_for_fn)]
     pub fn build(self) -> Coffee {
         self.0
     }
