@@ -1,18 +1,11 @@
 #!/bin/sh
 
-RED="\033[0;31m"
-RESET="\033[0m"
+unsafe_count=$(rg -IcU "unsafe[\s]*\{" -g '!check-katas/' -g lib.rs | paste -sd+ | bc)
+sed -i "s/\(there are \)[0-9]\+\( \`unsafe\`\)/\1$unsafe_count\2/" README.md
 
-unsafe=$(rg -IcU "unsafe[\s]*\{" -g '!check-katas/' -g lib.rs | paste -sd+ | bc)
-if ! rg -q "$unsafe \`unsafe\`" README.md; then
-  echo -e "${RED}wrong unsafe count, should be $unsafe${RESET}"
-fi
-
-bytes=$(rg -Ic "\.bytes\(\)|\.as_bytes\(\)|\.as_bytes_mut\(\)|\.as_mut_vec\(\)" \
+bytes_count=$(rg -Ic "\.bytes\(\)|\.as_bytes\(\)|\.as_bytes_mut\(\)|\.as_mut_vec\(\)" \
   -g '!check-katas/' -g lib.rs | paste -sd+ | bc)
-if ! rg -q "$bytes times" README.md; then
-  echo -e "${RED}wrong bytes count, should be $bytes${RESET}"
-fi
+sed -i "s/\(are used \)[0-9]\+\( times\)/\1$bytes_count\2/" README.md
 
 echo check
 cargo check --all-features --all-targets --quiet --release
