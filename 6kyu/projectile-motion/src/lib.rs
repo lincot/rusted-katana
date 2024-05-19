@@ -10,26 +10,6 @@ pub struct Projectile {
     horizontal_velocity: f64,
 }
 
-unsafe fn write_with_up_to_three_fractional_digits(res: &mut String, n: f64) {
-    let n = (n * 1000.).round() as u64;
-    res.write_num_unchecked(n / 1000, 10, false, false);
-    let d0 = b'0' + (n % 1000 / 100) as u8;
-    let d1 = b'0' + (n % 100 / 10) as u8;
-    let d2 = b'0' + (n % 10) as u8;
-    res.as_mut_vec().push_unchecked(b'.');
-    res.as_mut_vec().push_unchecked(d0);
-    if d1 != b'0' || d2 != b'0' {
-        res.as_mut_vec().push_unchecked(d1);
-    }
-    if d2 != b'0' {
-        res.as_mut_vec().push_unchecked(d2);
-    }
-}
-
-fn round_to_three_fractional_digits(n: f64) -> f64 {
-    (n * 1000.).round() / 1000.
-}
-
 impl Projectile {
     pub fn new(height: u64, velocity: u64, angle: u64) -> Self {
         let angle_rad = (angle as f64).to_radians();
@@ -96,4 +76,24 @@ impl Projectile {
             round_to_three_fractional_digits(secs),
         ]
     }
+}
+
+unsafe fn write_with_up_to_three_fractional_digits(res: &mut String, n: f64) {
+    let n = (n * 1000.).round() as u64;
+    res.write_num_unchecked(n / 1000, 10, false, false);
+    let d0 = b'0' + (n % 1000 / 100) as u8;
+    let d1 = b'0' + (n % 100 / 10) as u8;
+    let d2 = b'0' + (n % 10) as u8;
+    res.as_mut_vec().push_unchecked(b'.');
+    res.as_mut_vec().push_unchecked(d0);
+    if d1 != b'0' || d2 != b'0' {
+        res.as_mut_vec().push_unchecked(d1);
+    }
+    if d2 != b'0' {
+        res.as_mut_vec().push_unchecked(d2);
+    }
+}
+
+fn round_to_three_fractional_digits(n: f64) -> f64 {
+    (n * 1000.).round() / 1000.
 }

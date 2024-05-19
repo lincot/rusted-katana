@@ -1,5 +1,21 @@
 //! <https://www.codewars.com/kata/5467e4d82edf8bbf40000155/train/rust>
 
+pub fn descending_order(mut x: u64) -> u64 {
+    let mut digits = [0u8; 10];
+
+    while x != 0 {
+        digits[(x % 10) as usize] += 1;
+        x /= 10;
+    }
+
+    for (i, &n) in digits.iter().enumerate().rev() {
+        let (a, b) = unsafe { TABLE.get_unchecked(n as usize) };
+        x = x * a + b * i as u64;
+    }
+
+    x
+}
+
 const TABLE: [(u64, u64); 21] = [
     (1, 0),
     (10, 1),
@@ -23,19 +39,3 @@ const TABLE: [(u64, u64); 21] = [
     (10_000_000_000_000_000_000, 1_111_111_111_111_111_111),
     (7_766_279_631_452_241_920, 11_111_111_111_111_111_111),
 ];
-
-pub fn descending_order(mut x: u64) -> u64 {
-    let mut digits = [0u8; 10];
-
-    while x != 0 {
-        digits[(x % 10) as usize] += 1;
-        x /= 10;
-    }
-
-    for (i, &n) in digits.iter().enumerate().rev() {
-        let (a, b) = unsafe { TABLE.get_unchecked(n as usize) };
-        x = x * a + b * i as u64;
-    }
-
-    x
-}

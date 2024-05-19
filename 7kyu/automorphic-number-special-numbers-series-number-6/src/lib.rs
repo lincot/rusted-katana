@@ -1,5 +1,14 @@
 //! <https://www.codewars.com/kata/5a58d889880385c2f40000aa/train/rust>
 
+pub fn automorphic(n: u64) -> String {
+    if AUTOMORPHIC_NUMBERS.contains(&n) {
+        "Automorphic"
+    } else {
+        "Not!!"
+    }
+    .into()
+}
+
 const AUTOMORPHIC_NUMBERS: [u64; 28] = [
     0,
     1,
@@ -30,12 +39,3 @@ const AUTOMORPHIC_NUMBERS: [u64; 28] = [
     259_918_212_890_625,
     740_081_787_109_376,
 ];
-
-pub fn automorphic(n: u64) -> String {
-    if AUTOMORPHIC_NUMBERS.contains(&n) {
-        "Automorphic"
-    } else {
-        "Not!!"
-    }
-    .into()
-}

@@ -3,8 +3,20 @@
 use digital::WriteNumUnchecked;
 use unchecked_std::prelude::*;
 
+pub fn count_sheep(n: u32) -> String {
+    const SHEEP: &str = " sheep...";
+    let mut res = String::with_capacity(count_digits_up_to(n) as usize + SHEEP.len() * n as usize);
+    for sheep in 1..=n {
+        unsafe {
+            res.write_num_unchecked(sheep, 10, false, false);
+            res.push_str_unchecked(SHEEP);
+        }
+    }
+    res
+}
+
 /// equals to `(1..=n).map(|x| x.to_string().len()).sum::<usize>() as u32`
-fn integral_log10(n: u32) -> u32 {
+fn count_digits_up_to(n: u32) -> u32 {
     if n < 10 {
         return n;
     }
@@ -14,16 +26,4 @@ fn integral_log10(n: u32) -> u32 {
         t = 10 * t + 1;
     }
     (log + 1) * (n + 1) - t
-}
-
-pub fn count_sheep(n: u32) -> String {
-    const SHEEP: &str = " sheep...";
-    let mut res = String::with_capacity(integral_log10(n) as usize + SHEEP.len() * n as usize);
-    for sheep in 1..=n {
-        unsafe {
-            res.write_num_unchecked(sheep, 10, false, false);
-            res.push_str_unchecked(SHEEP);
-        }
-    }
-    res
 }

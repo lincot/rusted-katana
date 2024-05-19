@@ -2,22 +2,6 @@
 
 use unchecked_std::prelude::*;
 
-unsafe fn push_unchecked_uppercase(s: &mut String, c: char) {
-    if c.is_lowercase() {
-        s.extend_unchecked(c.to_uppercase());
-    } else {
-        s.push_unchecked(c);
-    }
-}
-
-unsafe fn push_unchecked_lowercase(s: &mut String, c: char) {
-    if c.is_lowercase() {
-        s.push_unchecked(c);
-    } else {
-        s.extend_unchecked(c.to_lowercase());
-    }
-}
-
 pub fn hello(name: &str) -> String {
     const HELLO: &str = "Hello, ";
     let mut name_chars = name.chars();
@@ -41,4 +25,20 @@ pub fn hello(name: &str) -> String {
     unsafe { res.push_unchecked('!') };
 
     res
+}
+
+unsafe fn push_unchecked_uppercase(s: &mut String, c: char) {
+    if c.is_lowercase() {
+        s.extend_unchecked(c.to_uppercase());
+    } else {
+        s.push_unchecked(c);
+    }
+}
+
+unsafe fn push_unchecked_lowercase(s: &mut String, c: char) {
+    if c.is_lowercase() {
+        s.push_unchecked(c);
+    } else {
+        s.extend_unchecked(c.to_lowercase());
+    }
 }

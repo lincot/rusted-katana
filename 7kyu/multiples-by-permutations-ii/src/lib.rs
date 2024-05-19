@@ -1,5 +1,25 @@
 //! <https://www.codewars.com/kata/5ba178be875de960a6000187/train/rust>
 
+pub fn find_lowest_int(k: u64) -> u64 {
+    match k % 100 {
+        5 | 21 | 26 | 42 | 47 | 63 | 68 | 84 | 89 => return 9,
+        18 | 39 | 76 | 97 => return 18,
+        54 | 61 | 75 | 82 => return 27,
+        14 | 43 | 64 | 93 => return 36,
+        9 | 29 | 49 | 69 => return 45,
+        32 => return 54,
+        83 | 86 => return 63,
+        _ => {}
+    }
+    let mut n = 27;
+    loop {
+        if digits_hash(n * k) == digits_hash(n * k + n) {
+            return n;
+        }
+        n += 9;
+    }
+}
+
 fn digits_hash(mut n: u64) -> u64 {
     let mut res = 0;
     while n != 0 {
@@ -19,24 +39,4 @@ fn digits_hash(mut n: u64) -> u64 {
         n /= 10;
     }
     res
-}
-
-pub fn find_lowest_int(k: u64) -> u64 {
-    match k % 100 {
-        5 | 21 | 26 | 42 | 47 | 63 | 68 | 84 | 89 => return 9,
-        18 | 39 | 76 | 97 => return 18,
-        54 | 61 | 75 | 82 => return 27,
-        14 | 43 | 64 | 93 => return 36,
-        9 | 29 | 49 | 69 => return 45,
-        32 => return 54,
-        83 | 86 => return 63,
-        _ => {}
-    }
-    let mut n = 27;
-    loop {
-        if digits_hash(n * k) == digits_hash(n * k + n) {
-            return n;
-        }
-        n += 9;
-    }
 }

@@ -3,26 +3,6 @@
 use core::hint::unreachable_unchecked;
 use num_bigint::BigUint;
 
-/// checks if `x` is prime || `x` is divisible by 2 or 3 || `x` <= 1
-/// given that `sqrt` is the square root of `x`
-const fn is_prime_with_condition(x: u16, sqrt: u16) -> bool {
-    let mut divisor = 5;
-    let mut step = 2;
-    while divisor <= sqrt {
-        if divisor == 0 {
-            unsafe { unreachable_unchecked() };
-        }
-        if x % divisor == 0 {
-            return false;
-        }
-
-        divisor += step;
-        step ^= 6;
-    }
-
-    true
-}
-
 pub fn candies_to_buy(amount_of_kids_invited: u16) -> BigUint {
     const POWERS_OF_3: [u32; 12] = {
         let mut res = [0; 12];
@@ -83,4 +63,24 @@ pub fn candies_to_buy(amount_of_kids_invited: u16) -> BigUint {
     }
 
     res
+}
+
+/// checks if `x` is prime || `x` is divisible by 2 or 3 || `x` <= 1
+/// given that `sqrt` is the square root of `x`
+const fn is_prime_with_condition(x: u16, sqrt: u16) -> bool {
+    let mut divisor = 5;
+    let mut step = 2;
+    while divisor <= sqrt {
+        if divisor == 0 {
+            unsafe { unreachable_unchecked() };
+        }
+        if x % divisor == 0 {
+            return false;
+        }
+
+        divisor += step;
+        step ^= 6;
+    }
+
+    true
 }

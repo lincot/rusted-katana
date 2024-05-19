@@ -1,5 +1,46 @@
 //! <https://www.codewars.com/kata/5efae11e2d12df00331f91a6/train/rust>
 
+#[allow(clippy::result_unit_err)]
+pub fn crack(string: String) -> Result<i32, ()> {
+    let mut word0 = 0x3030_3030;
+    for d0 in 0..10 {
+        for d1 in 0..10 {
+            for d2 in 0..10 {
+                for d3 in 0..10 {
+                    let mut word1 = 0x8030;
+                    for d4 in 0..10 {
+                        if my_md5(word0, word1) == string.as_bytes() {
+                            return Ok(10000 * d0 + 1000 * d1 + 100 * d2 + 10 * d3 + d4);
+                        }
+                        word1 += 1;
+                    }
+                    word0 += 0x0100_0000;
+                }
+                word0 -= 0x09ff_0000;
+            }
+            word0 -= 0x09_ff00;
+        }
+        word0 -= 0x09ff;
+    }
+
+    Err(())
+}
+
+fn my_md5(word0: u32, word1: u32) -> [u8; 32] {
+    let mut res = [0; 32];
+    let mut len = 0;
+
+    for num in my_md5_process_block(word0, word1) {
+        for b in num.to_le_bytes() {
+            res[len] = to_hex_digit(b / 16);
+            res[len + 1] = to_hex_digit(b % 16);
+            len += 2;
+        }
+    }
+
+    res
+}
+
 fn my_md5_process_block(word0: u32, word1: u32) -> [u32; 4] {
     const A: u32 = 0x6745_2301;
     const B: u32 = 0xefcd_ab89;
@@ -119,45 +160,4 @@ const fn to_hex_digit(n: u8) -> u8 {
     } else {
         n + b'a' - 10
     }
-}
-
-fn my_md5(word0: u32, word1: u32) -> [u8; 32] {
-    let mut res = [0; 32];
-    let mut len = 0;
-
-    for num in my_md5_process_block(word0, word1) {
-        for b in num.to_le_bytes() {
-            res[len] = to_hex_digit(b / 16);
-            res[len + 1] = to_hex_digit(b % 16);
-            len += 2;
-        }
-    }
-
-    res
-}
-
-#[allow(clippy::result_unit_err)]
-pub fn crack(string: String) -> Result<i32, ()> {
-    let mut word0 = 0x3030_3030;
-    for d0 in 0..10 {
-        for d1 in 0..10 {
-            for d2 in 0..10 {
-                for d3 in 0..10 {
-                    let mut word1 = 0x8030;
-                    for d4 in 0..10 {
-                        if my_md5(word0, word1) == string.as_bytes() {
-                            return Ok(10000 * d0 + 1000 * d1 + 100 * d2 + 10 * d3 + d4);
-                        }
-                        word1 += 1;
-                    }
-                    word0 += 0x0100_0000;
-                }
-                word0 -= 0x09ff_0000;
-            }
-            word0 -= 0x09_ff00;
-        }
-        word0 -= 0x09ff;
-    }
-
-    Err(())
 }

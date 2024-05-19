@@ -2,17 +2,6 @@
 
 use unchecked_std::prelude::*;
 
-const B0: &str = "10";
-const B1: &str = "11";
-const B2: &str = "0110";
-const B3: &str = "0111";
-const B4: &str = "001100";
-const B5: &str = "001101";
-const B6: &str = "001110";
-const B7: &str = "001111";
-const B8: &str = "00011000";
-const B9: &str = "00011001";
-
 pub fn code(s: &str) -> String {
     let mut res = String::with_capacity(8 * s.len());
     for b in s.bytes() {
@@ -76,3 +65,14 @@ pub fn decode(s: &str) -> String {
     }
     res
 }
+
+const B0: &str = "10";
+const B1: &str = "11";
+const B2: &str = "0110";
+const B3: &str = "0111";
+const B4: &str = "001100";
+const B5: &str = "001101";
+const B6: &str = "001110";
+const B7: &str = "001111";
+const B8: &str = "00011000";
+const B9: &str = "00011001";

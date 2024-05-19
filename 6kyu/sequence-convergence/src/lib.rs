@@ -1,17 +1,5 @@
 //! <https://www.codewars.com/kata/59971e64bfccc70748000068/train/rust>
 
-const fn product_of_digits(mut n: u32) -> u32 {
-    let mut res = 1;
-    while n != 0 {
-        let d = n % 10;
-        if d != 0 {
-            res *= d;
-        }
-        n /= 10;
-    }
-    res
-}
-
 pub const fn convergence(n: u32) -> usize {
     let mut seq_1 = 1;
     let mut seq_n = n;
@@ -25,6 +13,18 @@ pub const fn convergence(n: u32) -> usize {
             break;
         }
         seq_1 += product_of_digits(seq_1);
+    }
+    res
+}
+
+const fn product_of_digits(mut n: u32) -> u32 {
+    let mut res = 1;
+    while n != 0 {
+        let d = n % 10;
+        if d != 0 {
+            res *= d;
+        }
+        n /= 10;
     }
     res
 }

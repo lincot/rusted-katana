@@ -7,25 +7,6 @@ use core::{
 use hashbrown::{hash_map::Entry, HashMap};
 use rustc_hash::FxHasher;
 
-#[derive(Default)]
-struct IdHasher(u64);
-
-impl Hasher for IdHasher {
-    fn write(&mut self, _: &[u8]) {
-        unimplemented!();
-    }
-
-    fn write_u64(&mut self, i: u64) {
-        self.0 = i;
-    }
-
-    fn finish(&self) -> u64 {
-        self.0
-    }
-}
-
-type IdHashMap<K, V> = HashMap<K, V, BuildHasherDefault<IdHasher>>;
-
 pub fn gangs(divisors: &[u32], k: u32) -> u32 {
     let mut map = IdHashMap::with_capacity_and_hasher(k as _, Default::default());
     for n in 1..=k {
@@ -44,3 +25,22 @@ pub fn gangs(divisors: &[u32], k: u32) -> u32 {
     }
     map.len() as _
 }
+
+#[derive(Default)]
+struct IdHasher(u64);
+
+impl Hasher for IdHasher {
+    fn write(&mut self, _: &[u8]) {
+        unimplemented!();
+    }
+
+    fn write_u64(&mut self, i: u64) {
+        self.0 = i;
+    }
+
+    fn finish(&self) -> u64 {
+        self.0
+    }
+}
+
+type IdHashMap<K, V> = HashMap<K, V, BuildHasherDefault<IdHasher>>;

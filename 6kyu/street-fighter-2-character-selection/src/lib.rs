@@ -5,11 +5,6 @@ mod preloaded;
 pub use preloaded::Direction;
 use unchecked_std::prelude::*;
 
-const FIGHTERS: [&str; 12] = [
-    "Ryu", "E.Honda", "Blanka", "Guile", "Balrog", "Vega", "Ken", "Chun Li", "Zangief", "Dhalsim",
-    "Sagat", "M.Bison",
-];
-
 pub fn street_fighter_selection(
     _fighters: &[[&str; 6]; 2],
     _position: &[i64; 2],
@@ -40,3 +35,8 @@ pub fn street_fighter_selection(
     }
     res
 }
+
+const FIGHTERS: [&str; 12] = [
+    "Ryu", "E.Honda", "Blanka", "Guile", "Balrog", "Vega", "Ken", "Chun Li", "Zangief", "Dhalsim",
+    "Sagat", "M.Bison",
+];

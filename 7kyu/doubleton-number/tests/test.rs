@@ -22,7 +22,7 @@ const fn is_doubleton(mut n: u32) -> bool {
     d2 != 10
 }
 
-pub fn doubleton_iterative(num: u32) -> u32 {
+fn doubleton_iterative(num: u32) -> u32 {
     (num + 1..).find(|&x| is_doubleton(x)).unwrap()
 }
 

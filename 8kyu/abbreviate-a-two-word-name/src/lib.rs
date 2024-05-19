@@ -2,14 +2,6 @@
 
 use unchecked_std::prelude::*;
 
-unsafe fn push_unchecked_uppercase(s: &mut String, c: char) {
-    if c.is_lowercase() {
-        s.extend_unchecked(c.to_uppercase());
-    } else {
-        s.push_unchecked(c);
-    }
-}
-
 pub fn abbrev_name(name: &str) -> String {
     let first = name.chars().next().unwrap();
     let first_len = first.len_utf8();
@@ -29,4 +21,12 @@ pub fn abbrev_name(name: &str) -> String {
     }
 
     res
+}
+
+unsafe fn push_unchecked_uppercase(s: &mut String, c: char) {
+    if c.is_lowercase() {
+        s.extend_unchecked(c.to_uppercase());
+    } else {
+        s.push_unchecked(c);
+    }
 }

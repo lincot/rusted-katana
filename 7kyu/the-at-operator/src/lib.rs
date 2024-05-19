@@ -1,9 +1,5 @@
 //! <https://www.codewars.com/kata/631f0c3a0b9cb0de6ded0529/train/rust>
 
-fn at(a: i64, b: i64) -> Option<i64> {
-    Some(a * (b + 2) + a.checked_div(b)?)
-}
-
 pub fn evaluate(equation: String) -> Option<i64> {
     let equation = equation.as_bytes();
     let mut space_index = equation.iter().position(|&x| x == b' ').unwrap();
@@ -30,4 +26,8 @@ pub fn evaluate(equation: String) -> Option<i64> {
         }
     }
     Some(res)
+}
+
+fn at(a: i64, b: i64) -> Option<i64> {
+    Some(a * (b + 2) + a.checked_div(b)?)
 }

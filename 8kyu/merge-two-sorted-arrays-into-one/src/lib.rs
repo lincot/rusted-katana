@@ -3,12 +3,6 @@
 use core::hint::unreachable_unchecked;
 use unchecked_std::prelude::*;
 
-unsafe fn push_unchecked_if_not_last_unchecked(res: &mut Vec<i32>, x: i32) {
-    if *res.get_unchecked(res.len() - 1) != x {
-        res.push_unchecked(x);
-    }
-}
-
 pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
     let mut res = Vec::with_capacity(arr1.len() + arr2.len());
     if arr1.is_empty() && arr2.is_empty() {
@@ -255,5 +249,11 @@ pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
                 }
             }
         }
+    }
+}
+
+unsafe fn push_unchecked_if_not_last_unchecked(res: &mut Vec<i32>, x: i32) {
+    if *res.get_unchecked(res.len() - 1) != x {
+        res.push_unchecked(x);
     }
 }

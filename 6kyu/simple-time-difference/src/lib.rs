@@ -6,16 +6,6 @@ use digital::WriteNumUnchecked;
 use unchecked_std::prelude::*;
 use vqsort::VqSort;
 
-fn parse_time(time: &str) -> u32 {
-    let time = time.as_bytes();
-    assert!(time.len() == 5);
-
-    let hours = 10 * (time[0] - b'0') + (time[1] - b'0');
-    let minutes = 10 * (time[3] - b'0') + (time[4] - b'0');
-
-    60 * hours as u32 + minutes as u32
-}
-
 pub fn solve(arr: &[&str]) -> String {
     assert!(!arr.is_empty());
 
@@ -44,4 +34,14 @@ pub fn solve(arr: &[&str]) -> String {
         res.write_num_unchecked(minutes, 10, false, false);
     }
     res
+}
+
+fn parse_time(time: &str) -> u32 {
+    let time = time.as_bytes();
+    assert!(time.len() == 5);
+
+    let hours = 10 * (time[0] - b'0') + (time[1] - b'0');
+    let minutes = 10 * (time[3] - b'0') + (time[4] - b'0');
+
+    60 * hours as u32 + minutes as u32
 }

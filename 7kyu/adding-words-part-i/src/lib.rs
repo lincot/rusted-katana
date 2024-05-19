@@ -2,6 +2,19 @@
 
 use core::ops::Add;
 
+#[derive(Clone, Copy)]
+pub struct Arith {
+    pub value: &'static str,
+}
+
+impl Add<&str> for &Arith {
+    type Output = &'static str;
+
+    fn add(self, rhs: &str) -> Self::Output {
+        ntos(ston(self.value) + ston(rhs))
+    }
+}
+
 const fn ston(s: &str) -> u8 {
     let s = s.as_bytes();
 
@@ -49,18 +62,5 @@ const fn ntos(n: u8) -> &'static str {
         18 => "eighteen",
         19 => "nineteen",
         _ => "twenty",
-    }
-}
-
-#[derive(Clone, Copy)]
-pub struct Arith {
-    pub value: &'static str,
-}
-
-impl Add<&str> for &Arith {
-    type Output = &'static str;
-
-    fn add(self, rhs: &str) -> Self::Output {
-        ntos(ston(self.value) + ston(rhs))
     }
 }
