@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/569f6ad962ff1dd52f00000d/train/rust>
 
-use vqsort::VqSort;
-
 #[derive(PartialEq, Eq)]
 enum Parity {
     Even,
@@ -13,7 +11,7 @@ pub fn select_quotients(arr: &[u32], m: u32, dir_str: &str) -> Vec<(u32, (u32, u
     assert!(m != 0 && !arr.is_empty());
 
     let mut arr = arr.to_vec().into_boxed_slice();
-    VqSort::sort(&mut arr);
+    vqsort_rs::sort(&mut arr);
     let mut res = Vec::new();
 
     let parity = if dir_str.is_empty() {

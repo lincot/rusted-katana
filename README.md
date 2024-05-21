@@ -17,7 +17,7 @@ current progress:
 are allowed, even if they are not accepted by Codewars
 
 - solutions are safe, i.e. they don't produce undefined behavior
-(checked with miri); *nevertheless, there are 500 `unsafe` blocks*
+(checked with miri); *nevertheless, there are 496 `unsafe` blocks*
 
 - even though most of the tests on Codewars have only ASCII input,
 they use Rust's standard UTF-8–encoded strings,

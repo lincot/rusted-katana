@@ -1,11 +1,10 @@
 //! <https://www.codewars.com/kata/5bd776533a7e2720c40000e5/train/rust>
 
 use unchecked_std::prelude::*;
-use vqsort::VqSort;
 
 pub fn pendulum(xs: &[i32]) -> Vec<i32> {
     let mut xs = xs.to_vec();
-    VqSort::sort(&mut xs);
+    vqsort_rs::sort(&mut xs);
     let mut res = Vec::with_capacity(xs.len());
     let mut i = (xs.len() - (xs.len() % 2 == 0) as usize).wrapping_sub(1);
     for _ in 0..(i + 2) / 2 {

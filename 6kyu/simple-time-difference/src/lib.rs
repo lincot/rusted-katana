@@ -4,13 +4,12 @@
 
 use digital::WriteNumUnchecked;
 use unchecked_std::prelude::*;
-use vqsort::VqSort;
 
 pub fn solve(arr: &[&str]) -> String {
     assert!(!arr.is_empty());
 
     let mut parsed_arr: Box<[_]> = arr.iter().map(|s| parse_time(s)).collect();
-    VqSort::sort(&mut parsed_arr);
+    vqsort_rs::sort(&mut parsed_arr);
 
     let max_diff = parsed_arr
         .array_windows()

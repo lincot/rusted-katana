@@ -1,7 +1,6 @@
 //! <https://www.codewars.com/kata/56dbb6603e5dd6543c00098d/train/rust>
 
 use unchecked_std::prelude::*;
-use vqsort::VqSort;
 
 pub fn track_sum(arr: &[i32]) -> (Vec<i32>, Vec<i32>) {
     let mut tracked_sums = Vec::with_capacity(4);
@@ -16,7 +15,7 @@ pub fn track_sum(arr: &[i32]) -> (Vec<i32>, Vec<i32>) {
 
     tracked_sums[0] = arr.iter().sum();
     let mut arr = arr.to_vec();
-    VqSort::sort_descending(&mut arr);
+    vqsort_rs::sort_descending(&mut arr);
 
     let mut dedup_arr = Vec::with_capacity(arr.len());
     let mut prev = arr[0];

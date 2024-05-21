@@ -1,7 +1,6 @@
 //! <https://www.codewars.com/kata/578aa45ee9fd15ff4600090d/train/rust>
 
 use unchecked_std::prelude::*;
-use vqsort::VqSort;
 
 pub fn sort_array(arr: &[i32]) -> Vec<i32> {
     let mut odds = Vec::with_capacity(arr.len());
@@ -10,7 +9,7 @@ pub fn sort_array(arr: &[i32]) -> Vec<i32> {
             unsafe { odds.push_unchecked(x) };
         }
     }
-    VqSort::sort(&mut odds);
+    vqsort_rs::sort(&mut odds);
     let mut odd_i = 0;
     arr.iter()
         .map(|&x| {

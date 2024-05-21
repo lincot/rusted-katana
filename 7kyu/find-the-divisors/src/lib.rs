@@ -2,7 +2,6 @@
 
 use digital::{MaxLenBase10, WriteNumUnchecked};
 use unchecked_std::prelude::*;
-use vqsort::VqSort;
 
 pub fn divisors(integer: u32) -> Result<Vec<u32>, String> {
     let divisors = get_divisors(integer);
@@ -88,7 +87,7 @@ fn get_divisors(mut n: u32) -> Vec<u32> {
             unsafe { push_unchecked_with_multiples(&mut res, n, len) };
         }
 
-        VqSort::sort(&mut res);
+        vqsort_rs::sort(&mut res);
         res.pop();
     }
 

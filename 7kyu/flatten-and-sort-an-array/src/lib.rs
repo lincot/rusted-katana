@@ -1,7 +1,6 @@
 //! <https://www.codewars.com/kata/57ee99a16c8df7b02d00045f/train/rust>
 
 use unchecked_std::prelude::*;
-use vqsort::VqSort;
 
 pub fn flatten_and_sort(arr: &[Vec<i32>]) -> Vec<i32> {
     let len = arr.iter().map(Vec::len).sum();
@@ -9,6 +8,6 @@ pub fn flatten_and_sort(arr: &[Vec<i32>]) -> Vec<i32> {
     for a in arr {
         unsafe { res.extend_from_slice_unchecked(a) };
     }
-    VqSort::sort(&mut res);
+    vqsort_rs::sort(&mut res);
     res
 }

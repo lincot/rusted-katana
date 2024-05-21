@@ -6,7 +6,6 @@ use merge_two_sorted_arrays_into_one::merge_arrays;
 use rand::Rng;
 use rand_pcg::Pcg64;
 use test::{black_box, Bencher};
-use vqsort::VqSort;
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
@@ -16,7 +15,7 @@ fn bench(bencher: &mut Bencher) {
     );
     let [mut arr1, mut arr2]: [[_; 100]; 2] =
         array::from_fn(|_| array::from_fn(|_| rng.gen_range(-100..100)));
-    VqSort::sort(&mut arr1);
-    VqSort::sort_descending(&mut arr2);
+    vqsort_rs::sort(&mut arr1);
+    vqsort_rs::sort_descending(&mut arr2);
     bencher.iter(|| merge_arrays(black_box(&arr1), black_box(&arr2)));
 }

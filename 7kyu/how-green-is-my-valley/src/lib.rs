@@ -1,9 +1,7 @@
 //! <https://www.codewars.com/kata/56e3cd1d93c3d940e50006a4/train/rust>
 
-use vqsort::VqSort;
-
 pub fn make_valley(mut arr: Vec<i32>) -> Vec<i32> {
-    VqSort::sort_descending(&mut arr);
+    vqsort_rs::sort_descending(&mut arr);
 
     let len = arr.len();
     let mut res = Vec::with_capacity(len);
