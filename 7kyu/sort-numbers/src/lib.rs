@@ -4,6 +4,6 @@ use vqsort::VqSort;
 
 pub fn sort_numbers(arr: &[i32]) -> Vec<i32> {
     let mut arr = arr.to_vec();
-    VqSort::sort_ascending(&mut arr);
+    VqSort::sort(&mut arr);
     arr
 }

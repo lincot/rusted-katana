@@ -10,7 +10,7 @@ pub fn sort_array(arr: &[i32]) -> Vec<i32> {
             unsafe { odds.push_unchecked(x) };
         }
     }
-    VqSort::sort_ascending(&mut odds);
+    VqSort::sort(&mut odds);
     let mut odd_i = 0;
     arr.iter()
         .map(|&x| {

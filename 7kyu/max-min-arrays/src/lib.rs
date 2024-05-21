@@ -5,7 +5,7 @@ use vqsort::VqSort;
 
 pub fn solve(arr: &[i32]) -> Vec<i32> {
     let mut arr = arr.to_vec();
-    VqSort::sort_ascending(&mut arr);
+    VqSort::sort(&mut arr);
     let mut res = Vec::with_capacity(arr.len());
     let mut it = arr.into_iter();
 

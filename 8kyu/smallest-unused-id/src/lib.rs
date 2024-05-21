@@ -4,7 +4,7 @@ use vqsort::VqSort;
 
 pub fn next_id(ids: &[usize]) -> usize {
     let mut ids: Box<[_]> = ids.into();
-    VqSort::sort_ascending(&mut ids);
+    VqSort::sort(&mut ids);
     let mut res = 0;
     for &i in &*ids {
         if i > res {

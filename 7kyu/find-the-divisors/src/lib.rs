@@ -88,7 +88,7 @@ fn get_divisors(mut n: u32) -> Vec<u32> {
             unsafe { push_unchecked_with_multiples(&mut res, n, len) };
         }
 
-        VqSort::sort_ascending(&mut res);
+        VqSort::sort(&mut res);
         res.pop();
     }
 

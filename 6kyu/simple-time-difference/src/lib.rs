@@ -10,7 +10,7 @@ pub fn solve(arr: &[&str]) -> String {
     assert!(!arr.is_empty());
 
     let mut parsed_arr: Box<[_]> = arr.iter().map(|s| parse_time(s)).collect();
-    VqSort::sort_ascending(&mut parsed_arr);
+    VqSort::sort(&mut parsed_arr);
 
     let max_diff = parsed_arr
         .array_windows()

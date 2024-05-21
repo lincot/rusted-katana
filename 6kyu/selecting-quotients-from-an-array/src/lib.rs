@@ -13,7 +13,7 @@ pub fn select_quotients(arr: &[u32], m: u32, dir_str: &str) -> Vec<(u32, (u32, u
     assert!(m != 0 && !arr.is_empty());
 
     let mut arr = arr.to_vec().into_boxed_slice();
-    VqSort::sort_ascending(&mut arr);
+    VqSort::sort(&mut arr);
     let mut res = Vec::new();
 
     let parity = if dir_str.is_empty() {

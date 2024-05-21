@@ -4,7 +4,7 @@ use vqsort::VqSort;
 
 pub fn minimum_steps(nums: &[i32], value: i32) -> usize {
     let mut nums = nums.to_vec();
-    VqSort::sort_ascending(&mut nums);
+    VqSort::sort(&mut nums);
 
     let mut res = 0;
     let mut sum = 0;

@@ -10,7 +10,7 @@ pub fn flip(direction: char, mut matrix: Vec<Vec<u32>>) -> Vec<Vec<u32>> {
     match direction {
         'R' => {
             for row in &mut matrix {
-                VqSort::sort_ascending(row);
+                VqSort::sort(row);
             }
         }
         'L' => {
@@ -35,7 +35,7 @@ pub fn flip(direction: char, mut matrix: Vec<Vec<u32>>) -> Vec<Vec<u32>> {
             }
             if direction == 'D' {
                 for row in &mut transposed {
-                    VqSort::sort_ascending(row);
+                    VqSort::sort(row);
                 }
             } else {
                 for row in &mut transposed {

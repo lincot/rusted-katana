@@ -5,7 +5,7 @@ use vqsort::VqSort;
 pub fn flip(dir: char, cubes: &[u32]) -> Vec<u32> {
     let mut cubes = cubes.to_vec();
     if dir == 'R' {
-        VqSort::sort_ascending(&mut cubes);
+        VqSort::sort(&mut cubes);
     } else {
         VqSort::sort_descending(&mut cubes);
     }

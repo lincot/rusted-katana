@@ -10,6 +10,6 @@ pub fn largest(n: usize, xs: &[i32]) -> Vec<i32> {
         xs.select_nth_unstable_by_key(n - 1, |&x| Reverse(x));
     }
     xs.truncate(n);
-    VqSort::sort_ascending(&mut xs);
+    VqSort::sort(&mut xs);
     xs
 }

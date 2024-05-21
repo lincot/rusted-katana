@@ -7,7 +7,7 @@ pub fn party_people(lst: &[u32]) -> u32 {
     if lst.len() <= 20 {
         lst.sort_unstable();
     } else {
-        VqSort::sort_ascending(&mut lst);
+        VqSort::sort(&mut lst);
     }
     lst.iter()
         .enumerate()

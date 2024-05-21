@@ -6,7 +6,7 @@ pub fn men_from_boys(xs: &[i16]) -> Vec<i16> {
     let mut res = xs.to_vec();
     res.sort_unstable_by_key(|x| x % 2 != 0);
     let even_count = res.partition_point(|x| x % 2 == 0);
-    VqSort::sort_ascending(&mut res[..even_count]);
+    VqSort::sort(&mut res[..even_count]);
     VqSort::sort_descending(&mut res[even_count..]);
     res.dedup();
     res

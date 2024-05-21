@@ -1,7 +1,7 @@
 #![no_std]
 
 pub trait VqSort: Sized {
-    fn sort_ascending(data: &mut [Self]);
+    fn sort(data: &mut [Self]);
     fn sort_descending(data: &mut [Self]);
 }
 
@@ -9,17 +9,17 @@ macro_rules! vqsort_impl {
     ($($t:ty)*) => ($(
         paste::paste! {
             extern "C" {
-                fn [<vqsort_ $t _ascending>](data: *mut $t, len: usize);
+                fn [<vqsort_ $t>](data: *mut $t, len: usize);
                 fn [<vqsort_ $t _descending>](data: *mut $t, len: usize);
             }
 
             impl VqSort for $t {
                 #[inline]
-                fn sort_ascending(data: &mut [Self]) {
+                fn sort(data: &mut [Self]) {
                     if cfg!(miri) {
                         data.sort_unstable_by(|a, b| a.partial_cmp(b).unwrap());
                     } else {
-                        unsafe { [<vqsort_ $t _ascending>](data.as_mut_ptr(), data.len()) };
+                        unsafe { [<vqsort_ $t>](data.as_mut_ptr(), data.len()) };
                     }
                 }
 
@@ -43,11 +43,11 @@ macro_rules! vqsort_u {
         paste::paste! {
             #[cfg(target_pointer_width = "" $t)]
             #[inline]
-            fn sort_ascending(data: &mut [Self]) {
+            fn sort(data: &mut [Self]) {
                 if cfg!(miri) {
                     data.sort_unstable();
                 } else {
-                    unsafe { [<vqsort_u $t _ascending>](data.as_mut_ptr().cast(), data.len()) };
+                    unsafe { [<vqsort_u $t>](data.as_mut_ptr().cast(), data.len()) };
                 }
             }
 
