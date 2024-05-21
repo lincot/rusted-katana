@@ -351,18 +351,18 @@ impl Compiler {
         res
     }
 
-    pub fn compile(&mut self, program: &str) -> Vec<String> {
+    pub fn compile(&self, program: &str) -> Vec<String> {
         let mut ast = MyAst::parse(program);
         my_pass2(&mut ast);
         my_pass3(&ast)
     }
 
-    pub fn pass1(&mut self, program: &str) -> Ast {
+    pub fn pass1(&self, program: &str) -> Ast {
         Ast::parse(program)
     }
 
     #[allow(clippy::only_used_in_recursion)]
-    pub fn pass2(&mut self, ast: &Ast) -> Ast {
+    pub fn pass2(&self, ast: &Ast) -> Ast {
         match *ast {
             Ast::UnOp(..) => ast.clone(),
             Ast::BinOp(ref op, ref lhs, ref rhs) => {
@@ -393,7 +393,7 @@ impl Compiler {
         }
     }
 
-    pub fn pass3(&mut self, ast: &Ast) -> Vec<String> {
+    pub fn pass3(&self, ast: &Ast) -> Vec<String> {
         let mut instructions = vec![];
         Self::pass3_recursive(&mut instructions, ast);
         instructions
