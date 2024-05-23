@@ -1,6 +1,5 @@
 [package]
 name = "fibonacci-rabbits"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

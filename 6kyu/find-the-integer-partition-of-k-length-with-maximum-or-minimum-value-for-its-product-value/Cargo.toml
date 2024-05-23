@@ -1,6 +1,5 @@
 [package]
 name = "find-the-integer-partition-of-k-length-with-maximum-or-minimum-value-for-its-product-value"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

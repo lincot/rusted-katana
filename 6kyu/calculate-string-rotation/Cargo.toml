@@ -1,4 +1,3 @@
 [package]
 name = "calculate-string-rotation"
-version = "0.1.0"
 edition = "2021"

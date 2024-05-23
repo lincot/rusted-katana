@@ -1,6 +1,5 @@
 [package]
 name = "how-many-consecutive-numbers-are-needed"
-version = "0.1.0"
 edition = "2021"
 
 [dev-dependencies]

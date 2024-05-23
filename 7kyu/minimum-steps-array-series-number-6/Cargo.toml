@@ -1,6 +1,5 @@
 [package]
 name = "minimum-steps-array-series-number-6"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

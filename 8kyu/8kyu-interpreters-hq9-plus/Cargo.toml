@@ -1,6 +1,5 @@
 [package]
 name = "solution-8kyu-interpreters-hq9-plus"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

@@ -1,6 +1,5 @@
 [package]
 name = "typing-series-number-1-the-backspace-function"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

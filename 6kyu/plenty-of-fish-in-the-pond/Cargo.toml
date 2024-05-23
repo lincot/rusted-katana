@@ -1,6 +1,5 @@
 [package]
 name = "plenty-of-fish-in-the-pond"
-version = "0.1.0"
 edition = "2021"
 
 [dev-dependencies]

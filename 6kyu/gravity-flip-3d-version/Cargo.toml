@@ -1,6 +1,5 @@
 [package]
 name = "gravity-flip-3d-version"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

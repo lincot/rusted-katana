@@ -1,6 +1,5 @@
 [package]
 name = "weigh-the-list-number-1"
-version = "0.1.0"
 edition = "2021"
 
 [dev-dependencies]

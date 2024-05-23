@@ -1,4 +1,3 @@
 [package]
 name = "find-the-next-perfect-square"
-version = "0.1.0"
 edition = "2021"

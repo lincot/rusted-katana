@@ -1,6 +1,5 @@
 [package]
 name = "delete-occurrences-of-an-element-if-it-occurs-more-than-n-times"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

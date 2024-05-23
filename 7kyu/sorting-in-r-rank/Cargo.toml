@@ -1,6 +1,5 @@
 [package]
 name = "sorting-in-r-rank"
-version = "0.1.0"
 edition = "2021"
 
 [dev-dependencies]

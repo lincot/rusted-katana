@@ -1,6 +1,5 @@
 [package]
 name = "goldbachs-conjecture"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

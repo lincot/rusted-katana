@@ -1,6 +1,5 @@
 [package]
 name = "minimize-sum-of-array-array-series-number-1"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

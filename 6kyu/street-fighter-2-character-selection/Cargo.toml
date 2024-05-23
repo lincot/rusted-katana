@@ -1,6 +1,5 @@
 [package]
 name = "street-fighter-2-character-selection"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

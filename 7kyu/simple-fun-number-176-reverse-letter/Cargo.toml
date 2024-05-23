@@ -1,6 +1,5 @@
 [package]
 name = "simple-fun-number-176-reverse-letter"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

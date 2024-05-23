@@ -1,4 +1,3 @@
 [package]
 name = "find-the-first-number-in-having-a-certain-number-of-divisors-i"
-version = "0.1.0"
 edition = "2021"

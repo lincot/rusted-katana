@@ -1,4 +1,3 @@
 [package]
 name = "sum-of-minimums"
-version = "0.1.0"
 edition = "2021"

@@ -1,6 +1,5 @@
 [package]
 name = "count-of-positives-slash-sum-of-negatives"
-version = "0.1.0"
 edition = "2021"
 
 [dev-dependencies]

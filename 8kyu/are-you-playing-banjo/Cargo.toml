@@ -1,6 +1,5 @@
 [package]
 name = "are-you-playing-banjo"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

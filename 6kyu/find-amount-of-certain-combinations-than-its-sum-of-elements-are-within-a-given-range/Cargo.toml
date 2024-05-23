@@ -1,6 +1,5 @@
 [package]
 name = "find-amount-of-certain-combinations-than-its-sum-of-elements-are-within-a-given-range"
-version = "0.1.0"
 edition = "2021"
 
 [dev-dependencies]

@@ -1,6 +1,5 @@
 [package]
 name = "score-from-permutations-of-combinations-of-an-integer"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

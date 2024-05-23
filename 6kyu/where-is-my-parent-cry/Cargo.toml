@@ -1,6 +1,5 @@
 [package]
 name = "where-is-my-parent-cry"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

@@ -1,6 +1,5 @@
 [package]
 name = "mirror-mirror-on-the-wall-dot-dot-dot"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

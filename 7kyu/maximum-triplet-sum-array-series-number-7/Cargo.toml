@@ -1,6 +1,5 @@
 [package]
 name = "maximum-triplet-sum-array-series-number-7"
-version = "0.1.0"
 edition = "2021"
 
 [dev-dependencies]

@@ -1,6 +1,5 @@
 [package]
 name = "error-correction-number-1-hamming-code"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

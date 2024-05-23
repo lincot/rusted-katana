@@ -1,4 +1,3 @@
 [package]
 name = "disease-spread"
-version = "0.1.0"
 edition = "2021"

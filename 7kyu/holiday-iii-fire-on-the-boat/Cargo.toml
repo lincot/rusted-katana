@@ -1,6 +1,5 @@
 [package]
 name = "holiday-iii-fire-on-the-boat"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

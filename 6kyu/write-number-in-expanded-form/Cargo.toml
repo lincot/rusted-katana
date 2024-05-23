@@ -1,6 +1,5 @@
 [package]
 name = "write-number-in-expanded-form"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

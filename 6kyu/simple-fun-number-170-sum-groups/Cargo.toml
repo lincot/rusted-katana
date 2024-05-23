@@ -1,6 +1,5 @@
 [package]
 name = "simple-fun-number-170-sum-groups"
-version = "0.1.0"
 edition = "2021"
 
 [dev-dependencies]

@@ -1,4 +1,3 @@
 [package]
 name = "find-the-smallest-power-higher-than-a-given-a-value"
-version = "0.1.0"
 edition = "2021"

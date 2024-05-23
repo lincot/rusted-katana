@@ -1,4 +1,3 @@
 [package]
 name = "shortest-steps-to-a-number"
-version = "0.1.0"
 edition = "2021"

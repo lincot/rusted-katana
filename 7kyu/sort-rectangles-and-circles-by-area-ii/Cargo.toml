@@ -1,6 +1,5 @@
 [package]
 name = "sort-rectangles-and-circles-by-area-ii"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

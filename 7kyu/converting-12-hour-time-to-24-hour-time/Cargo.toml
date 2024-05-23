@@ -1,4 +1,3 @@
 [package]
 name = "converting-12-hour-time-to-24-hour-time"
-version = "0.1.0"
 edition = "2021"

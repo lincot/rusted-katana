@@ -1,6 +1,5 @@
 [package]
 name = "divide-and-conquer"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]

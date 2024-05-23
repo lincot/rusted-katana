@@ -1,6 +1,5 @@
 [package]
 name = "the-poet-and-the-pendulum"
-version = "0.1.0"
 edition = "2021"
 
 [dependencies]
