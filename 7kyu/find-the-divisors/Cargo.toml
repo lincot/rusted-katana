@@ -6,4 +6,4 @@ edition = "2021"
 [dependencies]
 unchecked-std = "0.1.0"
 digital = { path = "../../digital" }
-vqsort-rs = "0.1.0"
+vqsort-rs = "0.2.0"

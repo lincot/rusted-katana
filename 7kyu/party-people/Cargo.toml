@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-vqsort-rs = "0.1.0"
+vqsort-rs = "0.2.0"
