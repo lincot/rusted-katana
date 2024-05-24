@@ -3,17 +3,14 @@
 extern crate test;
 use core::array;
 use rand::{seq::SliceRandom, Rng};
-use rand_pcg::Pcg64;
+use rand_pcg::Pcg64Mcg;
 use smallest_unused_id::next_id;
 use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
     const LEN: usize = if cfg!(miri) { 20 } else { 20_000 };
-    let mut rng = Pcg64::new(
-        0xcafe_f00d_d15e_a5e5,
-        0x0a02_bdbf_7bb3_c0a7_ac28_fa16_a64a_bf96,
-    );
+    let mut rng = Pcg64Mcg::new(0xcafe_f00d_d15e_a5e5);
     let mut ids: [_; LEN] = array::from_fn(|i| {
         if i < LEN / 2 {
             i
