@@ -31,7 +31,3 @@ so solutions for string katas are made for Unicode input;
 - linting is done with `./lint.sh`
 
 - large lookup tables are generally not allowed
-
-## external dependencies
-
-vqsort depends on [highway](https://github.com/google/highway)
