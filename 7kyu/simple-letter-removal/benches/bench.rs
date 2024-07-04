@@ -10,7 +10,8 @@ use test::{black_box, Bencher};
 #[bench]
 fn bench(bencher: &mut Bencher) {
     let mut rng = Pcg64Mcg::new(0xcafe_f00d_d15e_a5e5);
-    let s: [_; 1000] = array::from_fn(|_| rng.gen_range(b'a'..=b'z'));
+    let s: [_; if cfg!(miri) { 100 } else { 1000 }] =
+        array::from_fn(|_| rng.gen_range(b'a'..=b'z'));
     bencher.iter(|| {
         solve(
             black_box(unsafe { core::str::from_utf8_unchecked(&s) }),

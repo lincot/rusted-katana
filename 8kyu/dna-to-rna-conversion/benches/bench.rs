@@ -7,6 +7,6 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let dna: [_; 8192] = array::from_fn(|i| b"GCAT"[i % 4]);
+    let dna: [_; if cfg!(miri) { 64 } else { 8192 }] = array::from_fn(|i| b"GCAT"[i % 4]);
     bencher.iter(|| dna_to_rna(black_box(unsafe { core::str::from_utf8_unchecked(&dna) })));
 }

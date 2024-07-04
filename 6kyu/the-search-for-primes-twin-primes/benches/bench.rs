@@ -6,5 +6,5 @@ use the_search_for_primes_twin_primes::twin_prime;
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| twin_prime(black_box(10_000)));
+    bencher.iter(|| twin_prime(black_box(if cfg!(miri) { 100 } else { 10_000 })));
 }
