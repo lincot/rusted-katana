@@ -1,0 +1,6 @@
+[package]
+name = "guess-the-array"
+edition = "2021"
+
+[dependencies]
+unchecked-std = "0.1.0"

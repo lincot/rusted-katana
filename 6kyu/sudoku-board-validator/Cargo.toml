@@ -1,0 +1,3 @@
+[package]
+name = "sudoku-board-validator"
+edition = "2021"

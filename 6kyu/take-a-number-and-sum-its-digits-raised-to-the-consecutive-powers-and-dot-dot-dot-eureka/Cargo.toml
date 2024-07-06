@@ -1,0 +1,3 @@
+[package]
+name = "take-a-number-and-sum-its-digits-raised-to-the-consecutive-powers-and-dot-dot-dot-eureka"
+edition = "2021"

@@ -1,0 +1,3 @@
+[package]
+name = "hamming-distance"
+edition = "2021"

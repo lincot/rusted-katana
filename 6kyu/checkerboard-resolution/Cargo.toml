@@ -1,0 +1,3 @@
+[package]
+name = "checkerboard-resolution"
+edition = "2021"

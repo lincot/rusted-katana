@@ -1,0 +1,6 @@
+[package]
+name = "esolang-interpreters-number-1-introduction-to-esolangs-and-my-first-interpreter-ministringfuck"
+edition = "2021"
+
+[dependencies]
+unchecked-std = "0.1.0"

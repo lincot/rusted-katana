@@ -1,0 +1,6 @@
+[package]
+name = "convert-string-to-camel-case"
+edition = "2021"
+
+[dependencies]
+unchecked-std = "0.1.0"

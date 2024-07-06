@@ -1,0 +1,3 @@
+[package]
+name = "light-switch"
+edition = "2021"

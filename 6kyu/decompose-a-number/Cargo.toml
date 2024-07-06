@@ -1,0 +1,6 @@
+[package]
+name = "decompose-a-number"
+edition = "2021"
+
+[dependencies]
+unchecked-std = "0.1.0"

@@ -1,0 +1,3 @@
+[package]
+name = "magnitude"
+edition = "2021"

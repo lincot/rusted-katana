@@ -1,0 +1,8 @@
+[package]
+name = "moduli-number-system"
+edition = "2021"
+
+[dependencies]
+unchecked-std = "0.1.0"
+digital = { path = "../../digital" }
+num-integer = "0.1.45"

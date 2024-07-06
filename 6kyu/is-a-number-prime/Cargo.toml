@@ -1,0 +1,6 @@
+[package]
+name = "is-a-number-prime"
+edition = "2021"
+
+[dependencies]
+num-prime = "0.4.4"

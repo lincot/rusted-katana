@@ -1,0 +1,3 @@
+[package]
+name = "roman-numerals-decoder"
+edition = "2021"

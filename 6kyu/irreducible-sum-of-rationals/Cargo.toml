@@ -1,0 +1,10 @@
+[package]
+name = "irreducible-sum-of-rationals"
+edition = "2021"
+
+[dependencies]
+num-integer = "0.1.45"
+
+[dev-dependencies]
+rand = { version = "0.8.5", default-features = false, features = ["std"] }
+rand_pcg = "0.3.1"
