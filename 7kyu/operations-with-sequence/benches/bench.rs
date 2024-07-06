@@ -11,9 +11,5 @@ use test::{black_box, Bencher};
 fn bench(bencher: &mut Bencher) {
     let mut rng = Pcg64Mcg::new(0xcafe_f00d_d15e_a5e5);
     let array: [_; 1000] = array::from_fn(|_| rng.gen_range(0..1000));
-    bencher.iter(|| {
-        for _ in 0..if cfg!(miri) { 1 } else { 1000 } {
-            black_box(calc(black_box(array.into())));
-        }
-    });
+    bencher.iter(|| calc(black_box(array.into())));
 }

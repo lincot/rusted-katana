@@ -15,5 +15,5 @@ fn bench(bencher: &mut Bencher) {
     let slice: [_; if cfg!(miri) { 16 } else { 1024 }] =
         array::from_fn(|i| unsafe { core::str::from_utf8_unchecked(&slice[i]) });
     let find = slice[slice.len() / 2];
-    bencher.iter(|| black_box(next_item(black_box(&slice), black_box(find))));
+    bencher.iter(|| next_item(black_box(&slice), black_box(find)));
 }

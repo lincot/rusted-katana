@@ -6,11 +6,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        for _ in 0..if cfg!(miri) { 1 } else { 1000 } {
-            black_box(index_equals_value(black_box(&[
-                -5, 1, 2, 3, 4, 5, 7, 10, 15,
-            ])));
-        }
-    });
+    bencher.iter(|| index_equals_value(black_box(&[-5, 1, 2, 3, 4, 5, 7, 10, 15])));
 }

@@ -7,12 +7,10 @@ use test::{black_box, Bencher};
 #[bench]
 fn bench(bencher: &mut Bencher) {
     bencher.iter(|| {
-        for _ in 0..if cfg!(miri) { 1 } else { 100 } {
-            black_box(distance_from_line(
-                black_box((10., 10.)),
-                black_box((30., 10.)),
-                black_box((20., 25.)),
-            ));
-        }
+        distance_from_line(
+            black_box((10., 10.)),
+            black_box((30., 10.)),
+            black_box((20., 25.)),
+        )
     });
 }

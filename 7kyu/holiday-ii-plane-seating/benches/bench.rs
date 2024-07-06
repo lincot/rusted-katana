@@ -6,18 +6,10 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench_valid(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        for _ in 0..if cfg!(miri) { 1 } else { 1000 } {
-            black_box(plane_seat(black_box("20B")));
-        }
-    });
+    bencher.iter(|| plane_seat(black_box("20B")));
 }
 
 #[bench]
 fn bench_invalid(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        for _ in 0..if cfg!(miri) { 1 } else { 1000 } {
-            black_box(plane_seat(black_box("58I")));
-        }
-    });
+    bencher.iter(|| plane_seat(black_box("58I")));
 }

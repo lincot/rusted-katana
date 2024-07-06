@@ -6,9 +6,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        for _ in 0..if cfg!(miri) { 1 } else { 1000 } {
-            get_positions(black_box(1337));
-        }
-    });
+    bencher.iter(|| get_positions(black_box(1337)));
 }

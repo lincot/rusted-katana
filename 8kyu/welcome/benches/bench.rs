@@ -6,18 +6,10 @@ use welcome::greet;
 
 #[bench]
 fn bench_estonian(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        for _ in 0..if cfg!(miri) { 1 } else { 1000 } {
-            black_box(greet(black_box("estonian")));
-        }
-    });
+    bencher.iter(|| greet(black_box("estonian")));
 }
 
 #[bench]
 fn bench_swedish(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        for _ in 0..if cfg!(miri) { 1 } else { 1000 } {
-            black_box(greet(black_box("swedish")));
-        }
-    });
+    bencher.iter(|| greet(black_box("swedish")));
 }

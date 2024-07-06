@@ -6,5 +6,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| black_box(solve(black_box("abcdefghijklmnopqrstuvwxyz"))));
+    bencher.iter(|| solve(black_box("abcdefghijklmnopqrstuvwxyz")));
 }
