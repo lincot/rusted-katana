@@ -6,4 +6,4 @@ edition = "2021"
 unchecked-std = "0.1.0"
 digital = { path = "../../digital" }
 hashbrown = { version = "0.14.3", features = ["nightly"] }
-rustc-hash = "1.1.0"
+rustc-hash = "2.0.0"
