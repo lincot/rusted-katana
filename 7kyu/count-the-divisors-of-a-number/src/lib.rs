@@ -1,11 +1,9 @@
 //! <https://www.codewars.com/kata/542c0f198e077084c0000c2e/train/rust>
 
 pub fn divisors(mut n: u32) -> u32 {
-    // 2 * 3 * 5 * 7 * 11 * 13 * 17 * 19 * 23 * 29 > u32::MAX
-    let mut prime_pows_incremented = heapless::Vec::<u8, 8>::new();
-
     let pow_of_2 = n.trailing_zeros();
     n >>= pow_of_2;
+    let mut res = pow_of_2 + 1;
 
     let mut x = 3;
     let mut n_sqrt = unsafe { (n as f64).sqrt().to_int_unchecked() };
@@ -20,7 +18,7 @@ pub fn divisors(mut n: u32) -> u32 {
         }
 
         if p != 1 {
-            unsafe { prime_pows_incremented.push_unchecked(p) };
+            res *= p;
         }
 
         x += 2;
@@ -29,9 +27,8 @@ pub fn divisors(mut n: u32) -> u32 {
         }
     }
 
-    let mut res = (pow_of_2 + 1) * if n == 1 { 1 } else { 2 };
-    for p in prime_pows_incremented {
-        res *= p as u32;
+    if n != 1 {
+        res *= 2;
     }
     res
 }
