@@ -23,7 +23,7 @@ are allowed, even if they are not accepted by Codewars
 they use Rust's standard UTF-8–encoded strings,
 so solutions for string katas are made for Unicode input;
 *nevertheless,
-`.bytes()`, `.as_bytes()`, `.as_bytes_mut()` and `.as_mut_vec()` are used 216 times*
+`.bytes()`, `.as_bytes()`, `.as_bytes_mut()` and `.as_mut_vec()` are used 218 times*
 
 - function signatures and names from solution setups are preserved;
 *but are adjusted with clippy*
