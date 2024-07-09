@@ -1,6 +1,5 @@
 [workspace]
 members = [
-    "digital",
     "1kyu/*",
     "2kyu/*",
     "3kyu/*",
@@ -9,7 +8,9 @@ members = [
     "6kyu/*",
     "7kyu/*",
     "8kyu/*",
+    "char-to-lower",
     "check-katas",
+    "digital",
     "progress-bars",
 ]
 resolver = "2"

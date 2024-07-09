@@ -4,3 +4,4 @@ edition = "2021"
 
 [dependencies]
 heapless = "0.8.0"
+char-to-lower = { path = "../../char-to-lower" }
