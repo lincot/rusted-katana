@@ -6,3 +6,6 @@ edition = "2021"
 unchecked-std = "0.1.0"
 digital = { path = "../../digital" }
 heapless = "0.8.0"
+
+[lints]
+workspace = true

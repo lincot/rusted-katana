@@ -1,3 +1,6 @@
 [package]
 name = "simple-fun-number-11-swap-adjacent-bits"
 edition = "2021"
+
+[lints]
+workspace = true

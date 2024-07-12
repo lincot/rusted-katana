@@ -1,3 +1,6 @@
 [package]
 name = "vowel-count"
 edition = "2021"
+
+[lints]
+workspace = true

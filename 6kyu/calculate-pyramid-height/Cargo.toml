@@ -1,3 +1,6 @@
 [package]
 name = "calculate-pyramid-height"
 edition = "2021"
+
+[lints]
+workspace = true

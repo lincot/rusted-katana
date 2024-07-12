@@ -1,3 +1,6 @@
 [package]
 name = "remove-first-and-last-character"
 edition = "2021"
+
+[lints]
+workspace = true

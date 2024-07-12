@@ -1,3 +1,6 @@
 [package]
 name = "most-frequent-weekdays"
 edition = "2021"
+
+[lints]
+workspace = true

@@ -1,3 +1,6 @@
 [package]
 name = "minimum-perimeter-of-a-rectangle"
 edition = "2021"
+
+[lints]
+workspace = true

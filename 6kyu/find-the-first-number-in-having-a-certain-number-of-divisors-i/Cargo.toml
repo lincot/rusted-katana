@@ -1,3 +1,6 @@
 [package]
 name = "find-the-first-number-in-having-a-certain-number-of-divisors-i"
 edition = "2021"
+
+[lints]
+workspace = true

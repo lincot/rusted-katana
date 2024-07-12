@@ -1,3 +1,6 @@
 [package]
 name = "turn-the-mars-rover-to-take-pictures"
 edition = "2021"
+
+[lints]
+workspace = true

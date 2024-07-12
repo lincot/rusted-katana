@@ -1,3 +1,6 @@
 [package]
 name = "magnitude"
 edition = "2021"
+
+[lints]
+workspace = true

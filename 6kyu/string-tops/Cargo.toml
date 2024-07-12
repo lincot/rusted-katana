@@ -5,3 +5,6 @@ edition = "2021"
 [dependencies]
 unchecked-std = "0.1.0"
 num-integer = "0.1.45"
+
+[lints]
+workspace = true

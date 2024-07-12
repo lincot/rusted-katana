@@ -1,3 +1,6 @@
 [package]
 name = "two-numbers-are-positive"
 edition = "2021"
+
+[lints]
+workspace = true

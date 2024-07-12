@@ -1,3 +1,6 @@
 [package]
 name = "for-whom-the-bell-tolls"
 edition = "2021"
+
+[lints]
+workspace = true

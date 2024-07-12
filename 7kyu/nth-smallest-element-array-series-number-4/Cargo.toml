@@ -1,3 +1,6 @@
 [package]
 name = "nth-smallest-element-array-series-number-4"
 edition = "2021"
+
+[lints]
+workspace = true

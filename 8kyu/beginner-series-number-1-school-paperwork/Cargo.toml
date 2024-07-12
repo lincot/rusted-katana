@@ -1,3 +1,6 @@
 [package]
 name = "beginner-series-number-1-school-paperwork"
 edition = "2021"
+
+[lints]
+workspace = true

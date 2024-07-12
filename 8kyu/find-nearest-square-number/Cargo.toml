@@ -1,3 +1,6 @@
 [package]
 name = "find-nearest-square-number"
 edition = "2021"
+
+[lints]
+workspace = true

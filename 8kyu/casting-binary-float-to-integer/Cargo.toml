@@ -1,3 +1,6 @@
 [package]
 name = "casting-binary-float-to-integer"
 edition = "2021"
+
+[lints]
+workspace = true

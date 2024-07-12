@@ -1,3 +1,6 @@
 [package]
 name = "return-the-first-m-multiples-of-n"
 edition = "2021"
+
+[lints]
+workspace = true

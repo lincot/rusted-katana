@@ -1,3 +1,6 @@
 [package]
 name = "square-pis"
 edition = "2021"
+
+[lints]
+workspace = true

@@ -1,3 +1,6 @@
 [package]
 name = "shortest-steps-to-a-number"
 edition = "2021"
+
+[lints]
+workspace = true

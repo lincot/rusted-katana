@@ -1,3 +1,6 @@
 [package]
 name = "hex-to-decimal"
 edition = "2021"
+
+[lints]
+workspace = true

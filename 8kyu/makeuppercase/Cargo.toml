@@ -1,3 +1,6 @@
 [package]
 name = "makeuppercase"
 edition = "2021"
+
+[lints]
+workspace = true

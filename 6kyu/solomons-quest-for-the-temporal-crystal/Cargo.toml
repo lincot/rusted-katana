@@ -1,3 +1,6 @@
 [package]
 name = "solomons-quest-for-the-temporal-crystal"
 edition = "2021"
+
+[lints]
+workspace = true

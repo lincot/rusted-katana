@@ -1,3 +1,6 @@
 [package]
 name = "growth-of-a-population"
 edition = "2021"
+
+[lints]
+workspace = true

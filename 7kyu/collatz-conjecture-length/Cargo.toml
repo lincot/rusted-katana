@@ -1,3 +1,6 @@
 [package]
 name = "collatz-conjecture-length"
 edition = "2021"
+
+[lints]
+workspace = true

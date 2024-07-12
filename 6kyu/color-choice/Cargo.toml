@@ -1,3 +1,6 @@
 [package]
 name = "color-choice"
 edition = "2021"
+
+[lints]
+workspace = true

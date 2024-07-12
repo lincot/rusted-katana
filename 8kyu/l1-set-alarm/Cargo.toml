@@ -1,3 +1,6 @@
 [package]
 name = "l1-set-alarm"
 edition = "2021"
+
+[lints]
+workspace = true

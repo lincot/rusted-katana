@@ -6,3 +6,6 @@ edition = "2021"
 num-integer = "0.1.45"
 num-prime = "0.4.4"
 rand = "*"
+
+[lints]
+workspace = true

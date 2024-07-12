@@ -1,3 +1,6 @@
 [package]
 name = "is-it-negative-zero-0"
 edition = "2021"
+
+[lints]
+workspace = true

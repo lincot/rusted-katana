@@ -6,3 +6,6 @@ edition = "2021"
 unchecked-std = "0.1.0"
 digital = { path = "../../digital" }
 libm = { version = "0.2.5", features = ["unstable"] }
+
+[lints]
+workspace = true

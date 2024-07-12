@@ -1,3 +1,6 @@
 [package]
 name = "sum-of-cubes"
 edition = "2021"
+
+[lints]
+workspace = true

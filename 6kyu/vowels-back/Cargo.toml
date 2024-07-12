@@ -1,3 +1,6 @@
 [package]
 name = "vowels-back"
 edition = "2021"
+
+[lints]
+workspace = true

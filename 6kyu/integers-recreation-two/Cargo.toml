@@ -1,3 +1,6 @@
 [package]
 name = "integers-recreation-two"
 edition = "2021"
+
+[lints]
+workspace = true

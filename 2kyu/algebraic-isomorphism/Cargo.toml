@@ -1,3 +1,6 @@
 [package]
 name = "algebraic-isomorphism"
 edition = "2021"
+
+[lints]
+workspace = true

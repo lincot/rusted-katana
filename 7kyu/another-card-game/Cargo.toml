@@ -1,3 +1,6 @@
 [package]
 name = "another-card-game"
 edition = "2021"
+
+[lints]
+workspace = true

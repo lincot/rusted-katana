@@ -1,3 +1,6 @@
 [package]
 name = "triangle-number-check"
 edition = "2021"
+
+[lints]
+workspace = true

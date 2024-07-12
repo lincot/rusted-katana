@@ -1,3 +1,6 @@
 [package]
 name = "schrodingers-boolean"
 edition = "2021"
+
+[lints]
+workspace = true

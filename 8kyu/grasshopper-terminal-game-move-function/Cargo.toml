@@ -1,3 +1,6 @@
 [package]
 name = "grasshopper-terminal-game-move-function"
 edition = "2021"
+
+[lints]
+workspace = true

@@ -1,3 +1,6 @@
 [package]
 name = "a-disguised-sequence-i"
 edition = "2021"
+
+[lints]
+workspace = true

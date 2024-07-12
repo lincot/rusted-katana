@@ -1,3 +1,6 @@
 [package]
 name = "count-the-divisors-of-a-number"
 edition = "2021"
+
+[lints]
+workspace = true

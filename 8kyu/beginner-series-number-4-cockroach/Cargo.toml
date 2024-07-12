@@ -1,3 +1,6 @@
 [package]
 name = "beginner-series-number-4-cockroach"
 edition = "2021"
+
+[lints]
+workspace = true

@@ -1,3 +1,6 @@
 [package]
 name = "convert-a-boolean-to-a-string"
 edition = "2021"
+
+[lints]
+workspace = true

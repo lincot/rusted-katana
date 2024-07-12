@@ -1,3 +1,6 @@
 [package]
 name = "sudoku-board-validator"
 edition = "2021"
+
+[lints]
+workspace = true

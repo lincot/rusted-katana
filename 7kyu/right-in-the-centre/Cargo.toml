@@ -1,3 +1,6 @@
 [package]
 name = "right-in-the-centre"
 edition = "2021"
+
+[lints]
+workspace = true

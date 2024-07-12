@@ -1,3 +1,6 @@
 [package]
 name = "leap-years"
 edition = "2021"
+
+[lints]
+workspace = true

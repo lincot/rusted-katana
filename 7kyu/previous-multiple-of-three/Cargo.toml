@@ -1,3 +1,6 @@
 [package]
 name = "previous-multiple-of-three"
 edition = "2021"
+
+[lints]
+workspace = true

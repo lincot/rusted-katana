@@ -1,3 +1,6 @@
 [package]
 name = "sum-of-the-first-nth-term-of-series"
 edition = "2021"
+
+[lints]
+workspace = true

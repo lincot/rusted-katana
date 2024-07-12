@@ -1,3 +1,6 @@
 [package]
 name = "largest-integer-exponent"
 edition = "2021"
+
+[lints]
+workspace = true

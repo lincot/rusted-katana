@@ -1,3 +1,6 @@
 [package]
 name = "spinning-rings"
 edition = "2021"
+
+[lints]
+workspace = true

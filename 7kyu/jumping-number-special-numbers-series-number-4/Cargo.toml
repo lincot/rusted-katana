@@ -1,3 +1,6 @@
 [package]
 name = "jumping-number-special-numbers-series-number-4"
 edition = "2021"
+
+[lints]
+workspace = true

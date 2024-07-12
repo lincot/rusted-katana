@@ -1,3 +1,6 @@
 [package]
 name = "a-rule-of-divisibility-by-7"
 edition = "2021"
+
+[lints]
+workspace = true

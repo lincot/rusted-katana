@@ -1,3 +1,6 @@
 [package]
 name = "solution-1rm-calculator"
 edition = "2021"
+
+[lints]
+workspace = true

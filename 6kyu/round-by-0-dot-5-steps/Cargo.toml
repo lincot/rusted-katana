@@ -1,3 +1,6 @@
 [package]
 name = "round-by-0-dot-5-steps"
 edition = "2021"
+
+[lints]
+workspace = true

@@ -1,3 +1,6 @@
 [package]
 name = "mystery-number-1-cute-pattern"
 edition = "2021"
+
+[lints]
+workspace = true

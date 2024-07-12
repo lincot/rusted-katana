@@ -1,3 +1,6 @@
 [package]
 name = "thinkful-logic-drills-traffic-light"
 edition = "2021"
+
+[lints]
+workspace = true

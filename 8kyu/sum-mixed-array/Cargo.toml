@@ -4,3 +4,6 @@ edition = "2021"
 
 [dependencies]
 either = "1.9.0"
+
+[lints]
+workspace = true

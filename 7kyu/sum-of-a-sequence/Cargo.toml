@@ -1,3 +1,6 @@
 [package]
 name = "sum-of-a-sequence"
 edition = "2021"
+
+[lints]
+workspace = true

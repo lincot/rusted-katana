@@ -1,3 +1,6 @@
 [package]
 name = "red-knight"
 edition = "2021"
+
+[lints]
+workspace = true

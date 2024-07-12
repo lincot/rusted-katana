@@ -1,3 +1,6 @@
 [package]
 name = "strong-number-special-numbers-series-number-2"
 edition = "2021"
+
+[lints]
+workspace = true

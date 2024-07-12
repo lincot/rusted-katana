@@ -1,3 +1,6 @@
 [package]
 name = "especially-joyful-numbers"
 edition = "2021"
+
+[lints]
+workspace = true

@@ -1,3 +1,6 @@
 [package]
 name = "rainfall"
 edition = "2021"
+
+[lints]
+workspace = true

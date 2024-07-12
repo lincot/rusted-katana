@@ -1,3 +1,6 @@
 [package]
 name = "simple-fun-number-10-range-bit-counting"
 edition = "2021"
+
+[lints]
+workspace = true

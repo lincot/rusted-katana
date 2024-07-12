@@ -1,3 +1,6 @@
 [package]
 name = "quarter-of-the-year"
 edition = "2021"
+
+[lints]
+workspace = true

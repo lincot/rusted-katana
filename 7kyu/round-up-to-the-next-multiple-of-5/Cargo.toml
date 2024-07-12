@@ -1,3 +1,6 @@
 [package]
 name = "round-up-to-the-next-multiple-of-5"
 edition = "2021"
+
+[lints]
+workspace = true

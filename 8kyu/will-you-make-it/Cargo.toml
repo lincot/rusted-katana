@@ -1,3 +1,6 @@
 [package]
 name = "will-you-make-it"
 edition = "2021"
+
+[lints]
+workspace = true

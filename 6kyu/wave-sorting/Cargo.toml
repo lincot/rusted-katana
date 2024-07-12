@@ -1,3 +1,6 @@
 [package]
 name = "wave-sorting"
 edition = "2021"
+
+[lints]
+workspace = true

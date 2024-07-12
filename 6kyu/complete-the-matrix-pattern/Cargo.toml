@@ -1,3 +1,6 @@
 [package]
 name = "complete-the-matrix-pattern"
 edition = "2021"
+
+[lints]
+workspace = true

@@ -1,3 +1,6 @@
 [package]
 name = "dead-ants"
 edition = "2021"
+
+[lints]
+workspace = true

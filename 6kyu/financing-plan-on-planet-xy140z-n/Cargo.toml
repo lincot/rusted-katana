@@ -1,3 +1,6 @@
 [package]
 name = "financing-plan-on-planet-xy140z-n"
 edition = "2021"
+
+[lints]
+workspace = true

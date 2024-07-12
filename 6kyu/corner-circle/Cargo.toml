@@ -1,3 +1,6 @@
 [package]
 name = "corner-circle"
 edition = "2021"
+
+[lints]
+workspace = true

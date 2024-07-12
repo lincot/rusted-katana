@@ -1,3 +1,6 @@
 [package]
 name = "adjacent-repeated-words-in-a-string"
 edition = "2021"
+
+[lints]
+workspace = true

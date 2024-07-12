@@ -1,3 +1,6 @@
 [package]
 name = "get-planet-name-by-id"
 edition = "2021"
+
+[lints]
+workspace = true

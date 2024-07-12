@@ -1,3 +1,6 @@
 [package]
 name = "you-cant-code-under-pressure-number-1"
 edition = "2021"
+
+[lints]
+workspace = true

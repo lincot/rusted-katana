@@ -1,3 +1,6 @@
 [package]
 name = "even-or-odd"
 edition = "2021"
+
+[lints]
+workspace = true

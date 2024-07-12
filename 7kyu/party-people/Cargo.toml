@@ -4,3 +4,6 @@ edition = "2021"
 
 [dependencies]
 vqsort-rs = "0.2.0"
+
+[lints]
+workspace = true

@@ -1,3 +1,6 @@
 [package]
 name = "convert-boolean-values-to-strings-yes-or-no"
 edition = "2021"
+
+[lints]
+workspace = true

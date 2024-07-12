@@ -9,3 +9,6 @@ ryu = "1.0.15"
 [dev-dependencies]
 rand = { version = "0.8.5", default-features = false, features = ["std"] }
 rand_pcg = "0.3.1"
+
+[lints]
+workspace = true

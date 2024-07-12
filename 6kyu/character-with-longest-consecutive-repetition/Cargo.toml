@@ -1,3 +1,6 @@
 [package]
 name = "character-with-longest-consecutive-repetition"
 edition = "2021"
+
+[lints]
+workspace = true

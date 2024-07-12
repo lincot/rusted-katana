@@ -1,3 +1,6 @@
 [package]
 name = "opposites-attract"
 edition = "2021"
+
+[lints]
+workspace = true

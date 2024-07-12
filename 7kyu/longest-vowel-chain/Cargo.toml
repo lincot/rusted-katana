@@ -1,3 +1,6 @@
 [package]
 name = "longest-vowel-chain"
 edition = "2021"
+
+[lints]
+workspace = true

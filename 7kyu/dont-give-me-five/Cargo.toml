@@ -1,3 +1,6 @@
 [package]
 name = "dont-give-me-five"
 edition = "2021"
+
+[lints]
+workspace = true

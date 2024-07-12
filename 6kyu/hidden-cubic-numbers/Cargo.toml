@@ -6,3 +6,6 @@ edition = "2021"
 digital = { path = "../../digital" }
 either = "1.9.0"
 unchecked-std = "0.1.0"
+
+[lints]
+workspace = true

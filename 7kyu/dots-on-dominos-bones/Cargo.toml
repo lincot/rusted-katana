@@ -1,3 +1,6 @@
 [package]
 name = "dots-on-dominos-bones"
 edition = "2021"
+
+[lints]
+workspace = true

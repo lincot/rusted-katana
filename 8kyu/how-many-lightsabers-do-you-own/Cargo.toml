@@ -1,3 +1,6 @@
 [package]
 name = "how-many-lightsabers-do-you-own"
 edition = "2021"
+
+[lints]
+workspace = true

@@ -1,3 +1,6 @@
 [package]
 name = "boiled-eggs"
 edition = "2021"
+
+[lints]
+workspace = true

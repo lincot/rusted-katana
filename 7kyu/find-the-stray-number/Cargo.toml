@@ -1,3 +1,6 @@
 [package]
 name = "find-the-stray-number"
 edition = "2021"
+
+[lints]
+workspace = true

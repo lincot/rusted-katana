@@ -4,3 +4,6 @@ edition = "2021"
 
 [dependencies]
 libm = { version = "0.2.5", features = ["unstable"] }
+
+[lints]
+workspace = true

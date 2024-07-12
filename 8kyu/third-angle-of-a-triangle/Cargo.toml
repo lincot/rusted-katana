@@ -1,3 +1,6 @@
 [package]
 name = "third-angle-of-a-triangle"
 edition = "2021"
+
+[lints]
+workspace = true

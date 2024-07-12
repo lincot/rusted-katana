@@ -1,3 +1,6 @@
 [package]
 name = "the-fusc-function-part-1"
 edition = "2021"
+
+[lints]
+workspace = true

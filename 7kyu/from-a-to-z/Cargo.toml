@@ -1,3 +1,6 @@
 [package]
 name = "from-a-to-z"
 edition = "2021"
+
+[lints]
+workspace = true

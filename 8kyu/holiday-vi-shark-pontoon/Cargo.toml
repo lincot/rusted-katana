@@ -1,3 +1,6 @@
 [package]
 name = "holiday-vi-shark-pontoon"
 edition = "2021"
+
+[lints]
+workspace = true

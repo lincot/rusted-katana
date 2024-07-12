@@ -7,3 +7,6 @@ heapless = { version = "0.8.0", optional = true }
 
 [features]
 default = ["heapless"]
+
+[lints]
+workspace = true

@@ -1,3 +1,6 @@
 [package]
 name = "pack-some-chocolates"
 edition = "2021"
+
+[lints]
+workspace = true

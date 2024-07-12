@@ -1,3 +1,6 @@
 [package]
 name = "line-safari-point-distance-from-a-line"
 edition = "2021"
+
+[lints]
+workspace = true

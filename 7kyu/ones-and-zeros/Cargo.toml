@@ -1,3 +1,6 @@
 [package]
 name = "ones-and-zeros"
 edition = "2021"
+
+[lints]
+workspace = true

@@ -1,3 +1,6 @@
 [package]
 name = "automorphic-number-special-numbers-series-number-6"
 edition = "2021"
+
+[lints]
+workspace = true

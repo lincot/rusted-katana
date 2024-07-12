@@ -1,3 +1,6 @@
 [package]
 name = "maximum-multiple"
 edition = "2021"
+
+[lints]
+workspace = true

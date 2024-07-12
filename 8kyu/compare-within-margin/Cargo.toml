@@ -1,3 +1,6 @@
 [package]
 name = "compare-within-margin"
 edition = "2021"
+
+[lints]
+workspace = true

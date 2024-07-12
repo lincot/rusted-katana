@@ -1,3 +1,6 @@
 [package]
 name = "lost-number-in-number-sequence"
 edition = "2021"
+
+[lints]
+workspace = true

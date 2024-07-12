@@ -1,3 +1,6 @@
 [package]
 name = "see-you-next-happy-year"
 edition = "2021"
+
+[lints]
+workspace = true

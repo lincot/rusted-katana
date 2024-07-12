@@ -1,3 +1,6 @@
 [package]
 name = "gcd-sum"
 edition = "2021"
+
+[lints]
+workspace = true

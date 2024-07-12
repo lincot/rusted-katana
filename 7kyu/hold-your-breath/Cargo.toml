@@ -1,3 +1,6 @@
 [package]
 name = "hold-your-breath"
 edition = "2021"
+
+[lints]
+workspace = true

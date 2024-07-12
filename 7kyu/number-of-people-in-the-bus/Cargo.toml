@@ -1,3 +1,6 @@
 [package]
 name = "number-of-people-in-the-bus"
 edition = "2021"
+
+[lints]
+workspace = true

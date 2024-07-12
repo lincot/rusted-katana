@@ -1,3 +1,6 @@
 [package]
 name = "message-validator"
 edition = "2021"
+
+[lints]
+workspace = true

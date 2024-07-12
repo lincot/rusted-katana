@@ -1,3 +1,6 @@
 [package]
 name = "block-the-square-in-tic-tac-toe"
 edition = "2021"
+
+[lints]
+workspace = true

@@ -1,3 +1,6 @@
 [package]
 name = "rock-paper-scissors"
 edition = "2021"
+
+[lints]
+workspace = true

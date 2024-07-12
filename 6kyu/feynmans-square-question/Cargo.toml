@@ -1,3 +1,6 @@
 [package]
 name = "feynmans-square-question"
 edition = "2021"
+
+[lints]
+workspace = true

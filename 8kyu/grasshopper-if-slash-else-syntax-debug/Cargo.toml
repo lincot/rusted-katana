@@ -1,3 +1,6 @@
 [package]
 name = "grasshopper-if-slash-else-syntax-debug"
 edition = "2021"
+
+[lints]
+workspace = true

@@ -1,3 +1,6 @@
 [package]
 name = "beginner-series-number-2-clock"
 edition = "2021"
+
+[lints]
+workspace = true

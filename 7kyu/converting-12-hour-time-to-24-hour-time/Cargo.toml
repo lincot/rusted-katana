@@ -1,3 +1,6 @@
 [package]
 name = "converting-12-hour-time-to-24-hour-time"
 edition = "2021"
+
+[lints]
+workspace = true

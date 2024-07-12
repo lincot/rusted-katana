@@ -1,3 +1,6 @@
 [package]
 name = "return-the-closest-number-multiple-of-10"
 edition = "2021"
+
+[lints]
+workspace = true

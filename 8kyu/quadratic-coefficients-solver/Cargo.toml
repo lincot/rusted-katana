@@ -1,3 +1,6 @@
 [package]
 name = "quadratic-coefficients-solver"
 edition = "2021"
+
+[lints]
+workspace = true

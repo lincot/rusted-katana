@@ -1,3 +1,6 @@
 [package]
 name = "british-vs-slovakian-postcodes"
 edition = "2021"
+
+[lints]
+workspace = true

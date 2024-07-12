@@ -1,3 +1,6 @@
 [package]
 name = "counting-sheep-dot-dot-dot"
 edition = "2021"
+
+[lints]
+workspace = true

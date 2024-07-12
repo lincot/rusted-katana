@@ -1,3 +1,6 @@
 [package]
 name = "the-pony-express"
 edition = "2021"
+
+[lints]
+workspace = true

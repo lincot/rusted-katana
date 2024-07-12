@@ -1,3 +1,6 @@
 [package]
 name = "complementary-dna"
 edition = "2021"
+
+[lints]
+workspace = true

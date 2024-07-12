@@ -1,3 +1,6 @@
 [package]
 name = "shared-bit-counter"
 edition = "2021"
+
+[lints]
+workspace = true

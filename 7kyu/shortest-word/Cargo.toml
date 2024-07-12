@@ -1,3 +1,6 @@
 [package]
 name = "shortest-word"
 edition = "2021"
+
+[lints]
+workspace = true

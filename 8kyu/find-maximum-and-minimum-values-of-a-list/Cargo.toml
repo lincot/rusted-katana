@@ -1,3 +1,6 @@
 [package]
 name = "find-maximum-and-minimum-values-of-a-list"
 edition = "2021"
+
+[lints]
+workspace = true

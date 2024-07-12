@@ -1,3 +1,6 @@
 [package]
 name = "points-of-reflection"
 edition = "2021"
+
+[lints]
+workspace = true

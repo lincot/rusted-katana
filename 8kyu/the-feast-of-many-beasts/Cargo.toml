@@ -1,3 +1,6 @@
 [package]
 name = "the-feast-of-many-beasts"
 edition = "2021"
+
+[lints]
+workspace = true

@@ -6,3 +6,6 @@ edition = "2021"
 digital = { path = "../../digital" }
 heapless = "0.8.0"
 num-bigint = "0.4.4"
+
+[lints]
+workspace = true

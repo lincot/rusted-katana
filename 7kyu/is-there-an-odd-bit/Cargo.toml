@@ -1,3 +1,6 @@
 [package]
 name = "is-there-an-odd-bit"
 edition = "2021"
+
+[lints]
+workspace = true

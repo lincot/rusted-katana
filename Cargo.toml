@@ -19,3 +19,36 @@ resolver = "2"
 codegen-units = 1
 lto = true
 panic = "abort"
+
+[workspace.lints.clippy]
+all = { level = "deny", priority = -1 }
+pedantic = { level = "deny", priority = -1 }
+nursery = { level = "deny", priority = -1 }
+must-use-candidate = "allow"
+default-trait-access = "allow"
+missing-panics-doc = "allow"
+needless-pass-by-value = "allow"
+cast-possible-truncation = "allow"
+cast-sign-loss = "allow"
+cast-lossless = "allow"
+match-on-vec-items = "allow"
+too-many-lines = "allow"
+maybe-infinite-iter = "allow"
+missing-errors-doc = "allow"
+cast-precision-loss = "allow"
+cast-possible-wrap = "allow"
+implicit-hasher = "allow"
+similar-names = "allow"
+float-cmp = "allow"
+return-self-not-must-use = "allow"
+new-without-default = "allow"
+many-single-char-names = "allow"
+unused-io-amount = "allow"
+type-complexity = "allow"
+uninit-assumed-init = "allow"
+zero-sized-map-values = "allow"
+uninit-vec = "allow"
+cognitive-complexity = "allow"
+debug-assert-with-mut-call = "allow"
+module-name-repetitions = "allow"
+suspicious-operation-groupings = "allow"

@@ -1,3 +1,6 @@
 [package]
 name = "simple-fun-number-2-circle-of-numbers"
 edition = "2021"
+
+[lints]
+workspace = true

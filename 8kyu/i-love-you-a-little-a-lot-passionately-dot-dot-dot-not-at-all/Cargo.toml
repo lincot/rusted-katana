@@ -1,3 +1,6 @@
 [package]
 name = "i-love-you-a-little-a-lot-passionately-dot-dot-dot-not-at-all"
 edition = "2021"
+
+[lints]
+workspace = true

@@ -1,3 +1,6 @@
 [package]
 name = "consecutive-vowels-in-a-string"
 edition = "2021"
+
+[lints]
+workspace = true

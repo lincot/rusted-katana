@@ -1,3 +1,6 @@
 [package]
 name = "help-mrs-jefferson"
 edition = "2021"
+
+[lints]
+workspace = true

@@ -1,3 +1,6 @@
 [package]
 name = "numbers-in-strings"
 edition = "2021"
+
+[lints]
+workspace = true

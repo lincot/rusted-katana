@@ -1,3 +1,6 @@
 [package]
 name = "over-the-road-1"
 edition = "2021"
+
+[lints]
+workspace = true

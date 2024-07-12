@@ -1,3 +1,6 @@
 [package]
 name = "ga-de-ry-po-lu-ki-cypher"
 edition = "2021"
+
+[lints]
+workspace = true

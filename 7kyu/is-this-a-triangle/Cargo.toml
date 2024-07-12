@@ -1,3 +1,6 @@
 [package]
 name = "is-this-a-triangle"
 edition = "2021"
+
+[lints]
+workspace = true

@@ -1,3 +1,6 @@
 [package]
 name = "solution-1-slash-n-cycle"
 edition = "2021"
+
+[lints]
+workspace = true

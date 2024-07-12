@@ -1,3 +1,6 @@
 [package]
 name = "spinning-rings-fidget-spinner-edition"
 edition = "2021"
+
+[lints]
+workspace = true

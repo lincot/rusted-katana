@@ -1,3 +1,6 @@
 [package]
 name = "holiday-iv-leg-room"
 edition = "2021"
+
+[lints]
+workspace = true

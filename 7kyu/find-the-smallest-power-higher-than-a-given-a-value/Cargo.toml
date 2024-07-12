@@ -1,3 +1,6 @@
 [package]
 name = "find-the-smallest-power-higher-than-a-given-a-value"
 edition = "2021"
+
+[lints]
+workspace = true
