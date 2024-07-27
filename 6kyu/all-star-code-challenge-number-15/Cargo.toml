@@ -1,0 +1,9 @@
+[package]
+name = "all-star-code-challenge-number-15"
+edition = "2021"
+
+[dependencies]
+unchecked-std = "0.1.0"
+
+[lints]
+workspace = true

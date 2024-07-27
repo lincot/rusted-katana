@@ -1,0 +1,6 @@
+[package]
+name = "hanoi-record"
+edition = "2021"
+
+[lints]
+workspace = true

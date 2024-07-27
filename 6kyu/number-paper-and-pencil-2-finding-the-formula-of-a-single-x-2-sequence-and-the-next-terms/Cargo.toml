@@ -1,0 +1,10 @@
+[package]
+name = "number-paper-and-pencil-2-finding-the-formula-of-a-single-x-2-sequence-and-the-next-terms"
+edition = "2021"
+
+[dependencies]
+unchecked-std = "0.1.0"
+digital = { path = "../../digital" }
+
+[lints]
+workspace = true

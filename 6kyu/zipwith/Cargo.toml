@@ -1,0 +1,6 @@
+[package]
+name = "zipwith"
+edition = "2021"
+
+[lints]
+workspace = true

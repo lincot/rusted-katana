@@ -1,0 +1,6 @@
+[package]
+name = "the-sum-of-the-first-and-the-last-prime-factor-make-chains-of-numbers"
+edition = "2021"
+
+[lints]
+workspace = true

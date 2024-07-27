@@ -1,0 +1,6 @@
+[package]
+name = "reach-me-and-sum-my-digits"
+edition = "2021"
+
+[lints]
+workspace = true

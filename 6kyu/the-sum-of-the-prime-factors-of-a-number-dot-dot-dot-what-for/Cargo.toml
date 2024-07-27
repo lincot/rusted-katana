@@ -1,0 +1,6 @@
+[package]
+name = "the-sum-of-the-prime-factors-of-a-number-dot-dot-dot-what-for"
+edition = "2021"
+
+[lints]
+workspace = true

@@ -1,0 +1,6 @@
+[package]
+name = "an-osha-approved-ladder"
+edition = "2021"
+
+[lints]
+workspace = true
