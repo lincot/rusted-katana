@@ -3,13 +3,13 @@
 use core::mem::MaybeUninit;
 
 pub fn tower_builder(n_floors: usize) -> Vec<String> {
+    let mut border0 = n_floors;
+    let mut border1 = border0;
     (0..n_floors)
-        .map(|i| {
+        .map(|_| {
             let len = 2 * n_floors - 1;
             let mut floor = Vec::with_capacity(len);
-            let border0 = n_floors - i - 1;
-            let border1 = border0 + 2 * i + 1;
-            let border2 = border1 + n_floors - i - 1;
+            border0 -= 1;
             unsafe {
                 floor
                     .spare_capacity_mut()
@@ -21,9 +21,10 @@ pub fn tower_builder(n_floors: usize) -> Vec<String> {
                     .fill(MaybeUninit::new(b'*'));
                 floor
                     .spare_capacity_mut()
-                    .get_unchecked_mut(border1..border2)
+                    .get_unchecked_mut(border1..len)
                     .fill(MaybeUninit::new(b' '));
                 floor.set_len(len);
+                border1 = border1.wrapping_add(1);
                 String::from_utf8_unchecked(floor)
             }
         })
