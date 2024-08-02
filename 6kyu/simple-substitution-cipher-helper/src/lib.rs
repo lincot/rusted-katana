@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/52eb114b2d55f0e69800078d/train/rust>
 
 use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
-use hashbrown::{hash_map::Entry, HashMap};
+use hashbrown::HashMap;
 use rustc_hash::FxHasher;
 use unchecked_std::prelude::*;
 
@@ -21,16 +21,12 @@ impl Cipher {
             if encoder.len() == encoder.capacity() {
                 unsafe { unreachable_unchecked() };
             }
-            if let Entry::Vacant(e) = encoder.entry(c1) {
-                e.insert(c2);
-            }
+            encoder.insert(c1, c2);
 
             if decoder.len() == decoder.capacity() {
                 unsafe { unreachable_unchecked() };
             }
-            if let Entry::Vacant(e) = decoder.entry(c2) {
-                e.insert(c1);
-            }
+            decoder.insert(c2, c1);
         }
 
         Self { encoder, decoder }

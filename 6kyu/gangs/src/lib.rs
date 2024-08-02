@@ -4,11 +4,11 @@ use core::{
     hash::{BuildHasherDefault, Hasher},
     hint::unreachable_unchecked,
 };
-use hashbrown::{hash_map::Entry, HashMap};
+use hashbrown::HashSet;
 use rustc_hash::FxHasher;
 
 pub fn gangs(divisors: &[u32], k: u32) -> u32 {
-    let mut map = IdHashMap::with_capacity_and_hasher(k as _, Default::default());
+    let mut map = IdHashSet::with_capacity_and_hasher(k as _, Default::default());
     for n in 1..=k {
         let mut h = FxHasher::default();
         for &divisor in divisors {
@@ -19,9 +19,7 @@ pub fn gangs(divisors: &[u32], k: u32) -> u32 {
         if map.len() == map.capacity() {
             unsafe { unreachable_unchecked() };
         }
-        if let Entry::Vacant(e) = map.entry(h.finish()) {
-            e.insert(());
-        }
+        map.insert(h.finish());
     }
     map.len() as _
 }
@@ -43,4 +41,4 @@ impl Hasher for IdHasher {
     }
 }
 
-type IdHashMap<K, V> = HashMap<K, V, BuildHasherDefault<IdHasher>>;
+type IdHashSet<K> = HashSet<K, BuildHasherDefault<IdHasher>>;

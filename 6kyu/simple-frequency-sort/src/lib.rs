@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5a8d2bf60025e9163c0000bc/train/rust>
 
 use core::{cmp::Reverse, hash::BuildHasherDefault, hint::unreachable_unchecked};
-use hashbrown::{hash_map::Entry, HashMap};
+use hashbrown::HashMap;
 use rustc_hash::FxHasher;
 use unchecked_std::prelude::*;
 
@@ -13,14 +13,10 @@ pub fn solve(vec: &[i32]) -> Vec<i32> {
         if counts.len() == counts.capacity() {
             unsafe { unreachable_unchecked() };
         }
-        match counts.entry(x) {
-            Entry::Occupied(mut e) => {
-                *e.get_mut() += 1;
-            }
-            Entry::Vacant(e) => {
-                e.insert(1usize);
-            }
-        }
+        counts
+            .entry(x)
+            .and_modify(|count| *count += 1)
+            .or_insert(1usize);
     }
 
     let mut counts_arr = Vec::with_capacity(counts.len());

@@ -2,7 +2,7 @@
 
 use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
 use digital::{MaxLenBase10, WriteNumUnchecked};
-use hashbrown::{hash_map::Entry, HashMap};
+use hashbrown::HashMap;
 use rustc_hash::FxHasher;
 use unchecked_std::prelude::*;
 
@@ -15,14 +15,10 @@ pub fn freq_seq(s: &str, sep: &str) -> String {
         if counts.len() == counts.capacity() {
             unsafe { unreachable_unchecked() };
         }
-        match counts.entry(c) {
-            Entry::Occupied(mut e) => {
-                *e.get_mut() += 1usize;
-            }
-            Entry::Vacant(e) => {
-                e.insert(1);
-            }
-        }
+        counts
+            .entry(c)
+            .and_modify(|count| *count += 1)
+            .or_insert(1usize);
     }
 
     let cap = (usize::MAX_LEN_BASE10 + sep.len()) * s.len();

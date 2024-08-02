@@ -2,7 +2,7 @@
 
 use char_to_lower::to_lower;
 use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
-use hashbrown::{hash_map::Entry, HashMap};
+use hashbrown::HashMap;
 use num_bigint::BigUint;
 use rustc_hash::FxHasher;
 
@@ -18,14 +18,10 @@ pub fn uniq_count(s: &str) -> BigUint {
         if freq_map.len() == freq_map.capacity() {
             unsafe { unreachable_unchecked() };
         }
-        match freq_map.entry(c) {
-            Entry::Occupied(mut e) => {
-                *e.get_mut() += 1;
-            }
-            Entry::Vacant(e) => {
-                e.insert(1usize);
-            }
-        }
+        freq_map
+            .entry(c)
+            .and_modify(|count| *count += 1)
+            .or_insert(1usize);
     }
 
     let mut denom = BigUint::from(1u8);

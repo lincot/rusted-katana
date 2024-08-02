@@ -1,25 +1,28 @@
 //! <https://www.codewars.com/kata/5700c9acc1555755be00027e/train/rust>
 
 use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
-use hashbrown::{hash_map::Entry, HashMap};
+use hashbrown::HashSet;
 use rustc_hash::FxHasher;
+use unchecked_std::prelude::*;
 
-type FxHashMap<K, V> = HashMap<K, V, BuildHasherDefault<FxHasher>>;
+type FxHashSet<K> = HashSet<K, BuildHasherDefault<FxHasher>>;
 
 pub fn contain_all_rots(strng: &str, arr: Vec<&str>) -> bool {
-    let mut set = FxHashMap::with_capacity_and_hasher(arr.len(), Default::default());
+    let mut set = FxHashSet::with_capacity_and_hasher(arr.len(), Default::default());
     for s in arr.into_iter().filter(|s| s.len() == strng.len()) {
         if set.len() == set.capacity() {
             unsafe { unreachable_unchecked() };
         }
-        if let Entry::Vacant(e) = set.entry(s) {
-            e.insert(());
-        }
+        set.insert(s);
     }
 
-    let twice = strng.repeat(2);
+    let mut twice = String::with_capacity(2 * strng.len());
+    unsafe {
+        twice.push_str_unchecked(strng);
+        twice.push_str_unchecked(strng);
+    }
 
-    (0..strng.len()).all(|offset| {
-        set.contains_key(&unsafe { twice.get_unchecked(offset..strng.len() + offset) })
+    strng.char_indices().all(|(offset, _)| {
+        set.contains(&unsafe { twice.get_unchecked(offset..strng.len() + offset) })
     })
 }
