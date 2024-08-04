@@ -17,32 +17,47 @@ pub fn flip(direction: char, mut matrix: Vec<Vec<u32>>) -> Vec<Vec<u32>> {
             }
         }
         _ => {
-            assert!(matrix.iter().all(|row| row.len() == matrix[0].len()));
-            let mut transposed = vec![
-                {
-                    let mut res = Vec::<u32>::with_capacity(matrix.len());
-                    unsafe { res.set_len(matrix.len()) };
-                    res
-                };
-                matrix[0].len()
-            ];
+            let len = matrix.len() * matrix[0].len();
+            let mut transposed = Vec::with_capacity(len);
             for (i, row) in matrix.iter().enumerate() {
-                for (j, &x) in row.iter().enumerate() {
-                    unsafe { *transposed.get_unchecked_mut(j).get_unchecked_mut(i) = x };
+                assert!(row.len() == matrix[0].len());
+                let mut t_i = i;
+                for &x in row {
+                    unsafe {
+                        transposed
+                            .spare_capacity_mut()
+                            .get_unchecked_mut(t_i)
+                            .write(x);
+                    }
+                    t_i += matrix.len();
                 }
             }
+            unsafe { transposed.set_len(len) };
+
+            let mut start = 0;
             if direction == 'D' {
-                for row in &mut transposed {
-                    vqsort_rs::sort(row);
+                for _ in 0..matrix[0].len() {
+                    vqsort_rs::sort(unsafe {
+                        transposed.get_unchecked_mut(start..start + matrix.len())
+                    });
+                    start += matrix.len();
                 }
             } else {
-                for row in &mut transposed {
-                    vqsort_rs::sort_descending(row);
+                for _ in 0..matrix[0].len() {
+                    vqsort_rs::sort_descending(unsafe {
+                        transposed.get_unchecked_mut(start..start + matrix.len())
+                    });
+                    start += matrix.len();
                 }
             }
-            for (i, row) in transposed.iter().enumerate() {
-                for (j, &x) in row.iter().enumerate() {
-                    unsafe { *matrix.get_unchecked_mut(j).get_unchecked_mut(i) = x };
+            let mut t_i = 0;
+            for i in 0..matrix[0].len() {
+                for j in 0..matrix.len() {
+                    unsafe {
+                        *matrix.get_unchecked_mut(j).get_unchecked_mut(i) =
+                            *transposed.get_unchecked(t_i);
+                    }
+                    t_i += 1;
                 }
             }
         }
