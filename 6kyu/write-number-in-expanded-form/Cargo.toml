@@ -3,7 +3,7 @@ name = "write-number-in-expanded-form"
 edition = "2021"
 
 [dependencies]
-unchecked-std = "0.1.0"
+unchecked-std = "1.0.0"
 digital = { path = "../../digital" }
 heapless = "0.8.0"
 

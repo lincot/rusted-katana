@@ -3,7 +3,7 @@ name = "merge-two-sorted-arrays-into-one"
 edition = "2021"
 
 [dependencies]
-unchecked-std = "0.1.0"
+unchecked-std = "1.0.0"
 
 [dev-dependencies]
 rand = { version = "0.8.5", default-features = false, features = ["std"] }

@@ -3,7 +3,7 @@ name = "tracking-sums-in-a-process"
 edition = "2021"
 
 [dependencies]
-unchecked-std = "0.1.0"
+unchecked-std = "1.0.0"
 vqsort-rs = "0.2.0"
 radsort = { git = "https://github.com/JakubValtar/radsort" }
 

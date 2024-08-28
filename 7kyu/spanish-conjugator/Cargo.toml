@@ -3,7 +3,7 @@ name = "spanish-conjugator"
 edition = "2021"
 
 [dependencies]
-unchecked-std = "0.1.0"
+unchecked-std = "1.0.0"
 hashbrown = { version = "0.14.3", features = ["nightly"] }
 
 [lints]

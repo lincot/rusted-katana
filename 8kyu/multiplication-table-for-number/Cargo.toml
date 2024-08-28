@@ -3,7 +3,7 @@ name = "multiplication-table-for-number"
 edition = "2021"
 
 [dependencies]
-unchecked-std = { version = "0.1.0", features = ["heapless"] }
+unchecked-std = { version = "1.0.0", features = ["heapless"] }
 digital = { path = "../../digital" }
 heapless = "0.8.0"
 

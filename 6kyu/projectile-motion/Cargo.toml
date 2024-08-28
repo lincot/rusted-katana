@@ -3,7 +3,7 @@ name = "projectile-motion"
 edition = "2021"
 
 [dependencies]
-unchecked-std = "0.1.0"
+unchecked-std = "1.0.0"
 digital = { path = "../../digital" }
 libm = { version = "0.2.5", features = ["unstable"] }
 

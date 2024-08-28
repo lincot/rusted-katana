@@ -3,7 +3,7 @@ name = "check-katas"
 edition = "2021"
 
 [dependencies]
-unchecked-std = "0.1.0"
+unchecked-std = "1.0.0"
 tokio = { version = "1.37.0", features = ["full"] }
 reqwest = "0.12.4"
 

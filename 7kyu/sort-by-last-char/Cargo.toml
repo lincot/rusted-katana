@@ -3,7 +3,7 @@ name = "sort-by-last-char"
 edition = "2021"
 
 [dependencies]
-unchecked-std = "0.1.0"
+unchecked-std = "1.0.0"
 radsort = { git = "https://github.com/JakubValtar/radsort" }
 
 [lints]

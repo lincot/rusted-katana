@@ -3,7 +3,7 @@ name = "new-cashier-does-not-know-about-space-or-shift"
 edition = "2021"
 
 [dependencies]
-unchecked-std = "0.1.0"
+unchecked-std = "1.0.0"
 
 [lints]
 workspace = true

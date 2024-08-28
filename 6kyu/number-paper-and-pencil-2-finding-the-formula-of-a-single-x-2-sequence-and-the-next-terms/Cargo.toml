@@ -3,7 +3,7 @@ name = "number-paper-and-pencil-2-finding-the-formula-of-a-single-x-2-sequence-a
 edition = "2021"
 
 [dependencies]
-unchecked-std = "0.1.0"
+unchecked-std = "1.0.0"
 digital = { path = "../../digital" }
 
 [lints]

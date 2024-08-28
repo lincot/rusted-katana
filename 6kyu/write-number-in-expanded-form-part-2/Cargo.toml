@@ -3,7 +3,7 @@ name = "write-number-in-expanded-form-part-2"
 edition = "2021"
 
 [dependencies]
-unchecked-std = "0.1.0"
+unchecked-std = "1.0.0"
 ryu = "1.0.15"
 
 [dev-dependencies]

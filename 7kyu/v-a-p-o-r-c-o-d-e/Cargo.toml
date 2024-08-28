@@ -3,7 +3,7 @@ name = "v-a-p-o-r-c-o-d-e"
 edition = "2021"
 
 [dependencies]
-unchecked-std = "0.1.0"
+unchecked-std = "1.0.0"
 
 [lints]
 workspace = true

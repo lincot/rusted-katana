@@ -34,7 +34,7 @@ pub fn ascend_descend(length: usize, minimum: i32, maximum: i32) -> String {
         let len = res.len();
         unsafe {
             res.as_mut_vec()
-                .extend_from_within_unchecked(0..full_cycles_len.min(length - len));
+                .extend_from_within_unchecked(..full_cycles_len.min(length - len));
         }
         full_cycles_len *= 2;
     }

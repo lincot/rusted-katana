@@ -3,7 +3,7 @@ name = "cryptanalysis-word-patterns"
 edition = "2021"
 
 [dependencies]
-unchecked-std = "0.1.0"
+unchecked-std = "1.0.0"
 heapless = "0.8.0"
 
 [lints]

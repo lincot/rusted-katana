@@ -4,7 +4,7 @@ edition = "2021"
 
 [dependencies]
 heapless = "0.8.0"
-unchecked-std = "0.1.0"
+unchecked-std = "1.0.0"
 
 [lints]
 workspace = true
