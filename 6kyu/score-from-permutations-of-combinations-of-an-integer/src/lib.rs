@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5676ffaa8da527f234000025/train/rust>
 
-#![feature(iter_repeat_n)]
-
 use digital::{MaxLenBase10, WriteNumUnchecked};
 
 pub fn sc_perm_comb(num: u32) -> u64 {

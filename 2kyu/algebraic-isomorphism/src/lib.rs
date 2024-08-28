@@ -106,7 +106,6 @@ pub fn iso_eu() -> ISO<Result<Vec<()>, ()>, Result<Vec<()>, Void>> {
                 Ok(v)
             }
             Ok(_) => Err(()),
-            Err(_) => unreachable!(),
         },
     )
 }
