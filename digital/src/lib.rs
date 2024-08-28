@@ -1,27 +1,10 @@
-//! fast integer to string/array of digits
-//! based on [rust-lexical](https://github.com/Alexhuszagh/rust-lexical)
+//! Fast methods for digit manipulation, including conversions from integers
+//! to strings or arrays of digits.
+//! Based on [rust-lexical](https://github.com/Alexhuszagh/rust-lexical).
 #![no_std]
 
 extern crate alloc;
 use alloc::{string::String, vec::Vec};
-
-trait PushUnchecked<T> {
-    /// # Safety
-    ///
-    /// `self.len()` must be `< self.capacity()`
-    unsafe fn push_unchecked(&mut self, value: T);
-}
-
-impl<T> PushUnchecked<T> for Vec<T> {
-    #[inline]
-    unsafe fn push_unchecked(&mut self, value: T) {
-        debug_assert!(self.len() < self.capacity());
-        if self.len() >= self.capacity() {
-            core::hint::unreachable_unchecked();
-        }
-        self.push(value);
-    }
-}
 
 #[inline]
 unsafe fn write_digit<T: From<u8>>(
@@ -204,7 +187,7 @@ macro_rules! impl_tabled_integer {
     )*)
 }
 
-impl_tabled_integer! { u8 u16 i16 u32 i32 u64 i64 usize isize }
+impl_tabled_integer! { u8 u16 u32 u64 usize i16 i32 i64 isize }
 
 #[inline]
 unsafe fn write_2_digits<T: TabledInteger>(
@@ -675,7 +658,8 @@ macro_rules! gen_write_num_unchecked_signed {
         #[inline]
         unsafe fn write_num_unchecked(&mut self, n: $t, radix: u8, reversed: bool, from_0: bool) {
             if n < 0 {
-                self.push_unchecked(b'-'.into());
+                core::ptr::write(self.as_mut_ptr().add(self.len()), b'-'.into());
+                self.set_len(self.len() + 1);
             }
             self.write_num_unchecked(n.unsigned_abs(), radix, reversed, from_0);
         }
@@ -733,7 +717,7 @@ pub trait NumToString<const CAP10: usize, const CAP2: usize, const CAP16: usize>
 }
 
 macro_rules! impl_num_to_string {
-    ($($t:ty,)*) => ($(
+    ($($t:ty)*) => ($(
         impl NumToString<{ Self::MAX_LEN_BASE10 }, { Self::BITS as _ }, { (Self::BITS / 4) as _ }>
             for $t
         {
@@ -827,7 +811,7 @@ macro_rules! impl_num_to_string {
     )*)
 }
 
-impl_num_to_string! { u8, u16, u32, u64, u128, usize, i8, i16, i32, i64, i128, isize, }
+impl_num_to_string! { u8 u16 u32 u64 u128 usize i8 i16 i32 i64 i128 isize }
 
 pub trait MaxLenBase10 {
     const MAX_LEN_BASE10: usize;
@@ -907,3 +891,164 @@ impl MaxLenBase10 for isize {
         }
     };
 }
+
+pub trait Next2Digits {
+    fn next_2_digits(&mut self) -> Option<[u8; 2]>;
+}
+
+macro_rules! impl_next_2_digits {
+    ($($t:ty)*) => ($(
+        impl Next2Digits for $t {
+            #[inline]
+            fn next_2_digits(&mut self) -> Option<[u8; 2]> {
+                if *self < 10 {
+                    return None;
+                }
+
+                let res = DIGITS_100[(*self % 100) as usize];
+                *self /= 100;
+
+                if res[0] >= 10 || res[1] >= 10 {
+                    unsafe { core::hint::unreachable_unchecked() };
+                }
+
+                Some(res)
+            }
+        }
+    )*)
+}
+
+impl_next_2_digits! { u8 u16 u32 u64 u128 usize }
+
+const DIGITS_100: [[u8; 2]; 100] = [
+    [0, 0],
+    [0, 1],
+    [0, 2],
+    [0, 3],
+    [0, 4],
+    [0, 5],
+    [0, 6],
+    [0, 7],
+    [0, 8],
+    [0, 9],
+    [1, 0],
+    [1, 1],
+    [1, 2],
+    [1, 3],
+    [1, 4],
+    [1, 5],
+    [1, 6],
+    [1, 7],
+    [1, 8],
+    [1, 9],
+    [2, 0],
+    [2, 1],
+    [2, 2],
+    [2, 3],
+    [2, 4],
+    [2, 5],
+    [2, 6],
+    [2, 7],
+    [2, 8],
+    [2, 9],
+    [3, 0],
+    [3, 1],
+    [3, 2],
+    [3, 3],
+    [3, 4],
+    [3, 5],
+    [3, 6],
+    [3, 7],
+    [3, 8],
+    [3, 9],
+    [4, 0],
+    [4, 1],
+    [4, 2],
+    [4, 3],
+    [4, 4],
+    [4, 5],
+    [4, 6],
+    [4, 7],
+    [4, 8],
+    [4, 9],
+    [5, 0],
+    [5, 1],
+    [5, 2],
+    [5, 3],
+    [5, 4],
+    [5, 5],
+    [5, 6],
+    [5, 7],
+    [5, 8],
+    [5, 9],
+    [6, 0],
+    [6, 1],
+    [6, 2],
+    [6, 3],
+    [6, 4],
+    [6, 5],
+    [6, 6],
+    [6, 7],
+    [6, 8],
+    [6, 9],
+    [7, 0],
+    [7, 1],
+    [7, 2],
+    [7, 3],
+    [7, 4],
+    [7, 5],
+    [7, 6],
+    [7, 7],
+    [7, 8],
+    [7, 9],
+    [8, 0],
+    [8, 1],
+    [8, 2],
+    [8, 3],
+    [8, 4],
+    [8, 5],
+    [8, 6],
+    [8, 7],
+    [8, 8],
+    [8, 9],
+    [9, 0],
+    [9, 1],
+    [9, 2],
+    [9, 3],
+    [9, 4],
+    [9, 5],
+    [9, 6],
+    [9, 7],
+    [9, 8],
+    [9, 9],
+];
+
+pub trait SumDigits {
+    fn sum_digits(self) -> u32;
+}
+
+macro_rules! impl_sum_digits {
+    ($($t:ty)*) => ($(
+        impl SumDigits for $t {
+            #[inline]
+            fn sum_digits(mut self) -> u32 {
+                let mut res = 0;
+                while self >= 10 {
+                    res += DIGIT_SUMS_100[(self % 100) as usize] as u32;
+                    self /= 100;
+                }
+                res += self as u32;
+                res
+            }
+        }
+    )*)
+}
+
+impl_sum_digits! { u8 u16 u32 u64 usize }
+
+const DIGIT_SUMS_100: [u8; 100] = [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 3,
+    4, 5, 6, 7, 8, 9, 10, 11, 12, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+    14, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 8, 9, 10, 11, 12,
+    13, 14, 15, 16, 17, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+];

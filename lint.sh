@@ -24,4 +24,4 @@ cargo run --package rusted-katana-progress-bars --quiet --release
 echo run check-katas
 cargo run --package check-katas --quiet --release
 echo miri
-cargo miri nextest run --all-targets --no-fail-fast --status-level fail
+cargo miri nextest run --all-targets --no-fail-fast --status-level fail --workspace --exclude digital

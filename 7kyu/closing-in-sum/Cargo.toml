@@ -2,5 +2,8 @@
 name = "closing-in-sum"
 edition = "2021"
 
+[dependencies]
+digital = { path = "../../digital" }
+
 [lints]
 workspace = true

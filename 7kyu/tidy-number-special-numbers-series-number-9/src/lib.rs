@@ -1,18 +1,17 @@
 //! <https://www.codewars.com/kata/5a87449ab1710171300000fd/train/rust>
 
-pub const fn tidy_number(mut n: u64) -> bool {
-    let mut prev = 9;
+use digital::Next2Digits;
 
-    while n != 0 {
-        let cur = (n % 10) as u8;
+pub fn tidy_number(mut n: u64) -> bool {
+    let mut prev = 10;
 
-        if prev < cur {
+    while let Some([b, a]) = n.next_2_digits() {
+        if prev < a || a < b {
             return false;
         }
 
-        prev = cur;
-        n /= 10;
+        prev = b;
     }
 
-    true
+    n == 0 || prev >= n as u8
 }

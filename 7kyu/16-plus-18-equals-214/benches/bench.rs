@@ -6,5 +6,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| add(black_box(645_612_459), black_box(1_837_889_123)));
+    bencher.iter(|| add(black_box(645_612_459), black_box(837_889_123)));
 }

@@ -1,19 +1,26 @@
 //! <https://www.codewars.com/kata/5467e4d82edf8bbf40000155/train/rust>
 
+use digital::Next2Digits;
+
 pub fn descending_order(mut x: u64) -> u64 {
     let mut digits = [0u8; 10];
 
-    while x != 0 {
-        digits[(x % 10) as usize] += 1;
-        x /= 10;
+    while let Some([a, b]) = x.next_2_digits() {
+        unsafe {
+            *digits.get_unchecked_mut(a as usize) += 1;
+            *digits.get_unchecked_mut(b as usize) += 1;
+        }
+    }
+    if x != 0 {
+        digits[x as usize] += 1;
     }
 
+    let mut res = 0;
     for (i, &n) in digits.iter().enumerate().rev() {
         let (a, b) = unsafe { TABLE.get_unchecked(n as usize) };
-        x = x * a + b * i as u64;
+        res = res * a + b * i as u64;
     }
-
-    x
+    res
 }
 
 const TABLE: [(u64, u64); 21] = [

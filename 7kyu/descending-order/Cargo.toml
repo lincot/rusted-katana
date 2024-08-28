@@ -2,5 +2,8 @@
 name = "descending-order"
 edition = "2021"
 
+[dependencies]
+digital = { path = "../../digital" }
+
 [lints]
 workspace = true

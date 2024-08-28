@@ -1,18 +1,22 @@
 //! <https://www.codewars.com/kata/5a54e796b3bfa8932c0000ed/train/rust>
 
+use digital::Next2Digits;
+
 pub fn jumping_number(mut n: u64) -> String {
     let mut prev = (n % 10) as u8;
     n /= 10;
 
-    while n != 0 {
-        let d = (n % 10) as u8;
-        if d != prev + 1 && d + 1 != prev {
+    while let Some([b, a]) = n.next_2_digits() {
+        if (a != prev + 1 && a + 1 != prev) || (a != b + 1 && a + 1 != b) {
             return "Not!!".into();
         }
 
-        prev = d;
-        n /= 10;
+        prev = b;
     }
 
-    "Jumping!!".into()
+    if n == 0 || n as u8 == prev + 1 || n as u8 + 1 == prev {
+        "Jumping!!".into()
+    } else {
+        "Not!!".into()
+    }
 }

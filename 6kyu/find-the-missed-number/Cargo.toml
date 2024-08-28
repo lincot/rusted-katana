@@ -2,5 +2,8 @@
 name = "find-the-missed-number"
 edition = "2021"
 
+[dependencies]
+digital = { path = "../../digital" }
+
 [lints]
 workspace = true

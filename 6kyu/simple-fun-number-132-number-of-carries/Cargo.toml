@@ -2,5 +2,8 @@
 name = "simple-fun-number-132-number-of-carries"
 edition = "2021"
 
+[dependencies]
+digital = { path = "../../digital" }
+
 [lints]
 workspace = true

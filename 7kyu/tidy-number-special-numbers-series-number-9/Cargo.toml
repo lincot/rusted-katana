@@ -2,5 +2,8 @@
 name = "tidy-number-special-numbers-series-number-9"
 edition = "2021"
 
+[dependencies]
+digital = { path = "../../digital" }
+
 [lints]
 workspace = true
