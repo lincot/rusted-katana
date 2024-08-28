@@ -1,0 +1,6 @@
+[package]
+name = "floating-point-approximation-i"
+edition = "2021"
+
+[lints]
+workspace = true

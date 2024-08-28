@@ -1,0 +1,6 @@
+[package]
+name = "what-century-is-it"
+edition = "2021"
+
+[lints]
+workspace = true

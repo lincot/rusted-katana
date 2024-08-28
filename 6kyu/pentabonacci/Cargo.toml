@@ -1,0 +1,6 @@
+[package]
+name = "pentabonacci"
+edition = "2021"
+
+[lints]
+workspace = true

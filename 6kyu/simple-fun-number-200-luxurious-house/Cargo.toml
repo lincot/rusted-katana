@@ -1,0 +1,10 @@
+[package]
+name = "simple-fun-number-200-luxurious-house"
+edition = "2021"
+
+[dev-dependencies]
+rand = { version = "0.8.5", default-features = false, features = ["std"] }
+rand_pcg = "0.3.1"
+
+[lints]
+workspace = true

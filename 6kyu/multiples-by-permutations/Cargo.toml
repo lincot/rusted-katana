@@ -1,0 +1,6 @@
+[package]
+name = "multiples-by-permutations"
+edition = "2021"
+
+[lints]
+workspace = true

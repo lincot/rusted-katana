@@ -1,0 +1,9 @@
+[package]
+name = "multiples-of-ten-in-a-sequence-which-values-climb-up"
+edition = "2021"
+
+[dependencies]
+num-bigint = "0.4.4"
+
+[lints]
+workspace = true

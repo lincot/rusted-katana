@@ -1,0 +1,9 @@
+[package]
+name = "divisible-ints"
+edition = "2021"
+
+[dependencies]
+digital = { path = "../../digital" }
+
+[lints]
+workspace = true

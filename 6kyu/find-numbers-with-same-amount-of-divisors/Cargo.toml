@@ -1,0 +1,6 @@
+[package]
+name = "find-numbers-with-same-amount-of-divisors"
+edition = "2021"
+
+[lints]
+workspace = true

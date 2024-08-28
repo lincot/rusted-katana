@@ -1,0 +1,6 @@
+[package]
+name = "sum-of-digits-slash-digital-root"
+edition = "2021"
+
+[lints]
+workspace = true
