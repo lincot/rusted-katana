@@ -6,15 +6,15 @@ pub fn number_of_carries(mut a: u32, mut b: u32) -> usize {
     let mut res = 0;
     let mut carry = 0;
     while a >= 10 || b >= 10 {
-        let [b1, a1] = a.next_2_digits().unwrap_or_else(|| {
-            let t = a;
+        let [b1, a1] = a.next_2_digits(true).unwrap_or_else(|| {
+            let d = a;
             a = 0;
-            [0, t as _]
+            [0, d as _]
         });
-        let [b2, a2] = b.next_2_digits().unwrap_or_else(|| {
-            let t = b;
+        let [b2, a2] = b.next_2_digits(true).unwrap_or_else(|| {
+            let d = b;
             b = 0;
-            [0, t as _]
+            [0, d as _]
         });
 
         for [da, db] in [[a1 as u32, a2 as u32], [b1 as u32, b2 as u32]] {

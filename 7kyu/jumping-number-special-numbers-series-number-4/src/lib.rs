@@ -6,7 +6,7 @@ pub fn jumping_number(mut n: u64) -> String {
     let mut prev = (n % 10) as u8;
     n /= 10;
 
-    while let Some([b, a]) = n.next_2_digits() {
+    while let Some([b, a]) = n.next_2_digits(true) {
         if (a != prev + 1 && a + 1 != prev) || (a != b + 1 && a + 1 != b) {
             return "Not!!".into();
         }

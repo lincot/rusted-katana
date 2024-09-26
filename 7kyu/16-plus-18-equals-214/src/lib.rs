@@ -7,15 +7,15 @@ pub fn add(mut num1: u32, mut num2: u32) -> u64 {
     let mut m = 1;
 
     while num1 >= 10 || num2 >= 10 {
-        let [b1, a1] = num1.next_2_digits().unwrap_or_else(|| {
-            let t = num1;
+        let [b1, a1] = num1.next_2_digits(true).unwrap_or_else(|| {
+            let d = num1;
             num1 = 0;
-            [0, t as _]
+            [0, d as _]
         });
-        let [b2, a2] = num2.next_2_digits().unwrap_or_else(|| {
-            let t = num2;
+        let [b2, a2] = num2.next_2_digits(true).unwrap_or_else(|| {
+            let d = num2;
             num2 = 0;
-            [0, t as _]
+            [0, d as _]
         });
 
         let s = a1 as u64 + a2 as u64;

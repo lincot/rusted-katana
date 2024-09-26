@@ -10,7 +10,7 @@ pub fn compute_depth(n: u16) -> u8 {
     while found_digits != (1 << 10) - 1 {
         let mut m = n_multiple;
 
-        while let Some([a, b]) = m.next_2_digits() {
+        while let Some([a, b]) = m.next_2_digits(true) {
             found_digits |= 1 << a;
             found_digits |= 1 << b;
         }

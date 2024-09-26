@@ -8,7 +8,7 @@ pub fn find_number(a: u32, b: u32, s: &str) -> Vec<u32> {
         if n == 0 {
             digits_ab[0] += 1;
         }
-        while let Some(digits) = n.next_2_digits() {
+        while let Some(digits) = n.next_2_digits(true) {
             for d in digits {
                 digits_ab[d as usize] += 1;
             }

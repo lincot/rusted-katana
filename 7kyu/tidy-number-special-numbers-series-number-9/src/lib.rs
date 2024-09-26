@@ -5,7 +5,7 @@ use digital::Next2Digits;
 pub fn tidy_number(mut n: u64) -> bool {
     let mut prev = 10;
 
-    while let Some([b, a]) = n.next_2_digits() {
+    while let Some([b, a]) = n.next_2_digits(true) {
         if prev < a || a < b {
             return false;
         }

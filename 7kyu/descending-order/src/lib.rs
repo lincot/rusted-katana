@@ -5,7 +5,7 @@ use digital::Next2Digits;
 pub fn descending_order(mut x: u64) -> u64 {
     let mut digits = [0u8; 10];
 
-    while let Some([a, b]) = x.next_2_digits() {
+    while let Some([a, b]) = x.next_2_digits(true) {
         unsafe {
             *digits.get_unchecked_mut(a as usize) += 1;
             *digits.get_unchecked_mut(b as usize) += 1;

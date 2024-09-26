@@ -23,7 +23,7 @@ pub fn sqr_modulus(a: S) -> (bool, i32, i32) {
 
 fn descending_order(mut x: u32) -> i32 {
     let mut digit_counts = [0u8; 10];
-    while let Some(digits) = x.next_2_digits() {
+    while let Some(digits) = x.next_2_digits(true) {
         for d in digits {
             digit_counts[d as usize] += 1;
         }

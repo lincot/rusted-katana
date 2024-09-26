@@ -31,7 +31,7 @@ fn dont_give_me_five_unary(end: isize) -> isize {
     let mut res = 0;
     let mut c = 1;
 
-    while let Some(digits) = end.next_2_digits() {
+    while let Some(digits) = end.next_2_digits(true) {
         for &(mut d) in digits.iter().rev() {
             match d.cmp(&5) {
                 Ordering::Greater => d -= 1,
