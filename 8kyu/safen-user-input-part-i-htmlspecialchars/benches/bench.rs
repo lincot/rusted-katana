@@ -6,5 +6,7 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| html_special_chars(black_box("<script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script>")));
+    const HTML: &str = "<script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script><script>alert('Website Hacked!');</script>";
+
+    bencher.iter(|| html_special_chars(black_box(HTML)));
 }

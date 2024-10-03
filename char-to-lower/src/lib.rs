@@ -1,8 +1,12 @@
 //! fast `char` to lowercase conversion, based on the standard library
 #![no_std]
 
-/// Returns the lowercase representation of the given `char` with an exception.
-/// If 'İ' is passed, 'i' is returned instead of "i̇".
+/// Returns the lowercase representation of the given `char` with the exception of 'İ'.
+///
+/// If 'İ' is passed, 'İ' is returned back instead of "i̇". It's faster than
+/// `char::to_lowercase`, because it returns a single char for any given char.
+/// It works in situations where you need to store a "caseless" representation
+/// of characters.
 pub fn to_lower(ch: char) -> char {
     if ch.is_ascii() {
         ch.to_ascii_lowercase()
@@ -70,7 +74,6 @@ static LOWERCASE_TABLE: &[(char, char)] = &[
     ('Ī', 'ī'),
     ('Ĭ', 'ĭ'),
     ('Į', 'į'),
-    ('İ', 'i'), // must be i̇
     ('Ĳ', 'ĳ'),
     ('Ĵ', 'ĵ'),
     ('Ķ', 'ķ'),

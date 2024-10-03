@@ -4,7 +4,12 @@ use unchecked_std::prelude::*;
 
 pub fn hor_mirror(s: String) -> String {
     let mut res = String::with_capacity(s.len());
-    for (i, line) in s.rsplit('\n').enumerate() {
+    for (i, line) in s
+        .as_bytes()
+        .rsplit(|&b| b == b'\n')
+        .map(|s| unsafe { core::str::from_utf8_unchecked(s) })
+        .enumerate()
+    {
         unsafe {
             if i != 0 {
                 res.push_unchecked('\n');

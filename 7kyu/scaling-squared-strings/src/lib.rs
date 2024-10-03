@@ -20,14 +20,14 @@ pub fn scale(s: &str, k: u32, n: u32) -> String {
     }
     let mut res = String::with_capacity((s.len() + DELIM.len_utf8()) * k as usize * n as usize);
     let mut chunk_len = 0;
-    for c in s.chars() {
-        if c == DELIM {
+    for ch in s.chars() {
+        if ch == DELIM {
             unsafe { vertical_scale(&mut res, chunk_len, n) };
             chunk_len = 0;
         } else {
-            chunk_len += c.len_utf8() * k as usize;
+            chunk_len += ch.len_utf8() * k as usize;
             for _ in 0..k {
-                unsafe { res.push_unchecked(c) };
+                unsafe { res.push_unchecked(ch) };
             }
         }
     }

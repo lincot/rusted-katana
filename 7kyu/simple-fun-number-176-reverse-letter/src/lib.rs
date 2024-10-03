@@ -4,9 +4,9 @@ use unchecked_std::prelude::*;
 
 pub fn reverse_letters(s: &str) -> String {
     let mut res = String::with_capacity(s.len());
-    for c in s.chars().rev() {
-        if c.is_alphabetic() {
-            unsafe { res.push_unchecked(c) };
+    for ch in s.chars().rev() {
+        if ch.is_alphabetic() {
+            unsafe { res.push_unchecked(ch) };
         }
     }
     res

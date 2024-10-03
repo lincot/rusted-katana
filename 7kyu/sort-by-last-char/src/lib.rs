@@ -1,6 +1,5 @@
 //! <https://www.codewars.com/kata/57eba158e8ca2c8aba0002a0/train/rust>
 
-use core::hint::unreachable_unchecked;
 use unchecked_std::prelude::*;
 
 pub fn sort_by_last_char(s: &str) -> Vec<String> {
@@ -12,12 +11,7 @@ pub fn sort_by_last_char(s: &str) -> Vec<String> {
         }
     }
 
-    let key_fn = |s: &String| {
-        if s.is_empty() {
-            unsafe { unreachable_unchecked() };
-        }
-        s.as_bytes()[s.len() - 1]
-    };
+    let key_fn = |s: &String| unsafe { s.chars().next_back().unwrap_unchecked() };
     if res.len() <= 20 {
         res.sort_by_key(key_fn);
     } else {

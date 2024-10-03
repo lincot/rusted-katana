@@ -4,8 +4,8 @@ use unchecked_std::prelude::*;
 
 pub fn solution(phrase: &str) -> String {
     let mut res = String::with_capacity(phrase.len());
-    for c in phrase.chars().rev() {
-        unsafe { res.push_unchecked(c) };
+    for ch in phrase.chars().rev() {
+        unsafe { res.push_unchecked(ch) };
     }
     res
 }

@@ -6,5 +6,7 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| apparently(black_box("It was great and I have never been on live television before but sometimes I dont watch this.")));
+    const STRING: &str = "It was great and I have never been on live television before but sometimes I dont watch this.";
+
+    bencher.iter(|| apparently(black_box(STRING)));
 }

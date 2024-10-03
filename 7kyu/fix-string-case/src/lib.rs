@@ -4,29 +4,39 @@ use unchecked_std::prelude::*;
 
 pub fn solve(s: &str) -> String {
     let mut chars = Vec::with_capacity(s.len());
-    for c in s.chars() {
-        unsafe { chars.push_unchecked((c, c.is_lowercase(), c.is_uppercase())) };
+    for ch in s.chars() {
+        unsafe { chars.push_unchecked((ch, ch.is_lowercase(), ch.is_uppercase())) };
     }
 
-    let lowercase_count = chars.iter().filter(|&&(_, l, _)| l).count();
-    let uppercase_count = chars.iter().filter(|&&(_, _, u)| u).count();
+    let lowercase_count = chars
+        .iter()
+        .filter(|&&(_, is_lowercase, _)| is_lowercase)
+        .count();
+    let uppercase_count = chars
+        .iter()
+        .filter(|&&(_, _, is_uppercase)| is_uppercase)
+        .count();
 
     let mut res = String::with_capacity(3 * s.len());
 
     if uppercase_count > lowercase_count {
-        for &(c, _, u) in &chars {
-            if u {
-                unsafe { res.push_unchecked(c) };
+        for &(ch, _, is_uppercase) in &chars {
+            if is_uppercase {
+                unsafe { res.push_unchecked(ch) };
+            } else if ch.is_ascii() {
+                unsafe { res.push_unchecked(ch.to_ascii_uppercase()) };
             } else {
-                unsafe { res.extend_unchecked(c.to_uppercase()) };
+                unsafe { res.extend_unchecked(ch.to_uppercase()) };
             }
         }
     } else {
-        for &(c, l, _) in &chars {
-            if l {
-                unsafe { res.push_unchecked(c) };
+        for &(ch, is_lowercase, _) in &chars {
+            if is_lowercase {
+                unsafe { res.push_unchecked(ch) };
+            } else if ch.is_ascii() {
+                unsafe { res.push_unchecked(ch.to_ascii_lowercase()) };
             } else {
-                unsafe { res.extend_unchecked(c.to_lowercase()) };
+                unsafe { res.extend_unchecked(ch.to_lowercase()) };
             }
         }
     }

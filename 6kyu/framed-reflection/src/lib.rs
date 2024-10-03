@@ -26,8 +26,8 @@ pub fn mirror(text: &str) -> String {
             let word = core::str::from_utf8_unchecked(word);
             res.push_str_unchecked("\n* ");
             let mut len = 0;
-            for c in word.chars().rev() {
-                res.push_unchecked(c);
+            for ch in word.chars().rev() {
+                res.push_unchecked(ch);
                 len += 1;
             }
             for _ in 0..max_utf8_len - len {

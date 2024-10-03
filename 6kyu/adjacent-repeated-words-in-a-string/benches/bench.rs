@@ -6,5 +6,7 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| count_adjacent_pairs(black_box("dog cat dog DOG cat apple dog cat pineapple apple dog cat apple apple dog cat apple dog apple dog cat dog dog DOG dog dog dog dog dog dog dog cat cat cat cat dog dog cat cat")));
+    const SEARCH_STRING: &str = "dog cat dog DOG cat apple dog cat pineapple apple dog cat apple apple dog cat apple dog apple dog cat dog dog DOG dog dog dog dog dog dog dog cat cat cat cat dog dog cat cat";
+
+    bencher.iter(|| count_adjacent_pairs(black_box(SEARCH_STRING)));
 }

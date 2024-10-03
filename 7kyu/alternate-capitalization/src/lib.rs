@@ -10,10 +10,10 @@ pub fn capitalize(s: &str) -> Vec<String> {
 
     let mut chars_count = 0usize;
 
-    for c in s.chars() {
+    for ch in s.chars() {
         unsafe {
-            first.extend_unchecked(c.to_uppercase());
-            second.push_unchecked(c);
+            push_uppercase_unchecked(&mut first, ch);
+            second.push_unchecked(ch);
         }
 
         swap(&mut first, &mut second);
@@ -25,4 +25,12 @@ pub fn capitalize(s: &str) -> Vec<String> {
     }
 
     vec![first, second]
+}
+
+unsafe fn push_uppercase_unchecked(s: &mut String, ch: char) {
+    if ch.is_ascii() {
+        s.push_unchecked(ch.to_ascii_uppercase());
+    } else {
+        s.extend_unchecked(ch.to_uppercase());
+    }
 }

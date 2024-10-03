@@ -6,5 +6,7 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| leg_room(black_box(10000), black_box("ifbjejaigghkgifbjejaigghkgifbjejaigghkgifbjejaigghkgifbjejaigghkgifbjejaigghkgifbjejaigghkgifbjejaigghkgifbjejaigghkgifbjejaigghkg")));
+    const B: &str = "ifbjejaigghkgifbjejaigghkgifbjejaigghkgifbjejaigghkgifbjejaigghkgifbjejaigghkgifbjejaigghkgifbjejaigghkgifbjejaigghkgifbjejaigghkg";
+
+    bencher.iter(|| leg_room(black_box(10000), black_box(B)));
 }

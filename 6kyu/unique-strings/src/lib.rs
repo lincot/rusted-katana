@@ -14,21 +14,23 @@ pub fn uniq_count(s: &str) -> BigUint {
     }
 
     let mut freq_map = FxHashMap::with_capacity_and_hasher(s.len(), Default::default());
-    for c in s.chars().map(to_lower) {
+    let mut chars_count = 0;
+    for ch in s.chars().map(to_lower) {
         if freq_map.len() == freq_map.capacity() {
             unsafe { unreachable_unchecked() };
         }
         freq_map
-            .entry(c)
+            .entry(ch)
             .and_modify(|count| *count += 1)
             .or_insert(1usize);
+        chars_count += 1;
     }
 
     let mut denom = BigUint::from(1u8);
     for &count in freq_map.values() {
         denom *= factorial(count);
     }
-    factorial(s.len()) / denom
+    factorial(chars_count) / denom
 }
 
 unsafe fn uniq_count_ascii(s: &str) -> BigUint {

@@ -14,5 +14,6 @@ fn bench_new(bencher: &mut Bencher) {
 
 #[bench]
 fn bench_encode(bencher: &mut Bencher) {
-    bencher.iter(|| Cipher::new(MAP1, MAP2).decode(black_box("cnqjsdsfanappcxecxkchbapamofevesrecusvapgddwewhsnlpptvcqkxoluozgmmwlviwppbmbefpoyfobmhiivazdpfqdasal")));
+    const STRING: &str = "cnqjsdsfanappcxecxkchbapamofevesrecusvapgddwewhsnlpptvcqkxoluozgmmwlviwppbmbefpoyfobmhiivazdpfqdasal";
+    bencher.iter(|| Cipher::new(MAP1, MAP2).decode(black_box(STRING)));
 }

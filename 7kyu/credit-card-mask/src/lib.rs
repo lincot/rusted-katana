@@ -6,9 +6,9 @@ pub fn maskify(cc: &str) -> String {
     let mut shown_chars_count = 0;
     let mut shown_chars_len = 0;
     let mut hidden_chars_count = 0;
-    for c in cc.chars().rev() {
+    for ch in cc.chars().rev() {
         if shown_chars_count < 4 {
-            shown_chars_len += c.len_utf8();
+            shown_chars_len += ch.len_utf8();
             shown_chars_count += 1;
         } else {
             hidden_chars_count += 1;

@@ -3,24 +3,31 @@
 use unchecked_std::prelude::*;
 
 pub fn solve(s: &str) -> String {
-    let mut chars = Vec::with_capacity(s.len());
-    for c in s.chars() {
-        unsafe { chars.push_unchecked(c) };
+    if s.is_ascii() {
+        return solve_arr(s.as_bytes());
     }
 
-    if chars.len() <= 1 {
+    let mut chars = Vec::with_capacity(s.len());
+    for ch in s.chars() {
+        unsafe { chars.push_unchecked(ch) };
+    }
+    solve_arr(&chars)
+}
+
+pub fn solve_arr<T: Eq>(s: &[T]) -> String {
+    if s.len() <= 1 {
         return "OK".into();
     }
 
     let mut i = 0;
-    let mut j = chars.len() - 1;
+    let mut j = s.len() - 1;
     while i < j {
-        if unsafe { chars.get_unchecked(i) != chars.get_unchecked(j) } {
+        if unsafe { s.get_unchecked(i) != s.get_unchecked(j) } {
             let mut i_ = i + 1;
             let mut j_ = j;
             let mut broke = false;
             while i_ < j_ {
-                if unsafe { chars.get_unchecked(i_) != chars.get_unchecked(j_) } {
+                if unsafe { s.get_unchecked(i_) != s.get_unchecked(j_) } {
                     broke = true;
                     break;
                 }
@@ -34,7 +41,7 @@ pub fn solve(s: &str) -> String {
 
             j -= 1;
             while i < j {
-                if unsafe { chars.get_unchecked(i) != chars.get_unchecked(j) } {
+                if unsafe { s.get_unchecked(i) != s.get_unchecked(j) } {
                     return "not possible".into();
                 }
 

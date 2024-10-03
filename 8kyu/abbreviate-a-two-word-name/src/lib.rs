@@ -15,18 +15,18 @@ pub fn abbrev_name(name: &str) -> String {
     let mut res = String::with_capacity(cap);
 
     unsafe {
-        push_unchecked_uppercase(&mut res, first);
+        push_uppercase_unchecked(&mut res, first);
         res.push_unchecked('.');
-        push_unchecked_uppercase(&mut res, last);
+        push_uppercase_unchecked(&mut res, last);
     }
 
     res
 }
 
-unsafe fn push_unchecked_uppercase(s: &mut String, c: char) {
-    if c.is_lowercase() {
-        s.extend_unchecked(c.to_uppercase());
+unsafe fn push_uppercase_unchecked(s: &mut String, ch: char) {
+    if ch.is_uppercase() {
+        s.push_unchecked(ch);
     } else {
-        s.push_unchecked(c);
+        s.extend_unchecked(ch.to_uppercase());
     }
 }

@@ -5,6 +5,19 @@ use hello_name_or_world::hello;
 use test::{black_box, Bencher};
 
 #[bench]
-fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| hello(black_box("алиСА")));
+fn bench_ascii(bencher: &mut Bencher) {
+    bencher.iter(|| {
+        for name in ["riley", "JACK", "aliCE"] {
+            hello(black_box(name));
+        }
+    });
+}
+
+#[bench]
+fn bench_nonascii(bencher: &mut Bencher) {
+    bencher.iter(|| {
+        for name in ["райли", "ДЖЕК", "алиСА"] {
+            hello(black_box(name));
+        }
+    });
 }

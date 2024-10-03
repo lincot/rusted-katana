@@ -11,34 +11,36 @@ pub fn hello(name: &str) -> String {
     };
 
     let cap = HELLO.len() + '!'.len_utf8()
-        // reserve for worst case "ΐ" -> "Ϊ́"
+        // reserve for the worst case "ΐ" -> "Ϊ́"
         + 3
-        // "İİİİ" -> "i̇i̇i̇i̇" growing 1.5x
+        // "İİİİ" -> "i̇i̇i̇i̇" grows 1.5x
         + name.len() + name.len() / 2;
     let mut res = String::with_capacity(cap);
 
     unsafe { res.push_str_unchecked(HELLO) };
-    unsafe { push_unchecked_uppercase(&mut res, first) };
-    for c in name_chars {
-        unsafe { push_unchecked_lowercase(&mut res, c) };
+    unsafe { push_uppercase_unchecked(&mut res, first) };
+    for ch in name_chars {
+        unsafe { push_lowercase_unchecked(&mut res, ch) };
     }
     unsafe { res.push_unchecked('!') };
 
     res
 }
 
-unsafe fn push_unchecked_uppercase(s: &mut String, c: char) {
-    if c.is_lowercase() {
-        s.extend_unchecked(c.to_uppercase());
+unsafe fn push_uppercase_unchecked(s: &mut String, ch: char) {
+    if ch.is_ascii() {
+        s.push_unchecked(ch.to_ascii_uppercase());
     } else {
-        s.push_unchecked(c);
+        s.extend_unchecked(ch.to_uppercase());
     }
 }
 
-unsafe fn push_unchecked_lowercase(s: &mut String, c: char) {
-    if c.is_lowercase() {
-        s.push_unchecked(c);
+unsafe fn push_lowercase_unchecked(s: &mut String, ch: char) {
+    if ch.is_ascii() {
+        s.push_unchecked(ch.to_ascii_lowercase());
+    } else if ch.is_lowercase() {
+        s.push_unchecked(ch);
     } else {
-        s.extend_unchecked(c.to_lowercase());
+        s.extend_unchecked(ch.to_lowercase());
     }
 }

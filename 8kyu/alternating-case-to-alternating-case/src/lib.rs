@@ -4,14 +4,20 @@ use unchecked_std::prelude::*;
 
 pub fn to_alternating_case(s: &str) -> String {
     let mut res = String::with_capacity(3 * s.len());
-
-    for c in s.chars() {
-        if c.is_lowercase() {
-            unsafe { res.extend_unchecked(c.to_uppercase()) };
-        } else {
-            unsafe { res.extend_unchecked(c.to_lowercase()) };
+    unsafe {
+        for ch in s.chars() {
+            if ch.is_ascii() {
+                if ch.is_ascii_lowercase() {
+                    res.push_unchecked(ch.to_ascii_uppercase());
+                } else {
+                    res.push_unchecked(ch.to_ascii_lowercase());
+                }
+            } else if ch.is_lowercase() {
+                res.extend_unchecked(ch.to_uppercase());
+            } else {
+                res.extend_unchecked(ch.to_lowercase());
+            }
         }
     }
-
     res
 }

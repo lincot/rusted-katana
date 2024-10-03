@@ -5,12 +5,12 @@ use char_to_lower::to_lower;
 pub fn convert(word: &str) -> u64 {
     let mut res = 0;
     let mut map = heapless::Vec::<_, 10>::new();
-    for c in word.chars().map(to_lower) {
+    for ch in word.chars().map(to_lower) {
         let len = map.len() as u8;
-        let digit = if let Some(&(_, count)) = map.iter().find(|&&(x, _)| x == c) {
+        let digit = if let Some(&(_, count)) = map.iter().find(|&&(x, _)| x == ch) {
             count
         } else {
-            map.push((c, len)).unwrap();
+            map.push((ch, len)).unwrap();
             len
         };
 

@@ -34,16 +34,16 @@ impl Cipher {
 
     pub fn encode(&self, string: &str) -> String {
         let mut res = String::with_capacity(4 * string.len());
-        for c in string.chars() {
-            unsafe { res.push_unchecked(*self.encoder.get(&c).unwrap_or(&c)) };
+        for ch in string.chars() {
+            unsafe { res.push_unchecked(*self.encoder.get(&ch).unwrap_or(&ch)) };
         }
         res
     }
 
     pub fn decode(&self, string: &str) -> String {
         let mut res = String::with_capacity(4 * string.len());
-        for c in string.chars() {
-            unsafe { res.push_unchecked(*self.decoder.get(&c).unwrap_or(&c)) };
+        for ch in string.chars() {
+            unsafe { res.push_unchecked(*self.decoder.get(&ch).unwrap_or(&ch)) };
         }
         res
     }

@@ -10,11 +10,11 @@ pub fn dup(mut arry: Vec<String>) -> Vec<String> {
             continue;
         };
         unsafe { res.push_unchecked(prev) };
-        for c in s.chars() {
-            if c != prev {
-                unsafe { res.push_unchecked(c) };
+        for ch in s.chars() {
+            if ch != prev {
+                unsafe { res.push_unchecked(ch) };
             }
-            prev = c;
+            prev = ch;
         }
 
         *s = res;

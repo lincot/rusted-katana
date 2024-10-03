@@ -11,12 +11,12 @@ pub fn two_sort(arr: &[&str]) -> String {
     let cap = (1 + STARS.len()) * min.len();
     let mut res = String::with_capacity(cap);
 
-    if let Some(c) = min_chars.next() {
-        unsafe { res.push_unchecked(c) };
+    if let Some(ch) = min_chars.next() {
+        unsafe { res.push_unchecked(ch) };
     }
-    for c in min_chars {
+    for ch in min_chars {
         unsafe { res.push_str_unchecked(STARS) };
-        unsafe { res.push_unchecked(c) };
+        unsafe { res.push_unchecked(ch) };
     }
 
     res
