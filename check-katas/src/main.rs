@@ -1,6 +1,8 @@
+#![feature(sync_unsafe_cell)]
+
 use core::{
-    mem::MaybeUninit,
-    ptr,
+    cell::SyncUnsafeCell,
+    mem::{forget, MaybeUninit},
     sync::atomic::{AtomicBool, Ordering},
     time::Duration,
 };
@@ -11,12 +13,16 @@ use std::{
 use tokio::task::JoinSet;
 use unchecked_std::prelude::*;
 
-static mut REQWEST_CLIENT: MaybeUninit<reqwest::Client> = MaybeUninit::uninit();
-static mut BLOCKED: AtomicBool = AtomicBool::new(false);
+// yes, I'm writing this just to leak the memory
+static REQWEST_CLIENT: SyncUnsafeCell<MaybeUninit<reqwest::Client>> =
+    SyncUnsafeCell::new(MaybeUninit::uninit());
+static BLOCKED: AtomicBool = AtomicBool::new(false);
 
 #[tokio::main]
+// clippy buggin
+#[allow(clippy::needless_return)]
 async fn main() {
-    unsafe { ptr::write(REQWEST_CLIENT.as_mut_ptr(), reqwest::Client::new()) };
+    unsafe { *REQWEST_CLIENT.get() = MaybeUninit::new(reqwest::Client::new()) };
 
     let mut tasks = JoinSet::new();
 
@@ -27,7 +33,7 @@ async fn main() {
             tasks.spawn(async move {
                 let kata_dir = kata_dir.unwrap().path().into_os_string();
                 check_kata(
-                    unsafe { REQWEST_CLIENT.assume_init_ref() },
+                    unsafe { (*REQWEST_CLIENT.get()).assume_init_ref() },
                     kyu,
                     kata_dir.to_str().unwrap(),
                 )
@@ -39,6 +45,8 @@ async fn main() {
     while let Some(x) = tasks.join_next().await {
         x.unwrap();
     }
+
+    forget(tasks);
 }
 
 async fn check_kata(reqwest_client: &reqwest::Client, kyu: u8, kata_dir: &str) {
@@ -140,7 +148,7 @@ async fn get_kata(reqwest_client: &reqwest::Client, id: [u8; 24]) -> reqwest::Re
 
     let mut blocked_by_this = false;
     loop {
-        while !blocked_by_this && unsafe { BLOCKED.load(Ordering::Acquire) } {
+        while !blocked_by_this && BLOCKED.load(Ordering::Acquire) {
             tokio::time::sleep(Duration::from_secs(5)).await;
         }
 
@@ -149,7 +157,7 @@ async fn get_kata(reqwest_client: &reqwest::Client, id: [u8; 24]) -> reqwest::Re
             Ok(response) => {
                 if response.status().is_success() {
                     if blocked_by_this {
-                        unsafe { BLOCKED.store(false, Ordering::Release) };
+                        BLOCKED.store(false, Ordering::Release);
                     }
                     return response.text().await;
                 } else if ![429, 502].contains(&response.status().as_u16()) {
@@ -163,7 +171,7 @@ async fn get_kata(reqwest_client: &reqwest::Client, id: [u8; 24]) -> reqwest::Re
             }
         }
         if !blocked_by_this {
-            blocked_by_this = !unsafe { BLOCKED.swap(true, Ordering::AcqRel) };
+            blocked_by_this = !BLOCKED.swap(true, Ordering::AcqRel);
         }
         tokio::time::sleep(Duration::from_secs(5)).await;
     }

@@ -1,7 +1,8 @@
 #![allow(invalid_value)]
+#![feature(sync_unsafe_cell)]
 
 use ab_glyph::{FontRef, PxScale};
-use core::{cmp::Ordering, mem::MaybeUninit, ptr};
+use core::{cell::SyncUnsafeCell, cmp::Ordering, mem::MaybeUninit};
 use digital::{MaxLenBase10, WriteNumUnchecked};
 use image::{Rgb, RgbImage};
 use imageproc::{
@@ -132,21 +133,18 @@ fn get_kata_amount(reqwest_client: &reqwest::blocking::Client, kyu: u8) -> reqwe
         .unwrap())
 }
 
-static mut REQWEST_CLIENT: MaybeUninit<reqwest::blocking::Client> = MaybeUninit::uninit();
-static mut LIMITS: MaybeUninit<[u32; 8]> = MaybeUninit::uninit();
+// yes, I'm writing this just to leak the memory
+static REQWEST_CLIENT: SyncUnsafeCell<MaybeUninit<reqwest::blocking::Client>> =
+    SyncUnsafeCell::new(MaybeUninit::uninit());
+static LIMITS: SyncUnsafeCell<MaybeUninit<[u32; 8]>> = SyncUnsafeCell::new(MaybeUninit::uninit());
 
 fn main() {
-    unsafe {
-        ptr::write(
-            REQWEST_CLIENT.as_mut_ptr(),
-            reqwest::blocking::Client::new(),
-        );
-    }
+    unsafe { *REQWEST_CLIENT.get() = MaybeUninit::new(reqwest::blocking::Client::new()) };
 
     let network_tasks = [1, 2, 3, 4, 5, 6, 7, 8].map(|kyu| {
         thread::spawn(move || unsafe {
-            LIMITS.assume_init_mut()[(kyu - 1) as usize] =
-                get_kata_amount(REQWEST_CLIENT.assume_init_ref(), kyu).unwrap();
+            (*LIMITS.get()).assume_init_mut()[(kyu - 1) as usize] =
+                get_kata_amount((*REQWEST_CLIENT.get()).assume_init_ref(), kyu).unwrap();
         })
     });
 
@@ -167,7 +165,7 @@ fn main() {
     }
 
     progress_bars
-        .write_progress(&progresses, unsafe { LIMITS.assume_init_ref() })
+        .write_progress(&progresses, unsafe { (*LIMITS.get()).assume_init_ref() })
         .save("progress-bars.png")
         .unwrap();
 }
