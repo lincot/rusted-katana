@@ -1,0 +1,6 @@
+[package]
+name = "positions-average"
+edition = "2021"
+
+[lints]
+workspace = true

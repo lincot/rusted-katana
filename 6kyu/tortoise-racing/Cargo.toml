@@ -1,0 +1,6 @@
+[package]
+name = "tortoise-racing"
+edition = "2021"
+
+[lints]
+workspace = true

@@ -1,0 +1,9 @@
+[package]
+name = "a-rule-of-divisibility-by-13"
+edition = "2021"
+
+[dependencies]
+digital = { path = "../../digital" }
+
+[lints]
+workspace = true

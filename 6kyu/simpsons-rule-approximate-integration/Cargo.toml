@@ -1,0 +1,6 @@
+[package]
+name = "simpsons-rule-approximate-integration"
+edition = "2021"
+
+[lints]
+workspace = true

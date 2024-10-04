@@ -1,0 +1,9 @@
+[package]
+name = "pair-of-gloves"
+edition = "2021"
+
+[dependencies]
+unchecked-std = "1.0.0"
+
+[lints]
+workspace = true

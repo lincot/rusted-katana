@@ -1,0 +1,6 @@
+[package]
+name = "its-raining-tacos"
+edition = "2021"
+
+[lints]
+workspace = true

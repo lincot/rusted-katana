@@ -1,0 +1,6 @@
+[package]
+name = "does-my-number-look-big-in-this"
+edition = "2021"
+
+[lints]
+workspace = true

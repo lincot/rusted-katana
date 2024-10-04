@@ -1,0 +1,11 @@
+[package]
+name = "easy-balance-checking"
+edition = "2021"
+
+[dependencies]
+bytecount = "0.6.8"
+digital = { path = "../../digital" }
+unchecked-std = "1.0.0"
+
+[lints]
+workspace = true

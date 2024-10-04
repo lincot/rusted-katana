@@ -1,0 +1,9 @@
+[package]
+name = "moves-in-squared-strings-iii"
+edition = "2021"
+
+[dependencies]
+unchecked-std = "1.0.0"
+
+[lints]
+workspace = true

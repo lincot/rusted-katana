@@ -1,0 +1,6 @@
+[package]
+name = "build-a-pile-of-cubes"
+edition = "2021"
+
+[lints]
+workspace = true

@@ -1,0 +1,10 @@
+[package]
+name = "meeting"
+edition = "2021"
+
+[dependencies]
+char-to-lower = { path = "../../char-to-lower" }
+unchecked-std = "1.0.0"
+
+[lints]
+workspace = true
