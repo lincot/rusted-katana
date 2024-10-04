@@ -1,6 +1,5 @@
 //! <https://www.codewars.com/kata/59cfc000aeb2844d16000075/train/rust>
 
-use core::mem::swap;
 use unchecked_std::prelude::*;
 
 pub fn capitalize(s: &str) -> Vec<String> {
@@ -16,12 +15,12 @@ pub fn capitalize(s: &str) -> Vec<String> {
             second.push_unchecked(ch);
         }
 
-        swap(&mut first, &mut second);
+        (first, second) = (second, first);
 
         chars_count += 1;
     }
     if chars_count % 2 == 1 {
-        swap(&mut first, &mut second);
+        (first, second) = (second, first);
     }
 
     vec![first, second]

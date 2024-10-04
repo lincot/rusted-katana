@@ -1,12 +1,11 @@
 //! <https://www.codewars.com/kata/55b4d87a3766d9873a0000d4/train/rust>
 
-use core::mem::swap;
 use digital::{MaxLenBase10, WriteNumUnchecked};
 use unchecked_std::prelude::*;
 
 pub fn how_much(mut m: i32, mut n: i32) -> Vec<(String, String, String)> {
     if m > n {
-        swap(&mut m, &mut n);
+        (n, m) = (m, n);
     }
     let start = (m + 25) / 63;
     let end = (n + 26) / 63;
