@@ -6,5 +6,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| sc_perm_comb(black_box(128_752)));
+    bencher.iter(|| sc_perm_comb(black_box(if cfg!(miri) { 128 } else { 128_752 })));
 }

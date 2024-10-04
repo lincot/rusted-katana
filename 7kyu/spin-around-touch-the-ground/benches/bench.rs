@@ -10,6 +10,7 @@ use test::{black_box, Bencher};
 #[bench]
 fn bench(bencher: &mut Bencher) {
     let mut rng = Pcg64Mcg::new(0xcafe_f00d_d15e_a5e5);
-    let lst: [_; 1000] = array::from_fn(|_| if rng.gen() { "left" } else { "right" });
+    let lst: [_; if cfg!(miri) { 60 } else { 1000 }] =
+        array::from_fn(|_| if rng.gen() { "left" } else { "right" });
     bencher.iter(|| spin_around(black_box(&lst)));
 }

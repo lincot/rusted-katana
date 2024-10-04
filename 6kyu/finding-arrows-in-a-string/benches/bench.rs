@@ -10,7 +10,8 @@ use test::{black_box, Bencher};
 #[bench]
 fn bench(bencher: &mut Bencher) {
     let mut rng = Pcg64Mcg::new(0xcafe_f00d_d15e_a5e5);
-    let string: [_; 1024] = array::from_fn(|_| *b".-=<>".choose(&mut rng).unwrap());
+    let string: [_; if cfg!(miri) { 64 } else { 1024 }] =
+        array::from_fn(|_| *b".-=<>".choose(&mut rng).unwrap());
     let string = core::str::from_utf8(&string).unwrap();
     bencher.iter(|| arrow_search(black_box(string)));
 }

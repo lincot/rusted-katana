@@ -7,8 +7,8 @@ use test::{black_box, Bencher};
 #[bench]
 fn bench(bencher: &mut Bencher) {
     bencher.iter(|| {
-        for inner_max in 1..100 {
-            for outer_max in 1..100 {
+        for inner_max in 1..if cfg!(miri) { 10 } else { 100 } {
+            for outer_max in 1..if cfg!(miri) { 10 } else { 100 } {
                 black_box(spinning_rings(black_box(inner_max), black_box(outer_max)));
             }
         }

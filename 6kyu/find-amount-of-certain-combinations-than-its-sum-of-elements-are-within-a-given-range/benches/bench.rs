@@ -11,7 +11,8 @@ use test::{black_box, Bencher};
 #[bench]
 fn bench(bencher: &mut Bencher) {
     let mut rng = Pcg64Mcg::new(0xcafe_f00d_d15e_a5e5);
-    let mut arr: [_; 16] = array::from_fn(|_| rng.gen_range(-100_000..100_000));
+    let mut arr: [_; if cfg!(miri) { 8 } else { 16 }] =
+        array::from_fn(|_| rng.gen_range(-100_000..100_000));
     arr.sort_unstable();
     let arr = arr.partition_dedup().0;
     arr.shuffle(&mut rng);

@@ -7,7 +7,7 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let arr: [_; 1024] = array::from_fn(|i| {
+    let arr: [_; if cfg!(miri) { 64 } else { 1024 }] = array::from_fn(|i| {
         if i < 512 {
             1337 + i as i32
         } else {

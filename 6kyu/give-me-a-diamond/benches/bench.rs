@@ -6,5 +6,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| print(black_box(101)));
+    bencher.iter(|| print(black_box(if cfg!(miri) { 11 } else { 101 })));
 }

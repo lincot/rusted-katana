@@ -6,5 +6,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| generate_pairs(black_box(2), black_box(100)));
+    bencher.iter(|| generate_pairs(black_box(2), black_box(if cfg!(miri) { 10 } else { 100 })));
 }

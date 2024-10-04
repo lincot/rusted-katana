@@ -52,7 +52,7 @@ mod miri_tests {
 
     #[test]
     fn miri_test() {
-        let matrix: [_; 10] = array::from_fn(|_| (0..=20).collect::<Vec<_>>());
+        let matrix: [_; 5] = array::from_fn(|_| (0..=10).collect::<Vec<_>>());
         unsafe {
             transpose(&matrix);
             transpose_row_first(&matrix);

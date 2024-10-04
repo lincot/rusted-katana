@@ -7,6 +7,6 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    let s: [_; 1024] = array::from_fn(|i| b"abc"[i % 3]);
+    let s: [_; if cfg!(miri) { 64 } else { 1024 }] = array::from_fn(|i| b"abc"[i % 3]);
     bencher.iter(|| switcheroo(black_box(unsafe { core::str::from_utf8_unchecked(&s) })));
 }
