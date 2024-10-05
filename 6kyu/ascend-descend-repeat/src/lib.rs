@@ -10,7 +10,7 @@ pub fn ascend_descend(length: usize, minimum: i32, maximum: i32) -> String {
 
     let mut res = String::with_capacity(length + i32::MAX_LEN_BASE10);
 
-    for x in minimum..=maximum {
+    for x in minimum..maximum + 1 {
         unsafe {
             res.write_num_unchecked(x, 10, false, false);
             if res.len() >= length {

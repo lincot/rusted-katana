@@ -8,9 +8,9 @@ pub fn leaderboard_sort(leaderboard: &[String], changes: &[String]) -> Vec<Strin
 
         let pos = leaderboard.iter().position(|s| s == name).unwrap();
         if change > 0 {
-            leaderboard[(pos as isize - change) as _..=pos].rotate_right(1);
+            leaderboard[(pos as isize - change) as _..pos + 1].rotate_right(1);
         } else {
-            leaderboard[pos..=(pos as isize - change) as _].rotate_left(1);
+            leaderboard[pos..(pos as isize - change + 1) as _].rotate_left(1);
         }
     }
     leaderboard

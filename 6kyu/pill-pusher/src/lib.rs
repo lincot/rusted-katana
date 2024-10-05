@@ -4,7 +4,6 @@ pub fn prescribe(d: u16, a: u16, b: u16) -> u16 {
     let mut res = d % a;
     let mut r = res;
     let ba = b % a;
-    #[allow(clippy::range_plus_one)]
     for _ in 0..d / b + 1 {
         if r < ba {
             res = res.min(r);

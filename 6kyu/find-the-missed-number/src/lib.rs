@@ -4,7 +4,7 @@ use digital::Next2Digits;
 
 pub fn find_number(a: u32, b: u32, s: &str) -> Vec<u32> {
     let [mut digits_ab, mut digits_s] = [[0usize; 10]; 2];
-    for mut n in a..=b {
+    for mut n in a..b + 1 {
         if n == 0 {
             digits_ab[0] += 1;
         }

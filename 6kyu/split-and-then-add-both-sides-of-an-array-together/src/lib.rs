@@ -23,7 +23,7 @@ pub fn split_and_add(arr: &[u32], n: usize) -> Vec<u32> {
             }
         } else {
             let mid = arr[d2];
-            for i in (1..=d2).rev() {
+            for i in (1..d2 + 1).rev() {
                 if i >= arr.len() {
                     unsafe { unreachable_unchecked() };
                 }

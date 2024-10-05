@@ -55,7 +55,7 @@ fn factorial(n: usize) -> BigUint {
     }
 
     let mut res = FIRST_FACTORIALS.last().copied().unwrap().into();
-    for i in FIRST_FACTORIALS.len()..=n {
+    for i in FIRST_FACTORIALS.len()..n + 1 {
         res *= i;
     }
     res

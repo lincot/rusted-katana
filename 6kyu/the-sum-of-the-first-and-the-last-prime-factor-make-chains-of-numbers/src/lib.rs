@@ -2,7 +2,7 @@
 
 pub fn sflpf_data(val: u32, n_max: u32) -> Vec<u32> {
     let mut res = Vec::new();
-    for n_orig in 4..=n_max {
+    for n_orig in 4..n_max + 1 {
         let mut n = n_orig;
 
         let pow_of_2 = n.trailing_zeros();

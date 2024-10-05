@@ -9,7 +9,6 @@ pub fn nb_dig(n: i32, d: i32) -> i32 {
 
     let mut num = 0;
     let mut step = 1;
-    #[allow(clippy::range_plus_one)]
     for _ in 0..n + 1 {
         let mut m = num;
         while let Some([a, b]) = m.next_2_digits(true) {

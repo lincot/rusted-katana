@@ -8,7 +8,6 @@ pub fn dot(n: u32, m: u32) -> String {
         return res;
     }
     unsafe {
-        #[allow(clippy::range_plus_one)]
         for i in 0..m + 1 {
             for _ in 0..n {
                 res.push_str_unchecked("+---");

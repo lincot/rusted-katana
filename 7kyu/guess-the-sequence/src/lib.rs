@@ -4,7 +4,10 @@ use core::hint::unreachable_unchecked;
 use unchecked_std::prelude::*;
 
 pub fn sequence(x: u8) -> Vec<u8> {
-    let mut res = Vec::with_capacity(x as _);
+    // we assume that `x` is never `> 100`,
+    // which seems to hold true for all translations
+
+    let mut res = Vec::with_capacity(100);
 
     if x < 10 {
         for i in 1..=x {
@@ -13,16 +16,16 @@ pub fn sequence(x: u8) -> Vec<u8> {
         return res;
     }
 
-    for d in 1..=9 {
+    for d in 1..10 {
         unsafe { res.push_unchecked(d) };
         if x >= 10 * d {
-            for n in 10 * d..=(10 * d + 9).min(x) {
+            for n in 10 * d..(10 * d + 10).min(x + 1) {
                 unsafe { res.push_unchecked(n) };
             }
         }
     }
 
-    if x == 100 {
+    if x >= 100 {
         if res.len() == res.capacity() {
             unsafe { unreachable_unchecked() };
         }

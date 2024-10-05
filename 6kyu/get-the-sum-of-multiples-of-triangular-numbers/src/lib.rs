@@ -4,7 +4,7 @@ use num_bigint::BigUint;
 
 pub fn sum_mult_triangnum(n: u32, m: u32) -> BigUint {
     let mut lcm = 1u8.into();
-    for x in 2..=n {
+    for x in 2..n + 1 {
         lcm = lcm_big_small(lcm, triangle(x));
     }
     lcm * triangle(m)

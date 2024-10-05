@@ -34,7 +34,7 @@ pub fn next_perfectsq_perm(lower_limit: u32, k: u32) -> u32 {
 
         for i in (0..digits.len() - 1).rev() {
             if digits[i] == 0 {
-                for j in 0..=i {
+                for j in 0..i + 1 {
                     digits[j] = 1;
                 }
                 n += ONES[i] - n % POWERS_OF_10[i + 1];

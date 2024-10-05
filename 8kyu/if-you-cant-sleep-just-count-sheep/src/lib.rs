@@ -6,7 +6,7 @@ use unchecked_std::prelude::*;
 pub fn count_sheep(n: u32) -> String {
     const SHEEP: &str = " sheep...";
     let mut res = String::with_capacity(count_digits_up_to(n) as usize + SHEEP.len() * n as usize);
-    for sheep in 1..=n {
+    for sheep in 1..n + 1 {
         unsafe {
             res.write_num_unchecked(sheep, 10, false, false);
             res.push_str_unchecked(SHEEP);

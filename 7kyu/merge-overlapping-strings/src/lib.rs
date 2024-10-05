@@ -5,7 +5,6 @@ use unchecked_std::prelude::*;
 
 pub fn merge_strings(first: &str, second: &str) -> String {
     unsafe {
-        #[allow(clippy::range_plus_one)]
         for len in (0..first.len().min(second.len()) + 1).rev() {
             if first.get_unchecked(first.len() - len..) == second.get_unchecked(..len) {
                 let mut res = String::with_capacity(first.len() + second.len() - len);
