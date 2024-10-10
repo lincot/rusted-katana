@@ -156,7 +156,7 @@ pub struct BitsetOnePositions<'a> {
     index: usize,
 }
 
-impl<'a> Iterator for BitsetOnePositions<'a> {
+impl Iterator for BitsetOnePositions<'_> {
     type Item = usize;
 
     fn next(&mut self) -> Option<Self::Item> {

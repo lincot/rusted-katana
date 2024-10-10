@@ -48,7 +48,7 @@ enum Token<'a> {
     ParenClose,
 }
 
-impl<'a> Token<'a> {
+impl Token<'_> {
     const fn precedence(&self) -> Option<Precedence> {
         match self {
             &Token::BinOp(op) => Some(op.precedence()),

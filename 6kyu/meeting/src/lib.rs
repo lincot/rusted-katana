@@ -33,15 +33,15 @@ pub fn meeting(s: &str) -> String {
 #[derive(Clone, Copy)]
 struct CaselessStr<'a>(&'a str);
 
-impl<'a> PartialEq for CaselessStr<'a> {
+impl PartialEq for CaselessStr<'_> {
     fn eq(&self, other: &Self) -> bool {
         self.cmp(other) == Ordering::Equal
     }
 }
 
-impl<'a> Eq for CaselessStr<'a> {}
+impl Eq for CaselessStr<'_> {}
 
-impl<'a> Ord for CaselessStr<'a> {
+impl Ord for CaselessStr<'_> {
     fn cmp(&self, other: &Self) -> Ordering {
         for (ch1, ch2) in self
             .0
@@ -58,7 +58,7 @@ impl<'a> Ord for CaselessStr<'a> {
     }
 }
 
-impl<'a> PartialOrd for CaselessStr<'a> {
+impl PartialOrd for CaselessStr<'_> {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
         Some(self.cmp(other))
     }
