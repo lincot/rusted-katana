@@ -3,7 +3,7 @@ name = "counting-duplicates"
 edition = "2021"
 
 [dependencies]
-hashbrown = { version = "0.14.3", features = ["nightly"] }
+hashbrown = { version = "0.15.0", features = ["nightly"] }
 rustc-hash = "2.0.0"
 char-to-lower = { path = "../../char-to-lower" }
 
