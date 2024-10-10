@@ -10,13 +10,14 @@ use std::{
     fs::{read_dir, File},
     io::{self, Read, Write},
 };
-use tokio::task::JoinSet;
+use tokio::{sync::Notify, task::JoinSet};
 use unchecked_std::prelude::*;
 
 // yes, I'm writing this just to leak the memory
 static REQWEST_CLIENT: SyncUnsafeCell<MaybeUninit<reqwest::Client>> =
     SyncUnsafeCell::new(MaybeUninit::uninit());
 static BLOCKED: AtomicBool = AtomicBool::new(false);
+static UNBLOCK_NOTIFY: Notify = Notify::const_new();
 
 #[tokio::main]
 // clippy buggin
@@ -148,8 +149,8 @@ async fn get_kata(reqwest_client: &reqwest::Client, id: [u8; 24]) -> reqwest::Re
 
     let mut blocked_by_this = false;
     loop {
-        while !blocked_by_this && BLOCKED.load(Ordering::Acquire) {
-            tokio::time::sleep(Duration::from_secs(5)).await;
+        if !blocked_by_this && BLOCKED.load(Ordering::Acquire) {
+            UNBLOCK_NOTIFY.notified().await;
         }
 
         let response = reqwest_client.get(url).send().await;
@@ -158,6 +159,7 @@ async fn get_kata(reqwest_client: &reqwest::Client, id: [u8; 24]) -> reqwest::Re
                 if response.status().is_success() {
                     if blocked_by_this {
                         BLOCKED.store(false, Ordering::Release);
+                        UNBLOCK_NOTIFY.notify_waiters();
                     }
                     return response.text().await;
                 } else if ![429, 502].contains(&response.status().as_u16()) {
@@ -171,9 +173,11 @@ async fn get_kata(reqwest_client: &reqwest::Client, id: [u8; 24]) -> reqwest::Re
             }
         }
         if !blocked_by_this {
-            blocked_by_this = !BLOCKED.swap(true, Ordering::AcqRel);
+            blocked_by_this = BLOCKED
+                .compare_exchange(false, true, Ordering::AcqRel, Ordering::Acquire)
+                .is_ok();
         }
-        tokio::time::sleep(Duration::from_secs(5)).await;
+        tokio::time::sleep(Duration::from_secs(1)).await;
     }
 }
 
