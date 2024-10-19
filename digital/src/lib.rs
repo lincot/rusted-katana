@@ -35,7 +35,7 @@ unsafe fn write_digit<T: From<u8>>(
     }
 }
 
-trait TabledInteger: Sized + Copy + From<u8> + 'static {
+trait TargetInteger: Sized + Copy + From<u8> + 'static {
     const TO_BASE2: &'static [Self; 8];
     const TO_BASE2_FROM_0: &'static [Self; 8];
     const TO_BASE2_REVERSED_FROM_0: &'static [Self; 8];
@@ -48,9 +48,9 @@ trait TabledInteger: Sized + Copy + From<u8> + 'static {
     const TO_BASE16_REVERSED: &'static [Self; 512];
 }
 
-macro_rules! impl_tabled_integer {
+macro_rules! impl_target_integer {
     ($($t:ty)*) => ($(
-        impl TabledInteger for $t {
+        impl TargetInteger for $t {
             const TO_BASE10_FROM_0: &'static [Self; 200] = &[
                 0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9,
                 1, 0, 1, 1, 1, 2, 1, 3, 1, 4, 1, 5, 1, 6, 1, 7, 1, 8, 1, 9,
@@ -187,10 +187,10 @@ macro_rules! impl_tabled_integer {
     )*)
 }
 
-impl_tabled_integer! { u8 u16 u32 u64 usize i16 i32 i64 isize }
+impl_target_integer! { u8 u16 u32 u64 usize i16 i32 i64 isize }
 
 #[inline]
-unsafe fn write_2_digits<T: TabledInteger>(
+unsafe fn write_2_digits<T: TargetInteger>(
     buffer: &mut [T],
     index: &mut usize,
     r: usize,
@@ -211,7 +211,7 @@ unsafe fn write_2_digits<T: TabledInteger>(
 }
 
 trait WriteDigits {
-    unsafe fn write_digits<T: TabledInteger>(
+    unsafe fn write_digits<T: TargetInteger>(
         self,
         radix: u8,
         buffer: &mut [T],
@@ -437,7 +437,7 @@ macro_rules! impl_write_digits {
     ($($t:ty)*) => ($(
         impl WriteDigits for $t {
             #[inline]
-            unsafe fn write_digits<T: TabledInteger>(
+            unsafe fn write_digits<T: TargetInteger>(
                 mut self,
                 radix: u8,
                 buffer: &mut [T],
@@ -524,12 +524,12 @@ impl_write_digits! { u8 u16 u32 u64 usize }
 
 macro_rules! impl_write_num_unchecked_unsigned {
     ($($t:ty)*) => ($(
-        impl<T: TabledInteger> WriteNumUnchecked<$t> for Vec<T> {
+        impl<T: TargetInteger> WriteNumUnchecked<$t> for Vec<T> {
             gen_write_num_unchecked_unsigned!($t);
         }
 
         #[cfg(feature = "heapless")]
-        impl<T: TabledInteger, const N: usize> WriteNumUnchecked<$t> for heapless::Vec<T, N> {
+        impl<T: TargetInteger, const N: usize> WriteNumUnchecked<$t> for heapless::Vec<T, N> {
             gen_write_num_unchecked_unsigned!($t);
         }
     )*)
@@ -589,7 +589,7 @@ fn u128_divrem(n: u128, radix: u8) -> (u128, u64) {
 }
 
 #[inline]
-unsafe fn write_step_digits<T: TabledInteger>(
+unsafe fn write_step_digits<T: TargetInteger>(
     value: u64,
     radix: u8,
     buffer: &mut [T],
@@ -619,7 +619,7 @@ unsafe fn write_step_digits<T: TabledInteger>(
 
 impl WriteDigits for u128 {
     #[inline]
-    unsafe fn write_digits<T: TabledInteger>(
+    unsafe fn write_digits<T: TargetInteger>(
         self,
         radix: u8,
         buffer: &mut [T],
@@ -668,12 +668,12 @@ macro_rules! gen_write_num_unchecked_signed {
 
 macro_rules! impl_write_num_unchecked_signed {
     ($($t:ty)*) => ($(
-        impl<T: TabledInteger> WriteNumUnchecked<$t> for Vec<T> {
+        impl<T: TargetInteger> WriteNumUnchecked<$t> for Vec<T> {
             gen_write_num_unchecked_signed!($t);
         }
 
         #[cfg(feature = "heapless")]
-        impl<T: TabledInteger, const N: usize> WriteNumUnchecked<$t> for heapless::Vec<T, N> {
+        impl<T: TargetInteger, const N: usize> WriteNumUnchecked<$t> for heapless::Vec<T, N> {
             gen_write_num_unchecked_signed!($t);
         }
     )*)
