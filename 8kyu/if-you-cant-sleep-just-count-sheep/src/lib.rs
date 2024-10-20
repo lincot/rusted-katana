@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5b077ebdaf15be5c7f000077/train/rust>
 
-use digital::WriteNumUnchecked;
+use digital::{CountDigitsBase10, WriteNumUnchecked};
 use unchecked_std::prelude::*;
 
 pub fn count_sheep(n: u32) -> String {
@@ -20,10 +20,10 @@ fn count_digits_up_to(n: u32) -> u32 {
     if n < 10 {
         return n;
     }
-    let log = n.ilog10();
+    let log10 = n.count_digits_base10() as u32 - 1;
     let mut t = 1;
-    for _ in 0..log {
+    for _ in 0..log10 {
         t = 10 * t + 1;
     }
-    (log + 1) * (n + 1) - t
+    (log10 + 1) * n + (log10 + 1) - t
 }
