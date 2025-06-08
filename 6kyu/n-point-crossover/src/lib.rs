@@ -7,7 +7,7 @@ pub fn crossover(ns: &[usize], xs: &[u8], ys: &[u8]) -> (Vec<u8>, Vec<u8>) {
 
     let mut ns = ns.to_vec();
     vqsort_rs::sort(&mut ns);
-    assert!(ns.last().map_or(true, |&last| last < xs.len()));
+    assert!(ns.last().is_none_or(|&last| last < xs.len()));
     ns.dedup();
 
     unsafe {

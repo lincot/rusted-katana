@@ -18,7 +18,7 @@ pub fn from_nb_2str(n: i64, sys: Vec<i64>) -> String {
         return "Not applicable".into();
     }
 
-    let mut res = String::with_capacity((2 + i64::MAX_LEN_BASE10) * sys.len());
+    let mut res = String::with_capacity((2 + i64::MAX_LEN_BASE10).checked_mul(sys.len()).unwrap());
     for m in sys {
         unsafe {
             res.push_unchecked('-');

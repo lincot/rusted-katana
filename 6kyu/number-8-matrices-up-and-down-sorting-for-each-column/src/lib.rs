@@ -5,7 +5,7 @@ use unchecked_std::prelude::*;
 pub fn up_down_col_sort(matrix: &[Vec<i32>]) -> Vec<Vec<i32>> {
     let n = matrix[0].len();
 
-    let mut all_items = Vec::with_capacity(n * matrix.len());
+    let mut all_items = Vec::with_capacity(n.checked_mul(matrix.len()).unwrap());
     for row in matrix {
         assert!(row.len() == n);
         unsafe { all_items.extend_from_slice_unchecked(row) };

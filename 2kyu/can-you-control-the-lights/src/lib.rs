@@ -101,7 +101,7 @@ impl BitSet {
         (self.mem[index / 64] & (1 << (index % 64))) != 0
     }
 
-    pub fn set(&mut self, index: usize) {
+    pub const fn set(&mut self, index: usize) {
         self.mem[index / 64] |= 1 << (index % 64);
     }
 

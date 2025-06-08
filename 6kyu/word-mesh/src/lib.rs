@@ -8,7 +8,11 @@ pub fn word_mesh(words: &[&str]) -> Option<String> {
     let mut res = String::with_capacity(if words.is_empty() {
         0
     } else {
-        words[..words.len() - 1].iter().map(|s| s.len()).sum()
+        let mut sum = 0;
+        for word in &words[..words.len() - 1] {
+            sum = word.len().checked_add(sum).unwrap();
+        }
+        sum
     });
 
     'pairs: for &[left, right] in words.array_windows() {

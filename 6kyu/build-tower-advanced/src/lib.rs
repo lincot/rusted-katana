@@ -5,8 +5,11 @@ use unchecked_std::prelude::*;
 
 pub fn tower_builder(n_floors: usize, block_size: (usize, usize)) -> Vec<String> {
     assert!(block_size.0 != 0 && block_size.1 != 0);
-    let mut res = Vec::with_capacity(n_floors * block_size.1);
-    let floor_len = block_size.0 * (2 * n_floors).wrapping_sub(1);
+    let mut res = Vec::with_capacity(n_floors.checked_mul(block_size.1).unwrap());
+    let floor_len = block_size
+        .0
+        .checked_mul(n_floors.checked_mul(2).unwrap().wrapping_sub(1))
+        .unwrap();
     let mut border0 = block_size.0 * n_floors;
     let mut border1 = border0;
 

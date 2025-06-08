@@ -7,7 +7,7 @@ pub fn vaporcode(s: &str) -> String {
         return unsafe { String::from_utf8_unchecked(vaporcode_bytes(s.as_bytes())) };
     }
 
-    let mut res = String::with_capacity(3 * s.len());
+    let mut res = String::with_capacity(s.len().checked_mul(3).unwrap());
     let mut not_first = false;
     for ch in s.chars() {
         if ch != ' ' {
@@ -33,7 +33,7 @@ unsafe fn push_uppercase_unchecked(s: &mut String, ch: char) {
 }
 
 fn vaporcode_bytes(s: &[u8]) -> Vec<u8> {
-    let mut res = Vec::with_capacity(3 * s.len());
+    let mut res = Vec::with_capacity(s.len().checked_mul(3).unwrap());
     let mut not_first = false;
     for &b in s {
         if b != b' ' {

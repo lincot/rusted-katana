@@ -8,7 +8,7 @@ pub fn encrypt_this(text: &str) -> String {
         return unsafe { String::from_utf8_unchecked(encrypt_this_bytes(text.as_bytes())) };
     }
 
-    let mut res = String::with_capacity(8 * text.len() / 3 + 2);
+    let mut res = String::with_capacity(text.len().checked_mul(8).unwrap() / 3 + 2);
     for word in text.as_bytes().split(|&b| b == b' ') {
         let word = unsafe { core::str::from_utf8_unchecked(word) };
         let mut chars = word.chars();
@@ -39,7 +39,7 @@ pub fn encrypt_this(text: &str) -> String {
 }
 
 fn encrypt_this_bytes(text: &[u8]) -> Vec<u8> {
-    let mut res = Vec::with_capacity(8 * text.len() / 3 + 2);
+    let mut res = Vec::with_capacity(text.len().checked_mul(8).unwrap() / 3 + 2);
     for word in text.split(|&b| b == b' ') {
         let first = word[0];
         unsafe {
@@ -52,7 +52,7 @@ fn encrypt_this_bytes(text: &[u8]) -> Vec<u8> {
                 res.push_unchecked(second);
                 res.push_unchecked(b' ');
                 continue;
-            };
+            }
             let last = word[word.len() - 1];
             res.push_unchecked(last);
             res.extend_from_slice_unchecked(word.get_unchecked(2..word.len() - 1));

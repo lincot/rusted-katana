@@ -21,7 +21,9 @@ pub fn highlight(code: &str) -> String {
         }
     }
 
-    let cap = (1 + r#"<span style="color: orange"></span>"#.len()) * code.len();
+    let cap = (1 + r#"<span style="color: orange"></span>"#.len())
+        .checked_mul(code.len())
+        .unwrap();
     let mut res = String::with_capacity(cap);
 
     let mut code = code.bytes();

@@ -3,7 +3,9 @@
 use unchecked_std::prelude::*;
 
 pub fn flatten_and_sort(arr: &[Vec<i32>]) -> Vec<i32> {
-    let len = arr.iter().map(Vec::len).sum();
+    let len = arr
+        .iter()
+        .fold(0, |acc, l| l.len().checked_add(acc).unwrap());
     let mut res = Vec::with_capacity(len);
     for a in arr {
         unsafe { res.extend_from_slice_unchecked(a) };

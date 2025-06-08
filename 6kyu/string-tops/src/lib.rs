@@ -14,7 +14,7 @@ pub fn tops(msg: &str) -> String {
     }
 
     let mut gap = 0;
-    let capacity = ((8 * msg.len() + 1).sqrt() - 3) / 4 + 1;
+    let capacity = ((msg.len().checked_mul(8).unwrap() + 1).sqrt() - 3) / 4 + 1;
     let mut tops = Vec::with_capacity(capacity);
     let mut msg = msg.chars();
     msg.next();

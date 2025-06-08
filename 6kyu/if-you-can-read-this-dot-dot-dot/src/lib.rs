@@ -3,7 +3,7 @@
 use unchecked_std::prelude::*;
 
 pub fn to_nato(words: &str) -> String {
-    let mut res = Vec::with_capacity("November ".len() * words.len());
+    let mut res = Vec::with_capacity("November ".len().checked_mul(words.len()).unwrap());
     unsafe {
         for &b in words.as_bytes() {
             if b == b' ' {

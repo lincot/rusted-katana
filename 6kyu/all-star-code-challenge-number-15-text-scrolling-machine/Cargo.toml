@@ -1,5 +1,5 @@
 [package]
-name = "all-star-code-challenge-number-15"
+name = "all-star-code-challenge-number-15-text-scrolling-machine"
 edition = "2021"
 
 [dependencies]

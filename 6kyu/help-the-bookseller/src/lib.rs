@@ -8,7 +8,9 @@ pub fn stock_list(list_art: Vec<&str>, list_cat: Vec<&str>) -> String {
         return String::new();
     }
 
-    let cap = (4 + u64::MAX_LEN_BASE10 + "( : ) - ".len()) * list_cat.len();
+    let cap = (4 + u64::MAX_LEN_BASE10 + "( : ) - ".len())
+        .checked_mul(list_cat.len())
+        .unwrap();
     let mut res = String::with_capacity(cap);
 
     for (i, cat) in list_cat.into_iter().enumerate() {

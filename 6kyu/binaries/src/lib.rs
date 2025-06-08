@@ -3,7 +3,7 @@
 use unchecked_std::prelude::*;
 
 pub fn code(s: &str) -> String {
-    let mut res = String::with_capacity(8 * s.len());
+    let mut res = String::with_capacity(s.len().checked_mul(8).unwrap());
     for b in s.bytes() {
         unsafe {
             match b {

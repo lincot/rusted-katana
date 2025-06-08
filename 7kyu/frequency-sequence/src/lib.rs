@@ -25,7 +25,10 @@ pub fn freq_seq(s: &str, sep: &str) -> String {
             .or_insert(1usize);
     }
 
-    let cap = (usize::MAX_LEN_BASE10 + sep.len()) * s.len();
+    let cap = s
+        .len()
+        .checked_mul(usize::MAX_LEN_BASE10 + sep.len())
+        .unwrap();
     let mut res = String::with_capacity(cap);
 
     for (i, c) in s.chars().enumerate() {
@@ -48,7 +51,10 @@ fn freq_seq_bytes(s: &[u8], sep: &str) -> String {
         counts[b as usize] += 1;
     }
 
-    let cap = (usize::MAX_LEN_BASE10 + sep.len()) * s.len();
+    let cap = s
+        .len()
+        .checked_mul(usize::MAX_LEN_BASE10 + sep.len())
+        .unwrap();
     let mut res = String::with_capacity(cap);
 
     for (i, &b) in s.iter().enumerate() {

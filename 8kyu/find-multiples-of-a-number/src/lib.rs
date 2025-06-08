@@ -3,7 +3,7 @@
 use unchecked_std::prelude::*;
 
 pub fn find_multiples(n: u32, limit: u32) -> Vec<u32> {
-    let cap = (limit / n) as _;
+    let cap = (limit / n).try_into().unwrap();
     let mut res = Vec::with_capacity(cap);
     let mut i = n;
     for _ in 0..cap {

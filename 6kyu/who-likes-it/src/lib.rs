@@ -15,7 +15,11 @@ pub fn likes(names: &[&str]) -> String {
             res
         }
         [a, b] => {
-            let mut res = String::with_capacity(a.len() + b.len() + " and  like this".len());
+            let mut res = String::with_capacity(
+                (a.len() + " and  like this".len())
+                    .checked_add(b.len())
+                    .unwrap(),
+            );
             unsafe {
                 res.push_str_unchecked(a);
                 res.push_str_unchecked(" and ");
@@ -25,8 +29,11 @@ pub fn likes(names: &[&str]) -> String {
             res
         }
         [a, b, c] => {
-            let mut res =
-                String::with_capacity(a.len() + b.len() + c.len() + ",  and  like this".len());
+            let mut res = String::with_capacity(
+                (a.len() + b.len())
+                    .checked_add(c.len() + ",  and  like this".len())
+                    .unwrap(),
+            );
             unsafe {
                 res.push_str_unchecked(a);
                 res.push_str_unchecked(", ");
@@ -39,7 +46,9 @@ pub fn likes(names: &[&str]) -> String {
         }
         [a, b, rest @ ..] => {
             let mut res = String::with_capacity(
-                a.len() + b.len() + ",  and  others like this".len() + usize::MAX_LEN_BASE10,
+                (a.len() + ",  and  others like this".len() + usize::MAX_LEN_BASE10)
+                    .checked_add(b.len())
+                    .unwrap(),
             );
             unsafe {
                 res.push_str_unchecked(a);

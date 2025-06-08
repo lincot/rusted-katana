@@ -3,8 +3,11 @@
 use unchecked_std::prelude::*;
 
 pub fn unpack_sausages(truck: Vec<Vec<&str>>) -> String {
-    let packages_num = truck.iter().map(Vec::len).sum::<usize>();
-    let mut res = String::with_capacity(20 * (packages_num - packages_num / 5));
+    let packages_num = truck
+        .iter()
+        .fold(0usize, |acc, l| acc.checked_add(l.len()).unwrap());
+    let cap = (packages_num - packages_num / 5).checked_mul(20).unwrap();
+    let mut res = String::with_capacity(cap);
 
     let mut undamaged = 0;
     for package in &truck {

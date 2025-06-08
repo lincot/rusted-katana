@@ -13,7 +13,7 @@ where
         .unwrap();
     let mut cap = routes[first][0].as_ref().len() + 2 * routes.len();
     for [_, b] in routes {
-        cap += b.as_ref().len();
+        cap = cap.checked_add(b.as_ref().len()).unwrap();
     }
     let mut res = String::with_capacity(cap);
     let mut used = vec![false; routes.len()];

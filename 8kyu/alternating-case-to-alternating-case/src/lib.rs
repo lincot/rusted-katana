@@ -3,7 +3,7 @@
 use unchecked_std::prelude::*;
 
 pub fn to_alternating_case(s: &str) -> String {
-    let mut res = String::with_capacity(3 * s.len());
+    let mut res = String::with_capacity(s.len().checked_mul(3).unwrap());
     unsafe {
         for ch in s.chars() {
             if ch.is_ascii() {

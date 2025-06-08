@@ -3,7 +3,7 @@
 use unchecked_std::prelude::*;
 
 pub fn rake_garden(garden: &str) -> String {
-    let mut res = String::with_capacity("gravel".len() * garden.len());
+    let mut res = String::with_capacity(garden.len().checked_mul("gravel".len()).unwrap());
     let mut word_start = 0;
     for (i, &b) in garden.as_bytes().iter().enumerate() {
         if b == b' ' {

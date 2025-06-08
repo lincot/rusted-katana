@@ -3,7 +3,11 @@
 use unchecked_std::prelude::*;
 
 pub fn histogram(results: &[u32; 6]) -> String {
-    let mut res = Vec::with_capacity("3| 100\n".len() * 6 + results.iter().sum::<u32>() as usize);
+    let mut res = Vec::with_capacity(
+        ("3| 100\n".len() as u64 * 6 + results.iter().map(|&x| x as u64).sum::<u64>())
+            .try_into()
+            .unwrap(),
+    );
     for (i, &r) in (b'1'..=b'6').zip(results).rev() {
         unsafe {
             res.push_unchecked(i);

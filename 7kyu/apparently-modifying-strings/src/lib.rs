@@ -5,7 +5,8 @@ use unchecked_std::prelude::*;
 pub fn apparently(string: &str) -> String {
     let string = string.as_bytes();
 
-    let mut res = Vec::with_capacity(4 * string.len() + string.len() * 2 / 3);
+    assert!(string.len() <= MAX_STRING_LEN);
+    let mut res = Vec::with_capacity(get_capacity(string.len()));
 
     if string.starts_with(b"and") || string.starts_with(b"but") {
         match string.len() {
@@ -52,4 +53,42 @@ pub fn apparently(string: &str) -> String {
     }
 
     unsafe { String::from_utf8_unchecked(res) }
+}
+
+#[allow(dead_code)]
+const MAX_STRING_LEN_64: usize = 1_976_436_865_040_309_101;
+#[allow(dead_code)]
+const MAX_STRING_LEN_32: usize = 460_175_067;
+#[allow(dead_code)]
+const MAX_STRING_LEN_16: usize = 7021;
+
+#[cfg(target_pointer_width = "64")]
+const MAX_STRING_LEN: usize = MAX_STRING_LEN_64;
+#[cfg(target_pointer_width = "32")]
+const MAX_STRING_LEN: usize = MAX_STRING_LEN_32;
+#[cfg(target_pointer_width = "16")]
+const MAX_STRING_LEN: usize = MAX_STRING_LEN_16;
+
+const fn get_capacity(string_len: usize) -> usize {
+    4 * string_len + string_len * 2 / 3
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_max_string_list_len() {
+        assert!(isize::try_from(get_capacity(MAX_STRING_LEN)).is_ok());
+        assert!(isize::try_from(get_capacity(MAX_STRING_LEN + 1)).is_err());
+
+        assert!(i64::try_from(get_capacity(MAX_STRING_LEN_64)).is_ok());
+        assert!(i64::try_from(get_capacity(MAX_STRING_LEN_64 + 1)).is_err());
+
+        assert!(i32::try_from(get_capacity(MAX_STRING_LEN_32)).is_ok());
+        assert!(i32::try_from(get_capacity(MAX_STRING_LEN_32 + 1)).is_err());
+
+        assert!(i16::try_from(get_capacity(MAX_STRING_LEN_16)).is_ok());
+        assert!(i16::try_from(get_capacity(MAX_STRING_LEN_16 + 1)).is_err());
+    }
 }

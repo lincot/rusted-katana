@@ -5,11 +5,8 @@ use digital::{MaxLenBase10, WriteNumUnchecked};
 use unchecked_std::prelude::*;
 
 pub fn calc_poly(pol_list: &[i32], x: i32) -> String {
-    let mut res = String::with_capacity(
-        "For  with  the value is ".len()
-            + 2 * i32::MAX_LEN_BASE10
-            + (i32::MAX_LEN_BASE10 + u32::MAX_LEN_BASE10 + "*x^ + ".len()) * pol_list.len(),
-    );
+    assert!(pol_list.len() <= MAX_POL_LIST_LEN);
+    let mut res = String::with_capacity(get_capacity(pol_list.len()));
     let mut value = 0;
 
     unsafe {
@@ -66,4 +63,44 @@ pub fn calc_poly(pol_list: &[i32], x: i32) -> String {
     }
 
     res
+}
+
+#[allow(dead_code)]
+const MAX_POL_LIST_LEN_64: usize = 341_606_371_735_362_065;
+#[allow(dead_code)]
+const MAX_POL_LIST_LEN_32: usize = 79_536_429;
+#[allow(dead_code)]
+const MAX_POL_LIST_LEN_16: usize = 1211;
+
+#[cfg(target_pointer_width = "64")]
+const MAX_POL_LIST_LEN: usize = MAX_POL_LIST_LEN_64;
+#[cfg(target_pointer_width = "32")]
+const MAX_POL_LIST_LEN: usize = MAX_POL_LIST_LEN_32;
+#[cfg(target_pointer_width = "16")]
+const MAX_POL_LIST_LEN: usize = MAX_POL_LIST_LEN_16;
+
+const fn get_capacity(pol_list_len: usize) -> usize {
+    "For  with  the value is ".len()
+        + 2 * i32::MAX_LEN_BASE10
+        + (i32::MAX_LEN_BASE10 + u32::MAX_LEN_BASE10 + "*x^ + ".len()) * pol_list_len
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_max_pol_list_len() {
+        assert!(isize::try_from(get_capacity(MAX_POL_LIST_LEN)).is_ok());
+        assert!(isize::try_from(get_capacity(MAX_POL_LIST_LEN + 1)).is_err());
+
+        assert!(i64::try_from(get_capacity(MAX_POL_LIST_LEN_64)).is_ok());
+        assert!(i64::try_from(get_capacity(MAX_POL_LIST_LEN_64 + 1)).is_err());
+
+        assert!(i32::try_from(get_capacity(MAX_POL_LIST_LEN_32)).is_ok());
+        assert!(i32::try_from(get_capacity(MAX_POL_LIST_LEN_32 + 1)).is_err());
+
+        assert!(i16::try_from(get_capacity(MAX_POL_LIST_LEN_16)).is_ok());
+        assert!(i16::try_from(get_capacity(MAX_POL_LIST_LEN_16 + 1)).is_err());
+    }
 }

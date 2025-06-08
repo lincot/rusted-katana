@@ -17,7 +17,7 @@ pub fn meeting(s: &str) -> String {
 
     names.sort_unstable();
 
-    let mut res = String::with_capacity(s.len() * 3);
+    let mut res = String::with_capacity(s.len().checked_mul(3).unwrap());
     for (last_name, first_name) in names {
         unsafe {
             res.push_unchecked('(');

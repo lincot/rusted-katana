@@ -97,7 +97,7 @@ pub fn selfie_and_diag1(s: &str) -> String {
         .collect();
     let n = strs.len();
 
-    let mut res = String::with_capacity(2 * s.len() + 2);
+    let mut res = String::with_capacity((2 * s.len()).checked_add(2).unwrap());
     for row in 0..n {
         unsafe {
             res.push_str_unchecked(strs[row].0);
@@ -116,7 +116,7 @@ fn selfie_and_diag1_bytes(s: &[u8]) -> Vec<u8> {
     let n = s.iter().position(|&b| b == b'\n').unwrap_or(s.len());
     assert!(s.len() == n * n + n - 1);
 
-    let mut res = Vec::with_capacity(2 * s.len() + 2);
+    let mut res = Vec::with_capacity((2 * s.len()).checked_add(2).unwrap());
     for row in 0..n {
         unsafe {
             res.extend_from_slice_unchecked(s.get_unchecked(row * (n + 1)..row * (n + 1) + n));

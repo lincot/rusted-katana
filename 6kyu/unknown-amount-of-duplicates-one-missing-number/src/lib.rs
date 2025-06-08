@@ -4,6 +4,7 @@ use unchecked_std::prelude::*;
 
 pub fn find_dups_miss(arr: &[u32]) -> (u32, Vec<u32>) {
     let (a, b) = min_max(arr.iter().copied()).unwrap();
+    assert!(b <= 50000 + 1_000_000);
 
     let mut counts = vec![0; (b - a + 1) as usize];
     for x in arr {

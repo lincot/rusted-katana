@@ -22,7 +22,7 @@ impl<'a, 'b> Quark<'a, 'b> {
         0.333_333_333_333_333_3
     }
 
-    pub fn interact(&mut self, other: &mut Self) {
+    pub const fn interact(&mut self, other: &mut Self) {
         (self.color, other.color) = (other.color, self.color);
     }
 }

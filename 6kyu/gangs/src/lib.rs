@@ -8,7 +8,7 @@ use hashbrown::HashSet;
 use rustc_hash::FxHasher;
 
 pub fn gangs(divisors: &[u32], k: u32) -> u32 {
-    let mut map = IdHashSet::with_capacity_and_hasher(k as _, Default::default());
+    let mut map = IdHashSet::with_capacity_and_hasher(k.try_into().unwrap(), Default::default());
     for n in 1..=k {
         let mut h = FxHasher::default();
         for &divisor in divisors {

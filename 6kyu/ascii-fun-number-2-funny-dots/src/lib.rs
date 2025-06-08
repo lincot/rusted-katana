@@ -3,7 +3,13 @@
 use unchecked_std::prelude::*;
 
 pub fn dot(n: u32, m: u32) -> String {
-    let mut res = String::with_capacity(6 * 3 * n as usize * m as usize);
+    let mut res = String::with_capacity(
+        (6 * 3 * n as u64)
+            .checked_mul(m as u64)
+            .unwrap()
+            .try_into()
+            .unwrap(),
+    );
     if n == 0 || m == 0 {
         return res;
     }

@@ -18,7 +18,11 @@ pub fn scale(s: &str, k: u32, n: u32) -> String {
     if s.is_empty() || k == 0 || n == 0 {
         return String::new();
     }
-    let mut res = String::with_capacity((s.len() + DELIM.len_utf8()) * k as usize * n as usize);
+    let mut res = String::with_capacity(
+        (s.len() + DELIM.len_utf8())
+            .checked_mul((k as u64 * n as u64).try_into().unwrap())
+            .unwrap(),
+    );
     let mut chunk_len = 0;
     for ch in s.chars() {
         if ch == DELIM {

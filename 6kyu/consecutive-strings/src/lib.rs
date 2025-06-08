@@ -6,11 +6,16 @@ pub fn longest_consec(strarr: Vec<&str>, k: usize) -> String {
     if strarr.len() < k || k == 0 {
         return String::new();
     }
-    let mut len = strarr[..k].iter().map(|s| s.len()).sum();
+    let mut len = 0;
+    for s in &strarr[..k] {
+        len = s.len().checked_add(len).unwrap();
+    }
     let mut max_len = len;
     let mut best_i = 0;
     for i in k..strarr.len() {
-        len = len + strarr[i].len() - unsafe { strarr.get_unchecked(i - k) }.len();
+        len = (len - unsafe { strarr.get_unchecked(i - k) }.len())
+            .checked_add(strarr[i].len())
+            .unwrap();
         if len > max_len {
             max_len = len;
             best_i = i - k + 1;

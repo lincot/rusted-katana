@@ -13,12 +13,10 @@ pub fn to_csv_text(array: &[Vec<i8>]) -> String {
         }
     }
 
-    let mut res = String::with_capacity(
-        array
-            .iter()
-            .map(|row| (i8::MAX_LEN_BASE10 + 1) * row.len())
-            .sum(),
-    );
+    let mut res = String::with_capacity(array.iter().fold(0, |acc, row| {
+        acc.checked_add(row.len().checked_mul(i8::MAX_LEN_BASE10 + 1).unwrap())
+            .unwrap()
+    }));
     for (i, row) in array.iter().enumerate() {
         if i != 0 {
             unsafe { res.push_unchecked('\n') };

@@ -7,9 +7,7 @@ pub fn track_sum(arr: &[i32]) -> (Vec<i32>, Vec<i32>) {
     unsafe { tracked_sums.set_len(4) };
 
     if arr.is_empty() {
-        for x in &mut tracked_sums {
-            *x = 0;
-        }
+        tracked_sums.fill(0);
         return (tracked_sums, vec![]);
     }
 

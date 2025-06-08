@@ -5,7 +5,7 @@ use unchecked_std::prelude::*;
 pub fn encode(text: &str) -> String {
     assert!(text.is_ascii());
 
-    let len = 24 * text.len();
+    let len = text.len().checked_mul(24).unwrap();
     let mut res = Vec::with_capacity(len);
     unsafe { res.set_len(len) };
 

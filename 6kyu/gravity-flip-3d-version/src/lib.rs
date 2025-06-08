@@ -17,7 +17,7 @@ pub fn flip(direction: char, mut matrix: Vec<Vec<u32>>) -> Vec<Vec<u32>> {
             }
         }
         _ => {
-            let len = matrix.len() * matrix[0].len();
+            let len = matrix.len().checked_mul(matrix[0].len()).unwrap();
             let mut transposed = Vec::with_capacity(len);
             for (i, row) in matrix.iter().enumerate() {
                 assert!(row.len() == matrix[0].len());

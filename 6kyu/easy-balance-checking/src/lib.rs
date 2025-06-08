@@ -4,12 +4,16 @@ use digital::{MaxLenBase10, Next2Digits, WriteNumUnchecked};
 use unchecked_std::prelude::*;
 
 pub fn balance(book: &str) -> String {
-    let cap = book.len()
+    let cap = (book.len()
         + "Original Balance: \nTotal expense  \nAverage expense  ".len()
         + 3
-        + 2 * (u64::MAX_LEN_BASE10 + 3)
-        + (1 + 3 + 1 + 1 + " Balance ".len() + u64::MAX_LEN_BASE10 + 3)
-            * bytecount::count(book.as_bytes(), b'\n');
+        + 2 * (u64::MAX_LEN_BASE10 + 3))
+        .checked_add(
+            bytecount::count(book.as_bytes(), b'\n')
+                .checked_mul(1 + 3 + 1 + 1 + " Balance ".len() + u64::MAX_LEN_BASE10 + 3)
+                .unwrap(),
+        )
+        .unwrap();
     let mut res = String::with_capacity(cap);
 
     unsafe {

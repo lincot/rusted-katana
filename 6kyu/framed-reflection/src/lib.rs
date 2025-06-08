@@ -6,7 +6,7 @@ pub fn mirror(text: &str) -> String {
     let mut len_sum = 0;
     let mut utf8_len_sum = 0;
     let mut max_utf8_len = 0;
-    let mut words_count = 0;
+    let mut words_count = 0usize;
     for word in text.as_bytes().split(|&b| b == b' ') {
         let utf8_len = unsafe { core::str::from_utf8_unchecked(word).chars().count() };
         max_utf8_len = max_utf8_len.max(utf8_len);
@@ -15,7 +15,12 @@ pub fn mirror(text: &str) -> String {
         len_sum += word.len();
     }
 
-    let capacity = (words_count + 2) * (max_utf8_len + 5) + len_sum - utf8_len_sum - 1;
+    let capacity = (words_count + 2)
+        .checked_mul(max_utf8_len + 5)
+        .unwrap()
+        .checked_add(len_sum - utf8_len_sum)
+        .unwrap()
+        - 1;
     let mut res = String::with_capacity(capacity);
 
     unsafe {

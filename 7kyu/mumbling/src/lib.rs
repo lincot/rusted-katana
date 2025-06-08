@@ -6,7 +6,9 @@ pub fn accum(s: &str) -> String {
     let cap = if s.is_empty() {
         return String::new();
     } else {
-        s.len() * (s.len() + 1) / 2 + s.len() - 1
+        (s.len().checked_mul(s.len() + 1).unwrap() / 2)
+            .checked_add(s.len() - 1)
+            .unwrap()
     };
     let mut res = String::with_capacity(cap);
     for (i, &b) in s.as_bytes().iter().enumerate() {

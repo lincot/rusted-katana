@@ -8,7 +8,7 @@ pub fn two_sort(arr: &[&str]) -> String {
     let min = arr.iter().min().unwrap();
     let mut min_chars = (*min).chars();
 
-    let cap = (1 + STARS.len()) * min.len();
+    let cap = min.len().checked_mul(1 + STARS.len()).unwrap();
     let mut res = String::with_capacity(cap);
 
     if let Some(ch) = min_chars.next() {

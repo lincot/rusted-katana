@@ -4,7 +4,11 @@ use num_prime::nt_funcs::is_prime64;
 use unchecked_std::prelude::*;
 
 pub fn backwards_prime(start: u64, stop: u64) -> Vec<u64> {
-    let mut res = Vec::with_capacity(((stop - start) / 2 + 1) as _);
+    if start > stop {
+        return Vec::new();
+    }
+
+    let mut res = Vec::with_capacity(((stop - start) / 2 + 1).try_into().unwrap());
 
     let (mut start, mut step) = get_next_and_step(start);
 

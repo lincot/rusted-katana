@@ -3,7 +3,7 @@
 use unchecked_std::prelude::*;
 
 pub fn arrange(s: &str) -> String {
-    let mut res = String::with_capacity(3 * s.len());
+    let mut res = String::with_capacity(s.len().checked_mul(3).unwrap());
 
     let mut words = s
         .as_bytes()

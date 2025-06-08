@@ -12,8 +12,11 @@ impl<'a> Person<'a> {
     }
 
     pub fn greet(&self, name: &str) -> String {
-        let mut res =
-            String::with_capacity("Hello , my name is ".len() + name.len() + self.name.len());
+        let mut res = String::with_capacity(
+            ("Hello , my name is ".len() + self.name.len())
+                .checked_add(name.len())
+                .unwrap(),
+        );
         unsafe {
             res.push_str_unchecked("Hello ");
             res.push_str_unchecked(name);

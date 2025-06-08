@@ -5,7 +5,7 @@ use unchecked_std::prelude::*;
 pub fn make_latin_square(n: i32) -> Vec<Vec<i32>> {
     (1..n + 1)
         .map(|i| {
-            let mut res = Vec::with_capacity(n as usize);
+            let mut res = Vec::with_capacity(n.try_into().unwrap());
             unsafe {
                 for x in i..n + 1 {
                     res.push_unchecked(x);

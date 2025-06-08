@@ -4,7 +4,7 @@ use unchecked_std::prelude::*;
 
 pub fn word_pattern(word: &str) -> String {
     let mut encountered = heapless::Vec::<_, 52>::new();
-    let mut res = String::with_capacity(3 * word.len());
+    let mut res = String::with_capacity(word.len().checked_mul(3).unwrap());
     let mut word = word.as_bytes().iter();
     if let Some(&b) = word.next() {
         let b = if b < b'a' { b + b'a' - b'A' } else { b };

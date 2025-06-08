@@ -9,7 +9,7 @@ pub fn valid_braces(s: &str) -> bool {
             unsafe { stack.push_unchecked(b) };
         } else if stack
             .pop()
-            .map_or(true, |last| ![b - 1, b - 2].contains(&last))
+            .is_none_or(|last| ![b - 1, b - 2].contains(&last))
         {
             return false;
         }

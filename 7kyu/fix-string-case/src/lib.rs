@@ -17,7 +17,7 @@ pub fn solve(s: &str) -> String {
         .filter(|&&(_, _, is_uppercase)| is_uppercase)
         .count();
 
-    let mut res = String::with_capacity(3 * s.len());
+    let mut res = String::with_capacity(s.len().checked_mul(3).unwrap());
 
     if uppercase_count > lowercase_count {
         for &(ch, _, is_uppercase) in &chars {

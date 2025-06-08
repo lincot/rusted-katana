@@ -4,7 +4,7 @@ use unchecked_std::prelude::*;
 
 pub fn extra_perfect(n: u32) -> Vec<u32> {
     let cap = (n + 1) / 2;
-    let mut res = Vec::with_capacity(cap as _);
+    let mut res = Vec::with_capacity(cap.try_into().unwrap());
     let mut i = 1;
     for _ in 0..cap {
         unsafe { res.push_unchecked(i) };

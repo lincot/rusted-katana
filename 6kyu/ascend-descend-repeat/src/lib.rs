@@ -8,7 +8,7 @@ pub fn ascend_descend(length: usize, minimum: i32, maximum: i32) -> String {
         return String::new();
     }
 
-    let mut res = String::with_capacity(length + i32::MAX_LEN_BASE10);
+    let mut res = String::with_capacity(length.checked_add(i32::MAX_LEN_BASE10).unwrap());
 
     for x in minimum..maximum + 1 {
         unsafe {

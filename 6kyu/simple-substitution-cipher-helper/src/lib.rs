@@ -33,7 +33,7 @@ impl Cipher {
     }
 
     pub fn encode(&self, string: &str) -> String {
-        let mut res = String::with_capacity(4 * string.len());
+        let mut res = String::with_capacity(string.len().checked_mul(4).unwrap());
         for ch in string.chars() {
             unsafe { res.push_unchecked(*self.encoder.get(&ch).unwrap_or(&ch)) };
         }
@@ -41,7 +41,7 @@ impl Cipher {
     }
 
     pub fn decode(&self, string: &str) -> String {
-        let mut res = String::with_capacity(4 * string.len());
+        let mut res = String::with_capacity(string.len().checked_mul(4).unwrap());
         for ch in string.chars() {
             unsafe { res.push_unchecked(*self.decoder.get(&ch).unwrap_or(&ch)) };
         }

@@ -4,7 +4,7 @@ use unchecked_std::prelude::*;
 
 pub fn count_by(x: u32, n: u32) -> Vec<u32> {
     let mut cur = x;
-    let mut res = Vec::with_capacity(n as _);
+    let mut res = Vec::with_capacity(n.try_into().unwrap());
     for _ in 0..n {
         unsafe { res.push_unchecked(cur) };
         cur += x;

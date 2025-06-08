@@ -6,7 +6,7 @@ pub fn between(a: i16, b: i16) -> Vec<i16> {
     if a >= b {
         return vec![];
     }
-    let mut res = Vec::with_capacity((b as i32 - a as i32) as usize + 1);
+    let mut res = Vec::with_capacity(((b as i32 - a as i32) as u32 + 1).try_into().unwrap());
     let mut i = a;
     loop {
         unsafe { res.push_unchecked(i) };

@@ -3,7 +3,7 @@
 use unchecked_std::prelude::*;
 
 pub fn pascals_triangle(n: usize) -> Vec<usize> {
-    let mut res = Vec::with_capacity(n * (n + 1) / 2);
+    let mut res = Vec::with_capacity(n.checked_mul(n.checked_add(1).unwrap()).unwrap() / 2);
     unsafe {
         res.push_unchecked(1);
         for i in 1..n {

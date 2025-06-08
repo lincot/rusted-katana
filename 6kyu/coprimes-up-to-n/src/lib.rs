@@ -5,7 +5,7 @@ use unchecked_std::prelude::*;
 pub fn coprimes(n: u32) -> Vec<u32> {
     let prime_factors = get_prime_factors(n);
 
-    let mut res = Vec::with_capacity(n as usize);
+    let mut res = Vec::with_capacity(n.try_into().unwrap());
     for x in 1..n {
         if !prime_factors
             .iter()

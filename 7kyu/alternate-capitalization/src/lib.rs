@@ -3,7 +3,7 @@
 use unchecked_std::prelude::*;
 
 pub fn capitalize(s: &str) -> Vec<String> {
-    let cap = 2 * s.len() + s.len() / 3;
+    let cap = (2 * s.len()).checked_add(s.len() / 3).unwrap();
     let mut first = String::with_capacity(cap);
     let mut second = String::with_capacity(cap);
 

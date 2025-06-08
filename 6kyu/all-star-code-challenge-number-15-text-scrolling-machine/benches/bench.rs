@@ -1,7 +1,7 @@
 #![feature(test)]
 
 extern crate test;
-use all_star_code_challenge_number_15::rotate;
+use all_star_code_challenge_number_15_text_scrolling_machine::rotate;
 use test::{black_box, Bencher};
 
 #[bench]

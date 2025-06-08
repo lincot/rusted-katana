@@ -7,7 +7,7 @@ pub fn camel_case(str: &str) -> String {
         return unsafe { String::from_utf8_unchecked(camel_case_bytes(str.as_bytes())) };
     }
 
-    let mut res = String::with_capacity(2 * str.len() + str.len() / 3);
+    let mut res = String::with_capacity((2 * str.len()).checked_add(str.len() / 3).unwrap());
 
     let mut chars = str.chars();
 

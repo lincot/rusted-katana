@@ -3,8 +3,8 @@
 use unchecked_std::prelude::*;
 
 pub fn generate_shape(n: i32) -> String {
-    let n = n as usize;
-    let mut res = Vec::with_capacity(n * n + n);
+    let n = n as u64;
+    let mut res = Vec::with_capacity((n * n + n).try_into().unwrap());
     for i in 0..n {
         if i != 0 {
             unsafe { res.push_unchecked(b'\n') };

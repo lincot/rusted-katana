@@ -6,7 +6,7 @@ use unchecked_std::prelude::*;
 pub fn by_state(str: &str) -> String {
     let [mut arizona, mut california, mut idaho, mut indiana, mut massachusetts, mut oklahoma, mut pennsylvania, mut virginia] =
         array::from_fn(|_| vec![]);
-    for line in str.split_terminator('\n') {
+    for line in str.split('\n') {
         let line = line.as_bytes();
         if line.len() < 2 {
             continue;
@@ -36,7 +36,15 @@ pub fn by_state(str: &str) -> String {
         ("Virginia".len(), virginia.len()),
     ] {
         if friends_len != 0 {
-            cap += (state_len - 2 + "\n..... ".len()) * friends_len + state_len + 2;
+            cap = cap
+                .checked_add(
+                    (state_len + "\n..... ".len() - "AZ".len() - "\n".len())
+                        .checked_mul(friends_len + 1)
+                        .unwrap()
+                        + "\n ".len()
+                        - ("\n..... ".len() - "AZ".len() - "\n".len()),
+                )
+                .unwrap();
         }
     }
     let mut res = Vec::with_capacity(cap);

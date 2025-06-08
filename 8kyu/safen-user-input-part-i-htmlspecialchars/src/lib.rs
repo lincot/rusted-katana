@@ -3,7 +3,7 @@
 use unchecked_std::prelude::*;
 
 pub fn html_special_chars(html: &str) -> String {
-    let cap = "&quot;".len() * html.len();
+    let cap = html.len().checked_mul("&quot;".len()).unwrap();
     let mut res = String::with_capacity(cap);
     for b in html.bytes() {
         unsafe {
