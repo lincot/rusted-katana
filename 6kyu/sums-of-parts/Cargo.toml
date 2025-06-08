@@ -1,0 +1,9 @@
+[package]
+name = "sums-of-parts"
+edition = "2021"
+
+[dependencies]
+unchecked-std = "1.0.0"
+
+[lints]
+workspace = true

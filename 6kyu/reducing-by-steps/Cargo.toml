@@ -1,0 +1,9 @@
+[package]
+name = "reducing-by-steps"
+edition = "2021"
+
+[dependencies]
+num-integer = "0.1.45"
+
+[lints]
+workspace = true

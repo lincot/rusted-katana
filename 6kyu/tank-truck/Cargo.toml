@@ -1,0 +1,6 @@
+[package]
+name = "tank-truck"
+edition = "2021"
+
+[lints]
+workspace = true
