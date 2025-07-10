@@ -857,7 +857,7 @@ impl MaxLenBase10 for i128 {
     const MAX_LEN_BASE10: usize = "-170141183460469231731687303715884105728".len();
 }
 
-#[allow(clippy::use_self)]
+#[expect(clippy::use_self)]
 impl MaxLenBase10 for usize {
     const MAX_LEN_BASE10: usize = {
         #[cfg(target_pointer_width = "16")]

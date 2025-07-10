@@ -11,7 +11,7 @@ pub fn pos_average(s: &str) -> f64 {
 
     let mut i_start = 0;
     while i_start < s.len() {
-        #[allow(clippy::needless_range_loop)]
+        #[expect(clippy::needless_range_loop)]
         for i in 0..substring_len {
             let digit = unsafe { s.get_unchecked(i_start + i) } - b'0';
             digit_counts[i][digit as usize] += 1;

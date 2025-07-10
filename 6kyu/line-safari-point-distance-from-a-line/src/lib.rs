@@ -12,6 +12,6 @@ pub fn distance_from_line(a: (f64, f64), b: (f64, f64), c: (f64, f64)) -> f64 {
 }
 
 fn dist(a: (f64, f64), b: (f64, f64)) -> f64 {
-    #[allow(clippy::imprecise_flops)]
+    #[expect(clippy::imprecise_flops)]
     ((a.0 - b.0).powi(2) + (a.1 - b.1).powi(2)).sqrt()
 }

@@ -6,7 +6,7 @@ use unchecked_std::prelude::*;
 const SHEEP: &str = " sheep...";
 
 pub fn count_sheep(n: u32) -> String {
-    #[allow(clippy::absurd_extreme_comparisons)]
+    #[expect(clippy::absurd_extreme_comparisons)]
     {
         assert!(n <= MAX_N);
     }

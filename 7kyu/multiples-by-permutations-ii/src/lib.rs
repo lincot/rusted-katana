@@ -21,7 +21,7 @@ pub const fn find_lowest_int(k: u64) -> u64 {
 }
 
 const fn digits_hash(mut n: u64) -> u64 {
-    #[allow(clippy::unreadable_literal)]
+    #[expect(clippy::unreadable_literal)]
     const ENCODED_DIGITS_100: [u64; 100] = [
         2,
         22,

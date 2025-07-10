@@ -2,7 +2,7 @@
 
 pub fn find_even_index(arr: &[i32]) -> Option<usize> {
     let (mut l, mut r) = (0, arr.iter().sum::<i32>());
-    #[allow(clippy::needless_range_loop)]
+    #[expect(clippy::needless_range_loop)]
     for i in 0..arr.len() {
         r -= arr[i];
         if l == r {

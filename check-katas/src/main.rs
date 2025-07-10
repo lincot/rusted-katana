@@ -20,8 +20,6 @@ static BLOCKED: AtomicBool = AtomicBool::new(false);
 static UNBLOCK_NOTIFY: Notify = Notify::const_new();
 
 #[tokio::main]
-// clippy buggin
-#[allow(clippy::needless_return)]
 async fn main() {
     unsafe { *REQWEST_CLIENT.get() = MaybeUninit::new(reqwest::Client::new()) };
 

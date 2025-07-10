@@ -9,5 +9,5 @@ impl PartialEq<bool> for Omnibool {
     }
 }
 
-#[allow(non_upper_case_globals)]
+#[expect(non_upper_case_globals)]
 pub const omnibool: Omnibool = Omnibool;

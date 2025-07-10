@@ -8,7 +8,7 @@ pub fn count_squares(lines: &[&str]) -> usize {
         let up_line = lines[i].as_bytes();
         for j in 0..up_line.len() {
             if up_line[j] == b'+' {
-                #[allow(clippy::needless_range_loop)]
+                #[expect(clippy::needless_range_loop)]
                 for j_ in j + 1..up_line.len().min(lines.len() - i + j) {
                     match up_line[j_] {
                         b'+' => {

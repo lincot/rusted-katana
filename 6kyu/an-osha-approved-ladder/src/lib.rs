@@ -41,7 +41,7 @@ pub fn is_ladder_safe(ldr: &[&str]) -> bool {
     let space_between = second_runk_pos - 2;
 
     if space_between == 0 {
-        #[allow(clippy::needless_range_loop)]
+        #[expect(clippy::needless_range_loop)]
         for i in second_runk_pos + 1..ldr.len() - 2 {
             if unsafe { get_row_type(ldr[i]) != RowType::Rung } {
                 return false;

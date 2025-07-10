@@ -21,7 +21,7 @@ pub fn merge(line: &[u8]) -> Vec<u8> {
         unsafe { *res.get_unchecked_mut(i) = prev };
         i += 1;
     }
-    #[allow(clippy::needless_range_loop)]
+    #[expect(clippy::needless_range_loop)]
     for i in i..res.len() {
         res[i] = 0;
     }

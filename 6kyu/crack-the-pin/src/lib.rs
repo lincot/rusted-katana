@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5efae11e2d12df00331f91a6/train/rust>
 
-#[allow(clippy::result_unit_err)]
+#[expect(clippy::result_unit_err)]
 pub fn crack(string: String) -> Result<i32, ()> {
     let mut word0 = 0x3030_3030;
     for d0 in 0..10 {

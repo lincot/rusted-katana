@@ -18,7 +18,7 @@ pub fn to_lower(ch: char) -> char {
     }
 }
 
-#[allow(clippy::unicode_not_nfc)]
+#[expect(clippy::unicode_not_nfc)]
 static LOWERCASE_TABLE: &[(char, char)] = &[
     ('À', 'à'),
     ('Á', 'á'),
