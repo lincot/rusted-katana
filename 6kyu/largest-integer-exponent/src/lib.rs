@@ -7,7 +7,7 @@ pub const fn get_exponent(n: i32, p: u32) -> Option<u32> {
     let n = n.unsigned_abs();
     let mut res = 0;
     let mut p_exp = p;
-    while n % p_exp == 0 {
+    while n.is_multiple_of(p_exp) {
         p_exp *= p;
         res += 1;
     }

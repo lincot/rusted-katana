@@ -51,15 +51,9 @@ pub fn fruit_pack(orders: &[&str]) -> Vec<(String, String, String)> {
             );
 
             unsafe {
-                for _ in 0..cap - lens[0] {
-                    res.0.push_unchecked('-');
-                }
-                for _ in 0..cap - lens[1] {
-                    res.1.push_unchecked('-');
-                }
-                for _ in 0..cap - lens[2] {
-                    res.2.push_unchecked('-');
-                }
+                res.0.as_mut_vec().push_many_unchecked(b'-', cap - lens[0]);
+                res.1.as_mut_vec().push_many_unchecked(b'-', cap - lens[1]);
+                res.2.as_mut_vec().push_many_unchecked(b'-', cap - lens[2]);
             }
 
             for (ch, counts) in container_counts {

@@ -29,9 +29,8 @@ pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
         } else {
             unsafe {
                 res.push_str_unchecked(a_number.get_unchecked(nonzero_digit_pos..));
-                for _ in 0..digits_number - nonzero_digits {
-                    res.push_unchecked('0');
-                }
+                res.as_mut_vec()
+                    .push_many_unchecked(b'0', digits_number - nonzero_digits);
             }
         }
         unsafe {
@@ -44,9 +43,8 @@ pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
             res.push_str_unchecked(a_number.get_unchecked(..digits_before_dot));
             if digits_number > a_number.len() - 1 {
                 res.push_str_unchecked(a_number.get_unchecked(digits_before_dot + 1..));
-                for _ in 0..digits_number - (a_number.len() - 1) {
-                    res.push_unchecked('0');
-                }
+                res.as_mut_vec()
+                    .push_many_unchecked(b'0', digits_number - (a_number.len() - 1));
             } else {
                 res.push_str_unchecked(
                     a_number.get_unchecked(digits_before_dot + 1..=digits_number),

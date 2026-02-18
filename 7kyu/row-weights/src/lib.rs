@@ -5,7 +5,7 @@ pub fn row_weights(array: Vec<u32>) -> (u32, u32) {
         .into_iter()
         .enumerate()
         .fold((0, 0), |(t1, t2), (i, w)| {
-            if i % 2 == 0 {
+            if i.is_multiple_of(2) {
                 (t1 + w, t2)
             } else {
                 (t1, t2 + w)

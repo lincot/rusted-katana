@@ -361,7 +361,7 @@ impl Compiler {
         Ast::parse(program)
     }
 
-    #[expect(clippy::only_used_in_recursion)]
+    #[expect(clippy::self_only_used_in_recursion)]
     pub fn pass2(&self, ast: &Ast) -> Ast {
         match *ast {
             Ast::UnOp(..) => ast.clone(),

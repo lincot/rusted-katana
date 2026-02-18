@@ -42,17 +42,13 @@ pub fn balance(book: &str) -> String {
 
         let mut checks_count = 0;
 
-        loop {
-            let Some(start_pos) = book
-                .as_bytes()
-                .get_unchecked(end_pos..)
-                .iter()
-                .position(|&b| b.is_ascii_digit())
-                .map(|pos| pos + end_pos)
-            else {
-                break;
-            };
-
+        while let Some(start_pos) = book
+            .as_bytes()
+            .get_unchecked(end_pos..)
+            .iter()
+            .position(|&b| b.is_ascii_digit())
+            .map(|pos| pos + end_pos)
+        {
             res.push_unchecked('\n');
 
             let check_number = &book[start_pos..start_pos + 3];

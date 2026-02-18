@@ -1,0 +1,6 @@
+[package]
+name = "uno-match-play"
+edition = "2021"
+
+[lints]
+workspace = true

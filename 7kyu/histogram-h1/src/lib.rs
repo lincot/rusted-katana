@@ -12,9 +12,7 @@ pub fn histogram(results: &[u32; 6]) -> String {
         unsafe {
             res.push_unchecked(i);
             res.push_unchecked(b'|');
-            for _ in 0..r {
-                res.push_unchecked(b'#');
-            }
+            res.push_many_unchecked(b'#', r as usize);
             if r != 0 {
                 res.push_unchecked(b' ');
             }

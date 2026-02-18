@@ -11,7 +11,7 @@ pub fn get_count(n: u64) -> u32 {
             .iter()
             .rev()
             .fold(0, |acc, &x| 10 * acc + x as u64);
-        if sub != 0 && n % sub == 0 {
+        if sub != 0 && n.is_multiple_of(sub) {
             res += 1;
         }
         for start in 0..num.len() - len {
@@ -19,7 +19,7 @@ pub fn get_count(n: u64) -> u32 {
                 + unsafe {
                     POWERS_OF_10.get_unchecked(len) * *num.get_unchecked(start + len) as u64
                 };
-            if sub != 0 && n % sub == 0 {
+            if sub != 0 && n.is_multiple_of(sub) {
                 res += 1;
             }
         }

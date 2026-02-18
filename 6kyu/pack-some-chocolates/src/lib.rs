@@ -6,5 +6,5 @@ pub fn make_chocolates(small: u32, big: u32, goal: u32) -> Option<u32> {
         big = big.saturating_sub(1);
     }
     let goal = goal - 5 * big;
-    (goal % 2 == 0 && goal / 2 <= small).then_some(goal / 2)
+    (goal.is_multiple_of(2) && goal / 2 <= small).then_some(goal / 2)
 }

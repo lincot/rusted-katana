@@ -65,11 +65,11 @@ pub fn calc_poly(pol_list: &[i32], x: i32) -> String {
     res
 }
 
-#[allow(dead_code)]
+#[cfg(any(target_pointer_width = "64", test))]
 const MAX_POL_LIST_LEN_64: usize = 341_606_371_735_362_065;
-#[allow(dead_code)]
+#[cfg(any(target_pointer_width = "32", test))]
 const MAX_POL_LIST_LEN_32: usize = 79_536_429;
-#[allow(dead_code)]
+#[cfg(any(target_pointer_width = "16", test))]
 const MAX_POL_LIST_LEN_16: usize = 1211;
 
 #[cfg(target_pointer_width = "64")]

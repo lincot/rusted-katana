@@ -17,13 +17,13 @@ current progress:
 are allowed, even if they are not accepted by Codewars
 
 - solutions are safe (more on it in the [safety section](#safety));
-*nevertheless, there are 695 `unsafe` blocks*
+*nevertheless, there are 768 `unsafe` blocks*
 
 - even though most of the tests on Codewars have only ASCII input,
 they use Rust's standard UTF-8–encoded strings,
 so solutions for string katas are made for Unicode input;
 *nevertheless,
-`.bytes()`, `.as_bytes()`, `.as_bytes_mut()` and `.as_mut_vec()` are used 295 times*
+`.bytes()`, `.as_bytes()`, `.as_bytes_mut()` and `.as_mut_vec()` are used 350 times*
 
 - function signatures and names from solution setups are preserved;
 *but are adjusted with clippy*
@@ -67,8 +67,8 @@ fn work() {
     let mut v = Vec::<u16>::with_capacity(n * (n + 16));
     for _ in 0..n {
         for _ in 0..n + 16 {
+            let val = 17733; // could be user payload too
             unsafe {
-                let val = 17733; // could be user payload too
                 core::ptr::write(v.as_mut_ptr().add(v.len()), val);
                 v.set_len(v.len() + 1);
             }

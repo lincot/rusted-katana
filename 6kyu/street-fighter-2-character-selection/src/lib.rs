@@ -1,9 +1,9 @@
 //! <https://www.codewars.com/kata/5853213063adbd1b9b0000be/train/rust>
 
-mod preloaded;
-
 pub use preloaded::Direction;
 use unchecked_std::prelude::*;
+
+mod preloaded;
 
 pub fn street_fighter_selection(
     _fighters: &[[&str; 6]; 2],

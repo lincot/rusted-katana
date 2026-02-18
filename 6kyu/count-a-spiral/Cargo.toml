@@ -1,0 +1,9 @@
+[package]
+name = "count-a-spiral"
+edition = "2021"
+
+[dependencies]
+num-bigint = "0.4.4"
+
+[lints]
+workspace = true

@@ -1,8 +1,8 @@
 //! <https://www.codewars.com/kata/59f6a855bee845d3cd000046/train/rust>
 
-mod preloaded;
-
 use preloaded::{Coffee, Milk, Sugar};
+
+mod preloaded;
 
 pub struct CoffeeBuilder(Coffee);
 

@@ -1,4 +1,4 @@
-#![allow(invalid_value)]
+#![expect(invalid_value)]
 #![feature(sync_unsafe_cell)]
 
 use ab_glyph::{FontRef, PxScale};

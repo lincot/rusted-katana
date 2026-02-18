@@ -35,9 +35,9 @@ pub fn select_quotients(arr: &[u32], m: u32, dir_str: &str) -> Vec<(u32, (u32, u
         for &denom in unsafe { arr.get_unchecked(..partition_point) } {
             if denom != prev_denom
                 && denom != 0
-                && num % denom == 0
-                && (parity != Parity::Even || num / denom % 2 == 0)
-                && (parity != Parity::Odd || num / denom % 2 == 1)
+                && num.is_multiple_of(denom)
+                && (parity != Parity::Even || (num / denom).is_multiple_of(2))
+                && (parity != Parity::Odd || !(num / denom).is_multiple_of(2))
             {
                 res.push((num / denom, (num, denom)));
             }

@@ -1,0 +1,9 @@
+[package]
+name = "pairs-of-integers-from-0-to-n"
+edition = "2021"
+
+[dependencies]
+unchecked-std = "1.1.0"
+
+[lints]
+workspace = true

@@ -6,7 +6,7 @@ pub fn make_matrix(m: u32, n: u32) -> String {
         *i += 2;
     }
 
-    assert!(n % 2 != 0 && n >= 3);
+    assert!(!n.is_multiple_of(2) && n >= 3);
 
     let digits = [
         (m / 10000) as u8,

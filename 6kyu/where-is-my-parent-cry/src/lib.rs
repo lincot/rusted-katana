@@ -18,9 +18,8 @@ pub fn find_children(dancing_brigade: &str) -> String {
     for (i, family_size) in (0..).zip(family_sizes).filter(|&(_, x)| x != 0) {
         unsafe {
             res.as_mut_vec().push_unchecked(i + b'A');
-            for _ in 0..family_size - 1 {
-                res.as_mut_vec().push_unchecked(i + b'a');
-            }
+            res.as_mut_vec()
+                .push_many_unchecked(i + b'a', family_size - 1);
         }
     }
 

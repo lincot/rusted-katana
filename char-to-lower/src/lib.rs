@@ -13,8 +13,7 @@ pub fn to_lower(ch: char) -> char {
     } else {
         LOWERCASE_TABLE
             .binary_search_by_key(&ch, |&(key, _)| key)
-            .map(|i| LOWERCASE_TABLE[i].1)
-            .unwrap_or(ch)
+            .map_or(ch, |i| LOWERCASE_TABLE[i].1)
     }
 }
 

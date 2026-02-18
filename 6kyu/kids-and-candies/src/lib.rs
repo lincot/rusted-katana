@@ -74,7 +74,7 @@ const fn is_prime_with_condition(x: u16, sqrt: u16) -> bool {
         if divisor == 0 {
             unsafe { unreachable_unchecked() };
         }
-        if x % divisor == 0 {
+        if x.is_multiple_of(divisor) {
             return false;
         }
 

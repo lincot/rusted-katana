@@ -30,7 +30,7 @@ pub fn mult_primefactor_sum(a: u32, b: u32) -> Vec<u32> {
             if n != 1 {
                 s += n;
             }
-            if n_orig % s == 0 {
+            if n_orig.is_multiple_of(s) {
                 res.push(n_orig);
             }
         }

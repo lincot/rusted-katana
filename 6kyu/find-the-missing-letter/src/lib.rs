@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5839edaa6754d6fec10000a2/train/rust>
 
-#![feature(array_windows)]
-
 pub fn find_missing_letter(chars: &[char]) -> char {
     chars
         .array_windows()

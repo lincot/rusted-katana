@@ -1,0 +1,10 @@
+[package]
+name = "jumping-down-the-staircase"
+edition = "2021"
+
+[dependencies]
+num-bigint = "0.4.4"
+unchecked-std = "1.1.0"
+
+[lints]
+workspace = true

@@ -12,7 +12,7 @@ pub fn gangs(divisors: &[u32], k: u32) -> u32 {
     for n in 1..=k {
         let mut h = FxHasher::default();
         for &divisor in divisors {
-            if n % divisor == 0 {
+            if n.is_multiple_of(divisor) {
                 h.write_u32(divisor);
             }
         }

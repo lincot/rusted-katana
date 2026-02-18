@@ -4,12 +4,9 @@ use unchecked_std::prelude::*;
 
 pub fn print(n: i32) -> Option<String> {
     unsafe fn print_line(v: &mut String, width: usize, max_width: usize) {
-        for _ in 0..(max_width - width) / 2 {
-            v.push_unchecked(' ');
-        }
-        for _ in 0..width {
-            v.push_unchecked('*');
-        }
+        v.as_mut_vec()
+            .push_many_unchecked(b' ', (max_width - width) / 2);
+        v.as_mut_vec().push_many_unchecked(b'*', width);
         v.push_unchecked('\n');
     }
 

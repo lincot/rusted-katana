@@ -48,7 +48,7 @@ pub fn stati(strg: &str) -> String {
     results.sort_unstable();
     let range = results.last().unwrap() - results.first().unwrap();
     let average = results.iter().sum::<u32>() / results.len() as u32;
-    let median = if results.len() % 2 == 0 {
+    let median = if results.len().is_multiple_of(2) {
         (results[results.len() / 2 - 1] + results[results.len() / 2]) / 2
     } else {
         results[results.len() / 2]

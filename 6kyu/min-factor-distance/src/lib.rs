@@ -3,9 +3,12 @@
 use unchecked_std::prelude::*;
 
 pub fn min_distance(n: u32) -> u32 {
-    if n % 2 == 0 {
+    if n.is_multiple_of(2) {
         return 1;
-    } else if [3 * 5, 5 * 7, 7 * 9, 9 * 11].iter().any(|x| n % x == 0) {
+    } else if [3 * 5, 5 * 7, 7 * 9, 9 * 11]
+        .iter()
+        .any(|&x| n.is_multiple_of(x))
+    {
         return 2;
     }
 

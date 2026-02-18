@@ -1,12 +1,10 @@
 //! <https://www.codewars.com/kata/6584b7cac29ca91dd9124009/train/rust>
 
-#![feature(array_chunks)]
-
 pub fn convert_lojban(input: &str) -> u64 {
     input
         .as_bytes()
-        .array_chunks()
-        .map(|[a, _]| match a {
+        .chunks_exact(2)
+        .map(|chunk| match chunk[0] {
             b'n' => 0,
             b'p' => 1,
             b'r' => 2,

@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/54e6533c92449cc251001667/train/rust>
 
-#![allow(incomplete_features)]
+#![expect(incomplete_features)]
 #![feature(trusted_len)]
 #![feature(specialization)]
 

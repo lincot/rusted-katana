@@ -22,7 +22,7 @@ pub fn up_down_col_sort(matrix: &[Vec<i32>]) -> Vec<Vec<i32>> {
     for i in 0..matrix.len() {
         let mut bias = 0;
         for j in 0..n {
-            let all_items_i = if j % 2 == 0 {
+            let all_items_i = if j.is_multiple_of(2) {
                 i + bias
             } else {
                 i + bias - matrix.len() + 2 * (matrix.len() - i) - 1

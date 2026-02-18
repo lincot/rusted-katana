@@ -53,9 +53,12 @@ fn my_md5_process_block(word0: u32, word1: u32) -> [u32; 4] {
     let mut d = D;
 
     let abcd = |f: fn(u32, u32, u32) -> u32, a: u32, b, c, d, x, t, s| {
-        let temp = a.wrapping_add(f(b, c, d)).wrapping_add(x).wrapping_add(t);
-        let temp = (temp << s) | (temp >> (32 - s));
-        b.wrapping_add(temp)
+        let t = a
+            .wrapping_add(f(b, c, d))
+            .wrapping_add(x)
+            .wrapping_add(t)
+            .rotate_left(s);
+        b.wrapping_add(t)
     };
 
     let f = |x: u32, y, z| (x & y) | (!x & z);

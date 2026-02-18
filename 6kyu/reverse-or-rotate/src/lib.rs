@@ -14,7 +14,11 @@ pub fn revrot(s: &str, c: usize) -> String {
     let mut end = c;
     while end <= s.len() {
         let chunk = unsafe { s.get_unchecked(end - c..end) };
-        if chunk.iter().fold(0, |acc, &x| x.wrapping_add(acc)) % 2 == 0 {
+        if chunk
+            .iter()
+            .fold(0, |acc, &x| x.wrapping_add(acc))
+            .is_multiple_of(2)
+        {
             for &n in chunk.iter().rev() {
                 unsafe { res.push_unchecked(n) };
             }

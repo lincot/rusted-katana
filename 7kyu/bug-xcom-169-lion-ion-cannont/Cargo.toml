@@ -1,0 +1,6 @@
+[package]
+name = "bug-xcom-169-lion-ion-cannont"
+edition = "2021"
+
+[lints]
+workspace = true

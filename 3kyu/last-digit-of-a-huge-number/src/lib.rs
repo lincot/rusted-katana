@@ -20,7 +20,7 @@ pub fn last_digit(list: &[u64]) -> u64 {
                         }
                     }
                     3 => {
-                        if c % 2 == 0 && !evals_to_zero(tail) {
+                        if c.is_multiple_of(2) && !evals_to_zero(tail) {
                             1
                         } else {
                             3

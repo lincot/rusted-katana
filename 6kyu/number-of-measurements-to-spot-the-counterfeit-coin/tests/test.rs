@@ -3,7 +3,17 @@ use rand::Rng;
 use rand_pcg::Pcg64Mcg;
 
 fn naive_solution(n: u64) -> u32 {
-    (n as f64).log(3.0).ceil() as _
+    match n {
+        1 => 0,
+        2 | 3 => 1,
+        _ => {
+            if n.is_multiple_of(3) {
+                1 + naive_solution(n / 3)
+            } else {
+                1 + naive_solution((n / 3) + 1)
+            }
+        }
+    }
 }
 
 #[test]

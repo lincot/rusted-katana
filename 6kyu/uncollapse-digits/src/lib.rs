@@ -9,11 +9,11 @@ pub fn uncollapse(digits: &str) -> String {
     let digits = digits.as_bytes();
     let mut res = Vec::with_capacity(digits.len() + digits.len() / 3);
     unsafe { res.extend_from_slice_unchecked(&digits[..3]) };
-    for trio in digits[3..].windows(3) {
+    for trio in digits[3..].array_windows() {
         if ([
             b"zer", b"one", b"two", b"thr", b"fou", b"fiv", b"six", b"sev", b"eig", b"nin",
         ])
-        .contains(&trio.try_into().unwrap())
+        .contains(&trio)
         {
             unsafe { res.push_unchecked(b' ') };
         }

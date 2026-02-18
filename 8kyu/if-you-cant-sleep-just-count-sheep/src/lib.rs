@@ -6,7 +6,7 @@ use unchecked_std::prelude::*;
 const SHEEP: &str = " sheep...";
 
 pub fn count_sheep(n: u32) -> String {
-    #[expect(clippy::absurd_extreme_comparisons)]
+    #[allow(clippy::absurd_extreme_comparisons)]
     {
         assert!(n <= MAX_N);
     }
@@ -33,11 +33,11 @@ fn count_digits_up_to(n: usize) -> usize {
     (log10 + 1) * n + (log10 + 1) - t
 }
 
-#[allow(dead_code)]
+#[cfg(any(target_pointer_width = "64", test))]
 const MAX_N_64: u32 = u32::MAX;
-#[allow(dead_code)]
+#[cfg(any(target_pointer_width = "32", test))]
 const MAX_N_32: u32 = 125_477_486;
-#[allow(dead_code)]
+#[cfg(any(target_pointer_width = "16", test))]
 const MAX_N_16: u32 = 2605;
 
 #[cfg(target_pointer_width = "64")]

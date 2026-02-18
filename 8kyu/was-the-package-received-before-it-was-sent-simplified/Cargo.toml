@@ -1,0 +1,6 @@
+[package]
+name = "was-the-package-received-before-it-was-sent-simplified"
+edition = "2021"
+
+[lints]
+workspace = true

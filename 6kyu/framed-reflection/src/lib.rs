@@ -24,9 +24,7 @@ pub fn mirror(text: &str) -> String {
     let mut res = String::with_capacity(capacity);
 
     unsafe {
-        for _ in 0..max_utf8_len + 4 {
-            res.push_unchecked('*');
-        }
+        res.as_mut_vec().push_many_unchecked(b'*', max_utf8_len + 4);
         for word in text.as_bytes().split(|&b| b == b' ') {
             let word = core::str::from_utf8_unchecked(word);
             res.push_str_unchecked("\n* ");
@@ -35,15 +33,12 @@ pub fn mirror(text: &str) -> String {
                 res.push_unchecked(ch);
                 len += 1;
             }
-            for _ in 0..max_utf8_len - len {
-                res.push_unchecked(' ');
-            }
+            res.as_mut_vec()
+                .push_many_unchecked(b' ', max_utf8_len - len);
             res.push_str_unchecked(" *");
         }
         res.push_unchecked('\n');
-        for _ in 0..max_utf8_len + 4 {
-            res.push_unchecked('*');
-        }
+        res.as_mut_vec().push_many_unchecked(b'*', max_utf8_len + 4);
 
         if res.len() != capacity {
             core::hint::unreachable_unchecked();

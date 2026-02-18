@@ -1,0 +1,9 @@
+[package]
+name = "life-predictor"
+edition = "2021"
+
+[dev-dependencies]
+chrono = { version = "0.4.35", default-features = false, features = ["std"] }
+
+[lints]
+workspace = true

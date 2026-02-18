@@ -1,0 +1,6 @@
+[package]
+name = "compare-versions"
+edition = "2021"
+
+[lints]
+workspace = true

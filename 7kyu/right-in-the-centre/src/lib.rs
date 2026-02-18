@@ -8,5 +8,5 @@ pub fn is_in_middle(seq: &str) -> bool {
     let i = (seq.len() - 3) / 2;
 
     (unsafe { seq.get_unchecked(i..i + 3) } == "abc")
-        || (seq.len() % 2 == 0 && unsafe { seq.get_unchecked(i + 1..i + 4) } == "abc")
+        || (seq.len().is_multiple_of(2) && unsafe { seq.get_unchecked(i + 1..i + 4) } == "abc")
 }

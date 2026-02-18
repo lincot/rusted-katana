@@ -16,7 +16,7 @@ pub fn backwards_prime(start: u64, stop: u64) -> Vec<u64> {
         let (rev, log10) = reverse_digits(start);
         let last_digit = rev % 10;
 
-        if last_digit % 2 == 0 || last_digit == 5 {
+        if last_digit.is_multiple_of(2) || last_digit == 5 {
             start = (last_digit + 1) * unsafe { POWERS_OF_10.get_unchecked(log10 as usize) } + 1;
             (start, step) = get_next_and_step(start);
         } else {

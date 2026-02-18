@@ -1,0 +1,6 @@
+[package]
+name = "prime-factors"
+edition = "2021"
+
+[lints]
+workspace = true

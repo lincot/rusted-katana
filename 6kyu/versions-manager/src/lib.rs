@@ -1,9 +1,10 @@
 //! <https://www.codewars.com/kata/5bc7bb444be9774f100000c3/train/rust>
 
-mod preloaded;
 use digital::{MaxLenBase10, WriteNumUnchecked};
 use preloaded::VMError;
 use unchecked_std::prelude::*;
+
+mod preloaded;
 
 #[derive(Clone, Copy)]
 struct Version {

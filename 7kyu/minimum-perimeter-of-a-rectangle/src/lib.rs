@@ -3,6 +3,6 @@
 pub fn minimum_perimeter(area: u64) -> u64 {
     (1..=unsafe { (area as f64).sqrt().to_int_unchecked() })
         .rev()
-        .find(|width| area % width == 0)
+        .find(|&width| area.is_multiple_of(width))
         .map_or(0, |width| 2 * (area / width + width))
 }

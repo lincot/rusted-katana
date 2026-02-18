@@ -19,7 +19,7 @@ pub fn shortest_arrang(n: u32) -> Option<Vec<u32>> {
         }
         num_groups += 1;
 
-        if n % num_groups == 0 {
+        if n.is_multiple_of(num_groups) {
             let start = n / num_groups - num_groups / 2;
             return Some((start..start + num_groups).rev().collect());
         }

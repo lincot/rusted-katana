@@ -2,7 +2,7 @@
 
 pub fn wave_sort(xs: &mut [i32]) {
     for i in 1..xs.len() {
-        if i % 2 == 0 && xs[i] < xs[i - 1] || i % 2 == 1 && xs[i - 1] < xs[i] {
+        if i.is_multiple_of(2) && xs[i] < xs[i - 1] || i % 2 == 1 && xs[i - 1] < xs[i] {
             xs.swap(i - 1, i);
         }
     }

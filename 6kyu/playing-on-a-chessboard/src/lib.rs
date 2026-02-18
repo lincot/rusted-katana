@@ -2,7 +2,7 @@
 
 pub fn game(n: u64) -> Vec<u64> {
     let x = n * n;
-    if x % 2 == 0 {
+    if x.is_multiple_of(2) {
         vec![x / 2]
     } else {
         vec![x, 2]

@@ -3,7 +3,7 @@
 use num_prime::nt_funcs::is_prime64;
 
 pub fn check_goldbach(n: u32) -> Option<(u32, u32)> {
-    if n % 2 != 0 || n <= 2 {
+    if !n.is_multiple_of(2) || n <= 2 {
         return None;
     }
     if n == 4 {

@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/51675d17e0c1bed195000001/train/rust>
 
-#![feature(array_windows)]
-
 pub fn largest_five_digit_number(num: &str) -> u32 {
     num.as_bytes()
         .array_windows::<5>()

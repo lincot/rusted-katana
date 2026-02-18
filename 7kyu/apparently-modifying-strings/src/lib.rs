@@ -55,11 +55,11 @@ pub fn apparently(string: &str) -> String {
     unsafe { String::from_utf8_unchecked(res) }
 }
 
-#[allow(dead_code)]
+#[cfg(any(target_pointer_width = "64", test))]
 const MAX_STRING_LEN_64: usize = 1_976_436_865_040_309_101;
-#[allow(dead_code)]
+#[cfg(any(target_pointer_width = "32", test))]
 const MAX_STRING_LEN_32: usize = 460_175_067;
-#[allow(dead_code)]
+#[cfg(any(target_pointer_width = "16", test))]
 const MAX_STRING_LEN_16: usize = 7021;
 
 #[cfg(target_pointer_width = "64")]

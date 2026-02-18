@@ -48,7 +48,7 @@ pub fn is_ladder_safe(ldr: &[&str]) -> bool {
             }
         }
     } else if space_between == 1 {
-        if ldr.len() % 2 == 0 {
+        if ldr.len().is_multiple_of(2) {
             return false;
         }
 
@@ -63,7 +63,7 @@ pub fn is_ladder_safe(ldr: &[&str]) -> bool {
             i += 2;
         }
     } else if space_between == 2 {
-        if ldr.len() % 3 != 0 {
+        if !ldr.len().is_multiple_of(3) {
             return false;
         }
 

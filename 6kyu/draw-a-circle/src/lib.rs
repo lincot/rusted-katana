@@ -21,15 +21,13 @@ pub fn circle(radius: i32) -> String {
         };
 
         unsafe {
-            for _ in 0..radius - half_width {
-                res.push_unchecked(' ');
-            }
+            res.as_mut_vec()
+                .push_many_unchecked(b' ', radius - half_width);
             for _ in 0..2 * half_width - 1 {
                 res.push_unchecked('█');
             }
-            for _ in 0..radius - half_width {
-                res.push_unchecked(' ');
-            }
+            res.as_mut_vec()
+                .push_many_unchecked(b' ', radius - half_width);
             res.push_unchecked('\n');
         }
     });
@@ -37,11 +35,11 @@ pub fn circle(radius: i32) -> String {
     res
 }
 
-#[allow(dead_code)]
+#[cfg(any(target_pointer_width = "64", test))]
 const MAX_RADIUS_64: usize = 876_706_528;
-#[allow(dead_code)]
+#[cfg(any(target_pointer_width = "32", test))]
 const MAX_RADIUS_32: usize = 13377;
-#[allow(dead_code)]
+#[cfg(any(target_pointer_width = "16", test))]
 const MAX_RADIUS_16: usize = 52;
 
 #[cfg(target_pointer_width = "64")]

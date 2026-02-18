@@ -1,0 +1,6 @@
+[package]
+name = "approximate-solution-of-differential-equation-with-runge-kutta-4"
+edition = "2021"
+
+[lints]
+workspace = true

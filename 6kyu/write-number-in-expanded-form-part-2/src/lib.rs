@@ -18,9 +18,7 @@ pub fn expanded_form(num: f64) -> String {
             }
             first = false;
             res.push_unchecked(d);
-            for _ in 0..i {
-                res.push_unchecked(b'0');
-            }
+            res.push_many_unchecked(b'0', i);
         }
         if dot_pos < digits.len() - 1 {
             for (i, &d) in (1..)
@@ -33,9 +31,7 @@ pub fn expanded_form(num: f64) -> String {
                 first = false;
                 res.push_unchecked(d);
                 res.extend_from_slice_unchecked(b"/1");
-                for _ in 0..i {
-                    res.push_unchecked(b'0');
-                }
+                res.push_many_unchecked(b'0', i);
             }
         }
         String::from_utf8_unchecked(res)

@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5c1ae703ba76f438530000a2/train/rust>
 
-#![feature(array_windows)]
-
 use unchecked_std::prelude::*;
 
 pub fn word_mesh(words: &[&str]) -> Option<String> {

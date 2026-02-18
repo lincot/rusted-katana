@@ -1,0 +1,9 @@
+[package]
+name = "color-ghost"
+edition = "2021"
+
+[dependencies]
+rand = { version = "0.8.5", default-features = false, features = ["std", "std_rng"] }
+
+[lints]
+workspace = true

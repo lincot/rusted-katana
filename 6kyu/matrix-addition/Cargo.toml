@@ -1,0 +1,6 @@
+[package]
+name = "matrix-addition"
+edition = "2021"
+
+[lints]
+workspace = true

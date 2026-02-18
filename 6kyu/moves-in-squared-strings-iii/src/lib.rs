@@ -29,7 +29,7 @@ pub fn diag_1_sym(s: &str) -> String {
 
 fn diag_1_sym_bytes(s: &[u8]) -> Vec<u8> {
     let n = s.iter().position(|&b| b == b'\n').unwrap_or(s.len());
-    assert!(s.len() == n * n + n - 1);
+    assert!(n <= MAX_N && s.len() == get_len(n));
 
     let mut res = Vec::with_capacity(s.len() + 1);
     for row in 0..n {
@@ -67,7 +67,7 @@ pub fn rot_90_clock(s: &str) -> String {
 
 fn rot_90_clock_bytes(s: &[u8]) -> Vec<u8> {
     let n = s.iter().position(|&b| b == b'\n').unwrap_or(s.len());
-    assert!(s.len() == n * n + n - 1);
+    assert!(n <= MAX_N && s.len() == get_len(n));
 
     let mut res = Vec::with_capacity(s.len() + 1);
     for row in 0..n {
@@ -114,9 +114,9 @@ pub fn selfie_and_diag1(s: &str) -> String {
 
 fn selfie_and_diag1_bytes(s: &[u8]) -> Vec<u8> {
     let n = s.iter().position(|&b| b == b'\n').unwrap_or(s.len());
-    assert!(s.len() == n * n + n - 1);
+    assert!(n <= MAX_N && s.len() == get_len(n));
 
-    let mut res = Vec::with_capacity((2 * s.len()).checked_add(2).unwrap());
+    let mut res = Vec::with_capacity(get_capacity_selfie_and_diag1_bytes(s.len()));
     for row in 0..n {
         unsafe {
             res.extend_from_slice_unchecked(s.get_unchecked(row * (n + 1)..row * (n + 1) + n));
@@ -133,4 +133,46 @@ fn selfie_and_diag1_bytes(s: &[u8]) -> Vec<u8> {
 
 pub fn oper(f: fn(&str) -> String, s: &str) -> String {
     f(s)
+}
+
+const fn get_len(n: usize) -> usize {
+    n * n + n - 1
+}
+
+const fn get_capacity_selfie_and_diag1_bytes(len: usize) -> usize {
+    2 * len + 2
+}
+
+#[cfg(any(target_pointer_width = "64", test))]
+const MAX_N_64: usize = 3_037_000_499;
+#[cfg(any(target_pointer_width = "32", test))]
+const MAX_N_32: usize = 46340;
+#[cfg(any(target_pointer_width = "16", test))]
+const MAX_N_16: usize = 180;
+
+#[cfg(target_pointer_width = "64")]
+const MAX_N: usize = MAX_N_64;
+#[cfg(target_pointer_width = "32")]
+const MAX_N: usize = MAX_N_32;
+#[cfg(target_pointer_width = "16")]
+const MAX_N: usize = MAX_N_16;
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_max_n() {
+        assert!(i64::try_from(get_len(MAX_N_64 as _)).is_ok());
+        assert!(i64::try_from(get_len((MAX_N_64 + 1) as _)).is_err());
+        assert!(u64::try_from(get_capacity_selfie_and_diag1_bytes(get_len(MAX_N_64))).is_ok());
+
+        assert!(i32::try_from(get_len(MAX_N_32 as _)).is_ok());
+        assert!(i32::try_from(get_len((MAX_N_32 + 1) as _)).is_err());
+        assert!(u32::try_from(get_capacity_selfie_and_diag1_bytes(get_len(MAX_N_32))).is_ok());
+
+        assert!(i16::try_from(get_len(MAX_N_16 as _)).is_ok());
+        assert!(i16::try_from(get_len((MAX_N_16 + 1) as _)).is_err());
+        assert!(u16::try_from(get_capacity_selfie_and_diag1_bytes(get_len(MAX_N_16))).is_ok());
+    }
 }

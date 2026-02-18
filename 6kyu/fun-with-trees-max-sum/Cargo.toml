@@ -1,0 +1,6 @@
+[package]
+name = "fun-with-trees-max-sum"
+edition = "2021"
+
+[lints]
+workspace = true

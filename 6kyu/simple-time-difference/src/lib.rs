@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2/train/rust>
 
-#![feature(array_windows)]
-
 use digital::WriteNumUnchecked;
 use unchecked_std::prelude::*;
 

@@ -16,7 +16,11 @@ pub fn collatz(mut n: u32) -> String {
                 return res;
             }
 
-            n = if n % 2 == 0 { n / 2 } else { 3 * n + 1 };
+            n = if n.is_multiple_of(2) {
+                n / 2
+            } else {
+                3 * n + 1
+            };
 
             unsafe {
                 res.as_mut_vec().push_unchecked(b'-');

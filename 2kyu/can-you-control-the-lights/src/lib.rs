@@ -117,7 +117,7 @@ impl BitSet {
             return None;
         }
 
-        if index % 64 != 0 {
+        if !index.is_multiple_of(64) {
             let head = self.mem[index / 64] & !((1 << (index % 64)) - 1);
             if head != 0 {
                 return Some((index & !63) + head.trailing_zeros() as usize);
@@ -135,7 +135,7 @@ impl BitSet {
             })
     }
 
-    pub const fn one_positions(&self) -> BitsetOnePositions {
+    pub const fn one_positions(&self) -> BitsetOnePositions<'_> {
         BitsetOnePositions {
             bitset: self,
             index: 0,

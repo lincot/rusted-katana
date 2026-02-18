@@ -5,7 +5,7 @@ pub fn pos_average(s: &str) -> f64 {
 
     let substring_len = s.iter().position(|&b| b == b',').unwrap();
     let n_substrings = (s.len() + 2) / (substring_len + 2);
-    assert!((s.len() + 2) % (substring_len + 2) == 0);
+    assert!((s.len() + 2).is_multiple_of(substring_len + 2));
 
     let mut digit_counts = vec![[0isize; 10]; substring_len];
 

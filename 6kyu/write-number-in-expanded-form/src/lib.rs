@@ -11,9 +11,7 @@ pub fn expanded_form(n: u64) -> String {
     let mut res = Vec::with_capacity((digits.len() * (digits.len() + 7) / 2 - 3) as _);
     unsafe {
         res.push_unchecked(*digits.get_unchecked(0));
-        for _ in 0..digits.len() - 1 {
-            res.push_unchecked(b'0');
-        }
+        res.push_many_unchecked(b'0', digits.len() - 1);
         for (i, &d) in (0..digits.len() - 1)
             .rev()
             .zip(&digits[1..])
@@ -21,9 +19,7 @@ pub fn expanded_form(n: u64) -> String {
         {
             res.extend_from_slice_unchecked(b" + ");
             res.push_unchecked(d);
-            for _ in 0..i {
-                res.push_unchecked(b'0');
-            }
+            res.push_many_unchecked(b'0', i);
         }
         String::from_utf8_unchecked(res)
     }

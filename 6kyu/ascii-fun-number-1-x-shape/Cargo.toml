@@ -1,0 +1,12 @@
+[package]
+name = "ascii-fun-number-1-x-shape"
+edition = "2021"
+
+[dependencies]
+unchecked-std = "1.1.0"
+
+[dev-dependencies]
+num-integer = "0.1.45"
+
+[lints]
+workspace = true

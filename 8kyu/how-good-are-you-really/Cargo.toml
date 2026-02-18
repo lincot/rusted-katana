@@ -1,0 +1,6 @@
+[package]
+name = "how-good-are-you-really"
+edition = "2021"
+
+[lints]
+workspace = true

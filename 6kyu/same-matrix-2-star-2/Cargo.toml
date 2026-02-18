@@ -1,0 +1,10 @@
+[package]
+name = "same-matrix-2-star-2"
+edition = "2021"
+
+[dependencies]
+hashbrown = { version = "0.16.0", features = ["nightly"] }
+rustc-hash = "2.0.0"
+
+[lints]
+workspace = true

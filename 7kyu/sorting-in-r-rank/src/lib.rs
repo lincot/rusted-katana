@@ -15,7 +15,7 @@ pub fn rank<T: Copy + Ord>(lst: &[T]) -> Vec<f64> {
             .position(|x| x.1 != lst_indexed[i].1)
             .map_or(lst.len(), |j| j + i);
         let rank = ((i + next_different_i - 1) / 2) as f64
-            + if (next_different_i - i) % 2 == 0 {
+            + if (next_different_i - i).is_multiple_of(2) {
                 0.5
             } else {
                 0.

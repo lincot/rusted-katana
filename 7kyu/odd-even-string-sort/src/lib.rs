@@ -11,7 +11,7 @@ pub fn sort_my_string(s: &str) -> String {
     let mut odd = String::with_capacity(s.len());
     unsafe {
         for (i, c) in s.chars().enumerate() {
-            if i % 2 == 0 {
+            if i.is_multiple_of(2) {
                 res.push_unchecked(c);
             } else {
                 odd.push_unchecked(c);
@@ -28,7 +28,7 @@ fn sort_my_bytes(s: &[u8]) -> Vec<u8> {
     let mut odd = Vec::with_capacity(s.len() / 2);
     unsafe {
         for (i, &b) in s.iter().enumerate() {
-            if i % 2 == 0 {
+            if i.is_multiple_of(2) {
                 res.push_unchecked(b);
             } else {
                 odd.push_unchecked(b);

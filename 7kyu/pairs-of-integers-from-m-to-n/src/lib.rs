@@ -31,11 +31,11 @@ pub fn generate_pairs(m: i16, n: i16) -> Vec<(i16, i16)> {
     res
 }
 
-#[allow(dead_code)]
+#[cfg(any(target_pointer_width = "64", test))]
 const MAX_DIFF_64: u32 = 2_147_483_647;
-#[allow(dead_code)]
+#[cfg(any(target_pointer_width = "32", test))]
 const MAX_DIFF_32: u32 = 32_767;
-#[allow(dead_code)]
+#[cfg(any(target_pointer_width = "16", test))]
 const MAX_DIFF_16: u32 = 127;
 
 #[cfg(target_pointer_width = "64")]
