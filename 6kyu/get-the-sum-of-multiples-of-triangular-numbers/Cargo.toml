@@ -3,7 +3,7 @@ name = "get-the-sum-of-multiples-of-triangular-numbers"
 edition = "2021"
 
 [dependencies]
-num-bigint = "0.4.4"
+num-bigint = { workspace = true }
 
 [lints]
 workspace = true

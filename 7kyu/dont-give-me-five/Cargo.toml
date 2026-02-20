@@ -3,7 +3,7 @@ name = "dont-give-me-five"
 edition = "2021"
 
 [dependencies]
-digital = { path = "../../digital" }
+digital = { workspace = true }
 
 [lints]
 workspace = true

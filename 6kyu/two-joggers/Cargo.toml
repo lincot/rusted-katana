@@ -3,7 +3,7 @@ name = "two-joggers"
 edition = "2021"
 
 [dependencies]
-num-integer = "0.1.45"
+num-integer = { workspace = true }
 
 [lints]
 workspace = true

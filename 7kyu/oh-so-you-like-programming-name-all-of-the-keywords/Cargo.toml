@@ -3,7 +3,7 @@ name = "oh-so-you-like-programming-name-all-of-the-keywords"
 edition = "2021"
 
 [dependencies]
-hashbrown = { version = "0.16.0", features = ["nightly"] }
+hashbrown = { workspace = true }
 
 [lints]
 workspace = true

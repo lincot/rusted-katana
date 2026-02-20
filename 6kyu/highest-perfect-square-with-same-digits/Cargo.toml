@@ -3,8 +3,8 @@ name = "highest-perfect-square-with-same-digits"
 edition = "2021"
 
 [dependencies]
-digital = { path = "../../digital" }
-heapless = "0.8.0"
+digital = { workspace = true }
+heapless = { workspace = true }
 
 [lints]
 workspace = true

@@ -3,8 +3,8 @@ name = "versions-manager"
 edition = "2021"
 
 [dependencies]
-digital = { path = "../../digital" }
-unchecked-std = "1.1.0"
+digital = { workspace = true }
+unchecked-std = { workspace = true }
 
 [lints]
 workspace = true

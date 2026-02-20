@@ -3,7 +3,7 @@ name = "find-a-very-special-set-of-numbers-in-a-certain-range"
 edition = "2021"
 
 [dependencies]
-digital = { path = "../../digital" }
+digital = { workspace = true }
 
 [lints]
 workspace = true

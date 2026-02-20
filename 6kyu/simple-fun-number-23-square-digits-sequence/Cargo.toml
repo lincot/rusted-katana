@@ -3,7 +3,7 @@ name = "simple-fun-number-23-square-digits-sequence"
 edition = "2021"
 
 [dependencies]
-heapless = "0.8.0"
+heapless = { workspace = true }
 
 [lints]
 workspace = true

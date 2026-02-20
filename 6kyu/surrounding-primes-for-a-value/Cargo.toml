@@ -3,7 +3,7 @@ name = "surrounding-primes-for-a-value"
 edition = "2021"
 
 [dependencies]
-num-prime = "0.4.4"
+num-prime = { workspace = true }
 
 [lints]
 workspace = true

@@ -3,9 +3,9 @@ name = "multiplication-table-for-number"
 edition = "2021"
 
 [dependencies]
-unchecked-std = { version = "1.1.0", features = ["heapless"] }
-digital = { path = "../../digital" }
-heapless = "0.8.0"
+digital = { workspace = true }
+heapless = { workspace = true }
+unchecked-std = { workspace = true, features = ["heapless"] }
 
 [lints]
 workspace = true

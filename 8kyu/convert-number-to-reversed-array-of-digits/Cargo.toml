@@ -3,7 +3,7 @@ name = "convert-number-to-reversed-array-of-digits"
 edition = "2021"
 
 [dependencies]
-digital = { path = "../../digital" }
+digital = { workspace = true }
 
 [lints]
 workspace = true

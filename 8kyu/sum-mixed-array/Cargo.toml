@@ -3,7 +3,7 @@ name = "sum-mixed-array"
 edition = "2021"
 
 [dependencies]
-either = "1.9.0"
+either = { workspace = true }
 
 [lints]
 workspace = true

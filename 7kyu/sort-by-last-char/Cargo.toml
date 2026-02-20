@@ -3,8 +3,8 @@ name = "sort-by-last-char"
 edition = "2021"
 
 [dependencies]
-unchecked-std = "1.1.0"
-radsort = { git = "https://github.com/JakubValtar/radsort" }
+unchecked-std = { workspace = true }
+radsort = { workspace = true }
 
 [lints]
 workspace = true

@@ -116,7 +116,7 @@ impl<'a> Iterator for Lexer<'a> {
 
 #[derive(PartialEq, Eq, PartialOrd, Ord)]
 enum Precedence {
-    /// '+' and '-'    
+    /// '+' and '-'
     Additive,
     /// of '*' and '/'
     Multiplicative,
@@ -134,7 +134,7 @@ fn get_args_and_tokens(source: &str) -> (Box<[&str]>, Tokens<'_>) {
 
 #[derive(Debug, PartialEq, Eq)]
 pub enum MyAst {
-    /// refers to an argument by it's position in argument list    
+    /// refers to an argument by its position in argument list
     ArgRef(usize),
     Literal(isize),
     BinOp(BinOp, Box<Self>, Box<Self>),

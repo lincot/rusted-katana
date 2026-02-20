@@ -3,7 +3,7 @@ name = "jumps-in-a-cycle-number-1"
 edition = "2021"
 
 [dependencies]
-num-integer = "0.1.45"
+num-integer = { workspace = true }
 
 [lints]
 workspace = true

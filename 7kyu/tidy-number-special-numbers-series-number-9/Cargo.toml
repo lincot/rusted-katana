@@ -3,7 +3,7 @@ name = "tidy-number-special-numbers-series-number-9"
 edition = "2021"
 
 [dependencies]
-digital = { path = "../../digital" }
+digital = { workspace = true }
 
 [lints]
 workspace = true

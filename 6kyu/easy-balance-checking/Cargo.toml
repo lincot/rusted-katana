@@ -3,9 +3,9 @@ name = "easy-balance-checking"
 edition = "2021"
 
 [dependencies]
-bytecount = "0.6.8"
-digital = { path = "../../digital" }
-unchecked-std = "1.1.0"
+bytecount = { workspace = true }
+digital = { workspace = true }
+unchecked-std = { workspace = true }
 
 [lints]
 workspace = true

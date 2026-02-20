@@ -3,7 +3,7 @@ name = "the-fusc-function-part-2"
 edition = "2021"
 
 [dependencies]
-num-bigint = "0.4.4"
+num-bigint = { workspace = true }
 
 [lints]
 workspace = true

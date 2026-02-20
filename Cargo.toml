@@ -20,6 +20,37 @@ codegen-units = 1
 lto = true
 panic = "abort"
 
+[workspace.dependencies]
+# kata solutions
+bytecount = "0.6.8"
+char-to-lower = { path = "./char-to-lower" }
+chrono = { version = "0.4.35", default-features = false, features = ["std"] }
+digital = { path = "./digital" }
+either = "1.9.0"
+hashbrown = { version = "0.16.0", features = ["nightly"] }
+heapless = "0.8.0"
+libm = { version = "0.2.5", features = ["unstable"] }
+num-bigint = "0.4.4"
+num-complex = "0.4.4"
+num-integer = "0.1.45"
+num-prime = "0.4.4"
+radsort = { git = "https://github.com/JakubValtar/radsort" }
+rand = { version = "0.8.5", default-features = false, features = ["std"] }
+rustc-hash = "2.0.0"
+ryu = "1.0.15"
+unchecked-std = "1.1.0"
+vqsort-rs = "0.2.0"
+# tests/benches
+criterion = "0.5.1"
+num-traits = "0.2.19"
+rand_pcg = "0.3.1"
+# check-katas/progress-bars
+ab_glyph = "0.2.26"
+image = "0.25.1"
+imageproc = "0.25.0"
+reqwest = "0.12.4"
+tokio = { version = "1.37.0", features = ["full"] }
+
 [workspace.lints.clippy]
 all = { level = "deny", priority = -1 }
 pedantic = { level = "deny", priority = -1 }

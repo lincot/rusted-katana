@@ -3,12 +3,12 @@ name = "rusted-katana-progress-bars"
 edition = "2021"
 
 [dependencies]
-digital = { path = "../digital" }
-image = "0.25.1"
-imageproc = "0.25.0"
-reqwest = { version = "0.12.4", features = ["blocking"] }
-ab_glyph = "0.2.26"
-heapless = "0.8.0"
+ab_glyph = {workspace = true }
+digital = { workspace = true }
+heapless = { workspace = true }
+image = { workspace = true }
+imageproc = { workspace = true }
+reqwest = { workspace = true, features = ["blocking"] }
 
 [lints]
 workspace = true

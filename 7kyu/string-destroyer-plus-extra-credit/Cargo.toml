@@ -3,7 +3,7 @@ name = "string-destroyer-plus-extra-credit"
 edition = "2021"
 
 [dependencies]
-hashbrown = { version = "0.16.0", features = ["nightly"] }
+hashbrown = { workspace = true }
 
 [lints]
 workspace = true

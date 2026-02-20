@@ -3,7 +3,7 @@ name = "convert-a-number-to-a-string"
 edition = "2021"
 
 [dependencies]
-digital = { path = "../../digital" }
+digital = { workspace = true }
 
 [lints]
 workspace = true

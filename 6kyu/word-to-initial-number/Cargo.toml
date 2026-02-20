@@ -3,8 +3,8 @@ name = "word-to-initial-number"
 edition = "2021"
 
 [dependencies]
-heapless = "0.8.0"
-char-to-lower = { path = "../../char-to-lower" }
+heapless = { workspace = true }
+char-to-lower = { workspace = true }
 
 [lints]
 workspace = true

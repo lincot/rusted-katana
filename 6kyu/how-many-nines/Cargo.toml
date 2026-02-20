@@ -3,9 +3,9 @@ name = "how-many-nines"
 edition = "2021"
 
 [dependencies]
-digital = { path = "../../digital" }
-heapless = "0.8.0"
-num-bigint = "0.4.4"
+digital = { workspace = true }
+heapless = { workspace = true }
+num-bigint = { workspace = true }
 
 [lints]
 workspace = true

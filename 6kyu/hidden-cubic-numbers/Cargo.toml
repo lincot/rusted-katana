@@ -3,9 +3,9 @@ name = "hidden-cubic-numbers"
 edition = "2021"
 
 [dependencies]
-digital = { path = "../../digital" }
-either = "1.9.0"
-unchecked-std = "1.1.0"
+digital = { workspace = true }
+either = { workspace = true }
+unchecked-std = { workspace = true }
 
 [lints]
 workspace = true

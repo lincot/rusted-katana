@@ -3,8 +3,8 @@ name = "tiny-three-pass-compiler"
 edition = "2021"
 
 [dependencies]
-unchecked-std = "1.1.0"
-digital = { path = "../../digital" }
+digital = { workspace = true }
+unchecked-std = { workspace = true }
 
 [lints]
 workspace = true

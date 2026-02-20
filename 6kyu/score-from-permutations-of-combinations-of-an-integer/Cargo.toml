@@ -3,8 +3,8 @@ name = "score-from-permutations-of-combinations-of-an-integer"
 edition = "2021"
 
 [dependencies]
-digital = { path = "../../digital" }
-heapless = "0.8.0"
+digital = { workspace = true }
+heapless = { workspace = true }
 
 [lints]
 workspace = true

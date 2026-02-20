@@ -3,7 +3,7 @@ name = "pirates-are-the-cannons-ready"
 edition = "2021"
 
 [dependencies]
-hashbrown = { version = "0.16.0", features = ["nightly"] }
+hashbrown = { workspace = true }
 
 [lints]
 workspace = true

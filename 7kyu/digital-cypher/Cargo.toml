@@ -3,9 +3,9 @@ name = "digital-cypher"
 edition = "2021"
 
 [dependencies]
-unchecked-std = "1.1.0"
-digital = { path = "../../digital" }
-heapless = "0.8.0"
+unchecked-std = { workspace = true }
+digital = { workspace = true }
+heapless = { workspace = true }
 
 [lints]
 workspace = true

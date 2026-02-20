@@ -3,7 +3,7 @@ name = "experimenting-with-a-sequence-of-complex-numbers"
 edition = "2021"
 
 [dependencies]
-num-complex = "0.4.4"
+num-complex = { workspace = true }
 
 [lints]
 workspace = true

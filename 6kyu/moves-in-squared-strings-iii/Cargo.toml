@@ -3,7 +3,7 @@ name = "moves-in-squared-strings-iii"
 edition = "2021"
 
 [dependencies]
-unchecked-std = "1.1.0"
+unchecked-std = { workspace = true }
 
 [lints]
 workspace = true

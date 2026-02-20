@@ -3,7 +3,7 @@ name = "jumping-number-special-numbers-series-number-4"
 edition = "2021"
 
 [dependencies]
-digital = { path = "../../digital" }
+digital = { workspace = true }
 
 [lints]
 workspace = true

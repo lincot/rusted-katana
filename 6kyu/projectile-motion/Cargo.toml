@@ -3,9 +3,9 @@ name = "projectile-motion"
 edition = "2021"
 
 [dependencies]
-unchecked-std = "1.1.0"
-digital = { path = "../../digital" }
-libm = { version = "0.2.5", features = ["unstable"] }
+unchecked-std = { workspace = true }
+digital = { workspace = true }
+libm = { workspace = true }
 
 [lints]
 workspace = true
