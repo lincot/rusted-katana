@@ -3,9 +3,9 @@ name = "tracking-sums-in-a-process"
 edition = "2021"
 
 [dependencies]
+radsort = { workspace = true }
 unchecked-std = { workspace = true }
 vqsort-rs = { workspace = true }
-radsort = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

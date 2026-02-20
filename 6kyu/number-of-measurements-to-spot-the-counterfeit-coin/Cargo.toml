@@ -3,8 +3,8 @@ name = "number-of-measurements-to-spot-the-counterfeit-coin"
 edition = "2021"
 
 [dev-dependencies]
-rand_pcg = { workspace = true }
 rand = { workspace = true }
+rand_pcg = { workspace = true }
 
 [lints]
 workspace = true

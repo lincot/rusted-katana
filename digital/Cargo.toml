@@ -2,15 +2,15 @@
 name = "digital"
 edition = "2021"
 
+[features]
+default = ["heapless"]
+
 [dependencies]
 heapless = { workspace = true, optional = true }
 
 [dev-dependencies]
 criterion = { workspace = true }
 num-traits = { workspace = true }
-
-[features]
-default = ["heapless"]
 
 [lints]
 workspace = true

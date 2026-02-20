@@ -3,8 +3,8 @@ name = "sort-by-last-char"
 edition = "2021"
 
 [dependencies]
-unchecked-std = { workspace = true }
 radsort = { workspace = true }
+unchecked-std = { workspace = true }
 
 [lints]
 workspace = true

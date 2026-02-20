@@ -3,9 +3,9 @@ name = "counting-duplicates"
 edition = "2021"
 
 [dependencies]
+char-to-lower = { workspace = true }
 hashbrown = { workspace = true }
 rustc-hash = { workspace = true }
-char-to-lower = { workspace = true }
 
 [lints]
 workspace = true

@@ -15,11 +15,6 @@ members = [
 ]
 resolver = "2"
 
-[profile.release]
-codegen-units = 1
-lto = true
-panic = "abort"
-
 [workspace.dependencies]
 # kata solutions
 bytecount = "0.6.9"
@@ -40,10 +35,12 @@ rustc-hash = "2.1.1"
 ryu = "1.0.23"
 unchecked-std = "1.1.1"
 vqsort-rs = "0.3.0"
+
 # tests/benches
 criterion = "0.8.2"
 num-traits = "0.2.19"
 rand_pcg = "0.10.1"
+
 # check-katas/progress-bars
 ab_glyph = "0.2.32"
 image = "0.25.9"
@@ -87,3 +84,8 @@ uninit-vec = "allow"
 unused-io-amount = "allow"
 while-float = "allow"
 zero-sized-map-values = "allow"
+
+[profile.release]
+codegen-units = 1
+lto = true
+panic = "abort"

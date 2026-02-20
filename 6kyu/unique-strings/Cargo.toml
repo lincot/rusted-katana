@@ -3,10 +3,10 @@ name = "unique-strings"
 edition = "2021"
 
 [dependencies]
-num-bigint = { workspace = true }
-hashbrown = { workspace = true }
-rustc-hash = { workspace = true }
 char-to-lower = { workspace = true }
+hashbrown = { workspace = true }
+num-bigint = { workspace = true }
+rustc-hash = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

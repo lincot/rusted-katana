@@ -3,8 +3,8 @@ name = "if-you-cant-sleep-just-count-sheep"
 edition = "2021"
 
 [dependencies]
-unchecked-std = { workspace = true }
 digital = { workspace = true }
+unchecked-std = { workspace = true }
 
 [lints]
 workspace = true

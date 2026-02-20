@@ -3,8 +3,8 @@ name = "write-number-in-expanded-form-part-2"
 edition = "2021"
 
 [dependencies]
-unchecked-std = { workspace = true }
 ryu = { workspace = true }
+unchecked-std = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

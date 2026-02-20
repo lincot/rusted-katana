@@ -3,8 +3,8 @@ name = "number-paper-and-pencil-2-finding-the-formula-of-a-single-x-2-sequence-a
 edition = "2021"
 
 [dependencies]
-unchecked-std = { workspace = true }
 digital = { workspace = true }
+unchecked-std = { workspace = true }
 
 [lints]
 workspace = true

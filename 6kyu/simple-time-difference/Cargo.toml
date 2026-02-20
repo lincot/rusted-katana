@@ -3,8 +3,8 @@ name = "simple-time-difference"
 edition = "2021"
 
 [dependencies]
-unchecked-std = { workspace = true }
 digital = { workspace = true }
+unchecked-std = { workspace = true }
 vqsort-rs = { workspace = true }
 
 [lints]

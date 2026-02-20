@@ -3,8 +3,8 @@ name = "selecting-quotients-from-an-array"
 edition = "2021"
 
 [dependencies]
-vqsort-rs = { workspace = true }
 radsort = { workspace = true }
+vqsort-rs = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

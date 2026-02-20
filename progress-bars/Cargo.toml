@@ -3,7 +3,7 @@ name = "rusted-katana-progress-bars"
 edition = "2021"
 
 [dependencies]
-ab_glyph = {workspace = true }
+ab_glyph = { workspace = true }
 digital = { workspace = true }
 heapless = { workspace = true }
 image = { workspace = true }

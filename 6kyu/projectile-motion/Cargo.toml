@@ -3,9 +3,9 @@ name = "projectile-motion"
 edition = "2021"
 
 [dependencies]
-unchecked-std = { workspace = true }
 digital = { workspace = true }
 libm = { workspace = true }
+unchecked-std = { workspace = true }
 
 [lints]
 workspace = true

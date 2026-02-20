@@ -13,17 +13,17 @@ cargo check --all-features --all-targets --quiet --release
 echo clippy
 cargo clippy --all-features --all-targets --no-deps --quiet --release
 
-echo update
-cargo update --quiet
+echo fmt
+cargo fmt
+
+echo sort
+cargo sort --workspace --grouped >/dev/null
 
 echo outdated
 cargo outdated 2>/dev/null
 
 echo udeps
 cargo udeps --quiet 2>/dev/null
-
-echo fmt
-cargo fmt
 
 echo run progress-bars
 cargo run --package rusted-katana-progress-bars --quiet --release
