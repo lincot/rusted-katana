@@ -3,7 +3,7 @@
 extern crate test;
 use core::array;
 use flatten_and_sort_an_array::flatten_and_sort;
-use rand::Rng;
+use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use test::{black_box, Bencher};
 
@@ -21,7 +21,7 @@ fn bench(bencher: &mut Bencher) {
                 }
             },
             _,
-        >(|_| rng.gen())
+        >(|_| rng.random())
         .into()
     });
     bencher.iter(|| flatten_and_sort(black_box(&arr)));

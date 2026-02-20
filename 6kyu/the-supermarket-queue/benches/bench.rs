@@ -2,7 +2,7 @@
 
 extern crate test;
 use core::array;
-use rand::Rng;
+use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use test::{black_box, Bencher};
 use the_supermarket_queue::queue_time;
@@ -75,6 +75,6 @@ fn bench_16(bencher: &mut Bencher) {
 fn bench(bencher: &mut Bencher, n: u32) {
     let mut rng = Pcg64Mcg::new(0xcafe_f00d_d15e_a5e5);
     let customers: [_; if cfg!(miri) { 64 } else { 1024 }] =
-        array::from_fn(|_| rng.gen_range(1..100));
+        array::from_fn(|_| rng.random_range(1..100));
     bencher.iter(|| queue_time(black_box(&customers), black_box(n)));
 }

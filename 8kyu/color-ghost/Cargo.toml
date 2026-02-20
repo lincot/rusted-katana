@@ -3,7 +3,7 @@ name = "color-ghost"
 edition = "2021"
 
 [dependencies]
-rand = { workspace = true }
+rand = { workspace = true, features = ["thread_rng"] }
 
 [lints]
 workspace = true

@@ -2,7 +2,7 @@
 
 extern crate test;
 use core::array;
-use rand::seq::SliceRandom;
+use rand::seq::IndexedRandom;
 use rand_pcg::Pcg64Mcg;
 use remove_the_parentheses_difficult_version::remove_parentheses;
 use test::{black_box, Bencher};

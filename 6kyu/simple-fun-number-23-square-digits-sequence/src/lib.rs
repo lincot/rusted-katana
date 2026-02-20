@@ -1,12 +1,13 @@
 //! <https://www.codewars.com/kata/5886d65e427c27afeb0000c1/train/rust>
 
 use core::hint::unreachable_unchecked;
+use heapless::index_set::FnvIndexSet;
 
 pub fn square_digits_sequence(a0: u32) -> usize {
     assert!(a0 <= 650);
 
     let mut an = a0;
-    let mut seen = heapless::FnvIndexSet::<_, 32>::new();
+    let mut seen = FnvIndexSet::<_, 32>::new();
 
     loop {
         if seen.len() == seen.capacity() {

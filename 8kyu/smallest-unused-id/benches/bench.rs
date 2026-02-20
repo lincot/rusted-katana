@@ -2,7 +2,7 @@
 
 extern crate test;
 use core::array;
-use rand::{seq::SliceRandom, Rng};
+use rand::{seq::SliceRandom, RngExt};
 use rand_pcg::Pcg64Mcg;
 use smallest_unused_id::next_id;
 use test::{black_box, Bencher};
@@ -17,7 +17,7 @@ fn bench(bencher: &mut Bencher) {
         } else if i < LEN / 2 + LEN / 4 {
             2 * (i - LEN / 2)
         } else {
-            rng.gen()
+            rng.random::<u64>() as usize
         }
     });
     ids.shuffle(&mut rng);

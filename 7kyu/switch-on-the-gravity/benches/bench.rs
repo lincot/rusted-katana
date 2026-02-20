@@ -2,7 +2,7 @@
 
 extern crate test;
 use core::array;
-use rand::Rng;
+use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use switch_on_the_gravity::switch_gravity;
 use test::{black_box, Bencher};
@@ -21,7 +21,7 @@ fn bench(bencher: &mut Bencher) {
                 }
             },
             _,
-        >(|_| if rng.gen() { '#' } else { '-' })
+        >(|_| if rng.random() { '#' } else { '-' })
         .into()
     });
     bencher.iter(|| switch_gravity(black_box(&lst)));

@@ -1,5 +1,5 @@
 use number_of_measurements_to_spot_the_counterfeit_coin::how_many_measurements;
-use rand::Rng;
+use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 
 fn naive_solution(n: u64) -> u32 {
@@ -20,7 +20,7 @@ fn naive_solution(n: u64) -> u32 {
 fn random_tests() {
     let mut rng = Pcg64Mcg::new(0xcafe_f00d_d15e_a5e5);
     for _ in 0..40 {
-        let n = rng.gen();
+        let n = rng.random();
         assert_eq!(how_many_measurements(n), naive_solution(n));
     }
 }

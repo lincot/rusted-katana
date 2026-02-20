@@ -1,7 +1,7 @@
 #![feature(test)]
 
 extern crate test;
-use rand::{seq::SliceRandom, Rng};
+use rand::{seq::SliceRandom, RngExt};
 use rand_pcg::Pcg64Mcg;
 use simple_frequency_sort::solve;
 use test::{black_box, Bencher};
@@ -13,12 +13,12 @@ fn bench(bencher: &mut Bencher) {
     let len = if cfg!(miri) { 50 } else { 500 };
     let mut vec = Vec::with_capacity(3 * len);
     for _ in 0..len {
-        unsafe { vec.push_unchecked(rng.gen()) };
+        unsafe { vec.push_unchecked(rng.random()) };
     }
     for i in 0..len {
-        if rng.gen_ratio(1, 4) {
+        if rng.random_ratio(1, 4) {
             unsafe { vec.push_unchecked(vec[i]) };
-            if rng.gen() {
+            if rng.random() {
                 unsafe { vec.push_unchecked(vec[i]) };
             }
         }

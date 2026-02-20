@@ -13,7 +13,10 @@ const LEN: usize = 7;
 fn bench_ascii(bencher: &mut Bencher) {
     let mut rng = Pcg64Mcg::new(0xcafe_f00d_d15e_a5e5);
     let words: [_; LEN] = array::from_fn(|_| unsafe {
-        String::from_utf8_unchecked(vec![rng.gen_range(b'a'..=b'z'), rng.gen_range(b'a'..=b'z')])
+        String::from_utf8_unchecked(vec![
+            rng.random_range(b'a'..=b'z'),
+            rng.random_range(b'a'..=b'z'),
+        ])
     });
     let words: [_; LEN] = array::from_fn(|i| words[i].as_str());
     bencher.iter(|| millipede(black_box(&words)));

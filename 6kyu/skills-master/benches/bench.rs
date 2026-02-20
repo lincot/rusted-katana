@@ -12,7 +12,7 @@ fn bench(bencher: &mut Bencher) {
     let mut rng = Pcg64Mcg::new(0xcafe_f00d_d15e_a5e5);
     let tree = make_tree(if cfg!(miri) { 30 } else { 300_000 });
     let required = (0..tree.len() / 2)
-        .map(|_| rng.gen_range(0..tree.len()))
+        .map(|_| rng.random_range(0..tree.len()))
         .collect();
     bencher.iter(|| count_skills(black_box(&tree), black_box(&required)));
 }
@@ -30,7 +30,7 @@ fn make_tree(size: usize) -> Vec<usize> {
             if indices.is_empty() {
                 break;
             }
-            let n = rng.gen_range(1..=indices.len().min(5));
+            let n = rng.random_range(1..=indices.len().min(5));
             let children = &indices[indices.len() - n..];
             for child in children {
                 temp.insert(*child);

@@ -5,7 +5,6 @@ edition = "2021"
 [dependencies]
 num-integer = { workspace = true }
 num-prime = { workspace = true }
-rand = { workspace = true }
 
 [lints]
 workspace = true

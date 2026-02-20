@@ -25,16 +25,16 @@ fn bench(bencher: &mut Bencher) {
     });
 }
 
-fn random_subsets(rng: &mut impl Rng, set_size: usize, subset_count: usize) -> Vec<Vec<usize>> {
+fn random_subsets(rng: &mut impl RngExt, set_size: usize, subset_count: usize) -> Vec<Vec<usize>> {
     (0..subset_count)
         .map(|_| {
-            let size = rng.gen_range(0..=set_size);
+            let size = rng.random_range(0..=set_size);
             random_subset(rng, set_size, size)
         })
         .collect()
 }
 
-fn random_subset(rng: &mut impl Rng, set_size: usize, subset_size: usize) -> Vec<usize> {
+fn random_subset(rng: &mut impl RngExt, set_size: usize, subset_size: usize) -> Vec<usize> {
     let mut set: Vec<usize> = (0..set_size).collect();
     set.shuffle(rng);
     let mut subset = set[..subset_size].to_vec();

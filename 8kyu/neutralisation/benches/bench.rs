@@ -3,7 +3,7 @@
 extern crate test;
 use core::array;
 use neutralisation::neutralise;
-use rand::Rng;
+use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use test::{black_box, Bencher};
 
@@ -21,7 +21,7 @@ fn bench(bencher: &mut Bencher) {
                 }
             },
             _,
-        >(|_| if rng.gen() { b'+' } else { b'-' })
+        >(|_| if rng.random() { b'+' } else { b'-' })
     });
     let [s1, s2] = [&s1, &s2].map(|x| unsafe { core::str::from_utf8_unchecked(x) });
     bencher.iter(|| neutralise(black_box(s1), black_box(s2)));

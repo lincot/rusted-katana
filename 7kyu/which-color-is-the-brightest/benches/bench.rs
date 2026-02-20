@@ -2,7 +2,7 @@
 
 extern crate test;
 use core::array;
-use rand::seq::SliceRandom;
+use rand::seq::IndexedRandom;
 use rand_pcg::Pcg64Mcg;
 use test::{black_box, Bencher};
 use which_color_is_the_brightest::brightest;

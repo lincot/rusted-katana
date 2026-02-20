@@ -2,7 +2,7 @@
 
 extern crate test;
 use core::array;
-use rand::{seq::SliceRandom, Rng};
+use rand::{seq::SliceRandom, RngExt};
 use rand_pcg::Pcg64Mcg;
 use test::{black_box, Bencher};
 use unknown_amount_of_duplicates_one_missing_number::find_dups_miss;
@@ -22,10 +22,10 @@ fn bench(bencher: &mut Bencher) {
             } else {
                 A + i
             }
-        } else if rng.gen() {
-            rng.gen_range(A..A + MISSING_I)
+        } else if rng.random() {
+            rng.random_range(A..A + MISSING_I)
         } else {
-            rng.gen_range(A + MISSING_I + 1..B)
+            rng.random_range(A + MISSING_I + 1..B)
         }
     });
     arr.shuffle(&mut rng);

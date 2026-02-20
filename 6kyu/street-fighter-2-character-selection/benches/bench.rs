@@ -2,7 +2,7 @@
 
 extern crate test;
 use core::array;
-use rand::Rng;
+use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use street_fighter_2_character_selection::{street_fighter_selection, Direction};
 use test::{black_box, Bencher};
@@ -20,7 +20,7 @@ fn bench(bencher: &mut Bencher) {
             }
         },
         _,
-    >(|_| match rng.gen_range(0..4) {
+    >(|_| match rng.random_range(0..4) {
         0 => Direction::Up,
         1 => Direction::Down,
         2 => Direction::Left,
