@@ -5,7 +5,7 @@ pub fn max_profit(quotes: &[u32]) -> u32 {
         .iter()
         .rev()
         .fold((0, 0u32), |(res, max), &quote| {
-            (res + max.saturating_sub(quote), max.max(quote))
+            (res + max.saturating_sub(quote), quote.max(max))
         })
         .0
 }

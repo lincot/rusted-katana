@@ -14,10 +14,9 @@ impl Vector {
         Self { i, j, k }
     }
 
+    #[expect(clippy::suboptimal_flops)]
     pub fn get_magnitude(&self) -> f64 {
-        self.i
-            .mul_add(self.i, self.j.mul_add(self.j, self.k * self.k))
-            .sqrt()
+        (self.i.powi(2) + self.j.powi(2) + self.k.powi(2)).sqrt()
     }
 
     pub const fn get_i() -> Self {
@@ -52,14 +51,15 @@ impl Vector {
         }
     }
 
+    #[expect(clippy::suboptimal_flops)]
     pub fn dot(&self, other: Self) -> f64 {
-        self.i
-            .mul_add(other.i, self.j.mul_add(other.j, self.k * other.k))
+        self.i * other.i + self.j.mul_add(other.j, self.k * other.k)
     }
 
+    #[expect(clippy::suboptimal_flops)]
     pub fn cross(&self, other: Self) -> Self {
         Self {
-            i: self.j.mul_add(other.k, -(self.k * other.j)),
+            i: self.j * other.k - self.k * other.j,
             j: self.k.mul_add(other.i, -(self.i * other.k)),
             k: self.i.mul_add(other.j, -(self.j * other.i)),
         }

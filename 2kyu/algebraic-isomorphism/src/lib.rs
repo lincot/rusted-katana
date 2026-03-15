@@ -7,7 +7,7 @@ pub type Func<A, B> = Box<dyn Fn(A) -> B>;
 pub type RetFunc<A, B> = Box<dyn FnOnce(A) -> B>;
 pub type ISO<A, B> = (Func<A, B>, Func<B, A>);
 
-fn iso<A: 'static, B: 'static, F1, F2>(f1: F1, f2: F2) -> ISO<A, B>
+pub fn iso<A: 'static, B: 'static, F1, F2>(f1: F1, f2: F2) -> ISO<A, B>
 where
     F1: 'static + Fn(A) -> B,
     F2: 'static + Fn(B) -> A,

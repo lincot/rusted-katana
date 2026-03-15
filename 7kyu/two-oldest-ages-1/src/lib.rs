@@ -3,7 +3,6 @@
 pub fn two_oldest_ages(ages: &[u8]) -> [u8; 2] {
     let mut max0 = 0;
     let mut max1 = 0;
-
     for &age in ages {
         if age > max0 {
             max1 = max0;
@@ -12,6 +11,5 @@ pub fn two_oldest_ages(ages: &[u8]) -> [u8; 2] {
             max1 = age;
         }
     }
-
     [max1, max0]
 }

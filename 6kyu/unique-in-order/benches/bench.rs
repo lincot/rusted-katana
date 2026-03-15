@@ -12,5 +12,5 @@ fn bench(bencher: &mut Bencher) {
     let mut rng = Pcg64Mcg::new(0xcafe_f00d_d15e_a5e5);
     let sequence: [_; if cfg!(miri) { 64 } else { 1024 }] =
         array::from_fn(|_| rng.random_range(0..3));
-    bencher.iter(|| unique_in_order(black_box(sequence)));
+    bencher.iter(|| unique_in_order(black_box(&sequence)));
 }

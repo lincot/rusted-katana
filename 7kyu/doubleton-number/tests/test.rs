@@ -26,6 +26,8 @@ fn doubleton_iterative(num: u32) -> u32 {
     (num + 1..).find(|&x| is_doubleton(x)).unwrap()
 }
 
+// the most upvoted solution takes forever to test, so gating with a feature
+#[cfg(feature = "run_tests")]
 #[test]
 fn test() {
     let mut panic_message = String::new();

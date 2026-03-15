@@ -2,6 +2,8 @@
 
 use unchecked_std::prelude::*;
 
+mod preloaded;
+
 pub fn to_nato(words: &str) -> String {
     let mut res = Vec::with_capacity("November ".len().checked_mul(words.len()).unwrap());
     unsafe {

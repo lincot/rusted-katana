@@ -19,7 +19,7 @@ impl<'a, 'b> Quark<'a, 'b> {
     }
 
     pub const fn baryon_number(&self) -> f64 {
-        0.333_333_333_333_333_3
+        1. / 3.
     }
 
     pub const fn interact(&mut self, other: &mut Self) {

@@ -6,5 +6,9 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| digital_root(black_box(999_493_193)));
+    bencher.iter(|| {
+        for n in [999_493_193, 992, 195] {
+            black_box(digital_root(black_box(n)));
+        }
+    });
 }

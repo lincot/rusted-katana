@@ -4,7 +4,7 @@
 #![feature(trusted_len)]
 #![feature(specialization)]
 
-use core::{fmt::Debug, hint::unreachable_unchecked, iter::TrustedLen};
+use core::{fmt::Debug, iter::TrustedLen};
 use unchecked_std::prelude::*;
 
 pub fn unique_in_order<T>(sequence: T) -> Vec<T::Item>
@@ -13,21 +13,18 @@ where
     T::Item: PartialEq + Debug,
 {
     let mut sequence = sequence.into_iter();
-    let mut res = sequence
-        .size_hint()
-        .1
-        .map_or_else(Vec::new, Vec::with_capacity);
+    let size_hint = sequence.size_hint();
+    let mut res = Vec::with_capacity(size_hint.1.unwrap_or(size_hint.0));
 
     let Some(first) = sequence.next() else {
         return res;
     };
     unsafe { PushOrPushUnchecked::<T::IntoIter>::push_or_push_unchecked(&mut res, first) };
+    let mut last_ptr: *const _ = res.last().unwrap();
     for x in sequence {
-        if res.is_empty() {
-            unsafe { unreachable_unchecked() };
-        }
-        if &x != res.last().unwrap() {
+        if &x != unsafe { &*last_ptr } {
             unsafe { PushOrPushUnchecked::<T::IntoIter>::push_or_push_unchecked(&mut res, x) };
+            last_ptr = res.last().unwrap();
         }
     }
     res

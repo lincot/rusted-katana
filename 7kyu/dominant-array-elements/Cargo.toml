@@ -5,5 +5,9 @@ edition = "2021"
 [dependencies]
 unchecked-std = { workspace = true }
 
+[dev-dependencies]
+rand = { workspace = true }
+rand_pcg = { workspace = true }
+
 [lints]
 workspace = true

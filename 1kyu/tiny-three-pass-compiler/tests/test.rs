@@ -31,7 +31,8 @@ fn test_compile() {
 
 #[test]
 fn test_3_passes() {
-    let compiler = Compiler::new();
+    #[allow(unused_mut)] // most upvoted solution keeps it mut
+    let mut compiler = Compiler::new();
     let ast = compiler.pass1(PROGRAM);
     let ast = compiler.pass2(&ast);
     let assembly = compiler.pass3(&ast);

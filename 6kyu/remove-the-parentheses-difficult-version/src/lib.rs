@@ -3,31 +3,16 @@
 use unchecked_std::prelude::*;
 
 pub fn remove_parentheses(s: &str) -> String {
-    let mut res = String::with_capacity(s.len());
-
-    let mut unclosed_opening_parentheses = Vec::with_capacity(s.len());
-    let mut closed_pairs = Vec::with_capacity(s.len());
-
-    for (i, b) in s.bytes().enumerate() {
+    let mut res = Vec::with_capacity(s.len());
+    let mut depth = 0;
+    for b in s.bytes() {
+        unsafe { res.push_unchecked(b) };
         if b == b'(' {
-            unsafe { unclosed_opening_parentheses.push_unchecked(i) };
-        } else if b == b')' {
-            if let Some(a) = unclosed_opening_parentheses.pop() {
-                unsafe { closed_pairs.push_unchecked((a, i)) };
-            }
+            depth += 1;
+        } else if b == b')' && depth > 0 {
+            depth -= 1;
+            while res.pop() != Some(b'(') {}
         }
     }
-
-    closed_pairs.sort_unstable_by_key(|&(a, _)| a);
-
-    let mut start = 0;
-    for (a, b) in closed_pairs {
-        if a > start {
-            unsafe { res.push_str_unchecked(s.get_unchecked(start..a)) };
-        }
-        start = start.max(b + 1);
-    }
-    unsafe { res.push_str_unchecked(s.get_unchecked(start..)) };
-
-    res
+    unsafe { String::from_utf8_unchecked(res) }
 }

@@ -9,7 +9,7 @@ pub struct CoffeeBuilder(Coffee);
 impl CoffeeBuilder {
     pub fn new() -> Self {
         Self(Coffee {
-            sort: String::with_capacity("Americano".len()),
+            sort: String::new(),
             milk: Vec::with_capacity(1),
             sugar: Vec::with_capacity(1),
         })

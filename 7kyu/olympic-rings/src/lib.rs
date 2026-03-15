@@ -15,10 +15,9 @@ pub fn olympic_ring(s: &str) -> String {
         .sum();
 
     match rings / 2 {
-        0..=1 => "Not even a medal!",
-        2 => "Bronze!",
-        3 => "Silver!",
-        _ => "Gold!",
+        0..=1 => "Not even a medal!".into(),
+        2 => "Bronze!".into(),
+        3 => "Silver!".into(),
+        _ => "Gold!".into(),
     }
-    .into()
 }

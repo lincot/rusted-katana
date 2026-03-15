@@ -16,5 +16,9 @@ fn bench(bencher: &mut Bencher) {
         ("Lithuanian", 73),
         ("Maltese", 100),
     ]);
-    bencher.iter(|| my_languages(black_box(results.clone())));
+    bencher.iter(|| {
+        for _ in 0..3 {
+            black_box(my_languages(black_box(results.clone())));
+        }
+    });
 }

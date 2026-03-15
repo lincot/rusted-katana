@@ -1,48 +1,34 @@
 //! <https://www.codewars.com/kata/5265b0885fda8eac5900093b/train/rust>
 
+pub use self::preloaded::{Ast, Operator, Source};
 use core::ops::{Add, Div, Mul, Sub};
 use digital::{MaxLenBase10, WriteNumUnchecked};
 use unchecked_std::prelude::*;
 
-#[derive(Debug, PartialEq, Eq, Clone, Copy)]
-pub enum BinOp {
-    Plus,
-    Minus,
-    Mult,
-    Div,
-}
+mod preloaded;
 
-impl BinOp {
-    pub const fn as_string(self) -> &'static str {
+impl Operator {
+    pub const fn as_fn(self) -> fn(i32, i32) -> i32 {
         match self {
-            Self::Plus => "+",
-            Self::Minus => "-",
-            Self::Mult => "*",
-            Self::Div => "/",
-        }
-    }
-
-    pub const fn as_fn(self) -> fn(isize, isize) -> isize {
-        match self {
-            Self::Plus => Add::add,
-            Self::Minus => Sub::sub,
-            Self::Mult => Mul::mul,
+            Self::Add => Add::add,
+            Self::Sub => Sub::sub,
+            Self::Mul => Mul::mul,
             Self::Div => Div::div,
         }
     }
 
     const fn precedence(self) -> Precedence {
         match self {
-            Self::Plus | Self::Minus => Precedence::Additive,
-            Self::Mult | Self::Div => Precedence::Multiplicative,
+            Self::Add | Self::Sub => Precedence::Additive,
+            Self::Mul | Self::Div => Precedence::Multiplicative,
         }
     }
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Copy)]
 enum Token<'a> {
-    BinOp(BinOp),
-    Value(isize),
+    Operator(Operator),
+    Value(i32),
     Ident(&'a str),
     ParenOpen,
     ParenClose,
@@ -51,7 +37,7 @@ enum Token<'a> {
 impl Token<'_> {
     const fn precedence(&self) -> Option<Precedence> {
         match self {
-            &Token::BinOp(op) => Some(op.precedence()),
+            &Token::Operator(op) => Some(op.precedence()),
             _ => None,
         }
     }
@@ -101,10 +87,10 @@ impl<'a> Iterator for Lexer<'a> {
                 let prefix = unsafe { self.token_while(u8::is_ascii_alphabetic) };
                 (prefix.len(), Token::Ident(prefix))
             }
-            b'+' => (1, Token::BinOp(BinOp::Plus)),
-            b'-' => (1, Token::BinOp(BinOp::Minus)),
-            b'*' => (1, Token::BinOp(BinOp::Mult)),
-            b'/' => (1, Token::BinOp(BinOp::Div)),
+            b'+' => (1, Token::Operator(Operator::Add)),
+            b'-' => (1, Token::Operator(Operator::Sub)),
+            b'*' => (1, Token::Operator(Operator::Mul)),
+            b'/' => (1, Token::Operator(Operator::Div)),
             b'(' => (1, Token::ParenOpen),
             b')' => (1, Token::ParenClose),
             _ => panic!(),
@@ -136,8 +122,8 @@ fn get_args_and_tokens(source: &str) -> (Box<[&str]>, Tokens<'_>) {
 pub enum MyAst {
     /// refers to an argument by its position in argument list
     ArgRef(usize),
-    Literal(isize),
-    BinOp(BinOp, Box<Self>, Box<Self>),
+    Literal(i32),
+    BinOp(Operator, Box<Self>, Box<Self>),
 }
 
 impl MyAst {
@@ -167,12 +153,12 @@ impl MyAst {
                 );
                 expr
             }
-            Token::BinOp(_) | Token::ParenClose => panic!(),
+            Token::Operator(_) | Token::ParenClose => panic!(),
         };
 
         while tokens.peek().and_then(Token::precedence) > prec {
             let token = tokens.next().unwrap();
-            expr = if let Token::BinOp(op) = token {
+            expr = if let Token::Operator(op) = token {
                 let rhs = Self::parse_expr(arg_names, tokens, Some(op.precedence()));
                 Self::BinOp(op, Box::new(expr), Box::new(rhs))
             } else {
@@ -182,12 +168,6 @@ impl MyAst {
 
         expr
     }
-}
-
-#[derive(Debug, Clone)]
-pub enum Ast {
-    BinOp(String, Box<Self>, Box<Self>),
-    UnOp(String, isize),
 }
 
 impl Ast {
@@ -204,9 +184,9 @@ impl Ast {
         let current = tokens.next().unwrap();
 
         let mut expr = match current {
-            Token::Value(n) => Self::UnOp("imm".into(), n),
-            Token::Ident(name) => Self::UnOp(
-                "arg".into(),
+            Token::Value(n) => Self::Value(Source::Imm, n),
+            Token::Ident(name) => Self::Value(
+                Source::Arg,
                 arg_names.iter().position(|&x| x == name).unwrap() as _,
             ),
             Token::ParenOpen => {
@@ -217,14 +197,14 @@ impl Ast {
                 );
                 expr
             }
-            Token::BinOp(_) | Token::ParenClose => panic!(),
+            Token::Operator(_) | Token::ParenClose => panic!(),
         };
 
         while tokens.peek().and_then(Token::precedence) > prec {
             let token = tokens.next().unwrap();
-            expr = if let Token::BinOp(op) = token {
+            expr = if let Token::Operator(op) = token {
                 let rhs = Self::parse_expr(arg_names, tokens, Some(op.precedence()));
-                Self::BinOp(op.as_string().into(), Box::new(expr), Box::new(rhs))
+                Self::BinOp(op, Box::new(expr), Box::new(rhs))
             } else {
                 panic!()
             };
@@ -235,9 +215,9 @@ impl Ast {
 }
 
 fn my_pass2(node: &mut MyAst) {
-    let evaluated = match *node {
+    let evaluated = match node {
         MyAst::ArgRef(_) | MyAst::Literal(_) => None,
-        MyAst::BinOp(ref op, ref mut lhs, ref mut rhs) => {
+        MyAst::BinOp(op, lhs, rhs) => {
             my_pass2(lhs);
             my_pass2(rhs);
             match (&**lhs, &**rhs) {
@@ -258,26 +238,26 @@ fn my_pass3(node: &MyAst) -> Vec<String> {
 }
 
 fn my_pass3_recursive(instructions: &mut Vec<String>, node: &MyAst) {
-    match *node {
+    match node {
         // NB: we write the values to R0 without taking care about previous value
         // and we don't push values to stack
-        MyAst::Literal(x) => instructions.push(format_string_and_isize("IM ", x)),
-        MyAst::ArgRef(n) => instructions.push(format_string_and_usize("AR ", n)),
-        MyAst::BinOp(op, ref lhs, ref rhs) => {
+        &MyAst::Literal(x) => instructions.push(format_string_and_i32("IM ", x)),
+        &MyAst::ArgRef(n) => instructions.push(format_string_and_usize("AR ", n)),
+        MyAst::BinOp(op, lhs, rhs) => {
             my_pass3_recursive(instructions, lhs);
             // At this point R0 contains the result of evaluating lhs.
             // If rhs is an immediate value (either constant or reference to arg),
             // then we can avoid offloading it to stack.
             let load_code = match **rhs {
-                MyAst::Literal(x) => Some(format_string_and_isize("IM ", x)),
+                MyAst::Literal(x) => Some(format_string_and_i32("IM ", x)),
                 MyAst::ArgRef(n) => Some(format_string_and_usize("AR ", n)),
                 MyAst::BinOp(..) => None,
             };
             let (op_code, commutative) = match op {
-                BinOp::Plus => ("AD", true),
-                BinOp::Minus => ("SU", false),
-                BinOp::Mult => ("MU", true),
-                BinOp::Div => ("DI", false),
+                Operator::Add => ("AD", true),
+                Operator::Sub => ("SU", false),
+                Operator::Mul => ("MU", true),
+                Operator::Div => ("DI", false),
             };
             if let Some(load_code) = load_code {
                 // rhs can be evaluated in-place without touching stack.
@@ -363,31 +343,22 @@ impl Compiler {
 
     #[expect(clippy::self_only_used_in_recursion)]
     pub fn pass2(&self, ast: &Ast) -> Ast {
-        match *ast {
-            Ast::UnOp(..) => ast.clone(),
-            Ast::BinOp(ref op, ref lhs, ref rhs) => {
+        match ast {
+            &Ast::Value(src, val) => Ast::Value(src, val),
+            Ast::BinOp(op, lhs, rhs) => {
                 let lhs = self.pass2(lhs);
                 let rhs = self.pass2(rhs);
                 match (&lhs, &rhs) {
-                    (&Ast::UnOp(ref lop, lval), &Ast::UnOp(ref rop, rval)) => {
-                        if lop != "imm" || rop != "imm" {
-                            return Ast::BinOp(
-                                op.clone(),
-                                Box::new(lhs.clone()),
-                                Box::new(rhs.clone()),
-                            );
-                        }
-                        let func = match op.as_str() {
-                            "+" => Add::add,
-                            "-" => Sub::sub,
-                            "*" => Mul::mul,
-                            "/" => Div::div,
-                            _ => panic!(),
+                    (Ast::Value(Source::Imm, lval), Ast::Value(Source::Imm, rval)) => {
+                        let new_val = match op {
+                            Operator::Add => lval + rval,
+                            Operator::Sub => lval - rval,
+                            Operator::Mul => lval * rval,
+                            Operator::Div => lval / rval,
                         };
-                        let new_val = func(lval, rval);
-                        Ast::UnOp("imm".into(), new_val)
+                        Ast::Value(Source::Imm, new_val)
                     }
-                    _ => Ast::BinOp(op.clone(), Box::new(lhs.clone()), Box::new(rhs.clone())),
+                    _ => Ast::BinOp(*op, Box::new(lhs), Box::new(rhs)),
                 }
             }
         }
@@ -403,32 +374,29 @@ impl Compiler {
         match ast {
             // NB: we write the values to R0 without taking care about previous value
             // and we don't push values to stack
-            Ast::UnOp(ref op, arg) => {
-                instructions.push(match op.as_str() {
-                    "imm" => format_string_and_isize("IM ", *arg),
-                    "arg" => format_string_and_isize("AR ", *arg),
-                    _ => panic!(),
+            Ast::Value(op, arg) => {
+                instructions.push(match op {
+                    Source::Imm => format_string_and_i32("IM ", *arg),
+                    Source::Arg => format_string_and_i32("AR ", *arg),
                 });
             }
-            Ast::BinOp(op, ref lhs, ref rhs) => {
+            Ast::BinOp(op, lhs, rhs) => {
                 Self::pass3_recursive(instructions, lhs);
                 // At this point R0 contains the result of evaluating lhs.
                 // If rhs is an immediate value (either constant or reference to arg),
                 // then we can avoid offloading it to stack.
                 let load_code = match **rhs {
-                    Ast::UnOp(ref op, arg) => match op.as_str() {
-                        "imm" => Some(format_string_and_isize("IM ", arg)),
-                        "arg" => Some(format_string_and_isize("AR ", arg)),
-                        _ => panic!(),
+                    Ast::Value(op, arg) => match op {
+                        Source::Imm => Some(format_string_and_i32("IM ", arg)),
+                        Source::Arg => Some(format_string_and_i32("AR ", arg)),
                     },
                     Ast::BinOp(..) => None,
                 };
-                let (op_code, commutative) = match op.as_str() {
-                    "+" => ("AD", true),
-                    "-" => ("SU", false),
-                    "*" => ("MU", true),
-                    "/" => ("DI", false),
-                    _ => panic!(),
+                let (op_code, commutative) = match op {
+                    Operator::Add => ("AD", true),
+                    Operator::Sub => ("SU", false),
+                    Operator::Mul => ("MU", true),
+                    Operator::Div => ("DI", false),
                 };
                 if let Some(load_code) = load_code {
                     // rhs can be evaluated in-place without touching stack.
@@ -469,7 +437,7 @@ fn format_string_and_usize(s: &str, n: usize) -> String {
     res
 }
 
-fn format_string_and_isize(s: &str, n: isize) -> String {
+fn format_string_and_i32(s: &str, n: i32) -> String {
     let mut res = String::with_capacity(s.len() + isize::MAX_LEN_BASE10);
     unsafe {
         res.push_str_unchecked(s);

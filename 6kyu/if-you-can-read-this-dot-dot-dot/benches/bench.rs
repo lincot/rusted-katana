@@ -6,5 +6,5 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| to_nato(black_box("If, you can read? go for it!")));
+    bencher.iter(|| to_nato(black_box("If you can read? go for it!")));
 }

@@ -1,0 +1,12 @@
+[package]
+name = "rusted-katana-agg-speedups"
+edition = "2021"
+
+[dependencies]
+digital = { workspace = true }
+plotters = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+[lints]
+workspace = true

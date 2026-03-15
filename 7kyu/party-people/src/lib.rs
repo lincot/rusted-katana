@@ -9,6 +9,7 @@ pub fn party_people(lst: &[u32]) -> u32 {
     }
     lst.iter()
         .enumerate()
-        .rposition(|(i, &x)| x <= (i + 1) as u32)
-        .map_or(0, |i| (i + 1) as u32)
+        .rev()
+        .skip_while(|(i, &x)| x as usize > i + 1)
+        .count() as u32
 }

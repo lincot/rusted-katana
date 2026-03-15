@@ -1,0 +1,45 @@
+{
+  "cpu": "AMD Ryzen 5 5600H with Radeon Graphics",
+  "rustc": "1.95.0-nightly (3c9faa0d0 2026-02-16)",
+  "os": "linux",
+  "most_upvoted_author": "Troxid",
+  "most_upvoted_url": "codewars.com/kata/reviews/57e96b1a3fad3005700000d5/groups/57f00f3d48a31578e900030d",
+  "benches": [
+    {
+      "name": "bench_ascii",
+      "speedup": 1.8903026828324492,
+      "rusted_katana_medians_ns": [
+        442.539159001314,
+        442.6380087209302,
+        442.9911891117479,
+        442.11906412478334,
+        441.6631540697674
+      ],
+      "most_upvoted_medians_ns": [
+        836.8520390070922,
+        835.0366369710468,
+        836.5329595185996,
+        837.550634765625,
+        835.2542084168338
+      ]
+    },
+    {
+      "name": "bench_nonascii",
+      "speedup": 2.9432013190964,
+      "rusted_katana_medians_ns": [
+        529.1148174157304,
+        528.3678809691012,
+        528.6144846796658,
+        535.8195224719102,
+        530.8386039886041
+      ],
+      "most_upvoted_medians_ns": [
+        1558.2448351648352,
+        1553.183807439825,
+        1582.8507760532152,
+        1553.00174291939,
+        1557.2914285714287
+      ]
+    }
+  ]
+}

@@ -3,7 +3,6 @@
 pub fn ideal_trader(prices: &[f64]) -> f64 {
     prices
         .array_windows()
-        .filter(|[a, b]| b > a)
-        .map(|[a, b]| b / a)
+        .map(|[a, b]| (b / a).max(1.))
         .product()
 }

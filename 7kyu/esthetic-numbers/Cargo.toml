@@ -4,6 +4,7 @@ edition = "2021"
 
 [dependencies]
 unchecked-std = { workspace = true }
+unroll-lite = { workspace = true }
 
 [lints]
 workspace = true

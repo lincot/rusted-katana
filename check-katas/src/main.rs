@@ -1,4 +1,5 @@
 #![feature(sync_unsafe_cell)]
+#![feature(write_all_vectored)]
 
 use core::{
     cell::SyncUnsafeCell,
@@ -8,12 +9,12 @@ use core::{
 };
 use std::{
     fs::{read_dir, File},
-    io::{self, Read, Write},
+    io::{self, stderr, stdout, IoSlice, Read, Write},
 };
 use tokio::{sync::Notify, task::JoinSet};
 use unchecked_std::prelude::*;
 
-// yes, I'm writing this just to leak the memory
+// yes, I'm writing this just to leak memory
 static REQWEST_CLIENT: SyncUnsafeCell<MaybeUninit<reqwest::Client>> =
     SyncUnsafeCell::new(MaybeUninit::uninit());
 static BLOCKED: AtomicBool = AtomicBool::new(false);
@@ -61,9 +62,13 @@ async fn check_kata(reqwest_client: &reqwest::Client, kyu: u8, kata_dir: &str) {
     f.read(&mut buf).unwrap();
     if !(buf.starts_with(b"//! <https://www.codewars.com/kata/") && buf.ends_with(b"/train/rust>"))
     {
-        let mut stdout = io::stdout().lock();
-        stdout.write(path.as_bytes()).unwrap();
-        stdout.write(b" has invalid url\n").unwrap();
+        stdout()
+            .lock()
+            .write_all_vectored(&mut [
+                IoSlice::new(path.as_bytes()),
+                IoSlice::new(b" has an invalid url\n"),
+            ])
+            .unwrap();
     }
     let id = &buf["//! <https://www.codewars.com/kata/".len()
         .."//! <https://www.codewars.com/kata/53da3dbb4a5168369a0000fe".len()];
@@ -73,11 +78,15 @@ async fn check_kata(reqwest_client: &reqwest::Client, kyu: u8, kata_dir: &str) {
 
     let kata_kyu = get_kyu(&kata);
     if kyu != kata_kyu {
-        let mut stdout = io::stdout().lock();
-        stdout.write(kata_dir.as_bytes()).unwrap();
-        stdout.write(b" has obsolete kyu: should be ").unwrap();
-        stdout.write(&[kata_kyu]).unwrap();
-        stdout.write(b"\n").unwrap();
+        stdout()
+            .lock()
+            .write_all_vectored(&mut [
+                IoSlice::new(kata_dir.as_bytes()),
+                IoSlice::new(b" has a wrong kyu: should be "),
+                IoSlice::new(&[kata_kyu]),
+                IoSlice::new(b"\n"),
+            ])
+            .unwrap();
     }
 
     let slug = get_slug(&kata);
@@ -87,13 +96,15 @@ async fn check_kata(reqwest_client: &reqwest::Client, kyu: u8, kata_dir: &str) {
 
     let directory_name = &kata_dir["8kyu".len() + 1..];
     if directory_name != slug {
-        let mut stdout = io::stdout().lock();
-        stdout.write(kata_dir.as_bytes()).unwrap();
-        stdout
-            .write(b" has obsolete directory name: should be ")
+        stdout()
+            .lock()
+            .write_all_vectored(&mut [
+                IoSlice::new(kata_dir.as_bytes()),
+                IoSlice::new(b" has an obsolete directory name: should be "),
+                IoSlice::new(slug.as_bytes()),
+                IoSlice::new(b"\n"),
+            ])
             .unwrap();
-        stdout.write(slug.as_bytes()).unwrap();
-        stdout.write(b"\n").unwrap();
     }
 
     path.truncate(kata_dir.len());
@@ -106,22 +117,26 @@ async fn check_kata(reqwest_client: &reqwest::Client, kyu: u8, kata_dir: &str) {
             if !(crate_name.starts_with("solution-")
                 && &crate_name.as_bytes()["solution-".len()..] == slug.as_bytes())
             {
-                let mut stdout = io::stdout().lock();
-                stdout.write(kata_dir.as_bytes()).unwrap();
-                stdout
-                    .write(b" has obsolete crate name: should be solution-")
+                stdout()
+                    .lock()
+                    .write_all_vectored(&mut [
+                        IoSlice::new(kata_dir.as_bytes()),
+                        IoSlice::new(b" has an obsolete crate name: should be solution-"),
+                        IoSlice::new(slug.as_bytes()),
+                        IoSlice::new(b"\n"),
+                    ])
                     .unwrap();
-                stdout.write(slug.as_bytes()).unwrap();
-                stdout.write(b"\n").unwrap();
             }
         } else {
-            let mut stdout = io::stdout().lock();
-            stdout.write(kata_dir.as_bytes()).unwrap();
-            stdout
-                .write(b" has obsolete crate name: should be ")
+            stdout()
+                .lock()
+                .write_all_vectored(&mut [
+                    IoSlice::new(kata_dir.as_bytes()),
+                    IoSlice::new(b" has an obsolete crate name: should be "),
+                    IoSlice::new(slug.as_bytes()),
+                    IoSlice::new(b"\n"),
+                ])
                 .unwrap();
-            stdout.write(slug.as_bytes()).unwrap();
-            stdout.write(b"\n").unwrap();
         }
     }
 }
@@ -165,9 +180,13 @@ async fn get_kata(reqwest_client: &reqwest::Client, id: [u8; 24]) -> reqwest::Re
                 }
             }
             Err(e) => {
-                let mut stderr = io::stderr().lock();
-                stderr.write_all(e.to_string().as_bytes()).unwrap();
-                stderr.write(b"\n").unwrap();
+                stderr()
+                    .lock()
+                    .write_all_vectored(&mut [
+                        IoSlice::new(e.to_string().as_bytes()),
+                        IoSlice::new(b"\n"),
+                    ])
+                    .unwrap();
             }
         }
         if !blocked_by_this {

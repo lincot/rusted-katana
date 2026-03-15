@@ -2,8 +2,7 @@
 
 pub fn turn(current: char, target: char) -> String {
     match (current, target) {
-        ('N', 'W') | ('W', 'S') | ('S', 'E') | ('E', 'N') => "left",
-        _ => "right",
+        ('N', 'W') | ('W', 'S') | ('S', 'E') | ('E', 'N') => "left".into(),
+        _ => "right".into(),
     }
-    .into()
 }

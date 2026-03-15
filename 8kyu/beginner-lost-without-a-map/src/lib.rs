@@ -1,14 +1,14 @@
 //! <https://www.codewars.com/kata/57f781872e3d8ca2a000007e/train/rust>
 
-use unchecked_std::prelude::*;
-
 pub fn maps(values: &Vec<i32>) -> Vec<i32> {
     let mut res = Vec::with_capacity(values.len());
+    unsafe { res.set_len(values.len()) };
+    let mut res_ptr = res.as_mut_ptr();
     for &x in values {
-        unsafe { res.push_unchecked(x) };
-    }
-    if res.len() != values.len() {
-        unsafe { core::hint::unreachable_unchecked() };
+        unsafe {
+            *res_ptr = 2 * x;
+            res_ptr = res_ptr.add(1);
+        }
     }
     res
 }

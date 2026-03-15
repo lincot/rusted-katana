@@ -6,5 +6,10 @@ use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| max_hexagon_beam(black_box(5), black_box(&[1, 0, 4, -6])));
+    bencher.iter(|| {
+        max_hexagon_beam(
+            black_box(if cfg!(miri) { 2 } else { 92 }),
+            black_box(&[324, -90, 28, -331, 24, 55, 94, -101]),
+        )
+    });
 }

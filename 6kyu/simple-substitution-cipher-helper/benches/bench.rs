@@ -4,16 +4,13 @@ extern crate test;
 use simple_substitution_cipher_helper::Cipher;
 use test::{black_box, Bencher};
 
-const MAP1: &str = "abcdefghijklmnopqrstuvwxyz";
-const MAP2: &str = "etaoinshrdlucmfwypvbgkjqxz";
-
 #[bench]
-fn bench_new(bencher: &mut Bencher) {
-    bencher.iter(|| Cipher::new(black_box(MAP1), black_box(MAP2)));
-}
-
-#[bench]
-fn bench_encode(bencher: &mut Bencher) {
-    const STRING: &str = "cnqjsdsfanappcxecxkchbapamofevesrecusvapgddwewhsnlpptvcqkxoluozgmmwlviwppbmbefpoyfobmhiivazdpfqdasal";
-    bencher.iter(|| Cipher::new(MAP1, MAP2).decode(black_box(STRING)));
+fn bench(bencher: &mut Bencher) {
+    const MAP1: &str = "abcdefghijklmnopqrstuvwxyz";
+    const MAP2: &str = "etaoinshrdlucmfwypvbgkjqxz";
+    const STRING: &str = "cnqjsdsfanappcxecxkchbapamofevesrecusvapgddwewhsnlpptvcqkxoluozgmmwlviwppbmbefpoyfobmhiivazdpfqdasallasadqfpdzaviihmbofyopfebmbppwivlwmmgzouloxkqcvtpplnshwewddgpavsucersevefomapabhckxcexcppanafsdsjqnc";
+    bencher.iter(|| {
+        let cipher = Cipher::new(black_box(MAP1), black_box(MAP2));
+        black_box(cipher.decode(black_box(STRING)));
+    });
 }

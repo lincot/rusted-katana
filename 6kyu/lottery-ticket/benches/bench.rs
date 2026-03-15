@@ -8,15 +8,8 @@ use test::{black_box, Bencher};
 fn bench(bencher: &mut Bencher) {
     bencher.iter(|| {
         bingo(
-            black_box(&[
-                ("ABC", 65),
-                ("HGR", 74),
-                ("BYHT", 74),
-                ("HGTYRE", 74),
-                ("BE", 66),
-                ("JKTY", 74),
-            ]),
-            black_box(5),
+            black_box(&[("HGTYRE", 74), ("BE", 66), ("JKTY", 74)]),
+            black_box(3),
         )
     });
 }

@@ -7,7 +7,8 @@ use test::{black_box, Bencher};
 #[bench]
 fn bench(bencher: &mut Bencher) {
     bencher.iter(|| {
-        black_box(previous_power_of_2(black_box(1000)));
-        black_box(previous_power_of_2(black_box(-1000)));
+        for n in [1000, 500, -1000, -500, 0, 200_000, -200_000] {
+            black_box(previous_power_of_2(black_box(n)));
+        }
     });
 }

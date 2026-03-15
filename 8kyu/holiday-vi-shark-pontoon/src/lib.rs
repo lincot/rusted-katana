@@ -7,8 +7,9 @@ pub fn shark(
     shark_speed: f64,
     dolphin: bool,
 ) -> String {
-    let alive =
-        pontoon_distance / you_speed < shark_distance * if dolphin { 2. } else { 1. } / shark_speed;
-
-    (if alive { "Alive!" } else { "Shark Bait!" }).into()
+    if pontoon_distance / you_speed < shark_distance * if dolphin { 2. } else { 1. } / shark_speed {
+        "Alive!".into()
+    } else {
+        "Shark Bait!".into()
+    }
 }

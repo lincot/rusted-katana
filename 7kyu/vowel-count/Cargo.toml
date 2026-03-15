@@ -2,5 +2,9 @@
 name = "vowel-count"
 edition = "2021"
 
+[dev-dependencies]
+rand = { workspace = true }
+rand_pcg = { workspace = true }
+
 [lints]
 workspace = true

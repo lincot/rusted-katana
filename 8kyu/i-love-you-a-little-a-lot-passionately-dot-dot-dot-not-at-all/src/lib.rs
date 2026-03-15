@@ -7,7 +7,6 @@ pub const fn how_much_i_love_you(nb_petals: u16) -> &'static str {
         2 => "a little",
         3 => "a lot",
         4 => "passionately",
-        5 => "madly",
-        _ => unreachable!(),
+        _ => "madly",
     }
 }

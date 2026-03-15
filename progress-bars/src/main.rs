@@ -11,7 +11,7 @@ use imageproc::{
 };
 use std::{
     fs,
-    io::{self, Write},
+    io::{stdout, Write},
     thread,
 };
 
@@ -73,7 +73,7 @@ impl<'a> ProgressBars<'a> {
                     Rgb([64, 64, 64]),
                 ),
                 Ordering::Less => {
-                    let mut stdout = io::stdout().lock();
+                    let mut stdout = stdout().lock();
                     let mut text = *b"0 kyu probably has retired katas\n";
                     text[0] = i + b'1';
                     stdout.write_all(&text).unwrap();
@@ -86,7 +86,7 @@ impl<'a> ProgressBars<'a> {
             let kyu_text = unsafe { core::str::from_utf8_unchecked(&kyu_text) };
             draw_text_mut(
                 &mut self.image,
-                Rgb([255, 255, 255]),
+                Rgb([221, 221, 221]),
                 (self.font_width / 2) as _,
                 y + ((self.bar_height - self.font_height) / 2) as i32,
                 self.scale,
@@ -102,7 +102,7 @@ impl<'a> ProgressBars<'a> {
             }
             draw_text_mut(
                 &mut self.image,
-                Rgb([255, 255, 255]),
+                Rgb([221, 221, 221]),
                 ((width - progress_text.len() as u32 * self.font_width) / 2) as _,
                 y + ((self.bar_height - self.font_height) / 2) as i32,
                 self.scale,
@@ -133,7 +133,7 @@ fn get_kata_amount(reqwest_client: &reqwest::blocking::Client, kyu: u8) -> reqwe
         .unwrap())
 }
 
-// yes, I'm writing this just to leak the memory
+// yes, I'm writing this just to leak memory
 static REQWEST_CLIENT: SyncUnsafeCell<MaybeUninit<reqwest::blocking::Client>> =
     SyncUnsafeCell::new(MaybeUninit::uninit());
 static LIMITS: SyncUnsafeCell<MaybeUninit<[u32; 8]>> = SyncUnsafeCell::new(MaybeUninit::uninit());

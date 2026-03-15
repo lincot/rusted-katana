@@ -11,7 +11,7 @@ use test::{black_box, Bencher};
 fn bench(bencher: &mut Bencher) {
     let mut rng = Pcg64Mcg::new(0xcafe_f00d_d15e_a5e5);
     let vecs: [_; 5] = array::from_fn(|_| {
-        (0..rng.random_range(0..if cfg!(miri) { 64 } else { 1024 }))
+        (0..rng.random_range(0..64))
             .map(|_| rng.random_range(-20..20))
             .collect()
     });

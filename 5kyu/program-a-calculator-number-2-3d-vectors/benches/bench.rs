@@ -1,6 +1,7 @@
 #![feature(test)]
 
 extern crate test;
+use core::ops::Add;
 use program_a_calculator_number_2_3d_vectors::Vector;
 use test::{black_box, Bencher};
 
@@ -59,5 +60,6 @@ fn bench_is_normalized(bencher: &mut Bencher) {
 
 #[bench]
 fn bench_add(bencher: &mut Bencher) {
-    bencher.iter(|| black_box(Vector::new(1.0, 2.0, 3.0)) + black_box(Vector::new(4.0, 5.0, 6.0)));
+    bencher
+        .iter(|| black_box(Vector::new(1.0, 2.0, 3.0)).add(black_box(Vector::new(4.0, 5.0, 6.0))));
 }

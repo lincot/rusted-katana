@@ -1,14 +1,15 @@
 #![feature(test)]
 
 extern crate test;
+use core::array;
 use party_people::party_people;
+use rand::RngExt;
+use rand_pcg::Pcg64Mcg;
 use test::{black_box, Bencher};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
-    bencher.iter(|| {
-        party_people(black_box(&[
-            0, 2, 3, 5, 6, 6, 6, 7, 11, 12, 13, 14, 16, 19, 20,
-        ]))
-    });
+    let mut rng = Pcg64Mcg::new(0xcafe_f00d_d15e_a5e5);
+    let lst: [_; 1024] = array::from_fn(|_| rng.random_range(1..1200));
+    bencher.iter(|| party_people(black_box(&lst)));
 }

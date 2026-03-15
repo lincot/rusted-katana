@@ -2,8 +2,5 @@
 name = "contamination-number-1-string"
 edition = "2021"
 
-[dependencies]
-unchecked-std = { workspace = true }
-
 [lints]
 workspace = true

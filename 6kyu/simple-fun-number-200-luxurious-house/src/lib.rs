@@ -6,7 +6,8 @@ pub fn luxhouse(houses: &[u32]) -> Vec<u32> {
     let mut res = Vec::with_capacity(houses.len());
     let mut max = 0;
     for (i, &x) in houses.iter().enumerate().rev() {
-        let value = if x > max {
+        // somehow replacing `x > max` with `max < x` makes it 30% faster
+        let value = if max < x {
             max = x;
             0
         } else {

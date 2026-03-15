@@ -1,24 +1,17 @@
 //! <https://www.codewars.com/kata/530265044b7e23379d00076a/train/rust>
 
 pub type Point = (f32, f32);
-pub type Line = (Point, Point);
 
 pub fn point_in_poly(poly: &[Point], point: Point) -> bool {
-    assert!(poly.len() >= 3);
-    let line = (point, (8., point.1));
-    let side = (poly[poly.len() - 1], poly[0]);
-    let mut intersections = intersects(side, line) as usize;
+    let mut res = intersects(*poly.first().unwrap(), *poly.last().unwrap(), point);
     for i in 1..poly.len() {
-        let side = (poly[i - 1], poly[i]);
-        if intersects(side, line) {
-            intersections += 1;
+        if intersects(poly[i - 1], poly[i], point) {
+            res = !res;
         }
     }
-    intersections % 2 == 1
+    res
 }
 
-fn intersects(l1: Line, l2: Line) -> bool {
-    let p =
-        |a: Point, b: Point, c: Point| (b.1 - a.1).mul_add(c.0 - b.0, -(b.0 - a.0) * (c.1 - b.1));
-    p(l1.0, l1.1, l2.0) * p(l1.0, l1.1, l2.1) < 0. && p(l2.0, l2.1, l1.0) * p(l2.0, l2.1, l1.1) < 0.
+fn intersects((x1, y1): Point, (x2, y2): Point, (x3, y3): Point) -> bool {
+    (y1 > y3) != (y2 > y3) && (x3 < (x2 - x1) * (y3 - y1) / (y2 - y1) + x1)
 }

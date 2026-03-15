@@ -2,6 +2,10 @@
 name = "doubleton-number"
 edition = "2021"
 
+[features]
+default = ["run_tests"]
+run_tests = []
+
 [dependencies]
 digital = { workspace = true }
 heapless = { workspace = true }

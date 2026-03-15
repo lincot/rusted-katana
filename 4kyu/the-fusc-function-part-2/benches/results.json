@@ -1,0 +1,27 @@
+{
+  "cpu": "AMD Ryzen 5 5600H with Radeon Graphics",
+  "rustc": "1.95.0-nightly (3c9faa0d0 2026-02-16)",
+  "os": "linux",
+  "most_upvoted_author": "akar-0",
+  "most_upvoted_url": "codewars.com/kata/reviews/62b6047f2aab4e0001b20b52/groups/62b604802aab4e0001b20b56",
+  "benches": [
+    {
+      "name": "bench",
+      "speedup": 2.706458764165028,
+      "rusted_katana_medians_ns": [
+        10304.219680851063,
+        10322.680555555557,
+        10352.184883720927,
+        10314.077192982457,
+        10338.968032786885
+      ],
+      "most_upvoted_medians_ns": [
+        28005.725925925926,
+        27937.909259259257,
+        27966.651785714286,
+        27749.675000000003,
+        27875.354166666664
+      ]
+    }
+  ]
+}

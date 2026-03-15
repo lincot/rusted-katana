@@ -5,8 +5,8 @@ use test::{black_box, Bencher};
 use welcome::greet;
 
 #[bench]
-fn bench_estonian(bencher: &mut Bencher) {
-    bencher.iter(|| greet(black_box("estonian")));
+fn bench_russian(bencher: &mut Bencher) {
+    bencher.iter(|| greet(black_box("russian")));
 }
 
 #[bench]
