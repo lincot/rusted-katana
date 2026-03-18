@@ -1,6 +1,6 @@
 [package]
 name = "word-to-initial-number"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 char-to-lower = { workspace = true }

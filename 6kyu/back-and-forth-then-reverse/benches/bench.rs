@@ -3,7 +3,7 @@
 extern crate test;
 use back_and_forth_then_reverse::arrange;
 use core::array;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

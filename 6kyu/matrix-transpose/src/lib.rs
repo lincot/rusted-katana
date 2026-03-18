@@ -21,14 +21,14 @@ pub fn transpose(matrix: &[Vec<u8>]) -> Vec<Vec<u8>> {
 unsafe fn transpose_row_first(matrix: &[Vec<u8>]) -> Vec<Vec<u8>> {
     let mut res: Vec<_> = repeat_with(|| {
         let mut v = Vec::with_capacity(matrix.len());
-        v.set_len(matrix.len());
+        unsafe { v.set_len(matrix.len()) };
         v
     })
     .take(matrix[0].len())
     .collect();
     for (j, row) in matrix.iter().enumerate() {
         for i in 0..matrix[0].len() {
-            *res.get_unchecked_mut(i).get_unchecked_mut(j) = *row.get_unchecked(i);
+            unsafe { *res.get_unchecked_mut(i).get_unchecked_mut(j) = *row.get_unchecked(i) };
         }
     }
     res

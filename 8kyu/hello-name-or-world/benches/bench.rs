@@ -2,7 +2,7 @@
 
 extern crate test;
 use hello_name_or_world::hello;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_ascii(bencher: &mut Bencher) {

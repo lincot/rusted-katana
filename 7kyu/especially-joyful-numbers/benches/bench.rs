@@ -2,7 +2,7 @@
 
 extern crate test;
 use especially_joyful_numbers::number_joy;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

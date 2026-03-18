@@ -5,9 +5,5 @@ where
     F1: FnMut() -> T,
     F2: FnMut() -> T,
 {
-    if cond {
-        then()
-    } else {
-        els()
-    }
+    if cond { then() } else { els() }
 }

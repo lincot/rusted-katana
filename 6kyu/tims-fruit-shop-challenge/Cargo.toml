@@ -1,6 +1,6 @@
 [package]
 name = "tims-fruit-shop-challenge"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 heapless = { workspace = true }

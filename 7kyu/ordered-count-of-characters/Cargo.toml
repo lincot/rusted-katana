@@ -1,6 +1,6 @@
 [package]
 name = "ordered-count-of-characters"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 hashbrown = { workspace = true }

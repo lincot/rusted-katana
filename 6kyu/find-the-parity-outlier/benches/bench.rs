@@ -2,7 +2,7 @@
 
 extern crate test;
 use find_the_parity_outlier::find_outlier;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

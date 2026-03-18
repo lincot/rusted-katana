@@ -1,6 +1,6 @@
 [package]
 name = "if-you-cant-sleep-just-count-sheep"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 digital = { workspace = true }

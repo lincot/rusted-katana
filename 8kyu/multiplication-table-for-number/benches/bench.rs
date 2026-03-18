@@ -2,7 +2,7 @@
 
 extern crate test;
 use multiplication_table_for_number::multi_table;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

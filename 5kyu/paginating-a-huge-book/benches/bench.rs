@@ -2,7 +2,7 @@
 
 extern crate test;
 use paginating_a_huge_book::page_digits;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/53f1015fa9fe02cbda00111a/train/rust>
 
-use rand::{rng, RngExt};
+use rand::{RngExt, rng};
 
 pub struct Ghost {
     pub color: &'static str,

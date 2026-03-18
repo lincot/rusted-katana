@@ -2,7 +2,7 @@
 
 extern crate test;
 use hurry_up_the_walls_are_closing_in::can_escape;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

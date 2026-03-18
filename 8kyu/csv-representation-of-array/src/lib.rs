@@ -6,10 +6,12 @@ use unchecked_std::prelude::*;
 pub fn to_csv_text(array: &[Vec<i8>]) -> String {
     unsafe fn push_row(res: &mut String, row: &[i8]) {
         for (i, &x) in row.iter().enumerate() {
-            if i != 0 {
-                res.push_unchecked(',');
+            unsafe {
+                if i != 0 {
+                    res.push_unchecked(',');
+                }
+                res.write_num_unchecked(x, 10, false, false);
             }
-            res.write_num_unchecked(x, 10, false, false);
         }
     }
 

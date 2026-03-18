@@ -2,7 +2,7 @@
 
 extern crate test;
 use basics_09_shifting_bits_right_dot_dot_dot::previous_power_of_2;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

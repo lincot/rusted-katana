@@ -1,6 +1,6 @@
 [package]
 name = "is-it-a-letter"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

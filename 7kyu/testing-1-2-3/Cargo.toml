@@ -1,6 +1,6 @@
 [package]
 name = "testing-1-2-3"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 digital = { workspace = true }

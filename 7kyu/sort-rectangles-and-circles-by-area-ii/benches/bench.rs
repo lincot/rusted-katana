@@ -6,7 +6,7 @@ use either::Either;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use sort_rectangles_and_circles_by_area_ii::sort_by_area;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

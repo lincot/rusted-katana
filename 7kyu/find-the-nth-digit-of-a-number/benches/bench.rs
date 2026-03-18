@@ -2,7 +2,7 @@
 
 extern crate test;
 use find_the_nth_digit_of_a_number::find_digit;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

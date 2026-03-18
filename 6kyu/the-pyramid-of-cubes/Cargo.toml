@@ -1,6 +1,6 @@
 [package]
 name = "the-pyramid-of-cubes"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 num-integer = { workspace = true }

@@ -1,6 +1,6 @@
 [package]
 name = "target-date"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 chrono = { workspace = true }

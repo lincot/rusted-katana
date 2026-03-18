@@ -2,7 +2,7 @@
 
 extern crate test;
 use circle_cipher::{decode, encode};
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_encode_ascii(bencher: &mut Bencher) {

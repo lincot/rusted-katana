@@ -2,7 +2,7 @@
 
 extern crate test;
 use square_pis::square_pi;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

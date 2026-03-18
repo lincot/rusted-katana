@@ -2,7 +2,7 @@
 
 extern crate test;
 use moves_in_squared_strings_iii::{diag_1_sym, rot_90_clock, selfie_and_diag1};
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 const S_ASCII: &str = "xhixpsfhrc\nznxkewfzaq\noegyxetoow\nfhprwpbeby\nsxocuozjsf\neurwonfoyr\nimxuyowpoq\nadvamwvqsg\nibsdohppat\nglcvwmeiqn";
 const S_NONASCII: &str = "лвшпзчпцъл\nбнхчсгбтцч\nшгйрбшёвэх\nцбфбчажежл\nуаълхыйяэц\nэюдщыюгихн\nчнзпръцбьи\nфтгбфщегьа\nдймурикзяб\nшпхнгесиаг";

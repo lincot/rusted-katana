@@ -2,7 +2,7 @@
 
 extern crate test;
 use roman_numerals_encoder::num_as_roman;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

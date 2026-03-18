@@ -2,7 +2,7 @@
 
 extern crate test;
 use ascii_fun_number_1_x_shape::x;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_3(bencher: &mut Bencher) {

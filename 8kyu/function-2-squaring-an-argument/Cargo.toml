@@ -1,6 +1,6 @@
 [package]
 name = "function-2-squaring-an-argument"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

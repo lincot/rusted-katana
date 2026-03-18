@@ -1,6 +1,6 @@
 [package]
 name = "duplicate-encoder"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 char-to-lower = { workspace = true }

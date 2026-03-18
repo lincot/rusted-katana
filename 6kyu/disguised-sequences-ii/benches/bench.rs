@@ -2,7 +2,7 @@
 
 extern crate test;
 use disguised_sequences_ii::{u1, v1};
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_v1(bencher: &mut Bencher) {

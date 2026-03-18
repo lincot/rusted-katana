@@ -1,6 +1,6 @@
 [package]
 name = "back-and-forth-then-reverse"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

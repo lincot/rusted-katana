@@ -1,6 +1,6 @@
 [package]
 name = "oop-object-oriented-piracy"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

@@ -1,6 +1,6 @@
 [package]
 name = "esolang-interpreters-number-1-introduction-to-esolangs-and-my-first-interpreter-ministringfuck"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

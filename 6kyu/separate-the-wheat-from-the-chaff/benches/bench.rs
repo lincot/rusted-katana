@@ -5,7 +5,7 @@ use core::array;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use separate_the_wheat_from_the_chaff::wheat_from_chaff;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

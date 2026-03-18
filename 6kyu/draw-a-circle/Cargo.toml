@@ -1,6 +1,6 @@
 [package]
 name = "draw-a-circle"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

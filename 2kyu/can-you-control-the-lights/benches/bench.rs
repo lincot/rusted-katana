@@ -4,7 +4,7 @@ extern crate test;
 use can_you_control_the_lights::LightController;
 use rand::prelude::*;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 const N: usize = if cfg!(miri) { 10 } else { 50 };
 const M: usize = if cfg!(miri) { 15 } else { 100 };

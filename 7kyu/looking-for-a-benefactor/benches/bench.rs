@@ -3,7 +3,7 @@
 extern crate test;
 use core::array;
 use looking_for_a_benefactor::new_avg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

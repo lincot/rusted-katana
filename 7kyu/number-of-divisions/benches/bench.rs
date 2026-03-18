@@ -2,7 +2,7 @@
 
 extern crate test;
 use number_of_divisions::divisions;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

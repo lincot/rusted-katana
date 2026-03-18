@@ -1,6 +1,6 @@
 [package]
 name = "how-many-pages-in-a-book"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

@@ -2,7 +2,7 @@
 
 extern crate test;
 use car_number_plate_calculator::find_the_number_plate;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

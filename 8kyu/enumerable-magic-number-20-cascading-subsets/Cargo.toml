@@ -1,6 +1,6 @@
 [package]
 name = "enumerable-magic-number-20-cascading-subsets"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

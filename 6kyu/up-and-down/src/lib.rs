@@ -64,30 +64,34 @@ pub fn arrange(s: &str) -> String {
 
 unsafe fn push_str_uppercase_unchecked(s: &mut String, string_to_push: &str) {
     for ch in string_to_push.chars() {
-        push_uppercase_unchecked(s, ch);
+        unsafe { push_uppercase_unchecked(s, ch) };
     }
 }
 
 unsafe fn push_uppercase_unchecked(s: &mut String, ch: char) {
-    if ch.is_ascii() {
-        s.push_unchecked(ch.to_ascii_uppercase());
-    } else {
-        s.extend_unchecked(ch.to_uppercase());
+    unsafe {
+        if ch.is_ascii() {
+            s.push_unchecked(ch.to_ascii_uppercase());
+        } else {
+            s.extend_unchecked(ch.to_uppercase());
+        }
     }
 }
 
 unsafe fn push_str_lowercase_unchecked(s: &mut String, string_to_push: &str) {
     for ch in string_to_push.chars() {
-        push_lowercase_unchecked(s, ch);
+        unsafe { push_lowercase_unchecked(s, ch) };
     }
 }
 
 unsafe fn push_lowercase_unchecked(s: &mut String, ch: char) {
-    if ch.is_ascii() {
-        s.push_unchecked(ch.to_ascii_lowercase());
-    } else if ch.is_lowercase() {
-        s.push_unchecked(ch);
-    } else {
-        s.extend_unchecked(ch.to_lowercase());
+    unsafe {
+        if ch.is_ascii() {
+            s.push_unchecked(ch.to_ascii_lowercase());
+        } else if ch.is_lowercase() {
+            s.push_unchecked(ch);
+        } else {
+            s.extend_unchecked(ch.to_lowercase());
+        }
     }
 }

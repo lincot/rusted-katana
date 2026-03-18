@@ -4,7 +4,7 @@ extern crate test;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use sorting_by_bits::sort_by_bit;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

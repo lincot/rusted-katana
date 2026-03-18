@@ -2,7 +2,7 @@
 
 extern crate test;
 use sum_of_digits_slash_digital_root::digital_root;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

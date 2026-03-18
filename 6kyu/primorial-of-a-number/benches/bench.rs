@@ -2,7 +2,7 @@
 
 extern crate test;
 use primorial_of_a_number::num_primorial;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

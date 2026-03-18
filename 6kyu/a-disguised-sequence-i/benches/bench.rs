@@ -2,7 +2,7 @@
 
 extern crate test;
 use a_disguised_sequence_i::fcn;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

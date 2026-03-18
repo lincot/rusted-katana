@@ -1,6 +1,6 @@
 [package]
 name = "how-much"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 digital = { workspace = true }

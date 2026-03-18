@@ -2,7 +2,7 @@
 
 extern crate test;
 use grasshopper_if_slash_else_syntax_debug::check_alive;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

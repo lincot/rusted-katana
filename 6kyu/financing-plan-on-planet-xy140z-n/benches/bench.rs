@@ -2,7 +2,7 @@
 
 extern crate test;
 use financing_plan_on_planet_xy140z_n::finance;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

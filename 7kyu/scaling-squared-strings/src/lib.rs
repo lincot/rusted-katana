@@ -6,12 +6,14 @@ pub fn scale(s: &str, k: u32, n: u32) -> String {
     const DELIM: char = '\n';
 
     unsafe fn vertical_scale(res: &mut String, mut chunk_len: usize, n: u32) {
-        res.push_unchecked(DELIM);
+        unsafe { res.push_unchecked(DELIM) };
         chunk_len += DELIM.len_utf8();
         let len = res.len();
         for _ in 0..n - 1 {
-            res.as_mut_vec()
-                .extend_from_within_unchecked(len - chunk_len..len);
+            unsafe {
+                res.as_mut_vec()
+                    .extend_from_within_unchecked(len - chunk_len..len);
+            }
         }
     }
 

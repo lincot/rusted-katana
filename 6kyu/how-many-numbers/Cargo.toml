@@ -1,6 +1,6 @@
 [package]
 name = "how-many-numbers"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

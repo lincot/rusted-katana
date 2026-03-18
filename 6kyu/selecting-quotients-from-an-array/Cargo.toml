@@ -1,6 +1,6 @@
 [package]
 name = "selecting-quotients-from-an-array"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 radsort = { workspace = true }

@@ -1,6 +1,6 @@
 [package]
 name = "if-you-can-read-this-dot-dot-dot"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

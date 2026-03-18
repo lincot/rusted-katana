@@ -1,7 +1,7 @@
 #![feature(test)]
 
 extern crate test;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use uno_match_play::can_play;
 
 #[bench]

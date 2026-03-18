@@ -2,7 +2,7 @@
 
 extern crate test;
 use return_the_first_m_multiples_of_n::multiples;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

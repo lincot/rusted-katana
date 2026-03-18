@@ -2,7 +2,7 @@
 
 extern crate test;
 use square_string_tops::tops;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_ascii(bencher: &mut Bencher) {

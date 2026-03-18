@@ -1,6 +1,6 @@
 [package]
 name = "highest-perfect-square-with-same-digits"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 digital = { workspace = true }

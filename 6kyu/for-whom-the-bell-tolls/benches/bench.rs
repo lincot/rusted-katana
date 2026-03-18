@@ -2,7 +2,7 @@
 
 extern crate test;
 use for_whom_the_bell_tolls::bell;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

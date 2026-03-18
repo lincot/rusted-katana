@@ -2,7 +2,7 @@
 
 extern crate test;
 use l1_bartender_drinks::get_drink_by_profession;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_jabroni(bencher: &mut Bencher) {

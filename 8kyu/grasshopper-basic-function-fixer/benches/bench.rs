@@ -2,7 +2,7 @@
 
 extern crate test;
 use grasshopper_basic_function_fixer::add_five;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

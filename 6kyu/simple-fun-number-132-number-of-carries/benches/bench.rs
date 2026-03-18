@@ -2,7 +2,7 @@
 
 extern crate test;
 use simple_fun_number_132_number_of_carries::number_of_carries;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

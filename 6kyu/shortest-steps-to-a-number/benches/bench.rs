@@ -2,7 +2,7 @@
 
 extern crate test;
 use shortest_steps_to_a_number::shortest_steps_to_num;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

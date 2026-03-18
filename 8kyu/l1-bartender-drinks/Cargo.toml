@@ -1,6 +1,6 @@
 [package]
 name = "l1-bartender-drinks"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

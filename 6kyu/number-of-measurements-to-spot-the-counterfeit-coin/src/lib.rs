@@ -6,11 +6,7 @@ pub const fn how_many_measurements(n: u64) -> u32 {
             if n <= 3u64.pow(5) {
                 if n <= 3u64.pow(2) {
                     if n <= 3u64.pow(1) {
-                        if n <= 3u64.pow(0) {
-                            0
-                        } else {
-                            1
-                        }
+                        if n <= 3u64.pow(0) { 0 } else { 1 }
                     } else {
                         2
                     }
@@ -22,11 +18,7 @@ pub const fn how_many_measurements(n: u64) -> u32 {
                     5
                 }
             } else if n <= 3u64.pow(7) {
-                if n <= 3u64.pow(6) {
-                    6
-                } else {
-                    7
-                }
+                if n <= 3u64.pow(6) { 6 } else { 7 }
             } else if n <= 3u64.pow(8) {
                 8
             } else if n <= 3u64.pow(9) {
@@ -112,11 +104,7 @@ pub const fn how_many_measurements(n: u64) -> u32 {
             38
         }
     } else if n <= 3u64.pow(40) {
-        if n <= 3u64.pow(39) {
-            39
-        } else {
-            40
-        }
+        if n <= 3u64.pow(39) { 39 } else { 40 }
     } else {
         41
     }

@@ -4,7 +4,7 @@ extern crate test;
 use core::array;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use write_number_in_expanded_form_part_2::expanded_form;
 
 #[bench]

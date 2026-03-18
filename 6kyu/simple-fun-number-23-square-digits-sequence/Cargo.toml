@@ -1,6 +1,6 @@
 [package]
 name = "simple-fun-number-23-square-digits-sequence"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 heapless = { workspace = true }

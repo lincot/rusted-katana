@@ -1,6 +1,6 @@
 [package]
 name = "string-destroyer-plus-extra-credit"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 hashbrown = { workspace = true }

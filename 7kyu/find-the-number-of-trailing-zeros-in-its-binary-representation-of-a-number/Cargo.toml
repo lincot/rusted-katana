@@ -1,6 +1,6 @@
 [package]
 name = "find-the-number-of-trailing-zeros-in-its-binary-representation-of-a-number"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

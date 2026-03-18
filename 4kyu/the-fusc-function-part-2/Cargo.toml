@@ -1,6 +1,6 @@
 [package]
 name = "the-fusc-function-part-2"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 num-bigint = { workspace = true }

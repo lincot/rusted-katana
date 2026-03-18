@@ -2,7 +2,7 @@
 
 extern crate test;
 use grasshopper_terminal_game_move_function::move_hero;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

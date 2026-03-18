@@ -1,6 +1,6 @@
 [package]
 name = "all-star-code-challenge-number-15-text-scrolling-machine"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

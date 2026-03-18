@@ -1,6 +1,6 @@
 [package]
 name = "pirates-are-the-cannons-ready"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

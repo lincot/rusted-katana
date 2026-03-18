@@ -2,7 +2,7 @@
 
 extern crate test;
 use fixme_replace_all_dots::replace_dots;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

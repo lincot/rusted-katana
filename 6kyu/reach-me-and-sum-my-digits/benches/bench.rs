@@ -3,7 +3,7 @@
 extern crate test;
 use core::array;
 use reach_me_and_sum_my_digits::sum_dig_nth_term;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

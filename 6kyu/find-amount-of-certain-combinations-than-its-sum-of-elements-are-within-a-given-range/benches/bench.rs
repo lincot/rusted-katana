@@ -4,9 +4,9 @@
 extern crate test;
 use core::array;
 use find_amount_of_certain_combinations_than_its_sum_of_elements_are_within_a_given_range::find_comb_noncontig;
-use rand::{seq::SliceRandom, RngExt};
+use rand::{RngExt, seq::SliceRandom};
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

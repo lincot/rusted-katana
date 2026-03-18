@@ -1,7 +1,7 @@
 #![feature(test)]
 
 extern crate test;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use the_sum_of_the_first_and_the_last_prime_factor_make_chains_of_numbers::sflpf_data;
 
 #[bench]

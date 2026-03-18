@@ -2,7 +2,7 @@
 
 extern crate test;
 use basic_sequence_practice::sum_of_n;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_positive(bencher: &mut Bencher) {

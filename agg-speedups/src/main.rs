@@ -4,8 +4,8 @@ use digital::NumToString;
 use plotters::prelude::*;
 use serde::Deserialize;
 use std::{
-    fs::{self, read_dir, File},
-    io::{stderr, stdout, IoSlice, Write},
+    fs::{self, File, read_dir},
+    io::{IoSlice, Write, stderr, stdout},
     path::Path,
 };
 
@@ -35,9 +35,8 @@ fn main() {
     };
 
     for kyu in b'1'..=b'8' {
-        for kata_dir in
-            read_dir(unsafe { core::str::from_utf8_unchecked(&[kyu, b'k', b'y', b'u']) }).unwrap()
-        {
+        let dir_path = [kyu, b'k', b'y', b'u'];
+        for kata_dir in read_dir(unsafe { core::str::from_utf8_unchecked(&dir_path) }).unwrap() {
             let kata_dir = kata_dir.unwrap().path();
 
             let benches_dir = kata_dir.join("benches");

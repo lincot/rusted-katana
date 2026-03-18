@@ -1,6 +1,6 @@
 [package]
 name = "find-amount-of-certain-combinations-than-its-sum-of-elements-are-within-a-given-range"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 heapless = { workspace = true }

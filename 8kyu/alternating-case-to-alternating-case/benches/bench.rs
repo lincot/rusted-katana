@@ -2,7 +2,7 @@
 
 extern crate test;
 use alternating_case_to_alternating_case::to_alternating_case;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_ascii(bencher: &mut Bencher) {

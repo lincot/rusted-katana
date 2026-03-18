@@ -5,7 +5,7 @@ use core::array;
 use maximum_triplet_sum_array_series_number_7::max_tri_sum;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

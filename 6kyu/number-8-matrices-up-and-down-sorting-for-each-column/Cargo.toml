@@ -1,6 +1,6 @@
 [package]
 name = "number-8-matrices-up-and-down-sorting-for-each-column"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

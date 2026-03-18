@@ -2,7 +2,7 @@
 
 extern crate test;
 use same_matrix_2_star_2::count_different_matrices;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -2,7 +2,7 @@
 
 extern crate test;
 use herons_formula_1::heron;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

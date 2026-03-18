@@ -2,7 +2,7 @@
 
 extern crate test;
 use largest_5_digit_number_in_a_series::largest_five_digit_number;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

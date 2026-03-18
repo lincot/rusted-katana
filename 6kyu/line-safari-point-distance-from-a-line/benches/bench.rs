@@ -2,7 +2,7 @@
 
 extern crate test;
 use line_safari_point_distance_from_a_line::distance_from_line;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

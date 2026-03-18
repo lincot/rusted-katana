@@ -1,6 +1,6 @@
 [package]
 name = "buying-a-car"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

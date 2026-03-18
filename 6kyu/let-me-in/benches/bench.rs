@@ -2,7 +2,7 @@
 
 extern crate test;
 use let_me_in::get_in_line;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

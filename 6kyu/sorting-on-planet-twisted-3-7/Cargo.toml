@@ -1,6 +1,6 @@
 [package]
 name = "sorting-on-planet-twisted-3-7"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 radsort = { workspace = true }

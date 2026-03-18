@@ -1,6 +1,6 @@
 [package]
 name = "get-the-mean-of-an-array"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

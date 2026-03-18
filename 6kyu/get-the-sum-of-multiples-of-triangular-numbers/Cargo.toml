@@ -1,6 +1,6 @@
 [package]
 name = "get-the-sum-of-multiples-of-triangular-numbers"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 num-bigint = { workspace = true }

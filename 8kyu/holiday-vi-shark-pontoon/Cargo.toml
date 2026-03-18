@@ -1,6 +1,6 @@
 [package]
 name = "holiday-vi-shark-pontoon"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

@@ -2,7 +2,7 @@
 
 extern crate test;
 use raise_me_to_the_third_power_search_my_divisors_dot_dot_dot_dot_dot_dot_could_you_believe_that::int_cube_sum_div;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

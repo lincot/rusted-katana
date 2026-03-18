@@ -2,7 +2,7 @@
 
 extern crate test;
 use latin_squares::make_latin_square;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

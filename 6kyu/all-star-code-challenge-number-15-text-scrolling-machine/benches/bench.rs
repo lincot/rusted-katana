@@ -2,7 +2,7 @@
 
 extern crate test;
 use all_star_code_challenge_number_15_text_scrolling_machine::rotate;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_ascii(bencher: &mut Bencher) {

@@ -3,7 +3,7 @@
 extern crate test;
 use rand::prelude::*;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use unique_string_characters::solve;
 
 const LEN: usize = if cfg!(miri) { 10 } else { 1000 };

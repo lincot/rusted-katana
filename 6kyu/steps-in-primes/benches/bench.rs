@@ -2,7 +2,7 @@
 
 extern crate test;
 use steps_in_primes::step;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

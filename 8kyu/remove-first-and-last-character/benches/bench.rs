@@ -2,7 +2,7 @@
 
 extern crate test;
 use remove_first_and_last_character::remove_char;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_ascii(bencher: &mut Bencher) {

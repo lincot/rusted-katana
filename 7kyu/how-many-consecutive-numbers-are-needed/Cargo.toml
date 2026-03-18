@@ -1,6 +1,6 @@
 [package]
 name = "how-many-consecutive-numbers-are-needed"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

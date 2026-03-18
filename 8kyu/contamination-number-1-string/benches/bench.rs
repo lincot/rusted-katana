@@ -3,7 +3,7 @@
 extern crate test;
 use contamination_number_1_string::contamination;
 use core::array;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -2,7 +2,7 @@
 
 extern crate test;
 use how_many_numbers::sel_number;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

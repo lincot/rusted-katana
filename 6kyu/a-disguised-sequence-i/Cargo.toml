@@ -1,6 +1,6 @@
 [package]
 name = "a-disguised-sequence-i"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

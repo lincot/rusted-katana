@@ -1,6 +1,6 @@
 [package]
 name = "transportation-on-vacation"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

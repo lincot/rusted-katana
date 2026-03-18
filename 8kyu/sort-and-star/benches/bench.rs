@@ -2,7 +2,7 @@
 
 extern crate test;
 use sort_and_star::two_sort;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

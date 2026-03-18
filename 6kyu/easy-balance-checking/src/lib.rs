@@ -135,8 +135,10 @@ unsafe fn write_with_cents(s: &mut String, mut amount: u64) {
         amount = 0;
         [b'0', d as u8 + b'0']
     });
-    s.write_num_unchecked(amount, 10, false, false);
-    s.as_mut_vec().push_unchecked(b'.');
-    s.as_mut_vec().push_unchecked(last_2[0]);
-    s.as_mut_vec().push_unchecked(last_2[1]);
+    unsafe {
+        s.write_num_unchecked(amount, 10, false, false);
+        s.as_mut_vec().push_unchecked(b'.');
+        s.as_mut_vec().push_unchecked(last_2[0]);
+        s.as_mut_vec().push_unchecked(last_2[1]);
+    }
 }

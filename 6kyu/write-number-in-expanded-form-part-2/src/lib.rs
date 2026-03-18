@@ -12,7 +12,7 @@ pub fn expanded_form(num: f64) -> String {
         .unwrap_or(digits.len());
     let mut first = true;
     unsafe {
-        for (i, &d) in (0..dot_pos).rev().zip(digits).filter(|(_, &b)| b != b'0') {
+        for (i, &d) in (0..dot_pos).rev().zip(digits).filter(|&(_, &b)| b != b'0') {
             if !first {
                 res.extend_from_slice_unchecked(b" + ");
             }
@@ -23,7 +23,7 @@ pub fn expanded_form(num: f64) -> String {
         if dot_pos < digits.len() - 1 {
             for (i, &d) in (1..)
                 .zip(&digits[dot_pos + 1..])
-                .filter(|(_, &b)| b != b'0')
+                .filter(|&(_, &b)| b != b'0')
             {
                 if !first {
                     res.extend_from_slice_unchecked(b" + ");

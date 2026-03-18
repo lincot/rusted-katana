@@ -2,7 +2,7 @@
 
 extern crate test;
 use feynmans_square_question::count_squares;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

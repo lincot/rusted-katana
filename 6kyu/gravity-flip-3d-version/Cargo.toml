@@ -1,6 +1,6 @@
 [package]
 name = "gravity-flip-3d-version"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 vqsort-rs = { workspace = true }

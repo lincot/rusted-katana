@@ -1,7 +1,7 @@
 #![feature(test)]
 
 extern crate test;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use to_square_root_or_not_to_square_root::square_or_square_root;
 
 #[bench]

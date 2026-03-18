@@ -1,6 +1,6 @@
 [package]
 name = "maximum-triplet-sum-array-series-number-7"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

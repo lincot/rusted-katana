@@ -1,6 +1,6 @@
 [package]
 name = "street-fighter-2-character-selection"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

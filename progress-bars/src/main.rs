@@ -11,7 +11,7 @@ use imageproc::{
 };
 use std::{
     fs,
-    io::{stdout, Write},
+    io::{Write, stdout},
     thread,
 };
 

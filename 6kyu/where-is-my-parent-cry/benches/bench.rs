@@ -1,7 +1,7 @@
 #![feature(test)]
 
 extern crate test;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use where_is_my_parent_cry::find_children;
 
 #[bench]

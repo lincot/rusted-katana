@@ -1,7 +1,7 @@
 #![feature(test)]
 
 extern crate test;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use the_deaf_rats_of_hamelin::count_deaf_rats;
 
 #[bench]

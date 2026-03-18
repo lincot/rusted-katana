@@ -2,7 +2,7 @@
 
 extern crate test;
 use hexagon_beam_max_sum::max_hexagon_beam;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -2,7 +2,7 @@
 
 extern crate test;
 use get_the_mean_of_an_array::get_average;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

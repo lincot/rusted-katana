@@ -1,6 +1,6 @@
 [package]
 name = "volume-of-a-cuboid"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

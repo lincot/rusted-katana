@@ -2,7 +2,7 @@
 
 extern crate test;
 use is_a_number_prime::is_prime;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_big(bencher: &mut Bencher) {

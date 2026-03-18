@@ -5,7 +5,7 @@ use core::array;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use search_the_0_sums_combinations_in_an_array::find_zero_sum_groups;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -2,7 +2,7 @@
 
 extern crate test;
 use convert_number_to_reversed_array_of_digits::digitize;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

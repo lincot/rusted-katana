@@ -1,6 +1,6 @@
 [package]
 name = "the-lost-beginning"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

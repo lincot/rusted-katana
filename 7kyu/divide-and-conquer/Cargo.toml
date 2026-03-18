@@ -1,6 +1,6 @@
 [package]
 name = "divide-and-conquer"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 either = { workspace = true }

@@ -2,7 +2,7 @@
 
 extern crate test;
 use simple_reversed_parenthesis::solve;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

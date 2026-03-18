@@ -2,7 +2,7 @@
 
 extern crate test;
 use decimal_time_conversion::{string_to_industrial, to_industrial, to_normal};
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_string_to_industrial(bencher: &mut Bencher) {

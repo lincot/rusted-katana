@@ -1,6 +1,6 @@
 [package]
 name = "search-the-0-sums-combinations-in-an-array"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 either = { workspace = true }

@@ -2,7 +2,7 @@
 
 extern crate test;
 use follow_that_spy::find_routes;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -1,6 +1,6 @@
 [package]
 name = "to-square-root-or-not-to-square-root"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

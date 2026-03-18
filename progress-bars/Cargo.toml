@@ -1,6 +1,6 @@
 [package]
 name = "rusted-katana-progress-bars"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 ab_glyph = { workspace = true }

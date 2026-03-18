@@ -1,6 +1,6 @@
 [package]
 name = "olympic-rings"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

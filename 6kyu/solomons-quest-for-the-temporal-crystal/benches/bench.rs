@@ -2,7 +2,7 @@
 
 extern crate test;
 use solomons_quest_for_the_temporal_crystal::quest::solomons_quest;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

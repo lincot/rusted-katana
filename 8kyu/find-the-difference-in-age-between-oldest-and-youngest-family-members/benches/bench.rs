@@ -5,7 +5,7 @@ use core::array;
 use find_the_difference_in_age_between_oldest_and_youngest_family_members::difference_in_ages;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

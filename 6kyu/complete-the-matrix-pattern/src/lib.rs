@@ -2,7 +2,7 @@
 
 pub fn make_matrix(m: u32, n: u32) -> String {
     unsafe fn push_digit(res: &mut [u8], i: &mut usize, digit: u8) {
-        *res.get_unchecked_mut(*i) = digit;
+        unsafe { *res.get_unchecked_mut(*i) = digit };
         *i += 2;
     }
 

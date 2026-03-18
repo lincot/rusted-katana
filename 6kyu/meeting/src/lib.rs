@@ -66,14 +66,16 @@ impl PartialOrd for CaselessStr<'_> {
 
 unsafe fn push_str_uppercase_unchecked(s: &mut String, string_to_push: &str) {
     for ch in string_to_push.chars() {
-        push_uppercase_unchecked(s, ch);
+        unsafe { push_uppercase_unchecked(s, ch) };
     }
 }
 
 unsafe fn push_uppercase_unchecked(s: &mut String, ch: char) {
-    if ch.is_ascii() {
-        s.push_unchecked(ch.to_ascii_uppercase());
-    } else {
-        s.extend_unchecked(ch.to_uppercase());
+    unsafe {
+        if ch.is_ascii() {
+            s.push_unchecked(ch.to_ascii_uppercase());
+        } else {
+            s.extend_unchecked(ch.to_uppercase());
+        }
     }
 }

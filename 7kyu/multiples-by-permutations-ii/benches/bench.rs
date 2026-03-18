@@ -5,7 +5,7 @@ use core::array;
 use multiples_by_permutations_ii::find_lowest_int;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

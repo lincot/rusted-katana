@@ -2,7 +2,7 @@
 
 extern crate test;
 use solution_1rm_calculator::calculate_1_rm;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

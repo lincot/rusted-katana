@@ -2,7 +2,7 @@
 
 extern crate test;
 use sum_of_two_integers::add;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

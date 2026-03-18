@@ -29,5 +29,5 @@ pub fn rank(st: &str, we: Vec<i32>, n: usize) -> &str {
     if n > len {
         return "Not enough participants";
     }
-    participants.select_nth_unstable(len - n).1 .1 .0
+    participants.select_nth_unstable(len - n).1.1.0
 }

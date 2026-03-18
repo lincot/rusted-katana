@@ -1,6 +1,6 @@
 [package]
 name = "simple-fun-number-176-reverse-letter"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

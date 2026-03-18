@@ -2,7 +2,7 @@
 
 extern crate test;
 use find_the_smallest_power_higher_than_a_given_a_value::find_next_power;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

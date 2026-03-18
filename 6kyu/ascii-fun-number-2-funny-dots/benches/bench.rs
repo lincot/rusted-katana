@@ -2,7 +2,7 @@
 
 extern crate test;
 use ascii_fun_number_2_funny_dots::dot;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -2,7 +2,7 @@
 
 extern crate test;
 use evaluate_the_group_of_parentheses::eval_parentheses;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

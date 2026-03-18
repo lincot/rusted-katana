@@ -2,7 +2,7 @@
 
 extern crate test;
 use return_the_closest_number_multiple_of_10::closest_multiple_of_10;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -5,7 +5,7 @@ use core::array;
 use jumps_in_a_cycle_number_1::get_jumps;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

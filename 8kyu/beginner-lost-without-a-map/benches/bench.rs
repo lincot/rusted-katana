@@ -3,7 +3,7 @@
 extern crate test;
 use beginner_lost_without_a_map::maps;
 use core::array;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

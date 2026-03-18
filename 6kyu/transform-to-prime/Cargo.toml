@@ -1,6 +1,6 @@
 [package]
 name = "transform-to-prime"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 num-integer = { workspace = true }

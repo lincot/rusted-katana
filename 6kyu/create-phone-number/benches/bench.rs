@@ -2,7 +2,7 @@
 
 extern crate test;
 use create_phone_number::create_phone_number;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

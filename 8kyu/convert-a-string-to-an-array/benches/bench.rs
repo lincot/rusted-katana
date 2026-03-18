@@ -2,7 +2,7 @@
 
 extern crate test;
 use convert_a_string_to_an_array::string_to_array;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -5,7 +5,7 @@ use core::array;
 use larger_product_or_sum::sum_or_product;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

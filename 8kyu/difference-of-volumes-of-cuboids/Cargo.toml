@@ -1,6 +1,6 @@
 [package]
 name = "difference-of-volumes-of-cuboids"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

@@ -1,6 +1,6 @@
 [package]
 name = "grasshopper-basic-function-fixer"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

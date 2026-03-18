@@ -3,7 +3,7 @@
 extern crate test;
 use my_language_skills::my_languages;
 use std::collections::HashMap;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

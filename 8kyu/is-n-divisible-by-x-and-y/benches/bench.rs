@@ -2,7 +2,7 @@
 
 extern crate test;
 use is_n_divisible_by_x_and_y::is_divisible;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

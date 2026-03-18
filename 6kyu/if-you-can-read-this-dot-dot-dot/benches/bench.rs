@@ -2,7 +2,7 @@
 
 extern crate test;
 use if_you_can_read_this_dot_dot_dot::to_nato;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

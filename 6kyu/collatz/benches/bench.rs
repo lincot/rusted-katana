@@ -2,7 +2,7 @@
 
 extern crate test;
 use collatz::collatz;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

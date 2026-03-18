@@ -2,7 +2,7 @@
 
 extern crate test;
 use highest_perfect_square_with_same_digits::next_perfectsq_perm;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

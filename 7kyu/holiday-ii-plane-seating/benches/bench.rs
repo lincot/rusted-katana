@@ -2,7 +2,7 @@
 
 extern crate test;
 use holiday_ii_plane_seating::plane_seat;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_valid(bencher: &mut Bencher) {

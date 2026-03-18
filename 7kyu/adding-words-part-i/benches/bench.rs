@@ -3,7 +3,7 @@
 extern crate test;
 use adding_words_part_i::Arith;
 use core::ops::Add;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

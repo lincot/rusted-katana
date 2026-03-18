@@ -3,7 +3,7 @@
 extern crate test;
 use either::Either;
 use sum_mixed_array::sum_mix;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

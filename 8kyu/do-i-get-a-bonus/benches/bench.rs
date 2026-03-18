@@ -2,7 +2,7 @@
 
 extern crate test;
 use do_i_get_a_bonus::bonus_time;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 const SALARY: u64 = 10000;
 

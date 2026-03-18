@@ -2,7 +2,7 @@
 
 extern crate test;
 use checkerboard_resolution::count_checkerboard;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_u64(bencher: &mut Bencher) {

@@ -2,7 +2,7 @@
 
 extern crate test;
 use get_character_from_ascii_value::get_char;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

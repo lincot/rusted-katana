@@ -3,7 +3,7 @@
 extern crate test;
 use core::array;
 use matrix_addition::matrix_addition;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

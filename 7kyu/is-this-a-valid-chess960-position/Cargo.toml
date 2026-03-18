@@ -1,6 +1,6 @@
 [package]
 name = "is-this-a-valid-chess960-position"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

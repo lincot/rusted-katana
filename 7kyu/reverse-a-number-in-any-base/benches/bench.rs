@@ -2,7 +2,7 @@
 
 extern crate test;
 use reverse_a_number_in_any_base::reversed_number;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

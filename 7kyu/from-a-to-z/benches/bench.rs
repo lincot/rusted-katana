@@ -2,7 +2,7 @@
 
 extern crate test;
 use from_a_to_z::gimme_the_letters;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

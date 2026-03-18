@@ -2,7 +2,7 @@
 
 extern crate test;
 use is_it_a_letter::is_it_letter;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

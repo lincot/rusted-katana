@@ -1,6 +1,6 @@
 [package]
 name = "does-my-number-look-big-in-this"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

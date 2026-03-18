@@ -2,7 +2,7 @@
 
 extern crate test;
 use circle_area_inside_square::square_area_to_circle;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

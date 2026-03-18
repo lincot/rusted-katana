@@ -2,7 +2,7 @@
 
 extern crate test;
 use scaling_squared_strings::scale;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

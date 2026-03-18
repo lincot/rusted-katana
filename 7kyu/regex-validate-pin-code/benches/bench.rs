@@ -2,7 +2,7 @@
 
 extern crate test;
 use regex_validate_pin_code::validate_pin;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

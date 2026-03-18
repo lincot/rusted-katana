@@ -5,9 +5,5 @@ pub const fn prev_mult_of_three(mut n: i32) -> i32 {
         n /= 10;
     }
 
-    if n == 0 {
-        -1
-    } else {
-        n
-    }
+    if n == 0 { -1 } else { n }
 }

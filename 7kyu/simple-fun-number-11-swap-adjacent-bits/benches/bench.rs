@@ -2,7 +2,7 @@
 
 extern crate test;
 use simple_fun_number_11_swap_adjacent_bits::swap_adjacent_bits;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -5,7 +5,7 @@ use core::array;
 use odd_heavy_array::is_odd_heavy;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_random(bencher: &mut Bencher) {

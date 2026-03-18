@@ -1,6 +1,6 @@
 [package]
 name = "unknown-amount-of-duplicates-one-missing-number"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

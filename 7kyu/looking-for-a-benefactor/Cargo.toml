@@ -1,6 +1,6 @@
 [package]
 name = "looking-for-a-benefactor"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

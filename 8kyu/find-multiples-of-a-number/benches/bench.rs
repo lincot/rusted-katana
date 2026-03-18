@@ -2,7 +2,7 @@
 
 extern crate test;
 use find_multiples_of_a_number::find_multiples;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

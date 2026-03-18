@@ -1,6 +1,6 @@
 [package]
 name = "can-you-control-the-lights"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

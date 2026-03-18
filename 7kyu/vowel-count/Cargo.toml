@@ -1,6 +1,6 @@
 [package]
 name = "vowel-count"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

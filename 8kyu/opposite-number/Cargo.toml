@@ -1,6 +1,6 @@
 [package]
 name = "opposite-number"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

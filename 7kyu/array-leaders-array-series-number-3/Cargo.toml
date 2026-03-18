@@ -1,6 +1,6 @@
 [package]
 name = "array-leaders-array-series-number-3"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

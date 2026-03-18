@@ -1,6 +1,6 @@
 [package]
 name = "roboscript-number-1-implement-syntax-highlighting"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

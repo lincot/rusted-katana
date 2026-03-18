@@ -1,6 +1,6 @@
 [package]
 name = "opposites-attract"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

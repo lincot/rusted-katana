@@ -2,7 +2,7 @@
 
 extern crate test;
 use square_n_sum::square_sum;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -2,7 +2,7 @@
 
 extern crate test;
 use chmod_calculator_in_octal::chmod_calculator;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

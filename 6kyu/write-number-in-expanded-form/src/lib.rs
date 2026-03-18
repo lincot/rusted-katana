@@ -15,7 +15,7 @@ pub fn expanded_form(n: u64) -> String {
         for (i, &d) in (0..digits.len() - 1)
             .rev()
             .zip(&digits[1..])
-            .filter(|(_, &b)| b != b'0')
+            .filter(|&(_, &b)| b != b'0')
         {
             res.extend_from_slice_unchecked(b" + ");
             res.push_unchecked(d);

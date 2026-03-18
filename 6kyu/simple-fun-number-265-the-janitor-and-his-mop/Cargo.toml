@@ -1,6 +1,6 @@
 [package]
 name = "simple-fun-number-265-the-janitor-and-his-mop"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

@@ -1,6 +1,6 @@
 [package]
 name = "grasshopper-check-for-factor"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

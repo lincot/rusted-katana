@@ -15,11 +15,11 @@ pub fn word_mesh(words: &[&str]) -> Option<String> {
 
     'pairs: for &[left, right] in words.array_windows() {
         for i in left.len().saturating_sub(right.len())..left.len() {
-            if let Some(suffix) = left.get(i..) {
-                if right.starts_with(suffix) {
-                    unsafe { res.push_str_unchecked(suffix) };
-                    continue 'pairs;
-                }
+            if let Some(suffix) = left.get(i..)
+                && right.starts_with(suffix)
+            {
+                unsafe { res.push_str_unchecked(suffix) };
+                continue 'pairs;
             }
         }
 

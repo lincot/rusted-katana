@@ -1,6 +1,6 @@
 [package]
 name = "histogram-h1"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

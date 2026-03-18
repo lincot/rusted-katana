@@ -2,7 +2,7 @@
 
 extern crate test;
 use casting_binary_float_to_integer::convert_to_i32;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

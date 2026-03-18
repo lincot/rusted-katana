@@ -2,7 +2,7 @@
 
 extern crate test;
 use hungarian_vowel_harmony_easy::dative;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

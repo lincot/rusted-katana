@@ -1,6 +1,6 @@
 [package]
 name = "follow-that-spy"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

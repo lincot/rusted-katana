@@ -2,7 +2,7 @@
 
 extern crate test;
 use abbreviate_a_two_word_name::abbrev_name;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_ascii(bencher: &mut Bencher) {

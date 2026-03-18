@@ -2,7 +2,7 @@
 
 extern crate test;
 use is_it_negative_zero_0::is_negative_zero;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

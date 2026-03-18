@@ -4,9 +4,5 @@ use num_complex::Complex;
 
 pub fn f(z: Complex<f64>, eps: f64) -> i32 {
     let norm = z.norm();
-    if norm >= 1. {
-        -1
-    } else {
-        eps.log(norm) as _
-    }
+    if norm >= 1. { -1 } else { eps.log(norm) as _ }
 }

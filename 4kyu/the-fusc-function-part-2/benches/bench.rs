@@ -2,7 +2,7 @@
 
 extern crate test;
 use num_bigint::BigUint;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use the_fusc_function_part_2::fusc;
 
 #[bench]

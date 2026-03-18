@@ -2,7 +2,7 @@
 
 extern crate test;
 use reduce_my_fraction::reduce_fraction;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

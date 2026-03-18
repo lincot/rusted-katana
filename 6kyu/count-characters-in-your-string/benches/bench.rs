@@ -2,7 +2,7 @@
 
 extern crate test;
 use count_characters_in_your_string::count;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_nonascii(bencher: &mut Bencher) {

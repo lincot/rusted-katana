@@ -2,7 +2,7 @@
 
 extern crate test;
 use reverse_the_bits_in_an_integer::reverse_bits;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

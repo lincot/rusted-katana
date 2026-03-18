@@ -2,7 +2,7 @@
 
 extern crate test;
 use odd_even_string_sort::sort_my_string;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_ascii(bencher: &mut Bencher) {

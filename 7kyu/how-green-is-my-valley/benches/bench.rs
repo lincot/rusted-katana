@@ -5,7 +5,7 @@ use core::array;
 use how_green_is_my_valley::make_valley;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -1,6 +1,6 @@
 [package]
 name = "sum-of-digits-slash-digital-root"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

@@ -2,7 +2,7 @@
 
 extern crate test;
 use multiples_of_3_or_5::solution;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -1,6 +1,6 @@
 [package]
 name = "write-number-in-expanded-form-part-2"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 ryu = { workspace = true }

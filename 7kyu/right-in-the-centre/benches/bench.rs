@@ -2,7 +2,7 @@
 
 extern crate test;
 use right_in_the_centre::is_in_middle;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

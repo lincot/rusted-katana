@@ -1,6 +1,6 @@
 [package]
 name = "playing-on-a-chessboard"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

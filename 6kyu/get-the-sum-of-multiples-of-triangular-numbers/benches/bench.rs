@@ -2,7 +2,7 @@
 
 extern crate test;
 use get_the_sum_of_multiples_of_triangular_numbers::sum_mult_triangnum;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

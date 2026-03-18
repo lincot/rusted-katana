@@ -1,6 +1,6 @@
 [package]
 name = "all-star-code-challenge-number-22"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 digital = { workspace = true }

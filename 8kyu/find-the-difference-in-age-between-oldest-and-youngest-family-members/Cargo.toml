@@ -1,6 +1,6 @@
 [package]
 name = "find-the-difference-in-age-between-oldest-and-youngest-family-members"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

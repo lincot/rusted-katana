@@ -1,6 +1,6 @@
 [package]
 name = "resistor-color-codes-part-2"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

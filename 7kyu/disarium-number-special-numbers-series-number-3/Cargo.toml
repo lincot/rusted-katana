@@ -1,6 +1,6 @@
 [package]
 name = "disarium-number-special-numbers-series-number-3"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

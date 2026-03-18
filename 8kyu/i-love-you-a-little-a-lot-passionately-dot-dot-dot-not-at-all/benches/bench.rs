@@ -2,7 +2,7 @@
 
 extern crate test;
 use i_love_you_a_little_a_lot_passionately_dot_dot_dot_not_at_all::how_much_i_love_you;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

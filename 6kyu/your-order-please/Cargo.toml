@@ -1,6 +1,6 @@
 [package]
 name = "your-order-please"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 heapless = { workspace = true }

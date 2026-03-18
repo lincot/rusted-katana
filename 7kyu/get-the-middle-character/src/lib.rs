@@ -24,5 +24,5 @@ pub fn get_middle(s: &str) -> &str {
 }
 
 unsafe fn get_middle_bytes(s: &[u8]) -> &[u8] {
-    s.get_unchecked((s.len() - 1) / 2..s.len() / 2 + 1)
+    unsafe { s.get_unchecked((s.len() - 1) / 2..s.len() / 2 + 1) }
 }

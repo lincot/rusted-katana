@@ -1,6 +1,6 @@
 [package]
 name = "prime-reduction"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 num-integer = { workspace = true }

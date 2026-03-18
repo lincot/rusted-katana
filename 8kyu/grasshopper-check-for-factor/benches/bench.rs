@@ -2,7 +2,7 @@
 
 extern crate test;
 use grasshopper_check_for_factor::check_for_factor;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

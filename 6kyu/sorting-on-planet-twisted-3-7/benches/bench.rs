@@ -5,7 +5,7 @@ use core::array;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use sorting_on_planet_twisted_3_7::sort_twisted_37;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

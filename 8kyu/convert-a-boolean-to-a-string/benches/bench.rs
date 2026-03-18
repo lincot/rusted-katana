@@ -2,7 +2,7 @@
 
 extern crate test;
 use convert_a_boolean_to_a_string::boolean_to_string;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

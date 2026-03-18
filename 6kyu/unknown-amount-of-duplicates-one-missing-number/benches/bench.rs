@@ -2,9 +2,9 @@
 
 extern crate test;
 use core::array;
-use rand::{seq::SliceRandom, RngExt};
+use rand::{RngExt, seq::SliceRandom};
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use unknown_amount_of_duplicates_one_missing_number::find_dups_miss;
 
 #[bench]
@@ -17,11 +17,7 @@ fn bench(bencher: &mut Bencher) {
     let mut arr: [_; SIZE] = array::from_fn(|i| {
         let i = i as u32;
         if i < B - A + 1 {
-            if i == MISSING_I {
-                A
-            } else {
-                A + i
-            }
+            if i == MISSING_I { A } else { A + i }
         } else if rng.random() {
             rng.random_range(A..A + MISSING_I)
         } else {

@@ -4,7 +4,7 @@ extern crate test;
 use core::array;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use two_oldest_ages_1::two_oldest_ages;
 
 #[bench]

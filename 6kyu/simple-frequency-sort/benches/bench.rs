@@ -1,10 +1,10 @@
 #![feature(test)]
 
 extern crate test;
-use rand::{seq::SliceRandom, RngExt};
+use rand::{RngExt, seq::SliceRandom};
 use rand_pcg::Pcg64Mcg;
 use simple_frequency_sort::solve;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use unchecked_std::prelude::*;
 
 #[bench]

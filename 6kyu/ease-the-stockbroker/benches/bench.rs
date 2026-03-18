@@ -2,7 +2,7 @@
 
 extern crate test;
 use ease_the_stockbroker::balance_statement;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

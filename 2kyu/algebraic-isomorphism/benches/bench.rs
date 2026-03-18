@@ -2,11 +2,11 @@
 
 extern crate test;
 use algebraic_isomorphism::{
-    dist, iso, iso_bool, iso_bool_not, iso_eu, iso_option, iso_result, iso_symm, iso_tuple,
+    ISO, dist, iso, iso_bool, iso_bool_not, iso_eu, iso_option, iso_result, iso_symm, iso_tuple,
     iso_un_option, iso_vec, mult_s, mult_so, one, plus_assoc, plus_o, plus_s, plus_so, refl,
-    sub_st_l, sub_st_r, symm, trans, two, ISO,
+    sub_st_l, sub_st_r, symm, trans, two,
 };
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 fn moe() -> String {
     "MOE".to_string()

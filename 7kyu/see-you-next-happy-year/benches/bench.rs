@@ -2,7 +2,7 @@
 
 extern crate test;
 use see_you_next_happy_year::next_happy_year;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

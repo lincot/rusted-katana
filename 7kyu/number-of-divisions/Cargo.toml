@@ -1,6 +1,6 @@
 [package]
 name = "number-of-divisions"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

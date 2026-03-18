@@ -67,18 +67,19 @@ pub fn stati(strg: &str) -> String {
 }
 
 unsafe fn format_time_unchecked(s: &mut String, total_seconds: u32) {
-    let s = s.as_mut_vec();
-
     let hours = total_seconds / 3600;
     let minutes = (total_seconds % 3600) / 60;
     let seconds = total_seconds % 60;
 
-    s.push_unchecked((hours / 10) as u8 + b'0');
-    s.push_unchecked((hours % 10) as u8 + b'0');
-    s.push_unchecked(b'|');
-    s.push_unchecked((minutes / 10) as u8 + b'0');
-    s.push_unchecked((minutes % 10) as u8 + b'0');
-    s.push_unchecked(b'|');
-    s.push_unchecked((seconds / 10) as u8 + b'0');
-    s.push_unchecked((seconds % 10) as u8 + b'0');
+    unsafe {
+        let s = s.as_mut_vec();
+        s.push_unchecked((hours / 10) as u8 + b'0');
+        s.push_unchecked((hours % 10) as u8 + b'0');
+        s.push_unchecked(b'|');
+        s.push_unchecked((minutes / 10) as u8 + b'0');
+        s.push_unchecked((minutes % 10) as u8 + b'0');
+        s.push_unchecked(b'|');
+        s.push_unchecked((seconds / 10) as u8 + b'0');
+        s.push_unchecked((seconds % 10) as u8 + b'0');
+    }
 }

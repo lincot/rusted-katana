@@ -1,6 +1,6 @@
 [package]
 name = "hexagon-beam-max-sum"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

@@ -1,6 +1,6 @@
 [package]
 name = "going-to-the-cinema"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

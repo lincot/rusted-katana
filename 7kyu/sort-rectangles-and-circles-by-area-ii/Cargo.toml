@@ -1,6 +1,6 @@
 [package]
 name = "sort-rectangles-and-circles-by-area-ii"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 either = { workspace = true }

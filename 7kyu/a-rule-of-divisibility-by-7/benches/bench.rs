@@ -2,7 +2,7 @@
 
 extern crate test;
 use a_rule_of_divisibility_by_7::seven;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -5,7 +5,7 @@ use core::array;
 use rand::prelude::*;
 use rand_pcg::Pcg64Mcg;
 use sum_of_two_lowest_positive_integers::sum_two_smallest_numbers;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

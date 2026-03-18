@@ -2,7 +2,7 @@
 
 extern crate test;
 use ball_upwards::max_ball;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

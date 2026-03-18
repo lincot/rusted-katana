@@ -1,6 +1,6 @@
 [package]
 name = "product-of-maximums-of-array-array-series-number-2"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

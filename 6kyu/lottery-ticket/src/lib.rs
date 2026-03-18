@@ -5,9 +5,5 @@ pub fn bingo<S: AsRef<str>>(ticket: &[(S, u8)], win: usize) -> &'static str {
         .iter()
         .filter(|(s, n)| s.as_ref().as_bytes().contains(n))
         .count();
-    if score >= win {
-        "Winner!"
-    } else {
-        "Loser!"
-    }
+    if score >= win { "Winner!" } else { "Loser!" }
 }

@@ -24,9 +24,11 @@ pub fn abbrev_name(name: &str) -> String {
 }
 
 unsafe fn push_uppercase_unchecked(s: &mut String, ch: char) {
-    if ch.is_uppercase() {
-        s.push_unchecked(ch);
-    } else {
-        s.extend_unchecked(ch.to_uppercase());
+    unsafe {
+        if ch.is_uppercase() {
+            s.push_unchecked(ch);
+        } else {
+            s.extend_unchecked(ch.to_uppercase());
+        }
     }
 }

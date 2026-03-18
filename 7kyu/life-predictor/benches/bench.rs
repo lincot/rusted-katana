@@ -3,7 +3,7 @@
 extern crate test;
 use chrono::{NaiveDate, TimeDelta};
 use life_predictor::life_predictor;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

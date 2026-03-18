@@ -2,7 +2,7 @@
 
 extern crate test;
 use growth_of_a_population::nb_year;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

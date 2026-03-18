@@ -1,6 +1,6 @@
 [package]
 name = "roman-numerals-decoder"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

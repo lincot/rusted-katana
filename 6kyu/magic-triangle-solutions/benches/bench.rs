@@ -2,7 +2,7 @@
 
 extern crate test;
 use magic_triangle_solutions::magic_triangle_solutions;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

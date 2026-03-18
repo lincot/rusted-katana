@@ -1,6 +1,6 @@
 [package]
 name = "framed-reflection"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

@@ -1,6 +1,6 @@
 [package]
 name = "sort-out-the-men-from-boys-1"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 vqsort-rs = { workspace = true }

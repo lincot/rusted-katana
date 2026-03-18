@@ -1,6 +1,6 @@
 [package]
 name = "form-the-minimum"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

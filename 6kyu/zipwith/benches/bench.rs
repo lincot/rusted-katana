@@ -2,7 +2,7 @@
 
 extern crate test;
 use core::ops::Sub;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use zipwith::zip_with;
 
 #[bench]

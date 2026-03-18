@@ -1,6 +1,6 @@
 [package]
 name = "max-sum-between-two-negatives"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

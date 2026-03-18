@@ -3,7 +3,7 @@
 extern crate test;
 use core::array;
 use matrix_transpose::transpose;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 #[cfg(not(miri))]

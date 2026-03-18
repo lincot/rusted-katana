@@ -27,9 +27,11 @@ pub fn capitalize(s: &str) -> Vec<String> {
 }
 
 unsafe fn push_uppercase_unchecked(s: &mut String, ch: char) {
-    if ch.is_ascii() {
-        s.push_unchecked(ch.to_ascii_uppercase());
-    } else {
-        s.extend_unchecked(ch.to_uppercase());
+    unsafe {
+        if ch.is_ascii() {
+            s.push_unchecked(ch.to_ascii_uppercase());
+        } else {
+            s.extend_unchecked(ch.to_uppercase());
+        }
     }
 }

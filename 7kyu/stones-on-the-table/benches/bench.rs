@@ -2,7 +2,7 @@
 
 extern crate test;
 use stones_on_the_table::stones_to_remove;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

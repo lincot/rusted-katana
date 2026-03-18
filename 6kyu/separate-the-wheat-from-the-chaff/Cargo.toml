@@ -1,6 +1,6 @@
 [package]
 name = "separate-the-wheat-from-the-chaff"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

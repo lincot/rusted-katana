@@ -1,6 +1,6 @@
 [package]
 name = "ascii-fun-number-1-x-shape"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

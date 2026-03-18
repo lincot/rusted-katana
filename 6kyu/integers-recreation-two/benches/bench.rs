@@ -2,7 +2,7 @@
 
 extern crate test;
 use integers_recreation_two::prod2sum;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

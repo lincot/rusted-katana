@@ -1,6 +1,6 @@
 [package]
 name = "n-smallest-elements-in-original-order-performance-edition"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

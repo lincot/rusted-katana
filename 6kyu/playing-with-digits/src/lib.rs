@@ -18,9 +18,5 @@ pub fn dig_pow(n: i64, p: i32) -> i64 {
     }
 
     let k = pow_sum / n_orig;
-    if n_orig * k == pow_sum {
-        k as _
-    } else {
-        -1
-    }
+    if n_orig * k == pow_sum { k as _ } else { -1 }
 }

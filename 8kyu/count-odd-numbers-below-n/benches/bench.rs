@@ -2,7 +2,7 @@
 
 extern crate test;
 use count_odd_numbers_below_n::odd_count;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -2,7 +2,7 @@
 
 extern crate test;
 use hidden_cubic_numbers::is_sum_of_cubes;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

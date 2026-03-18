@@ -1,6 +1,6 @@
 [package]
 name = "car-number-plate-calculator"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

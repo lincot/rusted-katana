@@ -2,7 +2,7 @@
 
 extern crate test;
 use large_matrix_expected_value::expected_value;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

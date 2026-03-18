@@ -2,7 +2,7 @@
 
 extern crate test;
 use positions_average::pos_average;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

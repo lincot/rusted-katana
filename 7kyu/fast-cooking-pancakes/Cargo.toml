@@ -1,6 +1,6 @@
 [package]
 name = "fast-cooking-pancakes"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

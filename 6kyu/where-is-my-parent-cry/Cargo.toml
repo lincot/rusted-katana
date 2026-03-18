@@ -1,6 +1,6 @@
 [package]
 name = "where-is-my-parent-cry"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

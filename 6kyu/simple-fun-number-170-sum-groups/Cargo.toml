@@ -1,6 +1,6 @@
 [package]
 name = "simple-fun-number-170-sum-groups"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

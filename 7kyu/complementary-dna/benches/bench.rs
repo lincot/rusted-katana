@@ -3,7 +3,7 @@
 extern crate test;
 use complementary_dna::dna_strand;
 use core::array;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

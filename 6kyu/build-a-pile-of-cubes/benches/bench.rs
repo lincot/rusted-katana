@@ -2,7 +2,7 @@
 
 extern crate test;
 use build_a_pile_of_cubes::find_nb;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

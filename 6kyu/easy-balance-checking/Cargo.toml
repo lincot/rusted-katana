@@ -1,6 +1,6 @@
 [package]
 name = "easy-balance-checking"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 bytecount = { workspace = true }

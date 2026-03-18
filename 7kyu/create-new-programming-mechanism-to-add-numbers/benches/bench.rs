@@ -2,7 +2,7 @@
 
 extern crate test;
 use create_new_programming_mechanism_to_add_numbers::add;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

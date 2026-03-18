@@ -1,6 +1,6 @@
 [package]
 name = "polynomials-ii-coefficients-in-a-list"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 digital = { workspace = true }

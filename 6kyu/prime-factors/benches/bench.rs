@@ -2,7 +2,7 @@
 
 extern crate test;
 use prime_factors::prime_factors;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

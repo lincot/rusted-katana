@@ -1,6 +1,6 @@
 [package]
 name = "the-search-for-primes-twin-primes"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 num-prime = { workspace = true }

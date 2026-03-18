@@ -1,7 +1,7 @@
 #![feature(test)]
 
 extern crate test;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use turn_the_mars_rover_to_take_pictures::turn;
 
 #[bench]

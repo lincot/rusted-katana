@@ -2,7 +2,7 @@
 
 extern crate test;
 use a_wolf_in_sheeps_clothing::warn_the_sheep;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

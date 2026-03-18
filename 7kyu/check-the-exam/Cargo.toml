@@ -1,6 +1,6 @@
 [package]
 name = "check-the-exam"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

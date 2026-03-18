@@ -2,7 +2,7 @@
 
 extern crate test;
 use name_array_capping::cap_me;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_ascii(bencher: &mut Bencher) {

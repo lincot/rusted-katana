@@ -31,10 +31,10 @@ pub fn anagram_difference(w1: &str, w2: &str) -> u32 {
 unsafe fn anagram_difference_ascii(w1: &str, w2: &str) -> u32 {
     let mut char_counts = [0i32; 26];
     for &ch in w1.as_bytes() {
-        *char_counts.get_unchecked_mut((ch - b'a') as usize) += 1;
+        unsafe { *char_counts.get_unchecked_mut((ch - b'a') as usize) += 1 };
     }
     for &ch in w2.as_bytes() {
-        *char_counts.get_unchecked_mut((ch - b'a') as usize) -= 1;
+        unsafe { *char_counts.get_unchecked_mut((ch - b'a') as usize) -= 1 };
     }
     char_counts.into_iter().map(i32::unsigned_abs).sum()
 }

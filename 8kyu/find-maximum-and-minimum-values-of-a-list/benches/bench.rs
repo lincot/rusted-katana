@@ -3,7 +3,7 @@
 extern crate test;
 use core::array;
 use find_maximum_and_minimum_values_of_a_list::{maximum, minimum};
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

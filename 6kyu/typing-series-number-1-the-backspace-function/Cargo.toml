@@ -1,6 +1,6 @@
 [package]
 name = "typing-series-number-1-the-backspace-function"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

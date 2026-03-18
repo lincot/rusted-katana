@@ -80,17 +80,19 @@ impl Projectile {
 
 unsafe fn write_with_up_to_three_fractional_digits(res: &mut String, n: f64) {
     let n = (n * 1000.).round() as u64;
-    res.write_num_unchecked(n / 1000, 10, false, false);
+    unsafe { res.write_num_unchecked(n / 1000, 10, false, false) };
     let d0 = b'0' + (n % 1000 / 100) as u8;
     let d1 = b'0' + (n % 100 / 10) as u8;
     let d2 = b'0' + (n % 10) as u8;
-    res.as_mut_vec().push_unchecked(b'.');
-    res.as_mut_vec().push_unchecked(d0);
-    if d1 != b'0' || d2 != b'0' {
-        res.as_mut_vec().push_unchecked(d1);
-    }
-    if d2 != b'0' {
-        res.as_mut_vec().push_unchecked(d2);
+    unsafe {
+        res.as_mut_vec().push_unchecked(b'.');
+        res.as_mut_vec().push_unchecked(d0);
+        if d1 != b'0' || d2 != b'0' {
+            res.as_mut_vec().push_unchecked(d1);
+        }
+        if d2 != b'0' {
+            res.as_mut_vec().push_unchecked(d2);
+        }
     }
 }
 

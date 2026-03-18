@@ -2,7 +2,7 @@
 
 extern crate test;
 use grasshopper_terminal_game_combat_function_1::combat;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

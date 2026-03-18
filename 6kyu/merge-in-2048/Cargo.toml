@@ -1,6 +1,6 @@
 [package]
 name = "merge-in-2048"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

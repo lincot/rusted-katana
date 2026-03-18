@@ -2,7 +2,7 @@
 
 extern crate test;
 use polynomials_ii_coefficients_in_a_list::calc_poly;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

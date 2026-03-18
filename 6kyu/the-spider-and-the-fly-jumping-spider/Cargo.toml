@@ -1,6 +1,6 @@
 [package]
 name = "the-spider-and-the-fly-jumping-spider"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

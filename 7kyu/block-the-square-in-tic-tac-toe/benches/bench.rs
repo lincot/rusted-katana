@@ -2,7 +2,7 @@
 
 extern crate test;
 use block_the_square_in_tic_tac_toe::block_player;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

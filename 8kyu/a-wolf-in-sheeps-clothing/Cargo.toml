@@ -1,6 +1,6 @@
 [package]
 name = "a-wolf-in-sheeps-clothing"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 digital = { workspace = true }

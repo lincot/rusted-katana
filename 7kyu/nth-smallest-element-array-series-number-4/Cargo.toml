@@ -1,6 +1,6 @@
 [package]
 name = "nth-smallest-element-array-series-number-4"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

@@ -2,7 +2,7 @@
 
 extern crate test;
 use solution_8kyu_interpreters_hq9_plus::hq9;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

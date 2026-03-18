@@ -2,7 +2,7 @@
 
 extern crate test;
 use compute_element_in_aitkens_array::aitken;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

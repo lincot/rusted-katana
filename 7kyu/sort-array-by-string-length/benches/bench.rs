@@ -5,7 +5,7 @@ use core::array;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use sort_array_by_string_length::sort_by_length;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -2,7 +2,7 @@
 
 extern crate test;
 use resistor_color_codes::decode_resistor_colors;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

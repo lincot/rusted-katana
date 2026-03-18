@@ -2,7 +2,7 @@
 
 extern crate test;
 use are_you_playing_banjo::are_you_playing_banjo;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_martin(bencher: &mut Bencher) {

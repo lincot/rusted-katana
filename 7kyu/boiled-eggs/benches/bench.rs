@@ -2,7 +2,7 @@
 
 extern crate test;
 use boiled_eggs::cooking_time;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -1,6 +1,6 @@
 [package]
 name = "is-this-a-full-cycle"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

@@ -2,7 +2,7 @@
 
 extern crate test;
 use guess_the_array::guess;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 const fn create_array<const N: usize>() -> [i32; N] {
     let mut res = [0; N];

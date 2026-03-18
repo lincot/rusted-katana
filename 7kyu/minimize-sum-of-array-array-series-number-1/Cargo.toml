@@ -1,6 +1,6 @@
 [package]
 name = "minimize-sum-of-array-array-series-number-1"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 vqsort-rs = { workspace = true }

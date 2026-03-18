@@ -2,7 +2,7 @@
 
 extern crate test;
 use playing_with_digits::dig_pow;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

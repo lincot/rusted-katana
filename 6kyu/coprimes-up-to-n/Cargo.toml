@@ -1,6 +1,6 @@
 [package]
 name = "coprimes-up-to-n"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 heapless = { workspace = true }

@@ -1,6 +1,6 @@
 [package]
 name = "ieee-754-floating-point-numbers"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

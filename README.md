@@ -21,7 +21,7 @@ Current progress:
 are allowed, even if they are not accepted by Codewars
 
 - solutions are safe (more on it in the [safety section](#safety));
-*nevertheless, there are 769 `unsafe` blocks*
+*nevertheless, there are 817 `unsafe` blocks*
 
 - even though most of the tests on Codewars have only ASCII input,
 they use Rust's standard UTF-8–encoded strings, so solutions for string katas

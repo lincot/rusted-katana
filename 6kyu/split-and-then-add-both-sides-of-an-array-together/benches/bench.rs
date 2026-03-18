@@ -5,7 +5,7 @@ use core::array;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use split_and_then_add_both_sides_of_an_array_together::split_and_add;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -2,7 +2,7 @@
 
 extern crate test;
 use parts_of_a_list::part_list;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

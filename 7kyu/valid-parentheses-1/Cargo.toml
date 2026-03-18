@@ -1,6 +1,6 @@
 [package]
 name = "valid-parentheses-1"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

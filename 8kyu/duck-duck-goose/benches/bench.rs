@@ -1,8 +1,8 @@
 #![feature(test)]
 
 extern crate test;
-use duck_duck_goose::{duck_duck_goose, Player};
-use test::{black_box, Bencher};
+use duck_duck_goose::{Player, duck_duck_goose};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

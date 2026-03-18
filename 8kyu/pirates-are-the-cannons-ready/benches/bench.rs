@@ -3,7 +3,7 @@
 extern crate test;
 use pirates_are_the_cannons_ready::cannons_ready;
 use std::collections::HashMap;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_ready(bencher: &mut Bencher) {

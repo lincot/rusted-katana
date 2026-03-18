@@ -2,7 +2,7 @@
 
 extern crate test;
 use nth_power_rules_them_all::modified_sum;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

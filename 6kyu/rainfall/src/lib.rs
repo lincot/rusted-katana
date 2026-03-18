@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/56a32dd6e4f4748cc3000006/train/rust>
 
-use core::mem::{transmute, MaybeUninit};
+use core::mem::{MaybeUninit, transmute};
 
 pub fn mean(town: &str, strng: &str) -> f64 {
     let Some(records) = get_city_records(strng, town) else {

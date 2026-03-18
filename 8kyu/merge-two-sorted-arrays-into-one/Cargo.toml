@@ -1,6 +1,6 @@
 [package]
 name = "merge-two-sorted-arrays-into-one"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

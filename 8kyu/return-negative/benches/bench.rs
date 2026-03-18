@@ -2,7 +2,7 @@
 
 extern crate test;
 use return_negative::make_negative;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

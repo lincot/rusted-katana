@@ -2,7 +2,7 @@
 
 extern crate test;
 use holiday_vi_shark_pontoon::shark;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -3,7 +3,7 @@
 extern crate test;
 use convert_integer_to_float_while_rounding_up_and_down::{iceil, ifloor};
 use num_bigint::BigInt;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_ifloor(bencher: &mut Bencher) {

@@ -2,7 +2,7 @@
 
 extern crate test;
 use help_suzuki_rake_his_garden::rake_garden;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

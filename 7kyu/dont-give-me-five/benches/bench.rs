@@ -2,7 +2,7 @@
 
 extern crate test;
 use dont_give_me_five::dont_give_me_five;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

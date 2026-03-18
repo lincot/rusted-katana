@@ -1,6 +1,6 @@
 [package]
 name = "error-correction-number-1-hamming-code"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

@@ -34,14 +34,16 @@ pub fn duplicate_encode(word: &str) -> String {
 unsafe fn duplicate_encode_ascii(word: &str) -> String {
     let mut counts = [0usize; 128];
     for b in word.bytes().map(|b| b.to_ascii_lowercase()) {
-        *counts.get_unchecked_mut(b as usize) += 1;
+        unsafe { *counts.get_unchecked_mut(b as usize) += 1 };
     }
     let mut res = String::with_capacity(word.len());
     for b in word.bytes().map(|b| b.to_ascii_lowercase()) {
-        if *unsafe { counts.get_unchecked(b as usize) } > 1 {
-            res.push_unchecked(')');
-        } else {
-            res.push_unchecked('(');
+        unsafe {
+            if *counts.get_unchecked(b as usize) > 1 {
+                res.push_unchecked(')');
+            } else {
+                res.push_unchecked('(');
+            }
         }
     }
     res

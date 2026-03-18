@@ -2,7 +2,7 @@
 
 extern crate test;
 use an_osha_approved_ladder::is_ladder_safe;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

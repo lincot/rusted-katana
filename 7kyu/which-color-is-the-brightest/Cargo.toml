@@ -1,6 +1,6 @@
 [package]
 name = "which-color-is-the-brightest"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

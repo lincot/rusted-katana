@@ -2,7 +2,7 @@
 
 extern crate test;
 use round_by_0_dot_5_steps::solution;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

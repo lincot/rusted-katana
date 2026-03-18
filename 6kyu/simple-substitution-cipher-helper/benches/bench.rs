@@ -2,7 +2,7 @@
 
 extern crate test;
 use simple_substitution_cipher_helper::Cipher;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

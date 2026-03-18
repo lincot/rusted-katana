@@ -2,7 +2,7 @@
 
 extern crate test;
 use simple_fun_number_10_range_bit_counting::range_bit_count;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

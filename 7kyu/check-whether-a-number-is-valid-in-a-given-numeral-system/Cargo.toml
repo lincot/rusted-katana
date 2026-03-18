@@ -1,6 +1,6 @@
 [package]
 name = "check-whether-a-number-is-valid-in-a-given-numeral-system"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

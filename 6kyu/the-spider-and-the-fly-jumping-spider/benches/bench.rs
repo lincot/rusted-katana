@@ -1,7 +1,7 @@
 #![feature(test)]
 
 extern crate test;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use the_spider_and_the_fly_jumping_spider::spider_to_fly;
 
 #[bench]

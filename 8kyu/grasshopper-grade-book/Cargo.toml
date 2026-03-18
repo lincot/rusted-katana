@@ -1,6 +1,6 @@
 [package]
 name = "grasshopper-grade-book"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

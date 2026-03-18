@@ -1,6 +1,6 @@
 [package]
 name = "the-poet-and-the-pendulum"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

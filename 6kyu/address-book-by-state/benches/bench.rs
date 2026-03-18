@@ -2,7 +2,7 @@
 
 extern crate test;
 use address_book_by_state::by_state;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

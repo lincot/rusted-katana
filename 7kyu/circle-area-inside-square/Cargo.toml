@@ -1,6 +1,6 @@
 [package]
 name = "circle-area-inside-square"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

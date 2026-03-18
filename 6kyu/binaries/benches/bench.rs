@@ -2,7 +2,7 @@
 
 extern crate test;
 use binaries::{code, decode};
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_decode(bencher: &mut Bencher) {

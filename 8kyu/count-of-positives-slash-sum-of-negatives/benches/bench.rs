@@ -5,7 +5,7 @@ use core::array;
 use count_of_positives_slash_sum_of_negatives::count_positives_sum_negatives;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

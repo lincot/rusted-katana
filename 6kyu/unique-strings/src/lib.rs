@@ -37,7 +37,7 @@ unsafe fn uniq_count_ascii(s: &str) -> BigUint {
     let mut frequencies = [0; 26];
     for b in s.bytes() {
         let i = if b >= b'a' { b - b'a' } else { b - b'A' } as usize;
-        *frequencies.get_unchecked_mut(i) += 1;
+        unsafe { *frequencies.get_unchecked_mut(i) += 1 };
     }
 
     let mut res = factorial(s.len());

@@ -1,6 +1,6 @@
 [package]
 name = "reduce-my-fraction"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 num-integer = { workspace = true }

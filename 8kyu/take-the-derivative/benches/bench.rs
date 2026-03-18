@@ -2,7 +2,7 @@
 
 extern crate test;
 use take_the_derivative::derive;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

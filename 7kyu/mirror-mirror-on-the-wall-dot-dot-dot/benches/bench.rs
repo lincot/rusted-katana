@@ -5,7 +5,7 @@ use core::array;
 use mirror_mirror_on_the_wall_dot_dot_dot::mirror;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

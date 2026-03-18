@@ -1,6 +1,6 @@
 [package]
 name = "string-array-duplicates"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

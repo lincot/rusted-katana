@@ -1,7 +1,7 @@
 #![feature(test)]
 
 extern crate test;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use thinkful_number_drills_blue_and_red_marbles::guess_blue;
 
 #[bench]

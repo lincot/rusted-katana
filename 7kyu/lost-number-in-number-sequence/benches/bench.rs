@@ -5,7 +5,7 @@ use core::array;
 use lost_number_in_number_sequence::find_deleted_number;
 use rand::seq::SliceRandom;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

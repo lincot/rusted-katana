@@ -2,7 +2,7 @@
 
 extern crate test;
 use game_hit_the_target_2nd_part::solution;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

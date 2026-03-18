@@ -5,7 +5,7 @@ use core::array;
 use number_of_measurements_to_spot_the_counterfeit_coin::how_many_measurements;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

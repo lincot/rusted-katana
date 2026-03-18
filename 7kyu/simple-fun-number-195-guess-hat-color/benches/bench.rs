@@ -2,10 +2,10 @@
 
 extern crate test;
 use simple_fun_number_195_guess_hat_color::{
-    guess_hat_color,
     Color::{Black, White},
+    guess_hat_color,
 };
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

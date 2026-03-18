@@ -1,6 +1,6 @@
 [package]
 name = "the-freeway-game"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

@@ -2,7 +2,7 @@
 
 extern crate test;
 use consecutive_vowels_in_a_string::get_the_vowels;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -2,7 +2,7 @@
 
 extern crate test;
 use olympic_rings::olympic_ring;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

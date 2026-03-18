@@ -2,7 +2,7 @@
 
 extern crate test;
 use ones_and_zeros::binary_slice_to_number;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

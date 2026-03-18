@@ -1,6 +1,6 @@
 [package]
 name = "simple-fun-number-79-delete-a-digit"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

@@ -1,6 +1,6 @@
 [package]
 name = "reverse-the-bits-in-an-integer"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

@@ -5,7 +5,7 @@ use core::array;
 use delete_occurrences_of_an_element_if_it_occurs_more_than_n_times::delete_nth;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

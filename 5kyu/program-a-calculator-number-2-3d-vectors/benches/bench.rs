@@ -3,7 +3,7 @@
 extern crate test;
 use core::ops::Add;
 use program_a_calculator_number_2_3d_vectors::Vector;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_new(bencher: &mut Bencher) {

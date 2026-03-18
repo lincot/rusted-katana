@@ -2,7 +2,7 @@
 
 extern crate test;
 use hold_your_breath::diving_minigame;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

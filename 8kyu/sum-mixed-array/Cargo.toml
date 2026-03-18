@@ -1,6 +1,6 @@
 [package]
 name = "sum-mixed-array"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 either = { workspace = true }

@@ -144,38 +144,50 @@ mod tests {
 
     #[test]
     fn test_max_n() {
-        assert!(i64::try_from(get_capacity_selfie_and_rot_bytes(
-            get_len(MAX_N_64),
-            MAX_N_64
-        ))
-        .is_ok());
-        assert!(i64::try_from(get_capacity_selfie_and_rot_bytes(
-            get_len(MAX_N_64 + 1),
-            MAX_N_64 + 1
-        ))
-        .is_err());
+        assert!(
+            i64::try_from(get_capacity_selfie_and_rot_bytes(
+                get_len(MAX_N_64),
+                MAX_N_64
+            ))
+            .is_ok()
+        );
+        assert!(
+            i64::try_from(get_capacity_selfie_and_rot_bytes(
+                get_len(MAX_N_64 + 1),
+                MAX_N_64 + 1
+            ))
+            .is_err()
+        );
 
-        assert!(i32::try_from(get_capacity_selfie_and_rot_bytes(
-            get_len(MAX_N_32),
-            MAX_N_32
-        ))
-        .is_ok());
-        assert!(i32::try_from(get_capacity_selfie_and_rot_bytes(
-            get_len(MAX_N_32 + 1),
-            MAX_N_32 + 1
-        ))
-        .is_err());
+        assert!(
+            i32::try_from(get_capacity_selfie_and_rot_bytes(
+                get_len(MAX_N_32),
+                MAX_N_32
+            ))
+            .is_ok()
+        );
+        assert!(
+            i32::try_from(get_capacity_selfie_and_rot_bytes(
+                get_len(MAX_N_32 + 1),
+                MAX_N_32 + 1
+            ))
+            .is_err()
+        );
 
-        assert!(i16::try_from(get_capacity_selfie_and_rot_bytes(
-            get_len(MAX_N_16),
-            MAX_N_16
-        ))
-        .is_ok());
-        assert!(i16::try_from(get_capacity_selfie_and_rot_bytes(
-            get_len(MAX_N_16 + 1),
-            MAX_N_16 + 1
-        ))
-        .is_err());
+        assert!(
+            i16::try_from(get_capacity_selfie_and_rot_bytes(
+                get_len(MAX_N_16),
+                MAX_N_16
+            ))
+            .is_ok()
+        );
+        assert!(
+            i16::try_from(get_capacity_selfie_and_rot_bytes(
+                get_len(MAX_N_16 + 1),
+                MAX_N_16 + 1
+            ))
+            .is_err()
+        );
     }
 
     #[test]

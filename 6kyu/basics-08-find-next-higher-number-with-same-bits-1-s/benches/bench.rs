@@ -2,7 +2,7 @@
 
 extern crate test;
 use basics_08_find_next_higher_number_with_same_bits_1_s::next_higher;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

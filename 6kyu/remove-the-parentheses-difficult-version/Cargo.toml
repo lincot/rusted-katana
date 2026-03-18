@@ -1,6 +1,6 @@
 [package]
 name = "remove-the-parentheses-difficult-version"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

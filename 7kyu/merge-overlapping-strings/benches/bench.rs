@@ -2,7 +2,7 @@
 
 extern crate test;
 use merge_overlapping_strings::merge_strings;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

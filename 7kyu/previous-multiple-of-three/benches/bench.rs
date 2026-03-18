@@ -2,7 +2,7 @@
 
 extern crate test;
 use previous_multiple_of_three::prev_mult_of_three;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

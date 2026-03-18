@@ -5,7 +5,7 @@ use core::array;
 use finding_arrows_in_a_string::arrow_search;
 use rand::seq::IndexedRandom;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

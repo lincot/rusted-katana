@@ -2,7 +2,7 @@
 
 extern crate test;
 use bug_xcom_169_lion_ion_cannont::release_ions;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

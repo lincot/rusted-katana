@@ -2,7 +2,7 @@
 
 extern crate test;
 use jumping_number_special_numbers_series_number_4::jumping_number;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

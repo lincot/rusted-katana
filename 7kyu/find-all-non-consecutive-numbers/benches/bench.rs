@@ -3,7 +3,7 @@
 extern crate test;
 use core::array;
 use find_all_non_consecutive_numbers::all_non_consecutive;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

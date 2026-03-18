@@ -2,7 +2,7 @@
 
 extern crate test;
 use find_a_very_special_set_of_numbers_in_a_certain_range::find_us;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

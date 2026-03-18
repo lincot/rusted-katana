@@ -2,7 +2,7 @@
 
 extern crate test;
 use error_correction_number_1_hamming_code::{decode, encode};
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_encode(bencher: &mut Bencher) {

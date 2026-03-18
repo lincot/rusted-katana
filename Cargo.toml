@@ -17,6 +17,9 @@ members = [
 ]
 resolver = "2"
 
+[workspace.package]
+edition = "2024"
+
 [workspace.dependencies]
 # kata solutions
 bytecount = "0.6.9"

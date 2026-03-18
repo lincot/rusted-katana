@@ -1,6 +1,6 @@
 [package]
 name = "array-element-parity"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

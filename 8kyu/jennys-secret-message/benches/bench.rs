@@ -2,7 +2,7 @@
 
 extern crate test;
 use jennys_secret_message::greet;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_johny(bencher: &mut Bencher) {

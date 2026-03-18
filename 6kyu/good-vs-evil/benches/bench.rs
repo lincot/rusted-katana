@@ -2,7 +2,7 @@
 
 extern crate test;
 use good_vs_evil::good_vs_evil;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

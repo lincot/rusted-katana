@@ -1,6 +1,6 @@
 [package]
 name = "total-amount-of-points"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

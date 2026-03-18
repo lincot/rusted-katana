@@ -3,7 +3,7 @@
 extern crate test;
 use core::array;
 use dna_to_rna_conversion::dna_to_rna;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

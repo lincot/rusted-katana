@@ -1,6 +1,6 @@
 [package]
 name = "pascals-triangle"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

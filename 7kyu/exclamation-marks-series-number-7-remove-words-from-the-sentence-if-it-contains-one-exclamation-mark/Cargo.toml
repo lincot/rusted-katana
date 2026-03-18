@@ -1,6 +1,6 @@
 [package]
 name = "exclamation-marks-series-number-7-remove-words-from-the-sentence-if-it-contains-one-exclamation-mark"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

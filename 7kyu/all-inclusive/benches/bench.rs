@@ -2,7 +2,7 @@
 
 extern crate test;
 use all_inclusive::contain_all_rots;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_same_length(bencher: &mut Bencher) {

@@ -2,7 +2,7 @@
 
 extern crate test;
 use solution_16_plus_18_equals_214::add;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

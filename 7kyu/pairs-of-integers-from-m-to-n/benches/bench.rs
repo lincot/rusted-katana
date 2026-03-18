@@ -2,7 +2,7 @@
 
 extern crate test;
 use pairs_of_integers_from_m_to_n::generate_pairs;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

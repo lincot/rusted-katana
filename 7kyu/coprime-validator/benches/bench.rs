@@ -2,7 +2,7 @@
 
 extern crate test;
 use coprime_validator::are_coprime;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

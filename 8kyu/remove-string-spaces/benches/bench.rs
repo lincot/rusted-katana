@@ -2,7 +2,7 @@
 
 extern crate test;
 use remove_string_spaces::no_space;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

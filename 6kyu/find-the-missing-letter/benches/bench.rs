@@ -2,7 +2,7 @@
 
 extern crate test;
 use find_the_missing_letter::find_missing_letter;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

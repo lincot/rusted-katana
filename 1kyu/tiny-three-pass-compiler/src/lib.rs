@@ -67,7 +67,7 @@ impl<'a> Lexer<'a> {
             .iter()
             .position(|ch| !p(ch))
             .unwrap_or(self.0.len());
-        self.0.get_unchecked(..pos)
+        unsafe { self.0.get_unchecked(..pos) }
     }
 }
 
@@ -303,9 +303,9 @@ impl Compiler {
                 if last_space_or_symbol + 1 < i {
                     if last_space_or_symbol + 2 == i {
                         unsafe {
-                            res.push_unchecked(String::from_utf8_unchecked(vec![*program
-                                .as_bytes()
-                                .get_unchecked(last_space_or_symbol + 1)]));
+                            res.push_unchecked(String::from_utf8_unchecked(vec![
+                                *program.as_bytes().get_unchecked(last_space_or_symbol + 1),
+                            ]));
                         }
                     } else {
                         unsafe {

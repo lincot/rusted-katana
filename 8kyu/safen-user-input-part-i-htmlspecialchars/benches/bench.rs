@@ -2,7 +2,7 @@
 
 extern crate test;
 use safen_user_input_part_i_htmlspecialchars::html_special_chars;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -2,7 +2,7 @@
 
 extern crate test;
 use statistics_for_an_athletic_association::stati;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

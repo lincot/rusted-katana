@@ -2,7 +2,7 @@
 
 extern crate test;
 use roboscript_number_1_implement_syntax_highlighting::highlight;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -2,7 +2,7 @@
 
 extern crate test;
 use jumping_down_the_staircase::get_number_of_ways;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

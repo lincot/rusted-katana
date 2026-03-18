@@ -2,7 +2,7 @@
 
 extern crate test;
 use backwards_read_primes::backwards_prime;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -4,8 +4,16 @@ use core::array;
 use unchecked_std::prelude::*;
 
 pub fn by_state(str: &str) -> String {
-    let [mut arizona, mut california, mut idaho, mut indiana, mut massachusetts, mut oklahoma, mut pennsylvania, mut virginia] =
-        array::from_fn(|_| vec![]);
+    let [
+        mut arizona,
+        mut california,
+        mut idaho,
+        mut indiana,
+        mut massachusetts,
+        mut oklahoma,
+        mut pennsylvania,
+        mut virginia,
+    ] = array::from_fn(|_| vec![]);
     for line in str.split('\n') {
         let line = line.as_bytes();
         if line.len() < 2 {

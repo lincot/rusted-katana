@@ -1,6 +1,6 @@
 [package]
 name = "create-new-programming-mechanism-to-add-numbers"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

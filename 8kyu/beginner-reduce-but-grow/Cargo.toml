@@ -1,6 +1,6 @@
 [package]
 name = "beginner-reduce-but-grow"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

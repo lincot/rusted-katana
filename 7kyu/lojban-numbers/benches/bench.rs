@@ -2,7 +2,7 @@
 
 extern crate test;
 use lojban_numbers::convert_lojban;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

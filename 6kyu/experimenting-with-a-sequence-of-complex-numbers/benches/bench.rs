@@ -3,7 +3,7 @@
 extern crate test;
 use experimenting_with_a_sequence_of_complex_numbers::f;
 use num_complex::Complex;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -1,6 +1,6 @@
 [package]
 name = "never-visit-a"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

@@ -2,7 +2,7 @@
 
 extern crate test;
 use calculate_string_rotation::shifted_diff;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

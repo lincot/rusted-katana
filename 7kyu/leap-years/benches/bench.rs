@@ -2,7 +2,7 @@
 
 extern crate test;
 use leap_years::is_leap_year;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

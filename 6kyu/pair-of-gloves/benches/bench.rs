@@ -2,7 +2,7 @@
 
 extern crate test;
 use pair_of_gloves::number_of_pairs;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

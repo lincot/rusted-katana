@@ -2,7 +2,7 @@
 
 extern crate test;
 use special_multiples::count_spec_mult;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

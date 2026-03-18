@@ -1,6 +1,6 @@
 [package]
 name = "count-of-positives-slash-sum-of-negatives"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

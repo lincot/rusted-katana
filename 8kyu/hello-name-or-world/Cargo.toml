@@ -1,6 +1,6 @@
 [package]
 name = "hello-name-or-world"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

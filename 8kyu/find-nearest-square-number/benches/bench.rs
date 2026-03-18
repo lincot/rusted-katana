@@ -2,7 +2,7 @@
 
 extern crate test;
 use find_nearest_square_number::nearest_sq;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

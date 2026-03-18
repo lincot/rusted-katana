@@ -1,6 +1,6 @@
 [package]
 name = "fixme-replace-all-dots"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

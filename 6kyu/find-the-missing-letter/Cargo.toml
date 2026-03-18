@@ -1,6 +1,6 @@
 [package]
 name = "find-the-missing-letter"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

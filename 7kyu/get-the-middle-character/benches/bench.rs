@@ -2,7 +2,7 @@
 
 extern crate test;
 use get_the_middle_character::get_middle;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_ascii(bencher: &mut Bencher) {

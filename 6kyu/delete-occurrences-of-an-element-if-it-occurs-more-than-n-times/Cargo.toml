@@ -1,6 +1,6 @@
 [package]
 name = "delete-occurrences-of-an-element-if-it-occurs-more-than-n-times"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

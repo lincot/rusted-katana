@@ -2,7 +2,7 @@
 
 extern crate test;
 use beginner_series_number_2_clock::past;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

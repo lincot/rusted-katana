@@ -2,7 +2,7 @@
 
 extern crate test;
 use find_the_integer_partition_of_k_length_with_maximum_or_minimum_value_for_its_product_value::find_spec_partition;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

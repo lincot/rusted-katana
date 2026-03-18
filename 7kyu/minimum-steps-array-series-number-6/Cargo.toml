@@ -1,6 +1,6 @@
 [package]
 name = "minimum-steps-array-series-number-6"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 vqsort-rs = { workspace = true }

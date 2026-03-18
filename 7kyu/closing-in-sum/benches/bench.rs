@@ -2,7 +2,7 @@
 
 extern crate test;
 use closing_in_sum::closing_in_sum;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

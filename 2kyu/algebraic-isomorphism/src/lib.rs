@@ -174,8 +174,8 @@ pub fn plus_comm<A: 'static, B: 'static>() -> ISO<Result<A, B>, Result<B, A>> {
     )
 }
 
-pub fn plus_assoc<A: 'static, B: 'static, C: 'static>(
-) -> ISO<Result<Result<A, B>, C>, Result<A, Result<B, C>>> {
+pub fn plus_assoc<A: 'static, B: 'static, C: 'static>()
+-> ISO<Result<Result<A, B>, C>, Result<A, Result<B, C>>> {
     iso(
         |a_or_b_or_c| match a_or_b_or_c {
             Ok(Ok(a)) => Ok(a),

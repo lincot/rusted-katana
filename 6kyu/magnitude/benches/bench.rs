@@ -1,8 +1,8 @@
 #![feature(test)]
 
 extern crate test;
-use magnitude::{sqr_modulus, S};
-use test::{black_box, Bencher};
+use magnitude::{S, sqr_modulus};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

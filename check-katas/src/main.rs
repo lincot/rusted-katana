@@ -3,13 +3,13 @@
 
 use core::{
     cell::SyncUnsafeCell,
-    mem::{forget, MaybeUninit},
+    mem::{MaybeUninit, forget},
     sync::atomic::{AtomicBool, Ordering},
     time::Duration,
 };
 use std::{
-    fs::{read_dir, File},
-    io::{self, stderr, stdout, IoSlice, Read, Write},
+    fs::{File, read_dir},
+    io::{self, IoSlice, Read, Write, stderr, stdout},
 };
 use tokio::{sync::Notify, task::JoinSet};
 use unchecked_std::prelude::*;
@@ -27,9 +27,8 @@ async fn main() {
     let mut tasks = JoinSet::new();
 
     for kyu in b'1'..=b'8' {
-        for kata_dir in
-            read_dir(unsafe { core::str::from_utf8_unchecked(&[kyu, b'k', b'y', b'u']) }).unwrap()
-        {
+        let dir_path = [kyu, b'k', b'y', b'u'];
+        for kata_dir in read_dir(unsafe { core::str::from_utf8_unchecked(&dir_path) }).unwrap() {
             tasks.spawn(async move {
                 let kata_dir = kata_dir.unwrap().path().into_os_string();
                 check_kata(

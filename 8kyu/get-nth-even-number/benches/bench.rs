@@ -2,7 +2,7 @@
 
 extern crate test;
 use get_nth_even_number::nth_even;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

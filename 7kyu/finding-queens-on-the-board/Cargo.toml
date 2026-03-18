@@ -1,6 +1,6 @@
 [package]
 name = "finding-queens-on-the-board"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

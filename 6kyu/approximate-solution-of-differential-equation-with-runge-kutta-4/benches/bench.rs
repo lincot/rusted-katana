@@ -2,7 +2,7 @@
 
 extern crate test;
 use approximate_solution_of_differential_equation_with_runge_kutta_4::rk4;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 #[allow(clippy::suboptimal_flops)]

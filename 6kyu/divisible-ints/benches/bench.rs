@@ -2,7 +2,7 @@
 
 extern crate test;
 use divisible_ints::get_count;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

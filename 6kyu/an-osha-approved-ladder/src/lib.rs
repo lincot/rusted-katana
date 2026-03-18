@@ -96,7 +96,7 @@ enum RowType {
 unsafe fn get_row_type(row: &str) -> RowType {
     let row = row.as_bytes();
     if row.len() < 5 {
-        unreachable_unchecked();
+        unsafe { unreachable_unchecked() };
     }
 
     if row[0] != b'#' || row[row.len() - 1] != b'#' {

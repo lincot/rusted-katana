@@ -2,7 +2,7 @@
 
 extern crate test;
 use convert_string_to_camel_case::to_camel_case;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_ascii(bencher: &mut Bencher) {

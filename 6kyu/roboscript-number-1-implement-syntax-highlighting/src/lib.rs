@@ -4,20 +4,22 @@ use unchecked_std::prelude::*;
 
 pub fn highlight(code: &str) -> String {
     unsafe fn push_unchecked_beginning(s: &mut String, token: u8) {
-        match token {
-            b'F' => s.push_str_unchecked(r#"<span style="color: pink">"#),
-            b'L' => s.push_str_unchecked(r#"<span style="color: red">"#),
-            b'R' => s.push_str_unchecked(r#"<span style="color: green">"#),
-            token if token.is_ascii_digit() => {
-                s.push_str_unchecked(r#"<span style="color: orange">"#);
+        unsafe {
+            match token {
+                b'F' => s.push_str_unchecked(r#"<span style="color: pink">"#),
+                b'L' => s.push_str_unchecked(r#"<span style="color: red">"#),
+                b'R' => s.push_str_unchecked(r#"<span style="color: green">"#),
+                token if token.is_ascii_digit() => {
+                    s.push_str_unchecked(r#"<span style="color: orange">"#);
+                }
+                _ => {}
             }
-            _ => {}
         }
     }
 
     unsafe fn push_unchecked_end(s: &mut String, token: u8) {
         if !b"()".contains(&token) {
-            s.push_str_unchecked("</span>");
+            unsafe { s.push_str_unchecked("</span>") };
         }
     }
 

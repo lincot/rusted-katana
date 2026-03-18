@@ -1,7 +1,7 @@
 #![feature(test)]
 
 extern crate test;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use tidy_number_special_numbers_series_number_9::tidy_number;
 
 #[bench]

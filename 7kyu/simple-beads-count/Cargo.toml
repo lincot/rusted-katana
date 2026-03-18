@@ -1,6 +1,6 @@
 [package]
 name = "simple-beads-count"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

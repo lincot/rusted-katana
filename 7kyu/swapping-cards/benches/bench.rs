@@ -2,7 +2,7 @@
 
 extern crate test;
 use swapping_cards::swap_cards;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

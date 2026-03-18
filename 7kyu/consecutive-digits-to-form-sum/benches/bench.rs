@@ -2,7 +2,7 @@
 
 extern crate test;
 use consecutive_digits_to_form_sum::consecutive_ducks;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

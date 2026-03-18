@@ -2,7 +2,7 @@
 
 extern crate test;
 use merge_in_2048::merge;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

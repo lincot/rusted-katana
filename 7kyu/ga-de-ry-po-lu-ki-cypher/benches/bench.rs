@@ -2,7 +2,7 @@
 
 extern crate test;
 use ga_de_ry_po_lu_ki_cypher::encode;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

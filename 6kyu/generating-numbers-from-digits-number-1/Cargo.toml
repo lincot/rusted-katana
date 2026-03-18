@@ -1,6 +1,6 @@
 [package]
 name = "generating-numbers-from-digits-number-1"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 num-bigint = { workspace = true }

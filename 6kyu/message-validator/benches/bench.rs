@@ -2,7 +2,7 @@
 
 extern crate test;
 use message_validator::is_valid_message;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

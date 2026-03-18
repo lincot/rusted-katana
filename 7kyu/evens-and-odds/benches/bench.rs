@@ -2,7 +2,7 @@
 
 extern crate test;
 use evens_and_odds::evens_and_odds;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_15800(bencher: &mut Bencher) {

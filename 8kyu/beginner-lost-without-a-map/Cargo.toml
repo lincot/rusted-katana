@@ -1,6 +1,6 @@
 [package]
 name = "beginner-lost-without-a-map"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

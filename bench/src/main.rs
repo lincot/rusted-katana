@@ -6,14 +6,14 @@
 
 use core::{cell::SyncUnsafeCell, mem::MaybeUninit};
 use digital::NumToString;
-use reqwest::header::{HeaderMap, HeaderValue, COOKIE, USER_AGENT};
+use reqwest::header::{COOKIE, HeaderMap, HeaderValue, USER_AGENT};
 use serde::{Deserialize, Serialize};
 use std::{
     env,
     fs::{self, File},
-    io::{self, stderr, stdin, stdout, IoSlice, Read, StdoutLock, Write},
+    io::{self, IoSlice, Read, StdoutLock, Write, stderr, stdin, stdout},
     path::Path,
-    process::{exit, Command, Stdio},
+    process::{Command, Stdio, exit},
 };
 use tempfile::TempDir;
 use unchecked_std::prelude::*;
@@ -269,7 +269,7 @@ struct SolutionInfo {
 }
 
 fn fetch_page(reqwest_client: &reqwest::blocking::Client, url: &str) -> String {
-    let text = loop {
+    loop {
         let response = reqwest_client.get(url).send();
         match response {
             Ok(response) => {
@@ -283,8 +283,7 @@ fn fetch_page(reqwest_client: &reqwest::blocking::Client, url: &str) -> String {
                 panic!("{e}");
             }
         }
-    };
-    text
+    }
 }
 
 fn show_code(stdout: &mut StdoutLock<'_>, code: &str) -> io::Result<()> {
@@ -496,12 +495,14 @@ unsafe fn replace_macro_use(res: &mut String, code: &[u8], i: &mut usize) -> boo
             .rposition(u8::is_ascii_whitespace)
             .unwrap()
         + 1;
-    assert!(core::str::from_utf8_unchecked(code)[*i..mod_name_start].contains("extern crate"));
-    res.push_str_unchecked("use ");
-    res.push_str_unchecked(core::str::from_utf8_unchecked(
-        &code[mod_name_start..mod_name_end],
-    ));
-    res.push_str_unchecked("::*;");
+    unsafe {
+        assert!(core::str::from_utf8_unchecked(code)[*i..mod_name_start].contains("extern crate"));
+        res.push_str_unchecked("use ");
+        res.push_str_unchecked(core::str::from_utf8_unchecked(
+            &code[mod_name_start..mod_name_end],
+        ));
+        res.push_str_unchecked("::*;");
+    }
     *i = semicolon_pos + 1;
 
     true
@@ -543,14 +544,12 @@ rand_pcg = "0.10.1"
             in_dev_deps = false;
             continue;
         }
-        if in_dev_deps {
-            if let Some(equal_pos) = line.find(" = ") {
-                let dep_name = &line[..equal_pos];
-                if dep_name == "unchecked-std" {
-                    has_dev_unchecked_std = true;
-                }
-                dev_dep_names.push(dep_name);
+        if in_dev_deps && let Some(equal_pos) = line.find(" = ") {
+            let dep_name = &line[..equal_pos];
+            if dep_name == "unchecked-std" {
+                has_dev_unchecked_std = true;
             }
+            dev_dep_names.push(dep_name);
         }
     }
     if !has_dev_unchecked_std && fs::read_to_string(bench_rs)?.contains("unchecked_std") {
@@ -561,10 +560,10 @@ rand_pcg = "0.10.1"
         .iter()
         .map(|dep| {
             for line in workspace_cargo_toml.lines() {
-                if let Some(rest) = line.strip_prefix(dep) {
-                    if rest.starts_with(" = ") {
-                        return line;
-                    }
+                if let Some(rest) = line.strip_prefix(dep)
+                    && rest.starts_with(" = ")
+                {
+                    return line;
                 }
             }
             panic!("dev-dependency \"{dep}\" not found in workspace Cargo.toml");

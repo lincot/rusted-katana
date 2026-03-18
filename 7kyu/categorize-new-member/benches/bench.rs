@@ -2,7 +2,7 @@
 
 extern crate test;
 use categorize_new_member::open_or_senior;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

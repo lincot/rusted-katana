@@ -2,7 +2,7 @@
 
 extern crate test;
 use new_cashier_does_not_know_about_space_or_shift::get_order;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

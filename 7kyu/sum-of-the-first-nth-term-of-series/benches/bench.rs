@@ -2,7 +2,7 @@
 
 extern crate test;
 use sum_of_the_first_nth_term_of_series::series_sum;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

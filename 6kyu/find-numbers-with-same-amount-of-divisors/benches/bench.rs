@@ -2,7 +2,7 @@
 
 extern crate test;
 use find_numbers_with_same_amount_of_divisors::count_pairs_int;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

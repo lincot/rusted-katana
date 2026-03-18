@@ -3,7 +3,7 @@
 extern crate test;
 use core::array;
 use find_the_stray_number::stray;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

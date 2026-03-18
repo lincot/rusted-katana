@@ -1,6 +1,6 @@
 [package]
 name = "maximum-gap-array-series-number-4"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 vqsort-rs = { workspace = true }

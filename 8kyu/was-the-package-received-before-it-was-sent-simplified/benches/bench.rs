@@ -1,7 +1,7 @@
 #![feature(test)]
 
 extern crate test;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use was_the_package_received_before_it_was_sent_simplified::was_package_received_yesterday;
 
 #[bench]

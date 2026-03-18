@@ -2,7 +2,7 @@
 
 extern crate test;
 use ieee_754_floating_point_numbers::{f32_to_ieee_754, f64_to_ieee_754};
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_f32(bencher: &mut Bencher) {

@@ -1,6 +1,6 @@
 [package]
 name = "growth-of-a-population"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

@@ -2,7 +2,7 @@
 
 extern crate test;
 use pack_some_chocolates::make_chocolates;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

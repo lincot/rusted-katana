@@ -15,9 +15,5 @@ pub fn max_sum_between_two_negatives(nums: &[i32]) -> Option<i32> {
             sum += num;
         }
     }
-    if res >= 0 {
-        Some(res)
-    } else {
-        None
-    }
+    if res >= 0 { Some(res) } else { None }
 }

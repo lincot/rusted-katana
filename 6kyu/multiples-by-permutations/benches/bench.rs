@@ -2,7 +2,7 @@
 
 extern crate test;
 use multiples_by_permutations::search_perm_mult;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

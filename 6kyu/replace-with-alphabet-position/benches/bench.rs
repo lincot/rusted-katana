@@ -2,7 +2,7 @@
 
 extern crate test;
 use replace_with_alphabet_position::alphabet_position;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

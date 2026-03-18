@@ -2,7 +2,7 @@
 
 extern crate test;
 use summing_a_numbers_digits::sum_digits;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

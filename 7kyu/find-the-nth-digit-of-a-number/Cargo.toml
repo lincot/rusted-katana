@@ -1,6 +1,6 @@
 [package]
 name = "find-the-nth-digit-of-a-number"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

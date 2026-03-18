@@ -2,7 +2,7 @@
 
 extern crate test;
 use over_the_road_1::over_the_road;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

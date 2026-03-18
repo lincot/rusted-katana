@@ -1,6 +1,6 @@
 [package]
 name = "how-many-days-are-we-represented-in-a-foreign-country"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

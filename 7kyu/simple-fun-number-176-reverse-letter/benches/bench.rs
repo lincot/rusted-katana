@@ -2,7 +2,7 @@
 
 extern crate test;
 use simple_fun_number_176_reverse_letter::reverse_letters;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_ascii(bencher: &mut Bencher) {

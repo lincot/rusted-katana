@@ -2,7 +2,7 @@
 
 extern crate test;
 use substituting_variables_into_strings_padded_numbers::solution;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

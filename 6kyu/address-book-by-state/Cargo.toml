@@ -1,6 +1,6 @@
 [package]
 name = "address-book-by-state"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

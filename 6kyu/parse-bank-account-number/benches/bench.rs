@@ -2,7 +2,7 @@
 
 extern crate test;
 use parse_bank_account_number::parse_bank_account;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

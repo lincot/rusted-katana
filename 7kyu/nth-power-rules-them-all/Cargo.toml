@@ -1,6 +1,6 @@
 [package]
 name = "nth-power-rules-them-all"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

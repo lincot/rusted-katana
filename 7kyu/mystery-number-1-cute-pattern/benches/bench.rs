@@ -2,7 +2,7 @@
 
 extern crate test;
 use mystery_number_1_cute_pattern::cute_pattern;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

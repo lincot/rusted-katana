@@ -2,7 +2,7 @@
 
 extern crate test;
 use fun_with_binary_numbers::solution;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

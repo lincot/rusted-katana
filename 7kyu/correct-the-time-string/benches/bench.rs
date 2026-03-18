@@ -2,7 +2,7 @@
 
 extern crate test;
 use correct_the_time_string::time_correct;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -1,6 +1,6 @@
 [package]
 name = "split-and-then-add-both-sides-of-an-array-together"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

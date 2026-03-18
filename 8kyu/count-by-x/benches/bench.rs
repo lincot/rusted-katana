@@ -2,7 +2,7 @@
 
 extern crate test;
 use count_by_x::count_by;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

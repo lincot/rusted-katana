@@ -5,9 +5,5 @@ pub use preloaded::Color;
 mod preloaded;
 
 pub fn guess_hat_color(_a: Color, b: Color, c: Color, _d: Color) -> usize {
-    if b == c {
-        1
-    } else {
-        2
-    }
+    if b == c { 1 } else { 2 }
 }

@@ -1,6 +1,6 @@
 [package]
 name = "simple-time-difference"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 digital = { workspace = true }

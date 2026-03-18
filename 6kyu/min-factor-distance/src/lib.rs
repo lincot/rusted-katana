@@ -96,8 +96,10 @@ fn get_divisors_odd(mut n: u32) -> Vec<u32> {
 }
 
 unsafe fn push_unchecked_with_multiples(vec: &mut Vec<u32>, x: u32, n_multiples: usize) {
-    vec.push_unchecked(x);
-    vec.extend_from_within_unchecked(..n_multiples);
+    unsafe {
+        vec.push_unchecked(x);
+        vec.extend_from_within_unchecked(..n_multiples);
+    }
     vec.iter_mut().rev().take(n_multiples).for_each(|n| {
         *n *= x;
     });

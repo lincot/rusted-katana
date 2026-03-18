@@ -2,7 +2,7 @@
 
 extern crate test;
 use area_of_an_arrow::arrow_area;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -1,6 +1,6 @@
 [package]
 name = "mirror-mirror-on-the-wall-dot-dot-dot"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

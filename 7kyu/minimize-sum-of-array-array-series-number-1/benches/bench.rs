@@ -5,7 +5,7 @@ use core::array;
 use minimize_sum_of_array_array_series_number_1::min_sum;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

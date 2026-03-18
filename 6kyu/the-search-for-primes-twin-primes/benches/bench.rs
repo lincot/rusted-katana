@@ -1,7 +1,7 @@
 #![feature(test)]
 
 extern crate test;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use the_search_for_primes_twin_primes::twin_prime;
 
 #[bench]

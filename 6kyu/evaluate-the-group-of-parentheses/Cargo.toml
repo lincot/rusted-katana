@@ -1,6 +1,6 @@
 [package]
 name = "evaluate-the-group-of-parentheses"
-edition = "2021"
+edition = { workspace = true }
 
 [lints]
 workspace = true

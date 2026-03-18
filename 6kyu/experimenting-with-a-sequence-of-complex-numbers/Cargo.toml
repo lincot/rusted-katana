@@ -1,6 +1,6 @@
 [package]
 name = "experimenting-with-a-sequence-of-complex-numbers"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 num-complex = { workspace = true }

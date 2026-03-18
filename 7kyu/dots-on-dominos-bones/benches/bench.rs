@@ -2,7 +2,7 @@
 
 extern crate test;
 use dots_on_dominos_bones::dots_on_domino_bones;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

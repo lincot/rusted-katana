@@ -1,6 +1,6 @@
 [package]
 name = "the-supermarket-queue"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }

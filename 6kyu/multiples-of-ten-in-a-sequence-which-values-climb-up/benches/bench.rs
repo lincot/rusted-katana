@@ -2,7 +2,7 @@
 
 extern crate test;
 use multiples_of_ten_in_a_sequence_which_values_climb_up::find_multiples_of_10_sf;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

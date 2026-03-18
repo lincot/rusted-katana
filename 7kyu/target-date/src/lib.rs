@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/569218bc919ccba77000000b/train/rust>
 
-use chrono::{naive::NaiveDate, TimeDelta};
+use chrono::{TimeDelta, naive::NaiveDate};
 
 pub fn date_nb_days(a0: i32, a: i32, p: i32) -> String {
     let p = (p as f64).mul_add(1. / 100. / 360., 1.);

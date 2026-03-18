@@ -2,7 +2,7 @@
 
 extern crate test;
 use score_from_permutations_of_combinations_of_an_integer::sc_perm_comb;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

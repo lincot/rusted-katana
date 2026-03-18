@@ -2,7 +2,7 @@
 
 extern crate test;
 use simple_beads_count::count_red_beads;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

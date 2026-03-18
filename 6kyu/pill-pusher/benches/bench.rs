@@ -2,7 +2,7 @@
 
 extern crate test;
 use pill_pusher::prescribe;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -2,7 +2,7 @@
 
 extern crate test;
 use basic_mathematical_operations::basic_op;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -1,6 +1,6 @@
 [package]
 name = "sort-array-by-string-length"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 radsort = { workspace = true }

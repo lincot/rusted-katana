@@ -2,7 +2,7 @@
 
 extern crate test;
 use extra_perfect_numbers_special_numbers_series_number_7::extra_perfect;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

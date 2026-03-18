@@ -2,7 +2,7 @@
 
 extern crate test;
 use rock_paper_scissors::rps;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench1(bencher: &mut Bencher) {

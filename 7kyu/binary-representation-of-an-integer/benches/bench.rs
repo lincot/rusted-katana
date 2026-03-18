@@ -2,7 +2,7 @@
 
 extern crate test;
 use binary_representation_of_an_integer::show_bits;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

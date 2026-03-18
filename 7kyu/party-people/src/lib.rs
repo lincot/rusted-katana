@@ -10,6 +10,6 @@ pub fn party_people(lst: &[u32]) -> u32 {
     lst.iter()
         .enumerate()
         .rev()
-        .skip_while(|(i, &x)| x as usize > i + 1)
+        .skip_while(|&(i, &x)| x as usize > i + 1)
         .count() as u32
 }

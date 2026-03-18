@@ -2,7 +2,7 @@
 
 extern crate test;
 use min_factor_distance::min_distance;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

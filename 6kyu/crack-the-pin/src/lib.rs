@@ -33,14 +33,12 @@ fn compute_table() -> IdHashMap<u32, u32> {
         for d1 in 0..10 {
             for d2 in 0..10 {
                 for d3 in 0..10 {
-                    let mut word1 = 0x8030;
-                    for d4 in 0..10 {
+                    for (word1, d4) in (0x8030..).zip(0..10) {
                         let n = 10000 * d0 + 1000 * d1 + 100 * d2 + 10 * d3 + d4;
                         if res.len() == res.capacity() {
                             unsafe { unreachable_unchecked() };
                         }
                         res.insert(compress_md5(md5(word0, word1)), n);
-                        word1 += 1;
                     }
                     word0 += 0x0100_0000;
                 }

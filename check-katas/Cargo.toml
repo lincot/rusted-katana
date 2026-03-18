@@ -1,6 +1,6 @@
 [package]
 name = "check-katas"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 reqwest = { workspace = true }

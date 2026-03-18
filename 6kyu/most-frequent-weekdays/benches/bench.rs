@@ -2,7 +2,7 @@
 
 extern crate test;
 use most_frequent_weekdays::most_frequent_days;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_1984(bencher: &mut Bencher) {

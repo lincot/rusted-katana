@@ -2,7 +2,7 @@
 
 extern crate test;
 use character_with_longest_consecutive_repetition::longest_repetition;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_ascii(bencher: &mut Bencher) {

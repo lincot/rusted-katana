@@ -2,7 +2,7 @@
 
 extern crate test;
 use does_my_number_look_big_in_this::narcissistic;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

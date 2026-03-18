@@ -1,6 +1,6 @@
 [package]
 name = "convert-integer-to-float-while-rounding-up-and-down"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 num-bigint = { workspace = true }

@@ -2,7 +2,7 @@
 
 extern crate test;
 use convert_boolean_values_to_strings_yes_or_no::bool_to_word;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

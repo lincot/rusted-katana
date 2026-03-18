@@ -1,6 +1,6 @@
 [package]
 name = "moves-in-squared-strings-iii"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

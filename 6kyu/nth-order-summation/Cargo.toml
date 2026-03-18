@@ -1,6 +1,6 @@
 [package]
 name = "nth-order-summation"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 num-bigint = { workspace = true }

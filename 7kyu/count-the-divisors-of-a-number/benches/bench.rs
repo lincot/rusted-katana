@@ -2,7 +2,7 @@
 
 extern crate test;
 use count_the_divisors_of_a_number::divisors;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

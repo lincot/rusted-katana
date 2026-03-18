@@ -2,7 +2,7 @@
 
 extern crate test;
 use give_me_a_diamond::print;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

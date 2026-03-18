@@ -5,7 +5,7 @@ use core::array;
 use even_numbers_in_an_array::even_numbers;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

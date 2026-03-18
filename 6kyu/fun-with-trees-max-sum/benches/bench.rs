@@ -1,8 +1,8 @@
 #![feature(test)]
 
 extern crate test;
-use fun_with_trees_max_sum::{max_sum, TreeNode};
-use test::{black_box, Bencher};
+use fun_with_trees_max_sum::{TreeNode, max_sum};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

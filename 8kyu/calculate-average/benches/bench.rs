@@ -3,7 +3,7 @@
 extern crate test;
 use calculate_average::find_average;
 use core::array;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -1,6 +1,6 @@
 [package]
 name = "color-ghost"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 rand = { workspace = true, features = ["thread_rng"] }

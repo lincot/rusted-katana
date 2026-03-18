@@ -2,7 +2,7 @@
 
 extern crate test;
 use surrounding_primes_for_a_value::prime_bef_aft;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

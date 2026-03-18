@@ -1,6 +1,6 @@
 [package]
 name = "grid-index"
-edition = "2021"
+edition = { workspace = true }
 
 [dependencies]
 unchecked-std = { workspace = true }

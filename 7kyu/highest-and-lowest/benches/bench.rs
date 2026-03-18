@@ -2,7 +2,7 @@
 
 extern crate test;
 use highest_and_lowest::high_and_low;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

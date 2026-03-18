@@ -2,7 +2,7 @@
 
 extern crate test;
 use braking_well::{dist, speed};
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench_dist(bencher: &mut Bencher) {

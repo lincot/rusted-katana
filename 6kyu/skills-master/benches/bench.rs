@@ -5,7 +5,7 @@ use rand::prelude::*;
 use rand_pcg::Pcg64Mcg;
 use skills_master::count_skills;
 use std::collections::{HashMap, HashSet};
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

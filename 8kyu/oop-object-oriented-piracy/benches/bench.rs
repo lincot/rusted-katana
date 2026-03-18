@@ -2,7 +2,7 @@
 
 extern crate test;
 use oop_object_oriented_piracy::Ship;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

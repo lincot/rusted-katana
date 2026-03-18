@@ -2,7 +2,7 @@
 
 extern crate test;
 use holiday_iii_fire_on_the_boat::fire_fight;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

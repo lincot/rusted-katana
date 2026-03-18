@@ -2,7 +2,7 @@
 
 extern crate test;
 use is_there_an_odd_bit::any_odd;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

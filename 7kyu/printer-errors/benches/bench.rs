@@ -2,7 +2,7 @@
 
 extern crate test;
 use printer_errors::printer_error;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

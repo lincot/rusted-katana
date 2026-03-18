@@ -2,7 +2,7 @@
 
 extern crate test;
 use switch_it_up::switch_it_up;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

@@ -2,7 +2,7 @@
 
 extern crate test;
 use fast_cooking_pancakes::cook_pancakes;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

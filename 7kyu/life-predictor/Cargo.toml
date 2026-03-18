@@ -1,6 +1,6 @@
 [package]
 name = "life-predictor"
-edition = "2021"
+edition = { workspace = true }
 
 [dev-dependencies]
 chrono = { workspace = true }

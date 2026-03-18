@@ -1,7 +1,7 @@
 #![feature(test)]
 
 extern crate test;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 use v_a_p_o_r_c_o_d_e::vaporcode;
 
 #[bench]

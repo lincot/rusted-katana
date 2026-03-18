@@ -2,7 +2,7 @@
 
 extern crate test;
 use parse_nice_int_from_char_problem::get_age;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

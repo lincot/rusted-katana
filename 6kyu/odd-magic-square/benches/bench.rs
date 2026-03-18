@@ -2,7 +2,7 @@
 
 extern crate test;
 use odd_magic_square::magic_square;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

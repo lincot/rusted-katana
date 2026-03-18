@@ -2,7 +2,7 @@
 
 extern crate test;
 use converting_12_hour_time_to_24_hour_time::to24hourtime;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {

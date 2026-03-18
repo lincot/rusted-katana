@@ -2,7 +2,7 @@
 
 extern crate test;
 use generate_range_of_integers::generate_range;
-use test::{black_box, Bencher};
+use test::{Bencher, black_box};
 
 #[bench]
 fn bench(bencher: &mut Bencher) {
