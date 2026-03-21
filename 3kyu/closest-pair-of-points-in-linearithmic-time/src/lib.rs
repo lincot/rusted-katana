@@ -3,8 +3,8 @@
 use core::cmp::Ordering;
 
 pub fn closest_pair(points: &[(f64, f64)]) -> ((f64, f64), (f64, f64)) {
-    #[expect(clippy::suboptimal_flops)]
-    let dist_squared = |a: (f64, f64), b: (f64, f64)| (a.0 - b.0).powi(2) + (a.1 - b.1).powi(2);
+    let dist_squared =
+        |a: (f64, f64), b: (f64, f64)| (a.0 - b.0).mul_add(a.0 - b.0, (a.1 - b.1).powi(2));
 
     let mut points = points.to_vec().into_boxed_slice();
     points.sort_unstable_by(|a, b| {

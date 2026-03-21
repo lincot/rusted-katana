@@ -3,7 +3,7 @@
 # rusted katana
 
 Highly optimized solutions to [Codewars](https://www.codewars.com/r/HLmVMg)
-challenges, written in Rust. Runs the benchmark suite in **645×** less total
+challenges, written in Rust. Runs the benchmark suite in **694×** less total
 time than the most upvoted Rust solutions.
 
 ![log-scale distribution histogram of speedups per benchmark](speedups.svg)
@@ -48,8 +48,6 @@ the kata is often benchmarked with all of those inputs, the worst-case input, or
 the middle-case input. If it's a string kata and ASCII versus non-ASCII
 makes a difference, both are benchmarked separately.
 
-We use the standard `test` crate benchmarks for simplicity and faster execution.
-
 Each solution is compared with the most upvoted solution using our
 [bench](./bench) tool. The tool fetches the most upvoted solution that passes
 the tests and is not authored by rusted katana contributors. It then benchmarks
@@ -60,6 +58,10 @@ session id from browser cookies and running the tool from the kata directory:
 ```sh
 CODEWARS_SESSION_ID=your_session_id cargo run --package rusted-katana-bench --release
 ```
+
+We use the standard `test` crate benchmarks for simplicity and faster execution.
+
+Benchmarks are compiled targeting the native CPU.
 
 ## safety
 

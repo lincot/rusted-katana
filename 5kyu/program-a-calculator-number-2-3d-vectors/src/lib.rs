@@ -14,9 +14,10 @@ impl Vector {
         Self { i, j, k }
     }
 
-    #[expect(clippy::suboptimal_flops)]
     pub fn get_magnitude(&self) -> f64 {
-        (self.i.powi(2) + self.j.powi(2) + self.k.powi(2)).sqrt()
+        self.i
+            .mul_add(self.i, self.j.mul_add(self.j, self.k.powi(2)))
+            .sqrt()
     }
 
     pub const fn get_i() -> Self {
@@ -51,17 +52,16 @@ impl Vector {
         }
     }
 
-    #[expect(clippy::suboptimal_flops)]
     pub fn dot(&self, other: Self) -> f64 {
-        self.i * other.i + self.j.mul_add(other.j, self.k * other.k)
+        self.i
+            .mul_add(other.i, self.j.mul_add(other.j, self.k * other.k))
     }
 
-    #[expect(clippy::suboptimal_flops)]
     pub fn cross(&self, other: Self) -> Self {
         Self {
-            i: self.j * other.k - self.k * other.j,
-            j: self.k.mul_add(other.i, -(self.i * other.k)),
-            k: self.i.mul_add(other.j, -(self.j * other.i)),
+            i: self.j.mul_add(other.k, -self.k * other.j),
+            j: self.k.mul_add(other.i, -self.i * other.k),
+            k: self.i.mul_add(other.j, -self.j * other.i),
         }
     }
 
@@ -77,11 +77,11 @@ impl Vector {
     }
 
     pub fn normalize(&self) -> Self {
-        let magnitude = self.get_magnitude();
+        let inv_magnitude = self.get_magnitude().recip();
         Self {
-            i: self.i / magnitude,
-            j: self.j / magnitude,
-            k: self.k / magnitude,
+            i: self.i * inv_magnitude,
+            j: self.j * inv_magnitude,
+            k: self.k * inv_magnitude,
         }
     }
 

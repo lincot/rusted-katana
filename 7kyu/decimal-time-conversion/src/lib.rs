@@ -11,7 +11,7 @@ pub fn string_to_industrial(time: &str) -> f64 {
 }
 
 pub fn to_industrial(time: u32) -> f64 {
-    ((time * 100 + 30) / 60) as f64 / 100.
+    ((time * 10 + 3) / 6) as f64 / 100.
 }
 
 pub fn to_normal(time: f64) -> String {

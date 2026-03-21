@@ -7,10 +7,17 @@ use test::{Bencher, black_box};
 #[bench]
 fn bench(bencher: &mut Bencher) {
     bencher.iter(|| {
-        distance_from_line(
-            black_box((10., 10.)),
-            black_box((30., 10.)),
-            black_box((20., 25.)),
+        (
+            distance_from_line(
+                black_box((10., 10.)),
+                black_box((30., 10.)),
+                black_box((20., 25.)),
+            ),
+            distance_from_line(
+                black_box((10., 10.)),
+                black_box((10., 10.)),
+                black_box((20., 25.)),
+            ),
         )
     });
 }

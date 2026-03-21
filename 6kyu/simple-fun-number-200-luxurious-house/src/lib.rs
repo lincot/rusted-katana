@@ -4,8 +4,13 @@ use core::mem::MaybeUninit;
 
 pub fn luxhouse(houses: &[u32]) -> Vec<u32> {
     let mut res = Vec::with_capacity(houses.len());
+    let mut ptr = res
+        .spare_capacity_mut()
+        .as_mut_ptr()
+        .wrapping_add(houses.len());
     let mut max = 0;
-    for (i, &x) in houses.iter().enumerate().rev() {
+    for &x in houses.iter().rev() {
+        ptr = ptr.wrapping_sub(1);
         // somehow replacing `x > max` with `max < x` makes it 30% faster
         let value = if max < x {
             max = x;
@@ -13,7 +18,7 @@ pub fn luxhouse(houses: &[u32]) -> Vec<u32> {
         } else {
             max - x + 1
         };
-        unsafe { *res.spare_capacity_mut().get_unchecked_mut(i) = MaybeUninit::new(value) };
+        unsafe { ptr.write(MaybeUninit::new(value)) };
     }
     unsafe { res.set_len(houses.len()) };
     res

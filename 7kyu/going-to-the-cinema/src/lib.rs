@@ -6,11 +6,10 @@ pub fn movie(card: i32, ticket: i32, perc: f64) -> i32 {
     let mut p = perc.powi(n);
     let mut b = card as f64 + ticket as f64 * perc * (p - 1.) / (perc - 1.);
 
-    #[expect(clippy::suboptimal_flops)]
     while ((b + 0.99999) as i32) >= a {
         p *= perc;
         a += ticket;
-        b += ticket as f64 * p;
+        b = p.mul_add(ticket as _, b);
         n += 1;
     }
 

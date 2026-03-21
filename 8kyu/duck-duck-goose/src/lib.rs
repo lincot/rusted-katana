@@ -5,5 +5,5 @@ pub use preloaded::Player;
 mod preloaded;
 
 pub fn duck_duck_goose(players: &[Player], goose: u32) -> &'static str {
-    players[(goose - 1) as usize % players.len()].name
+    players[(goose as usize - 1) % players.len()].name
 }

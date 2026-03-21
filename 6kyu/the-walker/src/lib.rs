@@ -1,7 +1,5 @@
 //! <https://www.codewars.com/kata/5b40b666dfb4291ad9000049/train/rust>
 
-#[expect(clippy::suboptimal_flops)]
-#[expect(clippy::imprecise_flops)]
 pub fn solve(a: i32, b: i32, c: i32, alpha: i32, beta: i32, gamma: i32) -> Vec<i32> {
     let (x, y) = [
         (a as f64, 0., (alpha as f64).to_radians().sin_cos()),
@@ -10,9 +8,13 @@ pub fn solve(a: i32, b: i32, c: i32, alpha: i32, beta: i32, gamma: i32) -> Vec<i
     ]
     .iter()
     .fold((0.0, 0.0), |(x, y), &(a, b, (s, c))| {
-        (-b * s + a * c + x, b * c + a * s + y)
+        (
+            a.mul_add(c, b.mul_add(-s, x)),
+            a.mul_add(s, b.mul_add(c, y)),
+        )
     });
 
+    #[expect(clippy::imprecise_flops)]
     let co = (x.powi(2) + y.powi(2)).sqrt();
 
     let t0c = y.atan2(x).to_degrees();

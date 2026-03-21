@@ -8,10 +8,9 @@ pub fn crusoe(n: i32, mut d: f64, ang: i32, distmult: f64, angmult: f64) -> (f64
     let mut x = 0.;
     let mut y = 0.;
 
-    #[expect(clippy::suboptimal_flops)]
     for _ in 0..n {
-        x += d * cos(ang);
-        y += d * sin(ang);
+        x = d.mul_add(cos(ang), x);
+        y = d.mul_add(sin(ang), y);
 
         d *= distmult;
         ang *= angmult;

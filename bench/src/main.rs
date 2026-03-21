@@ -12,10 +12,9 @@ use std::{
     env,
     fs::{self, File},
     io::{self, IoSlice, Read, StdoutLock, Write, stderr, stdin, stdout},
-    path::Path,
+    path::{Path, PathBuf},
     process::{Command, Stdio, exit},
 };
-use tempfile::TempDir;
 use unchecked_std::prelude::*;
 
 /// The number of times to benchmark each solution.
@@ -90,24 +89,43 @@ fn bench_solution(
         exit(1);
     }
 
+    let preloaded_code = if most_upvoted_solution.code.contains("preloaded::") {
+        Some(
+            fs::read_to_string(current_dir.join("src/preloaded.rs"))
+                .expect("Failed to read src/preloaded.rs"),
+        )
+    } else {
+        None
+    };
+
     let (cargo_toml, has_rand) = make_cargo_toml(
         current_dir,
         bench_rs,
         crate_name,
         &most_upvoted_solution.code,
+        preloaded_code.as_deref(),
     )
     .unwrap();
-    most_upvoted_solution.code = make_runnable(current_dir, &most_upvoted_solution.code, has_rand);
+    most_upvoted_solution.code = make_runnable(
+        &most_upvoted_solution.code,
+        preloaded_code.as_deref(),
+        has_rand,
+    );
 
-    let (tmp_dir, has_tests) =
-        create_tmp_solution_dir(bench_rs, &most_upvoted_solution.code, &cargo_toml).unwrap();
+    stdout.write_all(b"Benchmarking...\n").unwrap();
+    stdout.flush().unwrap();
 
-    if has_tests {
-        let out = Command::new("cargo")
-            .current_dir(tmp_dir.path())
-            .arg("test")
-            .output()
-            .unwrap();
+    let replacers = [
+        TempFileReplacer::try_new(
+            current_dir.join("src/lib.rs"),
+            most_upvoted_solution.code.as_bytes(),
+        )
+        .unwrap(),
+        TempFileReplacer::try_new(current_dir.join("Cargo.toml"), cargo_toml.as_bytes()).unwrap(),
+    ];
+
+    if Path::new("tests").is_dir() {
+        let out = Command::new("cargo").arg("test").output().unwrap();
         if !out.status.success() {
             let mut stderr = stderr().lock();
             stderr.write_all(&out.stderr).unwrap();
@@ -116,19 +134,18 @@ fn bench_solution(
         }
     }
 
-    stdout.write_all(b"Benchmarking...\n").unwrap();
-    stdout.flush().unwrap();
-    let Some(most_upvoted_result) = bench_n_times(tmp_dir.path()).unwrap() else {
+    let Some(most_upvoted_result) = bench_n_times(current_dir).unwrap() else {
         return false;
     };
-    let current_result = bench_n_times(current_dir).unwrap().unwrap();
+    drop(replacers);
+    let rusted_katana_result = bench_n_times(current_dir).unwrap().unwrap();
 
     write_results_json(
         stdout,
         current_dir,
         &most_upvoted_solution.author,
         &most_upvoted_solution.url,
-        &current_result,
+        &rusted_katana_result,
         &most_upvoted_result,
     )
     .unwrap();
@@ -362,7 +379,7 @@ fn get_crate_name(current_dir: &Path) -> io::Result<String> {
     Ok(cargo_toml[name_start..name_end].into())
 }
 
-fn make_runnable(current_dir: &Path, code: &str, has_rand: bool) -> String {
+fn make_runnable(code: &str, preloaded_code: Option<&str>, has_rand: bool) -> String {
     const MOD_PRELOADED: &str = "mod preloaded;";
     const PREFIX: &str =
         "pub use a::*;use fully_pub::fully_pub;#[fully_pub(recursive)]#[macro_use]mod a{";
@@ -381,14 +398,6 @@ fn make_runnable(current_dir: &Path, code: &str, has_rand: bool) -> String {
         return "pub use num::integer::gcd;".into();
     }
 
-    let preloaded_code = if code.contains("preloaded::") {
-        Some(
-            fs::read_to_string(current_dir.join("src/preloaded.rs"))
-                .expect("Failed to read src/preloaded.rs"),
-        )
-    } else {
-        None
-    };
     const {
         assert!(
             (MACRO_EXPORT.len() + MACRO_RULES.len()) * PRELOADED_IMPORT.len()
@@ -513,6 +522,7 @@ fn make_cargo_toml(
     bench_rs: &Path,
     crate_name: &str,
     code: &str,
+    preloaded_code: Option<&str>,
 ) -> io::Result<(String, bool)> {
     const DEV_DEPS: &str = r#"[dev-dependencies]
 rand = { version = "0.10.0", default-features = false, features = ["std"] }
@@ -661,7 +671,9 @@ tokio-util = { version = "0.7.4", features = ["full"] }
                 "{ version = \"0.7.4\", features = [\"full\"] }",
             ),
         ] {
-            if code.contains(import_name) {
+            if code.contains(import_name)
+                || preloaded_code.is_some_and(|code| code.contains(import_name))
+            {
                 res.push_str_unchecked(dep_name);
                 res.push_str_unchecked(" = ");
                 res.push_str_unchecked(version);
@@ -696,35 +708,28 @@ tokio-util = { version = "0.7.4", features = ["full"] }
     Ok((res, has_rand))
 }
 
-fn create_tmp_solution_dir(
-    bench_rs: &Path,
-    lib_rs: &str,
-    cargo_toml: &str,
-) -> io::Result<(TempDir, bool)> {
-    let tmp_dir = TempDir::new()?;
-    let tmp_root = tmp_dir.path();
-    fs::write(tmp_root.join("Cargo.toml"), cargo_toml)?;
-    let tmp_src_path = tmp_root.join("src");
-    fs::create_dir(&tmp_src_path)?;
-    fs::write(tmp_src_path.join("lib.rs"), lib_rs)?;
+struct TempFileReplacer {
+    path: PathBuf,
+    orig_path: PathBuf,
+}
 
-    let tmp_benches_path = tmp_root.join("benches");
-    fs::create_dir(&tmp_benches_path)?;
-    fs::copy(bench_rs, tmp_benches_path.join("bench.rs"))?;
+impl TempFileReplacer {
+    fn try_new(path: PathBuf, new_contents: &[u8]) -> io::Result<Self> {
+        let mut orig_path = path.as_os_str().to_os_string();
+        orig_path.push(".orig");
+        let orig_path = PathBuf::from(orig_path);
 
-    let tests_path = Path::new("tests");
-    let has_tests = tests_path.is_dir();
-    if has_tests {
-        let tmp_tests_path = tmp_root.join("tests");
-        fs::create_dir(&tmp_tests_path)?;
+        fs::rename(&path, &orig_path)?;
+        fs::write(&path, new_contents)?;
 
-        for entry in tests_path.read_dir()? {
-            let entry = entry?;
-            fs::copy(entry.path(), tmp_tests_path.join(entry.file_name()))?;
-        }
+        Ok(Self { path, orig_path })
     }
+}
 
-    Ok((tmp_dir, has_tests))
+impl Drop for TempFileReplacer {
+    fn drop(&mut self) {
+        fs::rename(&self.orig_path, &self.path).unwrap();
+    }
 }
 
 #[derive(Deserialize)]
@@ -803,7 +808,7 @@ fn write_results_json(
     current_dir: &Path,
     most_upvoted_author: &str,
     most_upvoted_url: &str,
-    current_result: &[BenchNTimesRes],
+    rusted_katana_result: &[BenchNTimesRes],
     most_upvoted_result: &[BenchNTimesRes],
 ) -> io::Result<()> {
     let f = File::create(current_dir.join("benches/results.json"))?;
@@ -816,15 +821,15 @@ fn write_results_json(
     let rustc = rustc.strip_circumfix("rustc ", '\n').unwrap();
     let os = std::env::consts::OS;
 
-    let benches: Box<[_]> = current_result
+    let benches: Box<[_]> = rusted_katana_result
         .iter()
-        .map(|current| {
-            let name = &current.name;
+        .map(|rusted_katana_result| {
+            let name = &rusted_katana_result.name;
             let most_upvoted = most_upvoted_result
                 .iter()
                 .find(|x| &x.name == name)
                 .unwrap();
-            let speedup = median(most_upvoted.medians) / median(current.medians);
+            let speedup = median(most_upvoted.medians) / median(rusted_katana_result.medians);
             let speedup_100 = (speedup.mul_add(100., 0.5)) as u64;
             let before_dot = (speedup_100 / 100).to_heapless_string(false, false);
             let after_dot = [
@@ -853,7 +858,7 @@ fn write_results_json(
             JsonBenchResult {
                 name,
                 speedup,
-                rusted_katana_medians_ns: current.medians,
+                rusted_katana_medians_ns: rusted_katana_result.medians,
                 most_upvoted_medians_ns: most_upvoted.medians,
             }
         })

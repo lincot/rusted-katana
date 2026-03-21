@@ -7,7 +7,7 @@ pub fn dist(v: f64, mu: f64) -> f64 {
     v * (v / (2. * mu * G) + 1.)
 }
 
-#[expect(clippy::suboptimal_flops)]
 pub fn speed(d: f64, mu: f64) -> f64 {
-    ((G * mu * (2. * d + G * mu)).sqrt() - G * mu) * (3600. / 1000.)
+    let g_mu = G * mu;
+    G.mul_add(-mu, (g_mu * d.mul_add(2., g_mu)).sqrt()) * (3600. / 1000.)
 }

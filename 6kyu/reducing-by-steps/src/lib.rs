@@ -26,9 +26,8 @@ pub fn oper_array(f: impl Fn(i64, i64) -> i64, a: &[i64], init: i64) -> Vec<i64>
     let mut prev = init;
     a.iter()
         .map(|&x| {
-            let r = f(prev, x);
-            prev = r;
-            r
+            prev = f(prev, x);
+            prev
         })
         .collect()
 }

@@ -9,7 +9,6 @@ html-escape = { workspace = true }
 reqwest = { workspace = true, features = ["blocking"] }
 serde = { workspace = true }
 serde_json = { workspace = true }
-tempfile = { workspace = true }
 unchecked-std = { workspace = true }
 
 [lints]
