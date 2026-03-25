@@ -510,7 +510,7 @@ macro_rules! impl_write_digits {
                     let r = self as _;
                     write_digit(buffer, &mut index, r, radix as u8, reversed, from_0);
                 } else {
-                    let r = (2 * self) as usize;
+                    let r = 2 * self as usize;
                     write_2_digits(buffer, &mut index, r, reversed, table);
                 }
 
@@ -639,7 +639,7 @@ impl WriteDigits for u128 {
         };
         let (value, low) = u128_divrem(self, radix);
         index = write_step_digits(low, radix, buffer, index, step, reversed, from_0);
-        if let Ok(value) = TryInto::<u64>::try_into(self) {
+        if let Ok(value) = TryInto::<u64>::try_into(value) {
             return value.write_digits(radix, buffer, index, reversed, from_0);
         }
 
@@ -657,11 +657,15 @@ macro_rules! gen_write_num_unchecked_signed {
     ($t:ty) => {
         #[inline]
         unsafe fn write_num_unchecked(&mut self, n: $t, radix: u8, reversed: bool, from_0: bool) {
-            if n < 0 {
+            if n < 0 && !reversed {
                 core::ptr::write(self.as_mut_ptr().add(self.len()), b'-'.into());
                 self.set_len(self.len() + 1);
             }
             self.write_num_unchecked(n.unsigned_abs(), radix, reversed, from_0);
+            if n < 0 && reversed {
+                core::ptr::write(self.as_mut_ptr().add(self.len()), b'-'.into());
+                self.set_len(self.len() + 1);
+            }
         }
     };
 }
@@ -718,8 +722,13 @@ pub trait NumToString<const CAP10: usize, const CAP2: usize, const CAP16: usize>
 
 macro_rules! impl_num_to_string {
     ($($t:ty)*) => ($(
-        impl NumToString<{ Self::MAX_LEN_BASE10 }, { Self::BITS as _ }, { (Self::BITS / 4) as _ }>
-            for $t
+        #[allow(unused_comparisons)]
+        impl
+            NumToString<
+                { Self::MAX_LEN_BASE10 },
+                { (Self::BITS + (Self::MIN < 0) as u32) as _ },
+                { (Self::BITS / 4 + (Self::MIN < 0) as u32) as _ },
+            > for $t
         {
             #[cfg(feature = "heapless")]
             #[inline]
@@ -756,7 +765,7 @@ macro_rules! impl_num_to_string {
                 self,
                 reversed: bool,
                 from_0: bool,
-            ) -> heapless::String<{ Self::BITS as _ }> {
+            ) -> heapless::String<{ (Self::BITS + (Self::MIN < 0) as u32) as _ }> {
                 let mut res = heapless::String::new();
                 unsafe {
                     res.write_num_unchecked(self, 2, reversed, from_0);
@@ -769,7 +778,8 @@ macro_rules! impl_num_to_string {
 
             #[inline]
             fn to_string_base2(self, reversed: bool, from_0: bool) -> String {
-                let mut res = String::with_capacity(Self::BITS as _);
+                #[allow(unused_comparisons)]
+                let mut res = String::with_capacity((Self::BITS + (Self::MIN < 0) as u32) as _);
                 unsafe {
                     res.write_num_unchecked(self, 2, reversed, from_0);
                     if res.is_empty() {
@@ -785,7 +795,7 @@ macro_rules! impl_num_to_string {
                 self,
                 reversed: bool,
                 from_0: bool,
-            ) -> heapless::String<{ (Self::BITS / 4) as _ }> {
+            ) -> heapless::String<{ (Self::BITS / 4 + (Self::MIN < 0) as u32) as _ }> {
                 let mut res = heapless::String::new();
                 unsafe {
                     res.write_num_unchecked(self, 16, reversed, from_0);
@@ -798,7 +808,8 @@ macro_rules! impl_num_to_string {
 
             #[inline]
             fn to_string_base16(self, reversed: bool, from_0: bool) -> String {
-                let mut res = String::with_capacity((Self::BITS / 4) as _);
+                #[allow(unused_comparisons)]
+                let mut res = String::with_capacity((Self::BITS / 4 + (Self::MIN < 0) as u32) as _);
                 unsafe {
                     res.write_num_unchecked(self, 16, reversed, from_0);
                     if res.is_empty() {

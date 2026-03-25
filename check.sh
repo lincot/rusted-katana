@@ -40,4 +40,4 @@ if [ ! -v NEXTEST_TEST_THREADS ]; then
   export NEXTEST_TEST_THREADS=$((n_logical_cores > 2 ? n_logical_cores - 2 : 1))
 fi
 cargo miri nextest run --cargo-quiet --all-targets --no-fail-fast \
-  --status-level fail --workspace --exclude digital
+  --status-level fail --workspace -E 'not (package(digital) and kind(bench))'

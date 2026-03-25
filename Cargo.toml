@@ -45,6 +45,7 @@ vqsort-rs = "0.3.0"
 # tests/benches
 criterion = "0.8.2"
 num-traits = "0.2.19"
+paste = "1"
 rand_pcg = "0.10.1"
 
 # check-katas/progress-bars/bench/agg-speedups
