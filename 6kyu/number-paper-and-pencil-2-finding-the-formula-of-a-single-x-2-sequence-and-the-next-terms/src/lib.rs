@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/63bd8cc3a78e0578b608ac80/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn quadratic_formula(y1: i32, y2: i32, _y3: i32) -> (String, i32, i32) {
@@ -18,7 +18,7 @@ pub fn quadratic_formula(y1: i32, y2: i32, _y3: i32) -> (String, i32, i32) {
             }
             let b = b.unsigned_abs();
             if b != 1 {
-                s.write_num_unchecked(b, 10, false, false);
+                s.write_int_unchecked(b);
             }
             s.push_unchecked('x');
         }
@@ -26,7 +26,7 @@ pub fn quadratic_formula(y1: i32, y2: i32, _y3: i32) -> (String, i32, i32) {
             if c > 0 {
                 s.push_unchecked('+');
             }
-            s.write_num_unchecked(c, 10, false, false);
+            s.write_int_unchecked(c);
         }
     }
 

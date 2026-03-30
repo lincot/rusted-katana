@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/51c89385ee245d7ddf000001/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn solution(n: u32) -> String {
@@ -16,7 +16,7 @@ pub fn solution(n: u32) -> String {
         } else if n < 10000 {
             res.push_unchecked('0');
         }
-        res.write_num_unchecked(n, 10, false, false);
+        res.write_int_unchecked(n);
     }
     res
 }

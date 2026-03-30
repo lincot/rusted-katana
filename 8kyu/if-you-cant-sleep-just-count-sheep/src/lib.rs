@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5b077ebdaf15be5c7f000077/train/rust>
 
-use digital::{CountDigitsBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 const SHEEP: &str = " sheep...";
@@ -13,7 +13,7 @@ pub fn count_sheep(n: u32) -> String {
     let mut res = String::with_capacity(get_capacity(n));
     for sheep in 1..n + 1 {
         unsafe {
-            res.write_num_unchecked(sheep, 10, false, false);
+            res.write_int_unchecked(sheep);
             res.push_str_unchecked(SHEEP);
         }
     }

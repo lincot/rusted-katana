@@ -1,18 +1,18 @@
 //! <https://www.codewars.com/kata/5effa412233ac3002a9e471d/train/rust>
 
-use digital::Next2Digits;
+use digital::prelude::*;
 
 pub fn add(mut num1: u32, mut num2: u32) -> u64 {
     let mut res = 0;
     let mut m = 1;
 
     while num1 >= 10 || num2 >= 10 {
-        let [b1, a1] = num1.next_2_digits(true).unwrap_or_else(|| {
+        let [b1, a1] = num1.next_2_digits::<Raw>().unwrap_or_else(|| {
             let d = num1;
             num1 = 0;
             [0, d as _]
         });
-        let [b2, a2] = num2.next_2_digits(true).unwrap_or_else(|| {
+        let [b2, a2] = num2.next_2_digits::<Raw>().unwrap_or_else(|| {
             let d = num2;
             num2 = 0;
             [0, d as _]

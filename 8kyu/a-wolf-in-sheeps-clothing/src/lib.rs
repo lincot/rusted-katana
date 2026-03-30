@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5c8bfa44b9d1192e1ebd3d15/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn warn_the_sheep(queue: &[&str]) -> String {
@@ -17,7 +17,7 @@ pub fn warn_the_sheep(queue: &[&str]) -> String {
                     + usize::MAX_LEN_BASE10,
             );
             res.push_str_unchecked("Oi! Sheep number ");
-            res.write_num_unchecked(n, 10, false, false);
+            res.write_int_unchecked(n);
             res.push_str_unchecked("! You are about to be eaten by a wolf!");
             res
         },

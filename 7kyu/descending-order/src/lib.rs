@@ -1,11 +1,11 @@
 //! <https://www.codewars.com/kata/5467e4d82edf8bbf40000155/train/rust>
 
-use digital::Next2Digits;
+use digital::prelude::*;
 
 pub fn descending_order(mut x: u64) -> u64 {
     let mut digits = [0u8; 10];
 
-    while let Some([a, b]) = x.next_2_digits(true) {
+    while let Some([a, b]) = x.next_2_digits::<Raw>() {
         unsafe {
             *digits.get_unchecked_mut(a as usize) += 1;
             *digits.get_unchecked_mut(b as usize) += 1;

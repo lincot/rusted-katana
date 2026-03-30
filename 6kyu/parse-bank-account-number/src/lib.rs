@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/597eeb0136f4ae84f9000001/train/rust>
 
-use digital::MaxLenBase10;
+use digital::prelude::*;
 
 pub fn parse_bank_account(bank_account: &str) -> u64 {
     let bank_account = bank_account.as_bytes();

@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5355a811a93a501adf000ab7/train/rust>
 
-use digital::NumToString;
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn fizz_buzz_custom_solver(
@@ -22,7 +22,7 @@ pub fn fizz_buzz_custom_solver(
             }
             (0, _) => string_one.into(),
             (_, 0) => string_two.into(),
-            _ => x.to_string(false, false),
+            _ => x.to_string(),
         };
         unsafe { res.push_unchecked(s) };
     }

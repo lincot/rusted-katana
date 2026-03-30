@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/54dc6f5a224c26032800005c/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn stock_list(list_art: Vec<&str>, list_cat: Vec<&str>) -> String {
@@ -33,7 +33,7 @@ pub fn stock_list(list_art: Vec<&str>, list_cat: Vec<&str>) -> String {
             res.push_unchecked('(');
             res.push_unchecked(cat);
             res.push_str_unchecked(" : ");
-            res.write_num_unchecked(sum, 10, false, false);
+            res.write_int_unchecked(sum);
             res.push_unchecked(')');
         }
     }

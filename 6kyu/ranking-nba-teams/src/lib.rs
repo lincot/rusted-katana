@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5a420163b6cfd7cde5000077/train/rust>
 
 use core::cmp::Ordering;
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn nba_cup(ro: &str, to_find: &str) -> String {
@@ -112,17 +112,17 @@ pub fn nba_cup(ro: &str, to_find: &str) -> String {
             return res;
         }
         res.push_str_unchecked(":W=");
-        res.write_num_unchecked(wins, 10, false, false);
+        res.write_int_unchecked(wins);
         res.push_str_unchecked(";D=");
-        res.write_num_unchecked(draws, 10, false, false);
+        res.write_int_unchecked(draws);
         res.push_str_unchecked(";L=");
-        res.write_num_unchecked(loses, 10, false, false);
+        res.write_int_unchecked(loses);
         res.push_str_unchecked(";Scored=");
-        res.write_num_unchecked(scored, 10, false, false);
+        res.write_int_unchecked(scored);
         res.push_str_unchecked(";Conceded=");
-        res.write_num_unchecked(conceded, 10, false, false);
+        res.write_int_unchecked(conceded);
         res.push_str_unchecked(";Points=");
-        res.write_num_unchecked(3 * wins + draws, 10, false, false);
+        res.write_int_unchecked(3 * wins + draws);
     }
     res
 }

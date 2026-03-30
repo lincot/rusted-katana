@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/566fc12495810954b1000030/train/rust>
 
-use digital::Next2Digits;
+use digital::prelude::*;
 
 pub fn nb_dig(n: i32, d: i32) -> i32 {
     let n = n as u32;
@@ -11,7 +11,7 @@ pub fn nb_dig(n: i32, d: i32) -> i32 {
     let mut step = 1;
     for _ in 0..n + 1 {
         let mut m = num;
-        while let Some([a, b]) = m.next_2_digits(true) {
+        while let Some([a, b]) = m.next_2_digits::<Raw>() {
             if a == d as u8 {
                 res += 1;
             }

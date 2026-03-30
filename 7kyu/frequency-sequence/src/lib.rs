@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/585a033e3a36cdc50a00011c/train/rust>
 
 use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use hashbrown::HashMap;
 use rustc_hash::FxHasher;
 use unchecked_std::prelude::*;
@@ -37,7 +37,7 @@ pub fn freq_seq(s: &str, sep: &str) -> String {
                 res.push_str_unchecked(sep);
             }
             let count = *counts.get(&c).unwrap();
-            res.write_num_unchecked(count, 10, false, false);
+            res.write_int_unchecked(count);
         }
     }
 
@@ -63,7 +63,7 @@ fn freq_seq_bytes(s: &[u8], sep: &str) -> String {
                 res.push_str_unchecked(sep);
             }
             let count = counts[b as usize];
-            res.write_num_unchecked(count, 10, false, false);
+            res.write_int_unchecked(count);
         }
     }
 

@@ -1,9 +1,9 @@
 //! <https://www.codewars.com/kata/566859a83557837d9700001a/train/rust>
 
-use digital::NumToString;
+use digital::prelude::*;
 
 pub fn get_count(n: u64) -> u32 {
-    let num = n.to_heapless_string(true, true);
+    let num = n.to_heapless_string_with::<ReversedRaw>();
     let num = num.as_bytes();
     let mut res = 0;
     for len in 1..num.len() {

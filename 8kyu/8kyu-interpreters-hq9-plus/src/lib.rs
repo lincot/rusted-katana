@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/591588d49f4056e13f000001/train/rust>
 
-use digital::WriteNumUnchecked;
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn hq9(code: &str) -> Option<String> {
@@ -17,11 +17,11 @@ pub fn hq9(code: &str) -> Option<String> {
             for i in (2u8..99).rev() {
                 unsafe {
                     res.push_str_unchecked("Take one down and pass it around, ");
-                    res.write_num_unchecked(i, 10, false, false);
+                    res.write_int_unchecked(i);
                     res.push_str_unchecked(" bottles of beer on the wall.\n");
-                    res.write_num_unchecked(i, 10, false, false);
+                    res.write_int_unchecked(i);
                     res.push_str_unchecked(" bottles of beer on the wall, ");
-                    res.write_num_unchecked(i, 10, false, false);
+                    res.write_int_unchecked(i);
                     res.push_str_unchecked(" bottles of beer.\n");
                 }
             }

@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5a1d86dbba2a142e040000ee/train/rust>
 
-use digital::Next2Digits;
+use digital::prelude::*;
 
 pub fn find_number(a: u32, b: u32, s: &str) -> Vec<u32> {
     let [mut digits_ab, mut digits_s] = [[0usize; 10]; 2];
@@ -8,7 +8,7 @@ pub fn find_number(a: u32, b: u32, s: &str) -> Vec<u32> {
         if n == 0 {
             digits_ab[0] += 1;
         }
-        while let Some(digits) = n.next_2_digits(true) {
+        while let Some(digits) = n.next_2_digits::<Raw>() {
             for d in digits {
                 digits_ab[d as usize] += 1;
             }

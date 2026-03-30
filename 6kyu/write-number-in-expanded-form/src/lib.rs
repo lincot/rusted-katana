@@ -1,13 +1,13 @@
 //! <https://www.codewars.com/kata/5842df8ccbd22792a4000245/train/rust>
 
-use digital::NumToString;
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn expanded_form(n: u64) -> String {
     if n == 0 {
         return "0".into();
     }
-    let digits = n.to_heapless_string(false, false).into_bytes();
+    let digits = n.to_heapless_string().into_bytes();
     let mut res = Vec::with_capacity((digits.len() * (digits.len() + 7) / 2 - 3) as _);
     unsafe {
         res.push_unchecked(*digits.get_unchecked(0));

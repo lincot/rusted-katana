@@ -1,11 +1,11 @@
 //! <https://www.codewars.com/kata/604287495a72ae00131685c7/train/rust>
 
-use digital::WriteNumUnchecked;
+use digital::prelude::*;
 
 pub fn doubleton(mut num: u32) -> u32 {
     unsafe fn to_digits(n: u32) -> heapless::Vec<u8, { "1000000".len() }> {
         let mut digits = heapless::Vec::new();
-        unsafe { digits.write_num_unchecked(n, 10, false, true) };
+        unsafe { digits.write_int_unchecked_with::<Raw, Base10>(n) };
         digits
     }
 

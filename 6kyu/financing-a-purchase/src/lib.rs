@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/59c68ea2aeb2843e18000109/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn amort(rate: f64, balance: i64, term: i64, num_payments: i32) -> String {
@@ -19,15 +19,15 @@ pub fn amort(rate: f64, balance: i64, term: i64, num_payments: i32) -> String {
     );
     unsafe {
         res.push_str_unchecked("num_payment ");
-        res.write_num_unchecked(num_payments, 10, false, false);
+        res.write_int_unchecked(num_payments);
         res.push_str_unchecked(" c ");
-        res.write_num_unchecked((c + 0.5) as u64, 10, false, false);
+        res.write_int_unchecked((c + 0.5) as u64);
         res.push_str_unchecked(" princ ");
-        res.write_num_unchecked((princ + 0.5) as u64, 10, false, false);
+        res.write_int_unchecked((princ + 0.5) as u64);
         res.push_str_unchecked(" int ");
-        res.write_num_unchecked((int + 0.5) as u64, 10, false, false);
+        res.write_int_unchecked((int + 0.5) as u64);
         res.push_str_unchecked(" balance ");
-        res.write_num_unchecked((balance + 0.5) as u64, 10, false, false);
+        res.write_int_unchecked((balance + 0.5) as u64);
     }
     res
 }

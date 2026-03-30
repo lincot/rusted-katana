@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5df754981f177f0032259090/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
@@ -11,7 +11,7 @@ pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
         unsafe {
             res.push_str_unchecked(a_number.get_unchecked(..digits_number));
             res.push_unchecked('P');
-            res.write_num_unchecked(digits_before_dot - digits_number, 10, false, false);
+            res.write_int_unchecked(digits_before_dot - digits_number);
         }
     } else if digits_before_dot == 1 && *unsafe { a_number.as_bytes().get_unchecked(0) } == b'0' {
         let zeros_after_dot = unsafe { a_number.as_bytes().get_unchecked(digits_before_dot + 1..) }
@@ -36,7 +36,7 @@ pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
         unsafe {
             res.push_unchecked('P');
             res.push_unchecked('-');
-            res.write_num_unchecked(digits_number + zeros_after_dot, 10, false, false);
+            res.write_int_unchecked(digits_number + zeros_after_dot);
         }
     } else {
         unsafe {
@@ -52,7 +52,7 @@ pub fn mant_exp(a_number: &str, digits_number: i32) -> String {
             }
             res.push_unchecked('P');
             res.push_unchecked('-');
-            res.write_num_unchecked(digits_number - digits_before_dot, 10, false, false);
+            res.write_int_unchecked(digits_number - digits_before_dot);
         }
     }
     res

@@ -2,7 +2,7 @@
 
 pub use self::preloaded::{Ast, Operator, Source};
 use core::ops::{Add, Div, Mul, Sub};
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 mod preloaded;
@@ -432,7 +432,7 @@ fn format_string_and_usize(s: &str, n: usize) -> String {
     let mut res = String::with_capacity(s.len() + usize::MAX_LEN_BASE10);
     unsafe {
         res.push_str_unchecked(s);
-        res.write_num_unchecked(n, 10, false, false);
+        res.write_int_unchecked(n);
     }
     res
 }
@@ -441,7 +441,7 @@ fn format_string_and_i32(s: &str, n: i32) -> String {
     let mut res = String::with_capacity(s.len() + isize::MAX_LEN_BASE10);
     unsafe {
         res.push_str_unchecked(s);
-        res.write_num_unchecked(n, 10, false, false);
+        res.write_int_unchecked(n);
     }
     res
 }

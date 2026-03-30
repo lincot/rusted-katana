@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/62ca07aaedc75c88fb95ee2f/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn ascend_descend(length: usize, minimum: i32, maximum: i32) -> String {
@@ -12,7 +12,7 @@ pub fn ascend_descend(length: usize, minimum: i32, maximum: i32) -> String {
 
     for x in minimum..maximum + 1 {
         unsafe {
-            res.write_num_unchecked(x, 10, false, false);
+            res.write_int_unchecked(x);
             if res.len() >= length {
                 res.as_mut_vec().truncate(length);
                 return res;
@@ -21,7 +21,7 @@ pub fn ascend_descend(length: usize, minimum: i32, maximum: i32) -> String {
     }
     for x in (minimum..maximum).skip(1).rev() {
         unsafe {
-            res.write_num_unchecked(x, 10, false, false);
+            res.write_int_unchecked(x);
             if res.len() >= length {
                 res.as_mut_vec().truncate(length);
                 return res;

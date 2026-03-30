@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5a34af40e1ce0eb1f5000036/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn to_csv_text(array: &[Vec<i8>]) -> String {
@@ -10,7 +10,7 @@ pub fn to_csv_text(array: &[Vec<i8>]) -> String {
                 if i != 0 {
                     res.push_unchecked(',');
                 }
-                res.write_num_unchecked(x, 10, false, false);
+                res.write_int_unchecked(x);
             }
         }
     }

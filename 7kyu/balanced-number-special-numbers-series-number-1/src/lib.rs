@@ -1,9 +1,9 @@
 //! <https://www.codewars.com/kata/5a4e3782880385ba68000018/train/rust>
 
-use digital::NumToString;
+use digital::prelude::*;
 
 pub fn balanced_num(n: u64) -> String {
-    let digits = n.to_heapless_string(false, false).into_bytes();
+    let digits = n.to_heapless_string().into_bytes();
     if unsafe { digits.get_unchecked(..((digits.len() - 1) / 2)) }
         .iter()
         .sum::<u8>()

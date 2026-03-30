@@ -1,12 +1,12 @@
 //! <https://www.codewars.com/kata/59c3e8c9f5d5e40cab000ca6/train/rust>
 
 use core::hint::unreachable_unchecked;
-use digital::WriteNumUnchecked;
+use digital::prelude::*;
 
 pub fn add_arrays(arr_a: &[i64], arr_b: &[i64]) -> Vec<i64> {
     fn to_digits(n: i64) -> Vec<i64> {
         let mut res = Vec::<i64>::with_capacity("9223372036854775807".len());
-        unsafe { res.write_num_unchecked(n.unsigned_abs(), 10, false, true) };
+        unsafe { res.write_int_unchecked_with::<Raw, Base10>(n.unsigned_abs()) };
 
         if res.is_empty() {
             unsafe { unreachable_unchecked() };

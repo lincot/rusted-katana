@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5977618080ef220766000022/train/rust>
 
-use digital::{Next2Digits, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn usdcny(usd: u16) -> String {
@@ -13,13 +13,13 @@ pub fn usdcny(usd: u16) -> String {
 }
 
 unsafe fn write_with_cents(s: &mut String, mut amount: u32) {
-    let last_2 = amount.next_2_digits(false).unwrap_or_else(|| {
+    let last_2 = amount.next_2_digits::<Normal>().unwrap_or_else(|| {
         let d = amount;
         amount = 0;
         [b'0', d as u8 + b'0']
     });
     unsafe {
-        s.write_num_unchecked(amount, 10, false, false);
+        s.write_int_unchecked(amount);
         s.as_mut_vec().push_unchecked(b'.');
         s.as_mut_vec().push_unchecked(last_2[0]);
         s.as_mut_vec().push_unchecked(last_2[1]);

@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5af96cea3e9715ec670001dd/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use libm::{cos, sin};
 use unchecked_std::prelude::*;
 
@@ -33,7 +33,7 @@ impl Projectile {
             res.as_mut_vec().push_unchecked(b't');
             if self.height != 0 {
                 res.push_str_unchecked(S1);
-                res.write_num_unchecked(self.height, 10, false, false);
+                res.write_int_unchecked(self.height);
                 res.push_str_unchecked(S2);
             }
         }
@@ -80,7 +80,7 @@ impl Projectile {
 
 unsafe fn write_with_up_to_three_fractional_digits(res: &mut String, n: f64) {
     let n = (n * 1000.).round() as u64;
-    unsafe { res.write_num_unchecked(n / 1000, 10, false, false) };
+    unsafe { res.write_int_unchecked(n / 1000) };
     let d0 = b'0' + (n % 1000 / 100) as u8;
     let d1 = b'0' + (n % 100 / 10) as u8;
     let d2 = b'0' + (n % 10) as u8;

@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/6397b0d461067e0030d1315e/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn string_to_industrial(time: &str) -> f64 {
@@ -17,7 +17,7 @@ pub fn to_industrial(time: u32) -> f64 {
 pub fn to_normal(time: f64) -> String {
     let mut res = String::with_capacity(u32::MAX_LEN_BASE10 + 1 + 2);
     unsafe {
-        res.write_num_unchecked(time as u32, 10, false, false);
+        res.write_int_unchecked(time as u32);
         res.push_unchecked(':');
         let minutes = (time - time as u32 as f64).mul_add(60., 0.5) as u8;
         res.as_mut_vec().push_unchecked(minutes / 10 + b'0');

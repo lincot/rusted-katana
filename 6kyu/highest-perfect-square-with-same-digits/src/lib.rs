@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5b2cd515553292a4ff0000c2/train/rust>
 
 use core::cmp::Reverse;
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 
 pub fn next_perfectsq_perm(lower_limit: u32, k: u32) -> u32 {
     const POWERS_OF_10: [u32; 10] = {
@@ -27,7 +27,7 @@ pub fn next_perfectsq_perm(lower_limit: u32, k: u32) -> u32 {
     let mut n = lower_limit + 1;
     loop {
         let mut digits = heapless::Vec::<usize, { u32::MAX_LEN_BASE10 }>::new();
-        unsafe { digits.write_num_unchecked(n, 10, true, true) };
+        unsafe { digits.write_int_unchecked_with::<ReversedRaw, Base10>(n) };
         if digits.is_empty() || digits.len() >= u32::MAX_LEN_BASE10 {
             unsafe { core::hint::unreachable_unchecked() };
         }

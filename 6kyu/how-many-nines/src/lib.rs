@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5e18743cd3346f003228b604/train/rust>
 
-use digital::NumToString;
+use digital::prelude::*;
 use num_bigint::BigInt;
 
 pub fn nines(n: BigInt) -> BigInt {
@@ -9,7 +9,7 @@ pub fn nines(n: BigInt) -> BigInt {
 }
 
 fn nines_u128(n: u128) -> u128 {
-    let digits = n.to_heapless_string(false, true).into_bytes();
+    let digits = n.to_heapless_string_with::<Raw>().into_bytes();
     let mut res = 0;
     let mut i = digits.len();
     for d in digits {

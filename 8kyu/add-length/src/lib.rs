@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/559d2284b5bb6799e9000047/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn add_length(s: &str) -> Vec<String> {
@@ -14,7 +14,7 @@ pub fn add_length(s: &str) -> Vec<String> {
         unsafe {
             word_with_length.push_str_unchecked(word);
             word_with_length.push_unchecked(' ');
-            word_with_length.write_num_unchecked(word.len(), 10, false, false);
+            word_with_length.write_int_unchecked(word.len());
             res.push_unchecked(word_with_length);
         }
     }

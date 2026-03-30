@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5bc7bb444be9774f100000c3/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use preloaded::VMError;
 use unchecked_std::prelude::*;
 
@@ -129,11 +129,11 @@ impl VersionManager {
             patch,
         } = self.current_version();
         unsafe {
-            res.write_num_unchecked(major, 10, false, false);
+            res.write_int_unchecked(major);
             res.push_unchecked('.');
-            res.write_num_unchecked(minor, 10, false, false);
+            res.write_int_unchecked(minor);
             res.push_unchecked('.');
-            res.write_num_unchecked(patch, 10, false, false);
+            res.write_int_unchecked(patch);
         }
         res
     }

@@ -1,14 +1,14 @@
 //! <https://www.codewars.com/kata/56a4872cbb65f3a610000026/train/rust>
 
 use core::hint::unreachable_unchecked;
-use digital::NumToString;
+use digital::prelude::*;
 
 pub fn max_rot(n: u64) -> u64 {
     fn from_digits(digits: &[u8]) -> u64 {
         digits.iter().rev().fold(0, |acc, &d| 10 * acc + d as u64)
     }
 
-    let mut digits = n.to_heapless_string(true, true).into_bytes();
+    let mut digits = n.to_heapless_string_with::<ReversedRaw>().into_bytes();
     let mut max_digits = digits.clone();
 
     for end in (1..digits.len()).rev() {

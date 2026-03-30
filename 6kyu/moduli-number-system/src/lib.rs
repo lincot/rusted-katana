@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/54db15b003e88a6a480000b9/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use num_integer::gcd;
 use unchecked_std::prelude::*;
 
@@ -22,7 +22,7 @@ pub fn from_nb_2str(n: i64, sys: Vec<i64>) -> String {
     for m in sys {
         unsafe {
             res.push_unchecked('-');
-            res.write_num_unchecked(n % m, 10, false, false);
+            res.write_int_unchecked(n % m);
             res.push_unchecked('-');
         }
     }

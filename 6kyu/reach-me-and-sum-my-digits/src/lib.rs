@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/55ffb44050558fdb200000a4/train/rust>
 
-use digital::SumDigits;
+use digital::prelude::*;
 
 pub fn sum_dig_nth_term(init_val: u32, pattern: &[u32], nth: usize) -> u32 {
     if nth == 0 || pattern.is_empty() {

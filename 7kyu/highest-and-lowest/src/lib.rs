@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/554b4ac871d6813a03000035/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn high_and_low(numbers: &str) -> String {
@@ -18,9 +18,9 @@ pub fn high_and_low(numbers: &str) -> String {
 
     let mut res = String::with_capacity(2 * i32::MAX_LEN_BASE10 + 1);
     unsafe {
-        res.write_num_unchecked(max, 10, false, false);
+        res.write_int_unchecked(max);
         res.push_unchecked(' ');
-        res.write_num_unchecked(min, 10, false, false);
+        res.write_int_unchecked(min);
     }
     res
 }

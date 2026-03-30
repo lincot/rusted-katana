@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/546f922b54af40e1e90001da/train/rust>
 
-use digital::WriteNumUnchecked;
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn alphabet_position(text: &str) -> String {
@@ -14,7 +14,7 @@ pub fn alphabet_position(text: &str) -> String {
             continue;
         };
         unsafe {
-            res.write_num_unchecked(num, 10, false, false);
+            res.write_int_unchecked(num);
             res.push_unchecked(b' ');
         }
     }

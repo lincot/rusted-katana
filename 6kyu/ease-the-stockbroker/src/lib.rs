@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/54de3257f565801d96001200/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn balance_statement(lst: &str) -> String {
@@ -40,12 +40,12 @@ pub fn balance_statement(lst: &str) -> String {
     let mut res = String::with_capacity(cap);
     unsafe {
         res.push_str_unchecked("Buy: ");
-        res.write_num_unchecked(weird_round(buy), 10, false, false);
+        res.write_int_unchecked(weird_round(buy));
         res.push_str_unchecked(" Sell: ");
-        res.write_num_unchecked(weird_round(sell), 10, false, false);
+        res.write_int_unchecked(weird_round(sell));
         if !badly_formed.is_empty() {
             res.push_str_unchecked("; Badly formed ");
-            res.write_num_unchecked(badly_formed.len(), 10, false, false);
+            res.write_int_unchecked(badly_formed.len());
             res.push_str_unchecked(": ");
             for bad in badly_formed {
                 res.push_str_unchecked(bad);

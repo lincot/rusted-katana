@@ -5,7 +5,7 @@
 #![feature(write_all_vectored)]
 
 use core::{cell::SyncUnsafeCell, mem::MaybeUninit};
-use digital::NumToString;
+use digital::prelude::*;
 use reqwest::header::{COOKIE, HeaderMap, HeaderValue, USER_AGENT};
 use serde::{Deserialize, Serialize};
 use std::{
@@ -831,7 +831,7 @@ fn write_results_json(
                 .unwrap();
             let speedup = median(most_upvoted.medians) / median(rusted_katana_result.medians);
             let speedup_100 = (speedup.mul_add(100., 0.5)) as u64;
-            let before_dot = (speedup_100 / 100).to_heapless_string(false, false);
+            let before_dot = (speedup_100 / 100).to_heapless_string();
             let after_dot = [
                 (speedup_100 % 100 / 10) as u8 + b'0',
                 (speedup_100 % 10) as u8 + b'0',

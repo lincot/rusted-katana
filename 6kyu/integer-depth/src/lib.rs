@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/59b401e24f98a813f9000026/train/rust>
 
-use digital::Next2Digits;
+use digital::prelude::*;
 
 pub fn compute_depth(n: u16) -> u8 {
     let mut n_multiple = n;
@@ -10,7 +10,7 @@ pub fn compute_depth(n: u16) -> u8 {
     while found_digits != (1 << 10) - 1 {
         let mut m = n_multiple;
 
-        while let Some([a, b]) = m.next_2_digits(true) {
+        while let Some([a, b]) = m.next_2_digits::<Raw>() {
             found_digits |= 1 << a;
             found_digits |= 1 << b;
         }

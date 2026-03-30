@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5266876b8f4bf2da9b000362/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn likes(names: &[&str]) -> String {
@@ -55,7 +55,7 @@ pub fn likes(names: &[&str]) -> String {
                 res.push_str_unchecked(", ");
                 res.push_str_unchecked(b);
                 res.push_str_unchecked(" and ");
-                res.write_num_unchecked(rest.len(), 10, false, false);
+                res.write_int_unchecked(rest.len());
                 res.push_str_unchecked(" others like this");
             }
             res

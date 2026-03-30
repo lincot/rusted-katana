@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/55031bba8cba40ada90011c4/train/rust>
 
 use core::hint::unreachable_unchecked;
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use either::Either;
 use unchecked_std::prelude::*;
 
@@ -97,7 +97,7 @@ pub fn is_sum_of_cubes(s: &str) -> String {
             res.push_unchecked(b' ');
         }
 
-        res.write_num_unchecked(sum, 10, false, false);
+        res.write_int_unchecked(sum);
 
         res.extend_from_slice_unchecked(b" Lucky");
 

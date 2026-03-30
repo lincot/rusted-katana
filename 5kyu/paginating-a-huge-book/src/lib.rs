@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/55905b7597175ffc1a00005a/train/rust>
 
-use digital::CountDigitsBase10;
+use digital::prelude::*;
 
 pub fn page_digits(pages: u64) -> u64 {
     if pages < 10 {

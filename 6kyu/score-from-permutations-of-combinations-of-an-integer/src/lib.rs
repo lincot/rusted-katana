@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5676ffaa8da527f234000025/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 
 pub fn sc_perm_comb(num: u32) -> u64 {
     const ONES: [u64; 10] = {
@@ -24,7 +24,7 @@ pub fn sc_perm_comb(num: u32) -> u64 {
     };
 
     let mut digits = heapless::Vec::<usize, { u32::MAX_LEN_BASE10 }>::new();
-    unsafe { digits.write_num_unchecked(num, 10, true, true) };
+    unsafe { digits.write_int_unchecked_with::<ReversedRaw, Base10>(num) };
     if digits.is_empty() || digits.len() >= u32::MAX_LEN_BASE10 {
         unsafe { core::hint::unreachable_unchecked() };
     }

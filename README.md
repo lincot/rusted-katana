@@ -3,7 +3,7 @@
 # rusted katana
 
 Highly optimized solutions to [Codewars](https://www.codewars.com/r/HLmVMg)
-challenges, written in Rust. Runs the benchmark suite in **686×** less total
+challenges, written in Rust. Runs the benchmark suite in **693×** less total
 time than the most upvoted Rust solutions.
 
 ![log-scale distribution histogram of speedups per benchmark](speedups.svg)

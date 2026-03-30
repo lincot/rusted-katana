@@ -1,6 +1,6 @@
 #![feature(write_all_vectored)]
 
-use digital::NumToString;
+use digital::prelude::*;
 use plotters::prelude::*;
 use serde::Deserialize;
 use std::{
@@ -69,12 +69,12 @@ fn main() {
 
     let ews = agg.sum_other_ns / agg.sum_my_ns;
 
-    let rounded_speedup = ((ews + 0.5) as usize).to_heapless_string(false, false);
+    let rounded_speedup = ((ews + 0.5) as usize).to_heapless_string();
     stdout()
         .lock()
         .write_all_vectored(&mut [
             IoSlice::new(b"Benchmark count: "),
-            IoSlice::new(agg.n.to_heapless_string(false, false).as_bytes()),
+            IoSlice::new(agg.n.to_heapless_string().as_bytes()),
             IoSlice::new(b"\nTotal time speedup: "),
             IoSlice::new(rounded_speedup.as_bytes()),
             IoSlice::new("×\n".as_bytes()),
@@ -194,7 +194,7 @@ fn draw_speedup_histogram(speedups: &[f64], output_path: &str) {
             res.push(x);
             res
         })
-        .y_label_formatter(&|&v| (v as u16).to_string(false, false))
+        .y_label_formatter(&|&v| (v as u16).to_string())
         .x_desc("Speedup (log-scale)")
         .y_desc("Number of benchmarks")
         .draw()

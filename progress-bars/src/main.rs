@@ -3,7 +3,7 @@
 
 use ab_glyph::{FontRef, PxScale};
 use core::{cell::SyncUnsafeCell, cmp::Ordering, mem::MaybeUninit};
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use image::{Rgb, RgbImage};
 use imageproc::{
     drawing::{draw_filled_rect_mut, draw_text_mut},
@@ -96,9 +96,9 @@ impl<'a> ProgressBars<'a> {
 
             let mut progress_text = heapless::String::<{ 2 * u32::MAX_LEN_BASE10 + 1 }>::new();
             unsafe {
-                progress_text.write_num_unchecked(progress, 10, false, false);
+                progress_text.write_int_unchecked(progress);
                 progress_text.as_mut_vec().push_unchecked(b'/');
-                progress_text.write_num_unchecked(limit, 10, false, false);
+                progress_text.write_int_unchecked(limit);
             }
             draw_text_mut(
                 &mut self.image,

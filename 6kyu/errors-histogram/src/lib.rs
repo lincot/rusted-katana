@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/59f44c7bd4b36946fd000052/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn hist(s: &str) -> String {
@@ -22,7 +22,7 @@ pub fn hist(s: &str) -> String {
         unsafe {
             res.push_unchecked(symbol);
             res.extend_from_slice_unchecked(b"  ");
-            res.write_num_unchecked(amount, 10, false, false);
+            res.write_int_unchecked(amount);
             res.extend_from_slice_unchecked(b"     ");
             res.push_many_unchecked(b'*', amount);
             res.push_unchecked(b'\r');

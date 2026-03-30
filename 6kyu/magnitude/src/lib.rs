@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5cc70653658d6f002ab170b5/train/rust>
 
-use digital::Next2Digits;
+use digital::prelude::*;
 
 pub struct S {
     pub s: String,
@@ -26,7 +26,7 @@ pub fn sqr_modulus(a: S) -> (bool, i32, i32) {
 
 fn descending_order(mut x: u32) -> i32 {
     let mut digit_counts = [0u8; 10];
-    while let Some(digits) = x.next_2_digits(true) {
+    while let Some(digits) = x.next_2_digits::<Raw>() {
         for d in digits {
             digit_counts[d as usize] += 1;
         }

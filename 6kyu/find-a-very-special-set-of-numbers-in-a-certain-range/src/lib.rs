@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/569df0bc5565b243d500002b/train/rust>
 
-use digital::NumToString;
+use digital::prelude::*;
 
 pub fn find_us(n1: u32, n2: u32, k: u32, prime_factors: &[u32], digits: &[u32]) -> Vec<u32> {
     let step = prime_factors.iter().product::<u32>();
@@ -8,7 +8,7 @@ pub fn find_us(n1: u32, n2: u32, k: u32, prime_factors: &[u32], digits: &[u32]) 
     let mut x = n1 + step - n1 % step;
     while x <= (n1 + k * n2) {
         if digits.iter().all(|&d| {
-            x.to_heapless_string(true, true)
+            x.to_heapless_string_with::<ReversedRaw>()
                 .as_bytes()
                 .contains(&(d as u8))
         }) {

@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2/train/rust>
 
-use digital::WriteNumUnchecked;
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn solve(arr: &[&str]) -> String {
@@ -23,12 +23,12 @@ pub fn solve(arr: &[&str]) -> String {
         if hours < 10 {
             res.push_unchecked('0');
         }
-        res.write_num_unchecked(hours, 10, false, false);
+        res.write_int_unchecked(hours);
         res.push_unchecked(':');
         if minutes < 10 {
             res.push_unchecked('0');
         }
-        res.write_num_unchecked(minutes, 10, false, false);
+        res.write_int_unchecked(minutes);
     }
     res
 }

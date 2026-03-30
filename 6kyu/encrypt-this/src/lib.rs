@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/5848565e273af816fb000449/train/rust>
 
-use digital::WriteNumUnchecked;
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn encrypt_this(text: &str) -> String {
@@ -14,7 +14,7 @@ pub fn encrypt_this(text: &str) -> String {
         let mut chars = word.chars();
         let first = chars.next().unwrap();
         unsafe {
-            res.write_num_unchecked(first as u8, 10, false, false);
+            res.write_int_unchecked(first as u8);
             let Some(second) = chars.next() else {
                 res.push_unchecked(' ');
                 continue;
@@ -43,7 +43,7 @@ fn encrypt_this_bytes(text: &[u8]) -> Vec<u8> {
     for word in text.split(|&b| b == b' ') {
         let first = word[0];
         unsafe {
-            res.write_num_unchecked(first, 10, false, false);
+            res.write_int_unchecked(first);
             let Some(&second) = word.get(1) else {
                 res.push_unchecked(b' ');
                 continue;

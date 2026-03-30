@@ -1,7 +1,7 @@
 //! <https://www.codewars.com/kata/5694b4f9a01ae685c400002f/train/rust>
 
 use core::cmp::Ordering;
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn calc_poly(pol_list: &[i32], x: i32) -> String {
@@ -40,7 +40,7 @@ pub fn calc_poly(pol_list: &[i32], x: i32) -> String {
                 res.push_unchecked(' ');
             }
             if coef != 1 || exp == 0 {
-                res.write_num_unchecked(coef, 10, false, false);
+                res.write_int_unchecked(coef);
                 if exp != 0 {
                     res.push_unchecked('*');
                 }
@@ -50,16 +50,16 @@ pub fn calc_poly(pol_list: &[i32], x: i32) -> String {
             }
             if exp > 1 {
                 res.push_unchecked('^');
-                res.write_num_unchecked(exp, 10, false, false);
+                res.write_int_unchecked(exp);
             }
 
             is_first = false;
         }
 
         res.push_str_unchecked(" with x = ");
-        res.write_num_unchecked(x, 10, false, false);
+        res.write_int_unchecked(x);
         res.push_str_unchecked(" the value is ");
-        res.write_num_unchecked(value, 10, false, false);
+        res.write_int_unchecked(value);
     }
 
     res

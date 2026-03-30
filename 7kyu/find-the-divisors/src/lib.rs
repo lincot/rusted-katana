@@ -1,6 +1,6 @@
 //! <https://www.codewars.com/kata/544aed4c4a30184e960010f4/train/rust>
 
-use digital::{MaxLenBase10, WriteNumUnchecked};
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn divisors(integer: u32) -> Result<Vec<u32>, String> {
@@ -9,7 +9,7 @@ pub fn divisors(integer: u32) -> Result<Vec<u32>, String> {
     if divisors.is_empty() {
         let mut res = String::with_capacity(u32::MAX_LEN_BASE10 + " is prime".len());
         unsafe {
-            res.write_num_unchecked(integer, 10, false, false);
+            res.write_int_unchecked(integer);
             res.push_str_unchecked(" is prime");
         }
         Err(res)

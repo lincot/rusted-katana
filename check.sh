@@ -1,10 +1,27 @@
 #!/bin/sh
 
-unsafe_count=$(rg -IcU "unsafe[\s]*\{" -g '!check-katas/' -g lib.rs | paste -sd+ | bc)
+unsafe_count=$(
+  rg -IcU "unsafe[\s]*\{" \
+    -g '!agg-speedups/' \
+    -g '!bench/' \
+    -g '!check-katas/' \
+    -g '!progress-bars/' \
+    -g '**/src/**/*.rs' \
+  | paste -sd+ \
+  | bc
+)
 sed -i "s/\(there are \)[0-9]\+\( \`unsafe\`\)/\1$unsafe_count\2/" README.md
 
-bytes_count=$(rg -Ic "\.bytes\(\)|\.as_bytes\(\)|\.as_bytes_mut\(\)|\.as_mut_vec\(\)" \
-  -g '!check-katas/' -g lib.rs | paste -sd+ | bc)
+bytes_count=$(
+  rg -Ic "\.bytes\(\)|\.as_bytes\(\)|\.as_bytes_mut\(\)|\.as_mut_vec\(\)" \
+    -g '!agg-speedups/' \
+    -g '!bench/' \
+    -g '!check-katas/' \
+    -g '!progress-bars/' \
+    -g '**/src/**/*.rs' \
+  | paste -sd+ \
+  | bc
+)
 sed -i "s/\(are used \)[0-9]\+\( times\)/\1$bytes_count\2/" README.md
 
 echo check

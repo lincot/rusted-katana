@@ -1,17 +1,17 @@
 //! <https://www.codewars.com/kata/58a6568827f9546931000027/train/rust>
 
-use digital::Next2Digits;
+use digital::prelude::*;
 
 pub fn number_of_carries(mut a: u32, mut b: u32) -> usize {
     let mut res = 0;
     let mut carry = 0;
     while a >= 10 || b >= 10 {
-        let [b1, a1] = a.next_2_digits(true).unwrap_or_else(|| {
+        let [b1, a1] = a.next_2_digits::<Raw>().unwrap_or_else(|| {
             let d = a;
             a = 0;
             [0, d as _]
         });
-        let [b2, a2] = b.next_2_digits(true).unwrap_or_else(|| {
+        let [b2, a2] = b.next_2_digits::<Raw>().unwrap_or_else(|| {
             let d = b;
             b = 0;
             [0, d as _]

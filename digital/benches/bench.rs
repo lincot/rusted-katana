@@ -1,11 +1,13 @@
 use core::{iter::Sum, time::Duration};
+
 use criterion::{criterion_group, criterion_main, BenchmarkId, Criterion};
-use digital::{MaxLenBase10, NumToString};
+use digital::prelude::*;
 use num_traits::PrimInt;
 
-fn bench_to_heapless_string(c: &mut Criterion) {
+fn bench_to_heapless_string<F: DigitFormat>(c: &mut Criterion) {
     fn bench_type<
-        T: MaxLenBase10 + NumToString<CAP10, CAP2, CAP16> + From<u8> + PrimInt + Sum,
+        T: MaxLenBase10 + IntToString<CAP10, CAP2, CAP16> + From<u8> + PrimInt + Sum,
+        F: DigitFormat,
         const CAP10: usize,
         const CAP2: usize,
         const CAP16: usize,
@@ -22,26 +24,54 @@ fn bench_to_heapless_string(c: &mut Criterion) {
                 .map(|pow| <T as From<_>>::from(10u8).pow(pow))
                 .sum();
             group.bench_with_input(BenchmarkId::from_parameter(size), &n, |b, &n| {
-                b.iter(|| n.to_heapless_string(false, false));
+                b.iter(|| n.to_heapless_string_with::<F>());
             });
         }
         group.finish();
     }
 
-    bench_type::<u8, { u8::MAX_LEN_BASE10 }, { u8::BITS as _ }, { (u8::BITS / 4) as _ }>(c, "u8");
-    bench_type::<u16, { u16::MAX_LEN_BASE10 }, { u16::BITS as _ }, { (u16::BITS / 4) as _ }>(
-        c, "u16",
+    bench_type::<u8, F, { u8::MAX_LEN_BASE10 }, { u8::BITS as _ }, { (u8::BITS / 4) as _ }>(
+        c,
+        &format!(
+            "u8{}{}",
+            if F::REVERSED { "_reversed" } else { "" },
+            if F::RAW { "_raw" } else { "" }
+        ),
     );
-    bench_type::<u32, { u32::MAX_LEN_BASE10 }, { u32::BITS as _ }, { (u32::BITS / 4) as _ }>(
-        c, "u32",
+    bench_type::<u16, F, { u16::MAX_LEN_BASE10 }, { u16::BITS as _ }, { (u16::BITS / 4) as _ }>(
+        c,
+        &format!(
+            "u16{}{}",
+            if F::REVERSED { "_reversed" } else { "" },
+            if F::RAW { "_raw" } else { "" }
+        ),
     );
-    bench_type::<u64, { u64::MAX_LEN_BASE10 }, { u64::BITS as _ }, { (u64::BITS / 4) as _ }>(
-        c, "u64",
+    bench_type::<u32, F, { u32::MAX_LEN_BASE10 }, { u32::BITS as _ }, { (u32::BITS / 4) as _ }>(
+        c,
+        &format!(
+            "u32{}{}",
+            if F::REVERSED { "_reversed" } else { "" },
+            if F::RAW { "_raw" } else { "" }
+        ),
     );
-    bench_type::<u128, { u128::MAX_LEN_BASE10 }, { u128::BITS as _ }, { (u128::BITS / 4) as _ }>(
-        c, "u128",
+    bench_type::<u64, F, { u64::MAX_LEN_BASE10 }, { u64::BITS as _ }, { (u64::BITS / 4) as _ }>(
+        c,
+        &format!(
+            "u64{}{}",
+            if F::REVERSED { "_reversed" } else { "" },
+            if F::RAW { "_raw" } else { "" }
+        ),
+    );
+    bench_type::<u128, F, { u128::MAX_LEN_BASE10 }, { u128::BITS as _ }, { (u128::BITS / 4) as _ }>(
+        c,
+        &format!(
+            "u128{}{}",
+            if F::REVERSED { "_reversed" } else { "" },
+            if F::RAW { "_raw" } else { "" }
+        ),
     );
 }
 
-criterion_group!(benches, bench_to_heapless_string);
-criterion_main!(benches);
+criterion_group!(benches_normal, bench_to_heapless_string::<Normal>);
+criterion_group!(benches_reversed, bench_to_heapless_string::<Reversed>);
+criterion_main!(benches_normal, benches_reversed);

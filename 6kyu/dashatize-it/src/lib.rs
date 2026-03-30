@@ -1,13 +1,10 @@
 //! <https://www.codewars.com/kata/58223370aef9fc03fd000071/train/rust>
 
-use digital::NumToString;
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn dashatize(n: i64) -> String {
-    let digits = n
-        .unsigned_abs()
-        .to_heapless_string(false, false)
-        .into_bytes();
+    let digits = n.unsigned_abs().to_heapless_string().into_bytes();
     let mut res = String::with_capacity(2 * digits.len());
 
     let first = digits[0];

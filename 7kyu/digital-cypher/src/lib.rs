@@ -1,10 +1,10 @@
 //! <https://www.codewars.com/kata/592e830e043b99888600002d/train/rust>
 
-use digital::NumToString;
+use digital::prelude::*;
 use unchecked_std::prelude::*;
 
 pub fn encode(msg: String, n: i32) -> Vec<i32> {
-    let digits = (n as u32).to_heapless_string(false, false).into_bytes();
+    let digits = (n as u32).to_heapless_string().into_bytes();
 
     let mut res = Vec::with_capacity(msg.len());
     let mut i = 0;
