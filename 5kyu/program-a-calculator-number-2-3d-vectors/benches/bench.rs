@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::ops::Add;
+
 use program_a_calculator_number_2_3d_vectors::Vector;
 use test::{Bencher, black_box};
 

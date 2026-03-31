@@ -1,7 +1,8 @@
 //! <https://www.codewars.com/kata/54bf1c2cd5b56cc47f0007a1/train/rust>
 
-use char_to_lower::to_lower;
 use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
+
+use char_to_lower::to_lower;
 use hashbrown::HashMap;
 use rustc_hash::FxHasher;
 

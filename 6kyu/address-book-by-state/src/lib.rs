@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/59d0ee709f0cbcf65400003b/train/rust>
 
 use core::array;
+
 use unchecked_std::prelude::*;
 
 pub fn by_state(str: &str) -> String {

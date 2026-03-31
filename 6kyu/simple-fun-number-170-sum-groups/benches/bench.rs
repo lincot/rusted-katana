@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use simple_fun_number_170_sum_groups::sum_groups;

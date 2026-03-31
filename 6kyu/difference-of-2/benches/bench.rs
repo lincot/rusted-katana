@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use difference_of_2::twos_difference;
 use rand::prelude::*;
 use rand_pcg::Pcg64Mcg;

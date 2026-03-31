@@ -1,8 +1,9 @@
 #![feature(test)]
 
 extern crate test;
-use beginner_lost_without_a_map::maps;
 use core::array;
+
+use beginner_lost_without_a_map::maps;
 use test::{Bencher, black_box};
 
 #[bench]

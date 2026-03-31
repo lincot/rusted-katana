@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/5813d19765d81c592200001a/train/rust>
 
 use core::cmp::Ordering;
+
 use digital::prelude::*;
 
 pub fn dont_give_me_five(start: isize, end: isize) -> isize {

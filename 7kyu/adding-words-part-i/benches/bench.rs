@@ -1,8 +1,9 @@
 #![feature(test)]
 
 extern crate test;
-use adding_words_part_i::Arith;
 use core::ops::Add;
+
+use adding_words_part_i::Arith;
 use test::{Bencher, black_box};
 
 #[bench]

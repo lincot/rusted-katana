@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use number_of_measurements_to_spot_the_counterfeit_coin::how_many_measurements;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

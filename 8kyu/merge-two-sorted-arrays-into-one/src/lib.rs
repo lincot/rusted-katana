@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/5899642f6e1b25935d000161/train/rust>
 
 use core::hint::unreachable_unchecked;
+
 use unchecked_std::prelude::*;
 
 pub fn merge_arrays(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {

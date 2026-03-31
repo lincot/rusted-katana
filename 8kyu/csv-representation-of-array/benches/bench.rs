@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use csv_representation_of_array::to_csv_text;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use remove_exclamation_marks::remove_exclamation_marks;

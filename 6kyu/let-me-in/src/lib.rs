@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/6498aa0daff4420024ce2c88/train/rust>
 
 use core::cmp::Reverse;
+
 use unchecked_std::prelude::*;
 
 pub fn get_in_line(arr: &[i32]) -> i32 {

@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use make_the_deadfish_swim::parse;
 use rand::prelude::*;
 use rand_pcg::Pcg64Mcg;

@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use looking_for_a_benefactor::new_avg;
 use test::{Bencher, black_box};
 

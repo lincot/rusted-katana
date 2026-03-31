@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use find_maximum_and_minimum_values_of_a_list::{maximum, minimum};
 use test::{Bencher, black_box};
 

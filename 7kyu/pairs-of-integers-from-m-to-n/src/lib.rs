@@ -51,8 +51,9 @@ const fn get_capacity(diff: usize) -> usize {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
     use core::mem::size_of;
+
+    use super::*;
 
     #[test]
     fn test_max_diff() {

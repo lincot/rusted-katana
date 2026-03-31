@@ -1,8 +1,9 @@
 #![feature(test)]
 
 extern crate test;
-use contamination_number_1_string::contamination;
 use core::array;
+
+use contamination_number_1_string::contamination;
 use test::{Bencher, black_box};
 
 #[bench]

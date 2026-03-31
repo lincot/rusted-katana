@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use test::{Bencher, black_box};
 use the_freeway_game::freeway_game;
 

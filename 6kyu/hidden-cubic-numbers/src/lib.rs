@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/55031bba8cba40ada90011c4/train/rust>
 
 use core::hint::unreachable_unchecked;
+
 use digital::prelude::*;
 use either::Either;
 use unchecked_std::prelude::*;

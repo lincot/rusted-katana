@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/588e27b7d1140d31cb000060/train/rust>
 
 use core::hint::unreachable_unchecked;
+
 use unchecked_std::prelude::*;
 
 pub fn generate_pairs(n: u32) -> Vec<(u32, u32)> {
@@ -38,8 +39,9 @@ const MAX_N: u32 = MAX_N_16;
 
 #[cfg(test)]
 mod tests {
-    use super::*;
     use core::mem::size_of;
+
+    use super::*;
 
     #[test]
     fn test_max_diff() {

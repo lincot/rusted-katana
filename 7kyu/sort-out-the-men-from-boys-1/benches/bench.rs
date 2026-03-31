@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use sort_out_the_men_from_boys_1::men_from_boys;

@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use flatten_and_sort_an_array::flatten_and_sort;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

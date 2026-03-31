@@ -1,4 +1,5 @@
 use core::array;
+
 use find_the_stray_number::stray;
 
 #[test]

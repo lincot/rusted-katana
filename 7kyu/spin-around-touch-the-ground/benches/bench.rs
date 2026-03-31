@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use spin_around_touch_the_ground::spin_around;

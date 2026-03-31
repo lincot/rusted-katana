@@ -1,8 +1,9 @@
 #![feature(test)]
 
 extern crate test;
-use my_language_skills::my_languages;
 use std::collections::HashMap;
+
+use my_language_skills::my_languages;
 use test::{Bencher, black_box};
 
 #[bench]

@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use odd_heavy_array::is_odd_heavy;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

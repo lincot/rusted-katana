@@ -4,6 +4,7 @@ use core::{
     hash::{BuildHasherDefault, Hasher},
     hint::unreachable_unchecked,
 };
+
 use hashbrown::HashSet;
 use rustc_hash::FxHasher;
 

@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use count_the_photos::count_photos;
 use rand::prelude::*;
 use rand_pcg::Pcg64Mcg;

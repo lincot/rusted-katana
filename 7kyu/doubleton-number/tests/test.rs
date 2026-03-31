@@ -1,4 +1,5 @@
 use core::fmt::Write;
+
 use doubleton_number::doubleton;
 
 const fn is_doubleton(mut n: u32) -> bool {

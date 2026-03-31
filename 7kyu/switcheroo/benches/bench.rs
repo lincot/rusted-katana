@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use switcheroo::switcheroo;
 use test::{Bencher, black_box};
 

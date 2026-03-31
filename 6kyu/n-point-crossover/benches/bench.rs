@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use n_point_crossover::crossover;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

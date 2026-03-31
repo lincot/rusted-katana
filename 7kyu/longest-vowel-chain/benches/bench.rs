@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use longest_vowel_chain::longest_vowel_chain;
 use rand::seq::IndexedRandom;
 use rand_pcg::Pcg64Mcg;

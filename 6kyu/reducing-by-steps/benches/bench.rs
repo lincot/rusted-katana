@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use reducing_by_steps::{gcdi, lcmu, oper_array, som};
 use test::{Bencher, black_box};
 

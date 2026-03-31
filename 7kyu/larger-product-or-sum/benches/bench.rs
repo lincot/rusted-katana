@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use larger_product_or_sum::sum_or_product;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use how_good_are_you_really::better_than_average;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

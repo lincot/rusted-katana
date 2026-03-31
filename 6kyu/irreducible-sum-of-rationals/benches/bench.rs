@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use irreducible_sum_of_rationals::sum_fracts;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

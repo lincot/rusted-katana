@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use find_the_stray_number::stray;
 use test::{Bencher, black_box};
 

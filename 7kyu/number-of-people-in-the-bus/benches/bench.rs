@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use number_of_people_in_the_bus::number;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

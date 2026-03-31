@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use max_sum_between_two_negatives::max_sum_between_two_negatives;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

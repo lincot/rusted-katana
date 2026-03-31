@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use product_array_array_series_number_5::product_array;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

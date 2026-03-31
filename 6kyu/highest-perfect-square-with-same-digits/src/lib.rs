@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/5b2cd515553292a4ff0000c2/train/rust>
 
 use core::cmp::Reverse;
+
 use digital::prelude::*;
 
 pub fn next_perfectsq_perm(lower_limit: u32, k: u32) -> u32 {

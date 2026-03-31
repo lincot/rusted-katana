@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use elevator_distance::elevator_distance;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

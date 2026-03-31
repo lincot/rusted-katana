@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use maximum_gap_array_series_number_4::max_gap;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

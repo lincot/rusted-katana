@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use gangs::gangs;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

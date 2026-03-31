@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use equal_sides_of_an_array::find_even_index;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

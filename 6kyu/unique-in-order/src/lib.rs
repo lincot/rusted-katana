@@ -4,6 +4,7 @@
 #![feature(min_specialization)]
 
 use core::{fmt::Debug, iter::TrustedLen};
+
 use unchecked_std::prelude::*;
 
 pub fn unique_in_order<T>(sequence: T) -> Vec<T::Item>

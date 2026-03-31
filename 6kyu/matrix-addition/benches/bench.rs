@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use matrix_addition::matrix_addition;
 use test::{Bencher, black_box};
 

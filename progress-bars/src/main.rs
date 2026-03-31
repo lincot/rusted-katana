@@ -1,18 +1,19 @@
 #![expect(invalid_value)]
 #![feature(sync_unsafe_cell)]
 
-use ab_glyph::{FontRef, PxScale};
 use core::{cell::SyncUnsafeCell, cmp::Ordering, mem::MaybeUninit};
+use std::{
+    fs,
+    io::{Write, stdout},
+    thread,
+};
+
+use ab_glyph::{FontRef, PxScale};
 use digital::prelude::*;
 use image::{Rgb, RgbImage};
 use imageproc::{
     drawing::{draw_filled_rect_mut, draw_text_mut},
     rect::Rect,
-};
-use std::{
-    fs,
-    io::{Write, stdout},
-    thread,
 };
 
 struct ProgressBars<'a> {

@@ -1,8 +1,9 @@
 #![feature(test)]
 
 extern crate test;
-use array_dot_diff::array_diff;
 use core::array;
+
+use array_dot_diff::array_diff;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use test::{Bencher, black_box};

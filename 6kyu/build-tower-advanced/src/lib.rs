@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/57675f3dedc6f728ee000256/train/rust>
 
 use core::mem::MaybeUninit;
+
 use unchecked_std::prelude::*;
 
 pub fn tower_builder(n_floors: usize, block_size: (usize, usize)) -> Vec<String> {

@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/56cca888a9d0f25985000036/train/rust>
 
 use core::hint::unreachable_unchecked;
+
 use num_bigint::BigUint;
 
 pub fn candies_to_buy(amount_of_kids_invited: u16) -> BigUint {

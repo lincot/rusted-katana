@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/59aa6567485a4d03ff0000ca/train/rust>
 
 use core::hint::unreachable_unchecked;
+
 use num_integer::Roots;
 
 pub fn solve(mut a: u32, b: u32) -> usize {

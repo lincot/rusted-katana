@@ -1,7 +1,8 @@
 //! fast `char` to lowercase conversion, based on the standard library
 #![no_std]
 
-/// Returns the lowercase representation of the given `char` with the exception of 'İ'.
+/// Returns the lowercase representation of the given `char` with the exception
+/// of 'İ'.
 ///
 /// If 'İ' is passed, 'İ' is returned back instead of "i̇". It's faster than
 /// `char::to_lowercase`, because it returns a single char for any given char.

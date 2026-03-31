@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use mirror_mirror_on_the_wall_dot_dot_dot::mirror;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

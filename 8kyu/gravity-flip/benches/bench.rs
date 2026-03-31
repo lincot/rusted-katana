@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use gravity_flip::flip;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/59b7571bbf10a48c75000070/train/rust>
 
 use core::mem::MaybeUninit;
+
 use num_integer::Roots;
 use unchecked_std::prelude::*;
 

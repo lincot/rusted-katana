@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use enumerable_magic_number_20_cascading_subsets::each_cons;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

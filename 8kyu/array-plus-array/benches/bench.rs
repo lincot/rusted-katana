@@ -1,8 +1,9 @@
 #![feature(test)]
 
 extern crate test;
-use array_plus_array::slice_plus_slice;
 use core::array;
+
+use array_plus_array::slice_plus_slice;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use test::{Bencher, black_box};

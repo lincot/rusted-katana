@@ -1,13 +1,14 @@
 #![feature(write_all_vectored)]
 
-use digital::prelude::*;
-use plotters::prelude::*;
-use serde::Deserialize;
 use std::{
     fs::{self, File, read_dir},
     io::{IoSlice, Write, stderr, stdout},
     path::Path,
 };
+
+use digital::prelude::*;
+use plotters::prelude::*;
+use serde::Deserialize;
 
 #[derive(Default)]
 struct Agg {

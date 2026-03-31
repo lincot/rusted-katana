@@ -1,8 +1,9 @@
 #![feature(test)]
 
 extern crate test;
-use bubblesort_once::bubblesort_once;
 use core::array;
+
+use bubblesort_once::bubblesort_once;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use test::{Bencher, black_box};

@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use merging_vectors_without_reallocation::merge;
 use test::{Bencher, black_box};
 

@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use find_the_first_non_consecutive_number::first_non_consecutive;
 use test::{Bencher, black_box};
 

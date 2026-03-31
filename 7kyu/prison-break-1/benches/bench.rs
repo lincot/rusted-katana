@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use prison_break_1::freed_prisoners;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

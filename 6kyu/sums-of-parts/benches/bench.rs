@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use sums_of_parts::parts_sums;
 use test::{Bencher, black_box};
 

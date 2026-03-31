@@ -1,8 +1,9 @@
 #![feature(test)]
 
 extern crate test;
-use calculate_average::find_average;
 use core::array;
+
+use calculate_average::find_average;
 use test::{Bencher, black_box};
 
 #[bench]

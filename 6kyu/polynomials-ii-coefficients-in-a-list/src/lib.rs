@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/5694b4f9a01ae685c400002f/train/rust>
 
 use core::cmp::Ordering;
+
 use digital::prelude::*;
 use unchecked_std::prelude::*;
 

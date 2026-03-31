@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use element_equals_its_index::index_equals_value;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

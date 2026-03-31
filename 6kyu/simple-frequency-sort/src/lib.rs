@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/5a8d2bf60025e9163c0000bc/train/rust>
 
 use core::{cmp::Reverse, hash::BuildHasherDefault, hint::unreachable_unchecked};
+
 use hashbrown::HashMap;
 use rustc_hash::FxHasher;
 use unchecked_std::prelude::*;

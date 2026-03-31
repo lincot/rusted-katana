@@ -1,8 +1,9 @@
 #![feature(test)]
 
 extern crate test;
-use pirates_are_the_cannons_ready::cannons_ready;
 use std::collections::HashMap;
+
+use pirates_are_the_cannons_ready::cannons_ready;
 use test::{Bencher, black_box};
 
 #[bench]

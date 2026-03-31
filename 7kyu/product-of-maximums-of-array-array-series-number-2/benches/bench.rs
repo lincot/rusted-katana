@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use product_of_maximums_of_array_array_series_number_2::max_product;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

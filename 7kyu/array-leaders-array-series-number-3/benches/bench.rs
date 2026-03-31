@@ -1,8 +1,9 @@
 #![feature(test)]
 
 extern crate test;
-use array_leaders_array_series_number_3::array_leaders;
 use core::array;
+
+use array_leaders_array_series_number_3::array_leaders;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use test::{Bencher, black_box};

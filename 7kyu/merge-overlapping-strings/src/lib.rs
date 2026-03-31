@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/61c78b57ee4be50035d28d42/train/rust>
 
 use core::hint::unreachable_unchecked;
+
 use unchecked_std::prelude::*;
 
 pub fn merge_strings(first: &str, second: &str) -> String {

@@ -1,8 +1,9 @@
 #![feature(test)]
 
 extern crate test;
-use block_pusher::block_pushing;
 use core::array;
+
+use block_pusher::block_pushing;
 use rand::prelude::*;
 use rand_pcg::Pcg64Mcg;
 use test::{Bencher, black_box};

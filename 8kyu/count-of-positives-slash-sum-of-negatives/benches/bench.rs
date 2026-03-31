@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use count_of_positives_slash_sum_of_negatives::count_positives_sum_negatives;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

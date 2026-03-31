@@ -1,7 +1,8 @@
 //! <https://www.codewars.com/kata/59df2f8f08c6cec835000012/train/rust>
 
-use char_to_lower::to_lower;
 use core::cmp::Ordering;
+
+use char_to_lower::to_lower;
 use unchecked_std::prelude::*;
 
 pub fn meeting(s: &str) -> String {

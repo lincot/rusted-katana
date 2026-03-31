@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use neutralisation::neutralise;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

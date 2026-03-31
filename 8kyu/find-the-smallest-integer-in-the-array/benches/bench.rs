@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use find_the_smallest_integer_in_the_array::find_smallest_int;
 use test::{Bencher, black_box};
 

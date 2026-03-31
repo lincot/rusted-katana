@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use point_in_polygon_1::point_in_poly;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

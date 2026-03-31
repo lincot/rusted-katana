@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use exes_and_ohs::xo;
 use rand::prelude::*;
 use rand_pcg::Pcg64Mcg;

@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use generating_numbers_from_digits_number_1::proc_arr;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use find_all_non_consecutive_numbers::all_non_consecutive;
 use test::{Bencher, black_box};
 

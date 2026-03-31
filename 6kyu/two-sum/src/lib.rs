@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/52c31f8e6605bcc646000082/train/rust>
 
 use core::{hash::BuildHasherDefault, hint::unreachable_unchecked};
+
 use hashbrown::HashMap;
 use rustc_hash::FxHasher;
 

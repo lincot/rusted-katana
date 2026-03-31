@@ -1,7 +1,6 @@
 #![allow(dead_code)]
 
-use std::collections::HashMap;
-use std::sync::LazyLock;
+use std::{collections::HashMap, sync::LazyLock};
 
 pub static NATO: LazyLock<HashMap<char, &'static str>> = LazyLock::new(|| {
     [

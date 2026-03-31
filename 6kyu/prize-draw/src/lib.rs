@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/5616868c81a0f281e500005c/train/rust>
 
 use core::cmp::Reverse;
+
 use unchecked_std::prelude::*;
 
 pub fn rank(st: &str, we: Vec<i32>, n: usize) -> &str {

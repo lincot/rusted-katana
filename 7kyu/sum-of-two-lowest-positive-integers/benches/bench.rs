@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use rand::prelude::*;
 use rand_pcg::Pcg64Mcg;
 use sum_of_two_lowest_positive_integers::sum_two_smallest_numbers;

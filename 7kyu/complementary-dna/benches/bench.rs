@@ -1,8 +1,9 @@
 #![feature(test)]
 
 extern crate test;
-use complementary_dna::dna_strand;
 use core::array;
+
+use complementary_dna::dna_strand;
 use test::{Bencher, black_box};
 
 #[bench]

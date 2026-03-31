@@ -1,8 +1,9 @@
 #![feature(test)]
 
 extern crate test;
-use are_they_the_same::comp;
 use core::array;
+
+use are_they_the_same::comp;
 use rand::prelude::*;
 use rand_pcg::Pcg64Mcg;
 use test::{Bencher, black_box};

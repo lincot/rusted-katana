@@ -1,8 +1,9 @@
 #![feature(test)]
 
 extern crate test;
-use alphabetical_addition::add_letters;
 use core::array;
+
+use alphabetical_addition::add_letters;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use test::{Bencher, black_box};

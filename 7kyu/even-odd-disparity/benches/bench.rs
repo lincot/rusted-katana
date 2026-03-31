@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use even_odd_disparity::solve;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

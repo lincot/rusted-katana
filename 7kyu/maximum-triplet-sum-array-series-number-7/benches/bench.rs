@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use maximum_triplet_sum_array_series_number_7::max_tri_sum;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

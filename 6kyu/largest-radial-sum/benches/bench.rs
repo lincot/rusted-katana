@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use largest_radial_sum::largest_radial_sum;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

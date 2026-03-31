@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use divide_and_conquer::div_con;
 use either::Either;
 use rand::RngExt;

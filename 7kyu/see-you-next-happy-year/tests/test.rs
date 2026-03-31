@@ -1,4 +1,5 @@
 use core::fmt::Write;
+
 use see_you_next_happy_year::next_happy_year;
 
 const fn is_happy(mut n: u16) -> bool {

@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use minimize_sum_of_array_array_series_number_1::min_sum;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

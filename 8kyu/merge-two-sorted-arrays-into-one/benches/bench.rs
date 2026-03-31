@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use merge_two_sorted_arrays_into_one::merge_arrays;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

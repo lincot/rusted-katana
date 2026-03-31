@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use max_diff_easy_1::max_diff;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

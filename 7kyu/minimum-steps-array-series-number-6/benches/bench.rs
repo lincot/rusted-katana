@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use minimum_steps_array_series_number_6::minimum_steps;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

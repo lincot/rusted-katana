@@ -1,9 +1,11 @@
 //! <https://www.codewars.com/kata/5265b0885fda8eac5900093b/train/rust>
 
-pub use self::preloaded::{Ast, Operator, Source};
 use core::ops::{Add, Div, Mul, Sub};
+
 use digital::prelude::*;
 use unchecked_std::prelude::*;
+
+pub use self::preloaded::{Ast, Operator, Source};
 
 mod preloaded;
 
@@ -52,8 +54,8 @@ impl<'a> Lexer<'a> {
         self.0 = &self.0[n..];
     }
 
-    /// Move cursor of lexer to the first non-whitespace character if there is one
-    /// or to the end of string otherwise
+    /// Move cursor of lexer to the first non-whitespace character if there is
+    /// one or to the end of string otherwise
     fn eat_whitespace(&mut self) {
         self.eat_bytes(unsafe { self.token_while(|&b| b == b' ') }.len());
     }

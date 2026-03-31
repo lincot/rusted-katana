@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use max_min_arrays::solve;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

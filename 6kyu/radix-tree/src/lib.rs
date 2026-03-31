@@ -2,8 +2,9 @@
 
 #![feature(slice_swap_unchecked)]
 
-pub use preloaded::RadixTree;
 use std::collections::HashMap;
+
+pub use preloaded::RadixTree;
 
 mod preloaded;
 

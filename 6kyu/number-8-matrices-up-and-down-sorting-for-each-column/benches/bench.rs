@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use number_8_matrices_up_and_down_sorting_for_each_column::up_down_col_sort;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

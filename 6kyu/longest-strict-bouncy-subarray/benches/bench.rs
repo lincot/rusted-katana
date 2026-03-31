@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use longest_strict_bouncy_subarray::longest_bouncy_list;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

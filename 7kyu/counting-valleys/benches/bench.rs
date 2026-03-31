@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use counting_valleys::counting_valleys;
 use rand::seq::IndexedRandom;
 use rand_pcg::Pcg64Mcg;

@@ -1,8 +1,9 @@
 #![feature(test)]
 
 extern crate test;
-use closest_pair_of_points_in_linearithmic_time::closest_pair;
 use core::array;
+
+use closest_pair_of_points_in_linearithmic_time::closest_pair;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use test::{Bencher, black_box};

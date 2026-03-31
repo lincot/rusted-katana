@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use reach_me_and_sum_my_digits::sum_dig_nth_term;
 use test::{Bencher, black_box};
 

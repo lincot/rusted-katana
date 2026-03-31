@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use multiples_by_permutations_ii::find_lowest_int;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

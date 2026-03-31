@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use how_many_consecutive_numbers_are_needed::consecutive;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

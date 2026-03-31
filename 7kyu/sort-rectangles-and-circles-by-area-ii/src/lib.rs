@@ -1,6 +1,7 @@
 //! <https://www.codewars.com/kata/5a1ebc2480171f29cf0000e5/train/rust>
 
 use core::{cmp::Ordering, f64::consts::PI};
+
 use either::Either;
 
 pub fn sort_by_area(seq: &[Either<(f64, f64), f64>]) -> Vec<Either<(f64, f64), f64>> {

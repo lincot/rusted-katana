@@ -63,7 +63,8 @@ fn tops_bytes(msg: &[u8]) -> Vec<u8> {
     res
 }
 
-/// Get the number of tops. May return 1 more than the actual number for really big strings.
+/// Get the number of tops. May return 1 more than the actual number for really
+/// big strings.
 fn get_tops_count(msg: &[u8]) -> usize {
     (unsafe {
         (msg.len() as f64)

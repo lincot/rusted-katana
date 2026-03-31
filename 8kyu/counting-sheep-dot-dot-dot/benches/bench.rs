@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use counting_sheep_dot_dot_dot::count_sheep;
 use test::{Bencher, black_box};
 

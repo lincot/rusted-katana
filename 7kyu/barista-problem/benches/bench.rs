@@ -1,8 +1,9 @@
 #![feature(test)]
 
 extern crate test;
-use barista_problem::barista;
 use core::array;
+
+use barista_problem::barista;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;
 use test::{Bencher, black_box};

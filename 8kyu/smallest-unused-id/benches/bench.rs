@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use rand::{RngExt, seq::SliceRandom};
 use rand_pcg::Pcg64Mcg;
 use smallest_unused_id::next_id;

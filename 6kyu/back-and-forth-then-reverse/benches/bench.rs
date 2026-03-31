@@ -1,8 +1,9 @@
 #![feature(test)]
 
 extern crate test;
-use back_and_forth_then_reverse::arrange;
 use core::array;
+
+use back_and_forth_then_reverse::arrange;
 use test::{Bencher, black_box};
 
 #[bench]

@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use flick_switch::flick_switch;
 use rand::seq::IndexedRandom;
 use rand_pcg::Pcg64Mcg;

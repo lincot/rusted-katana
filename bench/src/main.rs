@@ -5,9 +5,6 @@
 #![feature(write_all_vectored)]
 
 use core::{cell::SyncUnsafeCell, mem::MaybeUninit};
-use digital::prelude::*;
-use reqwest::header::{COOKIE, HeaderMap, HeaderValue, USER_AGENT};
-use serde::{Deserialize, Serialize};
 use std::{
     env,
     fs::{self, File},
@@ -15,6 +12,10 @@ use std::{
     path::{Path, PathBuf},
     process::{Command, Stdio, exit},
 };
+
+use digital::prelude::*;
+use reqwest::header::{COOKIE, HeaderMap, HeaderValue, USER_AGENT};
+use serde::{Deserialize, Serialize};
 use unchecked_std::prelude::*;
 
 /// The number of times to benchmark each solution.

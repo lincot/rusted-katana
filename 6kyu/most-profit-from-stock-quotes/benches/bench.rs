@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use most_profit_from_stock_quotes::max_profit;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

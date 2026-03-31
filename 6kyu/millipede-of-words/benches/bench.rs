@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use millipede_of_words::millipede;
 use rand::prelude::*;
 use rand_pcg::Pcg64Mcg;

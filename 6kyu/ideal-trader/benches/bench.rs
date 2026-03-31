@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use ideal_trader::ideal_trader;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

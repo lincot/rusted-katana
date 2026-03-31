@@ -2,6 +2,7 @@
 
 extern crate test;
 use core::array;
+
 use jumps_in_a_cycle_number_1::get_jumps;
 use rand::RngExt;
 use rand_pcg::Pcg64Mcg;

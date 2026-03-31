@@ -47,8 +47,9 @@ unsafe fn transpose_column_first(matrix: &[Vec<u8>]) -> Vec<Vec<u8>> {
 #[cfg(test)]
 #[cfg(miri)]
 mod miri_tests {
-    use super::*;
     use core::array;
+
+    use super::*;
 
     #[test]
     fn miri_test() {

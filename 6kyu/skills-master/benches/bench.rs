@@ -1,10 +1,11 @@
 #![feature(test)]
 
 extern crate test;
+use std::collections::{HashMap, HashSet};
+
 use rand::prelude::*;
 use rand_pcg::Pcg64Mcg;
 use skills_master::count_skills;
-use std::collections::{HashMap, HashSet};
 use test::{Bencher, black_box};
 
 #[bench]
