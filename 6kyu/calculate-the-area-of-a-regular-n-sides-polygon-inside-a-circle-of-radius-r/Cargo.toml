@@ -1,0 +1,9 @@
+[package]
+name = "calculate-the-area-of-a-regular-n-sides-polygon-inside-a-circle-of-radius-r"
+edition = { workspace = true }
+
+[dependencies]
+libm = { workspace = true }
+
+[lints]
+workspace = true

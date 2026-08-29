@@ -1,0 +1,9 @@
+[package]
+name = "sum-of-powers-of-2"
+edition = { workspace = true }
+
+[dependencies]
+unchecked-std = { workspace = true }
+
+[lints]
+workspace = true

@@ -1,0 +1,6 @@
+[package]
+name = "perimeter-sequence"
+edition = { workspace = true }
+
+[lints]
+workspace = true

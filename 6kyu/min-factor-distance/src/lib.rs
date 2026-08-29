@@ -29,7 +29,7 @@ pub fn min_distance(n: u32) -> u32 {
 ///
 /// panics if the number is not odd
 fn get_divisors_odd(mut n: u32) -> Vec<u32> {
-    assert!(n % 2 == 1);
+    assert!(!n.is_multiple_of(2));
 
     let cap = match n.leading_zeros() {
         27 | 28 => 3,  // 15, 21

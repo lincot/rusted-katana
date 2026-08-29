@@ -3,7 +3,7 @@
 # rusted katana
 
 Highly optimized solutions to [Codewars](https://www.codewars.com/r/HLmVMg)
-challenges, written in Rust. Runs the benchmark suite in **693×** less total
+challenges, written in Rust. Runs the benchmark suite in **647×** less total
 time than the most upvoted Rust solutions.
 
 ![log-scale distribution histogram of speedups per benchmark](speedups.svg)
@@ -21,12 +21,12 @@ Current progress:
 are allowed, even if they are not accepted by Codewars
 
 - solutions are safe (more on it in the [safety section](#safety));
-*nevertheless, there are 817 `unsafe` blocks*
+*nevertheless, there are 873 `unsafe` blocks*
 
 - even though most of the tests on Codewars have only ASCII input,
 they use Rust's standard UTF-8–encoded strings, so solutions for string katas
 should work with Unicode input; *nevertheless, `.bytes()`, `.as_bytes()`,
-`.as_bytes_mut()` and `.as_mut_vec()` are used 347 times*
+`.as_bytes_mut()` and `.as_mut_vec()` are used 356 times*
 
 - function signatures and names from solution setups are preserved;
 *but are adjusted with clippy*
@@ -34,6 +34,8 @@ should work with Unicode input; *nevertheless, `.bytes()`, `.as_bytes()`,
 - various checking is done using [check.sh](./check.sh)
 
 - large lookup tables are generally not allowed
+
+- solutions should be executable on any target
 
 ## benchmarking
 

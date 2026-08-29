@@ -1,0 +1,15 @@
+[package]
+name = "find-the-unique-string"
+edition = { workspace = true }
+
+[dependencies]
+char-to-lower = { workspace = true }
+hashbrown = { workspace = true }
+rustc-hash = { workspace = true }
+
+[dev-dependencies]
+rand = { workspace = true }
+rand_pcg = { workspace = true }
+
+[lints]
+workspace = true

@@ -49,7 +49,7 @@ pub fn decode_resistor_colors(bands: &str) -> String {
     unsafe { String::from_utf8_unchecked(res) }
 }
 
-fn decode_color(s: &[u8]) -> (u8, usize) {
+const fn decode_color(s: &[u8]) -> (u8, usize) {
     match s[0] {
         b'b' => match s[2] {
             b'a' => (0, "black".len()),

@@ -1,0 +1,6 @@
+[package]
+name = "the-latest-clock"
+edition = { workspace = true }
+
+[lints]
+workspace = true

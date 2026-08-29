@@ -121,7 +121,7 @@ macro_rules! gen_tests {
 
                 let mut rng = Pcg64Mcg::new(0xcafe_f00d_d15e_a5e5);
 
-                for bits_shr in 0..$t::BITS {
+                for bits_shr in (0..$t::BITS).step_by(if cfg!(miri) {8} else {1}) {
                     for _ in 0..if cfg!(miri) { 1 } else { 100 } {
                         let n = (rng.random::<u128>() as $t) >> bits_shr;
                         test_num(n);

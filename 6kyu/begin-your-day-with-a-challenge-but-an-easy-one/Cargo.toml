@@ -1,0 +1,6 @@
+[package]
+name = "begin-your-day-with-a-challenge-but-an-easy-one"
+edition = { workspace = true }
+
+[lints]
+workspace = true

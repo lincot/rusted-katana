@@ -45,7 +45,7 @@ pub fn block_pushing(lst: &[char], n: u32) -> Vec<char> {
                     *res.get_unchecked_mut(b) = '#';
                 }
             }
-            block_positions.truncate(0);
+            block_positions.clear();
         }
     }
 

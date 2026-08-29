@@ -6,7 +6,7 @@ pub fn split_and_add(arr: &[u32], n: usize) -> Vec<u32> {
     assert!(!arr.is_empty());
     let mut arr = arr.to_vec();
 
-    for _ in 0..(n as u32).min(usize::BITS - (arr.len() - 1).leading_zeros()) {
+    for _ in 0..(n as u32).min((arr.len() - 1).bit_width()) {
         if arr.len() < 2 {
             unsafe { unreachable_unchecked() };
         }

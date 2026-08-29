@@ -1,0 +1,6 @@
+[package]
+name = "reversing-a-process"
+edition = { workspace = true }
+
+[lints]
+workspace = true

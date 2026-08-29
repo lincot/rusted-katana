@@ -3,7 +3,7 @@
 use digital::prelude::*;
 
 pub fn balanced_num(n: u64) -> String {
-    let digits = n.to_heapless_string().into_bytes();
+    let digits = n.to_heapless_string_with::<ReversedRaw>().into_bytes();
     if unsafe { digits.get_unchecked(..((digits.len() - 1) / 2)) }
         .iter()
         .sum::<u8>()

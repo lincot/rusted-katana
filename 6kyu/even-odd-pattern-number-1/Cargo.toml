@@ -1,0 +1,6 @@
+[package]
+name = "even-odd-pattern-number-1"
+edition = { workspace = true }
+
+[lints]
+workspace = true

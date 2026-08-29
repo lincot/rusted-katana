@@ -1,0 +1,6 @@
+[package]
+name = "stalin-sort"
+edition = { workspace = true }
+
+[lints]
+workspace = true

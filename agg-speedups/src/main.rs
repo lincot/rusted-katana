@@ -58,7 +58,7 @@ fn main() {
                     .lock()
                     .write_all_vectored(&mut [
                         IoSlice::new(kata_dir.as_os_str().as_encoded_bytes()),
-                        IoSlice::new(b": missing benches/results.json/\n"),
+                        IoSlice::new(b": missing benches/results.json\n"),
                     ])
                     .unwrap();
                 continue;
@@ -204,7 +204,7 @@ fn draw_speedup_histogram(speedups: &[f64], output_path: &str) {
     chart
         .draw_series(bins.iter().enumerate().map(|(i, &count)| {
             let x0 = bin_width.mul_add(i as _, x_min);
-            let x1 = x0 + bin_width * 0.9;
+            let x1 = bin_width.mul_add(0.9, x0);
             Rectangle::new([(x0, 0.), (x1, count as f64)], bar_col.filled())
         }))
         .unwrap();

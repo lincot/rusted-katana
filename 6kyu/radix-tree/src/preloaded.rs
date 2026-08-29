@@ -1,5 +1,3 @@
-#![expect(clippy::from_iter_instead_of_collect)]
-
 use std::collections::HashMap;
 
 #[derive(Debug, PartialEq)]

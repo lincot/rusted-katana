@@ -1,0 +1,6 @@
+[package]
+name = "tire-rotations"
+edition = { workspace = true }
+
+[lints]
+workspace = true

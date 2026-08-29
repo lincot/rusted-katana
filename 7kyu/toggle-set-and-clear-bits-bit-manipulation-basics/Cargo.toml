@@ -1,0 +1,6 @@
+[package]
+name = "toggle-set-and-clear-bits-bit-manipulation-basics"
+edition = { workspace = true }
+
+[lints]
+workspace = true

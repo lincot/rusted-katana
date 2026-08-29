@@ -15,8 +15,10 @@ pub fn sqr_modulus(a: S) -> (bool, i32, i32) {
         }
         "polar" => {
             let sum =
-                a.xs.chunks_exact(2)
-                    .map(|pair| (pair[0] * pair[0]) as u32)
+                a.xs.as_chunks::<2>()
+                    .0
+                    .iter()
+                    .map(|[a, b]| (a * b) as u32)
                     .sum();
             (true, sum as i32, descending_order(sum))
         }

@@ -1,5 +1,6 @@
 //! <https://www.codewars.com/kata/5917f22dd2563a36a200009c/train/rust>
 
+#[expect(clippy::empty_enums)]
 #[derive(PartialEq, Eq)]
 pub enum Void {}
 

@@ -1,0 +1,10 @@
+[package]
+name = "check-a-curious-divisibility-brute-force-version"
+edition = { workspace = true }
+
+[dependencies]
+digital = { workspace = true }
+heapless = { workspace = true }
+
+[lints]
+workspace = true

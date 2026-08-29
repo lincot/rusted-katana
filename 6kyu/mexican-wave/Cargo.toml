@@ -1,0 +1,9 @@
+[package]
+name = "mexican-wave"
+edition = { workspace = true }
+
+[dependencies]
+unchecked-std = { workspace = true }
+
+[lints]
+workspace = true

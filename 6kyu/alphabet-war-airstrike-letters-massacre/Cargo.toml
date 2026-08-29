@@ -1,0 +1,10 @@
+[package]
+name = "alphabet-war-airstrike-letters-massacre"
+edition = { workspace = true }
+
+[dev-dependencies]
+rand = { workspace = true }
+rand_pcg = { workspace = true }
+
+[lints]
+workspace = true

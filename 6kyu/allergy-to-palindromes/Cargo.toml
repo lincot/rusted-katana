@@ -1,0 +1,9 @@
+[package]
+name = "allergy-to-palindromes"
+edition = { workspace = true }
+
+[dependencies]
+num-bigint = { workspace = true }
+
+[lints]
+workspace = true

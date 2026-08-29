@@ -5,7 +5,7 @@ pub fn count_ones(left: u64, right: u64) -> u64 {
 }
 
 fn count_ones_from_zero_to(n: u64) -> u64 {
-    (0..u64::BITS - n.leading_zeros())
+    (0..n.bit_width())
         .map(|i| {
             let b = 1 << i;
             if n & b == 0 {

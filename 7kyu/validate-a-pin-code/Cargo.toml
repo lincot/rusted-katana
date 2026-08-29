@@ -1,0 +1,6 @@
+[package]
+name = "validate-a-pin-code"
+edition = { workspace = true }
+
+[lints]
+workspace = true

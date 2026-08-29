@@ -1,0 +1,6 @@
+[package]
+name = "tricky-doubles"
+edition = { workspace = true }
+
+[lints]
+workspace = true

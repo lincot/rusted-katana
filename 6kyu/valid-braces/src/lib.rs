@@ -5,7 +5,7 @@ use unchecked_std::prelude::*;
 pub fn valid_braces(s: &str) -> bool {
     let mut stack = Vec::with_capacity(s.len());
     for b in s.bytes() {
-        if [b'(', b'[', b'{'].contains(&b) {
+        if b"([{".contains(&b) {
             unsafe { stack.push_unchecked(b) };
         } else if stack
             .pop()

@@ -4,6 +4,8 @@
 
 use std::simd::prelude::*;
 
+const LANES: usize = 16;
+
 pub fn stray(arr: &[u32]) -> u32 {
     let &[first, second, third, ..] = arr else {
         panic!();
@@ -12,17 +14,14 @@ pub fn stray(arr: &[u32]) -> u32 {
         return if first == third { second } else { first };
     }
 
-    let chunks = arr[2..].chunks_exact(16);
-    let rem = chunks.remainder();
-
-    for chunk in chunks {
-        let mask = u32x16::from_slice(chunk)
-            .simd_ne(u32x16::splat(first))
+    let chunks = arr[2..].as_chunks::<{ LANES }>();
+    for chunk in chunks.0 {
+        let mask = Simd::<u32, LANES>::from_slice(chunk)
+            .simd_ne(Simd::splat(first))
             .to_bitmask();
         if mask != 0 {
             return chunk[mask.trailing_zeros() as usize];
         }
     }
-
-    rem.iter().copied().find(|&x| x != first).unwrap()
+    chunks.1.iter().copied().find(|&x| x != first).unwrap()
 }

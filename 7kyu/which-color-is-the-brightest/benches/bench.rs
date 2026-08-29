@@ -15,12 +15,7 @@ fn bench(bencher: &mut Bencher) {
         let mut s = [b'0'; 7];
         s[0] = b'#';
         for b in &mut s[1..] {
-            *b = *[
-                b'0', b'1', b'2', b'3', b'4', b'5', b'5', b'6', b'7', b'8', b'9', b'A', b'B', b'C',
-                b'D', b'E', b'F',
-            ]
-            .choose(&mut rng)
-            .unwrap();
+            *b = *b"01234556789ABCDEF".choose(&mut rng).unwrap();
         }
         unsafe { String::from_utf8_unchecked(s.into()) }
     });

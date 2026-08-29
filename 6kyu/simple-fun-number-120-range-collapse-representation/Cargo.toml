@@ -1,0 +1,6 @@
+[package]
+name = "simple-fun-number-120-range-collapse-representation"
+edition = { workspace = true }
+
+[lints]
+workspace = true

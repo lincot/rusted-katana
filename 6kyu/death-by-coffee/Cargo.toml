@@ -1,0 +1,6 @@
+[package]
+name = "death-by-coffee"
+edition = { workspace = true }
+
+[lints]
+workspace = true

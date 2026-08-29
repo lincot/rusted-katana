@@ -3,8 +3,10 @@
 pub fn convert_lojban(input: &str) -> u64 {
     input
         .as_bytes()
-        .chunks_exact(2)
-        .map(|chunk| match chunk[0] {
+        .as_chunks::<2>()
+        .0
+        .iter()
+        .map(|[a, _]| match a {
             b'n' => 0,
             b'p' => 1,
             b'r' => 2,

@@ -1,0 +1,6 @@
+[package]
+name = "parabolic-arc-length"
+edition = { workspace = true }
+
+[lints]
+workspace = true

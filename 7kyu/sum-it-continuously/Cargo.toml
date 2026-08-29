@@ -1,0 +1,6 @@
+[package]
+name = "sum-it-continuously"
+edition = { workspace = true }
+
+[lints]
+workspace = true

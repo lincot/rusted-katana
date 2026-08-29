@@ -1,0 +1,10 @@
+[package]
+name = "easy-polynomials"
+edition = { workspace = true }
+
+[dependencies]
+libm = { workspace = true }
+num-complex = { workspace = true }
+
+[lints]
+workspace = true

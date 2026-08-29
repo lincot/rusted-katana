@@ -1,0 +1,6 @@
+[package]
+name = "mr-safetys-treasures"
+edition = { workspace = true }
+
+[lints]
+workspace = true

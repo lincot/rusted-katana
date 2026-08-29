@@ -1,0 +1,6 @@
+[package]
+name = "count-the-divisible-numbers"
+edition = { workspace = true }
+
+[lints]
+workspace = true

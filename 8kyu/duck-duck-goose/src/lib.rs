@@ -4,6 +4,6 @@ pub use preloaded::Player;
 
 mod preloaded;
 
-pub fn duck_duck_goose(players: &[Player], goose: u32) -> &'static str {
+pub const fn duck_duck_goose(players: &[Player], goose: u32) -> &'static str {
     players[(goose as usize - 1) % players.len()].name
 }

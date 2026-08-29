@@ -5,7 +5,7 @@ use core::hint::unreachable_unchecked;
 pub fn rain_tacos(landscape: &str) -> String {
     if landscape.is_ascii() {
         let mut landscape = landscape.as_bytes().to_vec();
-        rain_tacos_arr(&mut landscape, [b'T', b'A', b'C', b'O']);
+        rain_tacos_arr(&mut landscape, *b"TACO");
         unsafe { String::from_utf8_unchecked(landscape) }
     } else {
         let mut landscape: Box<[_]> = landscape.chars().collect();

@@ -1,0 +1,9 @@
+[package]
+name = "pascalcase-method"
+edition = { workspace = true }
+
+[dependencies]
+unchecked-std = { workspace = true }
+
+[lints]
+workspace = true

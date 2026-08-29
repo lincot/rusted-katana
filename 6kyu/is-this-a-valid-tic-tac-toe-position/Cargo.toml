@@ -1,0 +1,6 @@
+[package]
+name = "is-this-a-valid-tic-tac-toe-position"
+edition = { workspace = true }
+
+[lints]
+workspace = true

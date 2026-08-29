@@ -1,0 +1,6 @@
+[package]
+name = "detect-pangram"
+edition = { workspace = true }
+
+[lints]
+workspace = true

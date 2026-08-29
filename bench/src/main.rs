@@ -1,7 +1,6 @@
 //! Benchmarks Codewars solutions against the most upvoted solutions. This code
 //! uses naive and stupidly optimized parsing but it works.
 #![feature(sync_unsafe_cell)]
-#![feature(strip_circumfix)]
 #![feature(write_all_vectored)]
 
 use core::{cell::SyncUnsafeCell, mem::MaybeUninit};
@@ -83,7 +82,7 @@ fn bench_solution(
     show_code(stdout, &most_upvoted_solution.code).unwrap();
     if !prompt_approve(
         stdout,
-        "Is this most upvoted solution safe to benchmark? [y/N] ",
+        "Is this third-party solution safe to benchmark? [y/N] ",
     )
     .unwrap()
     {
@@ -216,7 +215,11 @@ impl SolutionsPage {
         // me
         let cursor = text.find(ICON_MOON_USER).unwrap() + ICON_MOON_USER.len();
         // kata author
-        let cursor = cursor + text[cursor..].find(ICON_MOON_USER).unwrap() + ICON_MOON_USER.len();
+        let cursor = cursor
+            + text[cursor..]
+                .find(ICON_MOON_USER)
+                .expect("Is your Codewars session ID correct?")
+            + ICON_MOON_USER.len();
         Self {
             text,
             cursor,
@@ -390,6 +393,7 @@ fn make_runnable(code: &str, preloaded_code: Option<&str>, has_rand: bool) -> St
     const RAND_IMPORT: &str = "rand::";
     const RAND08_IMPORT: &str = "rand08::";
     const PRELOADED_IMPORT: &str = "use preloaded::";
+    const CRATE_PRELOADED_IMPORT: &str = "use crate::preloaded::";
     const PUB_PRELOADED_IMPORT: &str = "pub use preloaded::";
     const MACRO_EXPORT: &str = "#[macro_export]";
     const MACRO_RULES: &str = "macro_rules!";
@@ -403,6 +407,8 @@ fn make_runnable(code: &str, preloaded_code: Option<&str>, has_rand: bool) -> St
         assert!(
             (MACRO_EXPORT.len() + MACRO_RULES.len()) * PRELOADED_IMPORT.len()
                 > PUB_PRELOADED_IMPORT.len() * MACRO_RULES.len()
+                && (MACRO_EXPORT.len() + MACRO_RULES.len()) * CRATE_PRELOADED_IMPORT.len()
+                    > PUB_PRELOADED_IMPORT.len() * MACRO_RULES.len()
                 && (MACRO_EXPORT.len() + MACRO_RULES.len()) * RAND_IMPORT.len()
                     > RAND08_IMPORT.len() * MACRO_RULES.len()
         );
@@ -432,6 +438,11 @@ fn make_runnable(code: &str, preloaded_code: Option<&str>, has_rand: bool) -> St
                 if code[i..].starts_with(PRELOADED_IMPORT.as_bytes()) {
                     res.push_str_unchecked(PUB_PRELOADED_IMPORT);
                     i += PRELOADED_IMPORT.len();
+                    continue;
+                }
+                if code[i..].starts_with(CRATE_PRELOADED_IMPORT.as_bytes()) {
+                    res.push_str_unchecked(PUB_PRELOADED_IMPORT);
+                    i += CRATE_PRELOADED_IMPORT.len();
                     continue;
                 }
                 if code[i..].starts_with(MOD_PRELOADED.as_bytes()) {

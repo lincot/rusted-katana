@@ -1,0 +1,9 @@
+[package]
+name = "two-sets-of-equal-sum"
+edition = { workspace = true }
+
+[dependencies]
+unchecked-std = { workspace = true }
+
+[lints]
+workspace = true

@@ -1,0 +1,9 @@
+[package]
+name = "persistent-bugger"
+edition = { workspace = true }
+
+[dependencies]
+digital = { workspace = true }
+
+[lints]
+workspace = true
